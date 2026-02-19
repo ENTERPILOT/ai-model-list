@@ -1,0 +1,80 @@
+name: Update Model Registry
+
+on:
+  schedule:
+    # Run 15 minutes after ai-model-price-list (which runs at 0 */6 * * *)
+    - cron: "15 */6 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install jsonschema
+
+      - name: Fetch latest LiteLLM data from ai-model-price-list
+        run: |
+          curl -sSfL --retry 3 --retry-delay 5 \
+            -o /tmp/litellm_raw.json \
+            "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources/litellm_model_prices.json"
+          echo "LiteLLM data: $(wc -c < /tmp/litellm_raw.json) bytes"
+
+      - name: Convert LiteLLM dict to import format
+        run: |
+          python3 -c "
+          import json
+          with open('/tmp/litellm_raw.json') as f:
+              raw = json.load(f)
+          entries = []
+          for key, val in raw.items():
+              if isinstance(val, dict):
+                  entry = {'model_name': key}
+                  entry.update(val)
+                  entries.append(entry)
+          with open('/tmp/litellm_prices.json', 'w') as f:
+              json.dump(entries, f)
+          print(f'Converted {len(entries)} model entries')
+          "
+
+      - name: Import prices into models.json
+        run: python scripts/import_prices.py /tmp/litellm_prices.json
+
+      - name: Update timestamp
+        run: |
+          python3 -c "
+          import json
+          from datetime import datetime, timezone
+          with open('models.json') as f:
+              data = json.load(f)
+          data['updated_at'] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+          with open('models.json', 'w') as f:
+              json.dump(data, f, indent=2, ensure_ascii=False)
+              f.write('\n')
+          "
+
+      - name: Validate
+        run: python scripts/validate.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add models.json
+          if git diff --staged --quiet; then
+            echo "No changes detected, skipping commit."
+          else
+            git commit -m "chore: update model data $(date -u +%Y-%m-%d)"
+            git push
+          fi
