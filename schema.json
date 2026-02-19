@@ -1,0 +1,434 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ENTERPILOT/ai-model-list/schema.json",
+  "title": "AI Model List",
+  "description": "Curated registry of AI model metadata for GoModel enrichment",
+  "type": "object",
+  "required": ["version", "updated_at", "providers", "models", "provider_models"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    "providers": {
+      "type": "object",
+      "description": "Provider definitions keyed by provider slug",
+      "additionalProperties": { "$ref": "#/$defs/provider" }
+    },
+    "models": {
+      "type": "object",
+      "description": "Model definitions keyed by canonical model name",
+      "additionalProperties": { "$ref": "#/$defs/model" }
+    },
+    "provider_models": {
+      "type": "object",
+      "description": "Provider-specific model overrides keyed by 'provider/model'",
+      "patternProperties": {
+        "^[a-z0-9_-]+/[a-z0-9._-]+$": { "$ref": "#/$defs/provider_model" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/provider_model" }
+    }
+  },
+  "$defs": {
+    "provider": {
+      "type": "object",
+      "required": ["display_name"],
+      "additionalProperties": false,
+      "properties": {
+        "display_name": {
+          "type": "string",
+          "description": "Human-readable provider name"
+        },
+        "website": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "docs_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "pricing_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "status_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "api_type": {
+          "type": "string",
+          "enum": ["openai", "anthropic", "gemini", "cohere", "mistral", "custom"],
+          "description": "Protocol family for request/response conversion"
+        },
+        "default_base_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "auth": {
+          "oneOf": [
+            { "$ref": "#/$defs/auth_config" },
+            { "type": "null" }
+          ]
+        },
+        "base_url_env": {
+          "type": ["string", "null"],
+          "description": "Environment variable for base URL override"
+        },
+        "supported_modes": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/mode_enum" }
+        },
+        "default_rate_limits": {
+          "oneOf": [
+            { "$ref": "#/$defs/rate_limits" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "auth_config": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["bearer", "header", "query_param"]
+        },
+        "env_var": {
+          "type": ["string", "null"]
+        },
+        "header": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "rate_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rpm": {
+          "type": ["integer", "null"],
+          "description": "Requests per minute"
+        },
+        "tpm": {
+          "type": ["integer", "null"],
+          "description": "Tokens per minute"
+        },
+        "rpd": {
+          "type": ["integer", "null"],
+          "description": "Requests per day"
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["display_name", "mode"],
+      "additionalProperties": false,
+      "properties": {
+        "display_name": {
+          "type": "string"
+        },
+        "description": {
+          "type": ["string", "null"]
+        },
+        "owned_by": {
+          "type": ["string", "null"],
+          "description": "Originating company slug"
+        },
+        "family": {
+          "type": ["string", "null"],
+          "description": "Model family/series"
+        },
+        "release_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "deprecation_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "tags": {
+          "type": ["array", "null"],
+          "items": {
+            "type": "string",
+            "enum": [
+              "flagship", "budget", "preview", "beta", "deprecated", "legacy",
+              "multimodal", "reasoning", "long_context", "fast",
+              "open_weight", "fine_tunable"
+            ]
+          }
+        },
+        "mode": {
+          "$ref": "#/$defs/mode_enum"
+        },
+        "modalities": {
+          "oneOf": [
+            { "$ref": "#/$defs/modalities" },
+            { "type": "null" }
+          ]
+        },
+        "capabilities": {
+          "oneOf": [
+            { "$ref": "#/$defs/capabilities" },
+            { "type": "null" }
+          ]
+        },
+        "context_window": {
+          "type": ["integer", "null"],
+          "description": "Maximum input tokens"
+        },
+        "max_output_tokens": {
+          "type": ["integer", "null"],
+          "description": "Maximum output tokens"
+        },
+        "max_images_per_request": {
+          "type": ["integer", "null"]
+        },
+        "max_audio_length_seconds": {
+          "type": ["number", "null"]
+        },
+        "max_video_length_seconds": {
+          "type": ["number", "null"]
+        },
+        "max_pdf_size_mb": {
+          "type": ["number", "null"]
+        },
+        "pricing": {
+          "oneOf": [
+            { "$ref": "#/$defs/pricing" },
+            { "type": "null" }
+          ]
+        },
+        "parameters": {
+          "type": ["object", "null"],
+          "additionalProperties": { "$ref": "#/$defs/parameter_spec" },
+          "description": "Request parameter constraints for validation"
+        },
+        "rankings": {
+          "type": ["object", "null"],
+          "additionalProperties": { "$ref": "#/$defs/ranking_entry" },
+          "description": "Benchmark scores and rankings"
+        }
+      }
+    },
+    "mode_enum": {
+      "type": "string",
+      "enum": [
+        "chat", "completion", "embedding",
+        "image_generation", "image_edit",
+        "video_generation", "video_edit",
+        "audio_speech", "audio_transcription",
+        "rerank", "moderation", "ocr", "search",
+        "responses", "code_interpreter"
+      ]
+    },
+    "modalities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["text", "image", "audio", "video"]
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["text", "image", "audio", "video"]
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "function_calling": { "type": "boolean" },
+        "parallel_function_calling": { "type": "boolean" },
+        "streaming": { "type": "boolean" },
+        "system_messages": { "type": "boolean" },
+        "vision": { "type": "boolean" },
+        "audio_input": { "type": "boolean" },
+        "audio_output": { "type": "boolean" },
+        "video_input": { "type": "boolean" },
+        "pdf_input": { "type": "boolean" },
+        "json_mode": { "type": "boolean" },
+        "structured_output": { "type": "boolean" },
+        "response_schema": { "type": "boolean" },
+        "reasoning": { "type": "boolean" },
+        "prompt_caching": { "type": "boolean" },
+        "web_search": { "type": "boolean" },
+        "computer_use": { "type": "boolean" },
+        "assistant_prefill": { "type": "boolean" },
+        "video_editing": { "type": "boolean" },
+        "image_input_embedding": { "type": "boolean" }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "type": "string",
+          "const": "USD"
+        },
+        "input_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million input tokens"
+        },
+        "output_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million output tokens"
+        },
+        "cached_input_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million cached input tokens"
+        },
+        "reasoning_output_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million reasoning output tokens"
+        },
+        "per_image": {
+          "type": ["number", "null"],
+          "description": "USD per generated image"
+        },
+        "per_second_input": {
+          "type": ["number", "null"],
+          "description": "USD per second of audio/video input"
+        },
+        "per_second_output": {
+          "type": ["number", "null"],
+          "description": "USD per second of audio/video output"
+        },
+        "per_character_input": {
+          "type": ["number", "null"],
+          "description": "USD per character for TTS input"
+        },
+        "per_request": {
+          "type": ["number", "null"],
+          "description": "Flat USD per request"
+        },
+        "per_page": {
+          "type": ["number", "null"],
+          "description": "USD per page for OCR"
+        },
+        "tiers": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/pricing_tier" }
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "pricing_tier": {
+      "type": "object",
+      "required": ["up_to_tokens", "input_per_mtok", "output_per_mtok"],
+      "additionalProperties": false,
+      "properties": {
+        "up_to_tokens": { "type": "integer" },
+        "input_per_mtok": { "type": "number" },
+        "output_per_mtok": { "type": "number" }
+      }
+    },
+    "parameter_spec": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["float", "int", "bool", "string"]
+        },
+        "default": {},
+        "min": { "type": ["number", "null"] },
+        "max": { "type": ["number", "null"] },
+        "enum": {
+          "type": ["array", "null"],
+          "items": {}
+        }
+      }
+    },
+    "ranking_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "type": ["number", "null"],
+          "description": "Benchmark score (normalized or raw depending on benchmark)"
+        },
+        "elo": {
+          "type": ["number", "null"],
+          "description": "ELO rating (for arena-style benchmarks)"
+        },
+        "rank": {
+          "type": ["integer", "null"],
+          "description": "Ranking position"
+        },
+        "as_of": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the score was recorded"
+        }
+      }
+    },
+    "provider_model": {
+      "type": "object",
+      "required": ["model_ref", "enabled"],
+      "additionalProperties": false,
+      "properties": {
+        "model_ref": {
+          "type": "string",
+          "description": "References a key in the models section"
+        },
+        "provider_model_id": {
+          "type": ["string", "null"],
+          "description": "Actual API model string if different from canonical name"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "pricing": {
+          "oneOf": [
+            { "$ref": "#/$defs/pricing" },
+            { "type": "null" }
+          ]
+        },
+        "context_window": {
+          "type": ["integer", "null"]
+        },
+        "max_output_tokens": {
+          "type": ["integer", "null"]
+        },
+        "rate_limits": {
+          "oneOf": [
+            { "$ref": "#/$defs/rate_limits" },
+            { "type": "null" }
+          ]
+        },
+        "endpoints": {
+          "type": ["array", "null"],
+          "items": { "type": "string" }
+        },
+        "regions": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "Region availability, null for global"
+        }
+      }
+    }
+  }
+}

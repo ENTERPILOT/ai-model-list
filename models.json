@@ -1,0 +1,2131 @@
+{
+  "version": 1,
+  "updated_at": "2026-02-19T12:00:00Z",
+
+  "providers": {
+    "openai": {
+      "display_name": "OpenAI",
+      "website": "https://openai.com",
+      "docs_url": "https://platform.openai.com/docs",
+      "pricing_url": "https://openai.com/api/pricing",
+      "status_url": "https://status.openai.com",
+      "api_type": "openai",
+      "default_base_url": "https://api.openai.com/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "OPENAI_API_KEY",
+        "header": null
+      },
+      "base_url_env": "OPENAI_BASE_URL",
+      "supported_modes": ["chat", "embedding", "image_generation", "audio_speech", "audio_transcription", "moderation", "responses"],
+      "default_rate_limits": {
+        "rpm": 10000,
+        "tpm": 30000000,
+        "rpd": null
+      }
+    },
+    "anthropic": {
+      "display_name": "Anthropic",
+      "website": "https://anthropic.com",
+      "docs_url": "https://docs.anthropic.com",
+      "pricing_url": "https://anthropic.com/pricing",
+      "status_url": "https://status.anthropic.com",
+      "api_type": "anthropic",
+      "default_base_url": "https://api.anthropic.com/v1",
+      "auth": {
+        "type": "header",
+        "env_var": "ANTHROPIC_API_KEY",
+        "header": "x-api-key"
+      },
+      "base_url_env": "ANTHROPIC_BASE_URL",
+      "supported_modes": ["chat"],
+      "default_rate_limits": {
+        "rpm": 4000,
+        "tpm": 400000,
+        "rpd": null
+      }
+    },
+    "google": {
+      "display_name": "Google AI (Gemini)",
+      "website": "https://ai.google.dev",
+      "docs_url": "https://ai.google.dev/docs",
+      "pricing_url": "https://ai.google.dev/pricing",
+      "status_url": "https://status.cloud.google.com",
+      "api_type": "gemini",
+      "default_base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "auth": {
+        "type": "query_param",
+        "env_var": "GOOGLE_API_KEY",
+        "header": null
+      },
+      "base_url_env": "GOOGLE_BASE_URL",
+      "supported_modes": ["chat", "embedding"],
+      "default_rate_limits": {
+        "rpm": 1000,
+        "tpm": 4000000,
+        "rpd": null
+      }
+    },
+    "mistral": {
+      "display_name": "Mistral AI",
+      "website": "https://mistral.ai",
+      "docs_url": "https://docs.mistral.ai",
+      "pricing_url": "https://mistral.ai/products/la-plateforme#pricing",
+      "status_url": null,
+      "api_type": "mistral",
+      "default_base_url": "https://api.mistral.ai/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "MISTRAL_API_KEY",
+        "header": null
+      },
+      "base_url_env": "MISTRAL_BASE_URL",
+      "supported_modes": ["chat", "embedding", "ocr"],
+      "default_rate_limits": null
+    },
+    "cohere": {
+      "display_name": "Cohere",
+      "website": "https://cohere.com",
+      "docs_url": "https://docs.cohere.com",
+      "pricing_url": "https://cohere.com/pricing",
+      "status_url": null,
+      "api_type": "cohere",
+      "default_base_url": "https://api.cohere.com/v2",
+      "auth": {
+        "type": "bearer",
+        "env_var": "COHERE_API_KEY",
+        "header": null
+      },
+      "base_url_env": "COHERE_BASE_URL",
+      "supported_modes": ["chat", "embedding", "rerank"],
+      "default_rate_limits": null
+    },
+    "groq": {
+      "display_name": "Groq",
+      "website": "https://groq.com",
+      "docs_url": "https://console.groq.com/docs",
+      "pricing_url": "https://groq.com/pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.groq.com/openai/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "GROQ_API_KEY",
+        "header": null
+      },
+      "base_url_env": "GROQ_BASE_URL",
+      "supported_modes": ["chat", "audio_transcription"],
+      "default_rate_limits": null
+    },
+    "xai": {
+      "display_name": "xAI",
+      "website": "https://x.ai",
+      "docs_url": "https://docs.x.ai",
+      "pricing_url": "https://docs.x.ai/docs/models#models-and-pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.x.ai/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "XAI_API_KEY",
+        "header": null
+      },
+      "base_url_env": "XAI_BASE_URL",
+      "supported_modes": ["chat", "embedding", "image_generation"],
+      "default_rate_limits": null
+    },
+    "deepseek": {
+      "display_name": "DeepSeek",
+      "website": "https://deepseek.com",
+      "docs_url": "https://platform.deepseek.com/api-docs",
+      "pricing_url": "https://platform.deepseek.com/api-docs/pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.deepseek.com/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "DEEPSEEK_API_KEY",
+        "header": null
+      },
+      "base_url_env": "DEEPSEEK_BASE_URL",
+      "supported_modes": ["chat"],
+      "default_rate_limits": null
+    },
+    "together": {
+      "display_name": "Together AI",
+      "website": "https://together.ai",
+      "docs_url": "https://docs.together.ai",
+      "pricing_url": "https://together.ai/pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.together.xyz/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "TOGETHER_API_KEY",
+        "header": null
+      },
+      "base_url_env": "TOGETHER_BASE_URL",
+      "supported_modes": ["chat", "embedding", "image_generation"],
+      "default_rate_limits": null
+    },
+    "azure": {
+      "display_name": "Azure OpenAI",
+      "website": "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
+      "docs_url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/",
+      "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "status_url": "https://status.azure.com",
+      "api_type": "openai",
+      "default_base_url": null,
+      "auth": {
+        "type": "header",
+        "env_var": "AZURE_OPENAI_API_KEY",
+        "header": "api-key"
+      },
+      "base_url_env": "AZURE_OPENAI_BASE_URL",
+      "supported_modes": ["chat", "embedding", "image_generation"],
+      "default_rate_limits": null
+    },
+    "bedrock": {
+      "display_name": "AWS Bedrock",
+      "website": "https://aws.amazon.com/bedrock/",
+      "docs_url": "https://docs.aws.amazon.com/bedrock/",
+      "pricing_url": "https://aws.amazon.com/bedrock/pricing/",
+      "status_url": "https://health.aws.amazon.com",
+      "api_type": "openai",
+      "default_base_url": null,
+      "auth": null,
+      "base_url_env": "BEDROCK_BASE_URL",
+      "supported_modes": ["chat", "embedding", "image_generation"],
+      "default_rate_limits": null
+    },
+    "vertex_ai": {
+      "display_name": "Google Vertex AI",
+      "website": "https://cloud.google.com/vertex-ai",
+      "docs_url": "https://cloud.google.com/vertex-ai/docs",
+      "pricing_url": "https://cloud.google.com/vertex-ai/pricing",
+      "status_url": "https://status.cloud.google.com",
+      "api_type": "openai",
+      "default_base_url": null,
+      "auth": null,
+      "base_url_env": "VERTEX_AI_BASE_URL",
+      "supported_modes": ["chat", "embedding"],
+      "default_rate_limits": null
+    },
+    "fireworks": {
+      "display_name": "Fireworks AI",
+      "website": "https://fireworks.ai",
+      "docs_url": "https://docs.fireworks.ai",
+      "pricing_url": "https://fireworks.ai/pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.fireworks.ai/inference/v1",
+      "auth": {
+        "type": "bearer",
+        "env_var": "FIREWORKS_API_KEY",
+        "header": null
+      },
+      "base_url_env": "FIREWORKS_BASE_URL",
+      "supported_modes": ["chat", "embedding"],
+      "default_rate_limits": null
+    },
+    "deepinfra": {
+      "display_name": "DeepInfra",
+      "website": "https://deepinfra.com",
+      "docs_url": "https://deepinfra.com/docs",
+      "pricing_url": "https://deepinfra.com/pricing",
+      "status_url": null,
+      "api_type": "openai",
+      "default_base_url": "https://api.deepinfra.com/v1/openai",
+      "auth": {
+        "type": "bearer",
+        "env_var": "DEEPINFRA_API_KEY",
+        "header": null
+      },
+      "base_url_env": "DEEPINFRA_BASE_URL",
+      "supported_modes": ["chat", "embedding"],
+      "default_rate_limits": null
+    }
+  },
+
+  "models": {
+    "gpt-4o": {
+      "display_name": "GPT-4o",
+      "description": "Flagship multimodal model — fast, intelligent, flexible",
+      "owned_by": "openai",
+      "family": "gpt-4o",
+      "release_date": "2024-05-13",
+      "deprecation_date": null,
+      "tags": ["flagship", "multimodal"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image", "audio"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true,
+        "response_schema": true,
+        "web_search": true,
+        "prompt_caching": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.50,
+        "output_per_mtok": 10.00,
+        "cached_input_per_mtok": 1.25,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "frequency_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "presence_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16384 }
+      },
+      "rankings": {
+        "chatbot_arena": { "elo": 1287, "score": null, "rank": 3, "as_of": "2026-02-01" }
+      }
+    },
+    "gpt-4o-mini": {
+      "display_name": "GPT-4o Mini",
+      "description": "Small, fast, affordable multimodal model for lightweight tasks",
+      "owned_by": "openai",
+      "family": "gpt-4o",
+      "release_date": "2024-07-18",
+      "deprecation_date": null,
+      "tags": ["budget", "multimodal", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true,
+        "response_schema": true,
+        "prompt_caching": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.60,
+        "cached_input_per_mtok": 0.075,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "frequency_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "presence_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16384 }
+      },
+      "rankings": null
+    },
+    "o1": {
+      "display_name": "o1",
+      "description": "Reasoning model for complex multi-step tasks",
+      "owned_by": "openai",
+      "family": "o1",
+      "release_date": "2024-12-17",
+      "deprecation_date": null,
+      "tags": ["flagship", "reasoning"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "reasoning": true,
+        "structured_output": true,
+        "response_schema": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 100000,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 15.00,
+        "output_per_mtok": 60.00,
+        "cached_input_per_mtok": 7.50,
+        "reasoning_output_per_mtok": 60.00,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "max_completion_tokens": { "type": "int", "default": 32768, "min": 1, "max": 100000 },
+        "reasoning_effort": { "type": "string", "default": "medium", "min": null, "max": null, "enum": ["low", "medium", "high"] }
+      },
+      "rankings": null
+    },
+    "o3-mini": {
+      "display_name": "o3 Mini",
+      "description": "Fast, affordable reasoning model",
+      "owned_by": "openai",
+      "family": "o3",
+      "release_date": "2025-01-31",
+      "deprecation_date": null,
+      "tags": ["budget", "reasoning", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "reasoning": true,
+        "structured_output": true,
+        "response_schema": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 100000,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.10,
+        "output_per_mtok": 4.40,
+        "cached_input_per_mtok": 0.55,
+        "reasoning_output_per_mtok": 4.40,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "max_completion_tokens": { "type": "int", "default": 32768, "min": 1, "max": 100000 },
+        "reasoning_effort": { "type": "string", "default": "medium", "min": null, "max": null, "enum": ["low", "medium", "high"] }
+      },
+      "rankings": null
+    },
+    "gpt-4.1": {
+      "display_name": "GPT-4.1",
+      "description": "Major upgrade — coding, instruction following, long context",
+      "owned_by": "openai",
+      "family": "gpt-4.1",
+      "release_date": "2025-04-14",
+      "deprecation_date": null,
+      "tags": ["flagship", "multimodal", "long_context"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true,
+        "response_schema": true,
+        "prompt_caching": true
+      },
+      "context_window": 1047576,
+      "max_output_tokens": 32768,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.00,
+        "output_per_mtok": 8.00,
+        "cached_input_per_mtok": 0.50,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "frequency_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "presence_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 32768 }
+      },
+      "rankings": null
+    },
+    "gpt-4.1-mini": {
+      "display_name": "GPT-4.1 Mini",
+      "description": "Balanced model — fast, smart, affordable with long context",
+      "owned_by": "openai",
+      "family": "gpt-4.1",
+      "release_date": "2025-04-14",
+      "deprecation_date": null,
+      "tags": ["budget", "fast", "long_context"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true,
+        "response_schema": true,
+        "prompt_caching": true
+      },
+      "context_window": 1047576,
+      "max_output_tokens": 32768,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.40,
+        "output_per_mtok": 1.60,
+        "cached_input_per_mtok": 0.10,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "frequency_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "presence_penalty": { "type": "float", "default": 0.0, "min": -2.0, "max": 2.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 32768 }
+      },
+      "rankings": null
+    },
+    "gpt-4.1-nano": {
+      "display_name": "GPT-4.1 Nano",
+      "description": "Fastest and most affordable GPT model for low-latency tasks",
+      "owned_by": "openai",
+      "family": "gpt-4.1",
+      "release_date": "2025-04-14",
+      "deprecation_date": null,
+      "tags": ["budget", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true,
+        "response_schema": true,
+        "prompt_caching": true
+      },
+      "context_window": 1047576,
+      "max_output_tokens": 32768,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.10,
+        "output_per_mtok": 0.40,
+        "cached_input_per_mtok": 0.025,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 32768 }
+      },
+      "rankings": null
+    },
+    "claude-opus-4-6": {
+      "display_name": "Claude Opus 4.6",
+      "description": "Most capable Claude model — excels at complex reasoning, coding, and agentic tasks",
+      "owned_by": "anthropic",
+      "family": "claude-4",
+      "release_date": "2025-09-25",
+      "deprecation_date": null,
+      "tags": ["flagship", "reasoning"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "reasoning": true,
+        "prompt_caching": true,
+        "computer_use": true,
+        "assistant_prefill": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 32000,
+      "max_images_per_request": 20,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": 32,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 15.00,
+        "output_per_mtok": 75.00,
+        "cached_input_per_mtok": 1.50,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 0.999, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": null, "min": 0, "max": null },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 32000 }
+      },
+      "rankings": null
+    },
+    "claude-sonnet-4-6": {
+      "display_name": "Claude Sonnet 4.6",
+      "description": "Balanced performance and cost — ideal for most tasks",
+      "owned_by": "anthropic",
+      "family": "claude-4",
+      "release_date": "2025-09-25",
+      "deprecation_date": null,
+      "tags": ["flagship", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "reasoning": true,
+        "prompt_caching": true,
+        "computer_use": true,
+        "assistant_prefill": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 16000,
+      "max_images_per_request": 20,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": 32,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 3.00,
+        "output_per_mtok": 15.00,
+        "cached_input_per_mtok": 0.30,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 0.999, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": null, "min": 0, "max": null },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16000 }
+      },
+      "rankings": null
+    },
+    "claude-haiku-4-5": {
+      "display_name": "Claude Haiku 4.5",
+      "description": "Fastest Claude model — optimized for speed and cost efficiency",
+      "owned_by": "anthropic",
+      "family": "claude-4",
+      "release_date": "2025-04-15",
+      "deprecation_date": null,
+      "tags": ["budget", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "assistant_prefill": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 8192,
+      "max_images_per_request": 20,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": 32,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.80,
+        "output_per_mtok": 4.00,
+        "cached_input_per_mtok": 0.08,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 0.999, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": null, "min": 0, "max": null },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 8192 }
+      },
+      "rankings": null
+    },
+    "gemini-2.0-flash": {
+      "display_name": "Gemini 2.0 Flash",
+      "description": "Next-gen fast model with multimodal generation and tool use",
+      "owned_by": "google",
+      "family": "gemini-2.0",
+      "release_date": "2025-02-05",
+      "deprecation_date": null,
+      "tags": ["flagship", "multimodal", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image", "audio", "video"],
+        "output": ["text", "image"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "audio_input": true,
+        "video_input": true,
+        "json_mode": true,
+        "structured_output": true
+      },
+      "context_window": 1048576,
+      "max_output_tokens": 8192,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.10,
+        "output_per_mtok": 0.40,
+        "cached_input_per_mtok": 0.025,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": [
+          { "up_to_tokens": 128000, "input_per_mtok": 0.10, "output_per_mtok": 0.40 },
+          { "up_to_tokens": 1048576, "input_per_mtok": 0.20, "output_per_mtok": 0.80 }
+        ]
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 0.95, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": 40, "min": 1, "max": null },
+        "max_output_tokens": { "type": "int", "default": 8192, "min": 1, "max": 8192 }
+      },
+      "rankings": null
+    },
+    "gemini-2.5-pro": {
+      "display_name": "Gemini 2.5 Pro",
+      "description": "Most capable Gemini model — thinking, coding, multimodal",
+      "owned_by": "google",
+      "family": "gemini-2.5",
+      "release_date": "2025-03-25",
+      "deprecation_date": null,
+      "tags": ["flagship", "multimodal", "reasoning", "long_context"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image", "audio", "video"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "audio_input": true,
+        "video_input": true,
+        "json_mode": true,
+        "structured_output": true,
+        "reasoning": true
+      },
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.00,
+        "cached_input_per_mtok": 0.315,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": [
+          { "up_to_tokens": 200000, "input_per_mtok": 1.25, "output_per_mtok": 10.00 },
+          { "up_to_tokens": 1048576, "input_per_mtok": 2.50, "output_per_mtok": 15.00 }
+        ]
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 0.95, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": 40, "min": 1, "max": null },
+        "max_output_tokens": { "type": "int", "default": 8192, "min": 1, "max": 65536 }
+      },
+      "rankings": null
+    },
+    "gemini-2.5-flash": {
+      "display_name": "Gemini 2.5 Flash",
+      "description": "Fast thinking model with excellent cost-performance ratio",
+      "owned_by": "google",
+      "family": "gemini-2.5",
+      "release_date": "2025-04-17",
+      "deprecation_date": null,
+      "tags": ["budget", "fast", "reasoning", "multimodal"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image", "audio", "video"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "audio_input": true,
+        "video_input": true,
+        "json_mode": true,
+        "structured_output": true,
+        "reasoning": true
+      },
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.60,
+        "cached_input_per_mtok": 0.0375,
+        "reasoning_output_per_mtok": 3.50,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": [
+          { "up_to_tokens": 200000, "input_per_mtok": 0.15, "output_per_mtok": 0.60 },
+          { "up_to_tokens": 1048576, "input_per_mtok": 0.30, "output_per_mtok": 1.20 }
+        ]
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 0.95, "min": 0.0, "max": 1.0 },
+        "top_k": { "type": "int", "default": 40, "min": 1, "max": null },
+        "max_output_tokens": { "type": "int", "default": 8192, "min": 1, "max": 65536 }
+      },
+      "rankings": null
+    },
+    "deepseek-r1": {
+      "display_name": "DeepSeek R1",
+      "description": "Open-weight reasoning model with strong math and coding",
+      "owned_by": "deepseek",
+      "family": "deepseek-r1",
+      "release_date": "2025-01-20",
+      "deprecation_date": null,
+      "tags": ["flagship", "reasoning", "open_weight"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "reasoning": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 32768,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.55,
+        "output_per_mtok": 2.19,
+        "cached_input_per_mtok": 0.14,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 32768 }
+      },
+      "rankings": null
+    },
+    "deepseek-v3": {
+      "display_name": "DeepSeek V3",
+      "description": "Strong open-weight general-purpose chat model",
+      "owned_by": "deepseek",
+      "family": "deepseek-v3",
+      "release_date": "2024-12-26",
+      "deprecation_date": null,
+      "tags": ["flagship", "open_weight"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "json_mode": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 8192,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 1.10,
+        "cached_input_per_mtok": 0.07,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 8192 }
+      },
+      "rankings": null
+    },
+    "grok-3": {
+      "display_name": "Grok 3",
+      "description": "xAI flagship model with strong reasoning and analysis",
+      "owned_by": "xai",
+      "family": "grok-3",
+      "release_date": "2025-02-17",
+      "deprecation_date": null,
+      "tags": ["flagship", "reasoning"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true
+      },
+      "context_window": 131072,
+      "max_output_tokens": 16384,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 3.00,
+        "output_per_mtok": 15.00,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16384 }
+      },
+      "rankings": null
+    },
+    "grok-3-mini": {
+      "display_name": "Grok 3 Mini",
+      "description": "Lightweight thinking model optimized for speed",
+      "owned_by": "xai",
+      "family": "grok-3",
+      "release_date": "2025-02-17",
+      "deprecation_date": null,
+      "tags": ["budget", "fast", "reasoning"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "reasoning": true,
+        "json_mode": true,
+        "structured_output": true
+      },
+      "context_window": 131072,
+      "max_output_tokens": 16384,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.30,
+        "output_per_mtok": 0.50,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 1.0, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16384 }
+      },
+      "rankings": null
+    },
+    "mistral-large-latest": {
+      "display_name": "Mistral Large",
+      "description": "Top-tier reasoning model for complex tasks",
+      "owned_by": "mistral",
+      "family": "mistral-large",
+      "release_date": "2024-11-18",
+      "deprecation_date": null,
+      "tags": ["flagship"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true,
+        "structured_output": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 8192,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.00,
+        "output_per_mtok": 6.00,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 0.7, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 8192 }
+      },
+      "rankings": null
+    },
+    "mistral-small-latest": {
+      "display_name": "Mistral Small",
+      "description": "Cost-efficient model for lightweight tasks",
+      "owned_by": "mistral",
+      "family": "mistral-small",
+      "release_date": "2025-01-30",
+      "deprecation_date": null,
+      "tags": ["budget", "fast"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "json_mode": true,
+        "structured_output": true
+      },
+      "context_window": 32000,
+      "max_output_tokens": 8192,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.10,
+        "output_per_mtok": 0.30,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 0.7, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 1.0, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 8192 }
+      },
+      "rankings": null
+    },
+    "command-r-plus": {
+      "display_name": "Command R+",
+      "description": "Large model optimized for RAG and tool use",
+      "owned_by": "cohere",
+      "family": "command-r",
+      "release_date": "2024-04-04",
+      "deprecation_date": null,
+      "tags": ["flagship"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "json_mode": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 4096,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.50,
+        "output_per_mtok": 10.00,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "temperature": { "type": "float", "default": 0.3, "min": 0.0, "max": 1.0 },
+        "top_p": { "type": "float", "default": 0.75, "min": 0.01, "max": 0.99 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 4096 }
+      },
+      "rankings": null
+    },
+    "llama-3.3-70b": {
+      "display_name": "Llama 3.3 70B",
+      "description": "Meta's open-weight 70B model with strong instruction following",
+      "owned_by": "meta",
+      "family": "llama-3.3",
+      "release_date": "2024-12-06",
+      "deprecation_date": null,
+      "tags": ["open_weight"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "json_mode": true
+      },
+      "context_window": 131072,
+      "max_output_tokens": 4096,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": null,
+      "parameters": {
+        "temperature": { "type": "float", "default": 0.6, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 0.9, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 4096 }
+      },
+      "rankings": null
+    },
+    "llama-4-maverick": {
+      "display_name": "Llama 4 Maverick",
+      "description": "Meta's 400B MoE model with 128 experts — multimodal, open weight",
+      "owned_by": "meta",
+      "family": "llama-4",
+      "release_date": "2025-04-05",
+      "deprecation_date": null,
+      "tags": ["flagship", "multimodal", "open_weight"],
+      "mode": "chat",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "json_mode": true
+      },
+      "context_window": 1048576,
+      "max_output_tokens": 16384,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": null,
+      "parameters": {
+        "temperature": { "type": "float", "default": 0.6, "min": 0.0, "max": 2.0 },
+        "top_p": { "type": "float", "default": 0.9, "min": 0.0, "max": 1.0 },
+        "max_tokens": { "type": "int", "default": 4096, "min": 1, "max": 16384 }
+      },
+      "rankings": null
+    },
+    "text-embedding-3-small": {
+      "display_name": "Text Embedding 3 Small",
+      "description": "Efficient embedding model for search and similarity",
+      "owned_by": "openai",
+      "family": "text-embedding-3",
+      "release_date": "2024-01-25",
+      "deprecation_date": null,
+      "tags": ["budget"],
+      "mode": "embedding",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": null,
+      "context_window": 8191,
+      "max_output_tokens": null,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.02,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": null,
+      "rankings": null
+    },
+    "text-embedding-3-large": {
+      "display_name": "Text Embedding 3 Large",
+      "description": "Most capable OpenAI embedding model",
+      "owned_by": "openai",
+      "family": "text-embedding-3",
+      "release_date": "2024-01-25",
+      "deprecation_date": null,
+      "tags": ["flagship"],
+      "mode": "embedding",
+      "modalities": {
+        "input": ["text"],
+        "output": ["text"]
+      },
+      "capabilities": null,
+      "context_window": 8191,
+      "max_output_tokens": null,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.13,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": null,
+      "rankings": null
+    },
+    "dall-e-3": {
+      "display_name": "DALL-E 3",
+      "description": "High-quality image generation from text prompts",
+      "owned_by": "openai",
+      "family": "dall-e",
+      "release_date": "2023-10-01",
+      "deprecation_date": null,
+      "tags": [],
+      "mode": "image_generation",
+      "modalities": {
+        "input": ["text"],
+        "output": ["image"]
+      },
+      "capabilities": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "max_images_per_request": 1,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": null,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": 0.040,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "size": { "type": "string", "default": "1024x1024", "min": null, "max": null, "enum": ["1024x1024", "1024x1792", "1792x1024"] },
+        "quality": { "type": "string", "default": "standard", "min": null, "max": null, "enum": ["standard", "hd"] }
+      },
+      "rankings": null
+    },
+    "tts-1": {
+      "display_name": "TTS-1",
+      "description": "Fast text-to-speech model optimized for real-time use",
+      "owned_by": "openai",
+      "family": "tts",
+      "release_date": "2023-11-06",
+      "deprecation_date": null,
+      "tags": ["fast"],
+      "mode": "audio_speech",
+      "modalities": {
+        "input": ["text"],
+        "output": ["audio"]
+      },
+      "capabilities": {
+        "streaming": true
+      },
+      "context_window": null,
+      "max_output_tokens": null,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": null,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": 0.000015,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": {
+        "voice": { "type": "string", "default": "alloy", "min": null, "max": null, "enum": ["alloy", "echo", "fable", "onyx", "nova", "shimmer"] },
+        "speed": { "type": "float", "default": 1.0, "min": 0.25, "max": 4.0 }
+      },
+      "rankings": null
+    },
+    "whisper-1": {
+      "display_name": "Whisper-1",
+      "description": "Speech-to-text model for transcription and translation",
+      "owned_by": "openai",
+      "family": "whisper",
+      "release_date": "2023-03-01",
+      "deprecation_date": null,
+      "tags": [],
+      "mode": "audio_transcription",
+      "modalities": {
+        "input": ["audio"],
+        "output": ["text"]
+      },
+      "capabilities": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": 7200,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": null,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": 0.0001,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": null,
+      "rankings": null
+    },
+    "omni-moderation-latest": {
+      "display_name": "Omni Moderation",
+      "description": "Multimodal content moderation model",
+      "owned_by": "openai",
+      "family": "moderation",
+      "release_date": "2024-09-25",
+      "deprecation_date": null,
+      "tags": [],
+      "mode": "moderation",
+      "modalities": {
+        "input": ["text", "image"],
+        "output": ["text"]
+      },
+      "capabilities": {
+        "vision": true
+      },
+      "context_window": null,
+      "max_output_tokens": null,
+      "max_images_per_request": null,
+      "max_audio_length_seconds": null,
+      "max_video_length_seconds": null,
+      "max_pdf_size_mb": null,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": null,
+        "output_per_mtok": null,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "parameters": null,
+      "rankings": null
+    }
+  },
+
+  "provider_models": {
+    "openai/gpt-4o": {
+      "model_ref": "gpt-4o",
+      "provider_model_id": "gpt-4o-2024-11-20",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 10000,
+        "tpm": 30000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/gpt-4o-mini": {
+      "model_ref": "gpt-4o-mini",
+      "provider_model_id": "gpt-4o-mini-2024-07-18",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 30000,
+        "tpm": 150000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "openai/o1": {
+      "model_ref": "o1",
+      "provider_model_id": "o1-2024-12-17",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 500,
+        "tpm": 30000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/o3-mini": {
+      "model_ref": "o3-mini",
+      "provider_model_id": "o3-mini-2025-01-31",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 1000,
+        "tpm": 30000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/gpt-4.1": {
+      "model_ref": "gpt-4.1",
+      "provider_model_id": "gpt-4.1-2025-04-14",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 10000,
+        "tpm": 30000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/gpt-4.1-mini": {
+      "model_ref": "gpt-4.1-mini",
+      "provider_model_id": "gpt-4.1-mini-2025-04-14",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 30000,
+        "tpm": 150000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/gpt-4.1-nano": {
+      "model_ref": "gpt-4.1-nano",
+      "provider_model_id": "gpt-4.1-nano-2025-04-14",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions", "/v1/responses"],
+      "regions": null
+    },
+    "openai/text-embedding-3-small": {
+      "model_ref": "text-embedding-3-small",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/embeddings"],
+      "regions": null
+    },
+    "openai/text-embedding-3-large": {
+      "model_ref": "text-embedding-3-large",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/embeddings"],
+      "regions": null
+    },
+    "openai/dall-e-3": {
+      "model_ref": "dall-e-3",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/images/generations"],
+      "regions": null
+    },
+    "openai/tts-1": {
+      "model_ref": "tts-1",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/audio/speech"],
+      "regions": null
+    },
+    "openai/whisper-1": {
+      "model_ref": "whisper-1",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/audio/transcriptions", "/v1/audio/translations"],
+      "regions": null
+    },
+    "openai/omni-moderation-latest": {
+      "model_ref": "omni-moderation-latest",
+      "provider_model_id": null,
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/moderations"],
+      "regions": null
+    },
+    "anthropic/claude-opus-4-6": {
+      "model_ref": "claude-opus-4-6",
+      "provider_model_id": "claude-opus-4-6-20250925",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 4000,
+        "tpm": 400000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/messages"],
+      "regions": null
+    },
+    "anthropic/claude-sonnet-4-6": {
+      "model_ref": "claude-sonnet-4-6",
+      "provider_model_id": "claude-sonnet-4-6-20250925",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 4000,
+        "tpm": 400000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/messages"],
+      "regions": null
+    },
+    "anthropic/claude-haiku-4-5": {
+      "model_ref": "claude-haiku-4-5",
+      "provider_model_id": "claude-haiku-4-5-20251001",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 4000,
+        "tpm": 400000,
+        "rpd": null
+      },
+      "endpoints": ["/v1/messages"],
+      "regions": null
+    },
+    "google/gemini-2.0-flash": {
+      "model_ref": "gemini-2.0-flash",
+      "provider_model_id": "gemini-2.0-flash",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 2000,
+        "tpm": 4000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1beta/models/gemini-2.0-flash:generateContent"],
+      "regions": null
+    },
+    "google/gemini-2.5-pro": {
+      "model_ref": "gemini-2.5-pro",
+      "provider_model_id": "gemini-2.5-pro-preview-05-06",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": {
+        "rpm": 1000,
+        "tpm": 4000000,
+        "rpd": null
+      },
+      "endpoints": ["/v1beta/models/gemini-2.5-pro:generateContent"],
+      "regions": null
+    },
+    "google/gemini-2.5-flash": {
+      "model_ref": "gemini-2.5-flash",
+      "provider_model_id": "gemini-2.5-flash-preview-04-17",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1beta/models/gemini-2.5-flash:generateContent"],
+      "regions": null
+    },
+    "deepseek/deepseek-r1": {
+      "model_ref": "deepseek-r1",
+      "provider_model_id": "deepseek-reasoner",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "deepseek/deepseek-v3": {
+      "model_ref": "deepseek-v3",
+      "provider_model_id": "deepseek-chat",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "xai/grok-3": {
+      "model_ref": "grok-3",
+      "provider_model_id": "grok-3",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "xai/grok-3-mini": {
+      "model_ref": "grok-3-mini",
+      "provider_model_id": "grok-3-mini",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "mistral/mistral-large-latest": {
+      "model_ref": "mistral-large-latest",
+      "provider_model_id": "mistral-large-latest",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "mistral/mistral-small-latest": {
+      "model_ref": "mistral-small-latest",
+      "provider_model_id": "mistral-small-latest",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "cohere/command-r-plus": {
+      "model_ref": "command-r-plus",
+      "provider_model_id": "command-r-plus",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v2/chat"],
+      "regions": null
+    },
+    "groq/llama-3.3-70b": {
+      "model_ref": "llama-3.3-70b",
+      "provider_model_id": "llama-3.3-70b-versatile",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.59,
+        "output_per_mtok": 0.79,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "rate_limits": {
+        "rpm": 30,
+        "tpm": 131072,
+        "rpd": 14400
+      },
+      "endpoints": ["/openai/v1/chat/completions"],
+      "regions": null
+    },
+    "groq/deepseek-r1": {
+      "model_ref": "deepseek-r1",
+      "provider_model_id": "deepseek-r1-distill-llama-70b",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 0.99,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 131072,
+      "max_output_tokens": 16384,
+      "rate_limits": {
+        "rpm": 30,
+        "tpm": 131072,
+        "rpd": 14400
+      },
+      "endpoints": ["/openai/v1/chat/completions"],
+      "regions": null
+    },
+    "together/llama-3.3-70b": {
+      "model_ref": "llama-3.3-70b",
+      "provider_model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.88,
+        "output_per_mtok": 0.88,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 131072,
+      "max_output_tokens": 4096,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "together/llama-4-maverick": {
+      "model_ref": "llama-4-maverick",
+      "provider_model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 0.85,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 1048576,
+      "max_output_tokens": 16384,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": null
+    },
+    "azure/gpt-4o": {
+      "model_ref": "gpt-4o",
+      "provider_model_id": "gpt-4o",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.50,
+        "output_per_mtok": 10.00,
+        "cached_input_per_mtok": 1.25,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": ["eastus", "westus", "westeurope", "swedencentral"]
+    },
+    "bedrock/claude-opus-4-6": {
+      "model_ref": "claude-opus-4-6",
+      "provider_model_id": "anthropic.claude-opus-4-6-v1:0",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 15.00,
+        "output_per_mtok": 75.00,
+        "cached_input_per_mtok": 1.50,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": ["us-east-1", "us-west-2", "eu-west-1"]
+    },
+    "bedrock/claude-sonnet-4-6": {
+      "model_ref": "claude-sonnet-4-6",
+      "provider_model_id": "anthropic.claude-sonnet-4-6-v1:0",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 3.00,
+        "output_per_mtok": 15.00,
+        "cached_input_per_mtok": 0.30,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": ["/v1/chat/completions"],
+      "regions": ["us-east-1", "us-west-2", "eu-west-1"]
+    },
+    "vertex_ai/gemini-2.5-pro": {
+      "model_ref": "gemini-2.5-pro",
+      "provider_model_id": "gemini-2.5-pro-preview-05-06",
+      "enabled": true,
+      "pricing": null,
+      "context_window": null,
+      "max_output_tokens": null,
+      "rate_limits": null,
+      "endpoints": null,
+      "regions": ["us-central1", "europe-west1", "asia-northeast1"]
+    },
+    "fireworks/llama-3.3-70b": {
+      "model_ref": "llama-3.3-70b",
+      "provider_model_id": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.90,
+        "output_per_mtok": 0.90,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 131072,
+      "max_output_tokens": 4096,
+      "rate_limits": null,
+      "endpoints": ["/inference/v1/chat/completions"],
+      "regions": null
+    },
+    "deepinfra/llama-3.3-70b": {
+      "model_ref": "llama-3.3-70b",
+      "provider_model_id": "meta-llama/Llama-3.3-70B-Instruct",
+      "enabled": true,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.35,
+        "output_per_mtok": 0.40,
+        "cached_input_per_mtok": null,
+        "reasoning_output_per_mtok": null,
+        "per_image": null,
+        "per_second_input": null,
+        "per_second_output": null,
+        "per_character_input": null,
+        "per_request": null,
+        "per_page": null,
+        "tiers": null
+      },
+      "context_window": 131072,
+      "max_output_tokens": 4096,
+      "rate_limits": null,
+      "endpoints": ["/v1/openai/chat/completions"],
+      "regions": null
+    }
+  }
+}
