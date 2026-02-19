@@ -22,6 +22,16 @@ from pathlib import Path
 
 MILLION = 1_000_000
 
+# Valid mode values from the schema
+VALID_MODES = {
+    "chat", "completion", "embedding",
+    "image_generation", "image_edit",
+    "video_generation", "video_edit",
+    "audio_speech", "audio_transcription",
+    "rerank", "moderation", "ocr", "search",
+    "responses", "code_interpreter",
+}
+
 # Field mapping: source field -> (target field, multiplier)
 PRICING_FIELD_MAP = {
     "input_cost_per_token": ("input_per_mtok", MILLION),
@@ -90,10 +100,126 @@ def convert_capabilities(source_entry: dict) -> dict | None:
     return caps if caps else None
 
 
-def import_prices(source_data: list[dict], models_data: dict, merge: bool = True) -> tuple[int, int]:
-    """Import pricing from source into models_data. Returns (updated_count, skipped_count)."""
+# Brand prefix -> display form. Order matters: longer prefixes first.
+_BRAND_PREFIXES = [
+    ("text-embedding", "Text Embedding"),
+    ("dall-e", "DALL-E"),
+    ("deepseek", "DeepSeek"),
+    ("gemini", "Gemini"),
+    ("claude", "Claude"),
+    ("mistral", "Mistral"),
+    ("command", "Command"),
+    ("whisper", "Whisper"),
+    ("llama", "Llama"),
+    ("grok", "Grok"),
+    ("gpt", "GPT"),
+    ("tts", "TTS"),
+]
+
+# Single-segment prefixes kept lowercase (model names like o1, o3, o4-mini)
+_LOWERCASE_PREFIXES = {"o1", "o3", "o4"}
+
+
+def generate_display_name(canonical: str) -> str:
+    """Convert a canonical model name to a human-readable display name.
+
+    Examples:
+        gpt-4o-mini  -> GPT-4o Mini
+        claude-opus-4-6 -> Claude Opus 4 6
+        gemini-2.5-pro -> Gemini 2.5 Pro
+        deepseek-r1 -> DeepSeek R1
+        o4-mini -> o4 Mini
+    """
+    for prefix, brand in _BRAND_PREFIXES:
+        if canonical == prefix:
+            return brand
+        if canonical.startswith(prefix + "-"):
+            rest = canonical[len(prefix) + 1:]
+            suffix = " ".join(seg.capitalize() for seg in rest.split("-"))
+            return f"{brand} {suffix}"
+
+    # Check for lowercase prefixes (o1, o3, o4)
+    first_seg = canonical.split("-")[0]
+    if first_seg in _LOWERCASE_PREFIXES:
+        rest = canonical[len(first_seg) + 1:] if len(canonical) > len(first_seg) else ""
+        if rest:
+            suffix = " ".join(seg.capitalize() for seg in rest.split("-"))
+            return f"{first_seg} {suffix}"
+        return first_seg
+
+    # Fallback: capitalize each segment
+    return " ".join(seg.capitalize() for seg in canonical.split("-"))
+
+
+def _infer_modalities(capabilities: dict | None) -> dict | None:
+    """Infer input/output modalities from capability flags."""
+    if not capabilities:
+        return None
+
+    inputs = ["text"]
+    outputs = ["text"]
+
+    if capabilities.get("vision"):
+        inputs.append("image")
+    if capabilities.get("audio_input"):
+        inputs.append("audio")
+    if capabilities.get("audio_output"):
+        outputs.append("audio")
+
+    # Only return if we have something beyond the default text/text
+    if len(inputs) > 1 or len(outputs) > 1:
+        return {"input": inputs, "output": outputs}
+    return None
+
+
+def create_model_entry(canonical: str, source_entry: dict) -> dict:
+    """Build a full model dict conforming to the schema, auto-populated from source."""
+    caps = convert_capabilities(source_entry)
+    modalities = _infer_modalities(caps)
+
+    return {
+        "display_name": generate_display_name(canonical),
+        "description": None,
+        "owned_by": None,
+        "family": None,
+        "release_date": None,
+        "deprecation_date": None,
+        "tags": None,
+        "mode": source_entry.get("mode", "chat") if source_entry.get("mode", "chat") in VALID_MODES else "chat",
+        "modalities": modalities,
+        "capabilities": caps,
+        "context_window": source_entry.get("max_input_tokens") if isinstance(source_entry.get("max_input_tokens"), int) else None,
+        "max_output_tokens": source_entry.get("max_output_tokens") if isinstance(source_entry.get("max_output_tokens"), int) else None,
+        "max_images_per_request": None,
+        "max_audio_length_seconds": None,
+        "max_video_length_seconds": None,
+        "max_pdf_size_mb": None,
+        "pricing": convert_pricing(source_entry),
+        "parameters": None,
+        "rankings": None,
+    }
+
+
+def create_provider_model_entry(canonical: str) -> dict:
+    """Build a minimal provider_model dict conforming to the schema."""
+    return {
+        "model_ref": canonical,
+        "provider_model_id": None,
+        "enabled": True,
+        "pricing": None,
+        "context_window": None,
+        "max_output_tokens": None,
+        "rate_limits": None,
+        "endpoints": None,
+        "regions": None,
+    }
+
+
+def import_prices(source_data: list[dict], models_data: dict, merge: bool = True) -> tuple[int, int, int]:
+    """Import pricing from source into models_data. Returns (updated, skipped, created)."""
     updated = 0
     skipped = 0
+    created = 0
 
     for entry in source_data:
         model_name = entry.get("model_name", "")
@@ -101,13 +227,19 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
             skipped += 1
             continue
 
-        # Try to match by model_name in our models section
-        # Source may use "provider/model" format or just "model"
-        canonical = model_name.split("/")[-1] if "/" in model_name else model_name
+        # Extract provider prefix and canonical name
+        if "/" in model_name:
+            parts = model_name.split("/")
+            provider = parts[0]
+            canonical = parts[-1]
+        else:
+            provider = None
+            canonical = model_name
 
+        # Auto-create model if not found
         if canonical not in models_data.get("models", {}):
-            skipped += 1
-            continue
+            models_data["models"][canonical] = create_model_entry(canonical, entry)
+            created += 1
 
         model = models_data["models"][canonical]
 
@@ -132,19 +264,25 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
                     continue
                 model["capabilities"][key] = value
 
-        # Update limits
-        if entry.get("max_input_tokens") and not model.get("context_window"):
+        # Update limits (only if source values are integers)
+        if isinstance(entry.get("max_input_tokens"), int) and not model.get("context_window"):
             model["context_window"] = entry["max_input_tokens"]
-        if entry.get("max_output_tokens") and not model.get("max_output_tokens"):
+        if isinstance(entry.get("max_output_tokens"), int) and not model.get("max_output_tokens"):
             model["max_output_tokens"] = entry["max_output_tokens"]
 
-        # Update mode
-        if entry.get("mode") and not model.get("mode"):
+        # Update mode (only if valid)
+        if entry.get("mode") in VALID_MODES and not model.get("mode"):
             model["mode"] = entry["mode"]
+
+        # Auto-create provider_model if provider is known
+        if provider and provider in models_data.get("providers", {}):
+            pm_key = f"{provider}/{canonical}"
+            if pm_key not in models_data.get("provider_models", {}):
+                models_data["provider_models"][pm_key] = create_provider_model_entry(canonical)
 
         updated += 1
 
-    return updated, skipped
+    return updated, skipped, created
 
 
 def main():
@@ -180,8 +318,8 @@ def main():
         models_data = json.load(f)
 
     # Import
-    updated, skipped = import_prices(source_data, models_data, merge=not args.overwrite)
-    print(f"Updated: {updated}, Skipped: {skipped}")
+    updated, skipped, created = import_prices(source_data, models_data, merge=not args.overwrite)
+    print(f"Updated: {updated}, Skipped: {skipped}, Created: {created}")
 
     if args.dry_run:
         print("Dry run — no changes written")
