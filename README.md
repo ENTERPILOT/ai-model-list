@@ -1,15 +1,17 @@
 # AI Model List
 
-Curated JSON registry of AI model metadata — pricing, capabilities, context limits, and benchmarks. Consumed by [GoModel](https://github.com/ENTERPILOT/GOModel) at startup to enrich its dynamically discovered models.
+A public, curated JSON registry of AI model metadata — pricing, capabilities, context limits, and benchmarks. Designed to be consumed by any project that needs structured, up-to-date information about AI models across providers.
+
+[GoModel](https://github.com/ENTERPILOT/GOModel) is one of the primary consumers, fetching this registry at startup to enrich its dynamically discovered models. But the registry is provider-agnostic and self-contained — any AI gateway, cost tracker, model selector, or dashboard can use it.
 
 ## How It Works
 
-GoModel discovers models from upstream providers (OpenAI, Anthropic, etc.) and proxies requests. This registry **supplements** that discovery with metadata GoModel can't get from providers directly: pricing, capabilities, parameter constraints, and benchmark rankings.
+The registry provides a single `models.json` file with metadata that upstream provider APIs don't expose directly: pricing, capabilities, parameter constraints, and benchmark rankings.
 
-- **Enriches, never gates** — models not in the list still work (just without metadata)
 - **Three-layer merge** — provider defaults → model defaults → provider-specific overrides
 - **Human-readable** — prices in USD per million tokens, clear field names, no scientific notation
 - **Sparse/additive** — only include fields with values; absence = unknown
+- **Supplement, not gate** — consumers decide how to handle models missing from the list
 
 ## Quick Start
 
@@ -254,15 +256,22 @@ Source format (JSON array):
 ]
 ```
 
-## GoModel Integration
+## Consuming the Registry
 
-GoModel consumes this file via the `MODEL_LIST_URL` environment variable:
+Fetch `models.json` via HTTP and resolve model data using the three-layer merge:
+
+```
+https://raw.githubusercontent.com/ENTERPILOT/ai-model-list/main/models.json
+```
+
+### GoModel
+
+[GoModel](https://github.com/ENTERPILOT/GOModel) is one of the primary consumers. It fetches the registry via the `MODEL_LIST_URL` environment variable:
 
 ```bash
 export MODEL_LIST_URL=https://raw.githubusercontent.com/ENTERPILOT/ai-model-list/main/models.json
 ```
 
-Fetch behavior:
 - Fetched on startup + hourly refresh
 - Non-blocking, best-effort (failures don't prevent startup)
 - Merged using the 3-layer override (provider → model → provider_model)
