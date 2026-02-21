@@ -95,9 +95,9 @@ Keyed by canonical model name (e.g., `gpt-4o`, `claude-opus-4-6`).
 | `release_date` | date/null | ISO date of release |
 | `deprecation_date` | date/null | ISO date of deprecation |
 | `tags` | array/null | Curated tags (see Tags enum) |
-| `mode` | enum | Primary mode (required, see Mode enum) |
+| `modes` | array | Supported operational modes (required, see Mode enum) |
 | `modalities` | object/null | `input` and `output` arrays of: `text`, `image`, `audio`, `video` |
-| `capabilities` | object/null | Boolean flags (see Capabilities enum) |
+| `capabilities` | object/null | Boolean flags — absent key = unsupported or unknown (see Capabilities enum) |
 | `context_window` | int/null | Max input tokens |
 | `max_output_tokens` | int/null | Max output tokens |
 | `pricing` | object/null | Pricing in USD per million tokens (see Pricing) |
@@ -141,11 +141,11 @@ All monetary values in USD. Token-based prices are **per million tokens**.
 
 ### Enums
 
-**Mode** — primary model type:
+**Modes** — operational types (array, at least one required):
 
 `chat`, `completion`, `embedding`, `image_generation`, `image_edit`, `video_generation`, `video_edit`, `audio_speech`, `audio_transcription`, `rerank`, `moderation`, `ocr`, `search`, `responses`, `code_interpreter`
 
-**Capabilities** (boolean, only include when `true`):
+**Capabilities** (boolean, only include when `true`; absent = unsupported or unknown):
 
 `function_calling`, `parallel_function_calling`, `streaming`, `system_messages`, `vision`, `audio_input`, `audio_output`, `video_input`, `pdf_input`, `json_mode`, `structured_output`, `response_schema`, `reasoning`, `prompt_caching`, `web_search`, `computer_use`, `assistant_prefill`, `video_editing`, `image_input_embedding`
 
@@ -173,7 +173,7 @@ Minimal example showing one provider, one model, and one provider_model:
   "models": {
     "gpt-4o-mini": {
       "display_name": "GPT-4o Mini",
-      "mode": "chat",
+      "modes": ["chat"],
       "context_window": 128000,
       "max_output_tokens": 16384,
       "pricing": {
@@ -281,7 +281,7 @@ export MODEL_LIST_URL=https://raw.githubusercontent.com/ENTERPILOT/ai-model-list
 
 ### Adding a new model
 
-1. Add the model entry to `models` with at minimum `display_name` and `mode`
+1. Add the model entry to `models` with at minimum `display_name` and `modes`
 2. Add `provider_models` entries for each provider that serves it
 3. Run `python scripts/validate.py` to verify
 

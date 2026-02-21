@@ -130,7 +130,7 @@
     },
     "model": {
       "type": "object",
-      "required": ["display_name", "mode"],
+      "required": ["display_name", "modes"],
       "additionalProperties": false,
       "properties": {
         "display_name": {
@@ -171,8 +171,11 @@
             ]
           }
         },
-        "mode": {
-          "$ref": "#/$defs/mode_enum"
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/mode_enum" },
+          "description": "Supported operational modes (e.g. chat, responses, embedding)"
         },
         "modalities": {
           "oneOf": [
@@ -267,6 +270,7 @@
     },
     "capabilities": {
       "type": "object",
+      "description": "Boolean capability flags. Only true values are stored; an absent key means the capability is either unsupported or unknown.",
       "additionalProperties": false,
       "properties": {
         "function_calling": { "type": "boolean" },

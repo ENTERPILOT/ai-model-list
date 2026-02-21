@@ -97,6 +97,16 @@ _TIER_FIELDS = [
     ("input_cost_per_token_above_200k_tokens", "output_cost_per_token_above_200k_tokens", 200_000),
 ]
 
+# Model prefixes that support the Responses API alongside their primary mode.
+# Excludes realtime/audio/search variants which use specialized APIs.
+_RESPONSES_CAPABLE_PREFIXES = [
+    "gpt-4o", "gpt-4.1", "gpt-4.5", "gpt-5",
+    "o1", "o3", "o4",
+]
+_RESPONSES_EXCLUDED_INFIXES = [
+    "realtime", "audio", "search", "codex", "oss", "transcribe", "tts",
+]
+
 # Valid modality values
 _VALID_INPUT_MODALITIES = {"text", "image", "audio", "video"}
 _VALID_OUTPUT_MODALITIES = {"text", "image", "audio", "video"}
@@ -297,6 +307,24 @@ def _infer_modalities(capabilities: dict | None) -> dict | None:
     return None
 
 
+def _is_responses_capable(canonical: str) -> bool:
+    """Return True if this model supports the Responses API alongside chat."""
+    if not any(canonical.startswith(p) for p in _RESPONSES_CAPABLE_PREFIXES):
+        return False
+    if any(ex in canonical for ex in _RESPONSES_EXCLUDED_INFIXES):
+        return False
+    return True
+
+
+def _build_modes(canonical: str, source_entry: dict) -> list[str]:
+    """Build the modes list for a model from source data."""
+    mode = source_entry.get("mode", "chat")
+    modes = [mode] if mode in VALID_MODES else ["chat"]
+    if "chat" in modes and "responses" not in modes and _is_responses_capable(canonical):
+        modes.append("responses")
+    return modes
+
+
 def create_model_entry(canonical: str, source_entry: dict) -> dict:
     """Build a full model dict conforming to the schema, auto-populated from source."""
     caps = convert_capabilities(source_entry)
@@ -311,7 +339,7 @@ def create_model_entry(canonical: str, source_entry: dict) -> dict:
         "deprecation_date": source_entry.get("deprecation_date"),
         "source_url": source_entry.get("source"),
         "tags": None,
-        "mode": source_entry.get("mode", "chat") if source_entry.get("mode", "chat") in VALID_MODES else "chat",
+        "modes": _build_modes(canonical, source_entry),
         "modalities": modalities,
         "capabilities": caps,
         "context_window": source_entry.get("max_input_tokens") if isinstance(source_entry.get("max_input_tokens"), int) else None,
@@ -464,9 +492,17 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
         if entry.get("source") and not model.get("source_url"):
             model["source_url"] = entry["source"]
 
-        # Update mode (only if valid)
-        if entry.get("mode") in VALID_MODES and not model.get("mode"):
-            model["mode"] = entry["mode"]
+        # Update modes (only if valid and not already present)
+        if entry.get("mode") in VALID_MODES:
+            if not model.get("modes"):
+                model["modes"] = [entry["mode"]]
+            elif entry["mode"] not in model["modes"]:
+                model["modes"].append(entry["mode"])
+
+        # Add "responses" mode for known Responses-API-capable models
+        modes = model.get("modes", [])
+        if "chat" in modes and "responses" not in modes and _is_responses_capable(canonical):
+            modes.append("responses")
 
         # Auto-create provider_model if provider is known
         if provider and provider in models_data.get("providers", {}):
