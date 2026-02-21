@@ -155,6 +155,11 @@
           "type": ["string", "null"],
           "format": "date"
         },
+        "source_url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Documentation URL"
+        },
         "tags": {
           "type": ["array", "null"],
           "items": {
@@ -200,6 +205,16 @@
         },
         "max_pdf_size_mb": {
           "type": ["number", "null"]
+        },
+        "max_videos_per_request": {
+          "type": ["integer", "null"]
+        },
+        "max_audio_per_request": {
+          "type": ["integer", "null"]
+        },
+        "output_vector_size": {
+          "type": ["integer", "null"],
+          "description": "Embedding output dimension"
         },
         "pricing": {
           "oneOf": [
@@ -271,6 +286,7 @@
         "web_search": { "type": "boolean" },
         "computer_use": { "type": "boolean" },
         "assistant_prefill": { "type": "boolean" },
+        "tool_choice": { "type": "boolean" },
         "video_editing": { "type": "boolean" },
         "image_input_embedding": { "type": "boolean" }
       }
@@ -322,6 +338,30 @@
         "per_page": {
           "type": ["number", "null"],
           "description": "USD per page for OCR"
+        },
+        "cache_write_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million tokens for cache creation"
+        },
+        "batch_input_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million batch input tokens"
+        },
+        "batch_output_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million batch output tokens"
+        },
+        "audio_input_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million audio input tokens"
+        },
+        "audio_output_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million audio output tokens"
+        },
+        "input_per_image": {
+          "type": ["number", "null"],
+          "description": "USD per input image"
         },
         "tiers": {
           "oneOf": [

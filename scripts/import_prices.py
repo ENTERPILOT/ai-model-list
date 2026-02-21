@@ -37,24 +37,69 @@ PRICING_FIELD_MAP = {
     "input_cost_per_token": ("input_per_mtok", MILLION),
     "output_cost_per_token": ("output_per_mtok", MILLION),
     "cache_read_input_token_cost": ("cached_input_per_mtok", MILLION),
+    "output_cost_per_reasoning_token": ("reasoning_output_per_mtok", MILLION),
+    "output_cost_per_image": ("per_image", 1),
+    "input_cost_per_character": ("per_character_input", 1),
+    "ocr_cost_per_page": ("per_page", 1),
+    "cache_creation_input_token_cost": ("cache_write_per_mtok", MILLION),
+    "input_cost_per_token_batches": ("batch_input_per_mtok", MILLION),
+    "output_cost_per_token_batches": ("batch_output_per_mtok", MILLION),
+    "input_cost_per_audio_token": ("audio_input_per_mtok", MILLION),
+    "output_cost_per_audio_token": ("audio_output_per_mtok", MILLION),
+    "input_cost_per_image": ("input_per_image", 1),
 }
+
+# All pricing fields (for null-fill)
+ALL_PRICING_FIELDS = [
+    "input_per_mtok", "output_per_mtok", "cached_input_per_mtok",
+    "reasoning_output_per_mtok", "per_image", "per_second_input",
+    "per_second_output", "per_character_input", "per_request", "per_page",
+    "cache_write_per_mtok", "batch_input_per_mtok", "batch_output_per_mtok",
+    "audio_input_per_mtok", "audio_output_per_mtok", "input_per_image",
+    "tiers",
+]
 
 # Capability mapping: source field -> target capability key
 CAPABILITY_MAP = {
     "supports_function_calling": "function_calling",
     "supports_parallel_function_calling": "parallel_function_calling",
-    "supports_streaming": "streaming",
+    "supports_native_streaming": "streaming",
     "supports_system_messages": "system_messages",
     "supports_vision": "vision",
     "supports_audio_input": "audio_input",
     "supports_audio_output": "audio_output",
+    "supports_video_input": "video_input",
+    "supports_computer_use": "computer_use",
+    "supports_embedding_image_input": "image_input_embedding",
     "supports_pdf_input": "pdf_input",
     "supports_response_schema": "response_schema",
     "supports_prompt_caching": "prompt_caching",
     "supports_web_search": "web_search",
     "supports_reasoning": "reasoning",
     "supports_assistant_prefill": "assistant_prefill",
+    "supports_tool_choice": "tool_choice",
 }
+
+# LiteLLM fields for per-second pricing, in priority order
+_PER_SECOND_INPUT_FIELDS = [
+    "input_cost_per_audio_per_second",
+    "input_cost_per_video_per_second",
+    "input_cost_per_second",
+]
+_PER_SECOND_OUTPUT_FIELDS = [
+    "output_cost_per_video_per_second",
+    "output_cost_per_second",
+]
+
+# Tiered pricing: (input_field, output_field, threshold)
+_TIER_FIELDS = [
+    ("input_cost_per_token_above_128k_tokens", "output_cost_per_token_above_128k_tokens", 128_000),
+    ("input_cost_per_token_above_200k_tokens", "output_cost_per_token_above_200k_tokens", 200_000),
+]
+
+# Valid modality values
+_VALID_INPUT_MODALITIES = {"text", "image", "audio", "video"}
+_VALID_OUTPUT_MODALITIES = {"text", "image", "audio", "video"}
 
 
 def load_source(source: str) -> list[dict]:
@@ -72,21 +117,74 @@ def convert_pricing(source_entry: dict) -> dict | None:
     pricing = {"currency": "USD"}
     has_any = False
 
+    # Direct field mappings
     for src_field, (dst_field, multiplier) in PRICING_FIELD_MAP.items():
         value = source_entry.get(src_field)
         if value is not None and value > 0:
             pricing[dst_field] = round(value * multiplier, 6)
             has_any = True
-        else:
-            pricing[dst_field] = None
 
-    # Fill in remaining pricing fields with null
-    for field in ["reasoning_output_per_mtok", "per_image", "per_second_input",
-                   "per_second_output", "per_character_input", "per_request",
-                   "per_page", "tiers"]:
-        pricing[field] = None
+    # Per-second pricing (priority-based merge)
+    for field in _PER_SECOND_INPUT_FIELDS:
+        value = source_entry.get(field)
+        if value is not None and value > 0:
+            pricing["per_second_input"] = round(value, 10)
+            has_any = True
+            break
+
+    for field in _PER_SECOND_OUTPUT_FIELDS:
+        value = source_entry.get(field)
+        if value is not None and value > 0:
+            pricing["per_second_output"] = round(value, 10)
+            has_any = True
+            break
+
+    # Tiered pricing
+    tiers = _build_tiers(source_entry, pricing)
+    if tiers:
+        pricing["tiers"] = tiers
+        has_any = True
+
+    # Null-fill all missing pricing fields
+    for field in ALL_PRICING_FIELDS:
+        if field not in pricing:
+            pricing[field] = None
 
     return pricing if has_any else None
+
+
+def _build_tiers(source_entry: dict, base_pricing: dict) -> list[dict] | None:
+    """Build tiered pricing from above_Nk fields."""
+    tiers = []
+    base_input = base_pricing.get("input_per_mtok")
+    base_output = base_pricing.get("output_per_mtok")
+
+    if base_input is None and base_output is None:
+        return None
+
+    for input_field, output_field, threshold in _TIER_FIELDS:
+        elevated_input = source_entry.get(input_field)
+        elevated_output = source_entry.get(output_field)
+
+        if elevated_input is not None or elevated_output is not None:
+            # Base tier
+            tier1 = {
+                "up_to_tokens": threshold,
+                "input_per_mtok": base_input or 0,
+                "output_per_mtok": base_output or 0,
+            }
+            # Elevated tier
+            tier2_input = round(elevated_input * MILLION, 6) if elevated_input else (base_input or 0)
+            tier2_output = round(elevated_output * MILLION, 6) if elevated_output else (base_output or 0)
+            tier2 = {
+                "up_to_tokens": 0,
+                "input_per_mtok": tier2_input,
+                "output_per_mtok": tier2_output,
+            }
+            tiers = [tier1, tier2]
+            break  # Only use first matching tier set
+
+    return tiers if tiers else None
 
 
 def convert_capabilities(source_entry: dict) -> dict | None:
@@ -129,26 +227,51 @@ def generate_display_name(canonical: str) -> str:
         gemini-2.5-pro -> Gemini 2.5 Pro
         deepseek-r1 -> DeepSeek R1
         o4-mini -> o4 Mini
+        gen3a_turbo -> Gen3a Turbo
     """
+    # Normalize underscores to hyphens for consistent processing
+    normalized = canonical.replace("_", "-")
+
     for prefix, brand in _BRAND_PREFIXES:
-        if canonical == prefix:
+        if normalized == prefix:
             return brand
-        if canonical.startswith(prefix + "-"):
-            rest = canonical[len(prefix) + 1:]
+        if normalized.startswith(prefix + "-"):
+            rest = normalized[len(prefix) + 1:]
             suffix = " ".join(seg.capitalize() for seg in rest.split("-"))
             return f"{brand} {suffix}"
 
     # Check for lowercase prefixes (o1, o3, o4)
-    first_seg = canonical.split("-")[0]
+    first_seg = normalized.split("-")[0]
     if first_seg in _LOWERCASE_PREFIXES:
-        rest = canonical[len(first_seg) + 1:] if len(canonical) > len(first_seg) else ""
+        rest = normalized[len(first_seg) + 1:] if len(normalized) > len(first_seg) else ""
         if rest:
             suffix = " ".join(seg.capitalize() for seg in rest.split("-"))
             return f"{first_seg} {suffix}"
         return first_seg
 
     # Fallback: capitalize each segment
-    return " ".join(seg.capitalize() for seg in canonical.split("-"))
+    return " ".join(seg.capitalize() for seg in normalized.split("-"))
+
+
+def convert_modalities(source_entry: dict, capabilities: dict | None) -> dict | None:
+    """Convert modalities from source, falling back to inference from capabilities.
+
+    Uses LiteLLM's supported_modalities / supported_output_modalities if present,
+    otherwise infers from capability flags.
+    """
+    src_inputs = source_entry.get("supported_modalities")
+    src_outputs = source_entry.get("supported_output_modalities")
+
+    if src_inputs or src_outputs:
+        inputs = [m for m in (src_inputs or ["text"]) if m in _VALID_INPUT_MODALITIES]
+        outputs = [m for m in (src_outputs or ["text"]) if m in _VALID_OUTPUT_MODALITIES]
+        if not inputs:
+            inputs = ["text"]
+        if not outputs:
+            outputs = ["text"]
+        return {"input": inputs, "output": outputs}
+
+    return _infer_modalities(capabilities)
 
 
 def _infer_modalities(capabilities: dict | None) -> dict | None:
@@ -163,6 +286,8 @@ def _infer_modalities(capabilities: dict | None) -> dict | None:
         inputs.append("image")
     if capabilities.get("audio_input"):
         inputs.append("audio")
+    if capabilities.get("video_input"):
+        inputs.append("video")
     if capabilities.get("audio_output"):
         outputs.append("audio")
 
@@ -175,7 +300,7 @@ def _infer_modalities(capabilities: dict | None) -> dict | None:
 def create_model_entry(canonical: str, source_entry: dict) -> dict:
     """Build a full model dict conforming to the schema, auto-populated from source."""
     caps = convert_capabilities(source_entry)
-    modalities = _infer_modalities(caps)
+    modalities = convert_modalities(source_entry, caps)
 
     return {
         "display_name": generate_display_name(canonical),
@@ -183,36 +308,75 @@ def create_model_entry(canonical: str, source_entry: dict) -> dict:
         "owned_by": None,
         "family": None,
         "release_date": None,
-        "deprecation_date": None,
+        "deprecation_date": source_entry.get("deprecation_date"),
+        "source_url": source_entry.get("source"),
         "tags": None,
         "mode": source_entry.get("mode", "chat") if source_entry.get("mode", "chat") in VALID_MODES else "chat",
         "modalities": modalities,
         "capabilities": caps,
         "context_window": source_entry.get("max_input_tokens") if isinstance(source_entry.get("max_input_tokens"), int) else None,
         "max_output_tokens": source_entry.get("max_output_tokens") if isinstance(source_entry.get("max_output_tokens"), int) else None,
-        "max_images_per_request": None,
-        "max_audio_length_seconds": None,
-        "max_video_length_seconds": None,
-        "max_pdf_size_mb": None,
+        "max_images_per_request": source_entry.get("max_images_per_prompt") if isinstance(source_entry.get("max_images_per_prompt"), int) else None,
+        "max_audio_length_seconds": _convert_audio_length(source_entry),
+        "max_video_length_seconds": source_entry.get("max_video_length") if isinstance(source_entry.get("max_video_length"), (int, float)) else None,
+        "max_pdf_size_mb": source_entry.get("max_pdf_size_mb") if isinstance(source_entry.get("max_pdf_size_mb"), (int, float)) else None,
+        "max_videos_per_request": source_entry.get("max_videos_per_prompt") if isinstance(source_entry.get("max_videos_per_prompt"), int) else None,
+        "max_audio_per_request": source_entry.get("max_audio_per_prompt") if isinstance(source_entry.get("max_audio_per_prompt"), int) else None,
+        "output_vector_size": source_entry.get("output_vector_size") if isinstance(source_entry.get("output_vector_size"), int) else None,
         "pricing": convert_pricing(source_entry),
         "parameters": None,
         "rankings": None,
     }
 
 
-def create_provider_model_entry(canonical: str) -> dict:
-    """Build a minimal provider_model dict conforming to the schema."""
-    return {
+def _convert_audio_length(source_entry: dict) -> float | None:
+    """Convert audio length to seconds. LiteLLM uses max_audio_length_hours."""
+    hours = source_entry.get("max_audio_length_hours")
+    if isinstance(hours, (int, float)) and hours > 0:
+        return round(hours * 3600, 2)
+    return None
+
+
+def create_provider_model_entry(canonical: str, source_entry: dict | None = None) -> dict:
+    """Build a provider_model dict conforming to the schema."""
+    pm = {
         "model_ref": canonical,
         "provider_model_id": None,
         "enabled": True,
         "pricing": None,
         "context_window": None,
         "max_output_tokens": None,
-        "rate_limits": None,
-        "endpoints": None,
-        "regions": None,
+        "rate_limits": _extract_rate_limits(source_entry) if source_entry else None,
+        "endpoints": _extract_list(source_entry, "supported_endpoints") if source_entry else None,
+        "regions": _extract_list(source_entry, "supported_regions") if source_entry else None,
     }
+    return pm
+
+
+def _extract_rate_limits(source_entry: dict) -> dict | None:
+    """Extract rate limits from source entry."""
+    if not source_entry:
+        return None
+    rpm = source_entry.get("rpm")
+    tpm = source_entry.get("tpm")
+    rpd = source_entry.get("rpd")
+    if rpm is not None or tpm is not None or rpd is not None:
+        return {
+            "rpm": int(rpm) if isinstance(rpm, (int, float)) else None,
+            "tpm": int(tpm) if isinstance(tpm, (int, float)) else None,
+            "rpd": int(rpd) if isinstance(rpd, (int, float)) else None,
+        }
+    return None
+
+
+def _extract_list(source_entry: dict, field: str) -> list | None:
+    """Extract a list field from source, returning None if empty/missing."""
+    if not source_entry:
+        return None
+    value = source_entry.get(field)
+    if isinstance(value, list) and value:
+        return value
+    return None
 
 
 def import_prices(source_data: list[dict], models_data: dict, merge: bool = True) -> tuple[int, int, int]:
@@ -264,11 +428,41 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
                     continue
                 model["capabilities"][key] = value
 
-        # Update limits (only if source values are integers)
+        # Update modalities (use direct conversion)
+        if not model.get("modalities"):
+            modalities = convert_modalities(entry, model.get("capabilities"))
+            if modalities:
+                model["modalities"] = modalities
+
+        # Update limits (only if source values are present and target is empty)
         if isinstance(entry.get("max_input_tokens"), int) and not model.get("context_window"):
             model["context_window"] = entry["max_input_tokens"]
         if isinstance(entry.get("max_output_tokens"), int) and not model.get("max_output_tokens"):
             model["max_output_tokens"] = entry["max_output_tokens"]
+        if isinstance(entry.get("max_images_per_prompt"), int) and not model.get("max_images_per_request"):
+            model["max_images_per_request"] = entry["max_images_per_prompt"]
+        if isinstance(entry.get("max_video_length"), (int, float)) and not model.get("max_video_length_seconds"):
+            model["max_video_length_seconds"] = entry["max_video_length"]
+        if not model.get("max_audio_length_seconds"):
+            audio_secs = _convert_audio_length(entry)
+            if audio_secs:
+                model["max_audio_length_seconds"] = audio_secs
+        if isinstance(entry.get("max_pdf_size_mb"), (int, float)) and not model.get("max_pdf_size_mb"):
+            model["max_pdf_size_mb"] = entry["max_pdf_size_mb"]
+        if isinstance(entry.get("max_videos_per_prompt"), int) and not model.get("max_videos_per_request"):
+            model["max_videos_per_request"] = entry["max_videos_per_prompt"]
+        if isinstance(entry.get("max_audio_per_prompt"), int) and not model.get("max_audio_per_request"):
+            model["max_audio_per_request"] = entry["max_audio_per_prompt"]
+        if isinstance(entry.get("output_vector_size"), int) and not model.get("output_vector_size"):
+            model["output_vector_size"] = entry["output_vector_size"]
+
+        # Update deprecation_date
+        if entry.get("deprecation_date") and not model.get("deprecation_date"):
+            model["deprecation_date"] = entry["deprecation_date"]
+
+        # Update source_url
+        if entry.get("source") and not model.get("source_url"):
+            model["source_url"] = entry["source"]
 
         # Update mode (only if valid)
         if entry.get("mode") in VALID_MODES and not model.get("mode"):
@@ -278,7 +472,30 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
         if provider and provider in models_data.get("providers", {}):
             pm_key = f"{provider}/{canonical}"
             if pm_key not in models_data.get("provider_models", {}):
-                models_data["provider_models"][pm_key] = create_provider_model_entry(canonical)
+                models_data["provider_models"][pm_key] = create_provider_model_entry(canonical, entry)
+            else:
+                # Enrich existing provider_model with rate limits / endpoints / regions
+                pm = models_data["provider_models"][pm_key]
+                if pm.get("rate_limits") is None:
+                    rate_limits = _extract_rate_limits(entry)
+                    if rate_limits:
+                        pm["rate_limits"] = rate_limits
+                if pm.get("endpoints") is None:
+                    endpoints = _extract_list(entry, "supported_endpoints")
+                    if endpoints:
+                        pm["endpoints"] = endpoints
+                if pm.get("regions") is None:
+                    regions = _extract_list(entry, "supported_regions")
+                    if regions:
+                        pm["regions"] = regions
+
+            # Update provider's supported_modes if this model's mode is new
+            mode = entry.get("mode")
+            if mode and mode in VALID_MODES:
+                provider_data = models_data["providers"][provider]
+                supported = provider_data.get("supported_modes")
+                if supported is not None and mode not in supported:
+                    supported.append(mode)
 
         updated += 1
 
