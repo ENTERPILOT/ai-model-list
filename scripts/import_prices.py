@@ -301,12 +301,23 @@ def _is_responses_capable(canonical: str) -> bool:
     return True
 
 
+def _infer_modes_from_modalities(modes: list[str], output_modalities: list[str]) -> None:
+    """Add modes implied by output modalities (mutates modes in place)."""
+    if "image" in output_modalities and "image_generation" not in modes:
+        modes.append("image_generation")
+    if "video" in output_modalities and "video_generation" not in modes:
+        modes.append("video_generation")
+
+
 def _build_modes(canonical: str, source_entry: dict) -> list[str]:
     """Build the modes list for a model from source data."""
     mode = source_entry.get("mode", "chat")
     modes = [mode] if mode in VALID_MODES else ["chat"]
     if "chat" in modes and "responses" not in modes and _is_responses_capable(canonical):
         modes.append("responses")
+    # Infer additional modes from output modalities
+    output_modalities = source_entry.get("supported_output_modalities", [])
+    _infer_modes_from_modalities(modes, output_modalities)
     return modes
 
 
@@ -495,6 +506,13 @@ def import_prices(source_data: list[dict], models_data: dict, merge: bool = True
         modes = model.get("modes", [])
         if "chat" in modes and "responses" not in modes and _is_responses_capable(canonical):
             modes.append("responses")
+
+        # Infer additional modes from output modalities (source or already-set)
+        output_mods = (
+            entry.get("supported_output_modalities")
+            or model.get("modalities", {}).get("output", [])
+        )
+        _infer_modes_from_modalities(modes, output_mods)
 
         # Auto-create provider_model if provider is known
         if provider and provider in models_data.get("providers", {}):
