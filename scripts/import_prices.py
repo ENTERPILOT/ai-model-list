@@ -49,16 +49,6 @@ PRICING_FIELD_MAP = {
     "input_cost_per_image": ("input_per_image", 1),
 }
 
-# All pricing fields (for null-fill)
-ALL_PRICING_FIELDS = [
-    "input_per_mtok", "output_per_mtok", "cached_input_per_mtok",
-    "reasoning_output_per_mtok", "per_image", "per_second_input",
-    "per_second_output", "per_character_input", "per_request", "per_page",
-    "cache_write_per_mtok", "batch_input_per_mtok", "batch_output_per_mtok",
-    "audio_input_per_mtok", "audio_output_per_mtok", "input_per_image",
-    "tiers",
-]
-
 # Capability mapping: source field -> target capability key
 CAPABILITY_MAP = {
     "supports_function_calling": "function_calling",
@@ -154,11 +144,6 @@ def convert_pricing(source_entry: dict) -> dict | None:
     if tiers:
         pricing["tiers"] = tiers
         has_any = True
-
-    # Null-fill all missing pricing fields
-    for field in ALL_PRICING_FIELDS:
-        if field not in pricing:
-            pricing[field] = None
 
     return pricing if has_any else None
 
@@ -330,16 +315,15 @@ def create_model_entry(canonical: str, source_entry: dict) -> dict:
     caps = convert_capabilities(source_entry)
     modalities = convert_modalities(source_entry, caps)
 
-    return {
+    entry = {
         "display_name": generate_display_name(canonical),
-        "description": None,
-        "owned_by": None,
-        "family": None,
-        "release_date": None,
+        "modes": _build_modes(canonical, source_entry),
+    }
+
+    # Optional fields — only include if they have actual values
+    optional = {
         "deprecation_date": source_entry.get("deprecation_date"),
         "source_url": source_entry.get("source"),
-        "tags": None,
-        "modes": _build_modes(canonical, source_entry),
         "modalities": modalities,
         "capabilities": caps,
         "context_window": source_entry.get("max_input_tokens") if isinstance(source_entry.get("max_input_tokens"), int) else None,
@@ -352,9 +336,12 @@ def create_model_entry(canonical: str, source_entry: dict) -> dict:
         "max_audio_per_request": source_entry.get("max_audio_per_prompt") if isinstance(source_entry.get("max_audio_per_prompt"), int) else None,
         "output_vector_size": source_entry.get("output_vector_size") if isinstance(source_entry.get("output_vector_size"), int) else None,
         "pricing": convert_pricing(source_entry),
-        "parameters": None,
-        "rankings": None,
     }
+    for key, value in optional.items():
+        if value is not None:
+            entry[key] = value
+
+    return entry
 
 
 def _convert_audio_length(source_entry: dict) -> int | None:
@@ -369,15 +356,20 @@ def create_provider_model_entry(canonical: str, source_entry: dict | None = None
     """Build a provider_model dict conforming to the schema."""
     pm = {
         "model_ref": canonical,
-        "provider_model_id": None,
         "enabled": True,
-        "pricing": None,
-        "context_window": None,
-        "max_output_tokens": None,
-        "rate_limits": _extract_rate_limits(source_entry) if source_entry else None,
-        "endpoints": _extract_list(source_entry, "supported_endpoints") if source_entry else None,
-        "regions": _extract_list(source_entry, "supported_regions") if source_entry else None,
     }
+
+    # Optional fields — only include if they have actual values
+    if source_entry:
+        optional = {
+            "rate_limits": _extract_rate_limits(source_entry),
+            "endpoints": _extract_list(source_entry, "supported_endpoints"),
+            "regions": _extract_list(source_entry, "supported_regions"),
+        }
+        for key, value in optional.items():
+            if value is not None:
+                pm[key] = value
+
     return pm
 
 
