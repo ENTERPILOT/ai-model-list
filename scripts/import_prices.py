@@ -357,11 +357,11 @@ def create_model_entry(canonical: str, source_entry: dict) -> dict:
     }
 
 
-def _convert_audio_length(source_entry: dict) -> float | None:
+def _convert_audio_length(source_entry: dict) -> int | None:
     """Convert audio length to seconds. LiteLLM uses max_audio_length_hours."""
     hours = source_entry.get("max_audio_length_hours")
     if isinstance(hours, (int, float)) and hours > 0:
-        return round(hours * 3600, 2)
+        return int(round(hours * 3600))
     return None
 
 
