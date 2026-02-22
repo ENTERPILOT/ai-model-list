@@ -1,0 +1,134 @@
+{# Entity list partial — swappable via HTMX into #content #}
+
+{# Tab bar #}
+<div class="tab-bar">
+  {% for et in ["providers", "models", "provider_models"] %}
+  <a href="/{{ et }}" class="{{ 'active' if entity_type == et else '' }}"
+     hx-get="/{{ et }}" hx-target="#content" hx-push-url="true">
+    {{ entity_labels[et] }} ({{ counts[et] }})
+  </a>
+  {% endfor %}
+</div>
+
+{# Filter bar #}
+<div class="filter-bar">
+  <input type="search" name="search" placeholder="Search by key or name…"
+         value="{{ search }}"
+         hx-get="/{{ entity_type }}" hx-target="#content" hx-push-url="true"
+         hx-trigger="keyup changed delay:300ms"
+         hx-include="[name='filter_field'],[name='filter_value']"
+         style="max-width:300px">
+
+  {% if filter_options %}
+  <select name="filter_field"
+          hx-get="/{{ entity_type }}" hx-target="#content" hx-push-url="true"
+          hx-include="[name='search'],[name='filter_value']"
+          style="max-width:180px">
+    <option value="">All fields</option>
+    {% for fn in filter_options %}
+    <option value="{{ fn }}" {{ 'selected' if filter_field == fn else '' }}>{{ fn }}</option>
+    {% endfor %}
+  </select>
+
+  {% if filter_field and filter_field in filter_options %}
+  <select name="filter_value"
+          hx-get="/{{ entity_type }}" hx-target="#content" hx-push-url="true"
+          hx-include="[name='search'],[name='filter_field']"
+          style="max-width:180px">
+    <option value="">Any</option>
+    {% for val in filter_options[filter_field] %}
+    <option value="{{ val }}" {{ 'selected' if filter_value == val else '' }}>{{ val }}</option>
+    {% endfor %}
+  </select>
+  {% endif %}
+  {% endif %}
+
+  <a href="/{{ entity_type }}/new" role="button" class="outline"
+     hx-get="/{{ entity_type }}/new" hx-target="#content" hx-push-url="true"
+     style="font-size:.85rem;padding:.3rem .8rem;white-space:nowrap">+ New</a>
+</div>
+
+<small>{{ total }} result{{ 's' if total != 1 else '' }} — page {{ page }}/{{ total_pages }}</small>
+
+{# Table #}
+<figure>
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      {% if entity_type == "providers" %}
+        <th>Display Name</th><th>API Type</th>
+      {% elif entity_type == "models" %}
+        <th>Display Name</th><th>Owner</th><th>Tags</th><th>Pricing</th>
+      {% elif entity_type == "provider_models" %}
+        <th>Model Ref</th><th>Enabled</th>
+      {% endif %}
+      <th class="actions">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for key, entity in items %}
+    <tr>
+      <td><code>{{ key }}</code></td>
+      {% if entity_type == "providers" %}
+        <td>{{ entity.display_name }}</td>
+        <td>{{ entity.api_type or '' }}</td>
+      {% elif entity_type == "models" %}
+        <td>{{ entity.display_name }}</td>
+        <td>{{ entity.owned_by or '' }}</td>
+        <td class="tags-cell">{% for t in entity.tags or [] %}<span class="tag">{{ t }}</span>{% endfor %}</td>
+        <td class="pricing-cell">{% set p = entity.pricing or {} %}{% for pk, plabel in pricing_display_order %}{% if pk in p and p[pk] is not none %}<span class="price" title="{{ plabel }}">${{ p[pk] }}</span>{% endif %}{% endfor %}</td>
+      {% elif entity_type == "provider_models" %}
+        <td>{{ entity.model_ref }}</td>
+        <td>{{ '✓' if entity.enabled else '✗' }}</td>
+      {% endif %}
+      <td class="actions">
+        <a href="/{{ entity_type }}/{{ key }}/edit" role="button" class="outline secondary"
+           hx-get="/{{ entity_type }}/{{ key }}/edit" hx-target="#content" hx-push-url="true">Edit</a>
+        <button class="outline secondary"
+                hx-get="/{{ entity_type }}/{{ key }}/json" hx-target="body" hx-swap="beforeend">JSON</button>
+        <button class="outline secondary"
+                style="color:var(--pico-del-color);border-color:var(--pico-del-color)"
+                hx-delete="/{{ entity_type }}/{{ key }}"
+                hx-confirm="Delete '{{ key }}'? This writes to models.json immediately.">Del</button>
+      </td>
+    </tr>
+    {% endfor %}
+    {% if not items %}
+    <tr><td colspan="10"><em>No results</em></td></tr>
+    {% endif %}
+  </tbody>
+</table>
+</figure>
+
+{# Pagination #}
+{% if total_pages > 1 %}
+{% macro page_url(p) %}/{{ entity_type }}?page={{ p }}&search={{ search }}&filter_field={{ filter_field }}&filter_value={{ filter_value }}{% endmacro %}
+<nav class="pagination">
+  {% if page > 1 %}
+  <a href="{{ page_url(page - 1) }}" hx-get="{{ page_url(page - 1) }}" hx-target="#content" hx-push-url="true">&laquo;</a>
+  {% endif %}
+
+  {% set start_p = [1, page - 3] | max %}
+  {% set end_p = [total_pages, page + 3] | min %}
+
+  {% if start_p > 1 %}
+    <a href="{{ page_url(1) }}" hx-get="{{ page_url(1) }}" hx-target="#content" hx-push-url="true">1</a>
+    {% if start_p > 2 %}<span>…</span>{% endif %}
+  {% endif %}
+
+  {% for p in range(start_p, end_p + 1) %}
+  <a href="{{ page_url(p) }}" class="{{ 'active' if p == page else '' }}"
+     hx-get="{{ page_url(p) }}" hx-target="#content" hx-push-url="true">{{ p }}</a>
+  {% endfor %}
+
+  {% if end_p < total_pages %}
+    {% if end_p < total_pages - 1 %}<span>…</span>{% endif %}
+    <a href="{{ page_url(total_pages) }}" hx-get="{{ page_url(total_pages) }}" hx-target="#content" hx-push-url="true">{{ total_pages }}</a>
+  {% endif %}
+
+  {% if page < total_pages %}
+  <a href="{{ page_url(page + 1) }}" hx-get="{{ page_url(page + 1) }}" hx-target="#content" hx-push-url="true">&raquo;</a>
+  {% endif %}
+</nav>
+{% endif %}

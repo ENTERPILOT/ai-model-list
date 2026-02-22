@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Model List Editor</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <style>
+    :root{--pico-font-size:87.5%}
+    body>nav{padding:.5rem 1rem;background:var(--pico-primary-background);color:var(--pico-primary-inverse)}
+    body>nav a{color:var(--pico-primary-inverse)}
+    .tab-bar{display:flex;gap:.5rem;margin-bottom:1rem}
+    .tab-bar a{padding:.4rem 1rem;border-radius:var(--pico-border-radius);text-decoration:none;background:var(--pico-secondary-background);color:#fff;font-size:.9rem}
+    .tab-bar a.active{background:var(--pico-primary-background);color:#fff}
+    .filter-bar{display:flex;gap:1rem;align-items:end;flex-wrap:wrap;margin-bottom:1rem}
+    .filter-bar input,.filter-bar select{margin-bottom:0}
+    table{font-size:.85rem}
+    table td,table th{padding:.4rem .6rem}
+    .actions{white-space:nowrap}
+    .actions a,.actions button{font-size:.8rem;padding:.2rem .5rem;margin:0 .1rem}
+    .pagination{display:flex;justify-content:center;gap:.3rem;flex-wrap:wrap;margin-top:.5rem}
+    .pagination a{padding:.3rem .7rem;border-radius:var(--pico-border-radius);text-decoration:none;background:var(--pico-secondary-background);color:#fff;font-size:.85rem}
+    .pagination a.active{background:var(--pico-primary-background);color:#fff}
+    .pagination span{padding:.3rem .4rem;font-size:.85rem}
+    fieldset.collapsible>legend{cursor:pointer;user-select:none}
+    fieldset.collapsible.collapsed>:not(legend){display:none}
+    .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.2rem 1rem}
+    .cap-grid label{font-size:.85rem;margin-bottom:0}
+    dialog article{max-width:700px;max-height:80vh;overflow:auto}
+    #validation-results{margin-top:1rem}
+    #validation-results ul{font-size:.85rem}
+    .kv-row{display:flex;gap:.5rem;align-items:start;margin-bottom:.5rem}
+    .kv-row input{margin-bottom:0}
+    .kv-row button{flex-shrink:0;margin-bottom:0}
+    .errors{background:#c62828;color:#fff;padding:.5rem 1rem;border-radius:var(--pico-border-radius);margin-bottom:1rem}
+    .errors ul{margin:.3rem 0 0 1rem;font-size:.85rem}
+    .form-help{font-size:.8rem;color:var(--pico-muted-color);margin-top:-.5rem}
+    .tags-cell{white-space:nowrap}
+    .tag{display:inline-block;font-size:.7rem;padding:.1rem .35rem;margin:.1rem;border-radius:3px;background:#e0e0e0;color:#333}
+    .pricing-cell{white-space:nowrap;font-size:.8rem;font-variant-numeric:tabular-nums}
+    .price{cursor:default;border-bottom:1px dotted #999}
+    .price+.price::before{content:" / ";color:#999}
+  </style>
+</head>
+<body>
+  <nav>
+    <ul><li><strong><a href="/providers" style="text-decoration:none">AI Model List Editor</a></strong></li></ul>
+    <ul>
+      <li><button class="outline contrast" style="font-size:.8rem;padding:.2rem .6rem;margin:0;color:#fff"
+            hx-post="/validate" hx-target="#validation-results" hx-swap="outerHTML">Validate All</button></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <div id="validation-results"></div>
+    <div id="content">
+      {% if view == "form" %}
+        {% include "_form.html" %}
+      {% else %}
+        {% include "_list.html" %}
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>

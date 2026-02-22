@@ -1,0 +1,304 @@
+{# Entity form partial — create / edit #}
+
+{# ---- Macros ---- #}
+{% macro render_field(field, data, prefix) %}
+  {% set full_name = prefix ~ field.name %}
+  {% set value = data.get(field.name, '') if data is mapping else '' %}
+
+  {# Const (read-only) #}
+  {% if field.const is not none %}
+  <label>{{ field.label }}
+    <input type="text" name="{{ full_name }}" value="{{ field.const }}" readonly>
+  </label>
+
+  {# Boolean #}
+  {% elif field.type == "boolean" %}
+  <label>
+    <input type="checkbox" name="{{ full_name }}" value="true" role="switch"
+           {{ 'checked' if value else '' }}>
+    {{ field.label }}
+  </label>
+
+  {# String + enum -> select #}
+  {% elif field.type == "string" and field.enum %}
+  <label>{{ field.label }}
+    <select name="{{ full_name }}">
+      <option value="">—</option>
+      {% for opt in field.enum %}
+      <option value="{{ opt }}" {{ 'selected' if value == opt else '' }}>{{ opt }}</option>
+      {% endfor %}
+    </select>
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {# Array of enum -> multi-checkbox #}
+  {% elif field.type == "array" and field.items_enum %}
+  {% set value_list = value if value is iterable and value is not string else [] %}
+  <fieldset class="collapsible {{ 'collapsed' if not value_list else '' }}">
+    <legend onclick="this.parentElement.classList.toggle('collapsed')">
+      ▸ {{ field.label }}{% if value_list %} ({{ value_list | length }}){% endif %}
+    </legend>
+    <div class="cap-grid">
+      {% for opt in field.items_enum %}
+      <label>
+        <input type="checkbox" name="{{ full_name }}[]" value="{{ opt }}"
+               {{ 'checked' if opt in value_list else '' }}>
+        {{ opt }}
+      </label>
+      {% endfor %}
+    </div>
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </fieldset>
+
+  {# Array of free strings -> comma input #}
+  {% elif field.type == "array" %}
+  <label>{{ field.label }}
+    <input type="text" name="{{ full_name }}"
+           value="{{ value | join(', ') if value is iterable and value is not string else value or '' }}"
+           placeholder="comma-separated values">
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {# Object with children (capabilities, pricing, modalities, auth, rate_limits) #}
+  {% elif field.type == "object" and field.children %}
+    {% set obj_data = value if value is mapping else {} %}
+    {% set is_caps = (field.name == "capabilities") %}
+    <fieldset class="collapsible {{ 'collapsed' if not obj_data else '' }}">
+      <legend onclick="this.parentElement.classList.toggle('collapsed')">
+        ▸ {{ field.label }}{% if obj_data %} ({{ obj_data | length }} set){% endif %}
+      </legend>
+      {% if is_caps %}
+      <div class="cap-grid">
+        {% for child in field.children %}
+        <label>
+          <input type="checkbox" name="{{ full_name }}.{{ child.name }}" value="true"
+                 {{ 'checked' if obj_data.get(child.name) else '' }}>
+          {{ child.label }}
+        </label>
+        {% endfor %}
+      </div>
+      {% else %}
+        {% for child in field.children %}
+          {{ render_field(child, obj_data, full_name ~ ".") }}
+        {% endfor %}
+      {% endif %}
+    </fieldset>
+
+  {# Object with additionalProperties (parameters, rankings) #}
+  {% elif field.type == "object" and field.additional_properties_schema %}
+    {% set obj_data = value if value is mapping else {} %}
+    <fieldset class="collapsible {{ 'collapsed' if not obj_data else '' }}">
+      <legend onclick="this.parentElement.classList.toggle('collapsed')">
+        ▸ {{ field.label }}{% if obj_data %} ({{ obj_data | length }} entries){% endif %}
+      </legend>
+      {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+      <div id="kv-{{ full_name }}">
+        {% for entry_key, entry_val in (obj_data.items() if obj_data is mapping else []) %}
+        <fieldset style="padding:.5rem;margin-bottom:.5rem">
+          <div class="kv-row">
+            <input type="text" name="{{ full_name }}._keys" value="{{ entry_key }}" placeholder="key" style="flex:1" readonly>
+            <button type="button" class="outline secondary"
+                    style="color:var(--pico-del-color);border-color:var(--pico-del-color)"
+                    onclick="this.closest('fieldset').remove()">Remove</button>
+          </div>
+          {% for child in field.additional_properties_schema %}
+            {% set cv = entry_val.get(child.name, '') if entry_val is mapping else '' %}
+            {{ render_kv_child(child, full_name, entry_key, cv) }}
+          {% endfor %}
+        </fieldset>
+        {% endfor %}
+      </div>
+      <button type="button" class="outline" style="font-size:.8rem"
+              onclick="addKvEntry('{{ full_name }}', {{ field.additional_properties_schema | map(attribute='name') | list | tojson }}, {{ field.additional_properties_schema | map(attribute='type') | list | tojson }})">
+        + Add Entry
+      </button>
+    </fieldset>
+
+  {# Integer / Number #}
+  {% elif field.type in ("integer", "number") %}
+  <label>{{ field.label }}
+    <input type="number" name="{{ full_name }}"
+           value="{{ value if value is not none and value != '' else '' }}"
+           {{ 'step=any' if field.type == 'number' else 'step=1' }}
+           placeholder="{{ field.description or '' }}">
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {# String + format:uri #}
+  {% elif field.type == "string" and field.format == "uri" %}
+  <label>{{ field.label }}
+    <input type="url" name="{{ full_name }}" value="{{ value or '' }}" placeholder="https://…">
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {# String + format:date #}
+  {% elif field.type == "string" and field.format == "date" %}
+  <label>{{ field.label }}
+    <input type="date" name="{{ full_name }}" value="{{ value or '' }}">
+    {% if field.description %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {# Default string #}
+  {% elif field.type == "string" %}
+  <label>{{ field.label }}
+    {% if field.name == "model_ref" and models_list is defined %}
+    <input type="text" name="{{ full_name }}" value="{{ value or '' }}" list="model-ref-list"
+           placeholder="Select or type model key…">
+    <datalist id="model-ref-list">
+      {% for m in models_list %}<option value="{{ m }}">{% endfor %}
+    </datalist>
+    {% else %}
+    <input type="text" name="{{ full_name }}" value="{{ value or '' }}"
+           {{ 'required' if field.required else '' }}
+           placeholder="{{ field.description or '' }}">
+    {% endif %}
+    {% if field.description and field.name != "model_ref" %}<small class="form-help">{{ field.description }}</small>{% endif %}
+  </label>
+
+  {% endif %}
+{% endmacro %}
+
+{% macro render_kv_child(child, parent_name, entry_key, value) %}
+  {% set cn = parent_name ~ "." ~ entry_key ~ "." ~ child.name %}
+  {% if child.type == "boolean" %}
+  <label style="margin-left:1rem">
+    <input type="checkbox" name="{{ cn }}" value="true" {{ 'checked' if value else '' }}>
+    {{ child.label }}
+  </label>
+  {% elif child.type in ("integer", "number") %}
+  <label style="margin-left:1rem">{{ child.label }}
+    <input type="number" name="{{ cn }}"
+           value="{{ value if value is not none and value != '' else '' }}"
+           {{ 'step=any' if child.type == 'number' else 'step=1' }}
+           placeholder="{{ child.description or '' }}">
+  </label>
+  {% elif child.type == "string" and child.enum %}
+  <label style="margin-left:1rem">{{ child.label }}
+    <select name="{{ cn }}">
+      <option value="">—</option>
+      {% for opt in child.enum %}
+      <option value="{{ opt }}" {{ 'selected' if value == opt else '' }}>{{ opt }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  {% elif child.type == "string" and child.format == "date" %}
+  <label style="margin-left:1rem">{{ child.label }}
+    <input type="date" name="{{ cn }}" value="{{ value or '' }}">
+  </label>
+  {% elif child.type == "array" %}
+  <label style="margin-left:1rem">{{ child.label }}
+    <input type="text" name="{{ cn }}"
+           value="{{ value | join(', ') if value is iterable and value is not string else value or '' }}"
+           placeholder="comma-separated">
+  </label>
+  {% else %}
+  <label style="margin-left:1rem">{{ child.label }}
+    <input type="text" name="{{ cn }}" value="{{ value or '' }}">
+  </label>
+  {% endif %}
+{% endmacro %}
+
+
+{# ---- Form Body ---- #}
+<div class="tab-bar">
+  {% for et in ["providers", "models", "provider_models"] %}
+  <a href="/{{ et }}" class="{{ 'active' if entity_type == et else '' }}"
+     hx-get="/{{ et }}" hx-target="#content" hx-push-url="true">
+    {{ entity_labels[et] }} ({{ counts[et] }})
+  </a>
+  {% endfor %}
+</div>
+
+<h4>{{ 'Create New' if is_new else 'Edit' }}
+  {{ entity_labels[entity_type].rstrip('s') if entity_labels[entity_type].endswith('s') and not entity_labels[entity_type].endswith('ls') else entity_labels[entity_type] }}{% if not is_new %}: <code>{{ entity_key }}</code>{% endif %}
+</h4>
+
+{% if errors %}
+<div class="errors">
+  <strong>Validation failed — changes not saved</strong>
+  <ul>
+    {% for err in errors[:20] %}
+    <li>{{ err }}</li>
+    {% endfor %}
+    {% if errors | length > 20 %}
+    <li><em>… and {{ errors | length - 20 }} more</em></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+
+<form method="post"
+      action="/{{ entity_type }}/{{ entity_key ~ '/edit' if not is_new else 'new' }}"
+      hx-post="/{{ entity_type }}/{{ entity_key ~ '/edit' if not is_new else 'new' }}"
+      hx-target="#content">
+
+  {% if is_new %}
+    {% if entity_type == "provider_models" %}
+    <div style="display:flex;gap:.5rem;align-items:end">
+      <label style="flex:1">Provider
+        <select name="_provider" required>
+          <option value="">Select provider…</option>
+          {% for p in providers_list %}
+          <option value="{{ p }}">{{ p }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label style="flex:2">Model Key
+        <input type="text" name="_key" placeholder="model-name" required value="{{ entity_key }}">
+      </label>
+    </div>
+    {% else %}
+    <label>Key (unique identifier)
+      <input type="text" name="_key"
+             placeholder="{{ 'my-provider' if entity_type == 'providers' else 'my-model' }}"
+             required value="{{ entity_key }}">
+    </label>
+    {% endif %}
+  {% endif %}
+
+  {% for field in fields %}
+    {{ render_field(field, entity_data, "") }}
+  {% endfor %}
+
+  <div style="display:flex;gap:.5rem;margin-top:1rem">
+    <button type="submit">{{ 'Create' if is_new else 'Save Changes' }}</button>
+    <a href="/{{ entity_type }}" role="button" class="outline secondary"
+       hx-get="/{{ entity_type }}" hx-target="#content" hx-push-url="true">Cancel</a>
+  </div>
+</form>
+
+<script>
+function addKvEntry(parentName, childNames, childTypes) {
+  var container = document.getElementById('kv-' + parentName);
+  var fs = document.createElement('fieldset');
+  fs.style.cssText = 'padding:.5rem;margin-bottom:.5rem';
+  var html = '<div class="kv-row">' +
+    '<input type="text" name="' + parentName + '._keys" value="" placeholder="key" style="flex:1">' +
+    '<button type="button" class="outline secondary" style="color:var(--pico-del-color);border-color:var(--pico-del-color)" ' +
+    'onclick="this.closest(\'fieldset\').remove()">Remove</button></div>';
+  for (var i = 0; i < childNames.length; i++) {
+    var n = childNames[i];
+    var t = childTypes[i];
+    var inputType = (t === 'integer' || t === 'number') ? 'number' : 'text';
+    var step = t === 'number' ? ' step=any' : (t === 'integer' ? ' step=1' : '');
+    // Use __new_N__ as placeholder key; JS will update on key change
+    html += '<label style="margin-left:1rem">' + n.replace(/_/g, ' ') +
+      '<input type="' + inputType + '" name="' + parentName + '.__new__.' + n + '"' + step + '></label>';
+  }
+  fs.innerHTML = html;
+  container.appendChild(fs);
+  // When the key input changes, update all child input names
+  var keyInput = fs.querySelector('input[name="' + parentName + '._keys"]');
+  keyInput.addEventListener('input', function() {
+    var newKey = this.value;
+    fs.querySelectorAll('label input').forEach(function(inp) {
+      var nm = inp.getAttribute('name');
+      if (nm && nm.indexOf('.__new__.') !== -1) {
+        var parts = nm.split('.');
+        parts[parts.length - 2] = newKey || '__new__';
+        inp.setAttribute('name', parts.join('.'));
+      }
+    });
+  });
+}
+</script>
