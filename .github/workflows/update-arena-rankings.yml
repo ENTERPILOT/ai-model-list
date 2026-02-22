@@ -1,0 +1,52 @@
+name: Update Arena Rankings
+
+on:
+  schedule:
+    # Run every Monday at 07:00 UTC
+    - cron: "0 7 * * 1"
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-arena-rankings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install jsonschema
+
+      - name: Import arena rankings
+        run: python scripts/import_arena_rankings.py
+
+      - name: Validate
+        run: python scripts/validate.py
+
+      - name: Create PR if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add models.json
+          if git diff --staged --quiet; then
+            echo "No changes detected, skipping."
+          else
+            BRANCH="update/arena-rankings-$(date -u +%Y%m%d)-$RANDOM"
+            git checkout -b "$BRANCH"
+            git commit -m "chore: update arena rankings $(date -u +%Y-%m-%d)"
+            git push -u origin "$BRANCH"
+            gh pr create \
+              --title "chore: update arena rankings $(date -u +%Y-%m-%d)" \
+              --body "Automated weekly update of Chatbot Arena (LMArena) ELO rankings." \
+              --base main
+          fi
