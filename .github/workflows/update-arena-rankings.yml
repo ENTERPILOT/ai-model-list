@@ -40,7 +40,7 @@ jobs:
           git add models.json
           if git diff --staged --quiet; then
             echo "No changes detected, skipping."
-          else
+          elif git diff --staged models.json | grep '^[+-]' | grep -v '^[+-][+-][+-]' | grep -v '^\s*[+-]\s*"as_of"' | grep -q '[+-]'; then
             BRANCH="update/arena-rankings-$(date -u +%Y%m%d)-$RANDOM"
             git checkout -b "$BRANCH"
             git commit -m "chore: update arena rankings $(date -u +%Y-%m-%d)"
@@ -49,4 +49,7 @@ jobs:
               --title "chore: update arena rankings $(date -u +%Y-%m-%d)" \
               --body "Automated weekly update of Chatbot Arena (LMArena) ELO rankings." \
               --base main
+          else
+            echo "Only as_of dates changed, skipping PR."
+            git checkout -- models.json
           fi

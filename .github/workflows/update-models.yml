@@ -77,7 +77,7 @@ jobs:
           git add models.json
           if git diff --staged --quiet; then
             echo "No changes detected, skipping."
-          else
+          elif git diff --staged models.json | grep '^[+-]' | grep -v '^[+-][+-][+-]' | grep -v '^\s*[+-]\s*"updated_at"' | grep -q '[+-]'; then
             BRANCH="update/prices-and-models-and-more-$(date -u +%Y%m%d)-$RANDOM"
             git checkout -b "$BRANCH"
             git commit -m "chore: update model data $(date -u +%Y-%m-%d)"
@@ -86,4 +86,7 @@ jobs:
               --title "chore: update model data $(date -u +%Y-%m-%d)" \
               --body "Automated daily update of model pricing and capabilities." \
               --base main
+          else
+            echo "Only updated_at changed, skipping PR."
+            git checkout -- models.json
           fi
