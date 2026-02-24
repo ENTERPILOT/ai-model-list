@@ -122,8 +122,11 @@ def import_arena_rankings(
                     model["rankings"] = {}
 
                 if merge and target_key in model["rankings"]:
-                    existing_date = model["rankings"][target_key].get("as_of", "")
+                    existing = model["rankings"][target_key]
+                    existing_date = existing.get("as_of", "")
                     if as_of >= existing_date:
+                        if existing.get("elo") == elo and existing.get("rank") == rank:
+                            continue
                         model["rankings"][target_key] = ranking_entry
                 else:
                     model["rankings"][target_key] = ranking_entry
