@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-02-22T18:52:45Z",
+  "updated_at": "2026-02-24T07:16:45Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -35900,11 +35900,19 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.5,
-        "output_per_mtok": 0.5
+        "output_per_mtok": 0.5,
+        "cached_input_per_mtok": 0.037
       },
       "modes": [
         "chat"
-      ]
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      }
     },
     "hermes-2-pro-mistral-7b": {
       "display_name": "Hermes 2 Pro Mistral 7b",
@@ -42834,6 +42842,10 @@
     },
     "vertex_ai/claude-sonnet-4-6@default": {
       "model_ref": "claude-sonnet-4-6@default",
+      "enabled": true
+    },
+    "groq/gpt-oss-safeguard-20b": {
+      "model_ref": "gpt-oss-safeguard-20b",
       "enabled": true
     }
   }
