@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-02-25T07:17:15Z",
+  "updated_at": "2026-02-26T07:16:49Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -20382,7 +20382,8 @@
         "pdf_input": true,
         "prompt_caching": true,
         "reasoning": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "system_messages": true
       },
       "context_window": 128000,
       "max_output_tokens": 128000,
@@ -39853,6 +39854,74 @@
         "function_calling": true,
         "web_search": true
       }
+    },
+    "gpt-audio-1.5-2026-02-23": {
+      "display_name": "GPT Audio 1.5 2026 02 23",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0,
+        "audio_input_per_mtok": 40.0,
+        "audio_output_per_mtok": 80.0
+      }
+    },
+    "gpt-realtime-1.5-2026-02-23": {
+      "display_name": "GPT Realtime 1.5 2026 02 23",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "system_messages": true,
+        "audio_input": true,
+        "audio_output": true,
+        "tool_choice": true
+      },
+      "context_window": 32000,
+      "max_output_tokens": 4096,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 4.0,
+        "output_per_mtok": 16.0,
+        "cached_input_per_mtok": 4.0,
+        "audio_input_per_mtok": 32.0,
+        "audio_output_per_mtok": 64.0,
+        "input_per_image": 5e-06
+      }
     }
   },
   "provider_models": {
@@ -42906,6 +42975,27 @@
     "groq/gpt-oss-safeguard-20b": {
       "model_ref": "gpt-oss-safeguard-20b",
       "enabled": true
+    },
+    "azure/gpt-audio-1.5-2026-02-23": {
+      "model_ref": "gpt-audio-1.5-2026-02-23",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions"
+      ]
+    },
+    "azure/gpt-realtime-1.5-2026-02-23": {
+      "model_ref": "gpt-realtime-1.5-2026-02-23",
+      "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ]
+    },
+    "azure/gpt-5.3-codex": {
+      "model_ref": "gpt-5.3-codex",
+      "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ]
     }
   }
 }
