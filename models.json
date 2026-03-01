@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-02-26T07:16:49Z",
+  "updated_at": "2026-02-28T06:57:08Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -2092,7 +2092,8 @@
       },
       "modes": [
         "chat"
-      ]
+      ],
+      "deprecation_date": "2026-02-28"
     },
     "mistral-large-latest": {
       "display_name": "Mistral Large",
@@ -28059,7 +28060,8 @@
       "modes": [
         "responses",
         "chat"
-      ]
+      ],
+      "deprecation_date": "2026-02-28"
     },
     "Qwen-SEA-LION-v4-32B-IT": {
       "display_name": "Qwen Sea Lion V4 32b It",
@@ -34192,7 +34194,8 @@
           "rank": 66,
           "as_of": "2026-02-22"
         }
-      }
+      },
+      "deprecation_date": "2026-02-28"
     },
     "grok-3-mini-fast-beta": {
       "display_name": "Grok 3 Mini Fast Beta",
@@ -39922,6 +39925,166 @@
         "audio_output_per_mtok": 64.0,
         "input_per_image": 5e-06
       }
+    },
+    "gemini-3.1-flash-image-preview": {
+      "display_name": "Gemini 3.1 Flash Image Preview",
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing#gemini-models",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "capabilities": {
+        "system_messages": true,
+        "vision": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "web_search": true
+      },
+      "context_window": 65536,
+      "max_output_tokens": 32768,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0,
+        "per_image": 0.0672,
+        "input_per_image": 0.00056
+      }
+    },
+    "gpt-audio-1.5": {
+      "display_name": "GPT Audio 1.5",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "audio_input": true,
+        "audio_output": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0,
+        "audio_input_per_mtok": 32.0,
+        "audio_output_per_mtok": 64.0
+      }
+    },
+    "gpt-realtime-1.5": {
+      "display_name": "GPT Realtime 1.5",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "system_messages": true,
+        "audio_input": true,
+        "audio_output": true,
+        "tool_choice": true
+      },
+      "context_window": 32000,
+      "max_output_tokens": 4096,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 4.0,
+        "output_per_mtok": 16.0,
+        "cached_input_per_mtok": 0.4,
+        "audio_input_per_mtok": 32.0,
+        "audio_output_per_mtok": 64.0,
+        "input_per_image": 5e-06
+      }
+    },
+    "auto": {
+      "display_name": "Auto",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "audio_input": true,
+        "video_input": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000
+    },
+    "free": {
+      "display_name": "Free",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 200000
+    },
+    "bodybuilder": {
+      "display_name": "Bodybuilder",
+      "modes": [
+        "chat"
+      ],
+      "context_window": 128000
     }
   },
   "provider_models": {
@@ -42996,6 +43159,10 @@
       "endpoints": [
         "/v1/responses"
       ]
+    },
+    "vertex_ai/gemini-3.1-flash-image-preview": {
+      "model_ref": "gemini-3.1-flash-image-preview",
+      "enabled": true
     }
   }
 }
