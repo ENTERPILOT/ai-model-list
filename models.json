@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-04T07:07:14Z",
+  "updated_at": "2026-03-05T07:11:09Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -40869,6 +40869,45 @@
         "input_per_mtok": 1.2,
         "output_per_mtok": 5.0,
         "cached_input_per_mtok": 0.3
+      }
+    },
+    "mistral.devstral-2-123b": {
+      "display_name": "Mistral.devstral 2 123b",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "capabilities": {
+        "function_calling": true,
+        "system_messages": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "max_output_tokens": 8192,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      }
+    },
+    "zai.glm-4.7-flash": {
+      "display_name": "Zai.glm 4.7 Flash",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "capabilities": {
+        "function_calling": true,
+        "system_messages": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.4
       }
     }
   },
