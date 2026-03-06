@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-05T07:11:09Z",
+  "updated_at": "2026-03-06T07:08:30Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -7248,7 +7248,8 @@
         "prompt_caching": true,
         "reasoning": true,
         "streaming": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "web_search": true
       },
       "context_window": 272000,
       "max_output_tokens": 128000,
@@ -7669,7 +7670,8 @@
         "prompt_caching": true,
         "reasoning": true,
         "streaming": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "web_search": true
       },
       "context_window": 272000,
       "max_output_tokens": 128000,
@@ -21749,7 +21751,8 @@
         "response_schema": true,
         "prompt_caching": true,
         "reasoning": true,
-        "streaming": true
+        "streaming": true,
+        "web_search": true
       },
       "context_window": 128000,
       "max_output_tokens": 16384,
@@ -21786,7 +21789,8 @@
         "prompt_caching": true,
         "reasoning": true,
         "streaming": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "web_search": true
       },
       "context_window": 128000,
       "max_output_tokens": 16384,
@@ -26411,7 +26415,11 @@
     "openai.gpt-oss-safeguard-120b": {
       "display_name": "Openai.gpt Oss Safeguard 120b",
       "capabilities": {
-        "system_messages": true
+        "system_messages": true,
+        "function_calling": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
       },
       "context_window": 128000,
       "max_output_tokens": 8192,
@@ -26427,7 +26435,11 @@
     "openai.gpt-oss-safeguard-20b": {
       "display_name": "Openai.gpt Oss Safeguard 20b",
       "capabilities": {
-        "system_messages": true
+        "system_messages": true,
+        "function_calling": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
       },
       "context_window": 128000,
       "max_output_tokens": 8192,
@@ -40361,7 +40373,8 @@
         "response_schema": true,
         "prompt_caching": true,
         "reasoning": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "web_search": true
       },
       "context_window": 128000,
       "max_output_tokens": 16384,
@@ -40908,6 +40921,291 @@
         "currency": "USD",
         "input_per_mtok": 0.07,
         "output_per_mtok": 0.4
+      }
+    },
+    "au.anthropic.claude-sonnet-4-6": {
+      "display_name": "Au.anthropic.claude Sonnet 4 6",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "computer_use": true,
+        "pdf_input": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "assistant_prefill": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 3.3,
+        "output_per_mtok": 16.5,
+        "cached_input_per_mtok": 0.33,
+        "cache_write_per_mtok": 4.125,
+        "tiers": [
+          {
+            "up_to_tokens": 200000,
+            "input_per_mtok": 3.3,
+            "output_per_mtok": 16.5
+          },
+          {
+            "up_to_tokens": 0,
+            "input_per_mtok": 6.6,
+            "output_per_mtok": 24.75
+          }
+        ]
+      }
+    },
+    "mistral-document-ai-2512": {
+      "display_name": "Mistral Document Ai 2512",
+      "modes": [
+        "ocr"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/",
+      "pricing": {
+        "currency": "USD",
+        "per_page": 0.003
+      }
+    },
+    "gpt-5.4": {
+      "display_name": "GPT 5.4",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "vision": true,
+        "response_schema": true,
+        "streaming": true,
+        "system_messages": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 15.0,
+        "cached_input_per_mtok": 0.25
+      }
+    },
+    "gpt-5.4-pro": {
+      "display_name": "GPT 5.4 Pro",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "vision": true,
+        "response_schema": true,
+        "streaming": true,
+        "system_messages": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 30.0,
+        "output_per_mtok": 180.0,
+        "cached_input_per_mtok": 3.0
+      }
+    },
+    "gpt-5.3-codex-spark": {
+      "display_name": "GPT 5.3 Codex Spark",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "vision": true,
+        "response_schema": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 128000
+    },
+    "gpt-5.3-instant": {
+      "display_name": "GPT 5.3 Instant",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "vision": true,
+        "response_schema": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 64000
+    },
+    "gpt-5.4-2026-03-05": {
+      "display_name": "GPT 5.4 2026 03 05",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 15.0,
+        "cached_input_per_mtok": 0.25
+      }
+    },
+    "gpt-5.4-pro-2026-03-05": {
+      "display_name": "GPT 5.4 Pro 2026 03 05",
+      "modes": [
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 30.0,
+        "output_per_mtok": 180.0,
+        "cached_input_per_mtok": 3.0
+      }
+    },
+    "openai.gpt-oss-120b": {
+      "display_name": "Openai.gpt Oss 120b",
+      "modes": [
+        "chat"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      }
+    },
+    "openai.gpt-oss-20b": {
+      "display_name": "Openai.gpt Oss 20b",
+      "modes": [
+        "chat"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       }
     }
   },
