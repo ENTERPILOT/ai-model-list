@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-06T07:08:30Z",
+  "updated_at": "2026-03-07T06:59:20Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -34558,7 +34558,9 @@
           "rank": 33,
           "as_of": "2026-02-22"
         }
-      }
+      },
+      "context_window": 131072,
+      "max_output_tokens": 131072
     },
     "grok-4-1-fast-reasoning-latest": {
       "display_name": "Grok 4 1 Fast Reasoning Latest",
@@ -34646,7 +34648,9 @@
       "modes": [
         "chat",
         "responses"
-      ]
+      ],
+      "context_window": 131072,
+      "max_output_tokens": 131072
     },
     "grok-4-1-fast-non-reasoning-latest": {
       "display_name": "Grok 4 1 Fast Non Reasoning Latest",
@@ -40984,7 +40988,8 @@
     "gpt-5.4": {
       "display_name": "GPT 5.4",
       "modes": [
-        "responses"
+        "responses",
+        "chat"
       ],
       "modalities": {
         "input": [
@@ -41013,13 +41018,16 @@
         "currency": "USD",
         "input_per_mtok": 2.5,
         "output_per_mtok": 15.0,
-        "cached_input_per_mtok": 0.25
+        "cached_input_per_mtok": 0.25,
+        "batch_input_per_mtok": 1.25,
+        "batch_output_per_mtok": 7.5
       }
     },
     "gpt-5.4-pro": {
       "display_name": "GPT 5.4 Pro",
       "modes": [
-        "responses"
+        "responses",
+        "chat"
       ],
       "modalities": {
         "input": [
@@ -41049,7 +41057,9 @@
         "currency": "USD",
         "input_per_mtok": 30.0,
         "output_per_mtok": 180.0,
-        "cached_input_per_mtok": 3.0
+        "cached_input_per_mtok": 3.0,
+        "batch_input_per_mtok": 15.0,
+        "batch_output_per_mtok": 90.0
       }
     },
     "gpt-5.3-codex-spark": {
@@ -41101,7 +41111,8 @@
     "gpt-5.4-2026-03-05": {
       "display_name": "GPT 5.4 2026 03 05",
       "modes": [
-        "responses"
+        "responses",
+        "chat"
       ],
       "modalities": {
         "input": [
@@ -41130,13 +41141,16 @@
         "currency": "USD",
         "input_per_mtok": 2.5,
         "output_per_mtok": 15.0,
-        "cached_input_per_mtok": 0.25
+        "cached_input_per_mtok": 0.25,
+        "batch_input_per_mtok": 1.25,
+        "batch_output_per_mtok": 7.5
       }
     },
     "gpt-5.4-pro-2026-03-05": {
       "display_name": "GPT 5.4 Pro 2026 03 05",
       "modes": [
-        "responses"
+        "responses",
+        "chat"
       ],
       "modalities": {
         "input": [
@@ -41165,7 +41179,9 @@
         "currency": "USD",
         "input_per_mtok": 30.0,
         "output_per_mtok": 180.0,
-        "cached_input_per_mtok": 3.0
+        "cached_input_per_mtok": 3.0,
+        "batch_input_per_mtok": 15.0,
+        "batch_output_per_mtok": 90.0
       }
     },
     "openai.gpt-oss-120b": {
