@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-08T07:01:47Z",
+  "updated_at": "2026-03-10T07:09:13Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -40082,7 +40082,9 @@
         "input_per_mtok": 0.5,
         "output_per_mtok": 3.0,
         "per_image": 0.0672,
-        "input_per_image": 0.00056
+        "input_per_image": 0.00056,
+        "batch_input_per_mtok": 0.125,
+        "batch_output_per_mtok": 0.75
       }
     },
     "gpt-audio-1.5": {
@@ -41222,6 +41224,42 @@
         "currency": "USD",
         "input_per_mtok": 0.075,
         "output_per_mtok": 0.3
+      }
+    },
+    "gpt-5.3-chat": {
+      "display_name": "GPT 5.3 Chat",
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "max_output_tokens": 16384,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 14.0,
+        "cached_input_per_mtok": 0.175
       }
     }
   },
@@ -44351,6 +44389,62 @@
     "vertex_ai/gemini-3.1-flash-lite-preview": {
       "model_ref": "gemini-3.1-flash-lite-preview",
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ]
+    },
+    "azure/gpt-5.3-chat": {
+      "model_ref": "gpt-5.3-chat",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ]
+    },
+    "azure/gpt-5.4": {
+      "model_ref": "gpt-5.4",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "azure/gpt-5.4-2026-03-05": {
+      "model_ref": "gpt-5.4-2026-03-05",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "azure/gpt-5.4-pro": {
+      "model_ref": "gpt-5.4-pro",
+      "enabled": true,
+      "endpoints": [
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "azure/gpt-5.4-pro-2026-03-05": {
+      "model_ref": "gpt-5.4-pro-2026-03-05",
+      "enabled": true,
+      "endpoints": [
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "gemini/gemini-3.1-flash-image-preview": {
+      "model_ref": "gemini-3.1-flash-image-preview",
+      "enabled": true,
+      "rate_limits": {
+        "rpm": 1000,
+        "tpm": 4000000,
+        "rpd": null
+      },
       "endpoints": [
         "/v1/chat/completions",
         "/v1/completions",
