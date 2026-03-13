@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-11T07:12:19Z",
+  "updated_at": "2026-03-13T07:13:22Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -17202,8 +17202,10 @@
         ]
       },
       "modes": [
-        "chat"
-      ]
+        "chat",
+        "embedding"
+      ],
+      "output_vector_size": 3072
     },
     "gemini-1.5-flash-001": {
       "display_name": "Gemini 1.5 Flash 001",
@@ -19262,8 +19264,10 @@
       "context_window": 1000000,
       "max_output_tokens": 8192,
       "modes": [
-        "chat"
-      ]
+        "chat",
+        "embedding"
+      ],
+      "output_vector_size": 3072
     },
     "gemini-pro": {
       "display_name": "Gemini Pro",
@@ -35242,11 +35246,14 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.04,
-        "output_per_mtok": 0.04
+        "output_per_mtok": 0.04,
+        "per_image": 0.04
       },
       "modes": [
-        "image_generation"
-      ]
+        "image_generation",
+        "image_edit"
+      ],
+      "source_url": "https://bfl.ai/pricing"
     },
     "SSD-1B": {
       "display_name": "Ssd 1b",
@@ -35554,11 +35561,14 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.08,
-        "output_per_mtok": 0.08
+        "output_per_mtok": 0.08,
+        "per_image": 0.08
       },
       "modes": [
-        "image_generation"
-      ]
+        "image_generation",
+        "image_edit"
+      ],
+      "source_url": "https://bfl.ai/pricing"
     },
     "dbrx-instruct": {
       "display_name": "Dbrx Instruct",
@@ -41488,6 +41498,76 @@
         "input_per_mtok": 0.6,
         "output_per_mtok": 3.6
       }
+    },
+    "flux-pro-1.0-fill": {
+      "display_name": "Flux Pro 1.0 Fill",
+      "modes": [
+        "image_edit"
+      ],
+      "source_url": "https://bfl.ai/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.05
+      }
+    },
+    "flux-pro-1.0-expand": {
+      "display_name": "Flux Pro 1.0 Expand",
+      "modes": [
+        "image_edit"
+      ],
+      "source_url": "https://bfl.ai/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.05
+      }
+    },
+    "flux-pro-1.1": {
+      "display_name": "Flux Pro 1.1",
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://bfl.ai/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.04
+      }
+    },
+    "flux-pro-1.1-ultra": {
+      "display_name": "Flux Pro 1.1 Ultra",
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://bfl.ai/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.06
+      }
+    },
+    "flux-dev": {
+      "display_name": "Flux Dev",
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://bfl.ai/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.025
+      }
+    },
+    "gemini-embedding-2-preview": {
+      "display_name": "Gemini Embedding 2 Preview",
+      "modes": [
+        "embedding"
+      ],
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "context_window": 8192,
+      "output_vector_size": 3072,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "input_per_image": 0.00012,
+        "per_second_input": 0.00016
+      }
     }
   },
   "provider_models": {
@@ -44171,11 +44251,17 @@
     },
     "vertex_ai/glm-4.7-maas": {
       "model_ref": "glm-4.7-maas",
-      "enabled": true
+      "enabled": true,
+      "regions": [
+        "global"
+      ]
     },
     "vertex_ai/glm-5-maas": {
       "model_ref": "glm-5-maas",
-      "enabled": true
+      "enabled": true,
+      "regions": [
+        "global"
+      ]
     },
     "vertex_ai/mistral-medium-3": {
       "model_ref": "mistral-medium-3",
@@ -44677,6 +44763,19 @@
         "/v1/completions",
         "/v1/batch"
       ]
+    },
+    "vertex_ai/gemini-embedding-2-preview": {
+      "model_ref": "gemini-embedding-2-preview",
+      "enabled": true
+    },
+    "gemini/gemini-embedding-2-preview": {
+      "model_ref": "gemini-embedding-2-preview",
+      "enabled": true,
+      "rate_limits": {
+        "rpm": 10000,
+        "tpm": 10000000,
+        "rpd": null
+      }
     }
   }
 }
