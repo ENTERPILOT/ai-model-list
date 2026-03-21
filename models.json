@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-17T07:19:48Z",
+  "updated_at": "2026-03-21T07:03:59Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -41570,6 +41570,264 @@
         "input_per_image": 0.00012,
         "per_second_input": 0.00016
       }
+    },
+    "gpt-5.4-mini": {
+      "display_name": "GPT 5.4 Mini",
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5,
+        "cached_input_per_mtok": 0.075
+      }
+    },
+    "gpt-5.4-nano": {
+      "display_name": "GPT 5.4 Nano",
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "streaming": true,
+        "system_messages": true,
+        "vision": true,
+        "pdf_input": true,
+        "response_schema": true,
+        "prompt_caching": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.25,
+        "cached_input_per_mtok": 0.02
+      }
+    },
+    "grok-4.20-multi-agent-beta-0309": {
+      "display_name": "Grok 4.20 Multi Agent Beta 0309",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://docs.x.ai/docs/models",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000,
+      "max_output_tokens": 2000000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "cached_input_per_mtok": 0.2
+      }
+    },
+    "grok-4.20-beta-0309-reasoning": {
+      "display_name": "Grok 4.20 Beta 0309 Reasoning",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://docs.x.ai/docs/models",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "web_search": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000,
+      "max_output_tokens": 2000000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "cached_input_per_mtok": 0.2
+      }
+    },
+    "grok-4.20-beta-0309-non-reasoning": {
+      "display_name": "Grok 4.20 Beta 0309 Non Reasoning",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://docs.x.ai/docs/models",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "web_search": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000,
+      "max_output_tokens": 2000000,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "cached_input_per_mtok": 0.2
+      }
+    },
+    "doubao-seed-2-0-pro-260215": {
+      "display_name": "Doubao Seed 2 0 Pro 260215",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://www.volcengine.com/docs/82379/1330310",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "reasoning": true
+      },
+      "context_window": 256000,
+      "max_output_tokens": 128000
+    },
+    "doubao-seed-2-0-lite-260215": {
+      "display_name": "Doubao Seed 2 0 Lite 260215",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://www.volcengine.com/docs/82379/1330310",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "reasoning": true
+      },
+      "context_window": 256000,
+      "max_output_tokens": 128000
+    },
+    "doubao-seed-2-0-mini-260215": {
+      "display_name": "Doubao Seed 2 0 Mini 260215",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://www.volcengine.com/docs/82379/1330310",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "reasoning": true
+      },
+      "context_window": 256000,
+      "max_output_tokens": 128000
+    },
+    "doubao-seed-2-0-code-preview-260215": {
+      "display_name": "Doubao Seed 2 0 Code Preview 260215",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://www.volcengine.com/docs/82379/1330310",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "reasoning": true
+      },
+      "context_window": 256000,
+      "max_output_tokens": 128000
     }
   },
   "provider_models": {
@@ -44778,6 +45036,36 @@
         "tpm": 10000000,
         "rpd": null
       }
+    },
+    "azure/gpt-5.4-mini": {
+      "model_ref": "gpt-5.4-mini",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "azure/gpt-5.4-nano": {
+      "model_ref": "gpt-5.4-nano",
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ]
+    },
+    "xai/grok-4.20-multi-agent-beta-0309": {
+      "model_ref": "grok-4.20-multi-agent-beta-0309",
+      "enabled": true
+    },
+    "xai/grok-4.20-beta-0309-reasoning": {
+      "model_ref": "grok-4.20-beta-0309-reasoning",
+      "enabled": true
+    },
+    "xai/grok-4.20-beta-0309-non-reasoning": {
+      "model_ref": "grok-4.20-beta-0309-non-reasoning",
+      "enabled": true
     }
   }
 }
