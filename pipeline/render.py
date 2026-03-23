@@ -16,18 +16,26 @@ def render_registry(resolved: dict[str, Any], updated_at: str) -> dict[str, Any]
 
 
 def _sorted_clean_mapping(value: dict[str, Any]) -> dict[str, Any]:
-    return {key: _strip_nulls(value[key]) for key in sorted(value)}
+    cleaned = {}
+    for key in sorted(value):
+        stripped = _strip_nulls(value[key])
+        if stripped is not None:
+            cleaned[key] = stripped
+    return cleaned
 
 
 def _strip_nulls(value: Any) -> Any:
     if isinstance(value, dict):
-        return {
+        cleaned = {
             key: cleaned
             for key, cleaned in ((key, _strip_nulls(item)) for key, item in value.items())
             if cleaned is not None
         }
+        return cleaned or None
     if isinstance(value, list):
-        return [cleaned for cleaned in (_strip_nulls(item) for item in value) if cleaned is not None]
+        cleaned = [cleaned for cleaned in (_strip_nulls(item) for item in value) if cleaned is not None]
+        return cleaned or None
     if isinstance(value, tuple):
-        return tuple(cleaned for cleaned in (_strip_nulls(item) for item in value) if cleaned is not None)
+        cleaned = tuple(cleaned for cleaned in (_strip_nulls(item) for item in value) if cleaned is not None)
+        return cleaned or None
     return value

@@ -59,6 +59,66 @@ def test_build_report_counts_duplicate_clusters_and_quarantine_entries() -> None
     assert report["quarantine"][0]["source_model_id"] == "sample_spec"
 
 
+def test_build_report_preserves_duplicate_and_resolved_clusters_separately() -> None:
+    report = build_report(
+        duplicate_clusters=[["raw-a", "raw-b"]],
+        resolved_duplicates=[["resolved-a"]],
+        quarantine=[],
+    )
+
+    assert report["summary"]["duplicate_clusters"] == 1
+    assert report["duplicate_clusters"] == [["raw-a", "raw-b"]]
+    assert report["resolved_duplicates"] == [["resolved-a"]]
+
+
+def test_build_report_counts_raw_duplicate_clusters_when_resolved_duplicates_empty() -> None:
+    report = build_report(
+        duplicate_clusters=[["raw-a", "raw-b"]],
+        resolved_duplicates=[],
+        quarantine=[],
+    )
+
+    assert report["summary"]["duplicate_clusters"] == 1
+    assert report["duplicate_clusters"] == [["raw-a", "raw-b"]]
+    assert report["resolved_duplicates"] == []
+
+
+def test_render_registry_drops_empty_containers_created_by_null_cleanup() -> None:
+    resolved = {
+        "providers": {
+            "alpha": {
+                "display_name": "Alpha",
+                "metadata": {"notes": None},
+                "aliases": [None],
+            }
+        },
+        "models": {
+            "grok-4": {
+                "display_name": "Grok 4",
+                "metadata": {"notes": None},
+                "aliases": [None],
+            }
+        },
+        "provider_models": {
+            "xai/grok-4": {
+                "model_ref": "grok-4",
+                "enabled": True,
+                "pricing": {"currency": None},
+                "regions": [None],
+            }
+        },
+    }
+
+    rendered = render_registry(resolved, updated_at="2026-03-23T00:00:00Z")
+
+    assert rendered["providers"]["alpha"] == {"display_name": "Alpha"}
+    assert rendered["models"]["grok-4"] == {"display_name": "Grok 4"}
+    assert rendered["provider_models"]["xai/grok-4"] == {
+        "enabled": True,
+        "model_ref": "grok-4",
+    }
+
+
 def test_build_markdown_report_lists_duplicate_clusters_and_quarantine_entries() -> None:
     markdown = build_markdown_report(
         build_report(
@@ -72,3 +132,17 @@ def test_build_markdown_report_lists_duplicate_clusters_and_quarantine_entries()
     assert "Quarantine count: 1" in markdown
     assert "claude-opus-41" in markdown
     assert "sample_spec" in markdown
+
+
+def test_build_markdown_report_lists_new_models() -> None:
+    markdown = build_markdown_report(
+        build_report(
+            duplicate_clusters=[],
+            quarantine=[],
+            new_models=["gpt-5", "o3"],
+        )
+    )
+
+    assert "## New Models" in markdown
+    assert "gpt-5" in markdown
+    assert "o3" in markdown

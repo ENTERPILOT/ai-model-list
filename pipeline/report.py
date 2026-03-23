@@ -12,8 +12,8 @@ def build_report(
     resolved_duplicates: Iterable[Iterable[str]] | None = None,
     source_freshness: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    clusters_source = resolved_duplicates if resolved_duplicates is not None else duplicate_clusters
-    duplicate_clusters_list = [list(cluster) for cluster in clusters_source]
+    duplicate_clusters_list = [list(cluster) for cluster in duplicate_clusters]
+    resolved_duplicates_list = [list(cluster) for cluster in resolved_duplicates] if resolved_duplicates is not None else []
     quarantine_list = [dict(entry) for entry in quarantine]
     new_models_list = list(new_models)
 
@@ -23,7 +23,7 @@ def build_report(
             "quarantine_count": len(quarantine_list),
         },
         "duplicate_clusters": duplicate_clusters_list,
-        "resolved_duplicates": duplicate_clusters_list,
+        "resolved_duplicates": resolved_duplicates_list,
         "quarantine": quarantine_list,
         "new_models": new_models_list,
     }
@@ -39,6 +39,12 @@ def build_markdown_report(report: dict[str, Any]) -> str:
         f"- Duplicate clusters: {report['summary']['duplicate_clusters']}",
         f"- Quarantine count: {report['summary']['quarantine_count']}",
     ]
+
+    new_models = report.get("new_models", [])
+    if new_models:
+        lines.extend(["", "## New Models"])
+        for model_name in new_models:
+            lines.append(f"- {model_name}")
 
     duplicate_clusters = report.get("resolved_duplicates") or report.get("duplicate_clusters", [])
     if duplicate_clusters:
