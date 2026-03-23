@@ -4,6 +4,7 @@ from pipeline.normalize import (
     normalize_llm_prices_rows,
     normalize_openrouter_rows,
     normalize_portkey_files,
+    normalize_pydantic_genai_rows,
 )
 
 
@@ -155,5 +156,60 @@ def test_normalize_portkey_files_skips_default_and_converts_cents() -> None:
     }
 
 
+def test_normalize_pydantic_genai_rows_promotes_xai_model_to_exact_canonical_record() -> None:
+    rows = [
+        {
+            "id": "x-ai",
+            "pricing_urls": ["https://docs.x.ai/docs/models"],
+            "models": [
+                {
+                    "id": "grok-4-0709",
+                    "name": "Grok 4",
+                    "description": "Flagship model.",
+                    "context_window": 256_000,
+                    "match": {
+                        "or": [
+                            {"equals": "grok-4-0709"},
+                            {"equals": "grok-4"},
+                            {"equals": "grok-4-latest"},
+                        ]
+                    },
+                    "prices": {
+                        "input_mtok": 3,
+                        "cache_read_mtok": 0.75,
+                        "output_mtok": 15,
+                    },
+                }
+            ],
+        }
+    ]
+
+    records = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["xai"],
+    )
+
+    assert [record.source_model_id for record in records] == ["grok-4", "xai/grok-4-0709"]
+    assert records[0].source_name == "official"
+    assert records[0].provider_slug == "xai"
+    assert records[0].canonical_hint == "grok-4"
+    assert records[0].evidence_ref == "https://docs.x.ai/docs/models"
+    assert records[0].fields == {
+        "context_window": 256_000,
+        "description": "Flagship model.",
+        "display_name": "Grok 4",
+        "modes": ["chat"],
+        "owned_by": "xai",
+        "pricing": {
+            "currency": "USD",
+            "input_per_mtok": 3.0,
+            "cached_input_per_mtok": 0.75,
+            "output_per_mtok": 15.0,
+        },
+    }
+    assert records[1].canonical_hint == "grok-4"
+
+
 def test_normalizer_registry_covers_current_source_set() -> None:
-    assert set(NORMALIZER_BY_SOURCE) == {"litellm", "openrouter", "llm_prices", "portkey"}
+    assert set(NORMALIZER_BY_SOURCE) == {"litellm", "pydantic_genai", "openrouter", "llm_prices", "portkey"}

@@ -243,3 +243,118 @@ def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
 
     config = load_curated_config(tmp_path)
     assert config == expected
+
+
+def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_path: Path) -> None:
+    snapshot_dir = tmp_path / "snapshot"
+    curated_dir = tmp_path / "curated"
+    snapshot_dir.mkdir()
+    curated_dir.mkdir()
+
+    (curated_dir / "providers.json").write_text(
+        json.dumps({"xai": {"display_name": "xAI"}}),
+        encoding="utf-8",
+    )
+    (curated_dir / "source_policies.json").write_text(
+        json.dumps(
+            {
+                "official_sources": ["xai"],
+                "aggregator_sources": ["llm_prices"],
+                "field_authority": {
+                    "owned_by": ["official"],
+                    "display_name": ["official"],
+                    "pricing": ["official", "llm_prices"],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (curated_dir / "canonical_aliases.json").write_text(json.dumps({}), encoding="utf-8")
+    (curated_dir / "rejections.json").write_text(json.dumps({}), encoding="utf-8")
+
+    (snapshot_dir / "fetch_metadata.json").write_text(
+        json.dumps({"fetched_at": "2026-03-23T19:00:35Z", "sources": {}}),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "llm_prices_current.json").write_text(
+        json.dumps(
+            {
+                "updated_at": "2026-03-23T19:00:35Z",
+                "prices": [
+                    {
+                        "id": "grok-4",
+                        "vendor": "xai",
+                        "name": "Grok 4 ≤128k",
+                        "input": 3,
+                        "output": 15,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "x-ai",
+                    "pricing_urls": ["https://docs.x.ai/docs/models"],
+                    "models": [
+                        {
+                            "id": "grok-4-0709",
+                            "name": "Grok 4",
+                            "description": "Flagship model.",
+                            "context_window": 256000,
+                            "match": {
+                                "or": [
+                                    {"equals": "grok-4-0709"},
+                                    {"equals": "grok-4"},
+                                    {"equals": "grok-4-latest"},
+                                ]
+                            },
+                            "prices": {
+                                "input_mtok": 3,
+                                "cache_read_mtok": 0.75,
+                                "output_mtok": 15,
+                            },
+                        }
+                    ],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    registry, report, quarantine = build_registry_module.build_registry_artifacts(
+        snapshot_dir=snapshot_dir,
+        curated_dir=curated_dir,
+    )
+
+    assert registry["updated_at"] == "2026-03-23T19:00:35Z"
+    assert registry["models"]["grok-4"] == {
+        "context_window": 256000,
+        "description": "Flagship model.",
+        "display_name": "Grok 4",
+        "modes": ["chat"],
+        "owned_by": "xai",
+        "pricing": {
+            "cached_input_per_mtok": 0.75,
+            "currency": "USD",
+            "input_per_mtok": 3.0,
+            "output_per_mtok": 15.0,
+        },
+    }
+    assert registry["provider_models"]["xai/grok-4"] == {
+        "context_window": 256000,
+        "enabled": True,
+        "model_ref": "grok-4",
+        "pricing": {
+            "cached_input_per_mtok": 0.75,
+            "currency": "USD",
+            "input_per_mtok": 3.0,
+            "output_per_mtok": 15.0,
+        },
+        "provider_model_id": "grok-4-0709",
+    }
+    assert not quarantine
+    assert report["summary"]["quarantine_count"] == 0

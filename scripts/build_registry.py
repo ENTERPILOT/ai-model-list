@@ -45,11 +45,15 @@ def _default_snapshot_dir() -> Path:
 def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, Any]) -> list[Any]:
     evidence = []
     rejection_policy = curated.get("rejections", {})
+    official_providers = curated.get("source_policies", {}).get("official_sources", [])
     for source_name, payload in payloads.items():
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)
         if normalizer is None:
             continue
-        evidence.extend(normalizer(payload, rejection_policy=rejection_policy))
+        kwargs: dict[str, Any] = {"rejection_policy": rejection_policy}
+        if source_name == "pydantic_genai":
+            kwargs["allowed_providers"] = official_providers
+        evidence.extend(normalizer(payload, **kwargs))
     return evidence
 
 

@@ -239,14 +239,23 @@ def choose_provider_model_id(
     canonical_key: str,
     records: list[SourceEvidence],
 ) -> str | None:
+    provider_slug, _, _ = provider_model_key.partition("/")
+
     source_ids = {
-        record.source_model_id
+        _strip_provider_prefix(record.source_model_id, provider_slug)
         for record in records
         if record.source_model_id != canonical_key and record.source_model_id != provider_model_key
     }
     if len(source_ids) == 1:
         return next(iter(source_ids))
     return None
+
+
+def _strip_provider_prefix(source_model_id: str, provider_slug: str) -> str:
+    prefix = f"{provider_slug}/"
+    if source_model_id.startswith(prefix):
+        return source_model_id[len(prefix):]
+    return source_model_id
 
 
 def resolve_canonical_key(record: SourceEvidence, alias_map: dict[str, Any]) -> str:
