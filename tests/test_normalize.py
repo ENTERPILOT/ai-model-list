@@ -103,10 +103,15 @@ def test_normalize_llm_prices_rows_normalizes_vendor_rows() -> None:
         }
     ]
 
-    record = normalize_llm_prices_rows(rows, rejection_policy={})[0]
+    record = normalize_llm_prices_rows(
+        rows,
+        rejection_policy={},
+        evidence_ref="sources/llm-prices/2026-03-23.json",
+    )[0]
 
     assert record.provider_slug == "anthropic"
     assert record.canonical_hint == "claude-3.7-sonnet"
+    assert record.evidence_ref == "sources/llm-prices/2026-03-23.json"
     assert record.fields["display_name"] == "Claude 3.7 Sonnet"
     assert record.fields["pricing"] == {
         "currency": "USD",
