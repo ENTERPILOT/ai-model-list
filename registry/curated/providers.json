@@ -1,1 +1,289 @@
-{}
+{
+  "openai": {
+    "display_name": "OpenAI",
+    "website": "https://openai.com",
+    "docs_url": "https://platform.openai.com/docs",
+    "pricing_url": "https://openai.com/api/pricing",
+    "status_url": "https://status.openai.com",
+    "api_type": "openai",
+    "default_base_url": "https://api.openai.com/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "OPENAI_API_KEY"
+    },
+    "base_url_env": "OPENAI_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation",
+      "audio_speech",
+      "audio_transcription",
+      "moderation",
+      "responses",
+      "video_generation"
+    ],
+    "default_rate_limits": {
+      "rpm": 10000,
+      "tpm": 30000000
+    }
+  },
+  "anthropic": {
+    "display_name": "Anthropic",
+    "website": "https://anthropic.com",
+    "docs_url": "https://docs.anthropic.com",
+    "pricing_url": "https://anthropic.com/pricing",
+    "status_url": "https://status.anthropic.com",
+    "api_type": "anthropic",
+    "default_base_url": "https://api.anthropic.com/v1",
+    "auth": {
+      "type": "header",
+      "env_var": "ANTHROPIC_API_KEY",
+      "header": "x-api-key"
+    },
+    "base_url_env": "ANTHROPIC_BASE_URL",
+    "supported_modes": [
+      "chat"
+    ],
+    "default_rate_limits": {
+      "rpm": 4000,
+      "tpm": 400000
+    }
+  },
+  "gemini": {
+    "display_name": "Google AI (Gemini)",
+    "website": "https://ai.google.dev",
+    "docs_url": "https://ai.google.dev/docs",
+    "pricing_url": "https://ai.google.dev/pricing",
+    "status_url": "https://status.cloud.google.com",
+    "api_type": "gemini",
+    "default_base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "auth": {
+      "type": "query_param",
+      "env_var": "GOOGLE_API_KEY"
+    },
+    "base_url_env": "GOOGLE_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation",
+      "audio_speech",
+      "video_generation"
+    ],
+    "default_rate_limits": {
+      "rpm": 1000,
+      "tpm": 4000000
+    }
+  },
+  "mistral": {
+    "display_name": "Mistral AI",
+    "website": "https://mistral.ai",
+    "docs_url": "https://docs.mistral.ai",
+    "pricing_url": "https://mistral.ai/products/la-plateforme#pricing",
+    "api_type": "mistral",
+    "default_base_url": "https://api.mistral.ai/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "MISTRAL_API_KEY"
+    },
+    "base_url_env": "MISTRAL_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "ocr"
+    ]
+  },
+  "cohere": {
+    "display_name": "Cohere",
+    "website": "https://cohere.com",
+    "docs_url": "https://docs.cohere.com",
+    "pricing_url": "https://cohere.com/pricing",
+    "api_type": "cohere",
+    "default_base_url": "https://api.cohere.com/v2",
+    "auth": {
+      "type": "bearer",
+      "env_var": "COHERE_API_KEY"
+    },
+    "base_url_env": "COHERE_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "rerank"
+    ]
+  },
+  "groq": {
+    "display_name": "Groq",
+    "website": "https://groq.com",
+    "docs_url": "https://console.groq.com/docs",
+    "pricing_url": "https://groq.com/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.groq.com/openai/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "GROQ_API_KEY"
+    },
+    "base_url_env": "GROQ_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "audio_transcription",
+      "audio_speech"
+    ]
+  },
+  "xai": {
+    "display_name": "xAI",
+    "website": "https://x.ai",
+    "docs_url": "https://docs.x.ai",
+    "pricing_url": "https://docs.x.ai/docs/models#models-and-pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.x.ai/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "XAI_API_KEY"
+    },
+    "base_url_env": "XAI_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation",
+      "video_generation"
+    ]
+  },
+  "deepseek": {
+    "display_name": "DeepSeek",
+    "website": "https://deepseek.com",
+    "docs_url": "https://platform.deepseek.com/api-docs",
+    "pricing_url": "https://platform.deepseek.com/api-docs/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.deepseek.com/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "DEEPSEEK_API_KEY"
+    },
+    "base_url_env": "DEEPSEEK_BASE_URL",
+    "supported_modes": [
+      "chat"
+    ]
+  },
+  "together": {
+    "display_name": "Together AI",
+    "website": "https://together.ai",
+    "docs_url": "https://docs.together.ai",
+    "pricing_url": "https://together.ai/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.together.xyz/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "TOGETHER_API_KEY"
+    },
+    "base_url_env": "TOGETHER_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation"
+    ]
+  },
+  "azure": {
+    "display_name": "Azure OpenAI",
+    "website": "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
+    "docs_url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/",
+    "pricing_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+    "status_url": "https://status.azure.com",
+    "api_type": "openai",
+    "auth": {
+      "type": "header",
+      "env_var": "AZURE_OPENAI_API_KEY",
+      "header": "api-key"
+    },
+    "base_url_env": "AZURE_OPENAI_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation",
+      "responses",
+      "completion",
+      "audio_transcription",
+      "audio_speech",
+      "video_generation"
+    ]
+  },
+  "bedrock": {
+    "display_name": "AWS Bedrock",
+    "website": "https://aws.amazon.com/bedrock/",
+    "docs_url": "https://docs.aws.amazon.com/bedrock/",
+    "pricing_url": "https://aws.amazon.com/bedrock/pricing/",
+    "status_url": "https://health.aws.amazon.com",
+    "api_type": "openai",
+    "base_url_env": "BEDROCK_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "image_generation"
+    ]
+  },
+  "vertex_ai": {
+    "display_name": "Google Vertex AI",
+    "website": "https://cloud.google.com/vertex-ai",
+    "docs_url": "https://cloud.google.com/vertex-ai/docs",
+    "pricing_url": "https://cloud.google.com/vertex-ai/pricing",
+    "status_url": "https://status.cloud.google.com",
+    "api_type": "openai",
+    "base_url_env": "VERTEX_AI_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding",
+      "audio_speech",
+      "image_generation",
+      "ocr",
+      "video_generation"
+    ]
+  },
+  "fireworks": {
+    "display_name": "Fireworks AI",
+    "website": "https://fireworks.ai",
+    "docs_url": "https://docs.fireworks.ai",
+    "pricing_url": "https://fireworks.ai/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.fireworks.ai/inference/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "FIREWORKS_API_KEY"
+    },
+    "base_url_env": "FIREWORKS_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding"
+    ]
+  },
+  "deepinfra": {
+    "display_name": "DeepInfra",
+    "website": "https://deepinfra.com",
+    "docs_url": "https://deepinfra.com/docs",
+    "pricing_url": "https://deepinfra.com/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://api.deepinfra.com/v1/openai",
+    "auth": {
+      "type": "bearer",
+      "env_var": "DEEPINFRA_API_KEY"
+    },
+    "base_url_env": "DEEPINFRA_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding"
+    ]
+  },
+  "runway": {
+    "display_name": "Runway",
+    "website": "https://runwayml.com",
+    "docs_url": "https://docs.runwayml.com",
+    "pricing_url": "https://runwayml.com/pricing",
+    "api_type": "custom",
+    "default_base_url": "https://api.dev.runwayml.com/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "RUNWAY_API_KEY"
+    },
+    "base_url_env": "RUNWAY_BASE_URL",
+    "supported_modes": [
+      "video_generation"
+    ]
+  }
+}

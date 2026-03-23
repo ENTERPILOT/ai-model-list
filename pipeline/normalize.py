@@ -10,6 +10,11 @@ from pipeline.types import SourceEvidence
 
 USD_PER_TOKEN_TO_USD_PER_MTOK = 1_000_000
 CENTS_PER_TOKEN_TO_USD_PER_MTOK = 10_000
+PROVIDER_SLUG_ALIASES = {
+    "azure_ai": "azure",
+    "azure-openai": "azure",
+    "google": "gemini",
+}
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -17,7 +22,10 @@ def normalize_provider_slug(value: str | None) -> str | None:
         return None
 
     normalized = value.strip().lower()
-    return normalized or None
+    if not normalized:
+        return None
+
+    return PROVIDER_SLUG_ALIASES.get(normalized, normalized)
 
 
 def split_provider_model_name(model_name: str, fallback_provider: str | None = None) -> tuple[str | None, str | None]:
@@ -91,7 +99,8 @@ def _pricing_from_usd_per_mtok(input_value: Any, output_value: Any) -> dict[str,
 
 
 def _pricing_from_portkey(entry: Mapping[str, Any]) -> dict[str, float | str] | None:
-    payg = entry.get("pricing_config", {}).get("pay_as_you_go", {})
+    pricing_config = entry.get("pricing_config") or {}
+    payg = pricing_config.get("pay_as_you_go", {}) or {}
     request_token = _to_float(payg.get("request_token", {}).get("price"))
     response_token = _to_float(payg.get("response_token", {}).get("price"))
     if request_token is None and response_token is None:

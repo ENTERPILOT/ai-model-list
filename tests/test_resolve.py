@@ -1,5 +1,16 @@
-from pipeline.resolve import resolve_registry
+from pipeline.resolve import canonicalize_model_id, resolve_registry
 from pipeline.types import SourceEvidence
+
+
+def test_canonicalize_model_id_maps_claude_opus_41_aliases() -> None:
+    aliases = {
+        "claude-opus-41": "claude-opus-4-1",
+        "claude-opus-4.1": "claude-opus-4-1",
+    }
+
+    assert canonicalize_model_id("claude-opus-41", aliases) == "claude-opus-4-1"
+    assert canonicalize_model_id("claude-opus-4.1", aliases) == "claude-opus-4-1"
+    assert canonicalize_model_id("claude-opus-4-1", aliases) == "claude-opus-4-1"
 
 
 def test_resolve_routes_provider_specific_ids_to_provider_models() -> None:
@@ -124,6 +135,49 @@ def test_resolve_admits_exact_canonical_record_even_with_different_hint() -> Non
 
     assert "grok-4" in registry["models"]
     assert registry["models"]["grok-4"]["display_name"] == "Grok 4"
+    assert not report["quarantine"]
+
+
+def test_resolve_admits_exact_canonical_record_without_official_confidence() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="grok-4",
+            provider_slug="xai",
+            canonical_hint="grok-4",
+            fields={"display_name": "Grok 4", "modes": ["chat"]},
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert "grok-4" in registry["models"]
+    assert registry["models"]["grok-4"]["display_name"] == "Grok 4"
+    assert not report["quarantine"]
+
+
+def test_resolve_adds_provider_model_for_exact_canonical_record() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="chatgpt-4o-latest",
+            provider_slug="openai",
+            canonical_hint="chatgpt-4o-latest",
+            fields={"display_name": "ChatGPT 4o Latest", "modes": ["chat"]},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert "chatgpt-4o-latest" in registry["models"]
+    assert registry["provider_models"]["openai/chatgpt-4o-latest"] == {
+        "enabled": True,
+        "model_ref": "chatgpt-4o-latest",
+    }
     assert not report["quarantine"]
 
 

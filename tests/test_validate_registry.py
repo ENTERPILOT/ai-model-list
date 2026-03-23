@@ -90,19 +90,29 @@ def test_build_registry_cli_fetches_into_exact_snapshot_dir(tmp_path: Path, monk
         captured["fetched_snapshot_dir"] = snapshot_dir
         return snapshot_dir
 
-    def fake_build_registry(snapshot_dir: Path, curated_dir: Path) -> dict:
+    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
         captured["build_snapshot_dir"] = snapshot_dir
-        return {
-            "version": 1,
-            "updated_at": "1970-01-01T00:00:00Z",
-            "providers": {},
-            "models": {},
-            "provider_models": {},
-        }
+        return (
+            {
+                "version": 1,
+                "updated_at": "1970-01-01T00:00:00Z",
+                "providers": {},
+                "models": {},
+                "provider_models": {},
+            },
+            {
+                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
+                "duplicate_clusters": [],
+                "resolved_duplicates": [],
+                "quarantine": [],
+                "new_models": [],
+            },
+            [],
+        )
 
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(build_registry_module, "fetch_sources_to", fake_fetch_sources)
-    monkeypatch.setattr(build_registry_module, "build_registry", fake_build_registry)
+    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
 
     snapshot_dir = tmp_path / "tmp" / "source_snapshots" / "manual-run"
     exit_code = build_registry_module.main(["--fetch", "--snapshot-dir", str(snapshot_dir)])
@@ -121,19 +131,29 @@ def test_build_registry_cli_fetch_without_snapshot_dir_uses_latest_snapshot_dir(
         captured["fetched_snapshot_dir"] = snapshot_dir
         return snapshot_dir
 
-    def fake_build_registry(snapshot_dir: Path, curated_dir: Path) -> dict:
+    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
         captured["build_snapshot_dir"] = snapshot_dir
-        return {
-            "version": 1,
-            "updated_at": "1970-01-01T00:00:00Z",
-            "providers": {},
-            "models": {},
-            "provider_models": {},
-        }
+        return (
+            {
+                "version": 1,
+                "updated_at": "1970-01-01T00:00:00Z",
+                "providers": {},
+                "models": {},
+                "provider_models": {},
+            },
+            {
+                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
+                "duplicate_clusters": [],
+                "resolved_duplicates": [],
+                "quarantine": [],
+                "new_models": [],
+            },
+            [],
+        )
 
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(build_registry_module, "fetch_sources_to", fake_fetch_sources)
-    monkeypatch.setattr(build_registry_module, "build_registry", fake_build_registry)
+    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
 
     exit_code = build_registry_module.main(["--fetch"])
 
@@ -148,18 +168,28 @@ def test_build_registry_cli_defaults_to_latest_snapshot_dir_without_fetch(tmp_pa
 
     captured: dict[str, Path] = {}
 
-    def fake_build_registry(snapshot_dir: Path, curated_dir: Path) -> dict:
+    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
         captured["build_snapshot_dir"] = snapshot_dir
-        return {
-            "version": 1,
-            "updated_at": "1970-01-01T00:00:00Z",
-            "providers": {},
-            "models": {},
-            "provider_models": {},
-        }
+        return (
+            {
+                "version": 1,
+                "updated_at": "1970-01-01T00:00:00Z",
+                "providers": {},
+                "models": {},
+                "provider_models": {},
+            },
+            {
+                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
+                "duplicate_clusters": [],
+                "resolved_duplicates": [],
+                "quarantine": [],
+                "new_models": [],
+            },
+            [],
+        )
 
     monkeypatch.chdir(tmp_path)
-    monkeypatch.setattr(build_registry_module, "build_registry", fake_build_registry)
+    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
 
     exit_code = build_registry_module.main([])
 

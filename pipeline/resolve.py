@@ -139,9 +139,7 @@ def build_provider_model_record(
 
 
 def should_admit_canonical_model(canonical_key: str, records: list[SourceEvidence]) -> bool:
-    return bool(records) and is_canonical_model_key(canonical_key) and any(
-        record.confidence == "official" for record in records
-    )
+    return bool(records) and is_canonical_model_key(canonical_key)
 
 
 def has_required_model_fields(model: dict[str, Any]) -> bool:
@@ -173,6 +171,12 @@ def build_provider_clusters(
         provider_model_key = build_provider_model_key(record, canonical_key, has_exact_canonical, canonical_records)
         if provider_model_key is not None:
             provider_clusters[provider_model_key].append(record)
+
+    if has_exact_canonical:
+        for record in canonical_records:
+            if record.provider_slug is None:
+                continue
+            provider_clusters.setdefault(f"{record.provider_slug}/{canonical_key}", [])
 
     return provider_clusters
 
@@ -246,7 +250,7 @@ def choose_provider_model_id(
 
 
 def resolve_canonical_key(record: SourceEvidence, alias_map: dict[str, Any]) -> str:
-    approved_source_alias = lookup_alias(record.source_model_id, alias_map)
+    approved_source_alias = canonicalize_model_id(record.source_model_id, alias_map)
     if is_canonical_model_key(record.source_model_id):
         return approved_source_alias or record.source_model_id
 
@@ -254,11 +258,15 @@ def resolve_canonical_key(record: SourceEvidence, alias_map: dict[str, Any]) -> 
         if not candidate:
             continue
 
-        resolved = lookup_alias(candidate, alias_map)
+        resolved = canonicalize_model_id(candidate, alias_map)
         if resolved:
             return resolved
 
     return record.canonical_hint or record.source_model_id
+
+
+def canonicalize_model_id(model_id: str, alias_map: dict[str, Any]) -> str:
+    return lookup_alias(model_id, alias_map) or model_id
 
 
 def lookup_alias(model_id: str, alias_map: dict[str, Any]) -> str | None:
