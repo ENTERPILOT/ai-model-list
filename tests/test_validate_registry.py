@@ -5,7 +5,7 @@ from pipeline.loaders import load_curated_config
 from scripts import build_registry as build_registry_module
 from scripts import fetch_sources as fetch_sources_module
 from scripts.build_registry import build_registry
-from scripts.fetch_sources import SOURCE_DESCRIPTORS, snapshot_path_for_run
+from scripts.fetch_sources import GITHUB_SNAPSHOT_BASE_URL, SOURCE_DESCRIPTORS, snapshot_path_for_run
 from scripts.validate import check_registry_quality
 
 
@@ -27,10 +27,13 @@ def test_snapshot_path_for_run_nests_under_source_snapshots(tmp_path: Path) -> N
 def test_fetch_sources_declares_expected_aggregator_sources() -> None:
     assert {descriptor.slug for descriptor in SOURCE_DESCRIPTORS} >= {"litellm", "openrouter", "llm_prices"}
     assert {descriptor.filename for descriptor in SOURCE_DESCRIPTORS} >= {
+        "fetch_metadata.json",
         "litellm_model_prices.json",
         "openrouter_models.json",
         "llm_prices_current.json",
+        "portkey/openai.json",
     }
+    assert all(descriptor.url.startswith(GITHUB_SNAPSHOT_BASE_URL) for descriptor in SOURCE_DESCRIPTORS)
 
 
 def test_build_registry_returns_top_level_sections(tmp_path: Path) -> None:
@@ -42,12 +45,34 @@ def test_build_registry_returns_top_level_sections(tmp_path: Path) -> None:
 def test_build_registry_cli_writes_deterministic_outputs(tmp_path: Path, monkeypatch) -> None:
     _write_minimal_curated_config(tmp_path / "registry" / "curated")
 
+    def fake_fetch_sources(snapshot_dir: Path) -> Path:
+        return snapshot_dir
+
+    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
+        return (
+            {
+                "version": 1,
+                "updated_at": "1970-01-01T00:00:00Z",
+                "providers": {},
+                "models": {},
+                "provider_models": {},
+            },
+            {
+                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
+                "duplicate_clusters": [],
+                "resolved_duplicates": [],
+                "quarantine": [],
+                "new_models": [],
+            },
+            [],
+        )
+
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(build_registry_module, "fetch_sources_to", fake_fetch_sources)
+    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
 
     exit_code = build_registry_module.main(
         [
-            "--snapshot-dir",
-            str(tmp_path / "snapshots"),
             "--report-md",
             str(tmp_path / "tmp" / "build" / "report.md"),
         ]
@@ -81,7 +106,7 @@ def test_build_registry_cli_writes_deterministic_outputs(tmp_path: Path, monkeyp
     assert report_md_path.read_text(encoding="utf-8").startswith("# Registry Audit Report")
 
 
-def test_build_registry_cli_fetches_into_exact_snapshot_dir(tmp_path: Path, monkeypatch) -> None:
+def test_build_registry_cli_always_fetches_latest_snapshot_dir(tmp_path: Path, monkeypatch) -> None:
     _write_minimal_curated_config(tmp_path / "registry" / "curated")
 
     captured: dict[str, Path] = {}
@@ -113,88 +138,13 @@ def test_build_registry_cli_fetches_into_exact_snapshot_dir(tmp_path: Path, monk
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(build_registry_module, "fetch_sources_to", fake_fetch_sources)
     monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
-
-    snapshot_dir = tmp_path / "tmp" / "source_snapshots" / "manual-run"
-    exit_code = build_registry_module.main(["--fetch", "--snapshot-dir", str(snapshot_dir)])
-
-    assert exit_code == 0
-    assert captured["fetched_snapshot_dir"] == snapshot_dir
-    assert captured["build_snapshot_dir"] == snapshot_dir
-
-
-def test_build_registry_cli_fetch_without_snapshot_dir_uses_latest_snapshot_dir(tmp_path: Path, monkeypatch) -> None:
-    _write_minimal_curated_config(tmp_path / "registry" / "curated")
-
-    captured: dict[str, Path] = {}
-
-    def fake_fetch_sources(snapshot_dir: Path) -> Path:
-        captured["fetched_snapshot_dir"] = snapshot_dir
-        return snapshot_dir
-
-    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
-        captured["build_snapshot_dir"] = snapshot_dir
-        return (
-            {
-                "version": 1,
-                "updated_at": "1970-01-01T00:00:00Z",
-                "providers": {},
-                "models": {},
-                "provider_models": {},
-            },
-            {
-                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
-                "duplicate_clusters": [],
-                "resolved_duplicates": [],
-                "quarantine": [],
-                "new_models": [],
-            },
-            [],
-        )
-
-    monkeypatch.chdir(tmp_path)
-    monkeypatch.setattr(build_registry_module, "fetch_sources_to", fake_fetch_sources)
-    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
-
-    exit_code = build_registry_module.main(["--fetch"])
 
     expected_snapshot_dir = tmp_path / "tmp" / "source_snapshots" / "latest"
-    assert exit_code == 0
-    assert captured["fetched_snapshot_dir"] == expected_snapshot_dir
-    assert captured["build_snapshot_dir"] == expected_snapshot_dir
-
-
-def test_build_registry_cli_defaults_to_latest_snapshot_dir_without_fetch(tmp_path: Path, monkeypatch) -> None:
-    _write_minimal_curated_config(tmp_path / "registry" / "curated")
-
-    captured: dict[str, Path] = {}
-
-    def fake_build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict, dict, list[dict]]:
-        captured["build_snapshot_dir"] = snapshot_dir
-        return (
-            {
-                "version": 1,
-                "updated_at": "1970-01-01T00:00:00Z",
-                "providers": {},
-                "models": {},
-                "provider_models": {},
-            },
-            {
-                "summary": {"duplicate_clusters": 0, "quarantine_count": 0},
-                "duplicate_clusters": [],
-                "resolved_duplicates": [],
-                "quarantine": [],
-                "new_models": [],
-            },
-            [],
-        )
-
-    monkeypatch.chdir(tmp_path)
-    monkeypatch.setattr(build_registry_module, "build_registry_artifacts", fake_build_registry_artifacts)
-
     exit_code = build_registry_module.main([])
 
     assert exit_code == 0
-    assert captured["build_snapshot_dir"] == tmp_path / "tmp" / "source_snapshots" / "latest"
+    assert captured["fetched_snapshot_dir"] == expected_snapshot_dir
+    assert captured["build_snapshot_dir"] == expected_snapshot_dir
 
 
 def test_fetch_bytes_retries_with_timeout(monkeypatch) -> None:

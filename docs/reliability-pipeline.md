@@ -1,6 +1,7 @@
 # Reliability Pipeline
 
 This registry is now built from a staged pipeline instead of directly mirroring a third-party source dump.
+Every build refreshes the published snapshot files from `ENTERPILOT/ai-model-price-list` before resolving the registry.
 
 ## Build Flow
 
@@ -16,16 +17,10 @@ This registry is now built from a staged pipeline instead of directly mirroring 
 
 ## Commands
 
-Build from an existing snapshot:
+Build the registry from the published snapshot bundle:
 
 ```bash
-python scripts/build_registry.py --snapshot-dir ../ai-model-price-list/sources --report-md tmp/build/report.md
-```
-
-Fetch a fresh snapshot and build:
-
-```bash
-python scripts/build_registry.py --fetch --report-md tmp/build/report.md
+python scripts/build_registry.py --report-md tmp/build/report.md
 ```
 
 Validate the generated registry:
@@ -47,4 +42,5 @@ python scripts/validate.py
 - `registry/curated/providers.json` is the curated provider catalog used to keep provider slugs stable.
 - `registry/curated/canonical_aliases.json` is the reviewed alias map for canonical model promotion.
 - `registry/curated/rejections.json` blocks known garbage IDs and source artifacts before resolution.
+- Source snapshots are fetched from `https://github.com/ENTERPILOT/ai-model-price-list`.
 - Validation now enforces canonical key shape, `owned_by` provider consistency, duplicate-like cluster detection, and orphan model detection.

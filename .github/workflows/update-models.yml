@@ -25,7 +25,7 @@ jobs:
         run: python -m pip install --upgrade pip jsonschema pytest
 
       - name: Build registry
-        run: python scripts/build_registry.py --fetch --report-md tmp/build/report.md
+        run: python scripts/build_registry.py --report-md tmp/build/report.md
 
       - name: Validate registry
         run: python scripts/validate.py --models models.json --schema schema.json

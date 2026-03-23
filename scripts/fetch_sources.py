@@ -6,6 +6,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+import shutil
 import time
 from typing import Iterable
 from urllib.request import Request, urlopen
@@ -18,22 +19,50 @@ class SourceDescriptor:
     filename: str
 
 
+GITHUB_SNAPSHOT_BASE_URL = "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources"
+TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
+    ("fetch-metadata", "fetch_metadata.json"),
+    ("litellm", "litellm_model_prices.json"),
+    ("llm_prices", "llm_prices_current.json"),
+    ("openrouter", "openrouter_models.json"),
+    ("pydantic-genai-prices", "pydantic_genai_prices.json"),
+)
+PORTKEY_SOURCE_FILES: tuple[str, ...] = (
+    "anthropic.json",
+    "azure-openai.json",
+    "bedrock.json",
+    "cohere.json",
+    "deepseek.json",
+    "fireworks-ai.json",
+    "google.json",
+    "groq.json",
+    "mistral-ai.json",
+    "openai.json",
+    "together-ai.json",
+)
+
+
+def _github_source_url(relative_path: str) -> str:
+    return f"{GITHUB_SNAPSHOT_BASE_URL}/{relative_path}"
+
+
 SOURCE_DESCRIPTORS: tuple[SourceDescriptor, ...] = (
-    SourceDescriptor(
-        slug="litellm",
-        url="https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-        filename="litellm_model_prices.json",
-    ),
-    SourceDescriptor(
-        slug="openrouter",
-        url="https://openrouter.ai/api/v1/models",
-        filename="openrouter_models.json",
-    ),
-    SourceDescriptor(
-        slug="llm_prices",
-        url="https://www.llm-prices.com/current-v1.json",
-        filename="llm_prices_current.json",
-    ),
+    tuple(
+        SourceDescriptor(
+            slug=slug,
+            url=_github_source_url(filename),
+            filename=filename,
+        )
+        for slug, filename in TOP_LEVEL_SOURCE_FILES
+    )
+    + tuple(
+        SourceDescriptor(
+            slug=f"portkey-{filename.removesuffix('.json')}",
+            url=_github_source_url(f"portkey/{filename}"),
+            filename=f"portkey/{filename}",
+        )
+        for filename in PORTKEY_SOURCE_FILES
+    )
 )
 
 SOURCE_URLS = {descriptor.slug: descriptor.url for descriptor in SOURCE_DESCRIPTORS}
@@ -70,10 +99,14 @@ def fetch_sources_to(
     snapshot_dir: Path,
     descriptors: Iterable[SourceDescriptor] = SOURCE_DESCRIPTORS,
 ) -> Path:
+    if snapshot_dir.exists():
+        shutil.rmtree(snapshot_dir)
     snapshot_dir.mkdir(parents=True, exist_ok=True)
 
     for descriptor in descriptors:
-        (snapshot_dir / descriptor.filename).write_bytes(_fetch_bytes(descriptor.url))
+        output_path = snapshot_dir / descriptor.filename
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_bytes(_fetch_bytes(descriptor.url))
 
     return snapshot_dir
 

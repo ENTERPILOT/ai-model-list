@@ -128,17 +128,11 @@ def build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dic
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build models.json and related artifacts")
-    parser.add_argument("--snapshot-dir", type=Path, help="Path to a source snapshot directory")
-    parser.add_argument("--fetch", action="store_true", help="Fetch a fresh snapshot before building")
     parser.add_argument("--report-md", type=Path, help="Path to write the Markdown report")
     args = parser.parse_args(argv)
 
     curated_dir = Path("registry/curated")
-    snapshot_dir = args.snapshot_dir
-    if args.fetch:
-        snapshot_dir = fetch_sources_to(snapshot_dir or _default_snapshot_dir())
-    if snapshot_dir is None:
-        snapshot_dir = _default_snapshot_dir()
+    snapshot_dir = fetch_sources_to(_default_snapshot_dir())
 
     registry, report, quarantine = build_registry_artifacts(snapshot_dir=snapshot_dir, curated_dir=curated_dir)
 
