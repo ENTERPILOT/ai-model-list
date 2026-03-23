@@ -63,6 +63,26 @@ def test_resolve_quarantines_unapproved_alias_cluster() -> None:
     assert report["quarantine"]
 
 
+def test_resolve_does_not_promote_clean_alias_from_canonical_hint_without_curated_alias() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="grok-four",
+            provider_slug="xai",
+            canonical_hint="grok-4",
+            fields={"display_name": "Grok 4", "owned_by": "xai", "modes": ["chat"]},
+            confidence="official",
+            evidence_ref="https://docs.x.ai/docs/models",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert "grok-4" not in registry["models"]
+    assert "grok-four" not in registry["models"]
+    assert report["quarantine"]
+
+
 def test_resolve_admits_clean_alias_records_via_curated_aliases() -> None:
     evidence = [
         SourceEvidence(
@@ -85,6 +105,28 @@ def test_resolve_admits_clean_alias_records_via_curated_aliases() -> None:
     assert registry["models"]["grok-4"]["display_name"] == "Grok 4"
     assert not registry["provider_models"]
     assert not report["quarantine"]
+
+
+def test_resolve_quarantines_alias_only_cluster_missing_required_model_fields() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="grok-four",
+            provider_slug="xai",
+            canonical_hint="grok-four",
+            fields={"pricing": {"currency": "USD", "input_per_mtok": 4.0, "output_per_mtok": 20.0}},
+            confidence="official",
+            evidence_ref="https://docs.x.ai/docs/models",
+        )
+    ]
+
+    registry, report = resolve_registry(
+        evidence,
+        curated={"canonical_aliases": {"grok-four": "grok-4"}},
+    )
+
+    assert "grok-4" not in registry["models"]
+    assert report["quarantine"]
 
 
 def test_resolve_routes_clean_alias_overrides_only_to_provider_models_when_exact_canonical_exists() -> None:
