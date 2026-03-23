@@ -14,7 +14,7 @@ if __package__ in {None, ""}:
 from pipeline.loaders import load_curated_config
 from pipeline.render import render_registry
 from pipeline.report import build_markdown_report, build_report
-from scripts.fetch_sources import fetch_sources
+from scripts.fetch_sources import fetch_sources_to, snapshot_path_for_run
 
 
 def build_registry(snapshot_dir: Path, curated_dir: Path) -> dict:
@@ -36,6 +36,10 @@ def _write_json(path: Path, payload: dict, *, compact: bool = False) -> None:
     path.write_text(f"{text}\n", encoding="utf-8")
 
 
+def _default_snapshot_dir() -> Path:
+    return snapshot_path_for_run(Path.cwd() / "tmp", "latest")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build models.json and related artifacts")
     parser.add_argument("--snapshot-dir", type=Path, help="Path to a source snapshot directory")
@@ -46,10 +50,9 @@ def main(argv: list[str] | None = None) -> int:
     curated_dir = Path("registry/curated")
     snapshot_dir = args.snapshot_dir
     if args.fetch:
-        base_dir = snapshot_dir.parent if snapshot_dir is not None else Path("tmp")
-        snapshot_dir = fetch_sources(base_dir)
+        snapshot_dir = fetch_sources_to(snapshot_dir or _default_snapshot_dir())
     if snapshot_dir is None:
-        snapshot_dir = Path("tmp") / "source_snapshots" / "latest"
+        snapshot_dir = _default_snapshot_dir()
 
     registry = build_registry(snapshot_dir=snapshot_dir, curated_dir=curated_dir)
     report = build_report()

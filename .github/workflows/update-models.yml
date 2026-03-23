@@ -1,4 +1,4 @@
-name: Update Model Registry
+name: Build Model Registry
 
 on:
   schedule:
@@ -21,10 +21,20 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip jsonschema
+        run: python -m pip install --upgrade pip jsonschema pytest
 
       - name: Build registry
         run: python scripts/build_registry.py --fetch --report-md tmp/build/report.md
 
       - name: Validate registry
         run: python scripts/validate.py --models models.json --schema schema.json
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: registry-build
+          path: |
+            models.json
+            models.min.json
+            tmp/build/report.json
+            tmp/build/report.md
