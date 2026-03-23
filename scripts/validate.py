@@ -7,15 +7,27 @@ Usage:
 """
 
 import argparse
+from collections import defaultdict
 import json
+import re
 import sys
 from pathlib import Path
+
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from pipeline.rules import is_canonical_model_key
 
 try:
     import jsonschema
 except ImportError:
     print("Error: jsonschema package required. Install with: pip install jsonschema", file=sys.stderr)
     sys.exit(1)
+
+
+MAX_REPORTED_DUPLICATE_CLUSTERS = 20
+MAX_REPORTED_ORPHAN_MODELS = 10
+NON_ALNUM_PATTERN = re.compile(r"[^a-z0-9]+")
 
 
 def validate(models_path: Path, schema_path: Path) -> list[str]:
@@ -68,6 +80,79 @@ def check_referential_integrity(models_path: Path) -> list[str]:
     return errors
 
 
+def check_canonical_model_keys(data: dict) -> list[str]:
+    errors = []
+    for model_key in sorted(data.get("models", {})):
+        if not is_canonical_model_key(model_key):
+            errors.append(f"  {model_key}: provider-specific model key found in models")
+    return errors
+
+
+def check_owned_by_values(data: dict) -> list[str]:
+    errors = []
+    providers = set(data.get("providers", {}))
+
+    for model_key, model_value in sorted(data.get("models", {}).items()):
+        owned_by = model_value.get("owned_by")
+        if owned_by is None:
+            continue
+        if owned_by not in providers:
+            errors.append(f"  {model_key}: owned_by '{owned_by}' not found in providers section")
+
+    return errors
+
+
+def _duplicate_like_token(model_key: str) -> str:
+    return NON_ALNUM_PATTERN.sub("", model_key.lower())
+
+
+def check_duplicate_like_clusters(data: dict) -> list[str]:
+    clusters_by_token: dict[str, list[str]] = defaultdict(list)
+    for model_key in data.get("models", {}):
+        token = _duplicate_like_token(model_key)
+        if token:
+            clusters_by_token[token].append(model_key)
+
+    clusters = [
+        sorted(cluster)
+        for cluster in clusters_by_token.values()
+        if len(cluster) > 1
+    ]
+    clusters.sort(key=lambda cluster: (-len(cluster), cluster[0]))
+
+    errors = [f"  duplicate-like cluster: {', '.join(cluster)}" for cluster in clusters[:MAX_REPORTED_DUPLICATE_CLUSTERS]]
+    remaining_clusters = len(clusters) - len(errors)
+    if remaining_clusters > 0:
+        errors.append(f"  ... and {remaining_clusters} more duplicate-like clusters")
+    return errors
+
+
+def check_orphan_model_records(data: dict) -> list[str]:
+    model_keys = sorted(data.get("models", {}))
+    referenced_models = {
+        provider_model.get("model_ref")
+        for provider_model in data.get("provider_models", {}).values()
+        if provider_model.get("model_ref")
+    }
+    orphan_models = [model_key for model_key in model_keys if model_key not in referenced_models]
+    if not orphan_models:
+        return []
+
+    sample = ", ".join(orphan_models[:MAX_REPORTED_ORPHAN_MODELS])
+    remaining_orphans = len(orphan_models) - min(len(orphan_models), MAX_REPORTED_ORPHAN_MODELS)
+    suffix = f", and {remaining_orphans} more" if remaining_orphans > 0 else ""
+    return [f"  orphan model records: {sample}{suffix}"]
+
+
+def check_registry_quality(data: dict) -> list[str]:
+    errors = []
+    errors.extend(check_canonical_model_keys(data))
+    errors.extend(check_owned_by_values(data))
+    errors.extend(check_duplicate_like_clusters(data))
+    errors.extend(check_orphan_model_records(data))
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description="Validate models.json against schema.json")
     repo_root = Path(__file__).resolve().parent.parent
@@ -85,6 +170,8 @@ def main():
         sys.exit(1)
 
     all_errors = []
+    with open(args.models) as f:
+        data = json.load(f)
 
     # Schema validation
     print(f"Validating {args.models} against {args.schema}...")
@@ -98,17 +185,24 @@ def main():
     if ref_errors:
         all_errors.extend(["Referential integrity errors:"] + ref_errors)
 
+    # Quality validation
+    print("Checking registry quality...")
+    quality_errors = check_registry_quality(data)
+    if quality_errors:
+        all_errors.extend(["Quality validation errors:"] + quality_errors)
+
     # Summary
     if all_errors:
         print()
         for line in all_errors:
             print(line, file=sys.stderr)
-        print(f"\nFAILED: {len(schema_errors)} schema error(s), {len(ref_errors)} referential integrity error(s)")
+        print(
+            f"\nFAILED: {len(schema_errors)} schema error(s), {len(ref_errors)} referential integrity error(s), "
+            f"{len(quality_errors)} quality error(s)"
+        )
         sys.exit(1)
     else:
         # Print summary stats
-        with open(args.models) as f:
-            data = json.load(f)
         n_providers = len(data.get("providers", {}))
         n_models = len(data.get("models", {}))
         n_pm = len(data.get("provider_models", {}))

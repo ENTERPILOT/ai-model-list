@@ -6,6 +6,7 @@ from scripts import build_registry as build_registry_module
 from scripts import fetch_sources as fetch_sources_module
 from scripts.build_registry import build_registry
 from scripts.fetch_sources import SOURCE_DESCRIPTORS, snapshot_path_for_run
+from scripts.validate import check_registry_quality
 
 
 def _write_minimal_curated_config(curated_dir: Path) -> None:
@@ -197,6 +198,45 @@ def test_fetch_bytes_retries_with_timeout(monkeypatch) -> None:
 
     assert payload == b"payload"
     assert attempts == [12.5, 12.5, 12.5]
+
+
+def test_check_registry_quality_rejects_provider_specific_model_ids() -> None:
+    data = {
+        "version": 1,
+        "updated_at": "2026-03-23T00:00:00Z",
+        "providers": {"bedrock": {"display_name": "AWS Bedrock"}},
+        "models": {
+            "anthropic.claude-opus-4-6-v1:0": {
+                "display_name": "Bad",
+                "modes": ["chat"],
+            }
+        },
+        "provider_models": {},
+    }
+
+    errors = check_registry_quality(data)
+
+    assert any("provider-specific model key" in error for error in errors)
+
+
+def test_check_registry_quality_rejects_unknown_owned_by() -> None:
+    data = {
+        "version": 1,
+        "updated_at": "2026-03-23T00:00:00Z",
+        "providers": {"openai": {"display_name": "OpenAI"}},
+        "models": {
+            "gpt-4o": {
+                "display_name": "GPT-4o",
+                "modes": ["chat"],
+                "owned_by": "unknown",
+            }
+        },
+        "provider_models": {},
+    }
+
+    errors = check_registry_quality(data)
+
+    assert any("owned_by" in error for error in errors)
 
 
 def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
