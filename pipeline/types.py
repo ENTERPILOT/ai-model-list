@@ -11,3 +11,4 @@ class SourceEvidence:
     fields: dict[str, Any]
     confidence: str
     evidence_ref: str
+    rejected: bool = False
