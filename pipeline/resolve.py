@@ -83,11 +83,12 @@ def resolve_registry(
         canonical_key = resolve_canonical_key(record, alias_map)
         evidence_clusters[canonical_key].append(record)
 
-        if is_canonical_evidence_for_key(record, canonical_key):
+        if is_canonical_evidence(record):
             canonical_clusters[canonical_key].append(record)
 
-        if is_provider_scoped_id(record.source_model_id):
-            provider_clusters[record.source_model_id].append(record)
+        provider_model_key = build_provider_model_key(record, canonical_key)
+        if provider_model_key is not None:
+            provider_clusters[provider_model_key].append(record)
 
     admitted_models: set[str] = set()
 
@@ -100,13 +101,13 @@ def resolve_registry(
         registry["models"][canonical_key] = build_model_record(canonical_records, policy)
         admitted_models.add(canonical_key)
 
-    for provider_model_id, records in provider_clusters.items():
+    for provider_model_key, records in provider_clusters.items():
         canonical_key = resolve_canonical_key(records[0], alias_map)
         if canonical_key not in admitted_models:
             continue
 
-        registry["provider_models"][provider_model_id] = build_provider_model_record(
-            provider_model_id,
+        registry["provider_models"][provider_model_key] = build_provider_model_record(
+            provider_model_key,
             canonical_key,
             records,
             policy,
@@ -125,7 +126,7 @@ def build_model_record(records: list[SourceEvidence], policy: dict[str, Any]) ->
 
 
 def build_provider_model_record(
-    provider_model_id: str,
+    provider_model_key: str,
     canonical_key: str,
     records: list[SourceEvidence],
     policy: dict[str, Any],
@@ -134,6 +135,9 @@ def build_provider_model_record(
         "model_ref": canonical_key,
         "enabled": True,
     }
+    retained_provider_model_id = choose_provider_model_id(provider_model_key, canonical_key, records)
+    if retained_provider_model_id is not None:
+        provider_model["provider_model_id"] = retained_provider_model_id
 
     for field_name in sorted(_collect_field_names(records) & PROVIDER_MODEL_FIELD_NAMES):
         value = choose_field_value(field_name, records, policy)
@@ -148,12 +152,28 @@ def should_admit_canonical_model(canonical_key: str, records: list[SourceEvidenc
     )
 
 
-def is_canonical_evidence_for_key(record: SourceEvidence, canonical_key: str) -> bool:
-    return record.source_model_id == canonical_key and is_canonical_model_key(record.source_model_id)
+def is_canonical_evidence(record: SourceEvidence) -> bool:
+    return is_canonical_model_key(record.source_model_id)
 
 
-def is_provider_scoped_id(model_id: str) -> bool:
-    return "/" in model_id or ":" in model_id
+def build_provider_model_key(record: SourceEvidence, canonical_key: str) -> str | None:
+    if record.provider_slug is None:
+        return None
+    if record.source_model_id == canonical_key and is_canonical_model_key(record.source_model_id):
+        return None
+    return f"{record.provider_slug}/{canonical_key}"
+
+
+def choose_provider_model_id(
+    provider_model_key: str,
+    canonical_key: str,
+    records: list[SourceEvidence],
+) -> str | None:
+    for record in records:
+        source_model_id = record.source_model_id
+        if source_model_id != canonical_key and source_model_id != provider_model_key:
+            return source_model_id
+    return None
 
 
 def resolve_canonical_key(record: SourceEvidence, alias_map: dict[str, Any]) -> str:
