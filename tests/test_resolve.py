@@ -107,6 +107,26 @@ def test_resolve_admits_clean_alias_records_via_curated_aliases() -> None:
     assert not report["quarantine"]
 
 
+def test_resolve_admits_exact_canonical_record_even_with_different_hint() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="grok-4",
+            provider_slug="xai",
+            canonical_hint="xai/grok-4",
+            fields={"display_name": "Grok 4", "owned_by": "xai", "modes": ["chat"]},
+            confidence="official",
+            evidence_ref="https://docs.x.ai/docs/models",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert "grok-4" in registry["models"]
+    assert registry["models"]["grok-4"]["display_name"] == "Grok 4"
+    assert not report["quarantine"]
+
+
 def test_resolve_quarantines_alias_only_cluster_missing_required_model_fields() -> None:
     evidence = [
         SourceEvidence(

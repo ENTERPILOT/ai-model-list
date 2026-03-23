@@ -155,7 +155,7 @@ def select_canonical_records(
     records: list[SourceEvidence],
     alias_map: dict[str, Any],
 ) -> list[SourceEvidence]:
-    exact_records = [record for record in records if is_exact_canonical_record(record, canonical_key, alias_map)]
+    exact_records = [record for record in records if is_exact_canonical_record(record, canonical_key)]
     if exact_records:
         return exact_records
     return [record for record in records if is_clean_alias_record(record, canonical_key, alias_map)]
@@ -180,12 +180,11 @@ def build_provider_clusters(
 def is_exact_canonical_record(
     record: SourceEvidence,
     canonical_key: str,
-    alias_map: dict[str, Any],
 ) -> bool:
     return (
         record.source_model_id == canonical_key
         and is_canonical_model_key(record.source_model_id)
-        and not has_unapproved_clean_alias_hint(record, alias_map)
+        and not has_unapproved_clean_alias_hint(record)
     )
 
 
@@ -202,13 +201,13 @@ def is_clean_alias_record(
     )
 
 
-def has_unapproved_clean_alias_hint(record: SourceEvidence, alias_map: dict[str, Any]) -> bool:
+def has_unapproved_clean_alias_hint(record: SourceEvidence) -> bool:
     return (
         is_canonical_model_key(record.source_model_id)
-        and record.canonical_hint not in (None, "", record.source_model_id)
-        and lookup_alias(record.source_model_id, alias_map) is None
+        and isinstance(record.canonical_hint, str)
+        and is_canonical_model_key(record.canonical_hint)
+        and record.canonical_hint != record.source_model_id
     )
-
 
 def is_provider_deployment_record(record: SourceEvidence) -> bool:
     return not is_canonical_model_key(record.source_model_id)
