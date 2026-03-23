@@ -34,6 +34,13 @@ def test_resolve_routes_provider_specific_ids_to_provider_models() -> None:
 
     assert "grok-4" in registry["models"]
     assert "xai/grok-4" in registry["provider_models"]
+    assert "pricing" not in registry["models"]["grok-4"]
+    assert registry["provider_models"]["xai/grok-4"]["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0,
+    }
+    assert "provider_model_id" not in registry["provider_models"]["xai/grok-4"]
     assert not report["quarantine"]
 
 
