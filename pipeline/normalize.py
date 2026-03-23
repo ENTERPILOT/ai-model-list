@@ -2,23 +2,14 @@
 
 from __future__ import annotations
 
-import json
-from functools import lru_cache
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+from typing import Any, Iterable, Mapping, Sequence
 
 from pipeline.types import SourceEvidence
 
 
-CURATED_REJECTIONS_PATH = Path(__file__).resolve().parents[1] / "registry" / "curated" / "rejections.json"
 USD_PER_TOKEN_TO_USD_PER_MTOK = 1_000_000
 CENTS_PER_TOKEN_TO_USD_PER_MTOK = 10_000
-
-
-@lru_cache(maxsize=1)
-def _load_rejections() -> dict[str, list[str]]:
-    with CURATED_REJECTIONS_PATH.open(encoding="utf-8") as handle:
-        return json.load(handle)
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -37,12 +28,15 @@ def split_provider_model_name(model_name: str, fallback_provider: str | None = N
     return normalize_provider_slug(fallback_provider), model_name or None
 
 
-def is_rejected_model_id(model_id: str) -> bool:
-    rejections = _load_rejections()
-    if model_id in rejections["exact_model_ids"]:
+def is_rejected_model_id(
+    model_id: str,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+) -> bool:
+    rejections = rejection_policy or {}
+    if model_id in rejections.get("exact_model_ids", ()):
         return True
 
-    return any(model_id.startswith(prefix) for prefix in rejections["prefixes"])
+    return any(model_id.startswith(prefix) for prefix in rejections.get("prefixes", ()))
 
 
 def _to_float(value: Any) -> float | None:
@@ -147,7 +141,12 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     return fields
 
 
-def normalize_litellm_entry(entry: dict[str, Any]) -> SourceEvidence:
+def normalize_litellm_entry(
+    entry: dict[str, Any],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref: str = "litellm_model_prices.json",
+) -> SourceEvidence:
     model_name = entry["model_name"]
     provider_slug, canonical_hint = split_provider_model_name(model_name, entry.get("litellm_provider"))
     return SourceEvidence(
@@ -157,24 +156,47 @@ def normalize_litellm_entry(entry: dict[str, Any]) -> SourceEvidence:
         canonical_hint=canonical_hint,
         fields=extract_supported_fields(entry),
         confidence="low",
-        evidence_ref=entry.get("source") or "litellm_model_prices.json",
-        rejected=is_rejected_model_id(model_name),
+        evidence_ref=entry.get("source") or evidence_ref,
+        rejected=is_rejected_model_id(model_name, rejection_policy),
     )
 
 
-def normalize_litellm_rows(rows: Mapping[str, Any] | Iterable[Mapping[str, Any]]) -> list[SourceEvidence]:
+def normalize_litellm_rows(
+    rows: Mapping[str, Any] | Iterable[Mapping[str, Any]],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref: str = "litellm_model_prices.json",
+) -> list[SourceEvidence]:
     if isinstance(rows, Mapping):
         entries = []
         for model_name, payload in rows.items():
             entry = dict(payload)
             entry.setdefault("model_name", model_name)
-            entries.append(normalize_litellm_entry(entry))
+            entries.append(
+                normalize_litellm_entry(
+                    entry,
+                    rejection_policy=rejection_policy,
+                    evidence_ref=evidence_ref,
+                )
+            )
         return entries
 
-    return [normalize_litellm_entry(dict(entry)) for entry in rows]
+    return [
+        normalize_litellm_entry(
+            dict(entry),
+            rejection_policy=rejection_policy,
+            evidence_ref=evidence_ref,
+        )
+        for entry in rows
+    ]
 
 
-def normalize_openrouter_rows(rows: Iterable[Mapping[str, Any]]) -> list[SourceEvidence]:
+def normalize_openrouter_rows(
+    rows: Iterable[Mapping[str, Any]],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref: str = "openrouter_models.json",
+) -> list[SourceEvidence]:
     records: list[SourceEvidence] = []
     for row in rows:
         source_model_id = row["id"]
@@ -187,14 +209,19 @@ def normalize_openrouter_rows(rows: Iterable[Mapping[str, Any]]) -> list[SourceE
                 canonical_hint=canonical_hint,
                 fields=extract_supported_fields(row),
                 confidence="low",
-                evidence_ref="openrouter_models.json",
-                rejected=is_rejected_model_id(source_model_id),
+                evidence_ref=evidence_ref,
+                rejected=is_rejected_model_id(source_model_id, rejection_policy),
             )
         )
     return records
 
 
-def normalize_llm_prices_rows(rows: Iterable[Mapping[str, Any]]) -> list[SourceEvidence]:
+def normalize_llm_prices_rows(
+    rows: Iterable[Mapping[str, Any]],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref: str = "llm_prices_current.json",
+) -> list[SourceEvidence]:
     records: list[SourceEvidence] = []
     for row in rows:
         source_model_id = row["id"]
@@ -207,18 +234,24 @@ def normalize_llm_prices_rows(rows: Iterable[Mapping[str, Any]]) -> list[SourceE
                 canonical_hint=canonical_hint,
                 fields=extract_supported_fields(row),
                 confidence="low",
-                evidence_ref="llm_prices_current.json",
-                rejected=is_rejected_model_id(source_model_id),
+                evidence_ref=evidence_ref,
+                rejected=is_rejected_model_id(source_model_id, rejection_policy),
             )
         )
     return records
 
 
-def normalize_portkey_files(files: Mapping[str, Mapping[str, Mapping[str, Any]]]) -> list[SourceEvidence]:
+def normalize_portkey_files(
+    files: Mapping[str, Mapping[str, Mapping[str, Any]]],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref_by_file: Mapping[str, str] | None = None,
+) -> list[SourceEvidence]:
     records: list[SourceEvidence] = []
+    source_refs = evidence_ref_by_file or {}
     for filename, models in files.items():
         provider_slug = normalize_provider_slug(Path(filename).stem)
-        evidence_ref = f"portkey/{Path(filename).name}"
+        evidence_ref = source_refs.get(filename, f"portkey/{Path(filename).name}")
         for model_id, payload in models.items():
             if model_id == "default":
                 continue
@@ -233,7 +266,7 @@ def normalize_portkey_files(files: Mapping[str, Mapping[str, Mapping[str, Any]]]
                     fields=extract_supported_fields(payload),
                     confidence="low",
                     evidence_ref=evidence_ref,
-                    rejected=is_rejected_model_id(model_id),
+                    rejected=is_rejected_model_id(model_id, rejection_policy),
                 )
             )
     return records

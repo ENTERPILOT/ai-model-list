@@ -16,7 +16,7 @@ def test_normalize_litellm_entry_extracts_provider_and_canonical_hint() -> None:
         "output_cost_per_token": 0.000015,
     }
 
-    record = normalize_litellm_entry(entry)
+    record = normalize_litellm_entry(entry, rejection_policy={})
 
     assert record.provider_slug == "xai"
     assert record.canonical_hint == "grok-4"
@@ -30,9 +30,33 @@ def test_normalize_litellm_entry_marks_sample_spec_as_rejected() -> None:
         "mode": "chat",
     }
 
-    record = normalize_litellm_entry(entry)
+    record = normalize_litellm_entry(
+        entry,
+        rejection_policy={
+            "exact_model_ids": ["sample_spec"],
+            "prefixes": ["1024-x-1024/"],
+        },
+    )
 
     assert record.rejected is True
+
+
+def test_normalize_litellm_rows_supports_dict_shaped_sources() -> None:
+    rows = {
+        "xai/grok-4": {
+            "litellm_provider": "xai",
+            "mode": "chat",
+            "input_cost_per_token": 0.000003,
+            "output_cost_per_token": 0.000015,
+        }
+    }
+
+    record = NORMALIZER_BY_SOURCE["litellm"](rows, rejection_policy={})[0]
+
+    assert record.source_model_id == "xai/grok-4"
+    assert record.provider_slug == "xai"
+    assert record.canonical_hint == "grok-4"
+    assert record.fields["modes"] == ["chat"]
 
 
 def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
@@ -49,10 +73,15 @@ def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
         }
     ]
 
-    record = normalize_openrouter_rows(rows)[0]
+    record = normalize_openrouter_rows(
+        rows,
+        evidence_ref="sources/openrouter/2026-03-23.json",
+        rejection_policy={},
+    )[0]
 
     assert record.provider_slug == "anthropic"
     assert record.canonical_hint == "claude-4.6-sonnet-20260217"
+    assert record.evidence_ref == "sources/openrouter/2026-03-23.json"
     assert record.fields["display_name"] == "Anthropic: Claude Sonnet 4.6"
     assert record.fields["pricing"] == {
         "currency": "USD",
@@ -74,7 +103,7 @@ def test_normalize_llm_prices_rows_normalizes_vendor_rows() -> None:
         }
     ]
 
-    record = normalize_llm_prices_rows(rows)[0]
+    record = normalize_llm_prices_rows(rows, rejection_policy={})[0]
 
     assert record.provider_slug == "anthropic"
     assert record.canonical_hint == "claude-3.7-sonnet"
@@ -108,7 +137,7 @@ def test_normalize_portkey_files_skips_default_and_converts_cents() -> None:
         }
     }
 
-    records = normalize_portkey_files(files)
+    records = normalize_portkey_files(files, rejection_policy={})
 
     assert len(records) == 1
     assert records[0].provider_slug == "anthropic"
