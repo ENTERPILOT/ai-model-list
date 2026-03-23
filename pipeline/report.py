@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Iterable
 
+MAX_MARKDOWN_SECTION_ITEMS = 10
+
 
 def build_report(
     duplicate_clusters: Iterable[Iterable[str]] = (),
@@ -43,25 +45,33 @@ def build_markdown_report(report: dict[str, Any]) -> str:
     new_models = report.get("new_models", [])
     if new_models:
         lines.extend(["", "## New Models"])
-        for model_name in new_models:
+        for model_name in new_models[:MAX_MARKDOWN_SECTION_ITEMS]:
             lines.append(f"- {model_name}")
+        if len(new_models) > MAX_MARKDOWN_SECTION_ITEMS:
+            lines.append(f"- ... and {len(new_models) - MAX_MARKDOWN_SECTION_ITEMS} more new models")
 
     duplicate_clusters = report.get("resolved_duplicates") or report.get("duplicate_clusters", [])
     if duplicate_clusters:
         lines.extend(["", "## Duplicate Clusters"])
-        for cluster in duplicate_clusters:
+        for cluster in duplicate_clusters[:MAX_MARKDOWN_SECTION_ITEMS]:
             lines.append(f"- {', '.join(cluster)}")
+        if len(duplicate_clusters) > MAX_MARKDOWN_SECTION_ITEMS:
+            remaining = len(duplicate_clusters) - MAX_MARKDOWN_SECTION_ITEMS
+            lines.append(f"- ... and {remaining} more duplicate clusters")
 
     quarantine = report.get("quarantine", [])
     if quarantine:
         lines.extend(["", "## Quarantine"])
-        for entry in quarantine:
+        for entry in quarantine[:MAX_MARKDOWN_SECTION_ITEMS]:
             source_model_id = entry.get("source_model_id", "")
             reason = entry.get("reason", "")
             if reason:
                 lines.append(f"- {source_model_id}: {reason}")
             else:
                 lines.append(f"- {source_model_id}")
+        if len(quarantine) > MAX_MARKDOWN_SECTION_ITEMS:
+            remaining = len(quarantine) - MAX_MARKDOWN_SECTION_ITEMS
+            lines.append(f"- ... and {remaining} more quarantine entries")
 
     source_freshness = report.get("source_freshness")
     if source_freshness:

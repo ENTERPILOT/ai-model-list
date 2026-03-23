@@ -146,3 +146,21 @@ def test_build_markdown_report_lists_new_models() -> None:
     assert "## New Models" in markdown
     assert "gpt-5" in markdown
     assert "o3" in markdown
+
+
+def test_build_markdown_report_truncates_large_quarantine_section() -> None:
+    markdown = build_markdown_report(
+        build_report(
+            duplicate_clusters=[],
+            quarantine=[
+                {"source_model_id": f"model-{index}", "reason": "rejected"}
+                for index in range(12)
+            ],
+        )
+    )
+
+    assert "model-0" in markdown
+    assert "model-9" in markdown
+    assert "model-10" not in markdown
+    assert "model-11" not in markdown
+    assert "... and 2 more quarantine entries" in markdown
