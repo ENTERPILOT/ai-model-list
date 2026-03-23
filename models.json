@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-03-22T07:09:02Z",
+  "updated_at": "2026-03-23T07:40:03Z",
   "providers": {
     "openai": {
       "display_name": "OpenAI",
@@ -41671,6 +41671,172 @@
       },
       "context_window": 256000,
       "max_output_tokens": 128000
+    },
+    "v1.1": {
+      "display_name": "V1.1",
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.052
+      }
+    },
+    "dev": {
+      "display_name": "Dev",
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://docs.aimlapi.com/",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.033
+      }
+    },
+    "best": {
+      "display_name": "Best",
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 3.333e-05
+      }
+    },
+    "nano": {
+      "display_name": "Nano",
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.00010278
+      }
+    },
+    "base": {
+      "display_name": "Base",
+      "modes": [
+        "audio_transcription"
+      ],
+      "source_url": "https://deepgram.com/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.00020833
+      }
+    },
+    "nova": {
+      "display_name": "Nova",
+      "modes": [
+        "audio_transcription"
+      ],
+      "source_url": "https://deepgram.com/pricing",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 7.167e-05
+      }
+    },
+    "3.2": {
+      "display_name": "3.2",
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.0398
+      }
+    },
+    "v3": {
+      "display_name": "V3",
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.06
+      }
+    },
+    "fast": {
+      "display_name": "Fast",
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.02
+      }
+    },
+    "auto": {
+      "display_name": "Auto",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "audio_input": true,
+        "video_input": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000
+    },
+    "free": {
+      "display_name": "Free",
+      "modes": [
+        "chat"
+      ],
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "capabilities": {
+        "function_calling": true,
+        "vision": true,
+        "response_schema": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 200000
+    },
+    "sd3": {
+      "display_name": "Sd3",
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.065
+      }
+    },
+    "": {
+      "display_name": "",
+      "modes": [
+        "embedding"
+      ],
+      "context_window": 40960,
+      "max_output_tokens": 40960,
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1
+      }
     }
   },
   "provider_models": {
