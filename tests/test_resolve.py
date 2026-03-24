@@ -418,6 +418,70 @@ def test_resolve_admits_clean_provider_prefixed_record_without_curated_alias() -
     assert not report["quarantine"]
 
 
+def test_resolve_admits_openrouter_record_with_stable_nested_id() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="qwen/qwen3.5-9b",
+            provider_slug="openrouter",
+            canonical_hint="qwen3.5-9b",
+            fields={
+                "display_name": "Qwen: Qwen3.5-9B",
+                "modes": ["chat"],
+                "modalities": {"input": ["text", "image", "video"], "output": ["text"]},
+                "pricing": {"currency": "USD", "input_per_mtok": 0.05, "output_per_mtok": 0.15},
+            },
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["qwen3.5-9b"]["aliases"] == [
+        "qwen/qwen3.5-9b",
+        "openrouter/qwen/qwen3.5-9b",
+    ]
+    assert registry["provider_models"]["openrouter/qwen/qwen3.5-9b"] == {
+        "enabled": True,
+        "model_ref": "qwen3.5-9b",
+        "pricing": {"currency": "USD", "input_per_mtok": 0.05, "output_per_mtok": 0.15},
+    }
+    assert not report["quarantine"]
+
+
+def test_resolve_admits_openrouter_record_with_free_tier_suffix() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="qwen/qwen3-4b:free",
+            provider_slug="openrouter",
+            canonical_hint="qwen3-4b",
+            fields={
+                "display_name": "Qwen: Qwen3 4B (free)",
+                "modes": ["chat"],
+                "modalities": {"input": ["text"], "output": ["text"]},
+                "pricing": {"currency": "USD", "input_per_mtok": 0.0, "output_per_mtok": 0.0},
+            },
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["qwen3-4b"]["aliases"] == [
+        "qwen/qwen3-4b:free",
+        "openrouter/qwen/qwen3-4b:free",
+    ]
+    assert registry["provider_models"]["openrouter/qwen/qwen3-4b:free"] == {
+        "enabled": True,
+        "model_ref": "qwen3-4b",
+        "pricing": {"currency": "USD", "input_per_mtok": 0.0, "output_per_mtok": 0.0},
+    }
+    assert not report["quarantine"]
+
+
 def test_resolve_merges_pricing_components_across_authorities() -> None:
     evidence = [
         SourceEvidence(

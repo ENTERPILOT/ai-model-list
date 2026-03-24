@@ -44,6 +44,14 @@
         "azure/azure_ai/FLUX-1.1-pro"
       ],
       "display_name": "Flux 1 1 Pro",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -59,6 +67,14 @@
         "azure/azure_ai/FLUX.1-Kontext-pro"
       ],
       "display_name": "Flux 1 Kontext Pro",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -514,6 +530,35 @@
         "output_per_mtok": 1.4
       }
     },
+    "aion-2.0": {
+      "aliases": [
+        "aion-labs/aion-2.0",
+        "openrouter/aion-labs/aion-2.0"
+      ],
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_window": 131072,
+      "display_name": "AionLabs: Aion-2.0",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 1.6
+      }
+    },
     "aion-rp-llama-3.1-8b": {
       "aliases": [
         "aion-labs/aion-rp-llama-3.1-8b",
@@ -664,8 +709,18 @@
         "openai/chatgpt-image-latest"
       ],
       "display_name": "Chatgpt Image Latest",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
-        "image_generation"
+        "image_generation",
+        "image_edit"
       ],
       "pricing": {
         "cached_input_image_per_mtok": 2.0,
@@ -682,6 +737,14 @@
         "vertex_ai/chirp"
       ],
       "display_name": "Chirp",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -818,6 +881,11 @@
       },
       "context_window": 200000,
       "display_name": "Claude 3 7 Sonnet",
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -832,12 +900,8 @@
     },
     "claude-3-7-sonnet-20250219": {
       "aliases": [
-        "anthropic/claude-3.7-sonnet",
         "bedrock/claude-3-7-sonnet-20250219",
-        "anthropic/claude-3-7-sonnet-20250219",
-        "anthropic/claude-3.7-sonnet:thinking",
-        "openrouter/anthropic/claude-3.7-sonnet",
-        "openrouter/anthropic/claude-3.7-sonnet:thinking"
+        "anthropic/claude-3-7-sonnet-20250219"
       ],
       "capabilities": {
         "computer_use": true,
@@ -853,15 +917,6 @@
       "context_window": 200000,
       "display_name": "Claude 3 7 Sonnet 20250219",
       "max_output_tokens": 64000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -914,11 +969,7 @@
       "display_name": "Claude Haiku 3",
       "modalities": {
         "input": [
-          "text",
           "image"
-        ],
-        "output": [
-          "text"
         ]
       },
       "modes": [
@@ -1198,6 +1249,15 @@
       "description": "Fastest and most intelligent Haiku model",
       "display_name": "Claude Haiku 4.5",
       "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1234,6 +1294,11 @@
       "context_window": 200000,
       "description": "Most intelligent model for complex tasks",
       "display_name": "Claude Opus 4",
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1273,6 +1338,11 @@
       "description": "Most intelligent model for complex tasks",
       "display_name": "Claude Opus 4.1",
       "max_output_tokens": 32000,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1312,6 +1382,15 @@
       "description": "Premium model combining maximum intelligence with practical performance",
       "display_name": "Claude Opus 4.5",
       "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1352,6 +1431,15 @@
       "description": "Our most intelligent model for building agents and coding",
       "display_name": "Claude Opus 4.6",
       "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1400,6 +1488,11 @@
       "context_window": 200000,
       "description": "Optimal balance of intelligence, cost, and speed",
       "display_name": "Claude Sonnet 4",
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1439,6 +1532,11 @@
       "description": "Our best combination of speed and intelligence",
       "display_name": "Claude Sonnet 4.5",
       "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1488,6 +1586,15 @@
       "description": "Our best combination of speed and intelligence",
       "display_name": "Claude Sonnet 4.6",
       "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -1820,6 +1927,35 @@
         "output_per_mtok": 6.0
       }
     },
+    "cogito-v2.1-671b": {
+      "aliases": [
+        "deepcogito/cogito-v2.1-671b",
+        "openrouter/deepcogito/cogito-v2.1-671b"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 128000,
+      "display_name": "Deep Cogito: Cogito v2.1 671B",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 1.25
+      }
+    },
     "cohere-rerank-v3-english": {
       "aliases": [
         "azure_ai/cohere-rerank-v3-english",
@@ -1927,10 +2063,23 @@
     },
     "command-a": {
       "aliases": [
-        "cohere/command-a"
+        "cohere/command-a",
+        "openrouter/cohere/command-a"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "description": "Command A is an open-weights 111B parameter model with a 256k context window focused on delivering great performance across agentic, multilingual, and coding use cases.\nCompared to other leading proprietary and open-weights models Command A delivers maximum performance with minimum hardware costs, excelling on business-critical agentic and multilingual tasks.",
       "display_name": "Command A",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -2148,7 +2297,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "currency": "USD",
@@ -2218,8 +2368,18 @@
         "openai/dall-e-2"
       ],
       "display_name": "Dall E 2",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
-        "image_generation"
+        "image_generation",
+        "image_edit"
       ],
       "pricing": {
         "currency": "USD",
@@ -2268,6 +2428,14 @@
         "openai/dall-e-3"
       ],
       "display_name": "Dall E 3",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -2428,6 +2596,14 @@
       "description": "DeepSeek-V3 is the latest model from the DeepSeek team, building upon the instruction following and coding abilities of the previous versions. Pre-trained on nearly 15 trillion tokens, the reported evaluations reveal that the model outperforms other open-source models and rivals leading closed-source models.",
       "display_name": "DeepSeek Chat",
       "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -2835,13 +3011,22 @@
       "context_window": 163840,
       "display_name": "Deepseek v3 2",
       "max_output_tokens": 163840,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.58,
-        "output_per_mtok": 1.68
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.38
       },
       "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
     },
@@ -2878,7 +3063,9 @@
     "deepseek-v3.2-speciale": {
       "aliases": [
         "azure_ai/deepseek-v3.2-speciale",
-        "azure/azure_ai/deepseek-v3.2-speciale"
+        "deepseek/deepseek-v3.2-speciale",
+        "azure/azure_ai/deepseek-v3.2-speciale",
+        "openrouter/deepseek/deepseek-v3.2-speciale"
       ],
       "capabilities": {
         "function_calling": true,
@@ -2889,13 +3076,22 @@
       "context_window": 163840,
       "display_name": "Deepseek v3 2 Speciale",
       "max_output_tokens": 163840,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 0.58,
-        "output_per_mtok": 1.68
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.2
       },
       "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
     },
@@ -2968,18 +3164,19 @@
       },
       "source_url": "https://mistral.ai/news/devstral-2-vibe-cli"
     },
-    "devstral-medium-2507": {
+    "devstral-medium": {
       "aliases": [
         "mistralai/devstral-medium",
-        "mistral/devstral-medium-2507",
         "openrouter/mistralai/devstral-medium"
       ],
       "capabilities": {
         "function_calling": true,
         "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Devstral Medium 2507",
+      "context_window": 131072,
+      "display_name": "Mistral: Devstral Medium",
       "modalities": {
         "input": [
           "text"
@@ -2988,6 +3185,26 @@
           "text"
         ]
       },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      }
+    },
+    "devstral-medium-2507": {
+      "aliases": [
+        "mistral/devstral-medium-2507"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "display_name": "Devstral Medium 2507",
       "modes": [
         "chat"
       ],
@@ -3020,10 +3237,26 @@
     },
     "devstral-small": {
       "aliases": [
-        "mistral/devstral-small"
+        "mistral/devstral-small",
+        "mistralai/devstral-small",
+        "openrouter/mistralai/devstral-small"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
       "description": "Devstral-Small-2505 is a 24B parameter agentic LLM fine-tuned from Mistral-Small-3.1, jointly developed by Mistral AI and All Hands AI for advanced software engineering tasks. It is optimized for codebase exploration, multi-file editing, and integration into coding agents, achieving state-of-the-art results on SWE-Bench Verified (46.8%).",
       "display_name": "Devstral Small",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -3058,9 +3291,7 @@
     },
     "devstral-small-2507": {
       "aliases": [
-        "mistralai/devstral-small",
-        "mistral/devstral-small-2507",
-        "openrouter/mistralai/devstral-small"
+        "mistral/devstral-small-2507"
       ],
       "capabilities": {
         "function_calling": true,
@@ -3068,14 +3299,6 @@
         "tool_choice": true
       },
       "display_name": "Devstral Small 2507",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -3161,6 +3384,11 @@
       "context_window": 1024,
       "display_name": "Embed English v3 0",
       "max_output_tokens": 1024,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "embedding"
       ],
@@ -3376,8 +3604,8 @@
       "max_output_tokens": 16000,
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -3398,6 +3626,14 @@
         "azure/azure_ai/flux.2-pro"
       ],
       "display_name": "Flux 2 Pro",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -3846,13 +4082,9 @@
       "max_videos_per_request": 10,
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
+          "text"
         ],
         "output": [
-          "text",
           "image"
         ]
       },
@@ -4047,7 +4279,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 1.0,
@@ -4079,7 +4312,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 1.0,
@@ -4111,7 +4345,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 1.0,
@@ -4195,6 +4430,14 @@
         "gemini/gemini-2.5-flash-preview-tts"
       ],
       "display_name": "Gemini 2 5 Flash Preview TTS",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -4270,9 +4513,44 @@
       },
       "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
     },
-    "gemini-2.5-pro-preview-03-25": {
+    "gemini-2.5-pro-preview": {
       "aliases": [
-        "gemini/gemini-2.5-pro-preview-03-25",
+        "google/gemini-2.5-pro-preview",
+        "openrouter/google/gemini-2.5-pro-preview"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Google: Gemini 2.5 Pro Preview 06-05",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      }
+    },
+    "gemini-2.5-pro-preview-05-06": {
+      "aliases": [
         "google/gemini-2.5-pro-preview-05-06",
         "openrouter/google/gemini-2.5-pro-preview-05-06"
       ],
@@ -4283,7 +4561,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Gemini 2.5 Pro Preview ≤200k",
+      "context_window": 1048576,
+      "display_name": "Google: Gemini 2.5 Pro Preview 05-06",
+      "max_output_tokens": 65535,
       "modalities": {
         "input": [
           "text",
@@ -4299,6 +4579,8 @@
         "chat"
       ],
       "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.125,
         "currency": "USD",
         "input_per_mtok": 1.25,
         "output_per_mtok": 10.0
@@ -4415,7 +4697,9 @@
     "gemini-3-pro-image-preview": {
       "aliases": [
         "gemini/gemini-3-pro-image-preview",
-        "vertex_ai/gemini-3-pro-image-preview"
+        "google/gemini-3-pro-image-preview",
+        "vertex_ai/gemini-3-pro-image-preview",
+        "openrouter/google/gemini-3-pro-image-preview"
       ],
       "capabilities": {
         "prompt_caching": true,
@@ -4430,11 +4714,9 @@
       "max_output_tokens": 32768,
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
-          "text",
           "image"
         ]
       },
@@ -4520,7 +4802,9 @@
     "gemini-3.1-flash-image-preview": {
       "aliases": [
         "gemini/gemini-3.1-flash-image-preview",
-        "vertex_ai/gemini-3.1-flash-image-preview"
+        "google/gemini-3.1-flash-image-preview",
+        "vertex_ai/gemini-3.1-flash-image-preview",
+        "openrouter/google/gemini-3.1-flash-image-preview"
       ],
       "capabilities": {
         "prompt_caching": true,
@@ -4535,11 +4819,9 @@
       "max_output_tokens": 32768,
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
-          "text",
           "image"
         ]
       },
@@ -4559,7 +4841,9 @@
     "gemini-3.1-flash-lite-preview": {
       "aliases": [
         "gemini/gemini-3.1-flash-lite-preview",
-        "vertex_ai/gemini-3.1-flash-lite-preview"
+        "google/gemini-3.1-flash-lite-preview",
+        "vertex_ai/gemini-3.1-flash-lite-preview",
+        "openrouter/google/gemini-3.1-flash-lite-preview"
       ],
       "capabilities": {
         "audio_input": true,
@@ -4646,7 +4930,8 @@
           "video"
         ],
         "output": [
-          "text"
+          "text",
+          "image"
         ]
       },
       "modes": [
@@ -4677,7 +4962,9 @@
     "gemini-3.1-pro-preview-customtools": {
       "aliases": [
         "gemini/gemini-3.1-pro-preview-customtools",
-        "vertex_ai/gemini-3.1-pro-preview-customtools"
+        "google/gemini-3.1-pro-preview-customtools",
+        "vertex_ai/gemini-3.1-pro-preview-customtools",
+        "openrouter/google/gemini-3.1-pro-preview-customtools"
       ],
       "capabilities": {
         "audio_input": true,
@@ -4708,7 +4995,8 @@
           "video"
         ],
         "output": [
-          "text"
+          "text",
+          "image"
         ]
       },
       "modes": [
@@ -4763,6 +5051,11 @@
       "context_window": 8192,
       "display_name": "Gemini Embedding 2 Preview",
       "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "embedding"
       ],
@@ -5242,8 +5535,8 @@
         "input": [
           "text",
           "image",
-          "video",
-          "audio"
+          "audio",
+          "video"
         ],
         "output": [
           "text"
@@ -5379,11 +5672,7 @@
       "display_name": "Gemma 3 27B Instruct",
       "modalities": {
         "input": [
-          "text",
           "image"
-        ],
-        "output": [
-          "text"
         ]
       },
       "modes": [
@@ -5440,6 +5729,35 @@
       ],
       "owned_by": "gemini"
     },
+    "gemma-3n-e2b-it": {
+      "aliases": [
+        "google/gemma-3n-e2b-it:free",
+        "openrouter/google/gemma-3n-e2b-it:free"
+      ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 8192,
+      "display_name": "Google: Gemma 3n 2B (free)",
+      "max_output_tokens": 2048,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "gemma-3n-e4b-it": {
       "aliases": [
         "google/gemma-3n-e4b-it",
@@ -5453,6 +5771,7 @@
       },
       "context_window": 32768,
       "display_name": "Google: Gemma 3n 4B",
+      "max_output_tokens": 2048,
       "modalities": {
         "input": [
           "text"
@@ -5502,6 +5821,34 @@
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.2
+      }
+    },
+    "glm-4-32b": {
+      "aliases": [
+        "z-ai/glm-4-32b",
+        "openrouter/z-ai/glm-4-32b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "Z.ai: GLM 4 32B ",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
       }
     },
     "glm-4.5": {
@@ -5638,6 +5985,105 @@
         "output_per_mtok": 1.9
       }
     },
+    "glm-4.6v": {
+      "aliases": [
+        "z-ai/glm-4.6v",
+        "openrouter/z-ai/glm-4.6v"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Z.ai: GLM 4.6V",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 0.9
+      }
+    },
+    "glm-4.7": {
+      "aliases": [
+        "z-ai/glm-4.7",
+        "openrouter/z-ai/glm-4.7"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 202752,
+      "display_name": "Z.ai: GLM 4.7",
+      "max_output_tokens": 65535,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.195,
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 1.75
+      }
+    },
+    "glm-4.7-flash": {
+      "aliases": [
+        "z-ai/glm-4.7-flash",
+        "openrouter/z-ai/glm-4.7-flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 202752,
+      "display_name": "Z.ai: GLM 4.7 Flash",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0100000002,
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.4
+      }
+    },
     "glm-4p7": {
       "aliases": [
         "fireworks/glm-4p7",
@@ -5664,6 +6110,71 @@
         "output_per_mtok": 2.2
       },
       "source_url": "https://fireworks.ai/models/fireworks/glm-4p7"
+    },
+    "glm-5": {
+      "aliases": [
+        "z-ai/glm-5",
+        "openrouter/z-ai/glm-5"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 80000,
+      "display_name": "Z.ai: GLM 5",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.72,
+        "output_per_mtok": 2.3
+      }
+    },
+    "glm-5-turbo": {
+      "aliases": [
+        "z-ai/glm-5-turbo",
+        "openrouter/z-ai/glm-5-turbo"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 202752,
+      "display_name": "Z.ai: GLM 5 Turbo",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.24,
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 4.0
+      }
     },
     "goliath-120b": {
       "aliases": [
@@ -6334,10 +6845,8 @@
     },
     "gpt-4.1-2025-04-14": {
       "aliases": [
-        "openai/gpt-4.1",
         "azure/gpt-4.1-2025-04-14",
-        "openai/gpt-4.1-2025-04-14",
-        "openrouter/openai/gpt-4.1"
+        "openai/gpt-4.1-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -6363,7 +6872,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -6419,10 +6929,8 @@
     },
     "gpt-4.1-mini-2025-04-14": {
       "aliases": [
-        "openai/gpt-4.1-mini",
         "azure/gpt-4.1-mini-2025-04-14",
-        "openai/gpt-4.1-mini-2025-04-14",
-        "openrouter/openai/gpt-4.1-mini"
+        "openai/gpt-4.1-mini-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -6448,7 +6956,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -6503,10 +7012,8 @@
     },
     "gpt-4.1-nano-2025-04-14": {
       "aliases": [
-        "openai/gpt-4.1-nano",
         "azure/gpt-4.1-nano-2025-04-14",
-        "openai/gpt-4.1-nano-2025-04-14",
-        "openrouter/openai/gpt-4.1-nano"
+        "openai/gpt-4.1-nano-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -6531,7 +7038,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -6750,8 +7258,8 @@
       "max_output_tokens": 16384,
       "modalities": {
         "input": [
-          "audio",
-          "text"
+          "text",
+          "audio"
         ],
         "output": [
           "text",
@@ -7064,7 +7572,8 @@
     "gpt-4o-mini-search-preview": {
       "aliases": [
         "azure/gpt-4o-mini-search-preview",
-        "openai/gpt-4o-mini-search-preview"
+        "openai/gpt-4o-mini-search-preview",
+        "openrouter/openai/gpt-4o-mini-search-preview"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7079,36 +7588,6 @@
       },
       "context_window": 128000,
       "display_name": "GPT 4o Mini Search Preview",
-      "max_output_tokens": 16384,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.075,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      }
-    },
-    "gpt-4o-mini-search-preview-2025-03-11": {
-      "aliases": [
-        "openai/gpt-4o-mini-search-preview",
-        "azure/gpt-4o-mini-search-preview-2025-03-11",
-        "openai/gpt-4o-mini-search-preview-2025-03-11",
-        "openrouter/openai/gpt-4o-mini-search-preview"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "parallel_function_calling": true,
-        "pdf_input": true,
-        "prompt_caching": true,
-        "response_schema": true,
-        "system_messages": true,
-        "tool_choice": true,
-        "vision": true
-      },
-      "context_window": 128000,
-      "display_name": "GPT 4o Mini Search Preview 2025 03 11",
       "max_output_tokens": 16384,
       "modalities": {
         "input": [
@@ -7128,6 +7607,34 @@
         "output_per_mtok": 0.6
       }
     },
+    "gpt-4o-mini-search-preview-2025-03-11": {
+      "aliases": [
+        "azure/gpt-4o-mini-search-preview-2025-03-11",
+        "openai/gpt-4o-mini-search-preview-2025-03-11"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "response_schema": true,
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 128000,
+      "display_name": "GPT 4o Mini Search Preview 2025 03 11",
+      "max_output_tokens": 16384,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      }
+    },
     "gpt-4o-mini-transcribe": {
       "aliases": [
         "azure/gpt-4o-mini-transcribe",
@@ -7136,6 +7643,14 @@
       "context_window": 16000,
       "display_name": "GPT 4o Mini Transcribe",
       "max_output_tokens": 2000,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -7154,6 +7669,14 @@
       "context_window": 16000,
       "display_name": "GPT 4o Mini Transcribe 2025 03 20",
       "max_output_tokens": 2000,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -7171,6 +7694,14 @@
       "context_window": 16000,
       "display_name": "GPT 4o Mini Transcribe 2025 12 15",
       "max_output_tokens": 2000,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -7189,8 +7720,7 @@
       "display_name": "GPT 4o Mini TTS",
       "modalities": {
         "input": [
-          "text",
-          "audio"
+          "text"
         ],
         "output": [
           "audio"
@@ -7387,7 +7917,8 @@
         "gpt-4o-search-preview-2025-03-11",
         "azure/gpt-4o-search-preview",
         "openai/gpt-4o-search-preview",
-        "openai/gpt-4o-search-preview-2025-03-11"
+        "openai/gpt-4o-search-preview-2025-03-11",
+        "openrouter/openai/gpt-4o-search-preview"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7404,6 +7935,14 @@
       "description": "GPT-4o Search Previewis a specialized model for web search in Chat Completions. It is trained to understand and execute web search queries.",
       "display_name": "GPT-4o Search Preview",
       "max_output_tokens": 16384,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -7417,10 +7956,8 @@
     },
     "gpt-4o-search-preview-2025-03-11": {
       "aliases": [
-        "openai/gpt-4o-search-preview",
         "azure/gpt-4o-search-preview-2025-03-11",
-        "openai/gpt-4o-search-preview-2025-03-11",
-        "openrouter/openai/gpt-4o-search-preview"
+        "openai/gpt-4o-search-preview-2025-03-11"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7435,14 +7972,6 @@
       "context_window": 128000,
       "display_name": "GPT 4o Search Preview 2025 03 11",
       "max_output_tokens": 16384,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -7463,6 +7992,14 @@
       "context_window": 16000,
       "display_name": "GPT 4o Transcribe",
       "max_output_tokens": 2000,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -7482,6 +8019,14 @@
       "context_window": 16000,
       "display_name": "GPT 4o Transcribe Diarize",
       "max_output_tokens": 2000,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -7568,10 +8113,8 @@
     },
     "gpt-5-2025-08-07": {
       "aliases": [
-        "openai/gpt-5",
         "azure/gpt-5-2025-08-07",
-        "openai/gpt-5-2025-08-07",
-        "openrouter/openai/gpt-5"
+        "openai/gpt-5-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7598,7 +8141,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -7635,7 +8179,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.125,
@@ -7671,7 +8216,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -7736,12 +8282,12 @@
       "display_name": "GPT 5 Image",
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
-          "image",
-          "text"
+          "text",
+          "image"
         ]
       },
       "modes": [
@@ -7770,12 +8316,12 @@
       "display_name": "GPT 5 Image Mini",
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
-          "image",
-          "text"
+          "text",
+          "image"
         ]
       },
       "modes": [
@@ -7836,10 +8382,8 @@
     },
     "gpt-5-mini-2025-08-07": {
       "aliases": [
-        "openai/gpt-5-mini",
         "azure/gpt-5-mini-2025-08-07",
-        "openai/gpt-5-mini-2025-08-07",
-        "openrouter/openai/gpt-5-mini"
+        "openai/gpt-5-mini-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7866,7 +8410,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -7921,10 +8466,8 @@
     },
     "gpt-5-nano-2025-08-07": {
       "aliases": [
-        "openai/gpt-5-nano",
         "azure/gpt-5-nano-2025-08-07",
-        "openai/gpt-5-nano-2025-08-07",
-        "openrouter/openai/gpt-5-nano"
+        "openai/gpt-5-nano-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7951,7 +8494,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -7966,7 +8510,8 @@
         "gpt-5-pro-2025-10-06",
         "azure/gpt-5-pro",
         "openai/gpt-5-pro",
-        "openai/gpt-5-pro-2025-10-06"
+        "openai/gpt-5-pro-2025-10-06",
+        "openrouter/openai/gpt-5-pro"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8007,10 +8552,8 @@
     },
     "gpt-5-pro-2025-10-06": {
       "aliases": [
-        "openai/gpt-5-pro",
         "azure/gpt-5-pro-2025-10-06",
-        "openai/gpt-5-pro-2025-10-06",
-        "openrouter/openai/gpt-5-pro"
+        "openai/gpt-5-pro-2025-10-06"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8132,7 +8675,8 @@
         "openai/gpt-5-1-2025-11-13",
         "openai/gpt-5.1-2025-11-13",
         "openai/gpt-5-1-chat-latest",
-        "openai/gpt-5.1-chat-latest"
+        "openai/gpt-5.1-chat-latest",
+        "openrouter/openai/gpt-5.1"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8203,7 +8747,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8215,7 +8760,9 @@
     },
     "gpt-5.1-chat": {
       "aliases": [
-        "azure/gpt-5.1-chat"
+        "azure/gpt-5.1-chat",
+        "openai/gpt-5.1-chat",
+        "openrouter/openai/gpt-5.1-chat"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8242,7 +8789,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.125,
@@ -8277,7 +8825,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.125,
@@ -8314,7 +8863,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8327,7 +8877,8 @@
     "gpt-5.1-codex": {
       "aliases": [
         "azure/gpt-5.1-codex",
-        "openai/gpt-5.1-codex"
+        "openai/gpt-5.1-codex",
+        "openrouter/openai/gpt-5.1-codex"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8443,7 +8994,8 @@
     "gpt-5.1-codex-mini": {
       "aliases": [
         "azure/gpt-5.1-codex-mini",
-        "openai/gpt-5.1-codex-mini"
+        "openai/gpt-5.1-codex-mini",
+        "openrouter/openai/gpt-5.1-codex-mini"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8608,7 +9160,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8648,7 +9201,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.175,
@@ -8686,7 +9240,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.175,
@@ -8725,7 +9280,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8862,7 +9418,9 @@
     },
     "gpt-5.3-chat": {
       "aliases": [
-        "azure/gpt-5.3-chat"
+        "azure/gpt-5.3-chat",
+        "openai/gpt-5.3-chat",
+        "openrouter/openai/gpt-5.3-chat"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8886,7 +9444,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8925,7 +9484,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -8940,7 +9500,8 @@
         "gpt-5-3-codex",
         "azure/gpt-5.3-codex",
         "openai/gpt-5-3-codex",
-        "openai/gpt-5.3-codex"
+        "openai/gpt-5.3-codex",
+        "openrouter/openai/gpt-5.3-codex"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8987,7 +9548,8 @@
         "openai/gpt-5-4",
         "openai/gpt-5.4",
         "openai/gpt-5-4-2026-03-05",
-        "openai/gpt-5.4-2026-03-05"
+        "openai/gpt-5.4-2026-03-05",
+        "openrouter/openai/gpt-5.4"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9065,7 +9627,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -9095,7 +9658,8 @@
         "openai/gpt-5-4-mini",
         "openai/gpt-5.4-mini",
         "openai/gpt-5-4-mini-2026-03-17",
-        "openai/gpt-5.4-mini-2026-03-17"
+        "openai/gpt-5.4-mini-2026-03-17",
+        "openrouter/openai/gpt-5.4-mini"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9142,7 +9706,8 @@
         "openai/gpt-5-4-nano",
         "openai/gpt-5.4-nano",
         "openai/gpt-5-4-nano-2026-03-17",
-        "openai/gpt-5.4-nano-2026-03-17"
+        "openai/gpt-5.4-nano-2026-03-17",
+        "openrouter/openai/gpt-5.4-nano"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9189,7 +9754,8 @@
         "openai/gpt-5-4-pro",
         "openai/gpt-5.4-pro",
         "openai/gpt-5-4-pro-2026-03-05",
-        "openai/gpt-5.4-pro-2026-03-05"
+        "openai/gpt-5.4-pro-2026-03-05",
+        "openrouter/openai/gpt-5.4-pro"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9316,7 +9882,9 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -9425,7 +9993,9 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -9464,7 +10034,9 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 1.0,
@@ -9501,7 +10073,9 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 10.0,
@@ -9538,7 +10112,9 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 10.0,
@@ -9555,8 +10131,18 @@
         "openai/gpt-image-1"
       ],
       "display_name": "GPT Image 1",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
-        "image_generation"
+        "image_generation",
+        "image_edit"
       ],
       "pricing": {
         "cached_input_image_per_mtok": 2.5,
@@ -9648,8 +10234,18 @@
         "openai/gpt-image-1-mini"
       ],
       "display_name": "GPT Image 1 Mini",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
-        "image_generation"
+        "image_generation",
+        "image_edit"
       ],
       "pricing": {
         "cached_input_image_per_mtok": 0.25,
@@ -9671,6 +10267,15 @@
         "vision": true
       },
       "display_name": "GPT Image 1 5",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -9769,6 +10374,15 @@
         "vision": true
       },
       "display_name": "GPT Image 1 5 2025 12 16",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -10090,7 +10704,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -10131,7 +10746,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -10171,7 +10787,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -10252,7 +10869,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 10.0,
@@ -10293,7 +10911,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "realtime"
       ],
       "pricing": {
         "audio_input_per_mtok": 10.0,
@@ -10407,6 +11026,11 @@
       "context_window": 32768,
       "display_name": "Grok 2 Vision",
       "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -10430,6 +11054,11 @@
       "context_window": 32768,
       "display_name": "Grok 2 Vision 1212",
       "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -10453,6 +11082,11 @@
       "context_window": 32768,
       "display_name": "Grok 2 Vision Latest",
       "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -10809,6 +11443,15 @@
       },
       "context_window": 256000,
       "display_name": "Grok 4",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -11295,6 +11938,39 @@
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
+    "grok-4.20-beta": {
+      "aliases": [
+        "x-ai/grok-4.20-beta",
+        "openrouter/x-ai/grok-4.20-beta"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 2000000,
+      "display_name": "xAI: Grok 4.20 Beta",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      }
+    },
     "grok-4.20-multi-agent": {
       "aliases": [
         "grok-4.20-multi-agent-0309",
@@ -11343,6 +12019,37 @@
         ]
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-4.20-multi-agent-beta": {
+      "aliases": [
+        "x-ai/grok-4.20-multi-agent-beta",
+        "openrouter/x-ai/grok-4.20-multi-agent-beta"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 2000000,
+      "display_name": "xAI: Grok 4.20 Multi-Agent Beta",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      }
     },
     "grok-4.20-non-reasoning": {
       "aliases": [
@@ -11508,6 +12215,15 @@
         "xai/grok-imagine-image-2026-03-02"
       ],
       "display_name": "Grok Imagine Image",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11524,6 +12240,15 @@
         "xai/grok-imagine-image-pro"
       ],
       "display_name": "Grok Imagine Image Pro",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11540,6 +12265,16 @@
         "xai/grok-imagine-video"
       ],
       "display_name": "Grok Imagine Video",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "video"
+        ]
+      },
       "modes": [
         "video_generation"
       ],
@@ -11565,6 +12300,11 @@
       "context_window": 8192,
       "display_name": "Grok Vision Beta",
       "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -11756,6 +12496,14 @@
         "vertex_ai/imagen-3.0-capability-001"
       ],
       "display_name": "Imagen 3 0 Capability 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11771,6 +12519,14 @@
         "vertex_ai/imagen-3.0-fast-generate-001"
       ],
       "display_name": "Imagen 3 0 Fast Generate 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11786,6 +12542,14 @@
         "vertex_ai/imagen-3.0-generate-001"
       ],
       "display_name": "Imagen 3 0 Generate 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11801,6 +12565,14 @@
         "vertex_ai/imagen-3.0-generate-002"
       ],
       "display_name": "Imagen 3 0 Generate 002",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11816,6 +12588,14 @@
         "vertex_ai/imagen-4.0-fast-generate-001"
       ],
       "display_name": "Imagen 4 0 Fast Generate 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11831,6 +12611,14 @@
         "vertex_ai/imagen-4.0-generate-001"
       ],
       "display_name": "Imagen 4 0 Generate 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11846,6 +12634,14 @@
         "vertex_ai/imagen-4.0-ultra-generate-001"
       ],
       "display_name": "Imagen 4 0 Ultra Generate 001",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "modes": [
         "image_generation"
       ],
@@ -11903,6 +12699,38 @@
         "currency": "USD",
         "input_per_mtok": 2.5,
         "output_per_mtok": 10.0
+      }
+    },
+    "intellect-3": {
+      "aliases": [
+        "prime-intellect/intellect-3",
+        "openrouter/prime-intellect/intellect-3"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Prime Intellect: INTELLECT-3",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.1
       }
     },
     "jais-30b-chat": {
@@ -12031,6 +12859,38 @@
         "output_per_mtok": 8.0
       }
     },
+    "kat-coder-pro": {
+      "aliases": [
+        "kwaipilot/kat-coder-pro",
+        "openrouter/kwaipilot/kat-coder-pro"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "Kwaipilot: KAT-Coder-Pro V1",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0414,
+        "currency": "USD",
+        "input_per_mtok": 0.207,
+        "output_per_mtok": 0.828
+      }
+    },
     "kimi-k2": {
       "aliases": [
         "moonshotai/kimi-k2",
@@ -12092,10 +12952,45 @@
         "output_per_mtok": 2.0
       }
     },
+    "kimi-k2-thinking": {
+      "aliases": [
+        "fireworks/kimi-k2-thinking",
+        "moonshotai/kimi-k2-thinking",
+        "moonshot-ai/kimi-k2-thinking",
+        "together/moonshot-ai/kimi-k2-thinking",
+        "openrouter/moonshotai/kimi-k2-thinking"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "display_name": "Kimi k2 Thinking",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.5
+      }
+    },
     "kimi-k2.5": {
       "aliases": [
         "azure_ai/kimi-k2.5",
-        "azure/azure_ai/kimi-k2.5"
+        "moonshotai/kimi-k2.5",
+        "azure/azure_ai/kimi-k2.5",
+        "openrouter/moonshotai/kimi-k2.5"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12106,13 +13001,23 @@
       "context_window": 262144,
       "display_name": "Kimi k2 5",
       "max_output_tokens": 262144,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.225,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.45,
+        "output_per_mtok": 2.2
       },
       "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/kimi-k2-5-now-in-microsoft-foundry/4492321"
     },
@@ -12255,6 +13160,35 @@
         "output_per_mtok": 0.85
       }
     },
+    "l3.3-euryale-70b": {
+      "aliases": [
+        "sao10k/l3.3-euryale-70b",
+        "openrouter/sao10k/l3.3-euryale-70b"
+      ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 131072,
+      "display_name": "Sao10K: Llama 3.3 Euryale 70B",
+      "max_output_tokens": 16384,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.65,
+        "output_per_mtok": 0.75
+      }
+    },
     "labs-devstral-small-2512": {
       "aliases": [
         "mistral/labs-devstral-small-2512"
@@ -12289,6 +13223,11 @@
       "context_window": 32767,
       "display_name": "Learnlm 1 5 Pro Experimental",
       "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -12301,6 +13240,30 @@
         "per_second_input": 0.0
       },
       "source_url": "https://aistudio.google.com"
+    },
+    "lfm-2-24b-a2b": {
+      "aliases": [
+        "liquid/lfm-2-24b-a2b",
+        "openrouter/liquid/lfm-2-24b-a2b"
+      ],
+      "context_window": 32768,
+      "display_name": "LiquidAI: LFM2-24B-A2B",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.12
+      }
     },
     "lfm-2.2-6b": {
       "aliases": [
@@ -12324,6 +13287,57 @@
         "currency": "USD",
         "input_per_mtok": 0.01,
         "output_per_mtok": 0.02
+      }
+    },
+    "lfm-2.5-1.2b-instruct": {
+      "aliases": [
+        "liquid/lfm-2.5-1.2b-instruct:free",
+        "openrouter/liquid/lfm-2.5-1.2b-instruct:free"
+      ],
+      "context_window": 32768,
+      "display_name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "lfm-2.5-1.2b-thinking": {
+      "aliases": [
+        "liquid/lfm-2.5-1.2b-thinking:free",
+        "openrouter/liquid/lfm-2.5-1.2b-thinking:free"
+      ],
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_window": 32768,
+      "display_name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       }
     },
     "lfm2-8b-a1b": {
@@ -12870,12 +13884,10 @@
         "output_per_mtok": 0.4
       }
     },
-    "llama-4-maverick-17b-128e-instruct": {
+    "llama-4-maverick": {
       "aliases": [
         "meta-llama/llama-4-maverick",
-        "meta-llama/llama-4-maverick-17b-128e-instruct",
-        "openrouter/meta-llama/llama-4-maverick",
-        "groq/meta-llama/llama-4-maverick-17b-128e-instruct"
+        "openrouter/meta-llama/llama-4-maverick"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12883,7 +13895,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Llama 4 Maverick 17b 128e Instruct",
+      "context_window": 1048576,
+      "display_name": "Meta: Llama 4 Maverick",
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text",
@@ -12898,18 +13912,48 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.2,
+        "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
+      }
+    },
+    "llama-4-scout": {
+      "aliases": [
+        "meta-llama/llama-4-scout",
+        "openrouter/meta-llama/llama-4-scout"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 327680,
+      "display_name": "Meta: Llama 4 Scout",
+      "max_output_tokens": 16384,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.3
       }
     },
     "llama-4-scout-17b-16e-instruct": {
       "aliases": [
         "Llama-4-Scout-17B-16E-Instruct",
-        "meta-llama/llama-4-scout",
         "azure_ai/Llama-4-Scout-17B-16E-Instruct",
         "meta-llama/Llama-4-Scout-17B-16E-Instruct",
         "meta-llama/llama-4-scout-17b-16e-instruct",
-        "openrouter/meta-llama/llama-4-scout",
         "azure/azure_ai/Llama-4-Scout-17B-16E-Instruct",
         "groq/meta-llama/llama-4-scout-17b-16e-instruct",
         "together/meta-llama/Llama-4-Scout-17B-16E-Instruct"
@@ -12920,15 +13964,6 @@
         "vision": true
       },
       "display_name": "Llama 4 Scout 17b 16e Instruct",
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -12977,8 +14012,8 @@
       "display_name": "Meta: Llama Guard 4 12B",
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -13470,6 +14505,173 @@
         "output_per_mtok": 0.75
       }
     },
+    "mercury-2": {
+      "aliases": [
+        "inception/mercury-2",
+        "openrouter/inception/mercury-2"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "Inception: Mercury 2",
+      "max_output_tokens": 50000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      }
+    },
+    "mercury-coder": {
+      "aliases": [
+        "inception/mercury-coder",
+        "openrouter/inception/mercury-coder"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "Inception: Mercury Coder",
+      "max_output_tokens": 32000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      }
+    },
+    "mimo-v2-flash": {
+      "aliases": [
+        "xiaomi/mimo-v2-flash",
+        "openrouter/xiaomi/mimo-v2-flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Xiaomi: MiMo-V2-Flash",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.045,
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.29
+      }
+    },
+    "mimo-v2-omni": {
+      "aliases": [
+        "xiaomi/mimo-v2-omni",
+        "openrouter/xiaomi/mimo-v2-omni"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Xiaomi: MiMo-V2-Omni",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.08,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      }
+    },
+    "mimo-v2-pro": {
+      "aliases": [
+        "xiaomi/mimo-v2-pro",
+        "openrouter/xiaomi/mimo-v2-pro"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Xiaomi: MiMo-V2-Pro",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
+      }
+    },
     "minimax-01": {
       "aliases": [
         "minimax/minimax-01",
@@ -13559,6 +14761,32 @@
         "output_per_mtok": 1.0
       }
     },
+    "minimax-m2-her": {
+      "aliases": [
+        "minimax/minimax-m2-her",
+        "openrouter/minimax/minimax-m2-her"
+      ],
+      "context_window": 65536,
+      "display_name": "MiniMax: MiniMax M2-her",
+      "max_output_tokens": 2048,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      }
+    },
     "minimax-m2.1": {
       "aliases": [
         "minimax/minimax-m2.1",
@@ -13589,6 +14817,74 @@
         "currency": "USD",
         "input_per_mtok": 0.27,
         "output_per_mtok": 0.95
+      }
+    },
+    "minimax-m2.5": {
+      "aliases": [
+        "minimax/minimax-m2.5",
+        "minimax/minimax-m2.5:free",
+        "openrouter/minimax/minimax-m2.5",
+        "openrouter/minimax/minimax-m2.5:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 196608,
+      "display_name": "MiniMax: MiniMax M2.5",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.17
+      }
+    },
+    "minimax-m2.7": {
+      "aliases": [
+        "minimax/minimax-m2.7",
+        "openrouter/minimax/minimax-m2.7"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 204800,
+      "display_name": "MiniMax: MiniMax M2.7",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       }
     },
     "minimax-m2p1": {
@@ -14332,10 +15628,26 @@
       "aliases": [
         "mistral-saba-latest",
         "mistral/mistral-saba",
-        "mistral/mistral-saba-latest"
+        "mistralai/mistral-saba",
+        "mistral/mistral-saba-latest",
+        "openrouter/mistralai/mistral-saba"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
       "description": "Mistral Saba is a 24B-parameter language model specifically designed for the Middle East and South Asia, delivering accurate and contextually relevant responses while maintaining efficient performance. Trained on curated regional datasets, it supports multiple Indian-origin languages—including Tamil and Malayalam—alongside Arabic. This makes it a versatile option for a range of regional and multilingual applications. Read more at the blog post here",
       "display_name": "Mistral Saba",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -14490,6 +15802,99 @@
         "output_per_mtok": 0.18
       },
       "source_url": "https://mistral.ai/pricing"
+    },
+    "mistral-small-3.1-24b-instruct": {
+      "aliases": [
+        "mistralai/mistral-small-3.1-24b-instruct",
+        "mistralai/mistral-small-3.1-24b-instruct:free",
+        "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "openrouter/mistralai/mistral-small-3.1-24b-instruct:free"
+      ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 131072,
+      "display_name": "Mistral: Mistral Small 3.1 24B",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.11
+      }
+    },
+    "mistral-small-3.2-24b-instruct": {
+      "aliases": [
+        "mistralai/mistral-small-3.2-24b-instruct",
+        "openrouter/mistralai/mistral-small-3.2-24b-instruct"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "Mistral: Mistral Small 3.2 24B",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.2
+      }
+    },
+    "mistral-small-creative": {
+      "aliases": [
+        "mistralai/mistral-small-creative",
+        "openrouter/mistralai/mistral-small-creative"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 32768,
+      "display_name": "Mistral: Mistral Small Creative",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
+      }
     },
     "mistral-small-latest": {
       "aliases": [
@@ -14828,6 +16233,41 @@
         "output_per_mtok": 0.2
       }
     },
+    "nemotron-3-super-120b-a12b": {
+      "aliases": [
+        "nvidia/nemotron-3-super-120b-a12b",
+        "nvidia/nemotron-3-super-120b-a12b:free",
+        "openrouter/nvidia/nemotron-3-super-120b-a12b",
+        "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "NVIDIA: Nemotron 3 Super",
+      "max_output_tokens": 262144,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.5
+      }
+    },
     "nemotron-nano-12b-v2-vl": {
       "aliases": [
         "nvidia/nemotron-nano-12b-v2-vl",
@@ -14842,10 +16282,11 @@
       },
       "context_window": 131072,
       "display_name": "NVIDIA: Nemotron Nano 12B 2 VL",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
-          "image",
           "text",
+          "image",
           "video"
         ],
         "output": [
@@ -15071,6 +16512,15 @@
       "description": "O1 is a model that offers a balance between cost and performance.",
       "display_name": "o1",
       "max_output_tokens": 100000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -15085,10 +16535,8 @@
     },
     "o1-2024-12-17": {
       "aliases": [
-        "openai/o1",
         "azure/o1-2024-12-17",
-        "openai/o1-2024-12-17",
-        "openrouter/openai/o1"
+        "openai/o1-2024-12-17"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15104,15 +16552,6 @@
       "context_window": 200000,
       "display_name": "o1 2024 12 17",
       "max_output_tokens": 100000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -15308,7 +16747,8 @@
         "azure/o3",
         "openai/o3",
         "azure/o3-2025-04-16",
-        "openai/o3-2025-04-16"
+        "openai/o3-2025-04-16",
+        "openrouter/openai/o3"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15347,10 +16787,8 @@
     },
     "o3-2025-04-16": {
       "aliases": [
-        "openai/o3",
         "azure/o3-2025-04-16",
-        "openai/o3-2025-04-16",
-        "openrouter/openai/o3"
+        "openai/o3-2025-04-16"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15375,7 +16813,8 @@
         ]
       },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cache_write_per_mtok": 0.0,
@@ -15390,7 +16829,8 @@
         "o3-deep-research-2025-06-26",
         "azure/o3-deep-research",
         "openai/o3-deep-research",
-        "openai/o3-deep-research-2025-06-26"
+        "openai/o3-deep-research-2025-06-26",
+        "openrouter/openai/o3-deep-research"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15429,10 +16869,8 @@
     },
     "o3-deep-research-2025-06-26": {
       "aliases": [
-        "openai/o3-deep-research",
         "azure/o3-deep-research-2025-06-26",
-        "openai/o3-deep-research-2025-06-26",
-        "openrouter/openai/o3-deep-research"
+        "openai/o3-deep-research-2025-06-26"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15490,6 +16928,14 @@
       "description": "OpenAI o3-mini is a cost-efficient language model optimized for STEM reasoning tasks, particularly excelling in science, mathematics, and coding.",
       "display_name": "o3 Mini",
       "max_output_tokens": 100000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -15504,10 +16950,8 @@
     },
     "o3-mini-2025-01-31": {
       "aliases": [
-        "openai/o3-mini",
         "azure/o3-mini-2025-01-31",
-        "openai/o3-mini-2025-01-31",
-        "openrouter/openai/o3-mini"
+        "openai/o3-mini-2025-01-31"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15519,14 +16963,6 @@
       "context_window": 200000,
       "display_name": "o3 Mini 2025 01 31",
       "max_output_tokens": 100000,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -15552,10 +16988,19 @@
       "context_window": 128000,
       "display_name": "o3 Mini High",
       "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.55,
         "currency": "USD",
         "input_per_mtok": 1.1,
         "output_per_mtok": 4.4
@@ -15566,7 +17011,8 @@
         "o3-pro-2025-06-10",
         "azure/o3-pro",
         "openai/o3-pro",
-        "openai/o3-pro-2025-06-10"
+        "openai/o3-pro-2025-06-10",
+        "openrouter/openai/o3-pro"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15603,10 +17049,8 @@
     },
     "o3-pro-2025-06-10": {
       "aliases": [
-        "openai/o3-pro",
         "azure/o3-pro-2025-06-10",
-        "openai/o3-pro-2025-06-10",
-        "openrouter/openai/o3-pro"
+        "openai/o3-pro-2025-06-10"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15646,7 +17090,8 @@
         "azure/o4-mini",
         "openai/o4-mini",
         "openai/o4-mini-high",
-        "openai/o4-mini-2025-04-16"
+        "openai/o4-mini-2025-04-16",
+        "openrouter/openai/o4-mini"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15685,10 +17130,8 @@
     },
     "o4-mini-2025-04-16": {
       "aliases": [
-        "openai/o4-mini",
         "azure/o4-mini-2025-04-16",
-        "openai/o4-mini-2025-04-16",
-        "openrouter/openai/o4-mini"
+        "openai/o4-mini-2025-04-16"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15703,15 +17146,6 @@
       "context_window": 200000,
       "display_name": "o4 Mini 2025 04 16",
       "max_output_tokens": 100000,
-      "modalities": {
-        "input": [
-          "image",
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -15728,7 +17162,8 @@
         "o4-mini-deep-research-2025-06-26",
         "azure/o4-mini-deep-research",
         "openai/o4-mini-deep-research",
-        "openai/o4-mini-deep-research-2025-06-26"
+        "openai/o4-mini-deep-research-2025-06-26",
+        "openrouter/openai/o4-mini-deep-research"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15767,10 +17202,8 @@
     },
     "o4-mini-deep-research-2025-06-26": {
       "aliases": [
-        "openai/o4-mini-deep-research",
         "azure/o4-mini-deep-research-2025-06-26",
-        "openai/o4-mini-deep-research-2025-06-26",
-        "openrouter/openai/o4-mini-deep-research"
+        "openai/o4-mini-deep-research-2025-06-26"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15806,6 +17239,40 @@
         "output_per_mtok": 40.0
       }
     },
+    "o4-mini-high": {
+      "aliases": [
+        "openai/o4-mini-high",
+        "openrouter/openai/o4-mini-high"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "display_name": "OpenAI: o4 Mini High",
+      "max_output_tokens": 100000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.275,
+        "currency": "USD",
+        "input_per_mtok": 1.1,
+        "output_per_mtok": 4.4
+      }
+    },
     "olmo-2-0325-32b-instruct": {
       "aliases": [
         "allenai/olmo-2-0325-32b-instruct",
@@ -15828,6 +17295,96 @@
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
+      }
+    },
+    "olmo-3-32b-think": {
+      "aliases": [
+        "allenai/olmo-3-32b-think",
+        "openrouter/allenai/olmo-3-32b-think"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 65536,
+      "display_name": "AllenAI: Olmo 3 32B Think",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
+      }
+    },
+    "olmo-3.1-32b-instruct": {
+      "aliases": [
+        "allenai/olmo-3.1-32b-instruct",
+        "openrouter/allenai/olmo-3.1-32b-instruct"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 65536,
+      "display_name": "AllenAI: Olmo 3.1 32B Instruct",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.6
+      }
+    },
+    "olmo-3.1-32b-think": {
+      "aliases": [
+        "allenai/olmo-3.1-32b-think",
+        "openrouter/allenai/olmo-3.1-32b-think"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 65536,
+      "display_name": "AllenAI: Olmo 3.1 32B Think",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       }
     },
     "omni-moderation-2024-09-26": {
@@ -15936,6 +17493,31 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      }
+    },
+    "palmyra-x5": {
+      "aliases": [
+        "writer/palmyra-x5",
+        "openrouter/writer/palmyra-x5"
+      ],
+      "context_window": 1040000,
+      "display_name": "Writer: Palmyra X5",
+      "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
         "output_per_mtok": 6.0
       }
     },
@@ -16185,6 +17767,14 @@
       "context_window": 10000,
       "display_name": "Playai TTS",
       "max_output_tokens": 10000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -16279,6 +17869,70 @@
         "output_per_mtok": 1.0
       }
     },
+    "qwen-max": {
+      "aliases": [
+        "qwen/qwen-max",
+        "openrouter/qwen/qwen-max"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 32768,
+      "display_name": "Qwen: Qwen-Max ",
+      "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.208,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 4.16
+      }
+    },
+    "qwen-plus": {
+      "aliases": [
+        "qwen/qwen-plus",
+        "openrouter/qwen/qwen-plus"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen-Plus",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.052,
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.78
+      }
+    },
     "qwen-plus-2025-07-28": {
       "aliases": [
         "qwen/qwen-plus-2025-07-28",
@@ -16310,6 +17964,70 @@
         "currency": "USD",
         "input_per_mtok": 0.26,
         "output_per_mtok": 0.78
+      }
+    },
+    "qwen-turbo": {
+      "aliases": [
+        "qwen/qwen-turbo",
+        "openrouter/qwen/qwen-turbo"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Qwen: Qwen-Turbo",
+      "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0065,
+        "currency": "USD",
+        "input_per_mtok": 0.0325,
+        "output_per_mtok": 0.13
+      }
+    },
+    "qwen-vl-max": {
+      "aliases": [
+        "qwen/qwen-vl-max",
+        "openrouter/qwen/qwen-vl-max"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Qwen: Qwen VL Max",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.52,
+        "output_per_mtok": 2.08
       }
     },
     "qwen-vl-plus": {
@@ -16448,15 +18166,64 @@
         "output_per_mtok": 0.9
       }
     },
+    "qwen3-14b": {
+      "aliases": [
+        "qwen/qwen3-14b",
+        "openrouter/qwen/qwen3-14b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 40960,
+      "display_name": "Qwen: Qwen3 14B",
+      "max_output_tokens": 40960,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.24
+      }
+    },
     "qwen3-235b-a22b": {
       "aliases": [
+        "qwen/qwen3-235b-a22b",
         "fireworks/qwen3-235b-a22b",
+        "openrouter/qwen/qwen3-235b-a22b",
         "accounts/fireworks/models/qwen3-235b-a22b",
         "fireworks/accounts/fireworks/models/qwen3-235b-a22b"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
       "context_window": 128000,
       "description": "Qwen3 is the latest evolution in the Qwen LLM series, featuring both dense and MoE models with major advancements in reasoning, agent capabilities, multilingual support, and instruction following. It uniquely allows seamless switching between \"thinking\" (for complex logic, math, coding) and \"non-thinking\" modes (for fast, general dialogue), delivering strong performance across tasks.",
       "display_name": "Qwen3 235B-A22B",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -16495,6 +18262,38 @@
         "currency": "USD",
         "input_per_mtok": 0.1495,
         "output_per_mtok": 1.495
+      }
+    },
+    "qwen3-30b-a3b": {
+      "aliases": [
+        "qwen/qwen3-30b-a3b",
+        "openrouter/qwen/qwen3-30b-a3b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 40960,
+      "display_name": "Qwen: Qwen3 30B A3B",
+      "max_output_tokens": 40960,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.28
       }
     },
     "qwen3-30b-a3b-instruct-2507": {
@@ -16561,6 +18360,138 @@
         "output_per_mtok": 0.4
       }
     },
+    "qwen3-32b": {
+      "aliases": [
+        "qwen/qwen3-32b",
+        "groq/qwen/qwen3-32b",
+        "openrouter/qwen/qwen3-32b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 40960,
+      "display_name": "Qwen: Qwen3 32B",
+      "max_output_tokens": 40960,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.29,
+        "output_per_mtok": 0.59
+      }
+    },
+    "qwen3-4b": {
+      "aliases": [
+        "qwen/qwen3-4b:free",
+        "openrouter/qwen/qwen3-4b:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 40960,
+      "display_name": "Qwen: Qwen3 4B (free)",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "qwen3-8b": {
+      "aliases": [
+        "qwen/qwen3-8b",
+        "openrouter/qwen/qwen3-8b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 40960,
+      "display_name": "Qwen: Qwen3 8B",
+      "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.4
+      }
+    },
+    "qwen3-coder": {
+      "aliases": [
+        "qwen/qwen3-coder",
+        "qwen/qwen3-coder:free",
+        "openrouter/qwen/qwen3-coder",
+        "openrouter/qwen/qwen3-coder:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3 Coder 480B A35B",
+      "max_output_tokens": 262000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.022,
+        "currency": "USD",
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 1.0
+      }
+    },
     "qwen3-coder-30b-a3b-instruct": {
       "aliases": [
         "qwen/qwen3-coder-30b-a3b-instruct",
@@ -16622,6 +18553,38 @@
         "currency": "USD",
         "input_per_mtok": 0.195,
         "output_per_mtok": 0.975
+      }
+    },
+    "qwen3-coder-next": {
+      "aliases": [
+        "qwen/qwen3-coder-next",
+        "openrouter/qwen/qwen3-coder-next"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3 Coder Next",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.75
       }
     },
     "qwen3-coder-plus": {
@@ -16686,6 +18649,102 @@
         "currency": "USD",
         "input_per_mtok": 0.78,
         "output_per_mtok": 3.9
+      }
+    },
+    "qwen3-max-thinking": {
+      "aliases": [
+        "qwen/qwen3-max-thinking",
+        "openrouter/qwen/qwen3-max-thinking"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3 Max Thinking",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.78,
+        "output_per_mtok": 3.9
+      }
+    },
+    "qwen3-next-80b-a3b-instruct": {
+      "aliases": [
+        "qwen/qwen3-next-80b-a3b-instruct",
+        "qwen/qwen3-next-80b-a3b-instruct:free",
+        "openrouter/qwen/qwen3-next-80b-a3b-instruct",
+        "openrouter/qwen/qwen3-next-80b-a3b-instruct:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3 Next 80B A3B Instruct",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 1.1
+      }
+    },
+    "qwen3-next-80b-a3b-thinking": {
+      "aliases": [
+        "qwen/qwen3-next-80b-a3b-thinking",
+        "openrouter/qwen/qwen3-next-80b-a3b-thinking"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0975,
+        "output_per_mtok": 0.78
       }
     },
     "qwen3-vl-235b-a22b-instruct": {
@@ -16866,8 +18925,8 @@
       "max_output_tokens": 32768,
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -16899,8 +18958,8 @@
       "max_output_tokens": 32768,
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -16913,6 +18972,244 @@
         "currency": "USD",
         "input_per_mtok": 0.117,
         "output_per_mtok": 1.365
+      }
+    },
+    "qwen3.5-122b-a10b": {
+      "aliases": [
+        "qwen/qwen3.5-122b-a10b",
+        "openrouter/qwen/qwen3.5-122b-a10b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.5-122B-A10B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
+      }
+    },
+    "qwen3.5-27b": {
+      "aliases": [
+        "qwen/qwen3.5-27b",
+        "openrouter/qwen/qwen3.5-27b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.5-27B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.195,
+        "output_per_mtok": 1.56
+      }
+    },
+    "qwen3.5-35b-a3b": {
+      "aliases": [
+        "qwen/qwen3.5-35b-a3b",
+        "openrouter/qwen/qwen3.5-35b-a3b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.5-35B-A3B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1625,
+        "output_per_mtok": 1.3
+      }
+    },
+    "qwen3.5-397b-a17b": {
+      "aliases": [
+        "qwen/qwen3.5-397b-a17b",
+        "openrouter/qwen/qwen3.5-397b-a17b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.5 397B A17B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 2.34
+      }
+    },
+    "qwen3.5-9b": {
+      "aliases": [
+        "qwen/qwen3.5-9b",
+        "openrouter/qwen/qwen3.5-9b"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "Qwen: Qwen3.5-9B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.15
+      }
+    },
+    "qwen3.5-flash-02-23": {
+      "aliases": [
+        "qwen/qwen3.5-flash-02-23",
+        "openrouter/qwen/qwen3.5-flash-02-23"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen3.5-Flash",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.065,
+        "output_per_mtok": 0.26
+      }
+    },
+    "qwen3.5-plus-02-15": {
+      "aliases": [
+        "qwen/qwen3.5-plus-02-15",
+        "openrouter/qwen/qwen3.5-plus-02-15"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen3.5 Plus 2026-02-15",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 1.56
       }
     },
     "qwq-32b": {
@@ -16968,6 +19265,35 @@
         "currency": "USD",
         "input_per_mtok": 0.85,
         "output_per_mtok": 1.25
+      }
+    },
+    "relace-search": {
+      "aliases": [
+        "relace/relace-search",
+        "openrouter/relace/relace-search"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "Relace: Relace Search",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
       }
     },
     "remm-slerp-l2-13b": {
@@ -17165,6 +19491,142 @@
         "currency": "USD",
         "input_per_mtok": 0.85,
         "output_per_mtok": 3.4
+      }
+    },
+    "seed-1.6": {
+      "aliases": [
+        "bytedance-seed/seed-1.6",
+        "openrouter/bytedance-seed/seed-1.6"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "ByteDance Seed: Seed 1.6",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      }
+    },
+    "seed-1.6-flash": {
+      "aliases": [
+        "bytedance-seed/seed-1.6-flash",
+        "openrouter/bytedance-seed/seed-1.6-flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "ByteDance Seed: Seed 1.6 Flash",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
+      }
+    },
+    "seed-2.0-lite": {
+      "aliases": [
+        "bytedance-seed/seed-2.0-lite",
+        "openrouter/bytedance-seed/seed-2.0-lite"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "ByteDance Seed: Seed-2.0-Lite",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      }
+    },
+    "seed-2.0-mini": {
+      "aliases": [
+        "bytedance-seed/seed-2.0-mini",
+        "openrouter/bytedance-seed/seed-2.0-mini"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "ByteDance Seed: Seed-2.0-Mini",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4
       }
     },
     "skyfall-36b-v2": {
@@ -17441,8 +19903,8 @@
       "max_output_tokens": 65537,
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -17906,12 +20368,83 @@
         "output_per_mtok": 0.45
       }
     },
+    "trinity-large-preview": {
+      "aliases": [
+        "arcee-ai/trinity-large-preview:free",
+        "openrouter/arcee-ai/trinity-large-preview:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 131000,
+      "display_name": "Arcee AI: Trinity Large Preview (free)",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "trinity-mini": {
+      "aliases": [
+        "arcee-ai/trinity-mini",
+        "arcee-ai/trinity-mini:free",
+        "openrouter/arcee-ai/trinity-mini",
+        "openrouter/arcee-ai/trinity-mini:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Arcee AI: Trinity Mini",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.045,
+        "output_per_mtok": 0.15
+      }
+    },
     "tts-1": {
       "aliases": [
         "azure/tts-1",
         "openai/tts-1"
       ],
       "display_name": "TTS 1",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -17927,6 +20460,14 @@
         "openai/tts-1-1106"
       ],
       "display_name": "TTS 1 1106",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -17943,6 +20484,14 @@
         "openai/tts-1-hd"
       ],
       "display_name": "TTS 1 Hd",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -17958,6 +20507,14 @@
         "openai/tts-1-hd-1106"
       ],
       "display_name": "TTS 1 Hd 1106",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
       "modes": [
         "audio_speech"
       ],
@@ -17978,8 +20535,8 @@
       "max_output_tokens": 2048,
       "modalities": {
         "input": [
-          "image",
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -18295,6 +20852,14 @@
         "openai/whisper-1"
       ],
       "display_name": "Whisper 1",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -18311,6 +20876,14 @@
         "groq/whisper-large-v3"
       ],
       "display_name": "Whisper Large v3",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -18325,6 +20898,14 @@
         "groq/whisper-large-v3-turbo"
       ],
       "display_name": "Whisper Large v3 Turbo",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "audio_transcription"
       ],
@@ -23508,6 +26089,15 @@
       },
       "provider_model_id": "accounts/fireworks/models/gpt-oss-20b"
     },
+    "fireworks/kimi-k2-thinking": {
+      "enabled": true,
+      "model_ref": "kimi-k2-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.5
+      }
+    },
     "fireworks/kimi-k2p5": {
       "context_window": 262144,
       "enabled": true,
@@ -24165,15 +26755,6 @@
       "rate_limits": {
         "rpm": 2000,
         "tpm": 800000
-      }
-    },
-    "gemini/gemini-2.5-pro-preview-03-25": {
-      "enabled": true,
-      "model_ref": "gemini-2.5-pro-preview-03-25",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 1.25,
-        "output_per_mtok": 10.0
       }
     },
     "gemini/gemini-2.5-pro-preview-tts": {
@@ -25004,16 +27585,6 @@
         "output_per_mtok": 0.79
       }
     },
-    "groq/llama-4-maverick-17b-128e-instruct": {
-      "enabled": true,
-      "model_ref": "llama-4-maverick-17b-128e-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.6
-      },
-      "provider_model_id": "meta-llama/llama-4-maverick-17b-128e-instruct"
-    },
     "groq/llama-4-scout-17b-16e-instruct": {
       "enabled": true,
       "model_ref": "llama-4-scout-17b-16e-instruct",
@@ -25086,15 +27657,6 @@
         "currency": "USD",
         "input_per_mtok": 0.19,
         "output_per_mtok": 0.19
-      }
-    },
-    "groq/meta-llama/llama-4-maverick-17b-128e-instruct": {
-      "enabled": true,
-      "model_ref": "llama-4-maverick-17b-128e-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.6
       }
     },
     "groq/meta-llama/llama-4-scout-17b-16e-instruct": {
@@ -25178,6 +27740,25 @@
         "currency": "USD",
         "per_character_input": 5e-05
       }
+    },
+    "groq/qwen/qwen3-32b": {
+      "enabled": true,
+      "model_ref": "qwen3-32b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.29,
+        "output_per_mtok": 0.59
+      }
+    },
+    "groq/qwen3-32b": {
+      "enabled": true,
+      "model_ref": "qwen3-32b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.29,
+        "output_per_mtok": 0.59
+      },
+      "provider_model_id": "qwen/qwen3-32b"
     },
     "groq/whisper-large-v3": {
       "enabled": true,
@@ -29054,6 +31635,19 @@
       },
       "provider_model_id": "aion-labs/aion-1.0-mini"
     },
+    "openrouter/aion-2.0": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "aion-2.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 1.6
+      },
+      "provider_model_id": "aion-labs/aion-2.0"
+    },
     "openrouter/aion-labs/aion-1.0": {
       "context_window": 131072,
       "enabled": true,
@@ -29074,6 +31668,18 @@
         "currency": "USD",
         "input_per_mtok": 0.7,
         "output_per_mtok": 1.4
+      }
+    },
+    "openrouter/aion-labs/aion-2.0": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "aion-2.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 1.6
       }
     },
     "openrouter/aion-labs/aion-rp-llama-3.1-8b": {
@@ -29130,6 +31736,38 @@
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
+      }
+    },
+    "openrouter/allenai/olmo-3-32b-think": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "olmo-3-32b-think",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
+      }
+    },
+    "openrouter/allenai/olmo-3.1-32b-instruct": {
+      "context_window": 65536,
+      "enabled": true,
+      "model_ref": "olmo-3.1-32b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.6
+      }
+    },
+    "openrouter/allenai/olmo-3.1-32b-think": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "olmo-3.1-32b-think",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       }
     },
     "openrouter/alpindale/goliath-120b": {
@@ -29256,21 +31894,10 @@
       "max_output_tokens": 128000,
       "model_ref": "claude-3-7-sonnet",
       "pricing": {
-        "currency": "USD",
-        "input_per_image": 0.0048,
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
-      }
-    },
-    "openrouter/anthropic/claude-3.7-sonnet:thinking": {
-      "context_window": 200000,
-      "enabled": true,
-      "max_output_tokens": 64000,
-      "model_ref": "claude-3-7-sonnet-20250219",
-      "pricing": {
         "cache_write_per_mtok": 3.75,
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
+        "input_per_image": 0.0048,
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
       }
@@ -29451,6 +32078,37 @@
         "output_per_mtok": 0.18
       }
     },
+    "openrouter/arcee-ai/trinity-large-preview:free": {
+      "context_window": 131000,
+      "enabled": true,
+      "model_ref": "trinity-large-preview",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/arcee-ai/trinity-mini": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "trinity-mini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.045,
+        "output_per_mtok": 0.15
+      }
+    },
+    "openrouter/arcee-ai/trinity-mini:free": {
+      "context_window": 131072,
+      "enabled": true,
+      "model_ref": "trinity-mini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "openrouter/arcee-ai/virtuoso-large": {
       "context_window": 131072,
       "enabled": true,
@@ -29535,6 +32193,50 @@
         "output_per_mtok": -1000000.0
       }
     },
+    "openrouter/bytedance-seed/seed-1.6": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "seed-1.6",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      }
+    },
+    "openrouter/bytedance-seed/seed-1.6-flash": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "seed-1.6-flash",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
+      }
+    },
+    "openrouter/bytedance-seed/seed-2.0-lite": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "seed-2.0-lite",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      }
+    },
+    "openrouter/bytedance-seed/seed-2.0-mini": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "seed-2.0-mini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4
+      }
+    },
     "openrouter/bytedance/ui-tars-1.5-7b": {
       "context_window": 128000,
       "enabled": true,
@@ -29568,6 +32270,28 @@
         "output_per_mtok": 0.8
       },
       "provider_model_id": "arcee-ai/coder-large"
+    },
+    "openrouter/cogito-v2.1-671b": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "cogito-v2.1-671b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 1.25
+      },
+      "provider_model_id": "deepcogito/cogito-v2.1-671b"
+    },
+    "openrouter/cohere/command-a": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "command-a",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0
+      }
     },
     "openrouter/cohere/command-r-08-2024": {
       "context_window": 128000,
@@ -29650,6 +32374,16 @@
       },
       "provider_model_id": "thedrummer/cydonia-24b-v4.1"
     },
+    "openrouter/deepcogito/cogito-v2.1-671b": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "cogito-v2.1-671b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 1.25
+      }
+    },
     "openrouter/deepseek-chat-v3-0324": {
       "context_window": 65536,
       "enabled": true,
@@ -29730,9 +32464,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.28,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.38
       },
       "provider_model_id": "deepseek/deepseek-v3.2"
     },
@@ -29748,6 +32483,19 @@
       },
       "provider_model_id": "deepseek/deepseek-v3.2-exp"
     },
+    "openrouter/deepseek-v3.2-speciale": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 163840,
+      "model_ref": "deepseek-v3.2-speciale",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.2
+      },
+      "provider_model_id": "deepseek/deepseek-v3.2-speciale"
+    },
     "openrouter/deepseek/deepseek-chat": {
       "context_window": 65536,
       "enabled": true,
@@ -29755,8 +32503,8 @@
       "model_ref": "deepseek-chat",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 0.89
       }
     },
     "openrouter/deepseek/deepseek-chat-v3-0324": {
@@ -29844,9 +32592,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.28,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.38
       }
     },
     "openrouter/deepseek/deepseek-v3.2-exp": {
@@ -29859,6 +32608,30 @@
         "input_per_mtok": 0.27,
         "output_per_mtok": 0.41
       }
+    },
+    "openrouter/deepseek/deepseek-v3.2-speciale": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 163840,
+      "model_ref": "deepseek-v3.2-speciale",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.2
+      }
+    },
+    "openrouter/devstral-medium": {
+      "context_window": 131072,
+      "enabled": true,
+      "model_ref": "devstral-medium",
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      },
+      "provider_model_id": "mistralai/devstral-medium"
     },
     "openrouter/eleutherai/llemma_7b": {
       "context_window": 4096,
@@ -29950,6 +32723,34 @@
         "output_per_mtok": 0.0
       }
     },
+    "openrouter/gemini-2.5-pro-preview": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-2.5-pro-preview",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      },
+      "provider_model_id": "google/gemini-2.5-pro-preview"
+    },
+    "openrouter/gemini-2.5-pro-preview-05-06": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65535,
+      "model_ref": "gemini-2.5-pro-preview-05-06",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      },
+      "provider_model_id": "google/gemini-2.5-pro-preview-05-06"
+    },
     "openrouter/gemma-2-27b-it": {
       "context_window": 8192,
       "enabled": true,
@@ -29995,6 +32796,18 @@
         "output_per_mtok": 0.08
       }
     },
+    "openrouter/gemma-3n-e2b-it": {
+      "context_window": 8192,
+      "enabled": true,
+      "max_output_tokens": 2048,
+      "model_ref": "gemma-3n-e2b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "google/gemma-3n-e2b-it:free"
+    },
     "openrouter/gemma-3n-e4b-it": {
       "context_window": 32768,
       "enabled": true,
@@ -30005,6 +32818,17 @@
         "input_per_mtok": 0.02,
         "output_per_mtok": 0.04
       }
+    },
+    "openrouter/glm-4-32b": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "glm-4-32b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
+      },
+      "provider_model_id": "z-ai/glm-4-32b"
     },
     "openrouter/glm-4.5": {
       "context_window": 131072,
@@ -30055,6 +32879,68 @@
         "output_per_mtok": 1.9
       },
       "provider_model_id": "z-ai/glm-4.6"
+    },
+    "openrouter/glm-4.6v": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-4.6v",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 0.9
+      },
+      "provider_model_id": "z-ai/glm-4.6v"
+    },
+    "openrouter/glm-4.7": {
+      "context_window": 202752,
+      "enabled": true,
+      "max_output_tokens": 65535,
+      "model_ref": "glm-4.7",
+      "pricing": {
+        "cached_input_per_mtok": 0.195,
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 1.75
+      },
+      "provider_model_id": "z-ai/glm-4.7"
+    },
+    "openrouter/glm-4.7-flash": {
+      "context_window": 202752,
+      "enabled": true,
+      "model_ref": "glm-4.7-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.0100000002,
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.4
+      },
+      "provider_model_id": "z-ai/glm-4.7-flash"
+    },
+    "openrouter/glm-5": {
+      "context_window": 80000,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.72,
+        "output_per_mtok": 2.3
+      },
+      "provider_model_id": "z-ai/glm-5"
+    },
+    "openrouter/glm-5-turbo": {
+      "context_window": 202752,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.24,
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 4.0
+      },
+      "provider_model_id": "z-ai/glm-5-turbo"
     },
     "openrouter/goliath-120b": {
       "context_window": 6144,
@@ -30160,11 +33046,24 @@
         "output_per_mtok": 10.0
       }
     },
+    "openrouter/google/gemini-2.5-pro-preview": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-2.5-pro-preview",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      }
+    },
     "openrouter/google/gemini-2.5-pro-preview-05-06": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 65535,
-      "model_ref": "gemini-2.5-pro-preview-03-25",
+      "model_ref": "gemini-2.5-pro-preview-05-06",
       "pricing": {
         "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.125,
@@ -30185,6 +33084,7 @@
       "model_ref": "gemini-3-flash-preview",
       "pricing": {
         "audio_input_per_mtok": 1.0,
+        "cache_write_per_mtok": 0.083333333333,
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.5,
@@ -30194,6 +33094,19 @@
       "rate_limits": {
         "rpm": 2000,
         "tpm": 800000
+      }
+    },
+    "openrouter/google/gemini-3-pro-image-preview": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "gemini-3-pro-image-preview",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
       }
     },
     "openrouter/google/gemini-3-pro-preview": {
@@ -30207,6 +33120,7 @@
       "max_output_tokens": 65535,
       "model_ref": "gemini-3-pro-preview",
       "pricing": {
+        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -30225,12 +33139,37 @@
         ]
       }
     },
+    "openrouter/google/gemini-3.1-flash-image-preview": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-flash-image-preview",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0
+      }
+    },
+    "openrouter/google/gemini-3.1-flash-lite-preview": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-flash-lite-preview",
+      "pricing": {
+        "cache_write_per_mtok": 0.083333333333,
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      }
+    },
     "openrouter/google/gemini-3.1-pro-preview": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 65536,
       "model_ref": "gemini-3.1-pro-preview",
       "pricing": {
+        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -30247,6 +33186,19 @@
             "up_to_tokens": 1048576
           }
         ]
+      }
+    },
+    "openrouter/google/gemini-3.1-pro-preview-customtools": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-pro-preview-customtools",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
       }
     },
     "openrouter/google/gemma-2-27b-it": {
@@ -30334,6 +33286,17 @@
         "output_per_mtok": 0.0
       }
     },
+    "openrouter/google/gemma-3n-e2b-it:free": {
+      "context_window": 8192,
+      "enabled": true,
+      "max_output_tokens": 2048,
+      "model_ref": "gemma-3n-e2b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "openrouter/google/gemma-3n-e4b-it": {
       "context_window": 32768,
       "enabled": true,
@@ -30354,6 +33317,19 @@
         "input_per_mtok": 0.0,
         "output_per_mtok": 0.0
       }
+    },
+    "openrouter/gpt-5.1-chat": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "gpt-5.1-chat",
+      "pricing": {
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      },
+      "provider_model_id": "openai/gpt-5.1-chat"
     },
     "openrouter/gpt-5.2-chat": {
       "context_window": 128000,
@@ -30416,6 +33392,30 @@
         "output_per_mtok": 0.5
       },
       "provider_model_id": "x-ai/grok-3-mini-beta"
+    },
+    "openrouter/grok-4.20-beta": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-beta",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      },
+      "provider_model_id": "x-ai/grok-4.20-beta"
+    },
+    "openrouter/grok-4.20-multi-agent-beta": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent-beta",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      },
+      "provider_model_id": "x-ai/grok-4.20-multi-agent-beta"
     },
     "openrouter/gryphe/mythomax-l2-13b": {
       "context_window": 4096,
@@ -30518,6 +33518,30 @@
         "output_per_mtok": 0.75
       }
     },
+    "openrouter/inception/mercury-2": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 50000,
+      "model_ref": "mercury-2",
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      }
+    },
+    "openrouter/inception/mercury-coder": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 32000,
+      "model_ref": "mercury-coder",
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      }
+    },
     "openrouter/inflection-3-pi": {
       "context_window": 8000,
       "enabled": true,
@@ -30564,6 +33588,18 @@
         "output_per_mtok": 10.0
       }
     },
+    "openrouter/intellect-3": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "intellect-3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.1
+      },
+      "provider_model_id": "prime-intellect/intellect-3"
+    },
     "openrouter/jamba-large-1.7": {
       "context_window": 256000,
       "enabled": true,
@@ -30575,6 +33611,19 @@
         "output_per_mtok": 8.0
       },
       "provider_model_id": "ai21/jamba-large-1.7"
+    },
+    "openrouter/kat-coder-pro": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "kat-coder-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.0414,
+        "currency": "USD",
+        "input_per_mtok": 0.207,
+        "output_per_mtok": 0.828
+      },
+      "provider_model_id": "kwaipilot/kat-coder-pro"
     },
     "openrouter/kimi-k2": {
       "context_window": 131000,
@@ -30598,6 +33647,31 @@
         "output_per_mtok": 2.0
       },
       "provider_model_id": "moonshotai/kimi-k2-0905"
+    },
+    "openrouter/kimi-k2.5": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65535,
+      "model_ref": "kimi-k2.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.225,
+        "currency": "USD",
+        "input_per_mtok": 0.45,
+        "output_per_mtok": 2.2
+      },
+      "provider_model_id": "moonshotai/kimi-k2.5"
+    },
+    "openrouter/kwaipilot/kat-coder-pro": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "kat-coder-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.0414,
+        "currency": "USD",
+        "input_per_mtok": 0.207,
+        "output_per_mtok": 0.828
+      }
     },
     "openrouter/l3-euryale-70b": {
       "context_window": 8192,
@@ -30645,6 +33719,29 @@
       },
       "provider_model_id": "sao10k/l3.1-euryale-70b"
     },
+    "openrouter/l3.3-euryale-70b": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "l3.3-euryale-70b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.65,
+        "output_per_mtok": 0.75
+      },
+      "provider_model_id": "sao10k/l3.3-euryale-70b"
+    },
+    "openrouter/lfm-2-24b-a2b": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2-24b-a2b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.12
+      },
+      "provider_model_id": "liquid/lfm-2-24b-a2b"
+    },
     "openrouter/lfm-2.2-6b": {
       "context_window": 32768,
       "enabled": true,
@@ -30655,6 +33752,28 @@
         "output_per_mtok": 0.02
       },
       "provider_model_id": "liquid/lfm-2.2-6b"
+    },
+    "openrouter/lfm-2.5-1.2b-instruct": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2.5-1.2b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "liquid/lfm-2.5-1.2b-instruct:free"
+    },
+    "openrouter/lfm-2.5-1.2b-thinking": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2.5-1.2b-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "liquid/lfm-2.5-1.2b-thinking:free"
     },
     "openrouter/lfm2-8b-a1b": {
       "context_window": 32768,
@@ -30667,6 +33786,16 @@
       },
       "provider_model_id": "liquid/lfm2-8b-a1b"
     },
+    "openrouter/liquid/lfm-2-24b-a2b": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2-24b-a2b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.12
+      }
+    },
     "openrouter/liquid/lfm-2.2-6b": {
       "context_window": 32768,
       "enabled": true,
@@ -30675,6 +33804,26 @@
         "currency": "USD",
         "input_per_mtok": 0.01,
         "output_per_mtok": 0.02
+      }
+    },
+    "openrouter/liquid/lfm-2.5-1.2b-instruct:free": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2.5-1.2b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/liquid/lfm-2.5-1.2b-thinking:free": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "lfm-2.5-1.2b-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       }
     },
     "openrouter/liquid/lfm2-8b-a1b": {
@@ -30824,6 +33973,30 @@
       },
       "provider_model_id": "nvidia/llama-3.3-nemotron-super-49b-v1.5"
     },
+    "openrouter/llama-4-maverick": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "llama-4-maverick",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "provider_model_id": "meta-llama/llama-4-maverick"
+    },
+    "openrouter/llama-4-scout": {
+      "context_window": 327680,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "llama-4-scout",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.3
+      },
+      "provider_model_id": "meta-llama/llama-4-scout"
+    },
     "openrouter/llama-guard-4-12b": {
       "context_window": 163840,
       "enabled": true,
@@ -30919,6 +34092,32 @@
         "output_per_mtok": 0.75
       },
       "provider_model_id": "inception/mercury"
+    },
+    "openrouter/mercury-2": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 50000,
+      "model_ref": "mercury-2",
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      },
+      "provider_model_id": "inception/mercury-2"
+    },
+    "openrouter/mercury-coder": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 32000,
+      "model_ref": "mercury-coder",
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 0.75
+      },
+      "provider_model_id": "inception/mercury-coder"
     },
     "openrouter/meta-llama/llama-3-70b-instruct": {
       "context_window": 8192,
@@ -31040,7 +34239,7 @@
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 16384,
-      "model_ref": "llama-4-maverick-17b-128e-instruct",
+      "model_ref": "llama-4-maverick",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.15,
@@ -31051,7 +34250,7 @@
       "context_window": 327680,
       "enabled": true,
       "max_output_tokens": 16384,
-      "model_ref": "llama-4-scout-17b-16e-instruct",
+      "model_ref": "llama-4-scout",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.08,
@@ -31100,6 +34299,45 @@
         "output_per_mtok": 0.62
       }
     },
+    "openrouter/mimo-v2-flash": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mimo-v2-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.045,
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.29
+      },
+      "provider_model_id": "xiaomi/mimo-v2-flash"
+    },
+    "openrouter/mimo-v2-omni": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mimo-v2-omni",
+      "pricing": {
+        "cached_input_per_mtok": 0.08,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      },
+      "provider_model_id": "xiaomi/mimo-v2-omni"
+    },
+    "openrouter/mimo-v2-pro": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mimo-v2-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
+      },
+      "provider_model_id": "xiaomi/mimo-v2-pro"
+    },
     "openrouter/minimax-01": {
       "context_window": 1000192,
       "enabled": true,
@@ -31137,6 +34375,19 @@
       },
       "provider_model_id": "minimax/minimax-m2"
     },
+    "openrouter/minimax-m2-her": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 2048,
+      "model_ref": "minimax-m2-her",
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      },
+      "provider_model_id": "minimax/minimax-m2-her"
+    },
     "openrouter/minimax-m2.1": {
       "context_window": 196608,
       "enabled": true,
@@ -31148,6 +34399,31 @@
         "output_per_mtok": 0.95
       },
       "provider_model_id": "minimax/minimax-m2.1"
+    },
+    "openrouter/minimax-m2.5": {
+      "context_window": 196608,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "minimax-m2.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.17
+      }
+    },
+    "openrouter/minimax-m2.7": {
+      "context_window": 204800,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "minimax-m2.7",
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      },
+      "provider_model_id": "minimax/minimax-m2.7"
     },
     "openrouter/minimax/minimax-01": {
       "context_window": 1000192,
@@ -31183,6 +34459,18 @@
         "output_per_mtok": 1.0
       }
     },
+    "openrouter/minimax/minimax-m2-her": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 2048,
+      "model_ref": "minimax-m2-her",
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      }
+    },
     "openrouter/minimax/minimax-m2.1": {
       "context_window": 196608,
       "enabled": true,
@@ -31192,6 +34480,41 @@
         "currency": "USD",
         "input_per_mtok": 0.27,
         "output_per_mtok": 0.95
+      }
+    },
+    "openrouter/minimax/minimax-m2.5": {
+      "context_window": 196608,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "minimax-m2.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.17
+      }
+    },
+    "openrouter/minimax/minimax-m2.5:free": {
+      "context_window": 196608,
+      "enabled": true,
+      "max_output_tokens": 196608,
+      "model_ref": "minimax-m2.5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/minimax/minimax-m2.7": {
+      "context_window": 204800,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "minimax-m2.7",
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       }
     },
     "openrouter/mistral-7b-instruct-v0.1": {
@@ -31241,6 +34564,41 @@
       },
       "provider_model_id": "mistralai/mistral-small-2603"
     },
+    "openrouter/mistral-small-3.1-24b-instruct": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mistral-small-3.1-24b-instruct",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.11
+      }
+    },
+    "openrouter/mistral-small-3.2-24b-instruct": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "mistral-small-3.2-24b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.2
+      },
+      "provider_model_id": "mistralai/mistral-small-3.2-24b-instruct"
+    },
+    "openrouter/mistral-small-creative": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "mistral-small-creative",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
+      },
+      "provider_model_id": "mistralai/mistral-small-creative"
+    },
     "openrouter/mistralai/codestral-2508": {
       "context_window": 256000,
       "enabled": true,
@@ -31266,7 +34624,7 @@
     "openrouter/mistralai/devstral-medium": {
       "context_window": 131072,
       "enabled": true,
-      "model_ref": "devstral-medium-2507",
+      "model_ref": "devstral-medium",
       "pricing": {
         "cached_input_per_mtok": 0.04,
         "currency": "USD",
@@ -31277,7 +34635,7 @@
     "openrouter/mistralai/devstral-small": {
       "context_window": 131072,
       "enabled": true,
-      "model_ref": "devstral-small-2507",
+      "model_ref": "devstral-small",
       "pricing": {
         "cached_input_per_mtok": 0.01,
         "currency": "USD",
@@ -31405,6 +34763,17 @@
         "output_per_mtok": 0.04
       }
     },
+    "openrouter/mistralai/mistral-saba": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "mistral-saba",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.6
+      }
+    },
     "openrouter/mistralai/mistral-small-24b-instruct-2501": {
       "context_window": 32768,
       "enabled": true,
@@ -31425,6 +34794,49 @@
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
+      }
+    },
+    "openrouter/mistralai/mistral-small-3.1-24b-instruct": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mistral-small-3.1-24b-instruct",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.11
+      }
+    },
+    "openrouter/mistralai/mistral-small-3.1-24b-instruct:free": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "mistral-small-3.1-24b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/mistralai/mistral-small-3.2-24b-instruct": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "mistral-small-3.2-24b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.2
+      }
+    },
+    "openrouter/mistralai/mistral-small-creative": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "mistral-small-creative",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
       }
     },
     "openrouter/mistralai/mixtral-8x22b-instruct": {
@@ -31514,6 +34926,29 @@
         "output_per_mtok": 2.0
       }
     },
+    "openrouter/moonshotai/kimi-k2-thinking": {
+      "context_window": 131072,
+      "enabled": true,
+      "model_ref": "kimi-k2-thinking",
+      "pricing": {
+        "cached_input_per_mtok": 0.141,
+        "currency": "USD",
+        "input_per_mtok": 0.47,
+        "output_per_mtok": 2.0
+      }
+    },
+    "openrouter/moonshotai/kimi-k2.5": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65535,
+      "model_ref": "kimi-k2.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.225,
+        "currency": "USD",
+        "input_per_mtok": 0.45,
+        "output_per_mtok": 2.2
+      }
+    },
     "openrouter/morph-v3-fast": {
       "context_window": 81920,
       "enabled": true,
@@ -31580,6 +35015,18 @@
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
+      }
+    },
+    "openrouter/nemotron-3-super-120b-a12b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "nemotron-3-super-120b-a12b",
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.5
       }
     },
     "openrouter/nemotron-nano-12b-v2-vl": {
@@ -31788,6 +35235,28 @@
         "output_per_mtok": 0.0
       }
     },
+    "openrouter/nvidia/nemotron-3-super-120b-a12b": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "nemotron-3-super-120b-a12b",
+      "pricing": {
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.5
+      }
+    },
+    "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "nemotron-3-super-120b-a12b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "openrouter/nvidia/nemotron-nano-12b-v2-vl": {
       "context_window": 131072,
       "enabled": true,
@@ -31835,11 +35304,25 @@
       "max_output_tokens": 65536,
       "model_ref": "o3-mini-high",
       "pricing": {
+        "cached_input_per_mtok": 0.55,
         "currency": "USD",
         "input_per_mtok": 1.1,
         "output_per_mtok": 4.4
       },
       "provider_model_id": "openai/o3-mini-high"
+    },
+    "openrouter/o4-mini-high": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 100000,
+      "model_ref": "o4-mini-high",
+      "pricing": {
+        "cached_input_per_mtok": 0.275,
+        "currency": "USD",
+        "input_per_mtok": 1.1,
+        "output_per_mtok": 4.4
+      },
+      "provider_model_id": "openai/o4-mini-high"
     },
     "openrouter/olmo-2-0325-32b-instruct": {
       "context_window": 128000,
@@ -31851,6 +35334,41 @@
         "output_per_mtok": 0.2
       },
       "provider_model_id": "allenai/olmo-2-0325-32b-instruct"
+    },
+    "openrouter/olmo-3-32b-think": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "olmo-3-32b-think",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
+      },
+      "provider_model_id": "allenai/olmo-3-32b-think"
+    },
+    "openrouter/olmo-3.1-32b-instruct": {
+      "context_window": 65536,
+      "enabled": true,
+      "model_ref": "olmo-3.1-32b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.6
+      },
+      "provider_model_id": "allenai/olmo-3.1-32b-instruct"
+    },
+    "openrouter/olmo-3.1-32b-think": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "olmo-3.1-32b-think",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
+      },
+      "provider_model_id": "allenai/olmo-3.1-32b-think"
     },
     "openrouter/openai/gpt-3.5-turbo": {
       "context_window": 16385,
@@ -31955,7 +35473,7 @@
       "context_window": 1047576,
       "enabled": true,
       "max_output_tokens": 32768,
-      "model_ref": "gpt-4.1-2025-04-14",
+      "model_ref": "gpt-4.1",
       "pricing": {
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
@@ -31967,7 +35485,7 @@
       "context_window": 1047576,
       "enabled": true,
       "max_output_tokens": 32768,
-      "model_ref": "gpt-4.1-mini-2025-04-14",
+      "model_ref": "gpt-4.1-mini",
       "pricing": {
         "cached_input_per_mtok": 0.1,
         "currency": "USD",
@@ -31979,7 +35497,7 @@
       "context_window": 1047576,
       "enabled": true,
       "max_output_tokens": 32768,
-      "model_ref": "gpt-4.1-nano-2025-04-14",
+      "model_ref": "gpt-4.1-nano",
       "pricing": {
         "cached_input_per_mtok": 0.025,
         "currency": "USD",
@@ -32073,7 +35591,7 @@
       "context_window": 128000,
       "enabled": true,
       "max_output_tokens": 16384,
-      "model_ref": "gpt-4o-mini-search-preview-2025-03-11",
+      "model_ref": "gpt-4o-mini-search-preview",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.15,
@@ -32084,7 +35602,7 @@
       "context_window": 128000,
       "enabled": true,
       "max_output_tokens": 16384,
-      "model_ref": "gpt-4o-search-preview-2025-03-11",
+      "model_ref": "gpt-4o-search-preview",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 2.5,
@@ -32103,10 +35621,10 @@
       }
     },
     "openrouter/openai/gpt-5": {
-      "context_window": 400000,
+      "context_window": 272000,
       "enabled": true,
       "max_output_tokens": 128000,
-      "model_ref": "gpt-5-2025-08-07",
+      "model_ref": "gpt-5",
       "pricing": {
         "cached_input_per_mtok": 0.125,
         "currency": "USD",
@@ -32163,10 +35681,10 @@
       }
     },
     "openrouter/openai/gpt-5-mini": {
-      "context_window": 400000,
+      "context_window": 272000,
       "enabled": true,
       "max_output_tokens": 128000,
-      "model_ref": "gpt-5-mini-2025-08-07",
+      "model_ref": "gpt-5-mini",
       "pricing": {
         "cached_input_per_mtok": 0.025,
         "currency": "USD",
@@ -32175,10 +35693,10 @@
       }
     },
     "openrouter/openai/gpt-5-nano": {
-      "context_window": 400000,
+      "context_window": 272000,
       "enabled": true,
       "max_output_tokens": 128000,
-      "model_ref": "gpt-5-nano-2025-08-07",
+      "model_ref": "gpt-5-nano",
       "pricing": {
         "cached_input_per_mtok": 0.005,
         "currency": "USD",
@@ -32190,11 +35708,47 @@
       "context_window": 400000,
       "enabled": true,
       "max_output_tokens": 128000,
-      "model_ref": "gpt-5-pro-2025-10-06",
+      "model_ref": "gpt-5-pro",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 15.0,
         "output_per_mtok": 120.0
+      }
+    },
+    "openrouter/openai/gpt-5.1": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.1",
+      "pricing": {
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      }
+    },
+    "openrouter/openai/gpt-5.1-chat": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "gpt-5.1-chat",
+      "pricing": {
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
+      }
+    },
+    "openrouter/openai/gpt-5.1-codex": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.1-codex",
+      "pricing": {
+        "cached_input_per_mtok": 0.125,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0
       }
     },
     "openrouter/openai/gpt-5.1-codex-max": {
@@ -32207,6 +35761,18 @@
         "currency": "USD",
         "input_per_mtok": 1.25,
         "output_per_mtok": 10.0
+      }
+    },
+    "openrouter/openai/gpt-5.1-codex-mini": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 100000,
+      "model_ref": "gpt-5.1-codex-mini",
+      "pricing": {
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
       }
     },
     "openrouter/openai/gpt-5.2": {
@@ -32257,6 +35823,77 @@
         "input_per_image": 0.0,
         "input_per_mtok": 21.0,
         "output_per_mtok": 168.0
+      }
+    },
+    "openrouter/openai/gpt-5.3-chat": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "gpt-5.3-chat",
+      "pricing": {
+        "cached_input_per_mtok": 0.175,
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 14.0
+      }
+    },
+    "openrouter/openai/gpt-5.3-codex": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.3-codex",
+      "pricing": {
+        "cached_input_per_mtok": 0.175,
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 14.0
+      }
+    },
+    "openrouter/openai/gpt-5.4": {
+      "context_window": 1050000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4",
+      "pricing": {
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 15.0
+      }
+    },
+    "openrouter/openai/gpt-5.4-mini": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-mini",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
+      }
+    },
+    "openrouter/openai/gpt-5.4-nano": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-nano",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.25
+      }
+    },
+    "openrouter/openai/gpt-5.4-pro": {
+      "context_window": 1050000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 30.0,
+        "output_per_mtok": 180.0
       }
     },
     "openrouter/openai/gpt-audio": {
@@ -32342,7 +35979,7 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o1-2024-12-17",
+      "model_ref": "o1",
       "pricing": {
         "cached_input_per_mtok": 7.5,
         "currency": "USD",
@@ -32365,7 +36002,7 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o3-2025-04-16",
+      "model_ref": "o3",
       "pricing": {
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
@@ -32377,7 +36014,7 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o3-deep-research-2025-06-26",
+      "model_ref": "o3-deep-research",
       "pricing": {
         "cached_input_per_mtok": 2.5,
         "currency": "USD",
@@ -32386,10 +36023,10 @@
       }
     },
     "openrouter/openai/o3-mini": {
-      "context_window": 200000,
+      "context_window": 128000,
       "enabled": true,
-      "max_output_tokens": 100000,
-      "model_ref": "o3-mini-2025-01-31",
+      "max_output_tokens": 65536,
+      "model_ref": "o3-mini",
       "pricing": {
         "cached_input_per_mtok": 0.55,
         "currency": "USD",
@@ -32403,6 +36040,7 @@
       "max_output_tokens": 65536,
       "model_ref": "o3-mini-high",
       "pricing": {
+        "cached_input_per_mtok": 0.55,
         "currency": "USD",
         "input_per_mtok": 1.1,
         "output_per_mtok": 4.4
@@ -32412,7 +36050,7 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o3-pro-2025-06-10",
+      "model_ref": "o3-pro",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 20.0,
@@ -32423,7 +36061,7 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o4-mini-2025-04-16",
+      "model_ref": "o4-mini",
       "pricing": {
         "cached_input_per_mtok": 0.275,
         "currency": "USD",
@@ -32435,13 +36073,37 @@
       "context_window": 200000,
       "enabled": true,
       "max_output_tokens": 100000,
-      "model_ref": "o4-mini-deep-research-2025-06-26",
+      "model_ref": "o4-mini-deep-research",
       "pricing": {
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 8.0
       }
+    },
+    "openrouter/openai/o4-mini-high": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 100000,
+      "model_ref": "o4-mini-high",
+      "pricing": {
+        "cached_input_per_mtok": 0.275,
+        "currency": "USD",
+        "input_per_mtok": 1.1,
+        "output_per_mtok": 4.4
+      }
+    },
+    "openrouter/palmyra-x5": {
+      "context_window": 1040000,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "palmyra-x5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 6.0
+      },
+      "provider_model_id": "writer/palmyra-x5"
     },
     "openrouter/perplexity/sonar": {
       "context_window": 127072,
@@ -32495,6 +36157,17 @@
         "output_per_mtok": 8.0
       }
     },
+    "openrouter/prime-intellect/intellect-3": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "intellect-3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.1
+      }
+    },
     "openrouter/qwen-2.5-72b-instruct": {
       "context_window": 32768,
       "enabled": true,
@@ -32530,6 +36203,32 @@
       },
       "provider_model_id": "qwen/qwen-2.5-coder-32b-instruct"
     },
+    "openrouter/qwen-max": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen-max",
+      "pricing": {
+        "cached_input_per_mtok": 0.208,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 4.16
+      },
+      "provider_model_id": "qwen/qwen-max"
+    },
+    "openrouter/qwen-plus": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen-plus",
+      "pricing": {
+        "cached_input_per_mtok": 0.052,
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.78
+      },
+      "provider_model_id": "qwen/qwen-plus"
+    },
     "openrouter/qwen-plus-2025-07-28": {
       "context_window": 1000000,
       "enabled": true,
@@ -32540,6 +36239,31 @@
         "input_per_mtok": 0.26,
         "output_per_mtok": 0.78
       }
+    },
+    "openrouter/qwen-turbo": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.0065,
+        "currency": "USD",
+        "input_per_mtok": 0.0325,
+        "output_per_mtok": 0.13
+      },
+      "provider_model_id": "qwen/qwen-turbo"
+    },
+    "openrouter/qwen-vl-max": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen-vl-max",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.52,
+        "output_per_mtok": 2.08
+      },
+      "provider_model_id": "qwen/qwen-vl-max"
     },
     "openrouter/qwen-vl-plus": {
       "context_window": 131072,
@@ -32586,6 +36310,30 @@
         "output_per_mtok": 1.0
       }
     },
+    "openrouter/qwen/qwen-max": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen-max",
+      "pricing": {
+        "cached_input_per_mtok": 0.208,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 4.16
+      }
+    },
+    "openrouter/qwen/qwen-plus": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen-plus",
+      "pricing": {
+        "cached_input_per_mtok": 0.052,
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 0.78
+      }
+    },
     "openrouter/qwen/qwen-plus-2025-07-28": {
       "context_window": 1000000,
       "enabled": true,
@@ -32606,6 +36354,29 @@
         "currency": "USD",
         "input_per_mtok": 0.26,
         "output_per_mtok": 0.78
+      }
+    },
+    "openrouter/qwen/qwen-turbo": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.0065,
+        "currency": "USD",
+        "input_per_mtok": 0.0325,
+        "output_per_mtok": 0.13
+      }
+    },
+    "openrouter/qwen/qwen-vl-max": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen-vl-max",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.52,
+        "output_per_mtok": 2.08
       }
     },
     "openrouter/qwen/qwen-vl-plus": {
@@ -32651,6 +36422,28 @@
         "output_per_mtok": 0.8
       }
     },
+    "openrouter/qwen/qwen3-14b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-14b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.24
+      }
+    },
+    "openrouter/qwen/qwen3-235b-a22b": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen3-235b-a22b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.455,
+        "output_per_mtok": 1.82
+      }
+    },
     "openrouter/qwen/qwen3-235b-a22b-thinking-2507": {
       "context_window": 131072,
       "enabled": true,
@@ -32659,6 +36452,17 @@
         "currency": "USD",
         "input_per_mtok": 0.1495,
         "output_per_mtok": 1.495
+      }
+    },
+    "openrouter/qwen/qwen3-30b-a3b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-30b-a3b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.28
       }
     },
     "openrouter/qwen/qwen3-30b-a3b-instruct-2507": {
@@ -32684,6 +36488,51 @@
         "output_per_mtok": 0.4
       }
     },
+    "openrouter/qwen/qwen3-32b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-32b",
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.24
+      }
+    },
+    "openrouter/qwen/qwen3-4b:free": {
+      "context_window": 40960,
+      "enabled": true,
+      "model_ref": "qwen3-4b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/qwen/qwen3-8b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen3-8b",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.4
+      }
+    },
+    "openrouter/qwen/qwen3-coder": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "qwen3-coder",
+      "pricing": {
+        "cached_input_per_mtok": 0.022,
+        "currency": "USD",
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 1.0
+      }
+    },
     "openrouter/qwen/qwen3-coder-30b-a3b-instruct": {
       "context_window": 160000,
       "enabled": true,
@@ -32707,6 +36556,18 @@
         "output_per_mtok": 0.975
       }
     },
+    "openrouter/qwen/qwen3-coder-next": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3-coder-next",
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.75
+      }
+    },
     "openrouter/qwen/qwen3-coder-plus": {
       "context_window": 1000000,
       "enabled": true,
@@ -32719,6 +36580,17 @@
         "output_per_mtok": 3.25
       }
     },
+    "openrouter/qwen/qwen3-coder:free": {
+      "context_window": 262000,
+      "enabled": true,
+      "max_output_tokens": 262000,
+      "model_ref": "qwen3-coder",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "openrouter/qwen/qwen3-max": {
       "context_window": 262144,
       "enabled": true,
@@ -32729,6 +36601,48 @@
         "currency": "USD",
         "input_per_mtok": 0.78,
         "output_per_mtok": 3.9
+      }
+    },
+    "openrouter/qwen/qwen3-max-thinking": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen3-max-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.78,
+        "output_per_mtok": 3.9
+      }
+    },
+    "openrouter/qwen/qwen3-next-80b-a3b-instruct": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "qwen3-next-80b-a3b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 1.1
+      }
+    },
+    "openrouter/qwen/qwen3-next-80b-a3b-instruct:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "qwen3-next-80b-a3b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/qwen/qwen3-next-80b-a3b-thinking": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen3-next-80b-a3b-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0975,
+        "output_per_mtok": 0.78
       }
     },
     "openrouter/qwen/qwen3-vl-235b-a22b-instruct": {
@@ -32808,6 +36722,83 @@
         "output_per_mtok": 1.365
       }
     },
+    "openrouter/qwen/qwen3.5-122b-a10b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-122b-a10b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
+      }
+    },
+    "openrouter/qwen/qwen3.5-27b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-27b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.195,
+        "output_per_mtok": 1.56
+      }
+    },
+    "openrouter/qwen/qwen3.5-35b-a3b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-35b-a3b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1625,
+        "output_per_mtok": 1.3
+      }
+    },
+    "openrouter/qwen/qwen3.5-397b-a17b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-397b-a17b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 2.34
+      }
+    },
+    "openrouter/qwen/qwen3.5-9b": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-9b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.15
+      }
+    },
+    "openrouter/qwen/qwen3.5-flash-02-23": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-flash-02-23",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.065,
+        "output_per_mtok": 0.26
+      }
+    },
+    "openrouter/qwen/qwen3.5-plus-02-15": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-plus-02-15",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 1.56
+      }
+    },
     "openrouter/qwen/qwq-32b": {
       "context_window": 131072,
       "enabled": true,
@@ -32853,6 +36844,18 @@
       },
       "provider_model_id": "qwen/qwen2.5-vl-72b-instruct"
     },
+    "openrouter/qwen3-14b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-14b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.24
+      },
+      "provider_model_id": "qwen/qwen3-14b"
+    },
     "openrouter/qwen3-235b-a22b-thinking-2507": {
       "context_window": 131072,
       "enabled": true,
@@ -32863,6 +36866,18 @@
         "output_per_mtok": 1.495
       },
       "provider_model_id": "qwen/qwen3-235b-a22b-thinking-2507"
+    },
+    "openrouter/qwen3-30b-a3b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-30b-a3b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.28
+      },
+      "provider_model_id": "qwen/qwen3-30b-a3b"
     },
     "openrouter/qwen3-30b-a3b-instruct-2507": {
       "context_window": 262144,
@@ -32889,6 +36904,55 @@
       },
       "provider_model_id": "qwen/qwen3-30b-a3b-thinking-2507"
     },
+    "openrouter/qwen3-32b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 40960,
+      "model_ref": "qwen3-32b",
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.24
+      },
+      "provider_model_id": "qwen/qwen3-32b"
+    },
+    "openrouter/qwen3-4b": {
+      "context_window": 40960,
+      "enabled": true,
+      "model_ref": "qwen3-4b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "qwen/qwen3-4b:free"
+    },
+    "openrouter/qwen3-8b": {
+      "context_window": 40960,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "qwen3-8b",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.4
+      },
+      "provider_model_id": "qwen/qwen3-8b"
+    },
+    "openrouter/qwen3-coder": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262000,
+      "model_ref": "qwen3-coder",
+      "pricing": {
+        "cached_input_per_mtok": 0.022,
+        "currency": "USD",
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 1.0
+      }
+    },
     "openrouter/qwen3-coder-30b-a3b-instruct": {
       "context_window": 160000,
       "enabled": true,
@@ -32913,6 +36977,19 @@
         "output_per_mtok": 0.975
       },
       "provider_model_id": "qwen/qwen3-coder-flash"
+    },
+    "openrouter/qwen3-coder-next": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3-coder-next",
+      "pricing": {
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.75
+      },
+      "provider_model_id": "qwen/qwen3-coder-next"
     },
     "openrouter/qwen3-coder-plus": {
       "context_window": 1000000,
@@ -32939,6 +37016,40 @@
         "output_per_mtok": 3.9
       },
       "provider_model_id": "qwen/qwen3-max"
+    },
+    "openrouter/qwen3-max-thinking": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen3-max-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.78,
+        "output_per_mtok": 3.9
+      },
+      "provider_model_id": "qwen/qwen3-max-thinking"
+    },
+    "openrouter/qwen3-next-80b-a3b-instruct": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "qwen3-next-80b-a3b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 1.1
+      }
+    },
+    "openrouter/qwen3-next-80b-a3b-thinking": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "qwen3-next-80b-a3b-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0975,
+        "output_per_mtok": 0.78
+      },
+      "provider_model_id": "qwen/qwen3-next-80b-a3b-thinking"
     },
     "openrouter/qwen3-vl-235b-a22b-instruct": {
       "context_window": 262144,
@@ -33024,6 +37135,90 @@
       },
       "provider_model_id": "qwen/qwen3-vl-8b-thinking"
     },
+    "openrouter/qwen3.5-122b-a10b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-122b-a10b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
+      },
+      "provider_model_id": "qwen/qwen3.5-122b-a10b"
+    },
+    "openrouter/qwen3.5-27b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-27b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.195,
+        "output_per_mtok": 1.56
+      },
+      "provider_model_id": "qwen/qwen3.5-27b"
+    },
+    "openrouter/qwen3.5-35b-a3b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-35b-a3b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1625,
+        "output_per_mtok": 1.3
+      },
+      "provider_model_id": "qwen/qwen3.5-35b-a3b"
+    },
+    "openrouter/qwen3.5-397b-a17b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-397b-a17b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 2.34
+      },
+      "provider_model_id": "qwen/qwen3.5-397b-a17b"
+    },
+    "openrouter/qwen3.5-9b": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-9b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.15
+      },
+      "provider_model_id": "qwen/qwen3.5-9b"
+    },
+    "openrouter/qwen3.5-flash-02-23": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-flash-02-23",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.065,
+        "output_per_mtok": 0.26
+      },
+      "provider_model_id": "qwen/qwen3.5-flash-02-23"
+    },
+    "openrouter/qwen3.5-plus-02-15": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-plus-02-15",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 1.56
+      },
+      "provider_model_id": "qwen/qwen3.5-plus-02-15"
+    },
     "openrouter/qwq-32b": {
       "context_window": 131072,
       "enabled": true,
@@ -33048,6 +37243,18 @@
       },
       "provider_model_id": "relace/relace-apply-3"
     },
+    "openrouter/relace-search": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "relace-search",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
+      },
+      "provider_model_id": "relace/relace-search"
+    },
     "openrouter/relace/relace-apply-3": {
       "context_window": 256000,
       "enabled": true,
@@ -33057,6 +37264,17 @@
         "currency": "USD",
         "input_per_mtok": 0.85,
         "output_per_mtok": 1.25
+      }
+    },
+    "openrouter/relace/relace-search": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "relace-search",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
       }
     },
     "openrouter/remm-slerp-l2-13b": {
@@ -33146,6 +37364,65 @@
         "input_per_mtok": 0.85,
         "output_per_mtok": 0.85
       }
+    },
+    "openrouter/sao10k/l3.3-euryale-70b": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "l3.3-euryale-70b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.65,
+        "output_per_mtok": 0.75
+      }
+    },
+    "openrouter/seed-1.6": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "seed-1.6",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      },
+      "provider_model_id": "bytedance-seed/seed-1.6"
+    },
+    "openrouter/seed-1.6-flash": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "seed-1.6-flash",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
+      },
+      "provider_model_id": "bytedance-seed/seed-1.6-flash"
+    },
+    "openrouter/seed-2.0-lite": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "seed-2.0-lite",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 2.0
+      },
+      "provider_model_id": "bytedance-seed/seed-2.0-lite"
+    },
+    "openrouter/seed-2.0-mini": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "seed-2.0-mini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4
+      },
+      "provider_model_id": "bytedance-seed/seed-2.0-mini"
     },
     "openrouter/skyfall-36b-v2": {
       "context_window": 32768,
@@ -33365,6 +37642,28 @@
       },
       "provider_model_id": "alibaba/tongyi-deepresearch-30b-a3b"
     },
+    "openrouter/trinity-large-preview": {
+      "context_window": 131000,
+      "enabled": true,
+      "model_ref": "trinity-large-preview",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "arcee-ai/trinity-large-preview:free"
+    },
+    "openrouter/trinity-mini": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "trinity-mini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.045,
+        "output_per_mtok": 0.15
+      }
+    },
     "openrouter/ui-tars-1.5-7b": {
       "context_window": 128000,
       "enabled": true,
@@ -33447,6 +37746,17 @@
       },
       "provider_model_id": "mancer/weaver"
     },
+    "openrouter/writer/palmyra-x5": {
+      "context_window": 1040000,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "palmyra-x5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 6.0
+      }
+    },
     "openrouter/x-ai/grok-3": {
       "context_window": 131072,
       "enabled": true,
@@ -33497,6 +37807,7 @@
       "max_output_tokens": 256000,
       "model_ref": "grok-4",
       "pricing": {
+        "cached_input_per_mtok": 0.75,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
@@ -33526,6 +37837,28 @@
         "output_per_mtok": 0.5
       }
     },
+    "openrouter/x-ai/grok-4.20-beta": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-beta",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      }
+    },
+    "openrouter/x-ai/grok-4.20-multi-agent-beta": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent-beta",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
+      }
+    },
     "openrouter/x-ai/grok-code-fast-1": {
       "context_window": 256000,
       "enabled": true,
@@ -33536,6 +37869,52 @@
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 1.5
+      }
+    },
+    "openrouter/xiaomi/mimo-v2-flash": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mimo-v2-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.045,
+        "currency": "USD",
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.29
+      }
+    },
+    "openrouter/xiaomi/mimo-v2-omni": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mimo-v2-omni",
+      "pricing": {
+        "cached_input_per_mtok": 0.08,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      }
+    },
+    "openrouter/xiaomi/mimo-v2-pro": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mimo-v2-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.0
+      }
+    },
+    "openrouter/z-ai/glm-4-32b": {
+      "context_window": 128000,
+      "enabled": true,
+      "model_ref": "glm-4-32b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
       }
     },
     "openrouter/z-ai/glm-4.5": {
@@ -33594,6 +37973,63 @@
         "currency": "USD",
         "input_per_mtok": 0.39,
         "output_per_mtok": 1.9
+      }
+    },
+    "openrouter/z-ai/glm-4.6v": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-4.6v",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 0.9
+      }
+    },
+    "openrouter/z-ai/glm-4.7": {
+      "context_window": 202752,
+      "enabled": true,
+      "max_output_tokens": 65535,
+      "model_ref": "glm-4.7",
+      "pricing": {
+        "cached_input_per_mtok": 0.195,
+        "currency": "USD",
+        "input_per_mtok": 0.39,
+        "output_per_mtok": 1.75
+      }
+    },
+    "openrouter/z-ai/glm-4.7-flash": {
+      "context_window": 202752,
+      "enabled": true,
+      "model_ref": "glm-4.7-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.0100000002,
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.4
+      }
+    },
+    "openrouter/z-ai/glm-5": {
+      "context_window": 80000,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.72,
+        "output_per_mtok": 2.3
+      }
+    },
+    "openrouter/z-ai/glm-5-turbo": {
+      "context_window": 202752,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.24,
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 4.0
       }
     },
     "together/EleutherAI/llemma_7b": {
@@ -33688,6 +38124,15 @@
         "currency": "USD",
         "input_per_mtok": 0.18,
         "output_per_mtok": 0.59
+      }
+    },
+    "together/moonshot-ai/kimi-k2-thinking": {
+      "enabled": true,
+      "model_ref": "kimi-k2-thinking",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 4.0
       }
     },
     "together/openai/gpt-oss-120b": {

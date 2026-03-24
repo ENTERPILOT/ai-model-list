@@ -49,6 +49,7 @@ KNOWN_PROVIDER_SLUGS = {
     "xai",
 }
 UNSTABLE_ALIAS_TOKENS = ("latest", "beta", "preview", "alpha", "experimental", "free")
+DEPLOYMENT_TIER_TOKENS = {"free"}
 DATE_SUFFIX_PATTERN = re.compile(r"(?:[-_.])(?:\d{4}|\d{8})$")
 XAI_TOKEN_PRICE_DIVISOR = 10_000
 XAI_UNIT_PRICE_DIVISOR = 1_000_000_000
@@ -73,6 +74,27 @@ MODE_HINTS = (
     ("transcribe", "audio_transcription"),
 )
 DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf", "tts", "ui", "ux"}
+SUPPORTED_MODALITIES = {"text", "image", "audio", "video"}
+MODALITY_ORDER = {"text": 0, "image": 1, "audio": 2, "video": 3}
+ENDPOINT_MODE_HINTS = {
+    "/v1/images/generations": "image_generation",
+    "/v1/images/edits": "image_edit",
+    "/v1/images/variations": "image_edit",
+    "/v1/audio/speech": "audio_speech",
+    "/v1/audio/transcriptions": "audio_transcription",
+    "/v1/audio/translations": "audio_transcription",
+    "/v1/embeddings": "embedding",
+    "/v1/responses": "responses",
+    "/v1/realtime": "realtime",
+}
+MODE_MODALITY_HINTS = {
+    "image_generation": {"input": {"text"}, "output": {"image"}},
+    "image_edit": {"input": {"text", "image"}, "output": {"image"}},
+    "video_generation": {"input": {"text"}, "output": {"video"}},
+    "video_edit": {"input": {"text", "video"}, "output": {"video"}},
+    "audio_speech": {"input": {"text"}, "output": {"audio"}},
+    "audio_transcription": {"input": {"audio"}, "output": {"text"}},
+}
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -450,6 +472,31 @@ def _choose_canonical_model_id(model: Mapping[str, Any]) -> str:
     return min(candidates, key=lambda candidate: _canonical_rank(candidate, raw_model_id))
 
 
+def _choose_preferred_canonical_hint(raw_model_id: str, *candidates: str | None) -> str | None:
+    valid_candidates = {candidate for candidate in candidates if isinstance(candidate, str) and candidate}
+    trimmed_raw_model_id = _strip_deployment_tier_suffix(raw_model_id)
+    if trimmed_raw_model_id:
+        valid_candidates.add(trimmed_raw_model_id)
+    for candidate in tuple(valid_candidates):
+        trimmed_candidate = _strip_deployment_tier_suffix(candidate)
+        if trimmed_candidate:
+            valid_candidates.add(trimmed_candidate)
+    if not valid_candidates:
+        return None
+    return min(valid_candidates, key=lambda candidate: _canonical_rank(candidate, raw_model_id))
+
+
+def _strip_deployment_tier_suffix(model_id: str | None) -> str | None:
+    if not isinstance(model_id, str) or not model_id:
+        return None
+    base, separator, suffix = model_id.rpartition(":")
+    if not separator or not base:
+        return None
+    if suffix.lower() not in DEPLOYMENT_TIER_TOKENS:
+        return None
+    return base
+
+
 def _display_name_from_model_id(model_id: str) -> str:
     tokens = [token for token in DISPLAY_NAME_SPLIT_PATTERN.split(model_id) if token]
     display_tokens: list[str] = []
@@ -472,6 +519,22 @@ def _display_name_from_model_id(model_id: str) -> str:
     return " ".join(display_tokens) if display_tokens else model_id
 
 
+def _ordered_unique_strings(values: Iterable[str]) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        ordered.append(value)
+    return ordered
+
+
+def _sorted_modalities(values: Iterable[str]) -> list[str]:
+    normalized = {value for value in values if value in SUPPORTED_MODALITIES}
+    return sorted(normalized, key=lambda value: (MODALITY_ORDER.get(value, len(MODALITY_ORDER)), value))
+
+
 def _infer_mode_from_values(*values: Any) -> str:
     for value in values:
         if not isinstance(value, str):
@@ -481,6 +544,109 @@ def _infer_mode_from_values(*values: Any) -> str:
             if token in lowered:
                 return mode
     return "chat"
+
+
+def _modes_from_endpoints(endpoints: Sequence[str]) -> list[str]:
+    return _ordered_unique_strings(
+        ENDPOINT_MODE_HINTS[endpoint]
+        for endpoint in endpoints
+        if endpoint in ENDPOINT_MODE_HINTS
+    )
+
+
+def _infer_modalities_from_modes(modes: Sequence[str]) -> dict[str, list[str]] | None:
+    inferred: dict[str, set[str]] = {}
+    for mode in modes:
+        mode_modalities = MODE_MODALITY_HINTS.get(mode)
+        if not mode_modalities:
+            continue
+        for direction, values in mode_modalities.items():
+            inferred.setdefault(direction, set()).update(values)
+
+    if not inferred:
+        return None
+
+    return {
+        direction: _sorted_modalities(values)
+        for direction, values in inferred.items()
+        if values
+    } or None
+
+
+def _infer_modalities_from_pricing(
+    pricing: Mapping[str, Any] | None,
+    modes: Sequence[str],
+) -> dict[str, list[str]] | None:
+    if not isinstance(pricing, Mapping):
+        return None
+
+    inferred: dict[str, set[str]] = {}
+
+    if any(key in pricing for key in ("input_image_per_mtok", "cached_input_image_per_mtok", "input_per_image")):
+        inferred.setdefault("input", set()).add("image")
+    if any(key in pricing for key in ("output_image_per_mtok", "per_image", "image_generation_prices")):
+        inferred.setdefault("output", set()).add("image")
+
+    mode_set = set(modes)
+    if "video_generation" in mode_set or "video_edit" in mode_set:
+        if "per_second_input" in pricing:
+            inferred.setdefault("input", set()).add("video")
+        if "per_second_output" in pricing:
+            inferred.setdefault("output", set()).add("video")
+
+    if "audio_transcription" in mode_set and "per_second_input" in pricing:
+        inferred.setdefault("input", set()).add("audio")
+    if "audio_speech" in mode_set and "per_second_output" in pricing:
+        inferred.setdefault("output", set()).add("audio")
+
+    if not inferred:
+        return None
+
+    return {
+        direction: _sorted_modalities(values)
+        for direction, values in inferred.items()
+        if values
+    } or None
+
+
+def _merge_modalities(*modality_maps: Mapping[str, Sequence[str]] | None) -> dict[str, list[str]] | None:
+    merged: dict[str, set[str]] = {}
+    for modality_map in modality_maps:
+        if not isinstance(modality_map, Mapping):
+            continue
+        for direction in ("input", "output"):
+            values = modality_map.get(direction)
+            if not isinstance(values, Sequence) or isinstance(values, (str, bytes, bytearray)):
+                continue
+            normalized_values = {
+                value
+                for value in values
+                if isinstance(value, str) and value in SUPPORTED_MODALITIES
+            }
+            if normalized_values:
+                merged.setdefault(direction, set()).update(normalized_values)
+
+    if not merged:
+        return None
+
+    return {
+        direction: _sorted_modalities(values)
+        for direction, values in merged.items()
+        if values
+    } or None
+
+
+def _apply_inferred_modalities(fields: dict[str, Any]) -> None:
+    modes = fields.get("modes", [])
+    pricing = fields.get("pricing")
+    fields_modalities = fields.get("modalities")
+    merged = _merge_modalities(
+        fields_modalities if isinstance(fields_modalities, Mapping) else None,
+        _infer_modalities_from_modes(modes if isinstance(modes, Sequence) and not isinstance(modes, (str, bytes, bytearray)) else []),
+        _infer_modalities_from_pricing(pricing if isinstance(pricing, Mapping) else None, modes if isinstance(modes, Sequence) and not isinstance(modes, (str, bytes, bytearray)) else []),
+    )
+    if merged:
+        fields["modalities"] = merged
 
 
 def extract_official_catalog_fields(
@@ -519,6 +685,8 @@ def extract_official_catalog_fields(
     pricing = _pricing_from_catalog_prices(model.get("prices"))
     if pricing is not None:
         fields["pricing"] = pricing
+
+    _apply_inferred_modalities(fields)
 
     return fields
 
@@ -743,6 +911,7 @@ def normalize_xai_models_official_rows(
         pricing = _pricing_from_xai_language_model(model)
         if pricing is not None:
             fields["pricing"] = pricing
+        _apply_inferred_modalities(fields)
 
         records.extend(
             _build_xai_model_records(
@@ -770,6 +939,7 @@ def normalize_xai_models_official_rows(
         pricing = _pricing_from_xai_image_model(model)
         if pricing is not None:
             fields["pricing"] = pricing
+        _apply_inferred_modalities(fields)
 
         records.extend(
             _build_xai_model_records(
@@ -797,6 +967,7 @@ def normalize_xai_models_official_rows(
         pricing = _pricing_from_xai_video_model(model)
         if pricing is not None:
             fields["pricing"] = pricing
+        _apply_inferred_modalities(fields)
 
         records.extend(
             _build_xai_model_records(
@@ -813,6 +984,12 @@ def normalize_xai_models_official_rows(
 
 def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     fields: dict[str, Any] = {}
+    endpoints: list[str] = []
+    supported_endpoints = entry.get("supported_endpoints")
+    if isinstance(supported_endpoints, Sequence) and not isinstance(supported_endpoints, (str, bytes, bytearray)):
+        endpoints = [endpoint for endpoint in supported_endpoints if isinstance(endpoint, str) and endpoint]
+        if endpoints:
+            fields["endpoints"] = endpoints
 
     display_name = entry.get("name")
     if isinstance(display_name, str) and display_name:
@@ -820,13 +997,17 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     elif isinstance(entry.get("id"), str) and entry.get("id"):
         fields["display_name"] = _display_name_from_model_id(entry["id"])
 
+    inferred_modes: list[str] = []
     mode = entry.get("mode")
     if isinstance(mode, str) and mode:
-        fields["modes"] = [mode]
+        inferred_modes.append(mode)
     elif isinstance(entry.get("architecture"), Mapping):
         architecture_modality = entry["architecture"].get("modality")
         if isinstance(architecture_modality, str) and architecture_modality:
-            fields["modes"] = [_infer_mode_from_values(architecture_modality)]
+            inferred_modes.append(_infer_mode_from_values(architecture_modality))
+    inferred_modes.extend(_modes_from_endpoints(endpoints))
+    if inferred_modes:
+        fields["modes"] = _ordered_unique_strings(inferred_modes)
 
     source_url = entry.get("source")
     if isinstance(source_url, str) and source_url:
@@ -906,12 +1087,12 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     normalized_input_modalities = [
         modality
         for modality in (input_modalities or [])
-        if modality in {"text", "image", "audio", "video"}
+        if modality in SUPPORTED_MODALITIES
     ]
     normalized_output_modalities = [
         modality
         for modality in (output_modalities or [])
-        if modality in {"text", "image", "audio", "video"}
+        if modality in SUPPORTED_MODALITIES
     ]
     if normalized_input_modalities:
         modalities["input"] = normalized_input_modalities
@@ -919,6 +1100,7 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
         modalities["output"] = normalized_output_modalities
     if modalities:
         fields["modalities"] = modalities
+    _apply_inferred_modalities(fields)
 
     capabilities: dict[str, bool] = {}
     capability_flags = {
@@ -965,12 +1147,6 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
             rate_limits[source_field] = value
     if rate_limits:
         fields["rate_limits"] = rate_limits
-
-    supported_endpoints = entry.get("supported_endpoints")
-    if isinstance(supported_endpoints, Sequence) and not isinstance(supported_endpoints, (str, bytes, bytearray)):
-        endpoints = [endpoint for endpoint in supported_endpoints if isinstance(endpoint, str) and endpoint]
-        if endpoints:
-            fields["endpoints"] = endpoints
 
     return fields
 
@@ -1036,7 +1212,10 @@ def normalize_openrouter_rows(
     records: list[SourceEvidence] = []
     for row in rows:
         source_model_id = row["id"]
-        _, canonical_hint = split_provider_model_name(row.get("canonical_slug") or source_model_id)
+        _, source_model_hint = split_provider_model_name(source_model_id)
+        _, canonical_slug_hint = split_provider_model_name(row.get("canonical_slug") or source_model_id)
+        raw_model_id = source_model_hint or source_model_id
+        canonical_hint = _choose_preferred_canonical_hint(raw_model_id, source_model_hint, canonical_slug_hint)
         records.append(
             SourceEvidence(
                 source_name="openrouter",

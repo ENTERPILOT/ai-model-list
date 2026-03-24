@@ -7,7 +7,7 @@ from copy import deepcopy
 import re
 from typing import Any, Iterable
 
-from pipeline.normalize import split_provider_model_name
+from pipeline.normalize import _strip_deployment_tier_suffix, split_provider_model_name
 from pipeline.rules import is_canonical_model_key, sort_candidates_by_authority
 from pipeline.types import SourceEvidence
 
@@ -283,10 +283,11 @@ def is_clean_provider_alias_record(record: SourceEvidence, canonical_key: str) -
     if is_canonical_model_key(record.source_model_id):
         return False
     stripped_provider_hint = split_provider_model_name(record.source_model_id)[1]
+    normalized_provider_hint = _strip_deployment_tier_suffix(stripped_provider_hint) or stripped_provider_hint
     return (
         isinstance(record.canonical_hint, str)
         and record.canonical_hint == canonical_key
-        and stripped_provider_hint == canonical_key
+        and normalized_provider_hint == canonical_key
     )
 
 

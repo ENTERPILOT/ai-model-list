@@ -143,7 +143,7 @@ def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
     )[0]
 
     assert record.provider_slug == "openrouter"
-    assert record.canonical_hint == "claude-4.6-sonnet-20260217"
+    assert record.canonical_hint == "claude-sonnet-4.6"
     assert record.evidence_ref == "sources/openrouter/2026-03-23.json"
     assert record.fields["display_name"] == "Anthropic: Claude Sonnet 4.6"
     assert record.fields["pricing"] == {
@@ -153,6 +153,68 @@ def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
     }
     assert record.fields["context_window"] == 1_000_000
     assert record.fields["max_output_tokens"] == 128_000
+
+
+def test_normalize_openrouter_rows_prefers_stable_raw_id_over_dated_canonical_slug() -> None:
+    rows = [
+        {
+            "id": "qwen/qwen3.5-9b",
+            "canonical_slug": "qwen/qwen3.5-9b-20260310",
+            "name": "Qwen: Qwen3.5-9B",
+            "pricing": {"prompt": "0.00000005", "completion": "0.00000015"},
+            "top_provider": {
+                "context_length": 256_000,
+                "max_completion_tokens": 65_536,
+            },
+            "architecture": {
+                "modality": "text+image+video->text",
+                "input_modalities": ["text", "image", "video"],
+                "output_modalities": ["text"],
+            },
+        }
+    ]
+
+    record = normalize_openrouter_rows(rows, rejection_policy={})[0]
+
+    assert record.provider_slug == "openrouter"
+    assert record.canonical_hint == "qwen3.5-9b"
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.15,
+    }
+    assert record.fields["modalities"] == {
+        "input": ["text", "image", "video"],
+        "output": ["text"],
+    }
+
+
+def test_normalize_openrouter_rows_strips_free_tier_suffix_from_canonical_hint() -> None:
+    rows = [
+        {
+            "id": "qwen/qwen3-4b:free",
+            "canonical_slug": "qwen/qwen3-4b-04-28",
+            "name": "Qwen: Qwen3 4B (free)",
+            "pricing": {"prompt": "0", "completion": "0"},
+            "top_provider": {
+                "context_length": 131_072,
+            },
+            "architecture": {
+                "modality": "text->text",
+                "input_modalities": ["text"],
+                "output_modalities": ["text"],
+            },
+        }
+    ]
+
+    record = normalize_openrouter_rows(rows, rejection_policy={})[0]
+
+    assert record.canonical_hint == "qwen3-4b"
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0,
+    }
 
 
 def test_normalize_litellm_entry_extracts_image_token_pricing_and_tiers() -> None:
@@ -506,12 +568,20 @@ def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities()
     }
     assert by_id["xai/grok-4.20-0309-reasoning"].canonical_hint == "grok-4.20"
     assert by_id["grok-imagine-image"].fields["modes"] == ["image_generation"]
+    assert by_id["grok-imagine-image"].fields["modalities"] == {
+        "input": ["text", "image"],
+        "output": ["image"],
+    }
     assert by_id["grok-imagine-image"].fields["pricing"] == {
         "currency": "USD",
         "input_per_image": 0.02,
         "per_image": 0.2,
     }
     assert by_id["grok-imagine-video"].fields["modes"] == ["video_generation"]
+    assert by_id["grok-imagine-video"].fields["modalities"] == {
+        "input": ["text", "image", "video"],
+        "output": ["video"],
+    }
     assert by_id["grok-imagine-video"].fields["pricing"] == {
         "currency": "USD",
         "input_per_image": 0.02,
