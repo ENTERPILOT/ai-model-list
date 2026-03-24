@@ -31,7 +31,7 @@
       "type": "object",
       "description": "Provider-specific model overrides keyed by 'provider/model'",
       "patternProperties": {
-        "^[a-z0-9_-]+/[a-zA-Z0-9._:@-]+$": { "$ref": "#/$defs/provider_model" }
+        "^[a-z0-9_-]+/[a-zA-Z0-9._:@/-]+$": { "$ref": "#/$defs/provider_model" }
       },
       "additionalProperties": false
     }
@@ -234,6 +234,16 @@
           "type": ["object", "null"],
           "additionalProperties": { "$ref": "#/$defs/ranking_entry" },
           "description": "Benchmark scores and rankings"
+        },
+        "aliases": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            { "type": "null" }
+          ],
+          "description": "Alternative canonical or provider-facing names that resolve to this model"
         }
       }
     },
@@ -245,7 +255,7 @@
         "video_generation", "video_edit",
         "audio_speech", "audio_transcription",
         "rerank", "moderation", "ocr", "search",
-        "responses", "code_interpreter"
+        "responses", "code_interpreter", "realtime"
       ]
     },
     "modalities": {

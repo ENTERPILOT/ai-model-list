@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from copy import deepcopy
+import re
 from typing import Any, Iterable
 
 from pipeline.rules import is_canonical_model_key, sort_candidates_by_authority
@@ -11,6 +12,7 @@ from pipeline.types import SourceEvidence
 
 
 MODEL_FIELD_NAMES = {
+    "aliases",
     "display_name",
     "description",
     "owned_by",
@@ -37,6 +39,30 @@ MODEL_FIELD_NAMES = {
 }
 
 REQUIRED_MODEL_FIELDS = {"display_name", "modes"}
+FALLBACK_MODEL_FIELD_NAMES = {
+    "display_name",
+    "description",
+    "owned_by",
+    "family",
+    "release_date",
+    "deprecation_date",
+    "source_url",
+    "tags",
+    "modes",
+    "modalities",
+    "capabilities",
+    "output_vector_size",
+}
+DISPLAY_NAME_FALLBACK_SUPPORT_FIELDS = {
+    "pricing",
+    "context_window",
+    "max_output_tokens",
+    "output_vector_size",
+    "modalities",
+    "capabilities",
+    "description",
+    "source_url",
+}
 
 PROVIDER_MODEL_FIELD_NAMES = {
     "pricing",
@@ -46,6 +72,8 @@ PROVIDER_MODEL_FIELD_NAMES = {
     "endpoints",
     "regions",
 }
+DISPLAY_NAME_SPLIT_PATTERN = re.compile(r"[-_./:]+")
+DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf", "tts", "ui", "ux"}
 
 
 def choose_field_value(field_name: str, candidates: list[SourceEvidence], policy: dict[str, Any]) -> Any:
@@ -89,7 +117,7 @@ def resolve_registry(
             quarantine_records(report["quarantine"], records)
             continue
 
-        canonical_model = build_model_record(canonical_records, policy)
+        canonical_model = build_model_record(canonical_key, canonical_records, records, policy)
         if not has_required_model_fields(canonical_model):
             quarantine_records(report["quarantine"], records)
             continue
@@ -108,12 +136,30 @@ def resolve_registry(
     return registry, report
 
 
-def build_model_record(records: list[SourceEvidence], policy: dict[str, Any]) -> dict[str, Any]:
+def build_model_record(
+    canonical_key: str,
+    canonical_records: list[SourceEvidence],
+    support_records: list[SourceEvidence],
+    policy: dict[str, Any],
+) -> dict[str, Any]:
     model: dict[str, Any] = {}
-    for field_name in sorted(_collect_field_names(records) & MODEL_FIELD_NAMES):
-        value = choose_field_value(field_name, records, policy)
+    for field_name in sorted((_collect_field_names(canonical_records) & MODEL_FIELD_NAMES) - {"aliases"}):
+        value = choose_field_value(field_name, canonical_records, policy)
         if value is not None:
             model[field_name] = value
+
+    missing_fallback_fields = FALLBACK_MODEL_FIELD_NAMES - model.keys()
+    for field_name in sorted((_collect_field_names(support_records) & missing_fallback_fields) - {"aliases"}):
+        value = choose_field_value(field_name, support_records, policy)
+        if value is not None:
+            model[field_name] = value
+
+    aliases = collect_model_aliases(canonical_key, support_records)
+    if aliases:
+        model["aliases"] = aliases
+
+    if not model.get("display_name") and can_fallback_display_name(canonical_records, support_records):
+        model["display_name"] = _display_name_from_model_id(canonical_key)
     return model
 
 
@@ -165,18 +211,20 @@ def build_provider_clusters(
     canonical_records: list[SourceEvidence],
 ) -> dict[str, list[SourceEvidence]]:
     provider_clusters: dict[str, list[SourceEvidence]] = defaultdict(list)
-    has_exact_canonical = any(record.source_model_id == canonical_key for record in canonical_records)
+    aggregate_provider_slugs = {record.provider_slug for record in canonical_records if record.provider_slug is not None}
 
     for record in records:
-        provider_model_key = build_provider_model_key(record, canonical_key, has_exact_canonical, canonical_records)
+        provider_model_key = build_provider_model_key(record)
         if provider_model_key is not None:
             provider_clusters[provider_model_key].append(record)
 
-    if has_exact_canonical:
-        for record in canonical_records:
-            if record.provider_slug is None:
-                continue
-            provider_clusters.setdefault(f"{record.provider_slug}/{canonical_key}", [])
+        if record.provider_slug in aggregate_provider_slugs:
+            aggregate_key = f"{record.provider_slug}/{canonical_key}"
+            if aggregate_key != provider_model_key:
+                provider_clusters[aggregate_key].append(record)
+
+    for provider_slug in aggregate_provider_slugs:
+        provider_clusters.setdefault(f"{provider_slug}/{canonical_key}", [])
 
     return provider_clusters
 
@@ -213,25 +261,14 @@ def has_unapproved_clean_alias_hint(record: SourceEvidence) -> bool:
         and record.canonical_hint != record.source_model_id
     )
 
-def is_provider_deployment_record(record: SourceEvidence) -> bool:
-    return not is_canonical_model_key(record.source_model_id)
-
-
 def build_provider_model_key(
     record: SourceEvidence,
-    canonical_key: str,
-    has_exact_canonical: bool,
-    canonical_records: list[SourceEvidence],
 ) -> str | None:
     if record.provider_slug is None:
         return None
-    if record in canonical_records:
-        return None
-    if is_provider_deployment_record(record):
-        return f"{record.provider_slug}/{canonical_key}"
-    if has_exact_canonical and is_canonical_model_key(record.source_model_id):
-        return f"{record.provider_slug}/{canonical_key}"
-    return None
+    if record.source_model_id.startswith(f"{record.provider_slug}/"):
+        return record.source_model_id
+    return f"{record.provider_slug}/{record.source_model_id}"
 
 
 def choose_provider_model_id(
@@ -247,7 +284,11 @@ def choose_provider_model_id(
         if record.source_model_id != canonical_key and record.source_model_id != provider_model_key
     }
     if len(source_ids) == 1:
-        return next(iter(source_ids))
+        provider_model_id = next(iter(source_ids))
+        key_suffix = provider_model_key.split("/", 1)[1]
+        if provider_model_id == key_suffix:
+            return None
+        return provider_model_id
     return None
 
 
@@ -306,3 +347,52 @@ def _collect_field_names(records: list[SourceEvidence]) -> set[str]:
     for record in records:
         field_names.update(record.fields)
     return field_names
+
+
+def collect_model_aliases(canonical_key: str, records: list[SourceEvidence]) -> list[str]:
+    aliases: set[str] = set()
+    for record in records:
+        for candidate in _alias_candidates(record):
+            if candidate and candidate != canonical_key:
+                aliases.add(candidate)
+    return sorted(aliases, key=lambda value: (value.count("/"), len(value), value))
+
+
+def _alias_candidates(record: SourceEvidence) -> set[str]:
+    candidates = {record.source_model_id}
+    if record.provider_slug is not None:
+        if not record.source_model_id.startswith(f"{record.provider_slug}/"):
+            candidates.add(f"{record.provider_slug}/{record.source_model_id}")
+        stripped = _strip_provider_prefix(record.source_model_id, record.provider_slug)
+        candidates.add(stripped)
+    if record.canonical_hint:
+        candidates.add(record.canonical_hint)
+    return {candidate for candidate in candidates if candidate}
+
+
+def _display_name_from_model_id(model_id: str) -> str:
+    tokens = [token for token in DISPLAY_NAME_SPLIT_PATTERN.split(model_id) if token]
+    display_tokens: list[str] = []
+
+    for token in tokens:
+        lowered = token.lower()
+        if lowered in DISPLAY_NAME_ACRONYMS:
+            display_tokens.append(lowered.upper())
+        elif lowered.startswith("grok"):
+            display_tokens.append(token.replace("grok", "Grok", 1))
+        elif lowered.startswith("gpt"):
+            display_tokens.append(token.replace("gpt", "GPT", 1))
+        elif token.replace(".", "", 1).isdigit():
+            display_tokens.append(token)
+        else:
+            display_tokens.append(token.title())
+
+    return " ".join(display_tokens) if display_tokens else model_id
+
+
+def can_fallback_display_name(
+    canonical_records: list[SourceEvidence],
+    support_records: list[SourceEvidence],
+) -> bool:
+    candidate_records = canonical_records or support_records
+    return any(DISPLAY_NAME_FALLBACK_SUPPORT_FIELDS & set(record.fields) for record in candidate_records)

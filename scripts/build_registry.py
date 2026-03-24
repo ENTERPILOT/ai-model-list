@@ -46,15 +46,17 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
     evidence = []
     rejection_policy = curated.get("rejections", {})
     official_providers = curated.get("source_policies", {}).get("official_sources", [])
+    admitted_providers = list(curated.get("providers", {}))
     for source_name, payload in payloads.items():
-        if source_name == "pydantic_genai" and "xai_models_official" in payloads:
-            continue
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)
         if normalizer is None:
             continue
         kwargs: dict[str, Any] = {"rejection_policy": rejection_policy}
         if source_name == "pydantic_genai":
-            kwargs["allowed_providers"] = official_providers
+            kwargs["allowed_providers"] = admitted_providers
+            kwargs["owner_providers"] = official_providers
+            if "xai_models_official" in payloads:
+                kwargs["skip_providers"] = ["xai"]
         evidence.extend(normalizer(payload, **kwargs))
     return evidence
 
@@ -113,6 +115,21 @@ def build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dic
     curated = load_curated_config(curated_dir)
     snapshot_payloads = load_snapshot_payloads(snapshot_dir)
     evidence = _normalize_snapshot_payloads(snapshot_payloads, curated)
+    allowed_providers = set(curated.get("providers", {}))
+    evidence = [
+        record
+        for record in evidence
+        if (
+            record.provider_slug in allowed_providers
+            or (
+                record.provider_slug is None
+                and (
+                    record.source_name == "official"
+                    or record.fields.get("owned_by") in allowed_providers
+                )
+            )
+        )
+    ]
     resolved_registry, resolve_report = resolve_registry(evidence, curated)
     allowed_providers = set(resolved_registry["providers"])
     resolved_registry["provider_models"] = {

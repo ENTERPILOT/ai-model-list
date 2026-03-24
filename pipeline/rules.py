@@ -28,6 +28,9 @@ REGION_PATTERN = re.compile(
     r"|westeurope|northeurope|uksouth|ukwest"
     r")(?:$|[-_.])"
 )
+PROVIDER_PREFIX_PATTERN = re.compile(
+    r"^(?:ai21|amazon|anthropic|azure|azure_ai|bedrock|cohere|deepseek|fireworks|gemini|google|groq|meta|mistral|openai|stability|vertex_ai|writer|xai|x-ai)\."
+)
 
 ARTIFACT_NAMES = {"default", "sample_spec", "search_api", "model_router"}
 ARTIFACT_SUFFIXES = (".json", ".yaml", ".yml", ".txt", ".csv")
@@ -73,8 +76,10 @@ def contains_source_artifact_shape(model_id: str) -> bool:
         lowered in ARTIFACT_NAMES
         or lowered.endswith(ARTIFACT_SUFFIXES)
         or lowered.startswith(("http://", "https://"))
+        or "@" in model_id
         or "\\" in model_id
         or model_id.endswith("/")
+        or bool(PROVIDER_PREFIX_PATTERN.match(lowered))
         or any(char.isspace() for char in model_id)
     )
 

@@ -114,7 +114,16 @@ def test_resolve_admits_clean_alias_records_via_curated_aliases() -> None:
 
     assert "grok-4" in registry["models"]
     assert registry["models"]["grok-4"]["display_name"] == "Grok 4"
-    assert not registry["provider_models"]
+    assert registry["models"]["grok-4"]["aliases"] == ["grok-four", "xai/grok-four"]
+    assert registry["provider_models"]["xai/grok-4"] == {
+        "enabled": True,
+        "model_ref": "grok-4",
+        "provider_model_id": "grok-four",
+    }
+    assert registry["provider_models"]["xai/grok-four"] == {
+        "enabled": True,
+        "model_ref": "grok-4",
+    }
     assert not report["quarantine"]
 
 
@@ -231,6 +240,7 @@ def test_resolve_routes_clean_alias_overrides_only_to_provider_models_when_exact
     )
 
     assert "xai/grok-4" in registry["provider_models"]
+    assert "xai/grok-four-release" in registry["provider_models"]
     assert "pricing" not in registry["models"]["grok-4"]
     assert registry["provider_models"]["xai/grok-4"]["pricing"] == {
         "currency": "USD",
@@ -269,6 +279,7 @@ def test_resolve_routes_deployment_style_aliases_without_separator_to_provider_m
     )
 
     assert "xai/grok-4" in registry["provider_models"]
+    assert "xai/grok-4-us-east" in registry["provider_models"]
     assert registry["provider_models"]["xai/grok-4"]["provider_model_id"] == "grok-4-us-east"
     assert registry["provider_models"]["xai/grok-4"]["pricing"] == {
         "currency": "USD",
@@ -322,4 +333,55 @@ def test_resolve_omits_provider_model_id_for_multi_alias_provider_cluster() -> N
 
     assert "xai/grok-4" in registry["provider_models"]
     assert "provider_model_id" not in registry["provider_models"]["xai/grok-4"]
+    assert not report["quarantine"]
+
+
+def test_resolve_collects_aliases_and_exact_provider_keys_without_merging_variants() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="gpt-oss-120b",
+            provider_slug="fireworks",
+            canonical_hint="gpt-oss-120b",
+            fields={"display_name": "GPT-OSS 120B", "modes": ["chat"]},
+            confidence="official",
+            evidence_ref="https://fireworks.ai/pricing",
+        ),
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="openai/gpt-oss-120b",
+            provider_slug="openai",
+            canonical_hint="gpt-oss-120b",
+            fields={"description": "OpenAI open-weight model"},
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="groq/openai/gpt-oss-120b",
+            provider_slug="groq",
+            canonical_hint="gpt-oss-120b",
+            fields={"pricing": {"currency": "USD", "input_per_mtok": 0.15, "output_per_mtok": 0.6}},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["gpt-oss-120b"]["aliases"] == [
+        "openai/gpt-oss-120b",
+        "fireworks/gpt-oss-120b",
+        "groq/openai/gpt-oss-120b",
+    ]
+    assert "fireworks/gpt-oss-120b" in registry["provider_models"]
+    assert registry["provider_models"]["openai/gpt-oss-120b"] == {
+        "enabled": True,
+        "model_ref": "gpt-oss-120b",
+    }
+    assert registry["provider_models"]["groq/openai/gpt-oss-120b"] == {
+        "enabled": True,
+        "model_ref": "gpt-oss-120b",
+        "pricing": {"currency": "USD", "input_per_mtok": 0.15, "output_per_mtok": 0.6},
+    }
     assert not report["quarantine"]

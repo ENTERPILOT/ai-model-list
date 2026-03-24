@@ -18,10 +18,52 @@ PROVIDER_SLUG_ALIASES = {
     "azure-openai": "azure",
     "google": "gemini",
 }
+KNOWN_PROVIDER_SLUGS = {
+    "anthropic",
+    "azure",
+    "bedrock",
+    "cerebras",
+    "cohere",
+    "deepinfra",
+    "deepseek",
+    "fireworks",
+    "gemini",
+    "google",
+    "groq",
+    "mistral",
+    "openai",
+    "ovhcloud",
+    "runway",
+    "together",
+    "vertex_ai",
+    "x-ai",
+    "xai",
+}
 UNSTABLE_ALIAS_TOKENS = ("latest", "beta", "preview", "alpha", "experimental", "free")
 DATE_SUFFIX_PATTERN = re.compile(r"(?:[-_.])(?:\d{4}|\d{8})$")
 XAI_TOKEN_PRICE_DIVISOR = 10_000
 XAI_UNIT_PRICE_DIVISOR = 1_000_000_000
+DISPLAY_NAME_SPLIT_PATTERN = re.compile(r"[-_./:]+")
+MODE_HINTS = (
+    ("embedding", "embedding"),
+    ("rerank", "rerank"),
+    ("moderation", "moderation"),
+    ("ocr", "ocr"),
+    ("text-to-image", "image_generation"),
+    ("image generation", "image_generation"),
+    ("image generator", "image_generation"),
+    ("text-to-video", "video_generation"),
+    ("video generation", "video_generation"),
+    ("text-to-speech", "audio_speech"),
+    ("text to speech", "audio_speech"),
+    ("speech synthesis", "audio_speech"),
+    ("tts", "audio_speech"),
+    ("speech-to-text", "audio_transcription"),
+    ("speech to text", "audio_transcription"),
+    ("transcription", "audio_transcription"),
+    ("transcribe", "audio_transcription"),
+)
+DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf", "tts", "ui", "ux"}
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -38,9 +80,20 @@ def normalize_provider_slug(value: str | None) -> str | None:
 def split_provider_model_name(model_name: str, fallback_provider: str | None = None) -> tuple[str | None, str | None]:
     if "/" in model_name:
         provider_slug, _, canonical_hint = model_name.partition("/")
-        return normalize_provider_slug(provider_slug), canonical_hint or None
+        return normalize_provider_slug(provider_slug), _strip_nested_provider_prefixes(canonical_hint or None)
 
     return normalize_provider_slug(fallback_provider), model_name or None
+
+
+def _strip_nested_provider_prefixes(model_name: str | None) -> str | None:
+    canonical_hint = model_name
+    while canonical_hint and "/" in canonical_hint:
+        provider_candidate, _, remainder = canonical_hint.partition("/")
+        normalized = normalize_provider_slug(provider_candidate)
+        if normalized not in KNOWN_PROVIDER_SLUGS:
+            break
+        canonical_hint = remainder or None
+    return canonical_hint
 
 
 def is_rejected_model_id(
@@ -143,11 +196,18 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
         "output_mtok": "output_per_mtok",
         "cache_read_mtok": "cached_input_per_mtok",
         "cache_write_mtok": "cache_write_per_mtok",
+        "batch_input_mtok": "batch_input_per_mtok",
+        "batch_output_mtok": "batch_output_per_mtok",
+        "input_audio_mtok": "audio_input_per_mtok",
+        "output_audio_mtok": "audio_output_per_mtok",
     }
     for source_field, target_field in field_map.items():
-        value = _to_float(pricing_payload.get(source_field))
-        if value is not None:
-            pricing[target_field] = value
+        raw_value = pricing_payload.get(source_field)
+        numeric_value = _to_float(raw_value)
+        if numeric_value is None and isinstance(raw_value, Mapping):
+            numeric_value = _to_float(raw_value.get("base"))
+        if numeric_value is not None:
+            pricing[target_field] = numeric_value
 
     return pricing if len(pricing) > 1 else None
 
@@ -188,15 +248,63 @@ def _choose_canonical_model_id(model: Mapping[str, Any]) -> str:
     return min(candidates, key=lambda candidate: _canonical_rank(candidate, raw_model_id))
 
 
-def extract_official_catalog_fields(model: Mapping[str, Any], provider_slug: str) -> dict[str, Any]:
+def _display_name_from_model_id(model_id: str) -> str:
+    tokens = [token for token in DISPLAY_NAME_SPLIT_PATTERN.split(model_id) if token]
+    display_tokens: list[str] = []
+
+    for token in tokens:
+        lowered = token.lower()
+        if lowered in DISPLAY_NAME_ACRONYMS:
+            display_tokens.append(lowered.upper())
+        elif lowered.startswith("grok"):
+            display_tokens.append(token.replace("grok", "Grok", 1))
+        elif lowered.startswith("gpt"):
+            display_tokens.append(token.replace("gpt", "GPT", 1))
+        elif any(char.isdigit() for char in token) and any(char.isalpha() for char in token):
+            display_tokens.append(token.upper() if lowered in DISPLAY_NAME_ACRONYMS else token)
+        elif token.replace(".", "", 1).isdigit():
+            display_tokens.append(token)
+        else:
+            display_tokens.append(token.title())
+
+    return " ".join(display_tokens) if display_tokens else model_id
+
+
+def _infer_mode_from_values(*values: Any) -> str:
+    for value in values:
+        if not isinstance(value, str):
+            continue
+        lowered = value.lower()
+        for token, mode in MODE_HINTS:
+            if token in lowered:
+                return mode
+    return "chat"
+
+
+def extract_official_catalog_fields(
+    model: Mapping[str, Any],
+    provider_slug: str,
+    *,
+    canonical_model_id: str | None = None,
+    owner_providers: set[str] | None = None,
+) -> dict[str, Any]:
+    model_id = canonical_model_id or model.get("id") or model.get("name") or provider_slug
+    mode = _infer_mode_from_values(
+        model.get("mode"),
+        model_id,
+        model.get("name"),
+        model.get("description"),
+    )
     fields: dict[str, Any] = {
-        "modes": ["chat"],
-        "owned_by": provider_slug,
+        "modes": [mode],
     }
+    if owner_providers is None or provider_slug in owner_providers:
+        fields["owned_by"] = provider_slug
 
     display_name = model.get("name")
-    if isinstance(display_name, str) and display_name:
-        fields["display_name"] = display_name
+    fields["display_name"] = display_name if isinstance(display_name, str) and display_name else _display_name_from_model_id(
+        str(model_id)
+    )
 
     description = model.get("description")
     if isinstance(description, str) and description:
@@ -507,10 +615,20 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     display_name = entry.get("name")
     if isinstance(display_name, str) and display_name:
         fields["display_name"] = display_name
+    elif isinstance(entry.get("id"), str) and entry.get("id"):
+        fields["display_name"] = _display_name_from_model_id(entry["id"])
 
     mode = entry.get("mode")
     if isinstance(mode, str) and mode:
         fields["modes"] = [mode]
+    elif isinstance(entry.get("architecture"), Mapping):
+        architecture_modality = entry["architecture"].get("modality")
+        if isinstance(architecture_modality, str) and architecture_modality:
+            fields["modes"] = [_infer_mode_from_values(architecture_modality)]
+
+    source_url = entry.get("source")
+    if isinstance(source_url, str) and source_url:
+        fields["source_url"] = source_url
 
     top_provider = entry.get("top_provider")
     if isinstance(top_provider, Mapping):
@@ -521,6 +639,41 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
         max_output_tokens = top_provider.get("max_completion_tokens")
         if max_output_tokens is not None:
             fields["max_output_tokens"] = max_output_tokens
+    elif entry.get("max_input_tokens") is not None:
+        fields["context_window"] = entry.get("max_input_tokens")
+
+    if entry.get("max_input_tokens") is not None and "context_window" not in fields:
+        fields["context_window"] = entry.get("max_input_tokens")
+
+    max_output_tokens = entry.get("max_output_tokens")
+    if max_output_tokens is None:
+        max_output_tokens = entry.get("max_tokens")
+    if max_output_tokens is not None:
+        fields["max_output_tokens"] = max_output_tokens
+
+    output_vector_size = entry.get("output_vector_size")
+    if output_vector_size is not None:
+        fields["output_vector_size"] = output_vector_size
+
+    max_images_per_request = entry.get("max_images_per_prompt")
+    if max_images_per_request is not None:
+        fields["max_images_per_request"] = max_images_per_request
+
+    max_audio_per_request = entry.get("max_audio_per_prompt")
+    if max_audio_per_request is not None:
+        fields["max_audio_per_request"] = max_audio_per_request
+
+    max_videos_per_request = entry.get("max_videos_per_prompt")
+    if max_videos_per_request is not None:
+        fields["max_videos_per_request"] = max_videos_per_request
+
+    max_pdf_size_mb = entry.get("max_pdf_size_mb")
+    if max_pdf_size_mb is not None:
+        fields["max_pdf_size_mb"] = max_pdf_size_mb
+
+    max_audio_length_hours = _to_float(entry.get("max_audio_length_hours"))
+    if max_audio_length_hours is not None:
+        fields["max_audio_length_seconds"] = round(max_audio_length_hours * 3600, 3)
 
     pricing = (
         _pricing_from_usd_per_token(entry.get("input_cost_per_token"), entry.get("output_cost_per_token"))
@@ -532,7 +685,97 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
         or _pricing_from_portkey(entry)
     )
     if pricing is not None:
+        extra_pricing_fields = {
+            "cache_read_input_token_cost": "cached_input_per_mtok",
+            "cache_creation_input_token_cost": "cache_write_per_mtok",
+            "output_cost_per_reasoning_token": "reasoning_output_per_mtok",
+            "input_cost_per_audio_token": "audio_input_per_mtok",
+            "output_cost_per_audio_token": "audio_output_per_mtok",
+        }
+        for source_field, target_field in extra_pricing_fields.items():
+            value = _to_float(entry.get(source_field))
+            if value is not None:
+                pricing[target_field] = _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
         fields["pricing"] = pricing
+
+    supported_modalities = entry.get("supported_modalities")
+    supported_output_modalities = entry.get("supported_output_modalities")
+    architecture = entry.get("architecture")
+    input_modalities = supported_modalities
+    output_modalities = supported_output_modalities
+    if isinstance(architecture, Mapping):
+        input_modalities = input_modalities or architecture.get("input_modalities")
+        output_modalities = output_modalities or architecture.get("output_modalities")
+
+    modalities: dict[str, list[str]] = {}
+    normalized_input_modalities = [
+        modality
+        for modality in (input_modalities or [])
+        if modality in {"text", "image", "audio", "video"}
+    ]
+    normalized_output_modalities = [
+        modality
+        for modality in (output_modalities or [])
+        if modality in {"text", "image", "audio", "video"}
+    ]
+    if normalized_input_modalities:
+        modalities["input"] = normalized_input_modalities
+    if normalized_output_modalities:
+        modalities["output"] = normalized_output_modalities
+    if modalities:
+        fields["modalities"] = modalities
+
+    capabilities: dict[str, bool] = {}
+    capability_flags = {
+        "supports_function_calling": "function_calling",
+        "supports_parallel_function_calling": "parallel_function_calling",
+        "supports_system_messages": "system_messages",
+        "supports_vision": "vision",
+        "supports_audio_input": "audio_input",
+        "supports_audio_output": "audio_output",
+        "supports_video_input": "video_input",
+        "supports_pdf_input": "pdf_input",
+        "supports_json_mode": "json_mode",
+        "supports_structured_output": "structured_output",
+        "supports_response_schema": "response_schema",
+        "supports_reasoning": "reasoning",
+        "supports_prompt_caching": "prompt_caching",
+        "supports_web_search": "web_search",
+        "supports_computer_use": "computer_use",
+        "supports_tool_choice": "tool_choice",
+    }
+    for source_field, target_field in capability_flags.items():
+        if entry.get(source_field) is True:
+            capabilities[target_field] = True
+
+    supported_parameters = entry.get("supported_parameters")
+    if isinstance(supported_parameters, Sequence) and not isinstance(supported_parameters, (str, bytes, bytearray)):
+        parameter_set = {value for value in supported_parameters if isinstance(value, str)}
+        if {"tools", "tool_choice"} & parameter_set:
+            capabilities.setdefault("function_calling", True)
+        if "tool_choice" in parameter_set:
+            capabilities.setdefault("tool_choice", True)
+        if {"structured_outputs", "response_format"} & parameter_set:
+            capabilities.setdefault("structured_output", True)
+            capabilities.setdefault("response_schema", True)
+        if {"reasoning", "reasoning_effort", "include_reasoning"} & parameter_set:
+            capabilities.setdefault("reasoning", True)
+    if capabilities:
+        fields["capabilities"] = capabilities
+
+    rate_limits: dict[str, Any] = {}
+    for source_field in ("rpm", "tpm"):
+        value = entry.get(source_field)
+        if value is not None:
+            rate_limits[source_field] = value
+    if rate_limits:
+        fields["rate_limits"] = rate_limits
+
+    supported_endpoints = entry.get("supported_endpoints")
+    if isinstance(supported_endpoints, Sequence) and not isinstance(supported_endpoints, (str, bytes, bytearray)):
+        endpoints = [endpoint for endpoint in supported_endpoints if isinstance(endpoint, str) and endpoint]
+        if endpoints:
+            fields["endpoints"] = endpoints
 
     return fields
 
@@ -545,12 +788,14 @@ def normalize_litellm_entry(
 ) -> SourceEvidence:
     model_name = entry["model_name"]
     provider_slug, canonical_hint = split_provider_model_name(model_name, entry.get("litellm_provider"))
+    normalized_entry = dict(entry)
+    normalized_entry.setdefault("id", canonical_hint or model_name)
     return SourceEvidence(
         source_name="litellm",
         source_model_id=model_name,
         provider_slug=provider_slug,
         canonical_hint=canonical_hint,
-        fields=extract_supported_fields(entry),
+        fields=extract_supported_fields(normalized_entry),
         confidence="low",
         evidence_ref=entry.get("source") or evidence_ref,
         rejected=is_rejected_model_id(model_name, rejection_policy),
@@ -653,13 +898,15 @@ def normalize_portkey_files(
                 continue
 
             _, canonical_hint = split_provider_model_name(model_id, provider_slug)
+            normalized_payload = dict(payload)
+            normalized_payload.setdefault("id", canonical_hint or model_id)
             records.append(
                 SourceEvidence(
                     source_name="portkey",
                     source_model_id=model_id,
                     provider_slug=provider_slug,
                     canonical_hint=canonical_hint,
-                    fields=extract_supported_fields(payload),
+                    fields=extract_supported_fields(normalized_payload),
                     confidence="low",
                     evidence_ref=evidence_ref,
                     rejected=is_rejected_model_id(model_id, rejection_policy),
@@ -673,16 +920,20 @@ def normalize_pydantic_genai_rows(
     *,
     rejection_policy: Mapping[str, Sequence[str]] | None = None,
     allowed_providers: Sequence[str] | None = None,
+    owner_providers: Sequence[str] | None = None,
+    skip_providers: Sequence[str] | None = None,
     evidence_ref: str = "pydantic_genai_prices.json",
 ) -> list[SourceEvidence]:
     allowed_provider_set = {normalize_provider_slug(value) for value in allowed_providers or ()}
+    owner_provider_set = {normalize_provider_slug(value) for value in owner_providers or ()}
+    skipped_provider_set = {normalize_provider_slug(value) for value in skip_providers or ()}
     records: list[SourceEvidence] = []
 
     for provider in rows:
         provider_slug = normalize_provider_slug(provider.get("id"))
-        if provider_slug != "xai":
-            continue
         if allowed_provider_set and provider_slug not in allowed_provider_set:
+            continue
+        if provider_slug in skipped_provider_set:
             continue
 
         provider_evidence_ref = next(
@@ -700,7 +951,12 @@ def normalize_pydantic_genai_rows(
                 continue
 
             canonical_model_id = _choose_canonical_model_id(model)
-            fields = extract_official_catalog_fields(model, provider_slug)
+            fields = extract_official_catalog_fields(
+                model,
+                provider_slug,
+                canonical_model_id=canonical_model_id,
+                owner_providers=owner_provider_set or None,
+            )
             records.append(
                 SourceEvidence(
                     source_name="official",
@@ -714,21 +970,24 @@ def normalize_pydantic_genai_rows(
                 )
             )
 
-            if raw_model_id == canonical_model_id:
-                continue
-
-            records.append(
-                SourceEvidence(
-                    source_name="official",
-                    source_model_id=f"{provider_slug}/{raw_model_id}",
-                    provider_slug=provider_slug,
-                    canonical_hint=canonical_model_id,
-                    fields=fields,
-                    confidence="official",
-                    evidence_ref=provider_evidence_ref,
-                    rejected=is_rejected_model_id(raw_model_id, rejection_policy),
+            provider_aliases = {
+                alias
+                for alias in [raw_model_id, *_extract_exact_match_ids(model.get("match"))]
+                if isinstance(alias, str) and alias and alias != canonical_model_id
+            }
+            for provider_alias in sorted(provider_aliases):
+                records.append(
+                    SourceEvidence(
+                        source_name="official",
+                        source_model_id=f"{provider_slug}/{provider_alias}",
+                        provider_slug=provider_slug,
+                        canonical_hint=canonical_model_id,
+                        fields=fields,
+                        confidence="official",
+                        evidence_ref=provider_evidence_ref,
+                        rejected=is_rejected_model_id(provider_alias, rejection_policy),
+                    )
                 )
-            )
 
     return records
 

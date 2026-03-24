@@ -61,6 +61,53 @@ def test_normalize_litellm_rows_supports_dict_shaped_sources() -> None:
     assert record.fields["modes"] == ["chat"]
 
 
+def test_normalize_litellm_entry_extracts_richer_fields_and_nested_provider_hints() -> None:
+    entry = {
+        "model_name": "groq/openai/gpt-oss-120b",
+        "litellm_provider": "groq",
+        "mode": "chat",
+        "max_input_tokens": 131_072,
+        "max_output_tokens": 32_766,
+        "supported_modalities": ["text", "image", "audio"],
+        "supported_output_modalities": ["text"],
+        "supports_function_calling": True,
+        "supports_reasoning": True,
+        "supports_web_search": True,
+        "supported_endpoints": ["/v1/chat/completions"],
+        "rpm": 1_000,
+        "input_cost_per_token": 0.00000015,
+        "cache_read_input_token_cost": 0.000000075,
+        "output_cost_per_token": 0.0000006,
+        "output_cost_per_reasoning_token": 0.0000025,
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.provider_slug == "groq"
+    assert record.canonical_hint == "gpt-oss-120b"
+    assert record.fields["display_name"] == "GPT OSS 120b"
+    assert record.fields["context_window"] == 131_072
+    assert record.fields["max_output_tokens"] == 32_766
+    assert record.fields["modalities"] == {
+        "input": ["text", "image", "audio"],
+        "output": ["text"],
+    }
+    assert record.fields["capabilities"] == {
+        "function_calling": True,
+        "reasoning": True,
+        "web_search": True,
+    }
+    assert record.fields["endpoints"] == ["/v1/chat/completions"]
+    assert record.fields["rate_limits"] == {"rpm": 1_000}
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.075,
+        "output_per_mtok": 0.6,
+        "reasoning_output_per_mtok": 2.5,
+    }
+
+
 def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
     rows = [
         {
@@ -191,7 +238,7 @@ def test_normalize_pydantic_genai_rows_promotes_xai_model_to_exact_canonical_rec
         allowed_providers=["xai"],
     )
 
-    assert [record.source_model_id for record in records] == ["grok-4", "xai/grok-4-0709"]
+    assert [record.source_model_id for record in records] == ["grok-4", "xai/grok-4-0709", "xai/grok-4-latest"]
     assert records[0].source_name == "official"
     assert records[0].provider_slug == "xai"
     assert records[0].canonical_hint == "grok-4"
@@ -210,6 +257,54 @@ def test_normalize_pydantic_genai_rows_promotes_xai_model_to_exact_canonical_rec
         },
     }
     assert records[1].canonical_hint == "grok-4"
+    assert records[2].canonical_hint == "grok-4"
+
+
+def test_normalize_pydantic_genai_rows_supports_google_official_models() -> None:
+    rows = [
+        {
+            "id": "google",
+            "pricing_urls": ["https://ai.google.dev/pricing"],
+            "models": [
+                {
+                    "id": "gemini-embedding-001",
+                    "match": {"equals": "gemini-embedding-001"},
+                    "prices": {"input_mtok": 0.15},
+                },
+                {
+                    "id": "gemini-2.5-flash",
+                    "name": "Gemini 2.5 Flash",
+                    "match": {
+                        "or": [
+                            {"equals": "gemini-2.5-flash"},
+                            {"equals": "gemini-2.5-flash-latest"},
+                        ]
+                    },
+                    "prices": {"input_mtok": 0.3, "output_mtok": 2.5},
+                },
+            ],
+        }
+    ]
+
+    records = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["gemini"],
+        owner_providers=["gemini"],
+    )
+
+    by_id = {record.source_model_id: record for record in records}
+    assert by_id["gemini-embedding-001"].fields == {
+        "display_name": "Gemini Embedding 001",
+        "modes": ["embedding"],
+        "owned_by": "gemini",
+        "pricing": {
+            "currency": "USD",
+            "input_per_mtok": 0.15,
+        },
+    }
+    assert by_id["gemini-2.5-flash"].fields["display_name"] == "Gemini 2.5 Flash"
+    assert by_id["gemini/gemini-2.5-flash-latest"].canonical_hint == "gemini-2.5-flash"
 
 
 def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities() -> None:

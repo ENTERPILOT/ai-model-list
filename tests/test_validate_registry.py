@@ -332,6 +332,13 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
 
     assert registry["updated_at"] == "2026-03-23T19:00:35Z"
     assert registry["models"]["grok-4"] == {
+        "aliases": [
+            "grok-4-0709",
+            "grok-4-latest",
+            "xai/grok-4",
+            "xai/grok-4-0709",
+            "xai/grok-4-latest",
+        ],
         "context_window": 256000,
         "description": "Flagship model.",
         "display_name": "Grok 4",
@@ -354,8 +361,9 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
             "input_per_mtok": 3.0,
             "output_per_mtok": 15.0,
         },
-        "provider_model_id": "grok-4-0709",
     }
+    assert registry["provider_models"]["xai/grok-4-0709"]["model_ref"] == "grok-4"
+    assert registry["provider_models"]["xai/grok-4-latest"]["model_ref"] == "grok-4"
     assert not quarantine
     assert report["summary"]["quarantine_count"] == 0
 
