@@ -5,11 +5,18 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import json
 from pathlib import Path
 import shutil
+import sys
 import time
 from typing import Iterable
 from urllib.request import Request, urlopen
+
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from pipeline.xai_docs import build_xai_models_snapshot
 
 
 @dataclass(frozen=True)
@@ -20,6 +27,8 @@ class SourceDescriptor:
 
 
 GITHUB_SNAPSHOT_BASE_URL = "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources"
+XAI_MODELS_SOURCE_URL = "https://docs.x.ai/developers/models?cluster=us-east-1"
+XAI_MODELS_SOURCE_FILENAME = "xai_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
     ("litellm", "litellm_model_prices.json"),
@@ -107,6 +116,13 @@ def fetch_sources_to(
         output_path = snapshot_dir / descriptor.filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_bytes(_fetch_bytes(descriptor.url))
+
+    xai_models_html = _fetch_bytes(XAI_MODELS_SOURCE_URL).decode("utf-8")
+    xai_models_payload = build_xai_models_snapshot(xai_models_html, XAI_MODELS_SOURCE_URL)
+    (snapshot_dir / XAI_MODELS_SOURCE_FILENAME).write_text(
+        json.dumps(xai_models_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
     return snapshot_dir
 

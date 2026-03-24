@@ -32,6 +32,10 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if pydantic_genai_path.exists():
         payloads["pydantic_genai"] = _read_json(pydantic_genai_path)
 
+    xai_models_official_path = snapshot_dir / "xai_models_official.json"
+    if xai_models_official_path.exists():
+        payloads["xai_models_official"] = _read_json(xai_models_official_path)
+
     openrouter_path = snapshot_dir / "openrouter_models.json"
     if openrouter_path.exists():
         openrouter_payload = _read_json(openrouter_path)

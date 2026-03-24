@@ -358,3 +358,115 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
     }
     assert not quarantine
     assert report["summary"]["quarantine_count"] == 0
+
+
+def test_build_registry_artifacts_prefers_live_xai_docs_over_stale_pydantic_subset(tmp_path: Path) -> None:
+    snapshot_dir = tmp_path / "snapshot"
+    curated_dir = tmp_path / "curated"
+    snapshot_dir.mkdir()
+    curated_dir.mkdir()
+
+    (curated_dir / "providers.json").write_text(
+        json.dumps({"xai": {"display_name": "xAI"}}),
+        encoding="utf-8",
+    )
+    (curated_dir / "source_policies.json").write_text(
+        json.dumps(
+            {
+                "official_sources": ["xai"],
+                "aggregator_sources": [],
+                "field_authority": {
+                    "owned_by": ["official"],
+                    "display_name": ["official"],
+                    "pricing": ["official"],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (curated_dir / "canonical_aliases.json").write_text(json.dumps({}), encoding="utf-8")
+    (curated_dir / "rejections.json").write_text(json.dumps({}), encoding="utf-8")
+
+    (snapshot_dir / "fetch_metadata.json").write_text(
+        json.dumps({"fetched_at": "2026-03-24T09:00:00Z", "sources": {}}),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "x-ai",
+                    "pricing_urls": ["https://docs.x.ai/docs/models"],
+                    "models": [
+                        {
+                            "id": "grok-3",
+                            "name": "Grok 3",
+                            "match": {"or": [{"equals": "grok-3"}, {"equals": "grok-3-fast"}]},
+                            "prices": {"input_mtok": 3, "output_mtok": 15},
+                        },
+                        {
+                            "id": "grok-3-fast",
+                            "name": "Grok 3 Fast",
+                            "match": {"equals": "grok-3-fast"},
+                            "prices": {"input_mtok": 5, "output_mtok": 25},
+                        },
+                    ],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "xai_models_official.json").write_text(
+        json.dumps(
+            {
+                "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+                "language_models": [
+                    {
+                        "name": "grok-3",
+                        "aliases": ["grok-3-fast"],
+                        "maxPromptLength": 131072,
+                        "promptTextTokenPrice": "$n30000",
+                        "completionTextTokenPrice": "$n150000",
+                    },
+                    {
+                        "name": "grok-4.20-0309-reasoning",
+                        "aliases": ["grok-4.20"],
+                        "maxPromptLength": 2000000,
+                        "promptTextTokenPrice": "$n20000",
+                        "completionTextTokenPrice": "$n60000",
+                    },
+                ],
+                "image_generation_models": [
+                    {
+                        "name": "grok-imagine-image",
+                        "aliases": [],
+                        "imagePrice": "$n200000000",
+                        "pricePerInputImage": "$n20000000",
+                    }
+                ],
+                "video_generation_models": [
+                    {
+                        "name": "grok-imagine-video",
+                        "aliases": [],
+                        "resolutionPricing": [{"pricePerSecond": "$n500000000"}],
+                        "pricePerInputImage": "$n20000000",
+                        "pricePerInputVideoSecond": "$n100000000",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    registry, report, quarantine = build_registry_module.build_registry_artifacts(
+        snapshot_dir=snapshot_dir,
+        curated_dir=curated_dir,
+    )
+
+    assert "grok-3" in registry["models"]
+    assert "grok-3-fast" not in registry["models"]
+    assert "grok-4.20" in registry["models"]
+    assert registry["models"]["grok-imagine-image"]["modes"] == ["image_generation"]
+    assert registry["models"]["grok-imagine-video"]["modes"] == ["video_generation"]
+    assert not quarantine
+    assert report["summary"]["quarantine_count"] == 0

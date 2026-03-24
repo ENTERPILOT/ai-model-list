@@ -47,6 +47,8 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
     rejection_policy = curated.get("rejections", {})
     official_providers = curated.get("source_policies", {}).get("official_sources", [])
     for source_name, payload in payloads.items():
+        if source_name == "pydantic_genai" and "xai_models_official" in payloads:
+            continue
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)
         if normalizer is None:
             continue

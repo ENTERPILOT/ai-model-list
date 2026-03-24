@@ -5,6 +5,7 @@ from pipeline.normalize import (
     normalize_openrouter_rows,
     normalize_portkey_files,
     normalize_pydantic_genai_rows,
+    normalize_xai_models_official_rows,
 )
 
 
@@ -211,5 +212,87 @@ def test_normalize_pydantic_genai_rows_promotes_xai_model_to_exact_canonical_rec
     assert records[1].canonical_hint == "grok-4"
 
 
+def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities() -> None:
+    payload = {
+        "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+        "language_models": [
+            {
+                "name": "grok-4.20-0309-reasoning",
+                "aliases": ["grok-4.20", "grok-4.20-beta"],
+                "maxPromptLength": 2_000_000,
+                "promptTextTokenPrice": "$n20000",
+                "cachedPromptTokenPrice": "$n2000",
+                "completionTextTokenPrice": "$n60000",
+                "longContextThreshold": "$n200000",
+                "promptTextTokenPriceLongContext": "$n40000",
+                "completionTokenPriceLongContext": "$n120000",
+            }
+        ],
+        "image_generation_models": [
+            {
+                "name": "grok-imagine-image",
+                "aliases": ["grok-imagine-image-2026-03-02"],
+                "imagePrice": "$n200000000",
+                "pricePerInputImage": "$n20000000",
+            }
+        ],
+        "video_generation_models": [
+            {
+                "name": "grok-imagine-video",
+                "aliases": [],
+                "resolutionPricing": [
+                    {"pricePerSecond": "$n500000000"},
+                    {"pricePerSecond": "$n700000000"},
+                ],
+                "pricePerInputImage": "$n20000000",
+                "pricePerInputVideoSecond": "$n100000000",
+            }
+        ],
+    }
+
+    records = normalize_xai_models_official_rows(payload, rejection_policy={})
+
+    by_id = {record.source_model_id: record for record in records}
+    assert by_id["grok-4.20"].fields == {
+        "context_window": 2_000_000,
+        "display_name": "Grok 4.20",
+        "modes": ["chat"],
+        "owned_by": "xai",
+        "pricing": {
+            "cached_input_per_mtok": 0.2,
+            "currency": "USD",
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "tiers": [
+                {
+                    "up_to_tokens": 200000,
+                    "input_per_mtok": 2.0,
+                    "output_per_mtok": 6.0,
+                },
+                {
+                    "up_to_tokens": 2000000,
+                    "input_per_mtok": 4.0,
+                    "output_per_mtok": 12.0,
+                },
+            ],
+        },
+        "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+    }
+    assert by_id["xai/grok-4.20-0309-reasoning"].canonical_hint == "grok-4.20"
+    assert by_id["grok-imagine-image"].fields["modes"] == ["image_generation"]
+    assert by_id["grok-imagine-image"].fields["pricing"] == {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_image": 0.2,
+    }
+    assert by_id["grok-imagine-video"].fields["modes"] == ["video_generation"]
+    assert by_id["grok-imagine-video"].fields["pricing"] == {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_second_input": 0.1,
+        "per_second_output": 0.5,
+    }
+
+
 def test_normalizer_registry_covers_current_source_set() -> None:
-    assert set(NORMALIZER_BY_SOURCE) == {"litellm", "pydantic_genai", "openrouter", "llm_prices", "portkey"}
+    assert set(NORMALIZER_BY_SOURCE) == {"litellm", "xai_models_official", "pydantic_genai", "openrouter", "llm_prices", "portkey"}

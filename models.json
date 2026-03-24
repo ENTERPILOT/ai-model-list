@@ -374,37 +374,8 @@
         "output_per_mtok": 0.0
       }
     },
-    "grok-2": {
-      "context_window": 32768,
-      "description": "(deprecated) Grok 2 1212 introduces significant enhancements to accuracy, instruction adherence, and multilingual support, making it a powerful and flexible choice for developers seeking a highly steerable, intelligent model.",
-      "display_name": "Grok 2 1212",
-      "modes": [
-        "chat"
-      ],
-      "owned_by": "xai",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
-    "grok-2-vision": {
-      "context_window": 32768,
-      "description": "Our multimodal model that processes documents, diagrams, charts, screenshots, and photographs.",
-      "display_name": "Grok 2 Vision 1212",
-      "modes": [
-        "chat"
-      ],
-      "owned_by": "xai",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
     "grok-3": {
       "context_window": 131072,
-      "description": "Flagship model that excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in finance, healthcare, law, and science.",
       "display_name": "Grok 3",
       "modes": [
         "chat"
@@ -415,26 +386,11 @@
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
-      }
-    },
-    "grok-3-fast": {
-      "context_window": 131072,
-      "description": "Excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in finance, healthcare, law, and science.",
-      "display_name": "Grok 3 Fast",
-      "modes": [
-        "chat"
-      ],
-      "owned_by": "xai",
-      "pricing": {
-        "cached_input_per_mtok": 1.25,
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 25.0
-      }
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-3-mini": {
       "context_window": 131072,
-      "description": "A lightweight model that thinks before responding. Fast, smart, and great for logic-based tasks that do not require deep domain knowledge. The raw thinking traces are accessible.",
       "display_name": "Grok 3 Mini",
       "modes": [
         "chat"
@@ -445,26 +401,11 @@
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.5
-      }
-    },
-    "grok-3-mini-fast": {
-      "context_window": 131072,
-      "description": "A lightweight model that thinks before responding. Fast, smart, and great for logic-based tasks that do not require deep domain knowledge. The raw thinking traces are accessible.",
-      "display_name": "Grok 3 Mini Fast",
-      "modes": [
-        "chat"
-      ],
-      "owned_by": "xai",
-      "pricing": {
-        "cached_input_per_mtok": 0.15,
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 4.0
-      }
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4": {
       "context_window": 256000,
-      "description": "A flagship model, offering unparalleled performance in natural language, math and reasoning - the perfect jack of all trades.",
       "display_name": "Grok 4",
       "modes": [
         "chat"
@@ -474,13 +415,25 @@
         "cached_input_per_mtok": 0.75,
         "currency": "USD",
         "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
-      }
+        "output_per_mtok": 15.0,
+        "tiers": [
+          {
+            "input_per_mtok": 3.0,
+            "output_per_mtok": 15.0,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 6.0,
+            "output_per_mtok": 30.0,
+            "up_to_tokens": 256000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4-1-fast": {
       "context_window": 2000000,
-      "description": "A frontier multimodal model optimized specifically for high-performance agentic tool calling.",
-      "display_name": "Grok 4.1 Fast Reasoning",
+      "display_name": "Grok 4.1 Fast",
       "modes": [
         "chat"
       ],
@@ -489,13 +442,25 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      }
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4-1-fast-non-reasoning": {
       "context_window": 2000000,
-      "description": "A frontier multimodal model optimized specifically for high-performance agentic tool calling.",
-      "display_name": "Grok 4.1 Fast Non-Reasoning",
+      "display_name": "Grok 4.1 Fast Non Reasoning",
       "modes": [
         "chat"
       ],
@@ -504,13 +469,25 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      }
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4-fast": {
       "context_window": 2000000,
-      "description": "A frontier multimodal model optimized specifically for high-performance agentic tool calling.",
-      "display_name": "Grok 4 Fast Reasoning",
+      "display_name": "Grok 4 Fast",
       "modes": [
         "chat"
       ],
@@ -519,13 +496,25 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      }
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4-fast-non-reasoning": {
       "context_window": 2000000,
-      "description": "A frontier multimodal model optimized specifically for high-performance agentic tool calling.",
-      "display_name": "Grok 4 Fast Non-Reasoning",
+      "display_name": "Grok 4 Fast Non Reasoning",
       "modes": [
         "chat"
       ],
@@ -534,13 +523,106 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      }
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-4.20": {
+      "context_window": 2000000,
+      "display_name": "Grok 4.20",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-4.20-multi-agent": {
+      "context_window": 2000000,
+      "display_name": "Grok 4.20 Multi Agent",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-4.20-non-reasoning": {
+      "context_window": 2000000,
+      "display_name": "Grok 4.20 Non Reasoning",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-code-fast": {
       "context_window": 256000,
-      "description": "A speedy and economical reasoning model that excels at agentic coding.",
-      "display_name": "Grok Code Fast 1",
+      "display_name": "Grok Code Fast",
       "modes": [
         "chat"
       ],
@@ -550,7 +632,48 @@
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 1.5
-      }
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-image": {
+      "display_name": "Grok Imagine Image",
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_image": 0.2
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-image-pro": {
+      "display_name": "Grok Imagine Image Pro",
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_image": 0.7
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-video": {
+      "display_name": "Grok Imagine Video",
+      "modes": [
+        "video_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_second_input": 0.1,
+        "per_second_output": 0.5
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "o1-pro": {
       "display_name": "o1 Pro",
@@ -1263,61 +1386,26 @@
         "output_per_mtok": 1.5
       }
     },
-    "xai/grok-2": {
-      "context_window": 32768,
-      "enabled": true,
-      "model_ref": "grok-2",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "provider_model_id": "grok-2-1212"
-    },
-    "xai/grok-2-vision": {
-      "context_window": 32768,
-      "enabled": true,
-      "model_ref": "grok-2-vision",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "provider_model_id": "grok-2-vision-1212"
-    },
     "xai/grok-3": {
       "context_window": 131072,
       "enabled": true,
       "model_ref": "grok-3",
       "pricing": {
+        "cached_input_per_mtok": 0.75,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
-      },
-      "provider_model_id": "x-ai/grok-3"
-    },
-    "xai/grok-3-fast": {
-      "enabled": true,
-      "model_ref": "grok-3-fast"
+      }
     },
     "xai/grok-3-mini": {
       "context_window": 131072,
       "enabled": true,
       "model_ref": "grok-3-mini",
       "pricing": {
+        "cached_input_per_mtok": 0.075,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.5
-      },
-      "provider_model_id": "x-ai/grok-3-mini"
-    },
-    "xai/grok-3-mini-fast": {
-      "enabled": true,
-      "model_ref": "grok-3-mini-fast",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 4.0
       }
     },
     "xai/grok-4": {
@@ -1328,9 +1416,20 @@
         "cached_input_per_mtok": 0.75,
         "currency": "USD",
         "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
-      },
-      "provider_model_id": "grok-4-0709"
+        "output_per_mtok": 15.0,
+        "tiers": [
+          {
+            "input_per_mtok": 3.0,
+            "output_per_mtok": 15.0,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 6.0,
+            "output_per_mtok": 30.0,
+            "up_to_tokens": 256000
+          }
+        ]
+      }
     },
     "xai/grok-4-1-fast": {
       "context_window": 2000000,
@@ -1340,18 +1439,44 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      },
-      "provider_model_id": "grok-4-1-fast-reasoning"
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      }
     },
     "xai/grok-4-1-fast-non-reasoning": {
+      "context_window": 2000000,
       "enabled": true,
       "model_ref": "grok-4-1-fast-non-reasoning",
       "pricing": {
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
-      }
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "provider_model_id": "grok-4-1-fast-non-reasoning-latest"
     },
     "xai/grok-4-fast": {
       "context_window": 2000000,
@@ -1362,16 +1487,112 @@
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
       }
     },
     "xai/grok-4-fast-non-reasoning": {
+      "context_window": 2000000,
       "enabled": true,
       "model_ref": "grok-4-fast-non-reasoning",
       "pricing": {
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.2,
-        "output_per_mtok": 0.5
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.2,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 128000
+          },
+          {
+            "input_per_mtok": 0.4,
+            "output_per_mtok": 1.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      },
+      "provider_model_id": "grok-4-fast-non-reasoning-latest"
+    },
+    "xai/grok-4.20": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      }
+    },
+    "xai/grok-4.20-multi-agent": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
+      }
+    },
+    "xai/grok-4.20-non-reasoning": {
+      "context_window": 2000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 2000000
+          }
+        ]
       }
     },
     "xai/grok-code-fast": {
@@ -1383,8 +1604,25 @@
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 1.5
+      }
+    },
+    "xai/grok-imagine-image": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.02,
+        "per_image": 0.2
       },
-      "provider_model_id": "grok-code-fast-1"
+      "provider_model_id": "grok-imagine-image-2026-03-02"
+    },
+    "xai/grok-imagine-image-pro": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-pro"
+    },
+    "xai/grok-imagine-video": {
+      "enabled": true,
+      "model_ref": "grok-imagine-video"
     }
   },
   "providers": {
@@ -1666,7 +1904,7 @@
       "default_base_url": "https://api.x.ai/v1",
       "display_name": "xAI",
       "docs_url": "https://docs.x.ai",
-      "pricing_url": "https://docs.x.ai/docs/models#models-and-pricing",
+      "pricing_url": "https://docs.x.ai/developers/models",
       "supported_modes": [
         "chat",
         "embedding",
@@ -1676,6 +1914,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-03-23T19:00:35Z",
+  "updated_at": "2026-03-24T07:09:56Z",
   "version": 1
 }

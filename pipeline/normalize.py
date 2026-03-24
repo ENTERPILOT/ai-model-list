@@ -20,6 +20,8 @@ PROVIDER_SLUG_ALIASES = {
 }
 UNSTABLE_ALIAS_TOKENS = ("latest", "beta", "preview", "alpha", "experimental", "free")
 DATE_SUFFIX_PATTERN = re.compile(r"(?:[-_.])(?:\d{4}|\d{8})$")
+XAI_TOKEN_PRICE_DIVISOR = 10_000
+XAI_UNIT_PRICE_DIVISOR = 1_000_000_000
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -209,6 +211,294 @@ def extract_official_catalog_fields(model: Mapping[str, Any], provider_slug: str
         fields["pricing"] = pricing
 
     return fields
+
+
+def _parse_xai_numeric(value: Any) -> float | None:
+    if isinstance(value, str) and value.startswith("$n"):
+        return float(value[2:])
+    return _to_float(value)
+
+
+def _parse_xai_integer(value: Any) -> int | None:
+    numeric = _parse_xai_numeric(value)
+    if numeric is None:
+        return None
+    return int(numeric)
+
+
+def _xai_price_per_mtok(value: Any) -> float | None:
+    numeric = _parse_xai_numeric(value)
+    if numeric is None:
+        return None
+    return round(numeric / XAI_TOKEN_PRICE_DIVISOR, 12)
+
+
+def _xai_price_per_unit(value: Any) -> float | None:
+    numeric = _parse_xai_numeric(value)
+    if numeric is None:
+        return None
+    return round(numeric / XAI_UNIT_PRICE_DIVISOR, 12)
+
+
+def _pricing_from_xai_language_model(model: Mapping[str, Any]) -> dict[str, Any] | None:
+    input_price = _xai_price_per_mtok(model.get("promptTextTokenPrice"))
+    output_price = _xai_price_per_mtok(model.get("completionTextTokenPrice"))
+    cached_price = _xai_price_per_mtok(model.get("cachedPromptTokenPrice"))
+    if input_price is None and output_price is None and cached_price is None:
+        return None
+
+    pricing: dict[str, Any] = {"currency": "USD"}
+    if input_price is not None:
+        pricing["input_per_mtok"] = input_price
+    if output_price is not None:
+        pricing["output_per_mtok"] = output_price
+    if cached_price is not None:
+        pricing["cached_input_per_mtok"] = cached_price
+
+    long_context_threshold = _parse_xai_integer(model.get("longContextThreshold"))
+    max_prompt_length = _parse_xai_integer(model.get("maxPromptLength"))
+    long_input_price = _xai_price_per_mtok(model.get("promptTextTokenPriceLongContext"))
+    long_output_price = _xai_price_per_mtok(model.get("completionTokenPriceLongContext"))
+    base_input_price = pricing.get("input_per_mtok")
+    base_output_price = pricing.get("output_per_mtok")
+    if (
+        isinstance(long_context_threshold, int)
+        and isinstance(max_prompt_length, int)
+        and max_prompt_length > long_context_threshold
+        and isinstance(base_input_price, float)
+        and isinstance(base_output_price, float)
+        and isinstance(long_input_price, float)
+        and isinstance(long_output_price, float)
+        and (long_input_price != base_input_price or long_output_price != base_output_price)
+    ):
+        pricing["tiers"] = [
+            {
+                "up_to_tokens": long_context_threshold,
+                "input_per_mtok": base_input_price,
+                "output_per_mtok": base_output_price,
+            },
+            {
+                "up_to_tokens": max_prompt_length,
+                "input_per_mtok": long_input_price,
+                "output_per_mtok": long_output_price,
+            },
+        ]
+
+    return pricing
+
+
+def _pricing_from_xai_image_model(model: Mapping[str, Any]) -> dict[str, Any] | None:
+    per_image = _xai_price_per_unit(model.get("imagePrice"))
+    input_per_image = _xai_price_per_unit(model.get("pricePerInputImage"))
+    if per_image is None and input_per_image is None:
+        return None
+
+    pricing: dict[str, Any] = {"currency": "USD"}
+    if per_image is not None:
+        pricing["per_image"] = per_image
+    if input_per_image is not None:
+        pricing["input_per_image"] = input_per_image
+    return pricing
+
+
+def _pricing_from_xai_video_model(model: Mapping[str, Any]) -> dict[str, Any] | None:
+    output_prices = [
+        _xai_price_per_unit(entry.get("pricePerSecond"))
+        for entry in model.get("resolutionPricing", [])
+        if isinstance(entry, Mapping)
+    ]
+    output_prices = [price for price in output_prices if price is not None]
+    input_per_image = _xai_price_per_unit(model.get("pricePerInputImage"))
+    per_second_input = _xai_price_per_unit(model.get("pricePerInputVideoSecond"))
+    if not output_prices and input_per_image is None and per_second_input is None:
+        return None
+
+    pricing: dict[str, Any] = {"currency": "USD"}
+    if output_prices:
+        pricing["per_second_output"] = min(output_prices)
+    if input_per_image is not None:
+        pricing["input_per_image"] = input_per_image
+    if per_second_input is not None:
+        pricing["per_second_input"] = per_second_input
+    return pricing
+
+
+def _display_name_from_xai_model_id(model_id: str) -> str:
+    parts = model_id.split("-")
+    display_parts: list[str] = []
+    index = 0
+    while index < len(parts):
+        current = parts[index]
+        if current.isdigit() and index + 1 < len(parts) and parts[index + 1].isdigit():
+            display_parts.append(f"{current}.{parts[index + 1]}")
+            index += 2
+            continue
+
+        if current.startswith("grok"):
+            display_parts.append(current.replace("grok", "Grok", 1))
+        elif current.replace(".", "", 1).isdigit():
+            display_parts.append(current)
+        else:
+            display_parts.append(current.title())
+        index += 1
+
+    return " ".join(display_parts)
+
+
+def _canonical_model_input(raw_model_id: str, aliases: Sequence[str]) -> dict[str, Any]:
+    return {
+        "id": raw_model_id,
+        "match": {
+            "or": [{"equals": alias} for alias in aliases if isinstance(alias, str) and alias]
+        },
+    }
+
+
+def _build_xai_model_records(
+    raw_model_id: str,
+    aliases: Sequence[str],
+    fields: dict[str, Any],
+    evidence_ref: str,
+    rejection_policy: Mapping[str, Sequence[str]] | None,
+) -> list[SourceEvidence]:
+    canonical_model_id = _choose_canonical_model_id(_canonical_model_input(raw_model_id, aliases))
+    records = [
+        SourceEvidence(
+            source_name="xai_official_docs",
+            source_model_id=canonical_model_id,
+            provider_slug="xai",
+            canonical_hint=canonical_model_id,
+            fields=fields,
+            confidence="official",
+            evidence_ref=evidence_ref,
+            rejected=is_rejected_model_id(canonical_model_id, rejection_policy),
+        )
+    ]
+
+    provider_aliases = []
+    if raw_model_id != canonical_model_id:
+        provider_aliases.append(raw_model_id)
+    provider_aliases.extend(
+        alias
+        for alias in aliases
+        if isinstance(alias, str) and alias and alias != canonical_model_id and alias != raw_model_id
+    )
+
+    seen: set[str] = set()
+    for alias in provider_aliases:
+        if alias in seen:
+            continue
+        seen.add(alias)
+        records.append(
+            SourceEvidence(
+                source_name="xai_official_docs",
+                source_model_id=f"xai/{alias}",
+                provider_slug="xai",
+                canonical_hint=canonical_model_id,
+                fields=fields,
+                confidence="official",
+                evidence_ref=evidence_ref,
+                rejected=is_rejected_model_id(alias, rejection_policy),
+            )
+        )
+
+    return records
+
+
+def normalize_xai_models_official_rows(
+    payload: Mapping[str, Any],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    **_: Any,
+) -> list[SourceEvidence]:
+    evidence_ref = payload.get("source_url") or "xai_models_official.json"
+    records: list[SourceEvidence] = []
+
+    for model in payload.get("language_models", []):
+        if not isinstance(model, Mapping):
+            continue
+        raw_model_id = model.get("name")
+        if not isinstance(raw_model_id, str) or not raw_model_id:
+            continue
+
+        fields: dict[str, Any] = {
+            "display_name": _display_name_from_xai_model_id(_choose_canonical_model_id(_canonical_model_input(raw_model_id, model.get("aliases", [])))),
+            "owned_by": "xai",
+            "modes": ["chat"],
+            "source_url": evidence_ref,
+        }
+        context_window = _parse_xai_integer(model.get("maxPromptLength"))
+        if context_window is not None:
+            fields["context_window"] = context_window
+        pricing = _pricing_from_xai_language_model(model)
+        if pricing is not None:
+            fields["pricing"] = pricing
+
+        records.extend(
+            _build_xai_model_records(
+                raw_model_id,
+                model.get("aliases", []),
+                fields,
+                evidence_ref,
+                rejection_policy,
+            )
+        )
+
+    for model in payload.get("image_generation_models", []):
+        if not isinstance(model, Mapping):
+            continue
+        raw_model_id = model.get("name")
+        if not isinstance(raw_model_id, str) or not raw_model_id:
+            continue
+
+        fields: dict[str, Any] = {
+            "display_name": _display_name_from_xai_model_id(raw_model_id),
+            "owned_by": "xai",
+            "modes": ["image_generation"],
+            "source_url": evidence_ref,
+        }
+        pricing = _pricing_from_xai_image_model(model)
+        if pricing is not None:
+            fields["pricing"] = pricing
+
+        records.extend(
+            _build_xai_model_records(
+                raw_model_id,
+                model.get("aliases", []),
+                fields,
+                evidence_ref,
+                rejection_policy,
+            )
+        )
+
+    for model in payload.get("video_generation_models", []):
+        if not isinstance(model, Mapping):
+            continue
+        raw_model_id = model.get("name")
+        if not isinstance(raw_model_id, str) or not raw_model_id:
+            continue
+
+        fields: dict[str, Any] = {
+            "display_name": _display_name_from_xai_model_id(raw_model_id),
+            "owned_by": "xai",
+            "modes": ["video_generation"],
+            "source_url": evidence_ref,
+        }
+        pricing = _pricing_from_xai_video_model(model)
+        if pricing is not None:
+            fields["pricing"] = pricing
+
+        records.extend(
+            _build_xai_model_records(
+                raw_model_id,
+                model.get("aliases", []),
+                fields,
+                evidence_ref,
+                rejection_policy,
+            )
+        )
+
+    return records
 
 
 def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
@@ -445,6 +735,7 @@ def normalize_pydantic_genai_rows(
 
 NORMALIZER_BY_SOURCE = {
     "litellm": normalize_litellm_rows,
+    "xai_models_official": normalize_xai_models_official_rows,
     "pydantic_genai": normalize_pydantic_genai_rows,
     "openrouter": normalize_openrouter_rows,
     "llm_prices": normalize_llm_prices_rows,
