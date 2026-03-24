@@ -17,6 +17,15 @@ PROVIDER_SLUG_ALIASES = {
     "azure_ai": "azure",
     "azure-openai": "azure",
     "google": "gemini",
+    "fireworks-ai": "fireworks",
+    "fireworks_ai": "fireworks",
+    "mistral-ai": "mistral",
+    "text-completion-openai": "openai",
+    "together-ai": "together",
+    "together_ai": "together",
+    "vertex_ai-embedding-models": "vertex_ai",
+    "vertex_ai-language-models": "vertex_ai",
+    "vertex_ai-text-models": "vertex_ai",
 }
 KNOWN_PROVIDER_SLUGS = {
     "anthropic",
@@ -137,6 +146,79 @@ def _duration_seconds_from_hours(value: Any) -> int | None:
     return int(round(hours * 3600))
 
 
+def _merge_pricing_maps(*maps: Mapping[str, Any] | None) -> dict[str, Any] | None:
+    pricing: dict[str, Any] = {}
+    for candidate in maps:
+        if not isinstance(candidate, Mapping):
+            continue
+        for key, value in candidate.items():
+            if value is None:
+                continue
+            pricing[key] = value
+
+    if not pricing:
+        return None
+
+    pricing.setdefault("currency", "USD")
+    return pricing if len(pricing) > 1 else None
+
+
+def _scale_cents_to_usd(value: Any) -> float | None:
+    numeric = _to_float(value)
+    if numeric is None:
+        return None
+    return round(numeric / 100, 12)
+
+
+def _build_tiered_token_pricing(entry: Mapping[str, Any], pricing: Mapping[str, Any]) -> list[dict[str, float | int]] | None:
+    base_input = _to_float(pricing.get("input_per_mtok"))
+    base_output = _to_float(pricing.get("output_per_mtok"))
+    if base_input is None or base_output is None:
+        return None
+
+    context_window = entry.get("max_input_tokens")
+    input_pattern = re.compile(r"^input_cost_per_token_above_(\d+)k_tokens$")
+    output_pattern = re.compile(r"^output_cost_per_token_above_(\d+)k_tokens$")
+    input_thresholds = {
+        int(match.group(1)) * 1_000: _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
+        for key, raw_value in entry.items()
+        if (match := input_pattern.match(key)) and (value := _to_float(raw_value)) is not None
+    }
+    output_thresholds = {
+        int(match.group(1)) * 1_000: _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
+        for key, raw_value in entry.items()
+        if (match := output_pattern.match(key)) and (value := _to_float(raw_value)) is not None
+    }
+
+    tiers: list[dict[str, float | int]] = []
+    for threshold in sorted(input_thresholds.keys() & output_thresholds.keys()):
+        if context_window is not None and threshold > context_window:
+            continue
+        if not tiers:
+            tiers.append(
+                {
+                    "up_to_tokens": threshold,
+                    "input_per_mtok": base_input,
+                    "output_per_mtok": base_output,
+                }
+            )
+        upper_bound = context_window if isinstance(context_window, int) and context_window >= threshold else threshold
+        tiers.append(
+            {
+                "up_to_tokens": upper_bound,
+                "input_per_mtok": input_thresholds[threshold],
+                "output_per_mtok": output_thresholds[threshold],
+            }
+        )
+
+    return tiers or None
+
+
+def _is_image_generation_summary_row(entry: Mapping[str, Any]) -> bool:
+    name = entry.get("name")
+    return isinstance(name, str) and "(image gen)" in name.lower()
+
+
 def _pricing_from_usd_per_token(input_value: Any, output_value: Any) -> dict[str, float | str] | None:
     input_cost = _to_float(input_value)
     output_cost = _to_float(output_value)
@@ -168,17 +250,130 @@ def _pricing_from_usd_per_mtok(input_value: Any, output_value: Any) -> dict[str,
 def _pricing_from_portkey(entry: Mapping[str, Any]) -> dict[str, float | str] | None:
     pricing_config = entry.get("pricing_config") or {}
     payg = pricing_config.get("pay_as_you_go", {}) or {}
-    request_token = _to_float(payg.get("request_token", {}).get("price"))
-    response_token = _to_float(payg.get("response_token", {}).get("price"))
-    if request_token is None and response_token is None:
-        return None
+    pricing: dict[str, Any] = {"currency": "USD"}
 
-    pricing: dict[str, float | str] = {"currency": "USD"}
-    if request_token is not None:
-        pricing["input_per_mtok"] = _scale_price(request_token, CENTS_PER_TOKEN_TO_USD_PER_MTOK)
-    if response_token is not None:
-        pricing["output_per_mtok"] = _scale_price(response_token, CENTS_PER_TOKEN_TO_USD_PER_MTOK)
-    return pricing
+    cents_token_fields = {
+        ("request_token", "price"): "input_per_mtok",
+        ("request_text_token", "price"): "input_per_mtok",
+        ("response_token", "price"): "output_per_mtok",
+        ("response_text_token", "price"): "output_per_mtok",
+        ("cache_read_input_token", "price"): "cached_input_per_mtok",
+        ("cache_read_text_input_token", "price"): "cached_input_per_mtok",
+        ("cached_text_input_token", "price"): "cached_input_per_mtok",
+        ("cache_write_input_token", "price"): "cache_write_per_mtok",
+        ("cache_write_text_input_token", "price"): "cache_write_per_mtok",
+        ("request_audio_token", "price"): "audio_input_per_mtok",
+        ("response_audio_token", "price"): "audio_output_per_mtok",
+        ("request_image_token", "price"): "input_image_per_mtok",
+        ("response_image_token", "price"): "output_image_per_mtok",
+        ("cache_read_image_input_token", "price"): "cached_input_image_per_mtok",
+        ("cached_image_input_token", "price"): "cached_input_image_per_mtok",
+    }
+    for (section, field), target_field in cents_token_fields.items():
+        numeric_value = _to_float(payg.get(section, {}).get(field))
+        if numeric_value is not None:
+            pricing[target_field] = _scale_price(numeric_value, CENTS_PER_TOKEN_TO_USD_PER_MTOK)
+
+    image_generation_prices: list[dict[str, Any]] = []
+    default_per_image: float | None = None
+    image_prices = payg.get("image")
+    if isinstance(image_prices, Mapping):
+        for quality, quality_payload in image_prices.items():
+            if not isinstance(quality_payload, Mapping):
+                continue
+            for size, price_payload in quality_payload.items():
+                if not isinstance(price_payload, Mapping):
+                    continue
+                price = _scale_cents_to_usd(price_payload.get("price"))
+                if price is None:
+                    continue
+                variant: dict[str, Any] = {"price": price}
+                if quality != "default":
+                    variant["quality"] = quality
+                if size != "default":
+                    variant["size"] = size
+                image_generation_prices.append(variant)
+                if quality == "default" and size == "default":
+                    default_per_image = price
+                elif default_per_image is None and quality == "standard" and size == "default":
+                    default_per_image = price
+                elif default_per_image is None and quality == "default" and size == "1024x1024":
+                    default_per_image = price
+
+    if image_generation_prices:
+        pricing["image_generation_prices"] = image_generation_prices
+        if default_per_image is not None:
+            pricing["per_image"] = default_per_image
+        elif len({variant["price"] for variant in image_generation_prices}) == 1:
+            pricing["per_image"] = image_generation_prices[0]["price"]
+
+    return pricing if len(pricing) > 1 else None
+
+
+def _pricing_from_extended_fields(entry: Mapping[str, Any]) -> dict[str, Any] | None:
+    pricing: dict[str, Any] = {"currency": "USD"}
+
+    token_cost_fields = {
+        "cache_read_input_token_cost": "cached_input_per_mtok",
+        "cache_creation_input_token_cost": "cache_write_per_mtok",
+        "output_cost_per_reasoning_token": "reasoning_output_per_mtok",
+        "input_cost_per_audio_token": "audio_input_per_mtok",
+        "output_cost_per_audio_token": "audio_output_per_mtok",
+        "input_cost_per_image_token": "input_image_per_mtok",
+        "output_cost_per_image_token": "output_image_per_mtok",
+        "cache_read_input_image_token_cost": "cached_input_image_per_mtok",
+    }
+    for source_field, target_field in token_cost_fields.items():
+        value = _to_float(entry.get(source_field))
+        if value is not None:
+            pricing[target_field] = _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
+
+    raw_pricing = entry.get("pricing")
+    if isinstance(raw_pricing, Mapping):
+        openrouter_fields = {
+            "input_cache_read": "cached_input_per_mtok",
+            "input_cache_write": "cache_write_per_mtok",
+        }
+        for source_field, target_field in openrouter_fields.items():
+            value = _to_float(raw_pricing.get(source_field))
+            if value is not None:
+                pricing[target_field] = _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
+
+    if _is_image_generation_summary_row(entry):
+        image_input = _to_float(entry.get("input"))
+        image_output = _to_float(entry.get("output"))
+        if image_input is not None:
+            pricing["input_image_per_mtok"] = image_input
+        if image_output is not None:
+            pricing["output_image_per_mtok"] = image_output
+    cached_input = _to_float(entry.get("input_cached"))
+    if cached_input is not None:
+        pricing["cached_input_per_mtok"] = cached_input
+
+    mode = entry.get("mode")
+    input_per_image = _to_float(entry.get("input_cost_per_image"))
+    output_per_image = _to_float(entry.get("output_cost_per_image"))
+    if output_per_image is not None:
+        pricing["per_image"] = output_per_image
+    elif input_per_image is not None:
+        if mode == "image_generation":
+            pricing["per_image"] = input_per_image
+        else:
+            pricing["input_per_image"] = input_per_image
+
+    direct_price_fields = {
+        "input_cost_per_second": "per_second_input",
+        "output_cost_per_second": "per_second_output",
+        "input_cost_per_audio_per_second": "per_second_input",
+        "output_cost_per_audio_per_second": "per_second_output",
+        "input_cost_per_character": "per_character_input",
+    }
+    for source_field, target_field in direct_price_fields.items():
+        value = _to_float(entry.get(source_field))
+        if value is not None:
+            pricing[target_field] = value
+
+    return pricing if len(pricing) > 1 else None
 
 
 def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
@@ -682,27 +877,20 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     if max_audio_length_seconds is not None:
         fields["max_audio_length_seconds"] = max_audio_length_seconds
 
-    pricing = (
-        _pricing_from_usd_per_token(entry.get("input_cost_per_token"), entry.get("output_cost_per_token"))
-        or _pricing_from_usd_per_token(
+    pricing = _merge_pricing_maps(
+        _pricing_from_usd_per_token(entry.get("input_cost_per_token"), entry.get("output_cost_per_token")),
+        _pricing_from_usd_per_token(
             entry.get("pricing", {}).get("prompt"),
             entry.get("pricing", {}).get("completion"),
-        )
-        or _pricing_from_usd_per_mtok(entry.get("input"), entry.get("output"))
-        or _pricing_from_portkey(entry)
+        ),
+        None if _is_image_generation_summary_row(entry) else _pricing_from_usd_per_mtok(entry.get("input"), entry.get("output")),
+        _pricing_from_portkey(entry),
+        _pricing_from_extended_fields(entry),
     )
     if pricing is not None:
-        extra_pricing_fields = {
-            "cache_read_input_token_cost": "cached_input_per_mtok",
-            "cache_creation_input_token_cost": "cache_write_per_mtok",
-            "output_cost_per_reasoning_token": "reasoning_output_per_mtok",
-            "input_cost_per_audio_token": "audio_input_per_mtok",
-            "output_cost_per_audio_token": "audio_output_per_mtok",
-        }
-        for source_field, target_field in extra_pricing_fields.items():
-            value = _to_float(entry.get(source_field))
-            if value is not None:
-                pricing[target_field] = _scale_price(value, USD_PER_TOKEN_TO_USD_PER_MTOK)
+        tiers = _build_tiered_token_pricing(entry, pricing)
+        if tiers:
+            pricing["tiers"] = tiers
         fields["pricing"] = pricing
 
     supported_modalities = entry.get("supported_modalities")
@@ -848,12 +1036,12 @@ def normalize_openrouter_rows(
     records: list[SourceEvidence] = []
     for row in rows:
         source_model_id = row["id"]
-        provider_slug, canonical_hint = split_provider_model_name(row.get("canonical_slug") or source_model_id)
+        _, canonical_hint = split_provider_model_name(row.get("canonical_slug") or source_model_id)
         records.append(
             SourceEvidence(
                 source_name="openrouter",
                 source_model_id=source_model_id,
-                provider_slug=provider_slug,
+                provider_slug="openrouter",
                 canonical_hint=canonical_hint,
                 fields=extract_supported_fields(row),
                 confidence="low",

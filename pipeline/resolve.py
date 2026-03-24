@@ -7,6 +7,7 @@ from copy import deepcopy
 import re
 from typing import Any, Iterable
 
+from pipeline.normalize import split_provider_model_name
 from pipeline.rules import is_canonical_model_key, sort_candidates_by_authority
 from pipeline.types import SourceEvidence
 
@@ -78,7 +79,29 @@ DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf",
 
 def choose_field_value(field_name: str, candidates: list[SourceEvidence], policy: dict[str, Any]) -> Any:
     ranked = sort_candidates_by_authority(field_name, candidates, policy)
-    return ranked[0].fields.get(field_name) if ranked else None
+    if not ranked:
+        return None
+    if field_name == "pricing":
+        return merge_pricing_values(ranked)
+    return ranked[0].fields.get(field_name)
+
+
+def merge_pricing_values(candidates: list[SourceEvidence]) -> dict[str, Any] | None:
+    merged: dict[str, Any] = {}
+    for candidate in candidates:
+        pricing = candidate.fields.get("pricing")
+        if not isinstance(pricing, dict):
+            continue
+        for key, value in pricing.items():
+            if value is None or key in merged:
+                continue
+            merged[key] = deepcopy(value)
+
+    if not merged:
+        return None
+
+    merged.setdefault("currency", "USD")
+    return merged if len(merged) > 1 else None
 
 
 def resolve_registry(
@@ -202,6 +225,9 @@ def select_canonical_records(
     exact_records = [record for record in records if is_exact_canonical_record(record, canonical_key)]
     if exact_records:
         return exact_records
+    provider_alias_records = [record for record in records if is_clean_provider_alias_record(record, canonical_key)]
+    if provider_alias_records:
+        return provider_alias_records
     return [record for record in records if is_clean_alias_record(record, canonical_key, alias_map)]
 
 
@@ -250,6 +276,17 @@ def is_clean_alias_record(
         record.source_model_id != canonical_key
         and is_canonical_model_key(record.source_model_id)
         and approved_alias == canonical_key
+    )
+
+
+def is_clean_provider_alias_record(record: SourceEvidence, canonical_key: str) -> bool:
+    if is_canonical_model_key(record.source_model_id):
+        return False
+    stripped_provider_hint = split_provider_model_name(record.source_model_id)[1]
+    return (
+        isinstance(record.canonical_hint, str)
+        and record.canonical_hint == canonical_key
+        and stripped_provider_hint == canonical_key
     )
 
 

@@ -373,9 +373,30 @@
           "type": ["number", "null"],
           "description": "USD per million audio output tokens"
         },
+        "input_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million image input tokens"
+        },
+        "output_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million image output tokens"
+        },
+        "cached_input_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million cached image input tokens"
+        },
         "input_per_image": {
           "type": ["number", "null"],
           "description": "USD per input image"
+        },
+        "image_generation_prices": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/image_generation_price" }
+            },
+            { "type": "null" }
+          ]
         },
         "tiers": {
           "oneOf": [
@@ -396,6 +417,16 @@
         "up_to_tokens": { "type": "integer" },
         "input_per_mtok": { "type": "number" },
         "output_per_mtok": { "type": "number" }
+      }
+    },
+    "image_generation_price": {
+      "type": "object",
+      "required": ["price"],
+      "additionalProperties": false,
+      "properties": {
+        "quality": { "type": "string" },
+        "size": { "type": "string" },
+        "price": { "type": "number" }
       }
     },
     "parameter_spec": {

@@ -385,3 +385,87 @@ def test_resolve_collects_aliases_and_exact_provider_keys_without_merging_varian
         "pricing": {"currency": "USD", "input_per_mtok": 0.15, "output_per_mtok": 0.6},
     }
     assert not report["quarantine"]
+
+
+def test_resolve_admits_clean_provider_prefixed_record_without_curated_alias() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="qwen/qwen3-vl-32b-instruct",
+            provider_slug="openrouter",
+            canonical_hint="qwen3-vl-32b-instruct",
+            fields={
+                "display_name": "Qwen: Qwen3 VL 32B Instruct",
+                "modes": ["chat"],
+                "pricing": {"currency": "USD", "input_per_mtok": 0.104, "output_per_mtok": 0.416},
+            },
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["qwen3-vl-32b-instruct"]["aliases"] == [
+        "qwen/qwen3-vl-32b-instruct",
+        "openrouter/qwen/qwen3-vl-32b-instruct",
+    ]
+    assert registry["provider_models"]["openrouter/qwen/qwen3-vl-32b-instruct"] == {
+        "enabled": True,
+        "model_ref": "qwen3-vl-32b-instruct",
+        "pricing": {"currency": "USD", "input_per_mtok": 0.104, "output_per_mtok": 0.416},
+    }
+    assert not report["quarantine"]
+
+
+def test_resolve_merges_pricing_components_across_authorities() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="portkey",
+            source_model_id="gpt-image-1",
+            provider_slug="openai",
+            canonical_hint="gpt-image-1",
+            fields={
+                "display_name": "GPT Image 1",
+                "modes": ["image_generation"],
+                "pricing": {
+                    "currency": "USD",
+                    "input_image_per_mtok": 10.0,
+                    "output_image_per_mtok": 40.0,
+                    "image_generation_prices": [
+                        {"quality": "high", "size": "1024x1024", "price": 0.167}
+                    ],
+                },
+            },
+            confidence="low",
+            evidence_ref="portkey/openai.json",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="gpt-image-1",
+            provider_slug="openai",
+            canonical_hint="gpt-image-1",
+            fields={
+                "pricing": {
+                    "currency": "USD",
+                    "input_per_mtok": 5.0,
+                    "output_per_mtok": 10.0,
+                }
+            },
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+    registry, _ = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["gpt-image-1"]["pricing"] == {
+        "currency": "USD",
+        "input_image_per_mtok": 10.0,
+        "output_image_per_mtok": 40.0,
+        "image_generation_prices": [
+            {"quality": "high", "size": "1024x1024", "price": 0.167}
+        ],
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 10.0,
+    }

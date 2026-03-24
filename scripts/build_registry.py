@@ -55,8 +55,10 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
         if source_name == "pydantic_genai":
             kwargs["allowed_providers"] = admitted_providers
             kwargs["owner_providers"] = official_providers
+            skip_providers = ["openrouter"]
             if "xai_models_official" in payloads:
-                kwargs["skip_providers"] = ["xai"]
+                skip_providers.append("xai")
+            kwargs["skip_providers"] = skip_providers
         evidence.extend(normalizer(payload, **kwargs))
     return evidence
 

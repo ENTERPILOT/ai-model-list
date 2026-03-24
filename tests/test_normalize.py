@@ -142,7 +142,7 @@ def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
         rejection_policy={},
     )[0]
 
-    assert record.provider_slug == "anthropic"
+    assert record.provider_slug == "openrouter"
     assert record.canonical_hint == "claude-4.6-sonnet-20260217"
     assert record.evidence_ref == "sources/openrouter/2026-03-23.json"
     assert record.fields["display_name"] == "Anthropic: Claude Sonnet 4.6"
@@ -153,6 +153,101 @@ def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
     }
     assert record.fields["context_window"] == 1_000_000
     assert record.fields["max_output_tokens"] == 128_000
+
+
+def test_normalize_litellm_entry_extracts_image_token_pricing_and_tiers() -> None:
+    entry = {
+        "model_name": "gemini/gemini-2.5-computer-use-preview-10-2025",
+        "litellm_provider": "gemini",
+        "mode": "chat",
+        "max_input_tokens": 400_000,
+        "input_cost_per_token": 0.00000125,
+        "output_cost_per_token": 0.00001,
+        "input_cost_per_token_above_200k_tokens": 0.0000025,
+        "output_cost_per_token_above_200k_tokens": 0.000015,
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0,
+        "tiers": [
+            {
+                "up_to_tokens": 200_000,
+                "input_per_mtok": 1.25,
+                "output_per_mtok": 10.0,
+            },
+            {
+                "up_to_tokens": 400_000,
+                "input_per_mtok": 2.5,
+                "output_per_mtok": 15.0,
+            },
+        ],
+    }
+
+
+def test_normalize_portkey_files_extracts_rich_image_pricing() -> None:
+    files = {
+        "openai.json": {
+            "gpt-image-1": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_text_token": {"price": 0.0005},
+                        "request_image_token": {"price": 0.001},
+                        "response_image_token": {"price": 0.004},
+                        "cache_read_text_input_token": {"price": 0.000125},
+                        "cache_read_image_input_token": {"price": 0.00025},
+                        "image": {
+                            "low": {
+                                "1024x1024": {"price": 1.1},
+                            },
+                            "high": {
+                                "1024x1024": {"price": 16.7},
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.provider_slug == "openai"
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "cached_input_per_mtok": 1.25,
+        "input_image_per_mtok": 10.0,
+        "output_image_per_mtok": 40.0,
+        "cached_input_image_per_mtok": 2.5,
+        "image_generation_prices": [
+            {"quality": "low", "size": "1024x1024", "price": 0.011},
+            {"quality": "high", "size": "1024x1024", "price": 0.167},
+        ],
+    }
+
+
+def test_normalize_litellm_entry_extracts_per_second_and_per_character_pricing() -> None:
+    entry = {
+        "model_name": "groq/playai-tts",
+        "litellm_provider": "groq",
+        "mode": "audio_speech",
+        "input_cost_per_character": 0.00005,
+        "input_cost_per_second": 0.00003,
+        "output_cost_per_second": 0.0,
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "per_character_input": 0.00005,
+        "per_second_input": 0.00003,
+        "per_second_output": 0.0,
+    }
 
 
 def test_normalize_llm_prices_rows_normalizes_vendor_rows() -> None:
@@ -180,6 +275,28 @@ def test_normalize_llm_prices_rows_normalizes_vendor_rows() -> None:
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0,
+    }
+
+
+def test_normalize_llm_prices_rows_maps_image_generation_rows_to_image_token_fields() -> None:
+    rows = [
+        {
+            "id": "gpt-image-1",
+            "vendor": "openai",
+            "name": "gpt-image-1 (image gen)",
+            "input": 10,
+            "output": 40,
+            "input_cached": 1.25,
+        }
+    ]
+
+    record = normalize_llm_prices_rows(rows, rejection_policy={})[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_image_per_mtok": 10.0,
+        "output_image_per_mtok": 40.0,
+        "cached_input_per_mtok": 1.25,
     }
 
 
