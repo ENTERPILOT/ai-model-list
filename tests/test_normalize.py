@@ -108,6 +108,20 @@ def test_normalize_litellm_entry_extracts_richer_fields_and_nested_provider_hint
     }
 
 
+def test_normalize_litellm_entry_converts_audio_hours_to_integer_seconds() -> None:
+    entry = {
+        "model_name": "gemini/gemini-flash-latest",
+        "litellm_provider": "gemini",
+        "mode": "chat",
+        "max_audio_length_hours": 8.4,
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.fields["max_audio_length_seconds"] == 30240
+    assert isinstance(record.fields["max_audio_length_seconds"], int)
+
+
 def test_normalize_openrouter_rows_normalizes_pricing_and_metadata() -> None:
     rows = [
         {

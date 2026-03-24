@@ -130,6 +130,13 @@ def _scale_price(value: float, multiplier: int) -> float:
     return round(value * multiplier, 12)
 
 
+def _duration_seconds_from_hours(value: Any) -> int | None:
+    hours = _to_float(value)
+    if hours is None:
+        return None
+    return int(round(hours * 3600))
+
+
 def _pricing_from_usd_per_token(input_value: Any, output_value: Any) -> dict[str, float | str] | None:
     input_cost = _to_float(input_value)
     output_cost = _to_float(output_value)
@@ -671,9 +678,9 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
     if max_pdf_size_mb is not None:
         fields["max_pdf_size_mb"] = max_pdf_size_mb
 
-    max_audio_length_hours = _to_float(entry.get("max_audio_length_hours"))
-    if max_audio_length_hours is not None:
-        fields["max_audio_length_seconds"] = round(max_audio_length_hours * 3600, 3)
+    max_audio_length_seconds = _duration_seconds_from_hours(entry.get("max_audio_length_hours"))
+    if max_audio_length_seconds is not None:
+        fields["max_audio_length_seconds"] = max_audio_length_seconds
 
     pricing = (
         _pricing_from_usd_per_token(entry.get("input_cost_per_token"), entry.get("output_cost_per_token"))
