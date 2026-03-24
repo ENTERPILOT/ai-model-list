@@ -12,13 +12,14 @@ def test_render_registry_outputs_sparse_sorted_sections_and_strips_nulls() -> No
             "grok-4": {
                 "display_name": "Grok 4",
                 "description": None,
+                "max_audio_length_seconds": 30240.0,
                 "metadata": {"source": "official", "notes": None},
                 "aliases": [None, "grok-four"],
             },
             "claude-4": {"display_name": "Claude 4"},
         },
         "provider_models": {
-            "zeta/grok-4": {"model_ref": "grok-4", "enabled": True, "notes": None},
+            "zeta/grok-4": {"model_ref": "grok-4", "enabled": True, "max_output_tokens": 2000000.0, "notes": None},
             "alpha/claude-4": {"model_ref": "claude-4", "enabled": True},
         },
     }
@@ -34,10 +35,12 @@ def test_render_registry_outputs_sparse_sorted_sections_and_strips_nulls() -> No
     assert rendered["models"]["grok-4"] == {
         "aliases": ["grok-four"],
         "display_name": "Grok 4",
+        "max_audio_length_seconds": 30240,
         "metadata": {"source": "official"},
     }
     assert rendered["provider_models"]["zeta/grok-4"] == {
         "enabled": True,
+        "max_output_tokens": 2000000,
         "model_ref": "grok-4",
     }
 
