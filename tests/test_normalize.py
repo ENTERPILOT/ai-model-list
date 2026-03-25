@@ -500,6 +500,33 @@ def test_normalize_pydantic_genai_rows_supports_google_official_models() -> None
     assert by_id["gemini/gemini-2.5-flash-latest"].canonical_hint == "gemini-2.5-flash"
 
 
+def test_normalize_pydantic_genai_rows_enriches_openai_gpt_models_with_responses_mode() -> None:
+    rows = [
+        {
+            "id": "openai",
+            "pricing_urls": ["https://platform.openai.com/docs/models/gpt-4o"],
+            "models": [
+                {
+                    "id": "gpt-4o",
+                    "name": "gpt 4o",
+                    "match": {"equals": "gpt-4o"},
+                    "prices": {"input_mtok": 2.5, "output_mtok": 10},
+                }
+            ],
+        }
+    ]
+
+    records = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["openai"],
+        owner_providers=["openai"],
+    )
+
+    assert records[0].source_model_id == "gpt-4o"
+    assert records[0].fields["modes"] == ["chat", "responses"]
+
+
 def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities() -> None:
     payload = {
         "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",

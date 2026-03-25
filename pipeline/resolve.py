@@ -83,6 +83,8 @@ def choose_field_value(field_name: str, candidates: list[SourceEvidence], policy
         return None
     if field_name == "pricing":
         return merge_pricing_values(ranked)
+    if field_name == "modes":
+        return merge_mode_values(ranked)
     return ranked[0].fields.get(field_name)
 
 
@@ -102,6 +104,21 @@ def merge_pricing_values(candidates: list[SourceEvidence]) -> dict[str, Any] | N
 
     merged.setdefault("currency", "USD")
     return merged if len(merged) > 1 else None
+
+
+def merge_mode_values(candidates: list[SourceEvidence]) -> list[str] | None:
+    merged: list[str] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        modes = candidate.fields.get("modes")
+        if not isinstance(modes, list):
+            continue
+        for mode in modes:
+            if not isinstance(mode, str) or mode in seen:
+                continue
+            seen.add(mode)
+            merged.append(mode)
+    return merged or None
 
 
 def resolve_registry(

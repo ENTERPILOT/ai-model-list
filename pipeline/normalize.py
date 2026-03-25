@@ -76,6 +76,7 @@ MODE_HINTS = (
 DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf", "tts", "ui", "ux"}
 SUPPORTED_MODALITIES = {"text", "image", "audio", "video"}
 MODALITY_ORDER = {"text": 0, "image": 1, "audio": 2, "video": 3}
+OPENAI_RESPONSES_MODEL_PATTERN = re.compile(r"^(?:chatgpt-4o(?:[.-]|$)|gpt-(?:4(?:[.-]|$)|4o(?:[.-]|$)|5(?:[.-]|$)))")
 ENDPOINT_MODE_HINTS = {
     "/v1/images/generations": "image_generation",
     "/v1/images/edits": "image_edit",
@@ -663,8 +664,11 @@ def extract_official_catalog_fields(
         model.get("name"),
         model.get("description"),
     )
+    modes = [mode]
+    if provider_slug in {"openai", "azure"} and mode == "chat" and OPENAI_RESPONSES_MODEL_PATTERN.match(str(model_id)):
+        modes.append("responses")
     fields: dict[str, Any] = {
-        "modes": [mode],
+        "modes": _ordered_unique_strings(modes),
     }
     if owner_providers is None or provider_slug in owner_providers:
         fields["owned_by"] = provider_slug

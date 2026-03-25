@@ -533,3 +533,30 @@ def test_resolve_merges_pricing_components_across_authorities() -> None:
         "input_per_mtok": 5.0,
         "output_per_mtok": 10.0,
     }
+
+
+def test_resolve_merges_modes_across_authorities() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="gpt-4.1",
+            provider_slug="openai",
+            canonical_hint="gpt-4.1",
+            fields={"display_name": "GPT 4.1", "owned_by": "openai", "modes": ["chat"]},
+            confidence="official",
+            evidence_ref="https://platform.openai.com/docs/models/gpt-4.1",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="gpt-4.1",
+            provider_slug="openai",
+            canonical_hint="gpt-4.1",
+            fields={"modes": ["chat", "responses"]},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+    registry, _ = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["gpt-4.1"]["modes"] == ["chat", "responses"]
