@@ -2,9 +2,9 @@ name: Update Model Registry
 
 on:
   schedule:
-    # Run once a day at 06:15 UTC
     - cron: "15 6 * * *"
-  workflow_dispatch: # Allow manual trigger
+    - cron: "15 18 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,55 +23,25 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install jsonschema
+        run: python -m pip install --upgrade pip jsonschema pytest
 
-      - name: Fetch latest LiteLLM data from ai-model-price-list
-        run: |
-          curl -sSfL --retry 3 --retry-delay 5 \
-            -o /tmp/litellm_raw.json \
-            "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources/litellm_model_prices.json"
-          echo "LiteLLM data: $(wc -c < /tmp/litellm_raw.json) bytes"
+      - name: Build registry
+        run: python scripts/build_registry.py --report-md tmp/build/report.md
 
-      - name: Convert LiteLLM dict to import format
-        run: |
-          python3 -c "
-          import json
-          with open('/tmp/litellm_raw.json') as f:
-              raw = json.load(f)
-          entries = []
-          for key, val in raw.items():
-              if isinstance(val, dict):
-                  entry = {'model_name': key}
-                  entry.update(val)
-                  entries.append(entry)
-          with open('/tmp/litellm_prices.json', 'w') as f:
-              json.dump(entries, f)
-          print(f'Converted {len(entries)} model entries')
-          "
+      - name: Validate registry
+        run: python scripts/validate.py --models models.json --schema schema.json
 
-      - name: Import prices into models.json
-        run: python scripts/import_prices.py /tmp/litellm_prices.json
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: registry-build
+          path: |
+            models.json
+            models.min.json
+            tmp/build/report.json
+            tmp/build/report.md
 
-      - name: Update timestamp
-        run: |
-          python3 -c "
-          import json
-          from datetime import datetime, timezone
-          with open('models.json') as f:
-              data = json.load(f)
-          data['updated_at'] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-          with open('models.json', 'w') as f:
-              json.dump(data, f, indent=2, ensure_ascii=False)
-              f.write('\n')
-          "
-
-      - name: Validate
-        run: python scripts/validate.py
-
-      - name: Generate minified models.min.json
-        run: python3 -c "import json; d=json.load(open('models.json')); json.dump(d,open('models.min.json','w'),ensure_ascii=False,separators=(',',':'))"
-
-      - name: Create PR if changed
+      - name: Create PR if registry changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -79,17 +49,15 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add models.json models.min.json
           if git diff --staged --quiet; then
-            echo "No changes detected, skipping."
-          elif git diff --staged models.json | grep '^[+-]' | grep -v '^[+-][+-][+-]' | grep -v '^\s*[+-]\s*"updated_at"' | grep -q '[+-]'; then
-            BRANCH="update/prices-and-models-and-more-$(date -u +%Y%m%d)-$RANDOM"
-            git checkout -b "$BRANCH"
-            git commit -m "chore: update model data $(date -u +%Y-%m-%d)"
-            git push -u origin "$BRANCH"
-            gh pr create \
-              --title "chore: update model data $(date -u +%Y-%m-%d)" \
-              --body "Automated daily update of model pricing and capabilities." \
-              --base main
-          else
-            echo "Only updated_at changed, skipping PR."
-            git checkout -- models.json
+            echo "No registry changes detected."
+            exit 0
           fi
+
+          BRANCH="update/model-registry-${GITHUB_RUN_ID}"
+          git checkout -b "$BRANCH"
+          git commit -m "chore: update model registry $(date -u +%Y-%m-%d)"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "chore: update model registry $(date -u +%Y-%m-%d)" \
+            --body-file tmp/build/report.md \
+            --base main

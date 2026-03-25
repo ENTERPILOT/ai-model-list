@@ -31,7 +31,7 @@
       "type": "object",
       "description": "Provider-specific model overrides keyed by 'provider/model'",
       "patternProperties": {
-        "^[a-z0-9_-]+/[a-zA-Z0-9._:@-]+$": { "$ref": "#/$defs/provider_model" }
+        "^[a-z0-9_-]+/[a-zA-Z0-9._:@/-]+$": { "$ref": "#/$defs/provider_model" }
       },
       "additionalProperties": false
     }
@@ -201,10 +201,10 @@
           "type": ["integer", "null"]
         },
         "max_audio_length_seconds": {
-          "type": ["number", "null"]
+          "type": ["integer", "null"]
         },
         "max_video_length_seconds": {
-          "type": ["number", "null"]
+          "type": ["integer", "null"]
         },
         "max_pdf_size_mb": {
           "type": ["number", "null"]
@@ -234,6 +234,16 @@
           "type": ["object", "null"],
           "additionalProperties": { "$ref": "#/$defs/ranking_entry" },
           "description": "Benchmark scores and rankings"
+        },
+        "aliases": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            { "type": "null" }
+          ],
+          "description": "Alternative canonical or provider-facing names that resolve to this model"
         }
       }
     },
@@ -245,7 +255,7 @@
         "video_generation", "video_edit",
         "audio_speech", "audio_transcription",
         "rerank", "moderation", "ocr", "search",
-        "responses", "code_interpreter"
+        "responses", "code_interpreter", "realtime"
       ]
     },
     "modalities": {
@@ -363,9 +373,30 @@
           "type": ["number", "null"],
           "description": "USD per million audio output tokens"
         },
+        "input_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million image input tokens"
+        },
+        "output_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million image output tokens"
+        },
+        "cached_input_image_per_mtok": {
+          "type": ["number", "null"],
+          "description": "USD per million cached image input tokens"
+        },
         "input_per_image": {
           "type": ["number", "null"],
           "description": "USD per input image"
+        },
+        "image_generation_prices": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/image_generation_price" }
+            },
+            { "type": "null" }
+          ]
         },
         "tiers": {
           "oneOf": [
@@ -386,6 +417,16 @@
         "up_to_tokens": { "type": "integer" },
         "input_per_mtok": { "type": "number" },
         "output_per_mtok": { "type": "number" }
+      }
+    },
+    "image_generation_price": {
+      "type": "object",
+      "required": ["price"],
+      "additionalProperties": false,
+      "properties": {
+        "quality": { "type": "string" },
+        "size": { "type": "string" },
+        "price": { "type": "number" }
       }
     },
     "parameter_spec": {

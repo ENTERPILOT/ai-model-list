@@ -121,21 +121,21 @@ def convert_pricing(source_entry: dict) -> dict | None:
     for src_field, (dst_field, multiplier) in PRICING_FIELD_MAP.items():
         value = source_entry.get(src_field)
         if value is not None and value > 0:
-            pricing[dst_field] = round(value * multiplier, 6)
+            pricing[dst_field] = value * multiplier
             has_any = True
 
     # Per-second pricing (priority-based merge)
     for field in _PER_SECOND_INPUT_FIELDS:
         value = source_entry.get(field)
         if value is not None and value > 0:
-            pricing["per_second_input"] = round(value, 10)
+            pricing["per_second_input"] = value
             has_any = True
             break
 
     for field in _PER_SECOND_OUTPUT_FIELDS:
         value = source_entry.get(field)
         if value is not None and value > 0:
-            pricing["per_second_output"] = round(value, 10)
+            pricing["per_second_output"] = value
             has_any = True
             break
 
@@ -169,8 +169,8 @@ def _build_tiers(source_entry: dict, base_pricing: dict) -> list[dict] | None:
                 "output_per_mtok": base_output or 0,
             }
             # Elevated tier
-            tier2_input = round(elevated_input * MILLION, 6) if elevated_input else (base_input or 0)
-            tier2_output = round(elevated_output * MILLION, 6) if elevated_output else (base_output or 0)
+            tier2_input = elevated_input * MILLION if elevated_input else (base_input or 0)
+            tier2_output = elevated_output * MILLION if elevated_output else (base_output or 0)
             tier2 = {
                 "up_to_tokens": 0,
                 "input_per_mtok": tier2_input,
