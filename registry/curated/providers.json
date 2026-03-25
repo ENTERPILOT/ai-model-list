@@ -150,8 +150,8 @@
   "deepseek": {
     "display_name": "DeepSeek",
     "website": "https://deepseek.com",
-    "docs_url": "https://platform.deepseek.com/api-docs",
-    "pricing_url": "https://platform.deepseek.com/api-docs/pricing",
+    "docs_url": "https://api-docs.deepseek.com",
+    "pricing_url": "https://api-docs.deepseek.com/quick_start/pricing",
     "api_type": "openai",
     "default_base_url": "https://api.deepseek.com/v1",
     "auth": {
@@ -249,6 +249,7 @@
       "chat",
       "embedding",
       "audio_speech",
+      "audio_transcription",
       "image_generation",
       "ocr",
       "video_generation"
@@ -291,8 +292,8 @@
   "runway": {
     "display_name": "Runway",
     "website": "https://runwayml.com",
-    "docs_url": "https://docs.runwayml.com",
-    "pricing_url": "https://runwayml.com/pricing",
+    "docs_url": "https://docs.dev.runwayml.com",
+    "pricing_url": "https://docs.dev.runwayml.com/guides/pricing/",
     "api_type": "custom",
     "default_base_url": "https://api.dev.runwayml.com/v1",
     "auth": {
@@ -301,7 +302,10 @@
     },
     "base_url_env": "RUNWAY_BASE_URL",
     "supported_modes": [
-      "video_generation"
+      "video_generation",
+      "image_generation",
+      "audio_speech",
+      "realtime"
     ]
   }
 }

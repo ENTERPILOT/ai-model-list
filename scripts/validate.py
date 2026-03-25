@@ -16,6 +16,7 @@ from pathlib import Path
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from pipeline.normalize import infer_owned_by
 from pipeline.rules import is_canonical_model_key
 
 try:
@@ -98,7 +99,26 @@ def check_owned_by_values(data: dict) -> list[str]:
             continue
         if owned_by not in providers:
             errors.append(f"  {model_key}: owned_by '{owned_by}' not found in providers section")
+            continue
 
+        expected_owner = infer_owned_by(model_key, model_value.get("display_name"))
+        if expected_owner is not None and owned_by != expected_owner:
+            errors.append(f"  {model_key}: owned_by '{owned_by}' disagrees with inferred family owner '{expected_owner}'")
+
+    return errors
+
+
+def check_provider_coverage(data: dict) -> list[str]:
+    provider_models = data.get("provider_models", {})
+    counts_by_provider: dict[str, int] = defaultdict(int)
+    for provider_model_key in provider_models:
+        provider_slug, _, _ = provider_model_key.partition("/")
+        counts_by_provider[provider_slug] += 1
+
+    errors = []
+    for provider_slug in sorted(data.get("providers", {})):
+        if counts_by_provider.get(provider_slug, 0) == 0:
+            errors.append(f"  {provider_slug}: provider has zero provider_models")
     return errors
 
 
@@ -148,6 +168,7 @@ def check_registry_quality(data: dict) -> list[str]:
     errors = []
     errors.extend(check_canonical_model_keys(data))
     errors.extend(check_owned_by_values(data))
+    errors.extend(check_provider_coverage(data))
     errors.extend(check_duplicate_like_clusters(data))
     errors.extend(check_orphan_model_records(data))
     return errors

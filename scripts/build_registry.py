@@ -47,6 +47,11 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
     rejection_policy = curated.get("rejections", {})
     official_providers = curated.get("source_policies", {}).get("official_sources", [])
     admitted_providers = list(curated.get("providers", {}))
+    custom_official_sources = {
+        "deepseek_official": ["deepseek"],
+        "runway_official": ["runway"],
+        "google_speech_official": ["vertex_ai"],
+    }
     for source_name, payload in payloads.items():
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)
         if normalizer is None:
@@ -58,8 +63,30 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
             skip_providers = ["openrouter"]
             if "xai_models_official" in payloads:
                 skip_providers.append("xai")
+            if "deepseek_official" in payloads:
+                skip_providers.append("deepseek")
             kwargs["skip_providers"] = skip_providers
+        elif source_name in custom_official_sources:
+            provider_slugs = custom_official_sources[source_name]
+            kwargs["allowed_providers"] = admitted_providers
+            kwargs["owner_providers"] = [*official_providers, *provider_slugs]
         evidence.extend(normalizer(payload, **kwargs))
+
+    if "google_speech_official" in payloads:
+        evidence = [
+            record
+            for record in evidence
+            if not (
+                record.provider_slug == "vertex_ai"
+                and record.confidence != "official"
+                and (
+                    record.canonical_hint == "chirp"
+                    or record.source_model_id == "chirp"
+                    or record.source_model_id.endswith("/chirp")
+                )
+            )
+        ]
+
     return evidence
 
 

@@ -560,3 +560,30 @@ def test_resolve_merges_modes_across_authorities() -> None:
     registry, _ = resolve_registry(evidence, curated={})
 
     assert registry["models"]["gpt-4.1"]["modes"] == ["chat", "responses"]
+
+
+def test_resolve_does_not_merge_conflicting_modes_from_lower_authority_sources() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="chirp",
+            provider_slug="vertex_ai",
+            canonical_hint="chirp",
+            fields={"display_name": "Chirp", "owned_by": "vertex_ai", "modes": ["audio_transcription"]},
+            confidence="official",
+            evidence_ref="https://cloud.google.com/speech-to-text/pricing",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="vertex_ai/chirp",
+            provider_slug="vertex_ai",
+            canonical_hint="chirp",
+            fields={"modes": ["audio_speech"]},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+    registry, _ = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["chirp"]["modes"] == ["audio_transcription"]

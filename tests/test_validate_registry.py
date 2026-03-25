@@ -219,6 +219,56 @@ def test_check_registry_quality_rejects_unknown_owned_by() -> None:
     assert any("owned_by" in error for error in errors)
 
 
+def test_check_registry_quality_rejects_family_owned_by_mismatch() -> None:
+    data = {
+        "version": 1,
+        "updated_at": "2026-03-23T00:00:00Z",
+        "providers": {
+            "anthropic": {"display_name": "Anthropic"},
+            "gemini": {"display_name": "Gemini"},
+        },
+        "models": {
+            "claude-3-5-haiku": {
+                "display_name": "Claude 3.5 Haiku",
+                "modes": ["chat"],
+                "owned_by": "gemini",
+            }
+        },
+        "provider_models": {
+            "anthropic/claude-3-5-haiku": {"model_ref": "claude-3-5-haiku", "enabled": True}
+        },
+    }
+
+    errors = check_registry_quality(data)
+
+    assert any("inferred family owner 'anthropic'" in error for error in errors)
+
+
+def test_check_registry_quality_rejects_provider_without_provider_models() -> None:
+    data = {
+        "version": 1,
+        "updated_at": "2026-03-23T00:00:00Z",
+        "providers": {
+            "openai": {"display_name": "OpenAI"},
+            "runway": {"display_name": "Runway"},
+        },
+        "models": {
+            "gpt-4o": {
+                "display_name": "GPT-4o",
+                "modes": ["chat"],
+                "owned_by": "openai",
+            }
+        },
+        "provider_models": {
+            "openai/gpt-4o": {"model_ref": "gpt-4o", "enabled": True}
+        },
+    }
+
+    errors = check_registry_quality(data)
+
+    assert any("runway: provider has zero provider_models" in error for error in errors)
+
+
 def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
     expected = {
         "providers": {"openai": {"display_name": "OpenAI"}},
@@ -350,6 +400,7 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
             "input_per_mtok": 3.0,
             "output_per_mtok": 15.0,
         },
+        "source_url": "https://docs.x.ai/docs/models",
     }
     assert registry["provider_models"]["xai/grok-4"] == {
         "context_window": 256000,

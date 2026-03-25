@@ -36,6 +36,18 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if xai_models_official_path.exists():
         payloads["xai_models_official"] = _read_json(xai_models_official_path)
 
+    deepseek_models_official_path = snapshot_dir / "deepseek_models_official.json"
+    if deepseek_models_official_path.exists():
+        payloads["deepseek_official"] = _read_json(deepseek_models_official_path)
+
+    runway_models_official_path = snapshot_dir / "runway_models_official.json"
+    if runway_models_official_path.exists():
+        payloads["runway_official"] = _read_json(runway_models_official_path)
+
+    google_speech_models_official_path = snapshot_dir / "google_speech_models_official.json"
+    if google_speech_models_official_path.exists():
+        payloads["google_speech_official"] = _read_json(google_speech_models_official_path)
+
     openrouter_path = snapshot_dir / "openrouter_models.json"
     if openrouter_path.exists():
         openrouter_payload = _read_json(openrouter_path)

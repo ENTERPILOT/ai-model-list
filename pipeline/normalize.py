@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from decimal import Decimal
 from pathlib import Path
 import re
 from typing import Any, Iterable, Mapping, Sequence
@@ -72,6 +73,7 @@ MODE_HINTS = (
     ("speech to text", "audio_transcription"),
     ("transcription", "audio_transcription"),
     ("transcribe", "audio_transcription"),
+    ("realtime", "realtime"),
 )
 DISPLAY_NAME_ACRONYMS = {"ai", "api", "asr", "gpt", "json", "ocr", "oss", "pdf", "tts", "ui", "ux"}
 SUPPORTED_MODALITIES = {"text", "image", "audio", "video"}
@@ -96,6 +98,17 @@ MODE_MODALITY_HINTS = {
     "audio_speech": {"input": {"text"}, "output": {"audio"}},
     "audio_transcription": {"input": {"audio"}, "output": {"text"}},
 }
+OWNER_BY_MODEL_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (re.compile(r"^claude"), "anthropic"),
+    (re.compile(r"^(?:chatgpt|codex|curie|babbage|ada|davinci|dall-e|gpt(?:[-.]|$)|o[134](?:[-.]|$)|text-embedding|text-moderation|sora)"), "openai"),
+    (re.compile(r"^(?:gemini|gemma)"), "gemini"),
+    (re.compile(r"^grok"), "xai"),
+    (re.compile(r"^deepseek"), "deepseek"),
+    (re.compile(r"^(?:command|embed|rerank)"), "cohere"),
+    (re.compile(r"^(?:codestral|devstral|magistral|ministral|mistral|mixtral|open-mistral|pixtral)"), "mistral"),
+)
+BEDROCK_PREFIX_PATTERN = re.compile(r"^(?:(?:regional|global|us|eu|ap|sa|ca|me|af)\.)*anthropic\.")
+BEDROCK_SUFFIX_PATTERN = re.compile(r"-v\d+:\d+$")
 
 
 def normalize_provider_slug(value: str | None) -> str | None:
@@ -159,7 +172,7 @@ def _to_float(value: Any) -> float | None:
 
 
 def _scale_price(value: float, multiplier: int) -> float:
-    return round(value * multiplier, 12)
+    return float(Decimal(str(value)) * Decimal(multiplier))
 
 
 def _duration_seconds_from_hours(value: Any) -> int | None:
@@ -190,7 +203,29 @@ def _scale_cents_to_usd(value: Any) -> float | None:
     numeric = _to_float(value)
     if numeric is None:
         return None
-    return round(numeric / 100, 12)
+    return float(Decimal(str(numeric)) / Decimal(100))
+
+
+def infer_owned_by(model_id: str, display_name: str | None = None) -> str | None:
+    normalized_model_id = model_id.strip().lower()
+    candidates = [normalized_model_id]
+    if display_name:
+        candidates.append(display_name.strip().lower())
+
+    for candidate in candidates:
+        for pattern, owner in OWNER_BY_MODEL_PATTERNS:
+            if pattern.match(candidate):
+                return owner
+
+    return None
+
+
+def sanitize_provider_canonical_hint(model_id: str, provider_slug: str) -> str:
+    if provider_slug == "bedrock":
+        stripped = BEDROCK_PREFIX_PATTERN.sub("", model_id)
+        stripped = BEDROCK_SUFFIX_PATTERN.sub("", stripped)
+        return stripped
+    return model_id
 
 
 def _build_tiered_token_pricing(entry: Mapping[str, Any], pricing: Mapping[str, Any]) -> list[dict[str, float | int]] | None:
@@ -425,6 +460,12 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
         "batch_output_mtok": "batch_output_per_mtok",
         "input_audio_mtok": "audio_input_per_mtok",
         "output_audio_mtok": "audio_output_per_mtok",
+        "per_second_input": "per_second_input",
+        "per_second_output": "per_second_output",
+        "per_character_input": "per_character_input",
+        "per_character_output": "per_character_output",
+        "per_image": "per_image",
+        "input_per_image": "input_per_image",
     }
     for source_field, target_field in field_map.items():
         raw_value = pricing_payload.get(source_field)
@@ -433,6 +474,25 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
             numeric_value = _to_float(raw_value.get("base"))
         if numeric_value is not None:
             pricing[target_field] = numeric_value
+
+    image_generation_prices = pricing_payload.get("image_generation_prices")
+    if isinstance(image_generation_prices, Sequence) and not isinstance(image_generation_prices, (str, bytes, bytearray)):
+        normalized_image_generation_prices = []
+        for entry in image_generation_prices:
+            if not isinstance(entry, Mapping):
+                continue
+            price = _to_float(entry.get("price"))
+            resolution = entry.get("resolution")
+            if price is None or not isinstance(resolution, str) or not resolution:
+                continue
+            normalized_image_generation_prices.append(
+                {
+                    "resolution": resolution,
+                    "price": price,
+                }
+            )
+        if normalized_image_generation_prices:
+            pricing["image_generation_prices"] = normalized_image_generation_prices
 
     return pricing if len(pricing) > 1 else None
 
@@ -541,6 +601,23 @@ def _infer_mode_from_values(*values: Any) -> str:
         if not isinstance(value, str):
             continue
         lowered = value.lower()
+        if lowered in {
+            "chat",
+            "responses",
+            "embedding",
+            "rerank",
+            "moderation",
+            "ocr",
+            "image_generation",
+            "image_edit",
+            "video_generation",
+            "video_edit",
+            "audio_speech",
+            "audio_transcription",
+            "code_interpreter",
+            "realtime",
+        }:
+            return lowered
         for token, mode in MODE_HINTS:
             if token in lowered:
                 return mode
@@ -670,13 +747,17 @@ def extract_official_catalog_fields(
     fields: dict[str, Any] = {
         "modes": _ordered_unique_strings(modes),
     }
-    if owner_providers is None or provider_slug in owner_providers:
-        fields["owned_by"] = provider_slug
-
     display_name = model.get("name")
-    fields["display_name"] = display_name if isinstance(display_name, str) and display_name else _display_name_from_model_id(
-        str(model_id)
+    normalized_display_name = (
+        display_name if isinstance(display_name, str) and display_name else _display_name_from_model_id(str(model_id))
     )
+    fields["display_name"] = normalized_display_name
+
+    inferred_owner = infer_owned_by(str(model_id), normalized_display_name)
+    if inferred_owner is not None:
+        fields["owned_by"] = inferred_owner
+    elif owner_providers is None or provider_slug in owner_providers:
+        fields["owned_by"] = provider_slug
 
     description = model.get("description")
     if isinstance(description, str) and description:
@@ -712,14 +793,14 @@ def _xai_price_per_mtok(value: Any) -> float | None:
     numeric = _parse_xai_numeric(value)
     if numeric is None:
         return None
-    return round(numeric / XAI_TOKEN_PRICE_DIVISOR, 12)
+    return float(Decimal(str(numeric)) / Decimal(XAI_TOKEN_PRICE_DIVISOR))
 
 
 def _xai_price_per_unit(value: Any) -> float | None:
     numeric = _parse_xai_numeric(value)
     if numeric is None:
         return None
-    return round(numeric / XAI_UNIT_PRICE_DIVISOR, 12)
+    return float(Decimal(str(numeric)) / Decimal(XAI_UNIT_PRICE_DIVISOR))
 
 
 def _pricing_from_xai_language_model(model: Mapping[str, Any]) -> dict[str, Any] | None:
@@ -1328,13 +1409,15 @@ def normalize_pydantic_genai_rows(
             if not isinstance(raw_model_id, str) or not raw_model_id:
                 continue
 
-            canonical_model_id = _choose_canonical_model_id(model)
+            canonical_model_id = sanitize_provider_canonical_hint(_choose_canonical_model_id(model), provider_slug)
             fields = extract_official_catalog_fields(
                 model,
                 provider_slug,
                 canonical_model_id=canonical_model_id,
                 owner_providers=owner_provider_set or None,
             )
+            if isinstance(provider_evidence_ref, str) and provider_evidence_ref:
+                fields.setdefault("source_url", provider_evidence_ref)
             records.append(
                 SourceEvidence(
                     source_name="official",
@@ -1374,6 +1457,9 @@ NORMALIZER_BY_SOURCE = {
     "litellm": normalize_litellm_rows,
     "xai_models_official": normalize_xai_models_official_rows,
     "pydantic_genai": normalize_pydantic_genai_rows,
+    "deepseek_official": normalize_pydantic_genai_rows,
+    "runway_official": normalize_pydantic_genai_rows,
+    "google_speech_official": normalize_pydantic_genai_rows,
     "openrouter": normalize_openrouter_rows,
     "llm_prices": normalize_llm_prices_rows,
     "portkey": normalize_portkey_files,

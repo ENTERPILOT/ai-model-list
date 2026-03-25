@@ -113,12 +113,34 @@ def merge_mode_values(candidates: list[SourceEvidence]) -> list[str] | None:
         modes = candidate.fields.get("modes")
         if not isinstance(modes, list):
             continue
-        for mode in modes:
-            if not isinstance(mode, str) or mode in seen:
+        normalized_modes = [mode for mode in modes if isinstance(mode, str)]
+        if not normalized_modes:
+            continue
+        if not merged:
+            for mode in normalized_modes:
+                if mode in seen:
+                    continue
+                seen.add(mode)
+                merged.append(mode)
+            continue
+        for mode in normalized_modes:
+            if mode in seen or not _is_complementary_mode(mode, seen):
                 continue
             seen.add(mode)
             merged.append(mode)
     return merged or None
+
+
+def _is_complementary_mode(candidate_mode: str, existing_modes: set[str]) -> bool:
+    complementary_groups = (
+        {"chat", "responses", "realtime"},
+        {"image_generation", "image_edit"},
+        {"video_generation", "video_edit"},
+    )
+    for group in complementary_groups:
+        if candidate_mode in group:
+            return bool(existing_modes & group)
+    return False
 
 
 def resolve_registry(

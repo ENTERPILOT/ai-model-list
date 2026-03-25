@@ -108,6 +108,32 @@ def test_normalize_litellm_entry_extracts_richer_fields_and_nested_provider_hint
     }
 
 
+def test_normalize_official_partner_model_infers_real_owner_from_model_family() -> None:
+    rows = [
+        {
+            "id": "gemini",
+            "pricing_urls": ["https://ai.google.dev/gemini-api/docs/pricing"],
+            "models": [
+                {
+                    "id": "claude-3-5-haiku",
+                    "name": "Claude 3.5 Haiku",
+                    "match": {"equals": "claude-3-5-haiku"},
+                    "prices": {"input_mtok": 0.8, "output_mtok": 4.0},
+                }
+            ],
+        }
+    ]
+
+    record = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["gemini"],
+        owner_providers=["gemini"],
+        rejection_policy={},
+    )[0]
+
+    assert record.fields["owned_by"] == "anthropic"
+
+
 def test_normalize_litellm_entry_converts_audio_hours_to_integer_seconds() -> None:
     entry = {
         "model_name": "gemini/gemini-flash-latest",
@@ -246,6 +272,46 @@ def test_normalize_litellm_entry_extracts_image_token_pricing_and_tiers() -> Non
                 "input_per_mtok": 2.5,
                 "output_per_mtok": 15.0,
             },
+        ],
+    }
+
+
+def test_normalize_pydantic_rows_support_custom_pricing_shapes() -> None:
+    rows = [
+        {
+            "id": "runway",
+            "pricing_urls": ["https://docs.dev.runwayml.com/guides/pricing/"],
+            "models": [
+                {
+                    "id": "gen4_image",
+                    "name": "Gen-4 Image",
+                    "mode": "image_generation",
+                    "match": {"equals": "gen4_image"},
+                    "prices": {
+                        "per_image": 0.05,
+                        "image_generation_prices": [
+                            {"resolution": "720p", "price": 0.05},
+                            {"resolution": "1080p", "price": 0.08},
+                        ],
+                    },
+                }
+            ],
+        }
+    ]
+
+    record = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["runway"],
+        owner_providers=["runway"],
+        rejection_policy={},
+    )[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "per_image": 0.05,
+        "image_generation_prices": [
+            {"resolution": "720p", "price": 0.05},
+            {"resolution": "1080p", "price": 0.08},
         ],
     }
 
@@ -448,6 +514,7 @@ def test_normalize_pydantic_genai_rows_promotes_xai_model_to_exact_canonical_rec
             "cached_input_per_mtok": 0.75,
             "output_per_mtok": 15.0,
         },
+        "source_url": "https://docs.x.ai/docs/models",
     }
     assert records[1].canonical_hint == "grok-4"
     assert records[2].canonical_hint == "grok-4"
@@ -495,6 +562,7 @@ def test_normalize_pydantic_genai_rows_supports_google_official_models() -> None
             "currency": "USD",
             "input_per_mtok": 0.15,
         },
+        "source_url": "https://ai.google.dev/pricing",
     }
     assert by_id["gemini-2.5-flash"].fields["display_name"] == "Gemini 2.5 Flash"
     assert by_id["gemini/gemini-2.5-flash-latest"].canonical_hint == "gemini-2.5-flash"
@@ -618,4 +686,14 @@ def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities()
 
 
 def test_normalizer_registry_covers_current_source_set() -> None:
-    assert set(NORMALIZER_BY_SOURCE) == {"litellm", "xai_models_official", "pydantic_genai", "openrouter", "llm_prices", "portkey"}
+    assert set(NORMALIZER_BY_SOURCE) == {
+        "litellm",
+        "xai_models_official",
+        "deepseek_official",
+        "runway_official",
+        "google_speech_official",
+        "pydantic_genai",
+        "openrouter",
+        "llm_prices",
+        "portkey",
+    }
