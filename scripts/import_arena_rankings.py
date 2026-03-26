@@ -20,22 +20,18 @@ import argparse
 import json
 import sys
 import urllib.request
-from datetime import date
 from pathlib import Path
 
-BASE_URL = "https://raw.githubusercontent.com/lmarena/arena-catalog/main/data"
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-# Mapping: (source_file, source_category) -> target ranking key
-DEFAULT_CATEGORIES = {
-    ("leaderboard-text.json", "full"): "chatbot_arena",
-    ("leaderboard-text.json", "coding"): "chatbot_arena_coding",
-    ("leaderboard-text.json", "math"): "chatbot_arena_math",
-    ("leaderboard-text.json", "creative_writing"): "chatbot_arena_creative_writing",
-    ("leaderboard-vision.json", "full"): "chatbot_arena_vision",
-}
-
-# Files to fetch
-LEADERBOARD_FILES = ["leaderboard-text.json", "leaderboard-vision.json"]
+from pipeline.rankings import (
+    ARENA_CATALOG_BASE_URL,
+    ARENA_LEADERBOARD_FILENAMES,
+    DEFAULT_ARENA_CATEGORIES,
+    discover_all_categories,
+    import_arena_rankings,
+)
 
 
 def fetch_leaderboard(url: str) -> dict:
@@ -48,113 +44,6 @@ def load_leaderboard_file(path: Path) -> dict:
     """Load leaderboard JSON from local file."""
     with open(path) as f:
         return json.load(f)
-
-
-def build_model_lookup(models_data: dict) -> dict[str, list[str]]:
-    """Build case-insensitive lookup: lowercase key -> list of actual keys."""
-    lookup: dict[str, list[str]] = {}
-    for key in models_data.get("models", {}):
-        lower = key.lower()
-        if lower not in lookup:
-            lookup[lower] = []
-        lookup[lower].append(key)
-    return lookup
-
-
-def import_arena_rankings(
-    leaderboards: dict[str, dict],
-    models_data: dict,
-    categories: dict[tuple[str, str], str],
-    merge: bool = True,
-    as_of: str | None = None,
-) -> tuple[int, int, list[str]]:
-    """Import arena rankings into models_data.
-
-    Returns (updated_model_count, skipped_count, unmatched_arena_names).
-    """
-    if as_of is None:
-        as_of = date.today().isoformat()
-
-    lookup = build_model_lookup(models_data)
-    updated_keys: set[str] = set()
-    all_unmatched: set[str] = set()
-
-    for (file_name, src_category), target_key in categories.items():
-        leaderboard = leaderboards.get(file_name)
-        if leaderboard is None:
-            print(f"Warning: {file_name} not loaded, skipping {target_key}")
-            continue
-
-        category_data = leaderboard.get(src_category)
-        if category_data is None:
-            print(f"Warning: category '{src_category}' not found in {file_name}, skipping {target_key}")
-            continue
-
-        # Sort by rating descending to compute ranks
-        sorted_models = sorted(
-            category_data.items(),
-            key=lambda item: item[1].get("rating", 0),
-            reverse=True,
-        )
-
-        for rank, (arena_name, arena_data) in enumerate(sorted_models, start=1):
-            rating = arena_data.get("rating")
-            if rating is None:
-                continue
-
-            elo = round(rating)
-
-            # Case-insensitive match
-            matched_keys = lookup.get(arena_name.lower(), [])
-            if not matched_keys:
-                all_unmatched.add(arena_name)
-                continue
-
-            ranking_entry = {
-                "elo": elo,
-                "rank": rank,
-                "as_of": as_of,
-            }
-
-            for model_key in matched_keys:
-                model = models_data["models"][model_key]
-                if model.get("rankings") is None:
-                    model["rankings"] = {}
-
-                if merge and target_key in model["rankings"]:
-                    existing = model["rankings"][target_key]
-                    existing_date = existing.get("as_of", "")
-                    if as_of >= existing_date:
-                        if existing.get("elo") == elo and existing.get("rank") == rank:
-                            continue
-                        model["rankings"][target_key] = ranking_entry
-                else:
-                    model["rankings"][target_key] = ranking_entry
-
-                updated_keys.add(model_key)
-
-    skipped = len(all_unmatched)
-    return len(updated_keys), skipped, sorted(all_unmatched)
-
-
-def discover_all_categories(leaderboards: dict[str, dict]) -> dict[tuple[str, str], str]:
-    """Build category mapping for all categories found in loaded leaderboards."""
-    categories: dict[tuple[str, str], str] = {}
-    for file_name, leaderboard in leaderboards.items():
-        prefix = file_name.replace("leaderboard-", "").replace(".json", "")
-        for src_category in leaderboard:
-            if prefix == "text" and src_category == "full":
-                target_key = "chatbot_arena"
-            elif prefix == "text":
-                target_key = f"chatbot_arena_{src_category}"
-            else:
-                # vision, text-style-control, etc.
-                if src_category == "full":
-                    target_key = f"chatbot_arena_{prefix}"
-                else:
-                    target_key = f"chatbot_arena_{prefix}_{src_category}"
-            categories[(file_name, src_category)] = target_key
-    return categories
 
 
 def main():
@@ -178,7 +67,7 @@ def main():
 
     # Load leaderboard data
     leaderboards: dict[str, dict] = {}
-    for filename in LEADERBOARD_FILES:
+    for filename in ARENA_LEADERBOARD_FILENAMES:
         if args.source:
             filepath = args.source / filename
             if not filepath.exists():
@@ -187,7 +76,7 @@ def main():
             print(f"Loading {filepath}")
             leaderboards[filename] = load_leaderboard_file(filepath)
         else:
-            url = f"{BASE_URL}/{filename}"
+            url = f"{ARENA_CATALOG_BASE_URL}/{filename}"
             print(f"Fetching {url}")
             try:
                 leaderboards[filename] = fetch_leaderboard(url)
@@ -204,7 +93,7 @@ def main():
         categories = discover_all_categories(leaderboards)
         print(f"Importing all {len(categories)} categories")
     else:
-        categories = DEFAULT_CATEGORIES
+        categories = DEFAULT_ARENA_CATEGORIES
         print(f"Importing {len(categories)} default categories")
 
     # Load models.json
