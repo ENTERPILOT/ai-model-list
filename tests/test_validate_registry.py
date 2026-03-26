@@ -180,6 +180,61 @@ def test_fetch_bytes_retries_with_timeout(monkeypatch) -> None:
     assert attempts == [12.5, 12.5, 12.5]
 
 
+def test_write_optional_artificial_analysis_snapshot_skips_without_api_key(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("ARTIFICIAL_ANALYSIS_API_KEY", raising=False)
+
+    written = fetch_sources_module._write_optional_artificial_analysis_snapshot(tmp_path)
+
+    assert written is False
+    assert not (tmp_path / "artificial_analysis").exists()
+
+
+def test_write_optional_artificial_analysis_snapshot_writes_payload_and_metadata(tmp_path: Path, monkeypatch) -> None:
+    captured: dict[str, object] = {}
+
+    def fake_fetch_bytes(url: str, **kwargs) -> bytes:
+        captured["url"] = url
+        captured["headers"] = kwargs.get("headers")
+        return b'{"status": 200, "data": []}'
+
+    monkeypatch.setenv("ARTIFICIAL_ANALYSIS_API_KEY", "test-key")
+    monkeypatch.setattr(fetch_sources_module, "_fetch_bytes", fake_fetch_bytes)
+
+    written = fetch_sources_module._write_optional_artificial_analysis_snapshot(tmp_path)
+
+    assert written is True
+    assert captured["url"] == "https://artificialanalysis.ai/api/v2/data/llms/models"
+    assert captured["headers"] == {"x-api-key": "test-key"}
+    assert (tmp_path / "artificial_analysis" / "llms_models.json").read_text(encoding="utf-8") == '{"status": 200, "data": []}'
+    assert '"llms_models": "https://artificialanalysis.ai/api/v2/data/llms/models"' in (
+        tmp_path / "artificial_analysis" / "fetch_metadata.json"
+    ).read_text(encoding="utf-8")
+
+
+def test_write_livebench_snapshot_writes_payload_and_metadata(tmp_path: Path, monkeypatch) -> None:
+    def fake_fetch_bytes(url: str, **kwargs) -> bytes:
+        if url.endswith("table_2026_01_08.csv"):
+            return b"model,code_generation\no3-pro,84.0\n"
+        if url.endswith("categories_2026_01_08.json"):
+            return b'{"Coding": ["code_generation"]}'
+        raise AssertionError(f"unexpected url: {url}")
+
+    monkeypatch.setattr(fetch_sources_module, "_fetch_bytes", fake_fetch_bytes)
+
+    written = fetch_sources_module._write_livebench_snapshot(tmp_path)
+
+    assert written is True
+    assert json.loads((tmp_path / "livebench" / "table.json").read_text(encoding="utf-8")) == [
+        {"model": "o3-pro", "code_generation": "84.0"}
+    ]
+    categories = json.loads((tmp_path / "livebench" / "categories.json").read_text(encoding="utf-8"))
+    assert categories["Coding"] == ["code_generation"]
+    metadata_text = (tmp_path / "livebench" / "fetch_metadata.json").read_text(encoding="utf-8")
+    assert '"release": "2026-01-08"' in metadata_text
+    assert '"table": "https://livebench.ai/table_2026_01_08.csv"' in metadata_text
+    assert '"categories": "https://livebench.ai/categories_2026_01_08.json"' in metadata_text
+
+
 def test_check_registry_quality_rejects_provider_specific_model_ids() -> None:
     data = {
         "version": 1,
