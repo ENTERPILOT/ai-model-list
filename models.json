@@ -19633,6 +19633,39 @@
         "output_per_mtok": 0.58
       }
     },
+    "reka-edge": {
+      "aliases": [
+        "reka/reka-edge",
+        "openrouter/reka/reka-edge"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 16384,
+      "display_name": "Reka Edge",
+      "max_output_tokens": 16384,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.2
+      }
+    },
     "relace-apply-3": {
       "aliases": [
         "relace/relace-apply-3",
@@ -33902,7 +33935,6 @@
       "max_output_tokens": 65535,
       "model_ref": "gemini-3-pro-preview",
       "pricing": {
-        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -37982,6 +38014,29 @@
       },
       "provider_model_id": "qwen/qwq-32b"
     },
+    "openrouter/reka-edge": {
+      "context_window": 16384,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "reka-edge",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.2
+      },
+      "provider_model_id": "reka/reka-edge"
+    },
+    "openrouter/reka/reka-edge": {
+      "context_window": 16384,
+      "enabled": true,
+      "max_output_tokens": 16384,
+      "model_ref": "reka-edge",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.2
+      }
+    },
     "openrouter/relace-apply-3": {
       "context_window": 256000,
       "enabled": true,
@@ -41709,6 +41764,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-03-25T07:07:38Z",
+  "updated_at": "2026-03-26T07:14:58Z",
   "version": 1
 }
