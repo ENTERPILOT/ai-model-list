@@ -124,13 +124,25 @@ def _resolve_updated_at(snapshot_payloads: dict[str, Any]) -> str:
 
 
 def _source_freshness(snapshot_payloads: dict[str, Any]) -> dict[str, Any]:
+    def iter_source_names(sources: Any, prefix: str = "") -> Iterable[str]:
+        if not isinstance(sources, dict):
+            return []
+        names: list[str] = []
+        for source_name, value in sources.items():
+            qualified_name = f"{prefix}{source_name}" if prefix else source_name
+            if isinstance(value, dict):
+                names.extend(iter_source_names(value, prefix=f"{qualified_name}/"))
+            else:
+                names.append(qualified_name)
+        return names
+
     freshness: dict[str, Any] = {}
     fetch_metadata = snapshot_payloads.get("fetch_metadata", {})
     fetched_at = fetch_metadata.get("fetched_at") if isinstance(fetch_metadata, dict) else None
     sources = fetch_metadata.get("sources", {}) if isinstance(fetch_metadata, dict) else {}
 
     if isinstance(fetched_at, str):
-        for source_name in sorted(sources):
+        for source_name in sorted(iter_source_names(sources)):
             freshness[source_name] = fetched_at
 
     llm_prices_metadata = snapshot_payloads.get("llm_prices_metadata", {})
@@ -142,8 +154,30 @@ def _source_freshness(snapshot_payloads: dict[str, Any]) -> dict[str, Any]:
     arena_fetched_at = arena_metadata.get("fetched_at") if isinstance(arena_metadata, dict) else None
     arena_sources = arena_metadata.get("sources", {}) if isinstance(arena_metadata, dict) else {}
     if isinstance(arena_fetched_at, str):
-        for source_name in sorted(arena_sources):
+        for source_name in sorted(iter_source_names(arena_sources)):
             freshness[f"arena_catalog/{source_name}"] = arena_fetched_at
+
+    artificial_analysis_metadata = snapshot_payloads.get("artificial_analysis_metadata", {})
+    artificial_analysis_fetched_at = (
+        artificial_analysis_metadata.get("fetched_at")
+        if isinstance(artificial_analysis_metadata, dict)
+        else None
+    )
+    artificial_analysis_sources = (
+        artificial_analysis_metadata.get("sources", {})
+        if isinstance(artificial_analysis_metadata, dict)
+        else {}
+    )
+    if isinstance(artificial_analysis_fetched_at, str):
+        for source_name in sorted(iter_source_names(artificial_analysis_sources)):
+            freshness[f"artificial_analysis/{source_name}"] = artificial_analysis_fetched_at
+
+    livebench_metadata = snapshot_payloads.get("livebench_metadata", {})
+    livebench_fetched_at = livebench_metadata.get("fetched_at") if isinstance(livebench_metadata, dict) else None
+    livebench_sources = livebench_metadata.get("sources", {}) if isinstance(livebench_metadata, dict) else {}
+    if isinstance(livebench_fetched_at, str):
+        for source_name in sorted(iter_source_names(livebench_sources)):
+            freshness[f"livebench/{source_name}"] = livebench_fetched_at
 
     return freshness
 

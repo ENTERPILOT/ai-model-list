@@ -6,7 +6,18 @@ import json
 from pathlib import Path
 from typing import Any
 
-from pipeline.rankings import ARENA_CATALOG_DIRNAME, ARENA_CATALOG_METADATA_FILENAME, ARENA_LEADERBOARD_FILENAMES
+from pipeline.rankings import (
+    ARENA_CATALOG_DIRNAME,
+    ARENA_CATALOG_METADATA_FILENAME,
+    ARENA_LEADERBOARD_FILENAMES,
+    ARTIFICIAL_ANALYSIS_DIRNAME,
+    ARTIFICIAL_ANALYSIS_METADATA_FILENAME,
+    ARTIFICIAL_ANALYSIS_MODELS_FILENAME,
+    LIVEBENCH_CATEGORIES_FILENAME,
+    LIVEBENCH_DIRNAME,
+    LIVEBENCH_METADATA_FILENAME,
+    LIVEBENCH_TABLE_FILENAME,
+)
 
 
 def _read_json(path: Path) -> Any:
@@ -85,5 +96,34 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
         arena_metadata_path = arena_catalog_dir / ARENA_CATALOG_METADATA_FILENAME
         if arena_metadata_path.exists():
             payloads["arena_catalog_metadata"] = _read_json(arena_metadata_path)
+
+    artificial_analysis_dir = snapshot_dir / ARTIFICIAL_ANALYSIS_DIRNAME
+    if artificial_analysis_dir.exists():
+        artificial_analysis_models_path = artificial_analysis_dir / ARTIFICIAL_ANALYSIS_MODELS_FILENAME
+        if artificial_analysis_models_path.exists():
+            payloads["artificial_analysis"] = _read_json(artificial_analysis_models_path)
+
+        artificial_analysis_metadata_path = artificial_analysis_dir / ARTIFICIAL_ANALYSIS_METADATA_FILENAME
+        if artificial_analysis_metadata_path.exists():
+            payloads["artificial_analysis_metadata"] = _read_json(artificial_analysis_metadata_path)
+
+    livebench_dir = snapshot_dir / LIVEBENCH_DIRNAME
+    if livebench_dir.exists():
+        livebench_payload: dict[str, Any] = {}
+
+        livebench_table_path = livebench_dir / LIVEBENCH_TABLE_FILENAME
+        if livebench_table_path.exists():
+            livebench_payload["table"] = _read_json(livebench_table_path)
+
+        livebench_categories_path = livebench_dir / LIVEBENCH_CATEGORIES_FILENAME
+        if livebench_categories_path.exists():
+            livebench_payload["categories"] = _read_json(livebench_categories_path)
+
+        if livebench_payload:
+            payloads["livebench"] = livebench_payload
+
+        livebench_metadata_path = livebench_dir / LIVEBENCH_METADATA_FILENAME
+        if livebench_metadata_path.exists():
+            payloads["livebench_metadata"] = _read_json(livebench_metadata_path)
 
     return payloads

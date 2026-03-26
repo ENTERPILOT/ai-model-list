@@ -3,9 +3,12 @@
 
 from __future__ import annotations
 
+import csv
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import io
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -23,6 +26,17 @@ from pipeline.rankings import (
     ARENA_CATALOG_METADATA_FILENAME,
     ARENA_LEADERBOARD_FILENAMES,
     ARENA_SOURCE_URLS,
+    ARTIFICIAL_ANALYSIS_API_KEY_ENV,
+    ARTIFICIAL_ANALYSIS_DIRNAME,
+    ARTIFICIAL_ANALYSIS_METADATA_FILENAME,
+    ARTIFICIAL_ANALYSIS_MODELS_API_URL,
+    ARTIFICIAL_ANALYSIS_MODELS_FILENAME,
+    LIVEBENCH_BASE_URL,
+    LIVEBENCH_CATEGORIES_FILENAME,
+    LIVEBENCH_DIRNAME,
+    LIVEBENCH_METADATA_FILENAME,
+    LIVEBENCH_RELEASES,
+    LIVEBENCH_TABLE_FILENAME,
 )
 from pipeline.runway_docs import build_runway_models_snapshot
 from pipeline.xai_docs import build_xai_models_snapshot
@@ -102,11 +116,15 @@ def snapshot_path_for_run(base_dir: Path, run_id: str) -> Path:
 def _fetch_bytes(
     url: str,
     *,
+    headers: dict[str, str] | None = None,
     timeout: float = DEFAULT_FETCH_TIMEOUT_SECONDS,
     retries: int = DEFAULT_FETCH_RETRIES,
     retry_delay: float = DEFAULT_RETRY_DELAY_SECONDS,
 ) -> bytes:
-    request = Request(url, headers={"User-Agent": "ai-model-list/1.0"})
+    request_headers = {"User-Agent": "ai-model-list/1.0"}
+    if headers:
+        request_headers.update(headers)
+    request = Request(url, headers=request_headers)
     for attempt in range(1, retries + 1):
         try:
             with urlopen(request, timeout=timeout) as response:
@@ -117,6 +135,96 @@ def _fetch_bytes(
             time.sleep(retry_delay)
 
     raise RuntimeError("exhausted fetch retries without raising")
+
+
+def _write_optional_artificial_analysis_snapshot(snapshot_dir: Path) -> bool:
+    api_key = os.getenv(ARTIFICIAL_ANALYSIS_API_KEY_ENV)
+    if not api_key:
+        return False
+
+    artificial_analysis_dir = snapshot_dir / ARTIFICIAL_ANALYSIS_DIRNAME
+    artificial_analysis_dir.mkdir(parents=True, exist_ok=True)
+    fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    payload = _fetch_bytes(
+        ARTIFICIAL_ANALYSIS_MODELS_API_URL,
+        headers={"x-api-key": api_key},
+    )
+    (artificial_analysis_dir / ARTIFICIAL_ANALYSIS_MODELS_FILENAME).write_bytes(payload)
+    (artificial_analysis_dir / ARTIFICIAL_ANALYSIS_METADATA_FILENAME).write_text(
+        json.dumps(
+            {
+                "fetched_at": fetched_at,
+                "sources": {
+                    "llms_models": ARTIFICIAL_ANALYSIS_MODELS_API_URL,
+                },
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return True
+
+
+def _livebench_release_token(release: str) -> str:
+    return release.replace("-", "_")
+
+
+def _write_livebench_snapshot(snapshot_dir: Path) -> bool:
+    livebench_dir = snapshot_dir / LIVEBENCH_DIRNAME
+    livebench_dir.mkdir(parents=True, exist_ok=True)
+    fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    release = None
+    table_url = None
+    categories_url = None
+    table_payload = None
+    categories_payload = None
+    for candidate_release in reversed(LIVEBENCH_RELEASES):
+        release_token = _livebench_release_token(candidate_release)
+        candidate_table_url = f"{LIVEBENCH_BASE_URL}/table_{release_token}.csv"
+        candidate_categories_url = f"{LIVEBENCH_BASE_URL}/categories_{release_token}.json"
+        try:
+            table_bytes = _fetch_bytes(candidate_table_url, retries=1)
+            categories_bytes = _fetch_bytes(candidate_categories_url, retries=1)
+        except Exception:
+            continue
+        release = candidate_release
+        table_url = candidate_table_url
+        categories_url = candidate_categories_url
+        table_payload = list(csv.DictReader(io.StringIO(table_bytes.decode("utf-8"))))
+        categories_payload = json.loads(categories_bytes)
+        break
+
+    if release is None or table_url is None or categories_url is None or table_payload is None or categories_payload is None:
+        raise RuntimeError("failed to resolve a published LiveBench leaderboard release")
+
+    (livebench_dir / LIVEBENCH_TABLE_FILENAME).write_text(
+        json.dumps(table_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (livebench_dir / LIVEBENCH_CATEGORIES_FILENAME).write_text(
+        json.dumps(categories_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (livebench_dir / LIVEBENCH_METADATA_FILENAME).write_text(
+        json.dumps(
+            {
+                "fetched_at": fetched_at,
+                "release": release,
+                "sources": {
+                    "table": table_url,
+                    "categories": categories_url,
+                },
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return True
 
 
 def fetch_sources_to(
@@ -177,6 +285,9 @@ def fetch_sources_to(
         + "\n",
         encoding="utf-8",
     )
+
+    _write_optional_artificial_analysis_snapshot(snapshot_dir)
+    _write_livebench_snapshot(snapshot_dir)
 
     return snapshot_dir
 

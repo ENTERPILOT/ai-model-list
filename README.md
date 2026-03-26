@@ -25,6 +25,11 @@ python scripts/import_prices.py /path/to/pricing.json
 
 # Import benchmark rankings
 python scripts/import_rankings.py /path/to/rankings.json
+
+# Build the registry with LMArena + LiveBench rankings,
+# and optional Artificial Analysis score rankings
+export ARTIFICIAL_ANALYSIS_API_KEY=your_api_key_here
+python scripts/build_registry.py
 ```
 
 ## File Structure
