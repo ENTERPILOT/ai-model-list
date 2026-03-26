@@ -16,6 +16,7 @@ if __package__ in {None, ""}:
 
 from pipeline.loaders import load_curated_config, load_snapshot_payloads
 from pipeline.normalize import NORMALIZER_BY_SOURCE
+from pipeline.rankings import apply_snapshot_rankings
 from pipeline.render import render_registry
 from pipeline.report import build_markdown_report, build_report
 from pipeline.resolve import resolve_registry
@@ -137,6 +138,13 @@ def _source_freshness(snapshot_payloads: dict[str, Any]) -> dict[str, Any]:
     if isinstance(llm_prices_updated_at, str):
         freshness.setdefault("llm_prices", llm_prices_updated_at)
 
+    arena_metadata = snapshot_payloads.get("arena_catalog_metadata", {})
+    arena_fetched_at = arena_metadata.get("fetched_at") if isinstance(arena_metadata, dict) else None
+    arena_sources = arena_metadata.get("sources", {}) if isinstance(arena_metadata, dict) else {}
+    if isinstance(arena_fetched_at, str):
+        for source_name in sorted(arena_sources):
+            freshness[f"arena_catalog/{source_name}"] = arena_fetched_at
+
     return freshness
 
 
@@ -166,6 +174,7 @@ def build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dic
         for provider_model_key, provider_model in resolved_registry["provider_models"].items()
         if provider_model_key.split("/", 1)[0] in allowed_providers
     }
+    apply_snapshot_rankings(resolved_registry, snapshot_payloads)
     updated_at = _resolve_updated_at(snapshot_payloads)
     registry = render_registry(resolved_registry, updated_at=updated_at)
     quarantine = list(resolve_report.get("quarantine", []))

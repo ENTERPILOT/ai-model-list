@@ -18,6 +18,12 @@ if __package__ in {None, ""}:
 
 from pipeline.deepseek_docs import build_deepseek_models_snapshot
 from pipeline.google_speech_docs import build_google_speech_models_snapshot
+from pipeline.rankings import (
+    ARENA_CATALOG_DIRNAME,
+    ARENA_CATALOG_METADATA_FILENAME,
+    ARENA_LEADERBOARD_FILENAMES,
+    ARENA_SOURCE_URLS,
+)
 from pipeline.runway_docs import build_runway_models_snapshot
 from pipeline.xai_docs import build_xai_models_snapshot
 
@@ -151,6 +157,24 @@ def fetch_sources_to(
     google_speech_payload = build_google_speech_models_snapshot(google_speech_html, GOOGLE_SPEECH_SOURCE_URL)
     (snapshot_dir / GOOGLE_SPEECH_SOURCE_FILENAME).write_text(
         json.dumps(google_speech_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    arena_catalog_dir = snapshot_dir / ARENA_CATALOG_DIRNAME
+    arena_catalog_dir.mkdir(parents=True, exist_ok=True)
+    arena_fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for filename in ARENA_LEADERBOARD_FILENAMES:
+        (arena_catalog_dir / filename).write_bytes(_fetch_bytes(ARENA_SOURCE_URLS[filename]))
+    (arena_catalog_dir / ARENA_CATALOG_METADATA_FILENAME).write_text(
+        json.dumps(
+            {
+                "fetched_at": arena_fetched_at,
+                "sources": ARENA_SOURCE_URLS,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
         encoding="utf-8",
     )
 

@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from pipeline.rankings import ARENA_CATALOG_DIRNAME, ARENA_CATALOG_METADATA_FILENAME, ARENA_LEADERBOARD_FILENAMES
+
 
 def _read_json(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
@@ -69,5 +71,19 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     fetch_metadata_path = snapshot_dir / "fetch_metadata.json"
     if fetch_metadata_path.exists():
         payloads["fetch_metadata"] = _read_json(fetch_metadata_path)
+
+    arena_catalog_dir = snapshot_dir / ARENA_CATALOG_DIRNAME
+    if arena_catalog_dir.exists():
+        leaderboards = {
+            filename: _read_json(arena_catalog_dir / filename)
+            for filename in ARENA_LEADERBOARD_FILENAMES
+            if (arena_catalog_dir / filename).exists()
+        }
+        if leaderboards:
+            payloads["arena_catalog"] = leaderboards
+
+        arena_metadata_path = arena_catalog_dir / ARENA_CATALOG_METADATA_FILENAME
+        if arena_metadata_path.exists():
+            payloads["arena_catalog_metadata"] = _read_json(arena_metadata_path)
 
     return payloads
