@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from copy import deepcopy
 from datetime import datetime, timezone
 import re
 from typing import Any
@@ -173,6 +174,34 @@ def import_arena_rankings(
                 updated_keys.add(model_key)
 
     return len(updated_keys), len(all_unmatched), sorted(all_unmatched)
+
+
+def seed_existing_rankings(models_data: dict[str, Any], existing_registry: dict[str, Any] | None) -> None:
+    """Copy previously published rankings into the freshly resolved registry."""
+    existing_models = existing_registry.get("models") if isinstance(existing_registry, dict) else None
+    if not isinstance(existing_models, dict):
+        return
+
+    for model_key, model in models_data.get("models", {}).items():
+        if not isinstance(model, dict):
+            continue
+        existing_model = existing_models.get(model_key)
+        if not isinstance(existing_model, dict):
+            continue
+        existing_rankings = existing_model.get("rankings")
+        if not isinstance(existing_rankings, dict) or not existing_rankings:
+            continue
+
+        current_rankings = model.get("rankings")
+        if current_rankings is None:
+            model["rankings"] = deepcopy(existing_rankings)
+            continue
+        if not isinstance(current_rankings, dict):
+            continue
+
+        for ranking_key, ranking_value in existing_rankings.items():
+            if ranking_key not in current_rankings:
+                current_rankings[ranking_key] = deepcopy(ranking_value)
 
 
 def apply_snapshot_rankings(models_data: dict, snapshot_payloads: dict[str, Any]) -> dict[str, Any]:

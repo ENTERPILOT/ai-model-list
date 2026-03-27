@@ -1,3 +1,4 @@
+import scripts.build_registry as build_registry_module
 from pipeline.loaders import load_snapshot_payloads
 from pipeline.rankings import apply_snapshot_rankings, import_arena_rankings
 
@@ -112,3 +113,81 @@ def test_load_snapshot_payloads_reads_arena_catalog_files(tmp_path) -> None:
     assert set(payloads["arena_catalog"]) == {"leaderboard-text.json", "leaderboard-vision.json"}
     assert payloads["arena_catalog"]["leaderboard-text.json"]["full"]["gpt-5"]["rating"] == 1500
     assert payloads["arena_catalog_metadata"]["fetched_at"] == "2026-03-26T00:00:00Z"
+
+
+def test_build_registry_artifacts_preserves_existing_rankings_as_of_when_scores_are_unchanged(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    snapshot_payloads = {
+        "arena_catalog": {
+            "leaderboard-text.json": {
+                "full": {
+                    "gpt-5-high": {"rating": 1510.2},
+                }
+            }
+        },
+        "arena_catalog_metadata": {
+            "fetched_at": "2026-03-27T08:15:30Z",
+            "sources": {"leaderboard-text.json": "https://example.com/leaderboard-text.json"},
+        },
+    }
+    existing_registry = {
+        "models": {
+            "gpt-5": {
+                "rankings": {
+                    "chatbot_arena": {
+                        "elo": 1510,
+                        "rank": 1,
+                        "as_of": "2026-03-26",
+                    }
+                }
+            }
+        }
+    }
+
+    monkeypatch.setattr(
+        build_registry_module,
+        "load_curated_config",
+        lambda _path: {
+            "providers": {},
+            "source_policies": {},
+            "canonical_aliases": {},
+            "rejections": {},
+        },
+    )
+    monkeypatch.setattr(build_registry_module, "load_snapshot_payloads", lambda _path: snapshot_payloads)
+    monkeypatch.setattr(build_registry_module, "_normalize_snapshot_payloads", lambda _payloads, _curated: [])
+    monkeypatch.setattr(
+        build_registry_module,
+        "resolve_registry",
+        lambda _evidence, _curated: (
+            {
+                "providers": {},
+                "models": {
+                    "gpt-5": {
+                        "display_name": "GPT-5",
+                        "modes": ["chat"],
+                    }
+                },
+                "provider_models": {},
+            },
+            {"quarantine": []},
+        ),
+    )
+    monkeypatch.setattr(build_registry_module, "render_registry", lambda resolved, updated_at: resolved)
+    monkeypatch.setattr(build_registry_module, "build_report", lambda **_kwargs: {})
+    monkeypatch.setattr(build_registry_module, "_resolve_updated_at", lambda _payloads: "2026-03-27T08:15:30Z")
+    monkeypatch.setattr(build_registry_module, "_source_freshness", lambda _payloads: {})
+
+    registry, _report, _quarantine = build_registry_module.build_registry_artifacts(
+        snapshot_dir=tmp_path / "snapshot",
+        curated_dir=tmp_path / "curated",
+        existing_registry=existing_registry,
+    )
+
+    assert registry["models"]["gpt-5"]["rankings"]["chatbot_arena"] == {
+        "elo": 1510,
+        "rank": 1,
+        "as_of": "2026-03-26",
+    }
