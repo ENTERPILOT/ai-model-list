@@ -16,7 +16,7 @@ if __package__ in {None, ""}:
 
 from pipeline.loaders import load_curated_config, load_snapshot_payloads
 from pipeline.normalize import NORMALIZER_BY_SOURCE
-from pipeline.rankings import apply_snapshot_rankings
+from pipeline.rankings import apply_snapshot_rankings, seed_existing_rankings
 from pipeline.render import render_registry
 from pipeline.report import build_markdown_report, build_report
 from pipeline.resolve import resolve_registry
@@ -25,8 +25,16 @@ from scripts.fetch_sources import fetch_sources_to, snapshot_path_for_run
 DUPLICATE_TOKEN_PATTERN = re.compile(r"[^a-z0-9]+")
 
 
-def build_registry(snapshot_dir: Path, curated_dir: Path) -> dict:
-    registry, _, _ = build_registry_artifacts(snapshot_dir=snapshot_dir, curated_dir=curated_dir)
+def build_registry(
+    snapshot_dir: Path,
+    curated_dir: Path,
+    existing_registry: dict[str, Any] | None = None,
+) -> dict:
+    registry, _, _ = build_registry_artifacts(
+        snapshot_dir=snapshot_dir,
+        curated_dir=curated_dir,
+        existing_registry=existing_registry,
+    )
     return registry
 
 
@@ -41,6 +49,14 @@ def _write_json(path: Path, payload: dict, *, compact: bool = False) -> None:
 
 def _default_snapshot_dir() -> Path:
     return snapshot_path_for_run(Path.cwd() / "tmp", "latest")
+
+
+def _load_existing_registry(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    with path.open(encoding="utf-8") as handle:
+        payload = json.load(handle)
+    return payload if isinstance(payload, dict) else None
 
 
 def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, Any]) -> list[Any]:
@@ -182,7 +198,11 @@ def _source_freshness(snapshot_payloads: dict[str, Any]) -> dict[str, Any]:
     return freshness
 
 
-def build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
+def build_registry_artifacts(
+    snapshot_dir: Path,
+    curated_dir: Path,
+    existing_registry: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
     curated = load_curated_config(curated_dir)
     snapshot_payloads = load_snapshot_payloads(snapshot_dir)
     evidence = _normalize_snapshot_payloads(snapshot_payloads, curated)
@@ -208,6 +228,7 @@ def build_registry_artifacts(snapshot_dir: Path, curated_dir: Path) -> tuple[dic
         for provider_model_key, provider_model in resolved_registry["provider_models"].items()
         if provider_model_key.split("/", 1)[0] in allowed_providers
     }
+    seed_existing_rankings(resolved_registry, existing_registry)
     apply_snapshot_rankings(resolved_registry, snapshot_payloads)
     updated_at = _resolve_updated_at(snapshot_payloads)
     registry = render_registry(resolved_registry, updated_at=updated_at)
@@ -228,8 +249,18 @@ def main(argv: list[str] | None = None) -> int:
 
     curated_dir = Path("registry/curated")
     snapshot_dir = fetch_sources_to(_default_snapshot_dir())
+    existing_registry = _load_existing_registry(Path("models.json"))
 
-    registry, report, quarantine = build_registry_artifacts(snapshot_dir=snapshot_dir, curated_dir=curated_dir)
+    build_kwargs: dict[str, Any] = {
+        "snapshot_dir": snapshot_dir,
+        "curated_dir": curated_dir,
+    }
+    if existing_registry is not None:
+        build_kwargs["existing_registry"] = existing_registry
+
+    registry, report, quarantine = build_registry_artifacts(
+        **build_kwargs,
+    )
 
     _write_json(Path("models.json"), registry)
     _write_json(Path("models.min.json"), registry, compact=True)
