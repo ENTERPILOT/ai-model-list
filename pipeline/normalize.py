@@ -378,6 +378,12 @@ def _pricing_from_portkey(entry: Mapping[str, Any]) -> dict[str, float | str] | 
         elif len({variant["price"] for variant in image_generation_prices}) == 1:
             pricing["per_image"] = image_generation_prices[0]["price"]
 
+    pricing = {
+        key: value
+        for key, value in pricing.items()
+        if not (isinstance(value, (int, float)) and value == 0)
+    }
+
     return pricing if len(pricing) > 1 else None
 
 
