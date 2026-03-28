@@ -32,8 +32,18 @@ def test_fetch_sources_declares_expected_aggregator_sources() -> None:
         "openrouter_models.json",
         "llm_prices_current.json",
         "portkey/openai.json",
+        "portkey/deepinfra.json",
+        "portkey/vertex-ai.json",
+        "portkey/x-ai.json",
     }
-    assert all(descriptor.url.startswith(GITHUB_SNAPSHOT_BASE_URL) for descriptor in SOURCE_DESCRIPTORS)
+
+    portkey_descriptors = [descriptor for descriptor in SOURCE_DESCRIPTORS if descriptor.slug.startswith("portkey-")]
+    github_descriptors = [descriptor for descriptor in SOURCE_DESCRIPTORS if not descriptor.slug.startswith("portkey-")]
+
+    assert portkey_descriptors
+    assert all(descriptor.url.startswith("https://configs.portkey.ai/pricing/") for descriptor in portkey_descriptors)
+    assert all(descriptor.url.endswith(descriptor.filename.removeprefix("portkey/")) for descriptor in portkey_descriptors)
+    assert all(descriptor.url.startswith(GITHUB_SNAPSHOT_BASE_URL) for descriptor in github_descriptors)
 
 
 def test_build_registry_returns_top_level_sections(tmp_path: Path) -> None:

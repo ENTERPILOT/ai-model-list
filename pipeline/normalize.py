@@ -24,6 +24,7 @@ PROVIDER_SLUG_ALIASES = {
     "text-completion-openai": "openai",
     "together-ai": "together",
     "together_ai": "together",
+    "vertex-ai": "vertex_ai",
     "vertex_ai-embedding-models": "vertex_ai",
     "vertex_ai-language-models": "vertex_ai",
     "vertex_ai-text-models": "vertex_ai",
@@ -308,6 +309,7 @@ def _pricing_from_usd_per_mtok(input_value: Any, output_value: Any) -> dict[str,
 def _pricing_from_portkey(entry: Mapping[str, Any]) -> dict[str, float | str] | None:
     pricing_config = entry.get("pricing_config") or {}
     payg = pricing_config.get("pay_as_you_go", {}) or {}
+    batch = pricing_config.get("batch_config", {}) or {}
     pricing: dict[str, Any] = {"currency": "USD"}
 
     cents_token_fields = {
@@ -329,6 +331,17 @@ def _pricing_from_portkey(entry: Mapping[str, Any]) -> dict[str, float | str] | 
     }
     for (section, field), target_field in cents_token_fields.items():
         numeric_value = _to_float(payg.get(section, {}).get(field))
+        if numeric_value is not None:
+            pricing[target_field] = _scale_price(numeric_value, CENTS_PER_TOKEN_TO_USD_PER_MTOK)
+
+    batch_token_fields = {
+        ("request_token", "price"): "batch_input_per_mtok",
+        ("request_text_token", "price"): "batch_input_per_mtok",
+        ("response_token", "price"): "batch_output_per_mtok",
+        ("response_text_token", "price"): "batch_output_per_mtok",
+    }
+    for (section, field), target_field in batch_token_fields.items():
+        numeric_value = _to_float(batch.get(section, {}).get(field))
         if numeric_value is not None:
             pricing[target_field] = _scale_price(numeric_value, CENTS_PER_TOKEN_TO_USD_PER_MTOK)
 

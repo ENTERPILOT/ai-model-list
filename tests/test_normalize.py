@@ -358,6 +358,54 @@ def test_normalize_portkey_files_extracts_rich_image_pricing() -> None:
     }
 
 
+def test_normalize_portkey_files_extracts_batch_token_pricing() -> None:
+    files = {
+        "openai.json": {
+            "gpt-5": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0.000125},
+                        "response_token": {"price": 0.001},
+                    },
+                    "batch_config": {
+                        "request_token": {"price": 0.0000625},
+                        "response_token": {"price": 0.0005},
+                        "cache_read_input_token": {"price": 0.00000625},
+                    },
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0,
+        "batch_input_per_mtok": 0.625,
+        "batch_output_per_mtok": 5.0,
+    }
+
+
+def test_normalize_portkey_files_maps_vertex_ai_filename_to_curated_provider_slug() -> None:
+    files = {
+        "vertex-ai.json": {
+            "gemini-2.5-pro": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0.000125},
+                    }
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.provider_slug == "vertex_ai"
+
+
 def test_normalize_litellm_entry_extracts_per_second_and_per_character_pricing() -> None:
     entry = {
         "model_name": "groq/playai-tts",

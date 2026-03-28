@@ -1,7 +1,7 @@
 # Reliability Pipeline
 
 This registry is now built from a staged pipeline instead of directly mirroring a third-party source dump.
-Every build refreshes the published snapshot files from `ENTERPILOT/ai-model-price-list` before resolving the registry.
+Every build refreshes the published snapshot bundle from `ENTERPILOT/ai-model-price-list`, plus direct Portkey pricing configs for curated providers, before resolving the registry.
 
 ## Build Flow
 
@@ -43,4 +43,5 @@ python scripts/validate.py
 - `registry/curated/canonical_aliases.json` is the reviewed alias map for canonical model promotion.
 - `registry/curated/rejections.json` blocks known garbage IDs and source artifacts before resolution.
 - Source snapshots are fetched from `https://github.com/ENTERPILOT/ai-model-price-list`.
+- Portkey pricing snapshots are fetched directly from `https://configs.portkey.ai/pricing/` so provider coverage and pricing components are not limited by the mirrored bundle.
 - Validation now enforces canonical key shape, `owned_by` provider consistency, duplicate-like cluster detection, and orphan model detection.
