@@ -50,6 +50,7 @@ class SourceDescriptor:
 
 
 GITHUB_SNAPSHOT_BASE_URL = "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources"
+PORTKEY_PRICING_BASE_URL = "https://configs.portkey.ai/pricing"
 XAI_MODELS_SOURCE_URL = "https://docs.x.ai/developers/models?cluster=us-east-1"
 XAI_MODELS_SOURCE_FILENAME = "xai_models_official.json"
 DEEPSEEK_MODELS_SOURCE_URL = "https://api-docs.deepseek.com/quick_start/pricing"
@@ -70,6 +71,7 @@ PORTKEY_SOURCE_FILES: tuple[str, ...] = (
     "azure-openai.json",
     "bedrock.json",
     "cohere.json",
+    "deepinfra.json",
     "deepseek.json",
     "fireworks-ai.json",
     "google.json",
@@ -77,6 +79,8 @@ PORTKEY_SOURCE_FILES: tuple[str, ...] = (
     "mistral-ai.json",
     "openai.json",
     "together-ai.json",
+    "vertex-ai.json",
+    "x-ai.json",
 )
 
 
@@ -96,7 +100,7 @@ SOURCE_DESCRIPTORS: tuple[SourceDescriptor, ...] = (
     + tuple(
         SourceDescriptor(
             slug=f"portkey-{filename.removesuffix('.json')}",
-            url=_github_source_url(f"portkey/{filename}"),
+            url=f"{PORTKEY_PRICING_BASE_URL}/{filename}",
             filename=f"portkey/{filename}",
         )
         for filename in PORTKEY_SOURCE_FILES

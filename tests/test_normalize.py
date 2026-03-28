@@ -358,6 +358,132 @@ def test_normalize_portkey_files_extracts_rich_image_pricing() -> None:
     }
 
 
+def test_normalize_portkey_files_extracts_batch_token_pricing() -> None:
+    files = {
+        "openai.json": {
+            "gpt-5": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0.000125},
+                        "response_token": {"price": 0.001},
+                    },
+                    "batch_config": {
+                        "request_token": {"price": 0.0000625},
+                        "response_token": {"price": 0.0005},
+                        "cache_read_input_token": {"price": 0.00000625},
+                    },
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0,
+        "batch_input_per_mtok": 0.625,
+        "batch_output_per_mtok": 5.0,
+    }
+
+
+def test_normalize_portkey_files_skips_zero_placeholder_fields_when_positive_prices_exist() -> None:
+    files = {
+        "openai.json": {
+            "gpt-5": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0.000125},
+                        "response_token": {"price": 0.001},
+                        "cache_write_input_token": {"price": 0},
+                    },
+                    "batch_config": {
+                        "request_token": {"price": 0.0000625},
+                        "response_token": {"price": 0},
+                    },
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 10.0,
+        "batch_input_per_mtok": 0.625,
+    }
+
+
+def test_normalize_portkey_files_skips_zero_token_prices_for_per_image_models() -> None:
+    files = {
+        "google.json": {
+            "imagen-4.0-fast-generate-001": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0},
+                        "response_token": {"price": 0},
+                        "image": {
+                            "default": {
+                                "default": {"price": 2.0},
+                            }
+                        },
+                    }
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "per_image": 0.02,
+        "image_generation_prices": [
+            {"price": 0.02},
+        ],
+    }
+
+
+def test_normalize_portkey_files_drops_all_zero_pricing_objects() -> None:
+    files = {
+        "deepinfra.json": {
+            "black-forest-labs/FLUX-1.1-pro": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0},
+                        "response_token": {"price": 0},
+                    }
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert "pricing" not in record.fields
+
+
+def test_normalize_portkey_files_maps_vertex_ai_filename_to_curated_provider_slug() -> None:
+    files = {
+        "vertex-ai.json": {
+            "gemini-2.5-pro": {
+                "pricing_config": {
+                    "pay_as_you_go": {
+                        "request_token": {"price": 0.000125},
+                    }
+                }
+            }
+        }
+    }
+
+    record = normalize_portkey_files(files, rejection_policy={})[0]
+
+    assert record.provider_slug == "vertex_ai"
+
+
 def test_normalize_litellm_entry_extracts_per_second_and_per_character_pricing() -> None:
     entry = {
         "model_name": "groq/playai-tts",
