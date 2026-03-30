@@ -221,9 +221,7 @@ def _merge_ranking_entry(
         existing_date = existing.get("as_of", "")
         new_date = ranking_entry.get("as_of", "")
         if new_date >= existing_date:
-            existing_without_as_of = {key: value for key, value in existing.items() if key != "as_of"}
-            ranking_without_as_of = {key: value for key, value in ranking_entry.items() if key != "as_of"}
-            if existing_without_as_of == ranking_without_as_of:
+            if _ranking_entry_matches_ignoring_as_of(existing, ranking_entry):
                 return False
             model["rankings"][target_key] = ranking_entry
             return True
@@ -234,6 +232,14 @@ def _merge_ranking_entry(
 
     model["rankings"][target_key] = ranking_entry
     return True
+
+
+def _ranking_entry_matches_ignoring_as_of(existing: Any, candidate: Any) -> bool:
+    if not isinstance(existing, dict) or not isinstance(candidate, dict):
+        return False
+    existing_without_as_of = {key: value for key, value in existing.items() if key != "as_of"}
+    candidate_without_as_of = {key: value for key, value in candidate.items() if key != "as_of"}
+    return existing_without_as_of == candidate_without_as_of
 
 
 def import_arena_rankings(
@@ -317,7 +323,8 @@ def seed_existing_rankings(models_data: dict[str, Any], existing_registry: dict[
             continue
 
         for ranking_key, ranking_value in existing_rankings.items():
-            if ranking_key not in current_rankings:
+            current_ranking = current_rankings.get(ranking_key)
+            if current_ranking is None or _ranking_entry_matches_ignoring_as_of(current_ranking, ranking_value):
                 current_rankings[ranking_key] = deepcopy(ranking_value)
 
 

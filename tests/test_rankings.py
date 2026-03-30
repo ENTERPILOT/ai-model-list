@@ -401,6 +401,78 @@ def test_build_registry_artifacts_preserves_existing_rankings_as_of_when_scores_
     }
 
 
+def test_build_registry_artifacts_preserves_existing_as_of_for_unchanged_seeded_ranking_sections(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    existing_registry = {
+        "models": {
+            "gpt-5": {
+                "rankings": {
+                    "chatbot_arena": {
+                        "elo": 1510,
+                        "rank": 1,
+                        "as_of": "2026-03-26",
+                    }
+                }
+            }
+        }
+    }
+
+    monkeypatch.setattr(
+        build_registry_module,
+        "load_curated_config",
+        lambda _path: {
+            "providers": {},
+            "source_policies": {},
+            "canonical_aliases": {},
+            "rejections": {},
+        },
+    )
+    monkeypatch.setattr(build_registry_module, "load_snapshot_payloads", lambda _path: {})
+    monkeypatch.setattr(build_registry_module, "_normalize_snapshot_payloads", lambda _payloads, _curated: [])
+    monkeypatch.setattr(
+        build_registry_module,
+        "resolve_registry",
+        lambda _evidence, _curated: (
+            {
+                "providers": {},
+                "models": {
+                    "gpt-5": {
+                        "display_name": "GPT-5",
+                        "modes": ["chat"],
+                        "rankings": {
+                            "chatbot_arena": {
+                                "elo": 1510,
+                                "rank": 1,
+                                "as_of": "2026-03-27",
+                            }
+                        },
+                    }
+                },
+                "provider_models": {},
+            },
+            {"quarantine": []},
+        ),
+    )
+    monkeypatch.setattr(build_registry_module, "render_registry", lambda resolved, updated_at: resolved)
+    monkeypatch.setattr(build_registry_module, "build_report", lambda **_kwargs: {})
+    monkeypatch.setattr(build_registry_module, "_resolve_updated_at", lambda _payloads: "2026-03-27T08:15:30Z")
+    monkeypatch.setattr(build_registry_module, "_source_freshness", lambda _payloads: {})
+
+    registry, _report, _quarantine = build_registry_module.build_registry_artifacts(
+        snapshot_dir=tmp_path / "snapshot",
+        curated_dir=tmp_path / "curated",
+        existing_registry=existing_registry,
+    )
+
+    assert registry["models"]["gpt-5"]["rankings"]["chatbot_arena"] == {
+        "elo": 1510,
+        "rank": 1,
+        "as_of": "2026-03-26",
+    }
+
+
 def test_load_snapshot_payloads_reads_artificial_analysis_files(tmp_path) -> None:
     artificial_analysis_dir = tmp_path / "artificial_analysis"
     artificial_analysis_dir.mkdir()
