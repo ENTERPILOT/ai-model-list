@@ -103,6 +103,42 @@ def test_apply_snapshot_rankings_uses_snapshot_metadata_date() -> None:
     assert models_data["models"]["gpt-5"]["rankings"]["chatbot_arena"]["as_of"] == "2026-03-26"
 
 
+def test_import_arena_rankings_keeps_first_duplicate_match_for_same_model() -> None:
+    models_data = {
+        "models": {
+            "claude-opus-4-1": {
+                "display_name": "Claude Opus 4.1",
+                "modes": ["chat"],
+                "aliases": ["claude-opus-4-1-20250805"],
+            }
+        }
+    }
+    leaderboards = {
+        "leaderboard-text.json": {
+            "full": {
+                "claude-opus-4-1-20250805-thinking-16k": {"rating": 1420.2},
+                "claude-opus-4-1-20250805": {"rating": 1413.4},
+            }
+        }
+    }
+
+    updated, skipped, unmatched = import_arena_rankings(
+        leaderboards,
+        models_data,
+        categories={("leaderboard-text.json", "full"): "chatbot_arena"},
+        as_of="2026-03-26",
+    )
+
+    assert updated == 1
+    assert skipped == 0
+    assert unmatched == []
+    assert models_data["models"]["claude-opus-4-1"]["rankings"]["chatbot_arena"] == {
+        "elo": 1420,
+        "rank": 1,
+        "as_of": "2026-03-26",
+    }
+
+
 def test_import_artificial_analysis_rankings_sets_scores_and_ranks() -> None:
     models_data = {
         "models": {
@@ -301,6 +337,54 @@ def test_apply_snapshot_rankings_imports_livebench_when_present() -> None:
     assert summary["sources"]["livebench"]["release"] == "2026-01-08"
     assert models_data["models"]["o3-pro"]["rankings"]["livebench_coding"] == {
         "score": 84.0,
+        "rank": 1,
+        "as_of": "2026-03-26",
+    }
+
+
+def test_import_livebench_rankings_keeps_first_duplicate_match_for_same_model() -> None:
+    models_data = {
+        "models": {
+            "claude-haiku-4-5": {
+                "display_name": "Claude Haiku 4.5",
+                "modes": ["chat"],
+                "aliases": ["claude-haiku-4-5-20251001"],
+            }
+        }
+    }
+    payload = {
+        "categories": {
+            "Coding": ["code_generation"],
+        },
+        "table": [
+            {
+                "model": "claude-haiku-4-5-20251001-thinking-64k",
+                "code_generation": 61.3,
+            },
+            {
+                "model": "claude-haiku-4-5-20251001",
+                "code_generation": 45.3,
+            },
+        ],
+    }
+
+    updated, skipped, unmatched = import_livebench_rankings(
+        payload,
+        models_data,
+        as_of="2026-03-26",
+        release="2026-01-08",
+    )
+
+    assert updated == 1
+    assert skipped == 0
+    assert unmatched == []
+    assert models_data["models"]["claude-haiku-4-5"]["rankings"]["livebench"] == {
+        "score": 61.3,
+        "rank": 1,
+        "as_of": "2026-03-26",
+    }
+    assert models_data["models"]["claude-haiku-4-5"]["rankings"]["livebench_coding"] == {
+        "score": 61.3,
         "rank": 1,
         "as_of": "2026-03-26",
     }

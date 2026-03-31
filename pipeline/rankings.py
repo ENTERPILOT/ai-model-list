@@ -274,6 +274,7 @@ def import_arena_rankings(
             key=lambda item: item[1].get("rating", 0),
             reverse=True,
         )
+        assigned_model_keys: set[str] = set()
 
         for rank, (arena_name, arena_data) in enumerate(sorted_models, start=1):
             rating = arena_data.get("rating")
@@ -292,9 +293,12 @@ def import_arena_rankings(
             }
 
             for model_key in matched_keys:
+                if model_key in assigned_model_keys:
+                    continue
                 model = models_data["models"][model_key]
                 if _merge_ranking_entry(model, target_key, ranking_entry, merge=merge):
                     updated_keys.add(model_key)
+                assigned_model_keys.add(model_key)
 
     return len(updated_keys), len(all_unmatched), sorted(all_unmatched)
 
@@ -360,6 +364,7 @@ def import_artificial_analysis_rankings(
                 scored_entries.append((float(score), entry))
 
         scored_entries.sort(key=lambda item: item[0], reverse=True)
+        assigned_model_keys: set[str] = set()
 
         for rank, (score, entry) in enumerate(scored_entries, start=1):
             slug = entry.get("slug")
@@ -383,9 +388,12 @@ def import_artificial_analysis_rankings(
             }
 
             for model_key in matched_keys:
+                if model_key in assigned_model_keys:
+                    continue
                 model = models_data["models"][model_key]
                 if _merge_ranking_entry(model, target_key, ranking_entry, merge=merge):
                     updated_keys.add(model_key)
+                assigned_model_keys.add(model_key)
 
     return len(updated_keys), len(unmatched_models), sorted(unmatched_models)
 
@@ -468,6 +476,7 @@ def import_livebench_rankings(
             scores_by_model.items(),
             key=lambda item: (-item[1], item[0]),
         )
+        assigned_model_keys: set[str] = set()
         for rank, (source_model_name, score) in enumerate(ranked_models, start=1):
             matched_keys = match_model_keys(
                 source_model_name,
@@ -485,9 +494,12 @@ def import_livebench_rankings(
                 "as_of": as_of,
             }
             for model_key in matched_keys:
+                if model_key in assigned_model_keys:
+                    continue
                 model = models_data["models"][model_key]
                 if _merge_ranking_entry(model, target_key, ranking_entry, merge=merge):
                     updated_keys.add(model_key)
+                assigned_model_keys.add(model_key)
 
     return len(updated_keys), len(unmatched_models), sorted(unmatched_models)
 
@@ -549,22 +561,3 @@ def apply_snapshot_rankings(models_data: dict, snapshot_payloads: dict[str, Any]
         }
 
     return summary
-
-
-def discover_all_categories(leaderboards: dict[str, dict]) -> dict[tuple[str, str], str]:
-    """Build category mapping for all categories found in loaded leaderboards."""
-    categories: dict[tuple[str, str], str] = {}
-    for file_name, leaderboard in leaderboards.items():
-        prefix = file_name.replace("leaderboard-", "").replace(".json", "")
-        for src_category in leaderboard:
-            if prefix == "text" and src_category == "full":
-                target_key = "chatbot_arena"
-            elif prefix == "text":
-                target_key = f"chatbot_arena_{src_category}"
-            else:
-                if src_category == "full":
-                    target_key = f"chatbot_arena_{prefix}"
-                else:
-                    target_key = f"chatbot_arena_{prefix}_{src_category}"
-            categories[(file_name, src_category)] = target_key
-    return categories
