@@ -15839,7 +15839,7 @@
         "livebench_instruction_following": {
           "as_of": "2026-03-31",
           "rank": 74,
-          "score": 24.3
+          "score": 24.4
         },
         "livebench_language": {
           "as_of": "2026-03-28",
@@ -19261,7 +19261,7 @@
       },
       "context_window": 196608,
       "display_name": "MiniMax: MiniMax M2.5",
-      "max_output_tokens": 196608,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -19274,9 +19274,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.08,
         "currency": "USD",
-        "input_per_mtok": 0.18,
+        "input_per_mtok": 0.16,
         "output_per_mtok": 1.1
       },
       "rankings": {
@@ -24809,7 +24809,7 @@
       },
       "context_window": 1000000,
       "display_name": "Qwen: Qwen3.6 Plus Preview (free)",
-      "max_output_tokens": 65536,
+      "max_output_tokens": 32000,
       "modalities": {
         "input": [
           "text"
@@ -25618,11 +25618,12 @@
         "function_calling": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true
+        "structured_output": true,
+        "tool_choice": true
       },
       "context_window": 262144,
       "display_name": "StepFun: Step 3.5 Flash",
-      "max_output_tokens": 256000,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -25635,7 +25636,6 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
@@ -40495,12 +40495,12 @@
     "openrouter/minimax-m2.5": {
       "context_window": 196608,
       "enabled": true,
-      "max_output_tokens": 196608,
+      "max_output_tokens": 65536,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.08,
         "currency": "USD",
-        "input_per_mtok": 0.18,
+        "input_per_mtok": 0.16,
         "output_per_mtok": 1.1
       }
     },
@@ -40577,12 +40577,12 @@
     "openrouter/minimax/minimax-m2.5": {
       "context_window": 196608,
       "enabled": true,
-      "max_output_tokens": 196608,
+      "max_output_tokens": 65536,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.08,
         "currency": "USD",
-        "input_per_mtok": 0.18,
+        "input_per_mtok": 0.16,
         "output_per_mtok": 1.1
       }
     },
@@ -42866,7 +42866,7 @@
     "openrouter/qwen/qwen3.6-plus-preview:free": {
       "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 32000,
       "model_ref": "qwen3.6-plus-preview",
       "pricing": {
         "currency": "USD",
@@ -43286,7 +43286,7 @@
     "openrouter/qwen3.6-plus-preview": {
       "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 32000,
       "model_ref": "qwen3.6-plus-preview",
       "pricing": {
         "currency": "USD",
@@ -43642,10 +43642,9 @@
     "openrouter/step-3.5-flash": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 256000,
+      "max_output_tokens": 65536,
       "model_ref": "step-3.5-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
@@ -43654,9 +43653,9 @@
     "openrouter/stepfun/step-3.5-flash": {
       "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 65536,
       "model_ref": "step-3.5-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
@@ -47196,6 +47195,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-03-31T13:41:37Z",
+  "updated_at": "2026-03-31T19:06:51Z",
   "version": 1
 }
