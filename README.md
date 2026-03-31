@@ -16,31 +16,32 @@ The registry provides a single `models.json` file with metadata that upstream pr
 ## Quick Start
 
 ```bash
-# Validate the registry
-pip install jsonschema
-python scripts/validate.py
-
-# Import pricing from external source
-python scripts/import_prices.py /path/to/pricing.json
-
-# Import benchmark rankings
-python scripts/import_rankings.py /path/to/rankings.json
+# Install validation and test dependencies
+pip install jsonschema pytest
 
 # Build the registry with LMArena + LiveBench rankings,
 # and optional Artificial Analysis score rankings
 export ARTIFICIAL_ANALYSIS_API_KEY=your_api_key_here
-python scripts/build_registry.py
+python scripts/build_registry.py --report-md tmp/build/report.md
+
+# Validate the generated registry
+python scripts/validate.py --models models.json --schema schema.json
 ```
 
 ## File Structure
 
 ```
 ai-model-list/
+├── .github/workflows/
+│   └── update-models.yml    # CI/CD entry point
 ├── models.json              # The registry — single output file
+├── models.min.json          # Minified registry artifact
+├── pipeline/                # Shared normalization, resolve, render, ranking logic
+├── registry/curated/        # Curated provider policies and aliases
 ├── schema.json              # JSON Schema for validation
 ├── scripts/
-│   ├── import_prices.py     # Import pricing from ai-model-price-list repo
-│   ├── import_rankings.py   # Import benchmark rankings
+│   ├── build_registry.py    # Fetch sources and build models.json
+│   ├── fetch_sources.py     # Snapshot external sources
 │   └── validate.py          # Validate models.json against schema.json
 └── README.md
 ```
@@ -211,55 +212,20 @@ python scripts/validate.py
 python scripts/validate.py --models path/to/models.json --schema path/to/schema.json
 ```
 
-### `import_prices.py`
+### `build_registry.py`
 
-Imports pricing from the `ai-model-price-list` format. Converts per-token costs to per-million-token costs.
-
-```bash
-python scripts/import_prices.py /path/to/pricing.json
-python scripts/import_prices.py https://example.com/pricing.json
-python scripts/import_prices.py /path/to/pricing.json --dry-run
-python scripts/import_prices.py /path/to/pricing.json --overwrite  # replace existing values
-```
-
-Source format (JSON array):
-```json
-[
-  {
-    "model_name": "gpt-4o",
-    "input_cost_per_token": 0.0000025,
-    "output_cost_per_token": 0.00001,
-    "cache_read_input_token_cost": 0.00000125,
-    "max_input_tokens": 128000,
-    "max_output_tokens": 16384,
-    "mode": "chat",
-    "supports_function_calling": true,
-    "supports_vision": true
-  }
-]
-```
-
-### `import_rankings.py`
-
-Imports benchmark scores and rankings.
+Fetches upstream source snapshots, resolves canonical models, applies rankings, and writes `models.json` plus `models.min.json`.
 
 ```bash
-python scripts/import_rankings.py rankings.json
-python scripts/import_rankings.py rankings.json --dry-run
+python scripts/build_registry.py
+python scripts/build_registry.py --report-md tmp/build/report.md
 ```
 
-Source format (JSON array):
-```json
-[
-  {
-    "model": "gpt-4o",
-    "benchmarks": {
-      "chatbot_arena": { "elo": 1287, "rank": 3, "as_of": "2026-02-01" },
-      "mmlu_pro": { "score": 0.887, "as_of": "2025-06-01" }
-    }
-  }
-]
-```
+Set `ARTIFICIAL_ANALYSIS_API_KEY` to include optional Artificial Analysis rankings during the build.
+
+### `fetch_sources.py`
+
+Internal helper used by `build_registry.py` to snapshot upstream sources before normalization and merge.
 
 ## Consuming the Registry
 
@@ -296,6 +262,6 @@ export MODEL_LIST_URL=https://raw.githubusercontent.com/ENTERPILOT/ai-model-list
 2. Add `provider_models` entries linking existing models to this provider
 3. Run `python scripts/validate.py` to verify
 
-### Updating pricing
+### Updating registry data
 
-Either edit `models.json` directly or use `import_prices.py` with a source file. Always run `validate.py` after changes.
+Update the curated inputs or source adapters, run `python scripts/build_registry.py --report-md tmp/build/report.md`, then run `python scripts/validate.py --models models.json --schema schema.json`.
