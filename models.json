@@ -7415,6 +7415,38 @@
         }
       }
     },
+    "gemma-4-31b-it": {
+      "aliases": [
+        "google/gemma-4-31b-it",
+        "openrouter/google/gemma-4-31b-it"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 262144,
+      "display_name": "Google: Gemma 4 31B",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.4
+      }
+    },
     "gemma-7b-it": {
       "aliases": [
         "groq/gemma-7b-it"
@@ -16958,10 +16990,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.2025,
+        "cached_input_per_mtok": 0.19135,
         "currency": "USD",
-        "input_per_mtok": 0.4005,
-        "output_per_mtok": 1.998
+        "input_per_mtok": 0.3827,
+        "output_per_mtok": 1.909
       },
       "rankings": {
         "livebench": {
@@ -19267,9 +19299,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.059,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.118,
         "output_per_mtok": 1.0
       },
       "rankings": {
@@ -20369,10 +20401,8 @@
         "openrouter/mistralai/mistral-small-24b-instruct-2501"
       ],
       "capabilities": {
-        "function_calling": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "structured_output": true
       },
       "description": "Mistral Small 3 is a 24B-parameter language model optimized for low-latency performance across common AI tasks. Released under the Apache 2.0 license, it features both pre-trained and instruction-tuned versions designed for efficient local deployment.",
       "display_name": "Mistral Small 3",
@@ -24788,6 +24818,40 @@
         "output_per_mtok": 1.56
       }
     },
+    "qwen3.6-plus": {
+      "aliases": [
+        "qwen/qwen3.6-plus:free",
+        "openrouter/qwen/qwen3.6-plus:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen3.6 Plus (free)",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "qwen3.6-plus-preview": {
       "aliases": [
         "qwen/qwen3.6-plus-preview:free",
@@ -26099,11 +26163,13 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 262144,
       "display_name": "Arcee AI: Trinity Large Thinking",
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text"
@@ -26116,10 +26182,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.9
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       }
     },
     "trinity-mini": {
@@ -38234,13 +38299,12 @@
     "openrouter/arcee-ai/trinity-large-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "model_ref": "trinity-large-thinking",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.9
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       }
     },
     "openrouter/arcee-ai/trinity-mini": {
@@ -38960,6 +39024,18 @@
         "output_per_mtok": 0.04
       }
     },
+    "openrouter/gemma-4-31b-it": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-31b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.4
+      },
+      "provider_model_id": "google/gemma-4-31b-it"
+    },
     "openrouter/glm-4-32b": {
       "context_window": 128000,
       "enabled": true,
@@ -39176,7 +39252,7 @@
     "openrouter/google/gemini-2.5-flash-lite-preview-09-2025": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 65535,
       "model_ref": "gemini-2.5-flash-lite-preview-09-2025",
       "pricing": {
         "cache_write_per_mtok": 0.08333333333333334,
@@ -39469,6 +39545,17 @@
         "currency": "USD",
         "input_per_mtok": 0.0,
         "output_per_mtok": 0.0
+      }
+    },
+    "openrouter/google/gemma-4-31b-it": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-31b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.4
       }
     },
     "openrouter/google/lyria-3-clip-preview": {
@@ -39779,13 +39866,13 @@
     "openrouter/kimi-k2.5": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 65535,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.2025,
+        "cached_input_per_mtok": 0.19135,
         "currency": "USD",
-        "input_per_mtok": 0.4005,
-        "output_per_mtok": 1.998
+        "input_per_mtok": 0.3827,
+        "output_per_mtok": 1.909
       },
       "provider_model_id": "moonshotai/kimi-k2.5"
     },
@@ -40535,9 +40622,9 @@
       "max_output_tokens": 65536,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.059,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.118,
         "output_per_mtok": 1.0
       }
     },
@@ -40617,9 +40704,9 @@
       "max_output_tokens": 65536,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.059,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.118,
         "output_per_mtok": 1.0
       }
     },
@@ -41051,13 +41138,13 @@
     "openrouter/moonshotai/kimi-k2.5": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 65535,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.2025,
+        "cached_input_per_mtok": 0.19135,
         "currency": "USD",
-        "input_per_mtok": 0.4005,
-        "output_per_mtok": 1.998
+        "input_per_mtok": 0.3827,
+        "output_per_mtok": 1.909
       }
     },
     "openrouter/morph-v3-fast": {
@@ -42911,6 +42998,17 @@
         "output_per_mtok": 0.0
       }
     },
+    "openrouter/qwen/qwen3.6-plus:free": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-plus",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
     "openrouter/qwen/qwq-32b": {
       "context_window": 131072,
       "enabled": true,
@@ -43319,6 +43417,18 @@
         "output_per_mtok": 1.56
       },
       "provider_model_id": "qwen/qwen3.5-plus-02-15"
+    },
+    "openrouter/qwen3.6-plus": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-plus",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "provider_model_id": "qwen/qwen3.6-plus:free"
     },
     "openrouter/qwen3.6-plus-preview": {
       "context_window": 1000000,
@@ -43813,13 +43923,12 @@
     "openrouter/trinity-large-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "model_ref": "trinity-large-thinking",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.9
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       },
       "provider_model_id": "arcee-ai/trinity-large-thinking"
     },
@@ -47270,6 +47379,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-01T19:08:08Z",
+  "updated_at": "2026-04-02T19:01:49Z",
   "version": 1
 }
