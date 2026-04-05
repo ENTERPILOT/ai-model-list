@@ -53,6 +53,16 @@ jobs:
             exit 0
           fi
 
+          change_status=0
+          python scripts/check_registry_changes.py --base-ref HEAD models.json models.min.json || change_status=$?
+          if [ "$change_status" -eq 10 ]; then
+            echo "Only date-related registry fields changed."
+            exit 0
+          fi
+          if [ "$change_status" -ne 0 ]; then
+            exit "$change_status"
+          fi
+
           BRANCH="update/model-registry-${GITHUB_RUN_ID}"
           git checkout -b "$BRANCH"
           git commit -m "chore: update model registry $(date -u +%Y-%m-%d)"
