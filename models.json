@@ -7482,7 +7482,7 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
+        "input_per_mtok": 0.12,
         "output_per_mtok": 0.4
       }
     },
@@ -8335,6 +8335,7 @@
       },
       "context_window": 202752,
       "display_name": "Z.ai: GLM 5.1",
+      "max_output_tokens": 65535,
       "modalities": {
         "input": [
           "text"
@@ -8347,9 +8348,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.475,
         "currency": "USD",
-        "input_per_mtok": 1.26,
-        "output_per_mtok": 3.96
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 3.15
       },
       "rankings": {
         "livebench": {
@@ -17971,8 +17973,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.049,
-        "output_per_mtok": 0.049
+        "input_per_mtok": 0.245,
+        "output_per_mtok": 0.245
       },
       "source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-11b-vision-instruct-offer?tab=Overview"
     },
@@ -39306,7 +39308,7 @@
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
+        "input_per_mtok": 0.12,
         "output_per_mtok": 0.4
       }
     },
@@ -39435,11 +39437,13 @@
     "openrouter/glm-5.1": {
       "context_window": 202752,
       "enabled": true,
+      "max_output_tokens": 65535,
       "model_ref": "glm-5.1",
       "pricing": {
+        "cached_input_per_mtok": 0.475,
         "currency": "USD",
-        "input_per_mtok": 1.26,
-        "output_per_mtok": 3.96
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 3.15
       },
       "provider_model_id": "z-ai/glm-5.1"
     },
@@ -39838,7 +39842,7 @@
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
+        "input_per_mtok": 0.12,
         "output_per_mtok": 0.4
       }
     },
@@ -40403,8 +40407,8 @@
       "model_ref": "llama-3.2-11b-vision-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.049,
-        "output_per_mtok": 0.049
+        "input_per_mtok": 0.245,
+        "output_per_mtok": 0.245
       },
       "provider_model_id": "meta-llama/llama-3.2-11b-vision-instruct"
     },
@@ -40671,8 +40675,8 @@
       "model_ref": "llama-3.2-11b-vision-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.049,
-        "output_per_mtok": 0.049
+        "input_per_mtok": 0.245,
+        "output_per_mtok": 0.245
       }
     },
     "openrouter/meta-llama/llama-3.2-1b-instruct": {
@@ -41961,7 +41965,6 @@
       "max_output_tokens": 4096,
       "model_ref": "gpt-4o",
       "pricing": {
-        "cached_input_per_mtok": 1.25,
         "currency": "USD",
         "input_per_mtok": 2.5,
         "output_per_mtok": 10.0
@@ -42148,7 +42151,7 @@
       "max_output_tokens": 128000,
       "model_ref": "gpt-5-nano",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.4
@@ -42171,7 +42174,7 @@
       "max_output_tokens": 128000,
       "model_ref": "gpt-5.1",
       "pricing": {
-        "cached_input_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
         "input_per_mtok": 1.25,
         "output_per_mtok": 10.0
@@ -42216,10 +42219,10 @@
     "openrouter/openai/gpt-5.1-codex-mini": {
       "context_window": 400000,
       "enabled": true,
-      "max_output_tokens": 100000,
+      "max_output_tokens": 128000,
       "model_ref": "gpt-5.1-codex-mini",
       "pricing": {
-        "cached_input_per_mtok": 0.025,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.25,
         "output_per_mtok": 2.0
@@ -42396,10 +42399,9 @@
       "max_output_tokens": 32768,
       "model_ref": "gpt-oss-20b",
       "pricing": {
-        "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.03,
-        "output_per_mtok": 0.11
+        "output_per_mtok": 0.14
       }
     },
     "openrouter/openai/gpt-oss-20b:free": {
@@ -44534,11 +44536,13 @@
     "openrouter/z-ai/glm-5.1": {
       "context_window": 202752,
       "enabled": true,
+      "max_output_tokens": 65535,
       "model_ref": "glm-5.1",
       "pricing": {
+        "cached_input_per_mtok": 0.475,
         "currency": "USD",
-        "input_per_mtok": 1.26,
-        "output_per_mtok": 3.96
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 3.15
       }
     },
     "openrouter/z-ai/glm-5v-turbo": {
@@ -47717,6 +47721,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-10T07:47:55Z",
+  "updated_at": "2026-04-11T07:05:11Z",
   "version": 1
 }
