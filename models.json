@@ -7157,52 +7157,6 @@
         }
       }
     },
-    "gemma-2-9b-it": {
-      "aliases": [
-        "google/gemma-2-9b-it",
-        "openrouter/google/gemma-2-9b-it"
-      ],
-      "context_window": 8192,
-      "display_name": "Google: Gemma 2 9B",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1208,
-          "rank": 182
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1173,
-          "rank": 195
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1207,
-          "rank": 169
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1187,
-          "rank": 188
-        }
-      }
-    },
     "gemma-3": {
       "aliases": [
         "gemini/gemma-3"
@@ -7796,8 +7750,6 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 131072,
@@ -17909,57 +17861,6 @@
         }
       }
     },
-    "llama-3.1-nemotron-ultra-253b-v1": {
-      "aliases": [
-        "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-        "openrouter/nvidia/llama-3.1-nemotron-ultra-253b-v1"
-      ],
-      "capabilities": {
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 131072,
-      "display_name": "NVIDIA: Llama 3.1 Nemotron Ultra 253B v1",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 1.8
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1320,
-          "rank": 108
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1312,
-          "rank": 116
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1316,
-          "rank": 88
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1364,
-          "rank": 85
-        }
-      }
-    },
     "llama-3.2-11b-text-preview": {
       "aliases": [
         "groq/llama-3.2-11b-text-preview"
@@ -18958,55 +18859,6 @@
       },
       "source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models#foundation_models"
     },
-    "mercury": {
-      "aliases": [
-        "inception/mercury",
-        "openrouter/inception/mercury"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Inception: Mercury",
-      "max_output_tokens": 32000,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1287,
-          "rank": 132
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1323,
-          "rank": 108
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1206,
-          "rank": 170
-        }
-      }
-    },
     "mercury-2": {
       "aliases": [
         "inception/mercury-2",
@@ -19022,38 +18874,6 @@
       "context_window": 128000,
       "display_name": "Inception: Mercury 2",
       "max_output_tokens": 50000,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      }
-    },
-    "mercury-coder": {
-      "aliases": [
-        "inception/mercury-coder",
-        "openrouter/inception/mercury-coder"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Inception: Mercury Coder",
-      "max_output_tokens": 32000,
       "modalities": {
         "input": [
           "text"
@@ -23430,34 +23250,6 @@
       },
       "source_url": "https://aws.amazon.com/bedrock/pricing/"
     },
-    "qwen2.5-coder-7b-instruct": {
-      "aliases": [
-        "qwen/qwen2.5-coder-7b-instruct",
-        "openrouter/qwen/qwen2.5-coder-7b-instruct"
-      ],
-      "capabilities": {
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 32768,
-      "display_name": "Qwen: Qwen2.5 Coder 7B Instruct",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      }
-    },
     "qwen2.5-vl-32b-instruct": {
       "aliases": [
         "qwen/qwen2.5-vl-32b-instruct",
@@ -26662,6 +26454,30 @@
       "modes": [
         "video_generation"
       ],
+      "source_url": "https://ai.google.dev/gemini-api/docs/video"
+    },
+    "veo-3.1-lite-generate-preview": {
+      "aliases": [
+        "gemini/veo-3.1-lite-generate-preview"
+      ],
+      "context_window": 1024,
+      "display_name": "Veo 3 1 Lite Generate Preview",
+      "max_output_tokens": 1024,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_output": 0.05
+      },
       "source_url": "https://ai.google.dev/gemini-api/docs/video"
     },
     "virtuoso-large": {
@@ -33873,6 +33689,16 @@
         "per_second_output": 0.4
       }
     },
+    "gemini/veo-3.1-lite-generate-preview": {
+      "context_window": 1024,
+      "enabled": true,
+      "max_output_tokens": 1024,
+      "model_ref": "veo-3.1-lite-generate-preview",
+      "pricing": {
+        "currency": "USD",
+        "per_second_output": 0.05
+      }
+    },
     "groq/deepseek-r1-distill-llama-70b": {
       "context_window": 131072,
       "enabled": true,
@@ -39196,17 +39022,6 @@
       },
       "provider_model_id": "google/gemma-2-27b-it"
     },
-    "openrouter/gemma-2-9b-it": {
-      "context_window": 8192,
-      "enabled": true,
-      "model_ref": "gemma-2-9b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      },
-      "provider_model_id": "google/gemma-2-9b-it"
-    },
     "openrouter/gemma-3-12b-it": {
       "context_window": 131072,
       "enabled": true,
@@ -39682,16 +39497,6 @@
         "output_per_mtok": 0.65
       }
     },
-    "openrouter/google/gemma-2-9b-it": {
-      "context_window": 8192,
-      "enabled": true,
-      "model_ref": "gemma-2-9b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      }
-    },
     "openrouter/google/gemma-3-12b-it": {
       "context_window": 131072,
       "enabled": true,
@@ -39994,35 +39799,11 @@
         "output_per_mtok": 0.11
       }
     },
-    "openrouter/inception/mercury": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 32000,
-      "model_ref": "mercury",
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      }
-    },
     "openrouter/inception/mercury-2": {
       "context_window": 128000,
       "enabled": true,
       "max_output_tokens": 50000,
       "model_ref": "mercury-2",
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      }
-    },
-    "openrouter/inception/mercury-coder": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 32000,
-      "model_ref": "mercury-coder",
       "pricing": {
         "cached_input_per_mtok": 0.025,
         "currency": "USD",
@@ -40342,17 +40123,6 @@
       },
       "provider_model_id": "nvidia/llama-3.1-nemotron-70b-instruct"
     },
-    "openrouter/llama-3.1-nemotron-ultra-253b-v1": {
-      "context_window": 131072,
-      "enabled": true,
-      "model_ref": "llama-3.1-nemotron-ultra-253b-v1",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 1.8
-      },
-      "provider_model_id": "nvidia/llama-3.1-nemotron-ultra-253b-v1"
-    },
     "openrouter/llama-3.2-11b-vision-instruct": {
       "context_window": 131072,
       "enabled": true,
@@ -40502,19 +40272,6 @@
         "output_per_mtok": 1.0
       }
     },
-    "openrouter/mercury": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 32000,
-      "model_ref": "mercury",
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      },
-      "provider_model_id": "inception/mercury"
-    },
     "openrouter/mercury-2": {
       "context_window": 128000,
       "enabled": true,
@@ -40527,19 +40284,6 @@
         "output_per_mtok": 0.75
       },
       "provider_model_id": "inception/mercury-2"
-    },
-    "openrouter/mercury-coder": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 32000,
-      "model_ref": "mercury-coder",
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      },
-      "provider_model_id": "inception/mercury-coder"
     },
     "openrouter/meta-llama/llama-3-70b-instruct": {
       "context_window": 8192,
@@ -40674,8 +40418,8 @@
       "model_ref": "llama-guard-3-8b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.02,
-        "output_per_mtok": 0.06
+        "input_per_mtok": 0.48,
+        "output_per_mtok": 0.03
       }
     },
     "openrouter/meta-llama/llama-guard-4-12b": {
@@ -41306,8 +41050,10 @@
     "openrouter/moonshotai/kimi-k2-thinking": {
       "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2-thinking",
       "pricing": {
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.5
@@ -41569,16 +41315,6 @@
         "currency": "USD",
         "input_per_mtok": 1.2,
         "output_per_mtok": 1.2
-      }
-    },
-    "openrouter/nvidia/llama-3.1-nemotron-ultra-253b-v1": {
-      "context_window": 131072,
-      "enabled": true,
-      "model_ref": "llama-3.1-nemotron-ultra-253b-v1",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 1.8
       }
     },
     "openrouter/nvidia/llama-3.3-nemotron-super-49b-v1.5": {
@@ -42753,16 +42489,6 @@
         "output_per_mtok": 0.4095
       }
     },
-    "openrouter/qwen/qwen2.5-coder-7b-instruct": {
-      "context_window": 32768,
-      "enabled": true,
-      "model_ref": "qwen2.5-coder-7b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      }
-    },
     "openrouter/qwen/qwen2.5-vl-32b-instruct": {
       "context_window": 128000,
       "enabled": true,
@@ -43172,17 +42898,6 @@
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.58
       }
-    },
-    "openrouter/qwen2.5-coder-7b-instruct": {
-      "context_window": 32768,
-      "enabled": true,
-      "model_ref": "qwen2.5-coder-7b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.03,
-        "output_per_mtok": 0.09
-      },
-      "provider_model_id": "qwen/qwen2.5-coder-7b-instruct"
     },
     "openrouter/qwen2.5-vl-32b-instruct": {
       "context_window": 128000,
@@ -47618,6 +47333,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-14T07:53:01Z",
+  "updated_at": "2026-04-15T07:53:35Z",
   "version": 1
 }
