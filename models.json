@@ -17151,8 +17151,6 @@
       ],
       "capabilities": {
         "function_calling": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 131072,
@@ -18453,10 +18451,8 @@
     "llama-guard-4-12b": {
       "aliases": [
         "meta-llama/llama-guard-4-12b",
-        "meta-llama/llama-guard-4-12b:free",
         "groq/meta-llama/llama-guard-4-12b",
-        "openrouter/meta-llama/llama-guard-4-12b",
-        "openrouter/meta-llama/llama-guard-4-12b:free"
+        "openrouter/meta-llama/llama-guard-4-12b"
       ],
       "capabilities": {
         "response_schema": true,
@@ -18464,7 +18460,6 @@
       },
       "context_window": 163840,
       "display_name": "Meta: Llama Guard 4 12B",
-      "max_output_tokens": 65000,
       "modalities": {
         "input": [
           "text",
@@ -23307,42 +23302,6 @@
         }
       },
       "source_url": "https://aws.amazon.com/bedrock/pricing/"
-    },
-    "qwen2.5-vl-32b-instruct": {
-      "aliases": [
-        "qwen/qwen2.5-vl-32b-instruct",
-        "openrouter/qwen/qwen2.5-vl-32b-instruct"
-      ],
-      "capabilities": {
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 128000,
-      "display_name": "Qwen: Qwen2.5 VL 32B Instruct",
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.6
-      },
-      "rankings": {
-        "chatbot_arena_vision": {
-          "as_of": "2026-03-28",
-          "elo": 1151,
-          "rank": 40
-        }
-      }
     },
     "qwen2.5-vl-72b-instruct": {
       "aliases": [
@@ -40369,13 +40328,13 @@
     "openrouter/llama-guard-4-12b": {
       "context_window": 163840,
       "enabled": true,
-      "max_output_tokens": 65000,
       "model_ref": "llama-guard-4-12b",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.18,
         "output_per_mtok": 0.18
-      }
+      },
+      "provider_model_id": "meta-llama/llama-guard-4-12b"
     },
     "openrouter/lyria-3-clip-preview": {
       "context_window": 1048576,
@@ -40594,17 +40553,6 @@
         "currency": "USD",
         "input_per_mtok": 0.18,
         "output_per_mtok": 0.18
-      }
-    },
-    "openrouter/meta-llama/llama-guard-4-12b:free": {
-      "context_window": 163840,
-      "enabled": true,
-      "max_output_tokens": 65000,
-      "model_ref": "llama-guard-4-12b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
       }
     },
     "openrouter/microsoft/phi-4": {
@@ -42655,16 +42603,6 @@
         "output_per_mtok": 0.4095
       }
     },
-    "openrouter/qwen/qwen2.5-vl-32b-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "model_ref": "qwen2.5-vl-32b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.6
-      }
-    },
     "openrouter/qwen/qwen2.5-vl-72b-instruct": {
       "context_window": 32000,
       "enabled": true,
@@ -43070,17 +43008,6 @@
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.58
       }
-    },
-    "openrouter/qwen2.5-vl-32b-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "model_ref": "qwen2.5-vl-32b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.6
-      },
-      "provider_model_id": "qwen/qwen2.5-vl-32b-instruct"
     },
     "openrouter/qwen2.5-vl-72b-instruct": {
       "context_window": 32000,
@@ -47526,6 +47453,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-17T19:06:26Z",
+  "updated_at": "2026-04-18T07:13:53Z",
   "version": 1
 }
