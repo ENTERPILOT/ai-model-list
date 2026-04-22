@@ -6,7 +6,7 @@ from scripts import build_registry as build_registry_module
 from scripts import fetch_sources as fetch_sources_module
 from scripts.build_registry import build_registry
 from scripts.fetch_sources import GITHUB_SNAPSHOT_BASE_URL, SOURCE_DESCRIPTORS, snapshot_path_for_run
-from scripts.validate import check_registry_quality
+from scripts.validate import check_registry_quality, validate
 
 
 def _write_minimal_curated_config(curated_dir: Path) -> None:
@@ -332,6 +332,36 @@ def test_check_registry_quality_rejects_provider_without_provider_models() -> No
     errors = check_registry_quality(data)
 
     assert any("runway: provider has zero provider_models" in error for error in errors)
+
+
+def test_validate_accepts_provider_model_keys_with_openrouter_tilde_vendor_prefix(tmp_path: Path) -> None:
+    data = {
+        "version": 1,
+        "updated_at": "2026-04-22T00:00:00Z",
+        "providers": {
+            "openrouter": {"display_name": "OpenRouter"},
+        },
+        "models": {
+            "claude-opus-latest": {
+                "display_name": "Claude Opus Latest",
+                "modes": ["chat"],
+            }
+        },
+        "provider_models": {
+            "openrouter/~anthropic/claude-opus-latest": {
+                "model_ref": "claude-opus-latest",
+                "enabled": True,
+            }
+        },
+    }
+    models_path = tmp_path / "models.json"
+    models_path.write_text(json.dumps(data), encoding="utf-8")
+
+    schema_path = Path(__file__).resolve().parent.parent / "schema.json"
+
+    errors = validate(models_path, schema_path)
+
+    assert errors == []
 
 
 def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
