@@ -6635,6 +6635,32 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-embedding-2": {
+      "aliases": [
+        "gemini/gemini-embedding-2",
+        "vertex_ai/gemini-embedding-2"
+      ],
+      "context_window": 8192,
+      "display_name": "Gemini Embedding 2",
+      "max_output_tokens": 8192,
+      "modalities": {
+        "input": [
+          "image"
+        ]
+      },
+      "modes": [
+        "embedding"
+      ],
+      "output_vector_size": 3072,
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.00012,
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.0,
+        "per_second_input": 0.00016
+      },
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+    },
     "gemini-embedding-2-preview": {
       "aliases": [
         "gemini/gemini-embedding-2-preview",
@@ -13272,14 +13298,14 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 41,
-          "score": 63.6
+          "as_of": "2026-04-26",
+          "rank": 100,
+          "score": 37.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 61,
-          "score": 38.9
+          "as_of": "2026-04-26",
+          "rank": 90,
+          "score": 17.0
         },
         "livebench_coding": {
           "as_of": "2026-04-23",
@@ -13287,32 +13313,72 @@
           "score": 74.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 25,
-          "score": 69.3
+          "as_of": "2026-04-26",
+          "rank": 74,
+          "score": 47.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 40,
-          "score": 56.3
+          "as_of": "2026-04-26",
+          "rank": 99,
+          "score": 18.9
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 67,
-          "score": 65.8
+          "as_of": "2026-04-26",
+          "rank": 102,
+          "score": 41.8
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 58,
-          "score": 74.1
+          "as_of": "2026-04-26",
+          "rank": 104,
+          "score": 37.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 47,
-          "score": 69.7
+          "as_of": "2026-04-26",
+          "rank": 104,
+          "score": 21.9
         }
       },
       "source_url": "https://platform.openai.com/docs/pricing"
+    },
+    "gpt-5.4-mini-2026-03-17": {
+      "aliases": [
+        "azure/gpt-5.4-mini-2026-03-17",
+        "openai/gpt-5.4-mini-2026-03-17"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
+      },
+      "context_window": 272000,
+      "display_name": "GPT 5 4 Mini 2026 03 17",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
+      }
     },
     "gpt-5.4-nano": {
       "aliases": [
@@ -13364,47 +13430,87 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 43,
-          "score": 62.7
+          "as_of": "2026-04-26",
+          "rank": 106,
+          "score": 32.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 39,
-          "score": 49.1
+          "as_of": "2026-04-26",
+          "rank": 83,
+          "score": 27.1
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 69,
-          "score": 70.3
+          "as_of": "2026-04-26",
+          "rank": 96,
+          "score": 61.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 52,
-          "score": 52.7
+          "as_of": "2026-04-26",
+          "rank": 101,
+          "score": 39.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 45,
-          "score": 53.7
+          "as_of": "2026-04-26",
+          "rank": 104,
+          "score": 16.5
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 84,
-          "score": 54.8
+          "as_of": "2026-04-26",
+          "rank": 105,
+          "score": 28.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 14,
-          "score": 88.6
+          "as_of": "2026-04-26",
+          "rank": 106,
+          "score": 36.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 40,
-          "score": 72.0
+          "as_of": "2026-04-26",
+          "rank": 106,
+          "score": 17.4
         }
       },
       "source_url": "https://platform.openai.com/docs/pricing"
+    },
+    "gpt-5.4-nano-2026-03-17": {
+      "aliases": [
+        "azure/gpt-5.4-nano-2026-03-17",
+        "openai/gpt-5.4-nano-2026-03-17"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
+      },
+      "context_window": 272000,
+      "display_name": "GPT 5 4 Nano 2026 03 17",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.25
+      }
     },
     "gpt-5.4-pro": {
       "aliases": [
@@ -24492,10 +24598,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.022,
         "currency": "USD",
         "input_per_mtok": 0.22,
-        "output_per_mtok": 1.0
+        "output_per_mtok": 1.8
       }
     },
     "qwen3-coder-30b-a3b-instruct": {
@@ -30487,6 +30592,23 @@
         "output_per_mtok": 4.5
       }
     },
+    "azure/gpt-5.4-mini-2026-03-17": {
+      "context_window": 1050000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-mini-2026-03-17",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
+      }
+    },
     "azure/gpt-5.4-nano": {
       "context_window": 1050000,
       "enabled": true,
@@ -30497,6 +30619,23 @@
       ],
       "max_output_tokens": 128000,
       "model_ref": "gpt-5.4-nano",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.25
+      }
+    },
+    "azure/gpt-5.4-nano-2026-03-17": {
+      "context_window": 1050000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-nano-2026-03-17",
       "pricing": {
         "cached_input_per_mtok": 0.02,
         "currency": "USD",
@@ -34102,6 +34241,23 @@
         "tpm": 10000000
       }
     },
+    "gemini/gemini-embedding-2": {
+      "context_window": 8192,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "gemini-embedding-2",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.00012,
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.0,
+        "per_second_input": 0.00016
+      },
+      "rate_limits": {
+        "rpm": 10000,
+        "tpm": 10000000
+      }
+    },
     "gemini/gemini-embedding-2-preview": {
       "context_window": 8192,
       "enabled": true,
@@ -37650,9 +37806,15 @@
       }
     },
     "openai/gpt-5.4-mini-2026-03-17": {
-      "context_window": 400000,
+      "context_window": 272000,
       "enabled": true,
-      "model_ref": "gpt-5.4-mini",
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-mini-2026-03-17",
       "pricing": {
         "cached_input_per_mtok": 0.075,
         "currency": "USD",
@@ -37678,9 +37840,15 @@
       }
     },
     "openai/gpt-5.4-nano-2026-03-17": {
-      "context_window": 400000,
+      "context_window": 272000,
       "enabled": true,
-      "model_ref": "gpt-5.4-nano",
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/batch",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-5.4-nano-2026-03-17",
       "pricing": {
         "cached_input_per_mtok": 0.02,
         "currency": "USD",
@@ -39188,7 +39356,7 @@
     "openrouter/anthropic/claude-3-haiku": {
       "context_window": 200000,
       "enabled": true,
-      "max_output_tokens": 200000,
+      "max_output_tokens": 4096,
       "model_ref": "claude-3-haiku",
       "pricing": {
         "cache_write_per_mtok": 0.3,
@@ -42754,7 +42922,7 @@
     "openrouter/openai/gpt-3.5-turbo": {
       "context_window": 16385,
       "enabled": true,
-      "max_output_tokens": 4095,
+      "max_output_tokens": 4096,
       "model_ref": "gpt-3.5-turbo",
       "pricing": {
         "currency": "USD",
@@ -42776,7 +42944,7 @@
     "openrouter/openai/gpt-3.5-turbo-16k": {
       "context_window": 16385,
       "enabled": true,
-      "max_output_tokens": 16383,
+      "max_output_tokens": 4096,
       "model_ref": "gpt-3.5-turbo-16k",
       "pricing": {
         "currency": "USD",
@@ -42798,7 +42966,7 @@
     "openrouter/openai/gpt-4": {
       "context_window": 8191,
       "enabled": true,
-      "max_output_tokens": 8192,
+      "max_output_tokens": 4096,
       "model_ref": "gpt-4",
       "pricing": {
         "currency": "USD",
@@ -43926,10 +44094,9 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3-coder",
       "pricing": {
-        "cached_input_per_mtok": 0.022,
         "currency": "USD",
         "input_per_mtok": 0.22,
-        "output_per_mtok": 1.0
+        "output_per_mtok": 1.8
       }
     },
     "openrouter/qwen/qwen3-coder-30b-a3b-instruct": {
@@ -44331,10 +44498,9 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3-coder",
       "pricing": {
-        "cached_input_per_mtok": 0.022,
         "currency": "USD",
         "input_per_mtok": 0.22,
-        "output_per_mtok": 1.0
+        "output_per_mtok": 1.8
       }
     },
     "openrouter/qwen3-coder-30b-a3b-instruct": {
@@ -46599,6 +46765,19 @@
         "output_per_mtok": 0.0
       }
     },
+    "vertex_ai/gemini-embedding-2": {
+      "context_window": 8192,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "gemini-embedding-2",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.00012,
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.0,
+        "per_second_input": 0.00016
+      }
+    },
     "vertex_ai/gemini-embedding-2-preview": {
       "context_window": 8192,
       "enabled": true,
@@ -48712,6 +48891,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-25T18:59:23Z",
+  "updated_at": "2026-04-26T07:44:41Z",
   "version": 1
 }
