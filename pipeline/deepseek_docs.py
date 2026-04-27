@@ -12,6 +12,8 @@ ROW_PATTERN = re.compile(r"<tr\b[^>]*>(?P<body>.*?)</tr>", re.IGNORECASE | re.S)
 CELL_PATTERN = re.compile(r"<t[dh]\b[^>]*>(?P<body>.*?)</t[dh]>", re.IGNORECASE | re.S)
 PRICE_PATTERN = re.compile(r"\$(\d+(?:\.\d+)?)")
 TOKEN_COUNT_PATTERN = re.compile(r"(\d+(?:\.\d+)?)\s*([kKmM])")
+FOOTNOTE_SUFFIX_PATTERN = re.compile(r"(?:\s*(?:\(\d+\)|\[\d+\]|\*+))+\s*$")
+LABEL_WHITESPACE_PATTERN = re.compile(r"\s+")
 
 MODEL_LABEL = "MODEL"
 MODEL_VERSION_LABEL = "MODEL VERSION"
@@ -63,12 +65,18 @@ def build_deepseek_models_snapshot(html_text: str, source_url: str) -> list[dict
 
 
 def _extract_pricing_table_rows(html_text: str) -> list[list[str]]:
+    required_labels = {
+        _normalize_label(MODEL_LABEL),
+        _normalize_label(MODEL_VERSION_LABEL),
+        _normalize_label(CONTEXT_LENGTH_LABEL),
+        _normalize_label(MAX_OUTPUT_LABEL),
+    }
     for table_match in TABLE_PATTERN.finditer(html_text):
         rows = _extract_rows(table_match.group("body"))
         if not rows:
             continue
-        labels = {row[0] for row in rows if row}
-        if {MODEL_LABEL, MODEL_VERSION_LABEL, CONTEXT_LENGTH_LABEL, MAX_OUTPUT_LABEL} <= labels:
+        labels = {_normalize_label(row[0]) for row in rows if row}
+        if required_labels <= labels:
             return rows
     raise ValueError("unable to locate DeepSeek pricing table")
 
@@ -96,9 +104,22 @@ def _normalize_cell_text(value: str) -> str:
     return normalized.strip()
 
 
+def _strip_trailing_footnotes(value: str) -> str:
+    return FOOTNOTE_SUFFIX_PATTERN.sub("", value.strip()).strip()
+
+
+def _normalize_label(value: str) -> str:
+    normalized = _strip_trailing_footnotes(value)
+    return LABEL_WHITESPACE_PATTERN.sub(" ", normalized).upper()
+
+
+def _cell_matches_label(value: str, label: str) -> bool:
+    return _normalize_label(value) == _normalize_label(label)
+
+
 def _row_values(rows: list[list[str]], label: str) -> list[str]:
     for row in rows:
-        if row and row[0] == label:
+        if row and _cell_matches_label(row[0], label):
             return row[1:]
     raise ValueError(f"unable to locate DeepSeek '{label}' row")
 
@@ -122,10 +143,10 @@ def _parse_price_values(rows: list[list[str]], label: str, expected_count: int) 
     for row in rows:
         if not row:
             continue
-        if row[0] == label:
+        if _cell_matches_label(row[0], label):
             raw_values = row[1:]
             break
-        if len(row) >= 2 and row[1] == label:
+        if len(row) >= 2 and _cell_matches_label(row[1], label):
             raw_values = row[2:]
             break
     else:
@@ -162,7 +183,7 @@ def _parse_max_output_tokens(value: str) -> int:
 
 
 def _normalize_model_id(model_id: str) -> str:
-    return re.sub(r"\s*\*+\s*$", "", model_id.strip())
+    return _strip_trailing_footnotes(model_id)
 
 
 def _build_model(

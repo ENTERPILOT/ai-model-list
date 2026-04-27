@@ -24,7 +24,7 @@ CURRENT_PRICING_HTML = """
   <body>
     <table><tr><td>Not the pricing table</td></tr></table>
     <table style="text-align:center">
-      <tr><td colspan="2" style="text-align:center">MODEL</td><td>deepseek-v4-flash<sup>*</sup></td><td>deepseek-v4-pro</td></tr>
+      <tr><td colspan="2" style="text-align:center">MODEL</td><td>deepseek-v4-flash<sup>(1)</sup></td><td>deepseek-v4-pro</td></tr>
       <tr><td colspan="2">BASE URL (OpenAI Format)</td><td colspan="2">https://api.deepseek.com</td></tr>
       <tr><td colspan="2" style="text-align:center">MODEL VERSION</td><td>DeepSeek-V4-Flash</td><td>DeepSeek-V4-Pro</td></tr>
       <tr><td colspan="2">THINKING MODE</td><td colspan="2">Supports both non-thinking and thinking (default) modes<br>See Thinking Mode for how to switch</td></tr>
@@ -34,11 +34,11 @@ CURRENT_PRICING_HTML = """
       <tr><td>Tool Calls</td><td>✓</td><td>✓</td></tr>
       <tr><td>Chat Prefix Completion (Beta)</td><td>✓</td><td>✓</td></tr>
       <tr><td>FIM Completion (Beta)</td><td>Non-thinking mode only</td><td>Non-thinking mode only</td></tr>
-      <tr><td rowspan="3">PRICING</td><td>1M INPUT TOKENS (CACHE HIT)</td><td>$0.028</td><td>$0.145</td></tr>
-      <tr><td>1M INPUT TOKENS (CACHE MISS)</td><td>$0.14</td><td>$1.74</td></tr>
-      <tr><td>1M OUTPUT TOKENS</td><td>$0.28</td><td>$3.48</td></tr>
+      <tr><td rowspan="3">PRICING</td><td>1M INPUT TOKENS (CACHE HIT)<sup>(2)</sup></td><td>$0.0028</td><td>$0.003625 (limited-time 75% off<sup>(3)</sup>)<del>$0.0145</del></td></tr>
+      <tr><td>1M INPUT TOKENS (CACHE MISS)</td><td>$0.14</td><td>$0.435 (limited-time 75% off<sup>(3)</sup>)<del>$1.74</del></td></tr>
+      <tr><td>1M OUTPUT TOKENS</td><td>$0.28</td><td>$0.87 (limited-time 75% off<sup>(3)</sup>)<del>$3.48</del></td></tr>
     </table>
-    <p>* The model names <code>deepseek-chat</code> and <code>deepseek-reasoner</code> will be deprecated in the future.</p>
+    <p>(1) The model names <code>deepseek-chat</code> and <code>deepseek-reasoner</code> will be deprecated in the future.</p>
   </body>
 </html>
 """
@@ -100,7 +100,7 @@ def test_build_deepseek_models_snapshot_parses_current_pricing_table() -> None:
         },
         "prices": {
             "input_mtok": 0.14,
-            "cache_read_mtok": 0.028,
+            "cache_read_mtok": 0.0028,
             "output_mtok": 0.28,
         },
     }
@@ -112,8 +112,8 @@ def test_build_deepseek_models_snapshot_parses_current_pricing_table() -> None:
         "max_output_tokens": 384_000,
         "mode": "chat",
         "prices": {
-            "input_mtok": 1.74,
-            "cache_read_mtok": 0.145,
-            "output_mtok": 3.48,
+            "input_mtok": 0.435,
+            "cache_read_mtok": 0.003625,
+            "output_mtok": 0.87,
         },
     }
