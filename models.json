@@ -620,7 +620,9 @@
     "aion-2.0": {
       "aliases": [
         "aion-labs/aion-2.0",
-        "openrouter/aion-labs/aion-2.0"
+        "aion-labs/aion-2.0-20260223",
+        "openrouter/aion-labs/aion-2.0",
+        "openrouter/aion-labs/aion-2.0-20260223"
       ],
       "capabilities": {
         "reasoning": true
@@ -893,8 +895,10 @@
       "aliases": [
         "claude-3.5-haiku",
         "gemini/claude-3-5-haiku",
+        "anthropic/claude-3-5-haiku",
         "anthropic/claude-3.5-haiku",
         "vertex_ai/claude-3-5-haiku",
+        "openrouter/anthropic/claude-3-5-haiku",
         "openrouter/anthropic/claude-3.5-haiku"
       ],
       "capabilities": {
@@ -1130,7 +1134,9 @@
         "claude-3.7-sonnet",
         "gemini/claude-3-7-sonnet",
         "anthropic/claude-3.7-sonnet",
-        "openrouter/anthropic/claude-3.7-sonnet"
+        "anthropic/claude-3-7-sonnet-20250219",
+        "openrouter/anthropic/claude-3.7-sonnet",
+        "openrouter/anthropic/claude-3-7-sonnet-20250219"
       ],
       "capabilities": {
         "computer_use": true,
@@ -1657,12 +1663,14 @@
         "anthropic/claude-haiku-4.5",
         "vertex_ai/claude-haiku-4-5",
         "bedrock/claude-haiku-4-5-20251001",
+        "anthropic/claude-4.5-haiku-20251001",
         "anthropic/claude-haiku-4-5-20251001",
         "vertex_ai/claude-haiku-4-5-20251001",
         "bedrock/global.anthropic.claude-haiku-4-5-20251001-v1:0",
         "bedrock/regional.anthropic.claude-haiku-4-5-20251001-v1:0",
         "azure/azure_ai/claude-haiku-4-5",
-        "openrouter/anthropic/claude-haiku-4.5"
+        "openrouter/anthropic/claude-haiku-4.5",
+        "openrouter/anthropic/claude-4.5-haiku-20251001"
       ],
       "capabilities": {
         "computer_use": true,
@@ -1722,47 +1730,82 @@
           "rank": 68
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 50,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 61.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 51,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 55,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 72.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 38,
+          "as_of": "2026-04-28",
+          "rank": 41,
           "score": 59.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 55,
+          "as_of": "2026-04-28",
+          "rank": 58,
           "score": 49.8
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 63,
+          "as_of": "2026-04-28",
+          "rank": 66,
           "score": 66.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 77.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 58,
+          "as_of": "2026-04-28",
+          "rank": 61,
           "score": 61.7
         }
       },
       "source_url": "https://www.anthropic.com/pricing#api"
+    },
+    "claude-haiku-latest": {
+      "aliases": [
+        "~anthropic/claude-haiku-latest",
+        "openrouter/~anthropic/claude-haiku-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "display_name": "Anthropic Claude Haiku Latest",
+      "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 1.25,
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 5.0
+      }
     },
     "claude-opus-4": {
       "aliases": [
@@ -1773,10 +1816,12 @@
         "vertex_ai/claude-opus-4",
         "anthropic/claude-opus-4-0",
         "bedrock/claude-opus-4-20250514",
+        "anthropic/claude-4-opus-20250522",
         "anthropic/claude-opus-4-20250514",
         "vertex_ai/claude-opus-4-20250514",
         "bedrock/regional.anthropic.claude-opus-4-20250514-v1:0",
-        "openrouter/anthropic/claude-opus-4"
+        "openrouter/anthropic/claude-opus-4",
+        "openrouter/anthropic/claude-4-opus-20250522"
       ],
       "capabilities": {
         "computer_use": true,
@@ -1846,11 +1891,13 @@
         "anthropic/claude-opus-4.1",
         "vertex_ai/claude-opus-4-1",
         "bedrock/claude-opus-4-1-20250805",
+        "anthropic/claude-4.1-opus-20250805",
         "anthropic/claude-opus-4-1-20250805",
         "vertex_ai/claude-opus-4-1-20250805",
         "bedrock/regional.anthropic.claude-opus-4-1-20250805-v1:0",
         "azure/azure_ai/claude-opus-4-1",
-        "openrouter/anthropic/claude-opus-4.1"
+        "openrouter/anthropic/claude-opus-4.1",
+        "openrouter/anthropic/claude-4.1-opus-20250805"
       ],
       "capabilities": {
         "computer_use": true,
@@ -1920,12 +1967,14 @@
         "anthropic/claude-opus-4.5",
         "vertex_ai/claude-opus-4-5",
         "bedrock/claude-opus-4-5-20251101",
+        "anthropic/claude-4.5-opus-20251124",
         "anthropic/claude-opus-4-5-20251101",
         "vertex_ai/claude-opus-4-5-20251101",
         "bedrock/global.anthropic.claude-opus-4-5-v1:0",
         "bedrock/regional.anthropic.claude-opus-4-5-v1:0",
         "azure/azure_ai/claude-opus-4-5",
-        "openrouter/anthropic/claude-opus-4.5"
+        "openrouter/anthropic/claude-opus-4.5",
+        "openrouter/anthropic/claude-4.5-opus-20251124"
       ],
       "capabilities": {
         "computer_use": true,
@@ -1999,11 +2048,13 @@
         "anthropic/claude-opus-4-6",
         "anthropic/claude-opus-4.6",
         "vertex_ai/claude-opus-4-6",
+        "anthropic/claude-4.6-opus-20260205",
         "anthropic/claude-opus-4-6-20260205",
         "bedrock/global.anthropic.claude-opus-4-6-v1:0",
         "bedrock/regional.anthropic.claude-opus-4-6-v1:0",
         "azure/azure_ai/claude-opus-4-6",
-        "openrouter/anthropic/claude-opus-4.6"
+        "openrouter/anthropic/claude-opus-4.6",
+        "openrouter/anthropic/claude-4.6-opus-20260205"
       ],
       "capabilities": {
         "computer_use": true,
@@ -2055,11 +2106,13 @@
         "anthropic/claude-opus-4-7",
         "anthropic/claude-opus-4.7",
         "vertex_ai/claude-opus-4-7",
+        "anthropic/claude-4.7-opus-20260416",
         "anthropic/claude-opus-4-7-20260416",
         "bedrock/global.anthropic.claude-opus-4-7-v1:0",
         "bedrock/regional.anthropic.claude-opus-4-7-v1:0",
         "azure/azure_ai/claude-opus-4-7",
-        "openrouter/anthropic/claude-opus-4.7"
+        "openrouter/anthropic/claude-opus-4.7",
+        "openrouter/anthropic/claude-4.7-opus-20260416"
       ],
       "capabilities": {
         "computer_use": true,
@@ -2102,7 +2155,9 @@
     "claude-opus-4.6-fast": {
       "aliases": [
         "anthropic/claude-opus-4.6-fast",
-        "openrouter/anthropic/claude-opus-4.6-fast"
+        "anthropic/claude-4.6-opus-fast-20260407",
+        "openrouter/anthropic/claude-opus-4.6-fast",
+        "openrouter/anthropic/claude-4.6-opus-fast-20260407"
       ],
       "capabilities": {
         "function_calling": true,
@@ -2179,11 +2234,13 @@
         "vertex_ai/claude-sonnet-4",
         "anthropic/claude-sonnet-4-0",
         "bedrock/claude-sonnet-4-20250514",
+        "anthropic/claude-4-sonnet-20250522",
         "anthropic/claude-sonnet-4-20250514",
         "vertex_ai/claude-sonnet-4-20250514",
         "bedrock/global.anthropic.claude-sonnet-4-20250514-v1:0",
         "bedrock/regional.anthropic.claude-sonnet-4-20250514-v1:0",
-        "openrouter/anthropic/claude-sonnet-4"
+        "openrouter/anthropic/claude-sonnet-4",
+        "openrouter/anthropic/claude-4-sonnet-20250522"
       ],
       "capabilities": {
         "computer_use": true,
@@ -2256,12 +2313,14 @@
         "anthropic/claude-sonnet-4.5",
         "vertex_ai/claude-sonnet-4-5",
         "bedrock/claude-sonnet-4-5-20250929",
+        "anthropic/claude-4.5-sonnet-20250929",
         "anthropic/claude-sonnet-4-5-20250929",
         "vertex_ai/claude-sonnet-4-5-20250929",
         "bedrock/global.anthropic.claude-sonnet-4-5-20250929-v1:0",
         "bedrock/regional.anthropic.claude-sonnet-4-5-20250929-v1:0",
         "azure/azure_ai/claude-sonnet-4-5",
-        "openrouter/anthropic/claude-sonnet-4.5"
+        "openrouter/anthropic/claude-sonnet-4.5",
+        "openrouter/anthropic/claude-4.5-sonnet-20250929"
       ],
       "capabilities": {
         "computer_use": true,
@@ -2329,13 +2388,13 @@
           "rank": 6
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 34,
+          "as_of": "2026-04-28",
+          "rank": 36,
           "score": 68.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 25,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 53.3
         },
         "livebench_coding": {
@@ -2344,28 +2403,28 @@
           "score": 80.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 41,
+          "as_of": "2026-04-28",
+          "rank": 44,
           "score": 57.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 46,
+          "as_of": "2026-04-28",
+          "rank": 49,
           "score": 53.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 32,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 76.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 47,
           "score": 79.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 27,
+          "as_of": "2026-04-28",
+          "rank": 28,
           "score": 77.6
         }
       },
@@ -2381,10 +2440,12 @@
         "anthropic/claude-sonnet-4-6",
         "anthropic/claude-sonnet-4.6",
         "vertex_ai/claude-sonnet-4-6",
+        "anthropic/claude-4.6-sonnet-20260217",
         "bedrock/global.anthropic.claude-sonnet-4-6-v1:0",
         "bedrock/regional.anthropic.claude-sonnet-4-6-v1:0",
         "azure/azure_ai/claude-sonnet-4-6",
-        "openrouter/anthropic/claude-sonnet-4.6"
+        "openrouter/anthropic/claude-sonnet-4.6",
+        "openrouter/anthropic/claude-4.6-sonnet-20260217"
       ],
       "capabilities": {
         "computer_use": true,
@@ -2423,6 +2484,41 @@
         "output_per_mtok": 15.0
       },
       "source_url": "https://www.anthropic.com/pricing#api"
+    },
+    "claude-sonnet-latest": {
+      "aliases": [
+        "~anthropic/claude-sonnet-latest",
+        "openrouter/~anthropic/claude-sonnet-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Anthropic Claude Sonnet Latest",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 3.75,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0
+      }
     },
     "claude-v1": {
       "aliases": [
@@ -2732,7 +2828,9 @@
     "cogito-v2.1-671b": {
       "aliases": [
         "deepcogito/cogito-v2.1-671b",
-        "openrouter/deepcogito/cogito-v2.1-671b"
+        "deepcogito/cogito-v2.1-671b-20251118",
+        "openrouter/deepcogito/cogito-v2.1-671b",
+        "openrouter/deepcogito/cogito-v2.1-671b-20251118"
       ],
       "capabilities": {
         "reasoning": true,
@@ -2867,7 +2965,9 @@
     "command-a": {
       "aliases": [
         "cohere/command-a",
-        "openrouter/cohere/command-a"
+        "cohere/command-a-03-2025",
+        "openrouter/cohere/command-a",
+        "openrouter/cohere/command-a-03-2025"
       ],
       "capabilities": {
         "response_schema": true,
@@ -3946,8 +4046,10 @@
       "aliases": [
         "azure_ai/deepseek-v3.2",
         "deepseek/deepseek-v3.2",
+        "deepseek/deepseek-v3.2-20251201",
         "azure/azure_ai/deepseek-v3.2",
-        "openrouter/deepseek/deepseek-v3.2"
+        "openrouter/deepseek/deepseek-v3.2",
+        "openrouter/deepseek/deepseek-v3.2-20251201"
       ],
       "capabilities": {
         "function_calling": true,
@@ -3997,13 +4099,13 @@
           "rank": 13
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 47,
           "score": 62.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 48,
           "score": 46.7
         },
         "livebench_coding": {
@@ -4012,28 +4114,28 @@
           "score": 75.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 60,
+          "as_of": "2026-04-28",
+          "rank": 63,
           "score": 50.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 56,
+          "as_of": "2026-04-28",
+          "rank": 59,
           "score": 48.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 70.4
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 24,
+          "as_of": "2026-04-28",
+          "rank": 25,
           "score": 85.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 30,
+          "as_of": "2026-04-28",
+          "rank": 31,
           "score": 77.2
         }
       },
@@ -4090,43 +4192,43 @@
           "rank": 20
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 58.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 66,
+          "as_of": "2026-04-28",
+          "rank": 69,
           "score": 36.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 51,
+          "as_of": "2026-04-28",
+          "rank": 52,
           "score": 73.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 51.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 63,
+          "as_of": "2026-04-28",
+          "rank": 66,
           "score": 41.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 71.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 36,
+          "as_of": "2026-04-28",
+          "rank": 38,
           "score": 82.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 64.4
         }
       }
@@ -4135,8 +4237,10 @@
       "aliases": [
         "azure_ai/deepseek-v3.2-speciale",
         "deepseek/deepseek-v3.2-speciale",
+        "deepseek/deepseek-v3.2-speciale-20251201",
         "azure/azure_ai/deepseek-v3.2-speciale",
-        "openrouter/deepseek/deepseek-v3.2-speciale"
+        "openrouter/deepseek/deepseek-v3.2-speciale",
+        "openrouter/deepseek/deepseek-v3.2-speciale-20251201"
       ],
       "capabilities": {
         "function_calling": true,
@@ -4192,10 +4296,14 @@
         "deepseek-chat",
         "deepseek-reasoner",
         "deepseek/deepseek-chat",
+        "deepseek/deepseek-chat-v3",
         "deepseek/deepseek-reasoner",
         "deepseek/deepseek-v4-flash",
+        "deepseek/deepseek-v4-flash-20260423",
         "openrouter/deepseek/deepseek-chat",
-        "openrouter/deepseek/deepseek-v4-flash"
+        "openrouter/deepseek/deepseek-chat-v3",
+        "openrouter/deepseek/deepseek-v4-flash",
+        "openrouter/deepseek/deepseek-v4-flash-20260423"
       ],
       "capabilities": {
         "function_calling": true,
@@ -4225,12 +4333,56 @@
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-04-28",
+          "rank": 39,
+          "score": 67.2
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-04-28",
+          "rank": 39,
+          "score": 50.0
+        },
+        "livebench_coding": {
+          "as_of": "2026-04-28",
+          "rank": 78,
+          "score": 69.2
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-04-28",
+          "rank": 27,
+          "score": 68.0
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-04-28",
+          "rank": 27,
+          "score": 63.1
+        },
+        "livebench_language": {
+          "as_of": "2026-04-28",
+          "rank": 58,
+          "score": 70.1
+        },
+        "livebench_math": {
+          "as_of": "2026-04-28",
+          "rank": 45,
+          "score": 79.6
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-04-28",
+          "rank": 47,
+          "score": 70.6
+        }
+      },
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
     },
     "deepseek-v4-pro": {
       "aliases": [
         "deepseek/deepseek-v4-pro",
-        "openrouter/deepseek/deepseek-v4-pro"
+        "deepseek/deepseek-v4-pro-20260423",
+        "openrouter/deepseek/deepseek-v4-pro",
+        "openrouter/deepseek/deepseek-v4-pro-20260423"
       ],
       "capabilities": {
         "function_calling": true,
@@ -4255,10 +4407,52 @@
       ],
       "owned_by": "deepseek",
       "pricing": {
-        "cached_input_per_mtok": 0.03625,
+        "cached_input_per_mtok": 0.003625,
         "currency": "USD",
         "input_per_mtok": 0.435,
         "output_per_mtok": 0.87
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-04-28",
+          "rank": 16,
+          "score": 73.6
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-04-28",
+          "rank": 17,
+          "score": 56.7
+        },
+        "livebench_coding": {
+          "as_of": "2026-04-28",
+          "rank": 72,
+          "score": 70.0
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-04-28",
+          "rank": 16,
+          "score": 74.5
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-04-28",
+          "rank": 29,
+          "score": 62.4
+        },
+        "livebench_language": {
+          "as_of": "2026-04-28",
+          "rank": 21,
+          "score": 78.1
+        },
+        "livebench_math": {
+          "as_of": "2026-04-28",
+          "rank": 9,
+          "score": 90.7
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-04-28",
+          "rank": 15,
+          "score": 82.7
+        }
       },
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
     },
@@ -4292,43 +4486,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 95,
+          "as_of": "2026-04-28",
+          "rank": 98,
           "score": 41.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 43.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 85,
+          "as_of": "2026-04-28",
+          "rank": 88,
           "score": 66.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 39.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 105,
+          "as_of": "2026-04-28",
+          "rank": 108,
           "score": 13.5
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 97,
+          "as_of": "2026-04-28",
+          "rank": 100,
           "score": 45.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 97,
+          "as_of": "2026-04-28",
+          "rank": 100,
           "score": 52.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 99,
+          "as_of": "2026-04-28",
+          "rank": 102,
           "score": 27.7
         }
       },
@@ -4357,7 +4551,9 @@
     "devstral-medium": {
       "aliases": [
         "mistralai/devstral-medium",
-        "openrouter/mistralai/devstral-medium"
+        "mistralai/devstral-medium-2507",
+        "openrouter/mistralai/devstral-medium",
+        "openrouter/mistralai/devstral-medium-2507"
       ],
       "capabilities": {
         "function_calling": true,
@@ -4429,7 +4625,9 @@
       "aliases": [
         "mistral/devstral-small",
         "mistralai/devstral-small",
-        "openrouter/mistralai/devstral-small"
+        "mistralai/devstral-small-2507",
+        "openrouter/mistralai/devstral-small",
+        "openrouter/mistralai/devstral-small-2507"
       ],
       "capabilities": {
         "function_calling": true,
@@ -5895,7 +6093,9 @@
     "gemini-2.5-pro-preview": {
       "aliases": [
         "google/gemini-2.5-pro-preview",
-        "openrouter/google/gemini-2.5-pro-preview"
+        "google/gemini-2.5-pro-preview-06-05",
+        "openrouter/google/gemini-2.5-pro-preview",
+        "openrouter/google/gemini-2.5-pro-preview-06-05"
       ],
       "capabilities": {
         "function_calling": true,
@@ -5930,8 +6130,10 @@
     },
     "gemini-2.5-pro-preview-05-06": {
       "aliases": [
+        "google/gemini-2.5-pro-preview-03-25",
         "google/gemini-2.5-pro-preview-05-06",
         "vertex_ai/gemini-2.5-pro-preview-05-06",
+        "openrouter/google/gemini-2.5-pro-preview-03-25",
         "openrouter/google/gemini-2.5-pro-preview-05-06"
       ],
       "capabilities": {
@@ -6024,7 +6226,9 @@
         "gemini/gemini-3-flash-preview",
         "google/gemini-3-flash-preview",
         "vertex_ai/gemini-3-flash-preview",
-        "openrouter/google/gemini-3-flash-preview"
+        "google/gemini-3-flash-preview-20251217",
+        "openrouter/google/gemini-3-flash-preview",
+        "openrouter/google/gemini-3-flash-preview-20251217"
       ],
       "capabilities": {
         "function_calling": true,
@@ -6075,18 +6279,18 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 18,
+          "as_of": "2026-04-28",
+          "rank": 19,
           "score": 72.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 56,
+          "as_of": "2026-04-28",
+          "rank": 59,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 47,
+          "as_of": "2026-04-28",
+          "rank": 48,
           "score": 73.9
         },
         "livebench_data_analysis": {
@@ -6105,13 +6309,13 @@
           "score": 84.6
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 28,
+          "as_of": "2026-04-28",
+          "rank": 30,
           "score": 84.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 36,
+          "as_of": "2026-04-28",
+          "rank": 37,
           "score": 74.5
         }
       },
@@ -6122,7 +6326,9 @@
         "gemini/gemini-3-pro-image-preview",
         "google/gemini-3-pro-image-preview",
         "vertex_ai/gemini-3-pro-image-preview",
-        "openrouter/google/gemini-3-pro-image-preview"
+        "google/gemini-3-pro-image-preview-20251120",
+        "openrouter/google/gemini-3-pro-image-preview",
+        "openrouter/google/gemini-3-pro-image-preview-20251120"
       ],
       "capabilities": {
         "prompt_caching": true,
@@ -6260,7 +6466,9 @@
         "gemini/gemini-3.1-flash-image-preview",
         "google/gemini-3.1-flash-image-preview",
         "vertex_ai/gemini-3.1-flash-image-preview",
-        "openrouter/google/gemini-3.1-flash-image-preview"
+        "google/gemini-3.1-flash-image-preview-20260226",
+        "openrouter/google/gemini-3.1-flash-image-preview",
+        "openrouter/google/gemini-3.1-flash-image-preview-20260226"
       ],
       "capabilities": {
         "prompt_caching": true,
@@ -6301,7 +6509,9 @@
         "gemini/gemini-3.1-flash-lite-preview",
         "google/gemini-3.1-flash-lite-preview",
         "vertex_ai/gemini-3.1-flash-lite-preview",
-        "openrouter/google/gemini-3.1-flash-lite-preview"
+        "google/gemini-3.1-flash-lite-preview-20260303",
+        "openrouter/google/gemini-3.1-flash-lite-preview",
+        "openrouter/google/gemini-3.1-flash-lite-preview-20260303"
       ],
       "capabilities": {
         "audio_input": true,
@@ -6354,23 +6564,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 47,
+          "as_of": "2026-04-28",
+          "rank": 50,
           "score": 61.7
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 72,
+          "as_of": "2026-04-28",
+          "rank": 75,
           "score": 33.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 68.5
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 48,
           "score": 54.9
         },
         "livebench_instruction_following": {
@@ -6379,18 +6589,18 @@
           "score": 68.6
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 46,
+          "as_of": "2026-04-28",
+          "rank": 47,
           "score": 73.2
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 60,
+          "as_of": "2026-04-28",
+          "rank": 63,
           "score": 73.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 60,
+          "as_of": "2026-04-28",
+          "rank": 63,
           "score": 59.7
         }
       },
@@ -6441,7 +6651,9 @@
         "gemini/gemini-3.1-pro-preview",
         "google/gemini-3.1-pro-preview",
         "vertex_ai/gemini-3.1-pro-preview",
-        "openrouter/google/gemini-3.1-pro-preview"
+        "google/gemini-3.1-pro-preview-20260219",
+        "openrouter/google/gemini-3.1-pro-preview",
+        "openrouter/google/gemini-3.1-pro-preview-20260219"
       ],
       "capabilities": {
         "audio_input": true,
@@ -6552,7 +6764,9 @@
         "gemini/gemini-3.1-pro-preview-customtools",
         "google/gemini-3.1-pro-preview-customtools",
         "vertex_ai/gemini-3.1-pro-preview-customtools",
-        "openrouter/google/gemini-3.1-pro-preview-customtools"
+        "google/gemini-3.1-pro-preview-customtools-20260219",
+        "openrouter/google/gemini-3.1-pro-preview-customtools",
+        "openrouter/google/gemini-3.1-pro-preview-customtools-20260219"
       ],
       "capabilities": {
         "audio_input": true,
@@ -6834,7 +7048,9 @@
     },
     "gemini-flash-latest": {
       "aliases": [
-        "gemini/gemini-flash-latest"
+        "gemini/gemini-flash-latest",
+        "~google/gemini-flash-latest",
+        "openrouter/~google/gemini-flash-latest"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7104,7 +7320,9 @@
     },
     "gemini-pro-latest": {
       "aliases": [
-        "gemini/gemini-pro-latest"
+        "gemini/gemini-pro-latest",
+        "~google/gemini-pro-latest",
+        "openrouter/~google/gemini-pro-latest"
       ],
       "capabilities": {
         "audio_input": true,
@@ -7535,8 +7753,10 @@
       "aliases": [
         "google/gemma-4-26b-a4b-it",
         "google/gemma-4-26b-a4b-it:free",
+        "google/gemma-4-26b-a4b-it-20260403",
         "openrouter/google/gemma-4-26b-a4b-it",
-        "openrouter/google/gemma-4-26b-a4b-it:free"
+        "openrouter/google/gemma-4-26b-a4b-it:free",
+        "openrouter/google/gemma-4-26b-a4b-it-20260403"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7571,8 +7791,10 @@
       "aliases": [
         "google/gemma-4-31b-it",
         "google/gemma-4-31b-it:free",
+        "google/gemma-4-31b-it-20260402",
         "openrouter/google/gemma-4-31b-it",
-        "openrouter/google/gemma-4-31b-it:free"
+        "openrouter/google/gemma-4-31b-it:free",
+        "openrouter/google/gemma-4-31b-it-20260402"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7604,43 +7826,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 61.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 57,
+          "as_of": "2026-04-28",
+          "rank": 60,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 98,
+          "as_of": "2026-04-28",
+          "rank": 101,
           "score": 60.3
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 39,
+          "as_of": "2026-04-28",
+          "rank": 42,
           "score": 58.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 9,
+          "as_of": "2026-04-28",
+          "rank": 10,
           "score": 67.6
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 51,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 71.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 73.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 62,
+          "as_of": "2026-04-28",
+          "rank": 65,
           "score": 59.4
         }
       }
@@ -7754,7 +7976,9 @@
     "glm-4-32b": {
       "aliases": [
         "z-ai/glm-4-32b",
-        "openrouter/z-ai/glm-4-32b"
+        "z-ai/glm-4-32b-0414",
+        "openrouter/z-ai/glm-4-32b",
+        "openrouter/z-ai/glm-4-32b-0414"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8001,43 +8225,43 @@
           "rank": 11
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 68,
+          "as_of": "2026-04-28",
+          "rank": 71,
           "score": 55.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 68,
+          "as_of": "2026-04-28",
+          "rank": 71,
           "score": 35.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 65,
           "score": 71.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 56,
+          "as_of": "2026-04-28",
+          "rank": 59,
           "score": 51.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 84,
+          "as_of": "2026-04-28",
+          "rank": 87,
           "score": 26.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 59.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 39,
+          "as_of": "2026-04-28",
+          "rank": 41,
           "score": 81.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 56,
+          "as_of": "2026-04-28",
+          "rank": 59,
           "score": 62.1
         }
       }
@@ -8045,7 +8269,9 @@
     "glm-4.6v": {
       "aliases": [
         "z-ai/glm-4.6v",
-        "openrouter/z-ai/glm-4.6v"
+        "z-ai/glm-4.6-20251208",
+        "openrouter/z-ai/glm-4.6v",
+        "openrouter/z-ai/glm-4.6-20251208"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8076,43 +8302,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 40.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 101,
+          "as_of": "2026-04-28",
+          "rank": 104,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 94,
+          "as_of": "2026-04-28",
+          "rank": 97,
           "score": 64.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 79,
+          "as_of": "2026-04-28",
+          "rank": 82,
           "score": 46.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 17.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 92,
+          "as_of": "2026-04-28",
+          "rank": 95,
           "score": 49.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 89,
+          "as_of": "2026-04-28",
+          "rank": 92,
           "score": 62.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 92,
+          "as_of": "2026-04-28",
+          "rank": 95,
           "score": 37.2
         }
       }
@@ -8120,7 +8346,9 @@
     "glm-4.7": {
       "aliases": [
         "z-ai/glm-4.7",
-        "openrouter/z-ai/glm-4.7"
+        "z-ai/glm-4.7-20251222",
+        "openrouter/z-ai/glm-4.7",
+        "openrouter/z-ai/glm-4.7-20251222"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8149,43 +8377,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 58.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 55,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 47,
           "score": 55.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 35.7
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 70,
+          "as_of": "2026-04-28",
+          "rank": 73,
           "score": 65.2
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 76.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 59.7
         }
       }
@@ -8193,7 +8421,9 @@
     "glm-4.7-flash": {
       "aliases": [
         "z-ai/glm-4.7-flash",
-        "openrouter/z-ai/glm-4.7-flash"
+        "z-ai/glm-4.7-flash-20260119",
+        "openrouter/z-ai/glm-4.7-flash",
+        "openrouter/z-ai/glm-4.7-flash-20260119"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8250,43 +8480,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 58.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 55,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 47,
           "score": 55.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 35.7
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 70,
+          "as_of": "2026-04-28",
+          "rank": 73,
           "score": 65.2
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 76.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 59.7
         }
       },
@@ -8296,7 +8526,9 @@
       "aliases": [
         "z-ai/glm-5",
         "fireworks/glm-5",
-        "openrouter/z-ai/glm-5"
+        "z-ai/glm-5-20260211",
+        "openrouter/z-ai/glm-5",
+        "openrouter/z-ai/glm-5-20260211"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8324,43 +8556,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 32,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 68.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 21,
+          "as_of": "2026-04-28",
+          "rank": 22,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 50,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 73.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 28,
           "score": 67.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 42,
+          "as_of": "2026-04-28",
+          "rank": 45,
           "score": 55.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 77.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 32,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 83.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 69.1
         }
       }
@@ -8368,7 +8600,9 @@
     "glm-5-turbo": {
       "aliases": [
         "z-ai/glm-5-turbo",
-        "openrouter/z-ai/glm-5-turbo"
+        "z-ai/glm-5-turbo-20260315",
+        "openrouter/z-ai/glm-5-turbo",
+        "openrouter/z-ai/glm-5-turbo-20260315"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8401,7 +8635,9 @@
     "glm-5.1": {
       "aliases": [
         "z-ai/glm-5.1",
-        "openrouter/z-ai/glm-5.1"
+        "z-ai/glm-5.1-20260406",
+        "openrouter/z-ai/glm-5.1",
+        "openrouter/z-ai/glm-5.1-20260406"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8432,43 +8668,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-09",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 29,
           "score": 70.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-09",
-          "rank": 16,
+          "as_of": "2026-04-28",
+          "rank": 23,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-09",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 42,
           "score": 75.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-09",
-          "rank": 25,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 63.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-09",
-          "rank": 7,
+          "as_of": "2026-04-28",
+          "rank": 9,
           "score": 68.5
         },
         "livebench_language": {
-          "as_of": "2026-04-09",
-          "rank": 42,
+          "as_of": "2026-04-28",
+          "rank": 50,
           "score": 71.8
         },
         "livebench_math": {
-          "as_of": "2026-04-09",
-          "rank": 20,
+          "as_of": "2026-04-28",
+          "rank": 26,
           "score": 84.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-09",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 39,
           "score": 72.5
         }
       }
@@ -8476,7 +8712,9 @@
     "glm-5v-turbo": {
       "aliases": [
         "z-ai/glm-5v-turbo",
-        "openrouter/z-ai/glm-5v-turbo"
+        "z-ai/glm-5v-turbo-20260401",
+        "openrouter/z-ai/glm-5v-turbo",
+        "openrouter/z-ai/glm-5v-turbo-20260401"
       ],
       "capabilities": {
         "function_calling": true,
@@ -8509,43 +8747,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 49.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 49,
           "score": 73.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 48,
+          "as_of": "2026-04-28",
+          "rank": 51,
           "score": 54.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 80,
+          "as_of": "2026-04-28",
+          "rank": 83,
           "score": 27.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 75,
+          "as_of": "2026-04-28",
+          "rank": 78,
           "score": 62.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 70.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 68,
+          "as_of": "2026-04-28",
+          "rank": 71,
           "score": 56.1
         }
       }
@@ -9440,7 +9678,8 @@
         "azure/gpt-4.1",
         "openai/gpt-4.1",
         "openai/gpt-4.1-2025-04-14",
-        "openrouter/openai/gpt-4.1"
+        "openrouter/openai/gpt-4.1",
+        "openrouter/openai/gpt-4.1-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9580,7 +9819,8 @@
         "azure/gpt-4.1-mini",
         "openai/gpt-4.1-mini",
         "openai/gpt-4.1-mini-2025-04-14",
-        "openrouter/openai/gpt-4.1-mini"
+        "openrouter/openai/gpt-4.1-mini",
+        "openrouter/openai/gpt-4.1-mini-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9720,7 +9960,8 @@
         "azure/gpt-4.1-nano",
         "openai/gpt-4.1-nano",
         "openai/gpt-4.1-nano-2025-04-14",
-        "openrouter/openai/gpt-4.1-nano"
+        "openrouter/openai/gpt-4.1-nano",
+        "openrouter/openai/gpt-4.1-nano-2025-04-14"
       ],
       "capabilities": {
         "function_calling": true,
@@ -10547,7 +10788,9 @@
       "aliases": [
         "azure/gpt-4o-mini-search-preview",
         "openai/gpt-4o-mini-search-preview",
-        "openrouter/openai/gpt-4o-mini-search-preview"
+        "openai/gpt-4o-mini-search-preview-2025-03-11",
+        "openrouter/openai/gpt-4o-mini-search-preview",
+        "openrouter/openai/gpt-4o-mini-search-preview-2025-03-11"
       ],
       "capabilities": {
         "function_calling": true,
@@ -10893,7 +11136,8 @@
         "azure/gpt-4o-search-preview",
         "openai/gpt-4o-search-preview",
         "openai/gpt-4o-search-preview-2025-03-11",
-        "openrouter/openai/gpt-4o-search-preview"
+        "openrouter/openai/gpt-4o-search-preview",
+        "openrouter/openai/gpt-4o-search-preview-2025-03-11"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11027,7 +11271,8 @@
         "openai/gpt-5-codex",
         "openai/gpt-5-2025-08-07",
         "openai/gpt-5-chat-latest",
-        "openrouter/openai/gpt-5"
+        "openrouter/openai/gpt-5",
+        "openrouter/openai/gpt-5-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11121,43 +11366,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 60.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 71,
+          "as_of": "2026-04-28",
+          "rank": 73,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 62,
+          "as_of": "2026-04-28",
+          "rank": 65,
           "score": 49.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 38,
           "score": 59.0
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 72,
+          "as_of": "2026-04-28",
+          "rank": 75,
           "score": 63.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 76.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 51,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 64.7
         }
       },
@@ -11207,7 +11452,9 @@
       "aliases": [
         "azure/gpt-5-chat",
         "openai/gpt-5-chat",
-        "openrouter/openai/gpt-5-chat"
+        "openai/gpt-5-chat-2025-08-07",
+        "openrouter/openai/gpt-5-chat",
+        "openrouter/openai/gpt-5-chat-2025-08-07"
       ],
       "capabilities": {
         "pdf_input": true,
@@ -11417,7 +11664,8 @@
         "azure/gpt-5-mini",
         "openai/gpt-5-mini",
         "openai/gpt-5-mini-2025-08-07",
-        "openrouter/openai/gpt-5-mini"
+        "openrouter/openai/gpt-5-mini",
+        "openrouter/openai/gpt-5-mini-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11459,13 +11707,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 52,
+          "as_of": "2026-04-28",
+          "rank": 55,
           "score": 61.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 69,
+          "as_of": "2026-04-28",
+          "rank": 72,
           "score": 35.0
         },
         "livebench_coding": {
@@ -11474,28 +11722,28 @@
           "score": 76.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 49.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 18,
+          "as_of": "2026-04-28",
+          "rank": 19,
           "score": 64.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 69.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 56,
+          "as_of": "2026-04-28",
+          "rank": 59,
           "score": 74.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 58.7
         }
       },
@@ -11545,7 +11793,9 @@
       "aliases": [
         "azure/gpt-5-nano",
         "openai/gpt-5-nano",
-        "openrouter/openai/gpt-5-nano"
+        "openai/gpt-5-nano-2025-08-07",
+        "openrouter/openai/gpt-5-nano",
+        "openrouter/openai/gpt-5-nano-2025-08-07"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11587,43 +11837,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 84,
+          "as_of": "2026-04-28",
+          "rank": 87,
           "score": 48.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 80,
+          "as_of": "2026-04-28",
+          "rank": 83,
           "score": 28.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 84,
+          "as_of": "2026-04-28",
+          "rank": 87,
           "score": 67.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 89,
+          "as_of": "2026-04-28",
+          "rank": 92,
           "score": 44.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 47,
+          "as_of": "2026-04-28",
+          "rank": 50,
           "score": 52.0
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 95,
+          "as_of": "2026-04-28",
+          "rank": 98,
           "score": 47.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 81,
+          "as_of": "2026-04-28",
+          "rank": 84,
           "score": 64.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 95,
+          "as_of": "2026-04-28",
+          "rank": 98,
           "score": 35.5
         }
       },
@@ -11675,7 +11925,8 @@
         "azure/gpt-5-pro",
         "openai/gpt-5-pro",
         "openai/gpt-5-pro-2025-10-06",
-        "openrouter/openai/gpt-5-pro"
+        "openrouter/openai/gpt-5-pro",
+        "openrouter/openai/gpt-5-pro-2025-10-06"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11716,28 +11967,28 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 70.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 30,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 60,
           "score": 72.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 40,
+          "as_of": "2026-04-28",
+          "rank": 43,
           "score": 57.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 19,
+          "as_of": "2026-04-28",
+          "rank": 20,
           "score": 64.0
         },
         "livebench_language": {
@@ -11746,13 +11997,13 @@
           "score": 80.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 21,
+          "as_of": "2026-04-28",
+          "rank": 22,
           "score": 86.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 81.7
         }
       },
@@ -11798,28 +12049,28 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 70.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 30,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 60,
           "score": 72.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 40,
+          "as_of": "2026-04-28",
+          "rank": 43,
           "score": 57.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 19,
+          "as_of": "2026-04-28",
+          "rank": 20,
           "score": 64.0
         },
         "livebench_language": {
@@ -11828,13 +12079,13 @@
           "score": 80.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 21,
+          "as_of": "2026-04-28",
+          "rank": 22,
           "score": 86.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 81.7
         }
       }
@@ -11917,13 +12168,15 @@
         "openai/gpt-5.1-chat",
         "openai/gpt-5-1-codex",
         "openai/gpt-5.1-codex",
+        "openai/gpt-5.1-20251113",
         "openai/gpt-5-1-codex-max",
         "openai/gpt-5.1-codex-max",
         "openai/gpt-5-1-2025-11-13",
         "openai/gpt-5.1-2025-11-13",
         "openai/gpt-5-1-chat-latest",
         "openai/gpt-5.1-chat-latest",
-        "openrouter/openai/gpt-5.1"
+        "openrouter/openai/gpt-5.1",
+        "openrouter/openai/gpt-5.1-20251113"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11991,13 +12244,13 @@
           "rank": 8
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 23,
           "score": 72.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 56.7
         },
         "livebench_coding": {
@@ -12006,23 +12259,23 @@
           "score": 81.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 37,
+          "as_of": "2026-04-28",
+          "rank": 40,
           "score": 60.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 11,
+          "as_of": "2026-04-28",
+          "rank": 12,
           "score": 67.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 38,
+          "as_of": "2026-04-28",
+          "rank": 39,
           "score": 75.4
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 83.7
         },
         "livebench_reasoning": {
@@ -12078,7 +12331,9 @@
       "aliases": [
         "azure/gpt-5.1-chat",
         "openai/gpt-5.1-chat",
-        "openrouter/openai/gpt-5.1-chat"
+        "openai/gpt-5.1-chat-20251113",
+        "openrouter/openai/gpt-5.1-chat",
+        "openrouter/openai/gpt-5.1-chat-20251113"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12193,7 +12448,9 @@
       "aliases": [
         "azure/gpt-5.1-codex",
         "openai/gpt-5.1-codex",
-        "openrouter/openai/gpt-5.1-codex"
+        "openai/gpt-5.1-codex-20251113",
+        "openrouter/openai/gpt-5.1-codex",
+        "openrouter/openai/gpt-5.1-codex-20251113"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12229,43 +12486,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 35,
           "score": 68.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 28,
+          "as_of": "2026-04-28",
+          "rank": 30,
           "score": 53.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 61,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 71.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 37,
+          "as_of": "2026-04-28",
+          "rank": 40,
           "score": 60.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 23,
+          "as_of": "2026-04-28",
+          "rank": 24,
           "score": 63.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 58,
+          "as_of": "2026-04-28",
+          "rank": 61,
           "score": 69.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 43,
+          "as_of": "2026-04-28",
+          "rank": 46,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 16,
+          "as_of": "2026-04-28",
+          "rank": 17,
           "score": 82.0
         }
       }
@@ -12310,7 +12567,9 @@
       "aliases": [
         "azure/gpt-5.1-codex-max",
         "openai/gpt-5.1-codex-max",
-        "openrouter/openai/gpt-5.1-codex-max"
+        "openai/gpt-5.1-codex-max-20251204",
+        "openrouter/openai/gpt-5.1-codex-max",
+        "openrouter/openai/gpt-5.1-codex-max-20251204"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12346,13 +12605,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 23,
           "score": 72.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 56.7
         },
         "livebench_coding": {
@@ -12361,23 +12620,23 @@
           "score": 81.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 46,
+          "as_of": "2026-04-28",
+          "rank": 49,
           "score": 54.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 11,
+          "as_of": "2026-04-28",
+          "rank": 12,
           "score": 67.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 38,
+          "as_of": "2026-04-28",
+          "rank": 39,
           "score": 75.4
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 83.7
         },
         "livebench_reasoning": {
@@ -12392,7 +12651,9 @@
       "aliases": [
         "azure/gpt-5.1-codex-mini",
         "openai/gpt-5.1-codex-mini",
-        "openrouter/openai/gpt-5.1-codex-mini"
+        "openai/gpt-5.1-codex-mini-20251113",
+        "openrouter/openai/gpt-5.1-codex-mini",
+        "openrouter/openai/gpt-5.1-codex-mini-20251113"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12428,43 +12689,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 60.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 59,
+          "as_of": "2026-04-28",
+          "rank": 62,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 71,
+          "as_of": "2026-04-28",
+          "rank": 73,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 62,
+          "as_of": "2026-04-28",
+          "rank": 65,
           "score": 49.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 38,
           "score": 59.0
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 72,
+          "as_of": "2026-04-28",
+          "rank": 75,
           "score": 63.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 76.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 51,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 64.7
         }
       }
@@ -12523,11 +12784,13 @@
         "openai/gpt-5.2-chat",
         "openai/gpt-5-2-codex",
         "openai/gpt-5.2-codex",
+        "openai/gpt-5.2-20251211",
         "openai/gpt-5-2-2025-12-11",
         "openai/gpt-5.2-2025-12-11",
         "openai/gpt-5-2-chat-latest",
         "openai/gpt-5.2-chat-latest",
-        "openrouter/openai/gpt-5.2"
+        "openrouter/openai/gpt-5.2",
+        "openrouter/openai/gpt-5.2-20251211"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12575,8 +12838,8 @@
           "score": 74.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 35,
           "score": 51.7
         },
         "livebench_coding": {
@@ -12590,23 +12853,23 @@
           "score": 78.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 12,
+          "as_of": "2026-04-28",
+          "rank": 13,
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 46,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 13,
+          "as_of": "2026-04-28",
+          "rank": 14,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 77.7
         }
       },
@@ -12657,7 +12920,9 @@
       "aliases": [
         "azure/gpt-5.2-chat",
         "openai/gpt-5.2-chat",
-        "openrouter/openai/gpt-5.2-chat"
+        "openai/gpt-5.2-chat-20251211",
+        "openrouter/openai/gpt-5.2-chat",
+        "openrouter/openai/gpt-5.2-chat-20251211"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12775,7 +13040,9 @@
       "aliases": [
         "azure/gpt-5.2-codex",
         "openai/gpt-5.2-codex",
-        "openrouter/openai/gpt-5.2-codex"
+        "openai/gpt-5.2-codex-20260114",
+        "openrouter/openai/gpt-5.2-codex",
+        "openrouter/openai/gpt-5.2-codex-20260114"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12816,8 +13083,8 @@
           "score": 74.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 35,
           "score": 51.7
         },
         "livebench_coding": {
@@ -12831,23 +13098,23 @@
           "score": 78.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 12,
+          "as_of": "2026-04-28",
+          "rank": 13,
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 46,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 13,
+          "as_of": "2026-04-28",
+          "rank": 14,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 26,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 77.7
         }
       }
@@ -12858,9 +13125,11 @@
         "gpt-5.2-pro-2025-12-11",
         "azure/gpt-5.2-pro",
         "openai/gpt-5.2-pro",
+        "openai/gpt-5.2-pro-20251211",
         "openai/gpt-5-2-pro-2025-12-11",
         "openai/gpt-5.2-pro-2025-12-11",
-        "openrouter/openai/gpt-5.2-pro"
+        "openrouter/openai/gpt-5.2-pro",
+        "openrouter/openai/gpt-5.2-pro-20251211"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12943,7 +13212,9 @@
       "aliases": [
         "azure/gpt-5.3-chat",
         "openai/gpt-5.3-chat",
-        "openrouter/openai/gpt-5.3-chat"
+        "openai/gpt-5.3-chat-20260303",
+        "openrouter/openai/gpt-5.3-chat",
+        "openrouter/openai/gpt-5.3-chat-20260303"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13022,7 +13293,9 @@
         "azure/gpt-5.3-codex",
         "openai/gpt-5-3-codex",
         "openai/gpt-5.3-codex",
-        "openrouter/openai/gpt-5.3-codex"
+        "openai/gpt-5.3-codex-20260224",
+        "openrouter/openai/gpt-5.3-codex",
+        "openrouter/openai/gpt-5.3-codex-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13061,13 +13334,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 72.8
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 24,
           "score": 55.0
         },
         "livebench_coding": {
@@ -13076,13 +13349,13 @@
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 34,
+          "as_of": "2026-04-28",
+          "rank": 37,
           "score": 62.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 14,
+          "as_of": "2026-04-28",
+          "rank": 15,
           "score": 65.4
         },
         "livebench_language": {
@@ -13091,13 +13364,13 @@
           "score": 80.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 15,
+          "as_of": "2026-04-28",
+          "rank": 16,
           "score": 87.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 20,
+          "as_of": "2026-04-28",
+          "rank": 21,
           "score": 80.2
         }
       },
@@ -13111,9 +13384,11 @@
         "azure/gpt-5.4",
         "openai/gpt-5-4",
         "openai/gpt-5.4",
+        "openai/gpt-5.4-20260305",
         "openai/gpt-5-4-2026-03-05",
         "openai/gpt-5.4-2026-03-05",
-        "openrouter/openai/gpt-5.4"
+        "openrouter/openai/gpt-5.4",
+        "openrouter/openai/gpt-5.4-20260305"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13218,7 +13493,9 @@
     "gpt-5.4-image-2": {
       "aliases": [
         "openai/gpt-5.4-image-2",
-        "openrouter/openai/gpt-5.4-image-2"
+        "openai/gpt-5.4-image-2-20260421",
+        "openrouter/openai/gpt-5.4-image-2",
+        "openrouter/openai/gpt-5.4-image-2-20260421"
       ],
       "capabilities": {
         "reasoning": true,
@@ -13256,9 +13533,11 @@
         "azure/gpt-5.4-mini",
         "openai/gpt-5-4-mini",
         "openai/gpt-5.4-mini",
+        "openai/gpt-5.4-mini-20260317",
         "openai/gpt-5-4-mini-2026-03-17",
         "openai/gpt-5.4-mini-2026-03-17",
-        "openrouter/openai/gpt-5.4-mini"
+        "openrouter/openai/gpt-5.4-mini",
+        "openrouter/openai/gpt-5.4-mini-20260317"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13298,43 +13577,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-26",
-          "rank": 100,
+          "as_of": "2026-04-28",
+          "rank": 103,
           "score": 37.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-26",
-          "rank": 90,
+          "as_of": "2026-04-28",
+          "rank": 93,
           "score": 17.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 42,
+          "as_of": "2026-04-28",
+          "rank": 43,
           "score": 74.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-26",
-          "rank": 74,
+          "as_of": "2026-04-28",
+          "rank": 77,
           "score": 47.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-26",
-          "rank": 99,
+          "as_of": "2026-04-28",
+          "rank": 102,
           "score": 18.9
         },
         "livebench_language": {
-          "as_of": "2026-04-26",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 41.8
         },
         "livebench_math": {
-          "as_of": "2026-04-26",
-          "rank": 104,
+          "as_of": "2026-04-28",
+          "rank": 107,
           "score": 37.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-26",
-          "rank": 104,
+          "as_of": "2026-04-28",
+          "rank": 107,
           "score": 21.9
         }
       },
@@ -13388,9 +13667,11 @@
         "azure/gpt-5.4-nano",
         "openai/gpt-5-4-nano",
         "openai/gpt-5.4-nano",
+        "openai/gpt-5.4-nano-20260317",
         "openai/gpt-5-4-nano-2026-03-17",
         "openai/gpt-5.4-nano-2026-03-17",
-        "openrouter/openai/gpt-5.4-nano"
+        "openrouter/openai/gpt-5.4-nano",
+        "openrouter/openai/gpt-5.4-nano-20260317"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13430,43 +13711,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-26",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 32.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-26",
-          "rank": 83,
+          "as_of": "2026-04-28",
+          "rank": 86,
           "score": 27.1
         },
         "livebench_coding": {
-          "as_of": "2026-04-26",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 61.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-26",
-          "rank": 101,
+          "as_of": "2026-04-28",
+          "rank": 104,
           "score": 39.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-26",
-          "rank": 104,
+          "as_of": "2026-04-28",
+          "rank": 107,
           "score": 16.5
         },
         "livebench_language": {
-          "as_of": "2026-04-26",
-          "rank": 105,
+          "as_of": "2026-04-28",
+          "rank": 108,
           "score": 28.7
         },
         "livebench_math": {
-          "as_of": "2026-04-26",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 36.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-26",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 17.4
         }
       },
@@ -13520,9 +13801,11 @@
         "azure/gpt-5.4-pro",
         "openai/gpt-5-4-pro",
         "openai/gpt-5.4-pro",
+        "openai/gpt-5.4-pro-20260305",
         "openai/gpt-5-4-pro-2026-03-05",
         "openai/gpt-5.4-pro-2026-03-05",
-        "openrouter/openai/gpt-5.4-pro"
+        "openrouter/openai/gpt-5.4-pro",
+        "openrouter/openai/gpt-5.4-pro-20260305"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13641,11 +13924,13 @@
         "openai/gpt-5.5-chat",
         "openai/gpt-5-5-codex",
         "openai/gpt-5.5-codex",
+        "openai/gpt-5.5-20260423",
         "openai/gpt-5-5-2026-04-23",
         "openai/gpt-5.5-2026-04-23",
         "openai/gpt-5-5-chat-latest",
         "openai/gpt-5.5-chat-latest",
-        "openrouter/openai/gpt-5.5"
+        "openrouter/openai/gpt-5.5",
+        "openrouter/openai/gpt-5.5-20260423"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13801,9 +14086,11 @@
         "azure/gpt-5.5-pro",
         "openai/gpt-5-5-pro",
         "openai/gpt-5.5-pro",
+        "openai/gpt-5.5-pro-20260423",
         "openai/gpt-5-5-pro-2026-04-23",
         "openai/gpt-5.5-pro-2026-04-23",
-        "openrouter/openai/gpt-5.5-pro"
+        "openrouter/openai/gpt-5.5-pro",
+        "openrouter/openai/gpt-5.5-pro-20260423"
       ],
       "capabilities": {
         "function_calling": true,
@@ -14517,6 +14804,74 @@
         "per_image": 0.133
       }
     },
+    "gpt-latest": {
+      "aliases": [
+        "~openai/gpt-latest",
+        "openrouter/~openai/gpt-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1050000,
+      "display_name": "OpenAI GPT Latest",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      }
+    },
+    "gpt-mini-latest": {
+      "aliases": [
+        "~openai/gpt-mini-latest",
+        "openrouter/~openai/gpt-mini-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 400000,
+      "display_name": "OpenAI GPT Mini Latest",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
+      }
+    },
     "gpt-oss-120b": {
       "aliases": [
         "openai/gpt-oss-120b",
@@ -14583,43 +14938,43 @@
           "rank": 66
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 88,
+          "as_of": "2026-04-28",
+          "rank": 91,
           "score": 46.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 92,
+          "as_of": "2026-04-28",
+          "rank": 95,
           "score": 16.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 99,
+          "as_of": "2026-04-28",
+          "rank": 102,
           "score": 60.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 38.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 50.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 93,
+          "as_of": "2026-04-28",
+          "rank": 96,
           "score": 48.6
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 68,
+          "as_of": "2026-04-28",
+          "rank": 71,
           "score": 68.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 91,
+          "as_of": "2026-04-28",
+          "rank": 94,
           "score": 39.2
         }
       },
@@ -15604,9 +15959,11 @@
         "azure/grok-4",
         "azure_ai/grok-4",
         "xai/grok-4-0709",
+        "x-ai/grok-4-07-09",
         "xai/grok-4-latest",
         "azure/azure_ai/grok-4",
-        "openrouter/x-ai/grok-4"
+        "openrouter/x-ai/grok-4",
+        "openrouter/x-ai/grok-4-07-09"
       ],
       "capabilities": {
         "function_calling": true,
@@ -15674,43 +16031,43 @@
           "rank": 17
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 48,
           "score": 62.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 30.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 63.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 71,
+          "as_of": "2026-04-28",
+          "rank": 74,
           "score": 29.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 76.4
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 37,
           "score": 83.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 24,
+          "as_of": "2026-04-28",
+          "rank": 25,
           "score": 79.1
         }
       },
@@ -15762,43 +16119,43 @@
           "rank": 17
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 45,
+          "as_of": "2026-04-28",
+          "rank": 48,
           "score": 62.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 30.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 54,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 63.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 71,
+          "as_of": "2026-04-28",
+          "rank": 74,
           "score": 29.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 76.4
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 37,
           "score": 83.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 24,
+          "as_of": "2026-04-28",
+          "rank": 25,
           "score": 79.1
         }
       },
@@ -15880,43 +16237,43 @@
           "rank": 54
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 55,
+          "as_of": "2026-04-28",
+          "rank": 58,
           "score": 60.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 75,
+          "as_of": "2026-04-28",
+          "rank": 78,
           "score": 31.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 72,
+          "as_of": "2026-04-28",
+          "rank": 74,
           "score": 69.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 52.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 76,
+          "as_of": "2026-04-28",
+          "rank": 79,
           "score": 28.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 45,
           "score": 74.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 30,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 19,
+          "as_of": "2026-04-28",
+          "rank": 20,
           "score": 80.2
         }
       },
@@ -15962,43 +16319,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 33.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 95,
+          "as_of": "2026-04-28",
+          "rank": 98,
           "score": 10.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 54.3
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 99,
+          "as_of": "2026-04-28",
+          "rank": 102,
           "score": 40.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 17.0
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 90,
+          "as_of": "2026-04-28",
+          "rank": 93,
           "score": 50.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 38.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 23.3
         }
       },
@@ -16074,43 +16431,43 @@
           "rank": 54
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 55,
+          "as_of": "2026-04-28",
+          "rank": 58,
           "score": 60.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 75,
+          "as_of": "2026-04-28",
+          "rank": 78,
           "score": 31.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 72,
+          "as_of": "2026-04-28",
+          "rank": 74,
           "score": 69.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 52.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 76,
+          "as_of": "2026-04-28",
+          "rank": 79,
           "score": 28.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 44,
+          "as_of": "2026-04-28",
+          "rank": 45,
           "score": 74.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 30,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 19,
+          "as_of": "2026-04-28",
+          "rank": 20,
           "score": 80.2
         }
       },
@@ -16346,6 +16703,7 @@
         "x-ai/grok-4.20",
         "xai/grok-4.20-0309",
         "xai/grok-4.20-beta",
+        "x-ai/grok-4.20-20260309",
         "xai/grok-4.20-beta-0309",
         "xai/grok-4.20-reasoning",
         "xai/grok-4.20-beta-latest",
@@ -16359,7 +16717,8 @@
         "xai/grok-4.20-experimental-beta-latest",
         "xai/grok-4.20-experimental-beta-0304-reasoning",
         "xai/grok-4.20-experimental-beta-reasoning-latest",
-        "openrouter/x-ai/grok-4.20"
+        "openrouter/x-ai/grok-4.20",
+        "openrouter/x-ai/grok-4.20-20260309"
       ],
       "capabilities": {
         "function_calling": true,
@@ -16404,43 +16763,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 37,
           "score": 68.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 50,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 43.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 87,
+          "as_of": "2026-04-28",
+          "rank": 90,
           "score": 66.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 36,
           "score": 62.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 23,
           "score": 63.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 23,
+          "as_of": "2026-04-28",
+          "rank": 24,
           "score": 77.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 16,
+          "as_of": "2026-04-28",
+          "rank": 17,
           "score": 87.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 33,
+          "as_of": "2026-04-28",
+          "rank": 34,
           "score": 75.3
         }
       },
@@ -16481,11 +16840,13 @@
         "x-ai/grok-4.20-multi-agent",
         "xai/grok-4.20-multi-agent-0309",
         "xai/grok-4.20-multi-agent-latest",
+        "x-ai/grok-4.20-multi-agent-20260309",
         "xai/grok-4.20-multi-agent-beta-0309",
         "xai/grok-4.20-multi-agent-beta-latest",
         "xai/grok-4.20-multi-agent-experimental-beta-0304",
         "xai/grok-4.20-multi-agent-experimental-beta-latest",
-        "openrouter/x-ai/grok-4.20-multi-agent"
+        "openrouter/x-ai/grok-4.20-multi-agent",
+        "openrouter/x-ai/grok-4.20-multi-agent-20260309"
       ],
       "capabilities": {
         "function_calling": true,
@@ -16583,43 +16944,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 98,
+          "as_of": "2026-04-28",
+          "rank": 101,
           "score": 39.7
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 63,
+          "as_of": "2026-04-28",
+          "rank": 66,
           "score": 38.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 100,
+          "as_of": "2026-04-28",
+          "rank": 103,
           "score": 58.5
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 95,
+          "as_of": "2026-04-28",
+          "rank": 98,
           "score": 43.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 86,
-          "score": 24.4
+          "as_of": "2026-04-28",
+          "rank": 89,
+          "score": 24.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 101,
+          "as_of": "2026-04-28",
+          "rank": 104,
           "score": 42.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 100,
+          "as_of": "2026-04-28",
+          "rank": 103,
           "score": 45.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 25.6
         }
       },
@@ -16673,43 +17034,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 90,
+          "as_of": "2026-04-28",
+          "rank": 93,
           "score": 45.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 73,
+          "as_of": "2026-04-28",
+          "rank": 76,
           "score": 33.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 93,
+          "as_of": "2026-04-28",
+          "rank": 96,
           "score": 64.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 49.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 92,
+          "as_of": "2026-04-28",
+          "rank": 95,
           "score": 22.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 94,
+          "as_of": "2026-04-28",
+          "rank": 97,
           "score": 48.6
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 56.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 82,
+          "as_of": "2026-04-28",
+          "rank": 85,
           "score": 42.3
         }
       },
@@ -16772,43 +17133,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 90,
+          "as_of": "2026-04-28",
+          "rank": 93,
           "score": 45.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 73,
+          "as_of": "2026-04-28",
+          "rank": 76,
           "score": 33.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 93,
+          "as_of": "2026-04-28",
+          "rank": 96,
           "score": 64.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 49.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 92,
+          "as_of": "2026-04-28",
+          "rank": 95,
           "score": 22.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 94,
+          "as_of": "2026-04-28",
+          "rank": 97,
           "score": 48.6
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 56.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 82,
+          "as_of": "2026-04-28",
+          "rank": 85,
           "score": 42.3
         }
       },
@@ -17352,7 +17713,9 @@
     "intellect-3": {
       "aliases": [
         "prime-intellect/intellect-3",
-        "openrouter/prime-intellect/intellect-3"
+        "prime-intellect/intellect-3-20251126",
+        "openrouter/prime-intellect/intellect-3",
+        "openrouter/prime-intellect/intellect-3-20251126"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17571,7 +17934,9 @@
     "kat-coder-pro-v2": {
       "aliases": [
         "kwaipilot/kat-coder-pro-v2",
-        "openrouter/kwaipilot/kat-coder-pro-v2"
+        "kwaipilot/kat-coder-pro-v2-20260327",
+        "openrouter/kwaipilot/kat-coder-pro-v2",
+        "openrouter/kwaipilot/kat-coder-pro-v2-20260327"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17665,8 +18030,10 @@
         "fireworks/kimi-k2-thinking",
         "moonshotai/kimi-k2-thinking",
         "moonshot-ai/kimi-k2-thinking",
+        "moonshotai/kimi-k2-thinking-20251106",
         "together/moonshot-ai/kimi-k2-thinking",
-        "openrouter/moonshotai/kimi-k2-thinking"
+        "openrouter/moonshotai/kimi-k2-thinking",
+        "openrouter/moonshotai/kimi-k2-thinking-20251106"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17694,43 +18061,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 49,
+          "as_of": "2026-04-28",
+          "rank": 52,
           "score": 61.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 38.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 83,
+          "as_of": "2026-04-28",
+          "rank": 86,
           "score": 67.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 53,
+          "as_of": "2026-04-28",
+          "rank": 56,
           "score": 52.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 27,
+          "as_of": "2026-04-28",
+          "rank": 30,
           "score": 62.0
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 66.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 40,
+          "as_of": "2026-04-28",
+          "rank": 42,
           "score": 81.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 63.5
         }
       }
@@ -17739,8 +18106,10 @@
       "aliases": [
         "azure_ai/kimi-k2.5",
         "moonshotai/kimi-k2.5",
+        "moonshotai/kimi-k2.5-0127",
         "azure/azure_ai/kimi-k2.5",
-        "openrouter/moonshotai/kimi-k2.5"
+        "openrouter/moonshotai/kimi-k2.5",
+        "openrouter/moonshotai/kimi-k2.5-0127"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17771,13 +18140,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 69.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 43,
+          "as_of": "2026-04-28",
+          "rank": 46,
           "score": 48.3
         },
         "livebench_coding": {
@@ -17786,28 +18155,28 @@
           "score": 77.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 38,
           "score": 61.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 38,
+          "as_of": "2026-04-28",
+          "rank": 41,
           "score": 57.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 25,
+          "as_of": "2026-04-28",
+          "rank": 26,
           "score": 77.7
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 25,
+          "as_of": "2026-04-28",
+          "rank": 27,
           "score": 84.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 31,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 76.0
         }
       },
@@ -17816,7 +18185,9 @@
     "kimi-k2.6": {
       "aliases": [
         "moonshotai/kimi-k2.6",
-        "openrouter/moonshotai/kimi-k2.6"
+        "moonshotai/kimi-k2.6-20260420",
+        "openrouter/moonshotai/kimi-k2.6",
+        "openrouter/moonshotai/kimi-k2.6-20260420"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17848,8 +18219,8 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 20,
+          "as_of": "2026-04-28",
+          "rank": 21,
           "score": 72.2
         },
         "livebench_agentic_coding": {
@@ -17863,28 +18234,28 @@
           "score": 78.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 29,
+          "as_of": "2026-04-28",
+          "rank": 31,
           "score": 65.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 17,
+          "as_of": "2026-04-28",
+          "rank": 18,
           "score": 64.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 39,
+          "as_of": "2026-04-28",
+          "rank": 40,
           "score": 75.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 27,
+          "as_of": "2026-04-28",
+          "rank": 29,
           "score": 84.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 23,
+          "as_of": "2026-04-28",
+          "rank": 24,
           "score": 79.4
         }
       }
@@ -17915,6 +18286,40 @@
         "output_per_mtok": 3.0
       },
       "source_url": "https://fireworks.ai/pricing"
+    },
+    "kimi-latest": {
+      "aliases": [
+        "~moonshotai/kimi-latest",
+        "openrouter/~moonshotai/kimi-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "MoonshotAI Kimi Latest",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.1463,
+        "currency": "USD",
+        "input_per_mtok": 0.7448,
+        "output_per_mtok": 4.655
+      }
     },
     "l3-euryale-70b": {
       "aliases": [
@@ -18032,7 +18437,9 @@
     "l3.3-euryale-70b": {
       "aliases": [
         "sao10k/l3.3-euryale-70b",
-        "openrouter/sao10k/l3.3-euryale-70b"
+        "sao10k/l3.3-euryale-70b-v2.3",
+        "openrouter/sao10k/l3.3-euryale-70b",
+        "openrouter/sao10k/l3.3-euryale-70b-v2.3"
       ],
       "capabilities": {
         "response_schema": true,
@@ -18113,7 +18520,9 @@
     "lfm-2-24b-a2b": {
       "aliases": [
         "liquid/lfm-2-24b-a2b",
-        "openrouter/liquid/lfm-2-24b-a2b"
+        "liquid/lfm-2-24b-a2b-20260224",
+        "openrouter/liquid/lfm-2-24b-a2b",
+        "openrouter/liquid/lfm-2-24b-a2b-20260224"
       ],
       "context_window": 32768,
       "display_name": "LiquidAI: LFM2-24B-A2B",
@@ -18905,7 +19314,9 @@
     "llama-4-maverick": {
       "aliases": [
         "meta-llama/llama-4-maverick",
-        "openrouter/meta-llama/llama-4-maverick"
+        "meta-llama/llama-4-maverick-17b-128e-instruct",
+        "openrouter/meta-llama/llama-4-maverick",
+        "openrouter/meta-llama/llama-4-maverick-17b-128e-instruct"
       ],
       "capabilities": {
         "response_schema": true,
@@ -18935,7 +19346,9 @@
     "llama-4-scout": {
       "aliases": [
         "meta-llama/llama-4-scout",
-        "openrouter/meta-llama/llama-4-scout"
+        "meta-llama/llama-4-scout-17b-16e-instruct",
+        "openrouter/meta-llama/llama-4-scout",
+        "openrouter/meta-llama/llama-4-scout-17b-16e-instruct"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19191,7 +19604,9 @@
       "aliases": [
         "gemini/lyria-3-clip-preview",
         "google/lyria-3-clip-preview",
-        "openrouter/google/lyria-3-clip-preview"
+        "google/lyria-3-clip-preview-20260330",
+        "openrouter/google/lyria-3-clip-preview",
+        "openrouter/google/lyria-3-clip-preview-20260330"
       ],
       "capabilities": {
         "audio_output": true
@@ -19223,7 +19638,9 @@
       "aliases": [
         "gemini/lyria-3-pro-preview",
         "google/lyria-3-pro-preview",
-        "openrouter/google/lyria-3-pro-preview"
+        "google/lyria-3-pro-preview-20260330",
+        "openrouter/google/lyria-3-pro-preview",
+        "openrouter/google/lyria-3-pro-preview-20260330"
       ],
       "capabilities": {
         "audio_output": true
@@ -19556,7 +19973,9 @@
     "mercury-2": {
       "aliases": [
         "inception/mercury-2",
-        "openrouter/inception/mercury-2"
+        "inception/mercury-2-20260304",
+        "openrouter/inception/mercury-2",
+        "openrouter/inception/mercury-2-20260304"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19589,7 +20008,9 @@
     "mimo-v2-flash": {
       "aliases": [
         "xiaomi/mimo-v2-flash",
-        "openrouter/xiaomi/mimo-v2-flash"
+        "xiaomi/mimo-v2-flash-20251210",
+        "openrouter/xiaomi/mimo-v2-flash",
+        "openrouter/xiaomi/mimo-v2-flash-20251210"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19622,7 +20043,9 @@
     "mimo-v2-omni": {
       "aliases": [
         "xiaomi/mimo-v2-omni",
-        "openrouter/xiaomi/mimo-v2-omni"
+        "xiaomi/mimo-v2-omni-20260318",
+        "openrouter/xiaomi/mimo-v2-omni",
+        "openrouter/xiaomi/mimo-v2-omni-20260318"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19658,7 +20081,9 @@
     "mimo-v2-pro": {
       "aliases": [
         "xiaomi/mimo-v2-pro",
-        "openrouter/xiaomi/mimo-v2-pro"
+        "xiaomi/mimo-v2-pro-20260318",
+        "openrouter/xiaomi/mimo-v2-pro",
+        "openrouter/xiaomi/mimo-v2-pro-20260318"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19689,43 +20114,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 58.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 79,
+          "as_of": "2026-04-28",
+          "rank": 82,
           "score": 30.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 77,
+          "as_of": "2026-04-28",
+          "rank": 80,
           "score": 68.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 66,
+          "as_of": "2026-04-28",
+          "rank": 69,
           "score": 49.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 60,
+          "as_of": "2026-04-28",
+          "rank": 63,
           "score": 43.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 60,
+          "as_of": "2026-04-28",
+          "rank": 63,
           "score": 69.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 50,
+          "as_of": "2026-04-28",
+          "rank": 53,
           "score": 77.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 46,
+          "as_of": "2026-04-28",
+          "rank": 49,
           "score": 69.7
         }
       }
@@ -19733,7 +20158,9 @@
     "mimo-v2.5": {
       "aliases": [
         "xiaomi/mimo-v2.5",
-        "openrouter/xiaomi/mimo-v2.5"
+        "xiaomi/mimo-v2.5-20260422",
+        "openrouter/xiaomi/mimo-v2.5",
+        "openrouter/xiaomi/mimo-v2.5-20260422"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19769,7 +20196,9 @@
     "mimo-v2.5-pro": {
       "aliases": [
         "xiaomi/mimo-v2.5-pro",
-        "openrouter/xiaomi/mimo-v2.5-pro"
+        "xiaomi/mimo-v2.5-pro-20260422",
+        "openrouter/xiaomi/mimo-v2.5-pro",
+        "openrouter/xiaomi/mimo-v2.5-pro-20260422"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19935,7 +20364,9 @@
     "minimax-m2-her": {
       "aliases": [
         "minimax/minimax-m2-her",
-        "openrouter/minimax/minimax-m2-her"
+        "minimax/minimax-m2-her-20260123",
+        "openrouter/minimax/minimax-m2-her",
+        "openrouter/minimax/minimax-m2-her-20260123"
       ],
       "context_window": 65536,
       "display_name": "MiniMax: MiniMax M2-her",
@@ -19995,8 +20426,10 @@
       "aliases": [
         "minimax/minimax-m2.5",
         "minimax/minimax-m2.5:free",
+        "minimax/minimax-m2.5-20260211",
         "openrouter/minimax/minimax-m2.5",
-        "openrouter/minimax/minimax-m2.5:free"
+        "openrouter/minimax/minimax-m2.5:free",
+        "openrouter/minimax/minimax-m2.5-20260211"
       ],
       "capabilities": {
         "function_calling": true,
@@ -20027,43 +20460,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 54,
+          "as_of": "2026-04-28",
+          "rank": 57,
           "score": 60.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 34,
+          "as_of": "2026-04-28",
+          "rank": 36,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 70.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 49.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 39,
+          "as_of": "2026-04-28",
+          "rank": 42,
           "score": 57.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 83,
+          "as_of": "2026-04-28",
+          "rank": 86,
           "score": 55.1
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 49,
+          "as_of": "2026-04-28",
+          "rank": 52,
           "score": 77.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 59.3
         }
       }
@@ -20071,7 +20504,9 @@
     "minimax-m2.7": {
       "aliases": [
         "minimax/minimax-m2.7",
-        "openrouter/minimax/minimax-m2.7"
+        "minimax/minimax-m2.7-20260318",
+        "openrouter/minimax/minimax-m2.7",
+        "openrouter/minimax/minimax-m2.7-20260318"
       ],
       "capabilities": {
         "function_calling": true,
@@ -20101,43 +20536,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 42,
+          "as_of": "2026-04-28",
+          "rank": 45,
           "score": 63.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 38,
+          "as_of": "2026-04-28",
+          "rank": 41,
           "score": 50.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 102,
+          "as_of": "2026-04-28",
+          "rank": 105,
           "score": 54.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 42,
+          "as_of": "2026-04-28",
+          "rank": 45,
           "score": 56.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 29,
+          "as_of": "2026-04-28",
+          "rank": 32,
           "score": 61.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 61,
+          "as_of": "2026-04-28",
+          "rank": 64,
           "score": 66.8
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 41,
+          "as_of": "2026-04-28",
+          "rank": 43,
           "score": 80.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 35,
+          "as_of": "2026-04-28",
+          "rank": 36,
           "score": 74.8
         }
       }
@@ -21046,7 +21481,9 @@
         "mistral/mistral-saba",
         "mistralai/mistral-saba",
         "mistral/mistral-saba-latest",
-        "openrouter/mistralai/mistral-saba"
+        "mistralai/mistral-saba-2502",
+        "openrouter/mistralai/mistral-saba",
+        "openrouter/mistralai/mistral-saba-2502"
       ],
       "capabilities": {
         "function_calling": true,
@@ -21245,7 +21682,9 @@
     "mistral-small-3.1-24b-instruct": {
       "aliases": [
         "mistralai/mistral-small-3.1-24b-instruct",
-        "openrouter/mistralai/mistral-small-3.1-24b-instruct"
+        "mistralai/mistral-small-3.1-24b-instruct-2503",
+        "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "openrouter/mistralai/mistral-small-3.1-24b-instruct-2503"
       ],
       "context_window": 128000,
       "display_name": "Mistral: Mistral Small 3.1 24B",
@@ -21270,7 +21709,9 @@
     "mistral-small-3.2-24b-instruct": {
       "aliases": [
         "mistralai/mistral-small-3.2-24b-instruct",
-        "openrouter/mistralai/mistral-small-3.2-24b-instruct"
+        "mistralai/mistral-small-3.2-24b-instruct-2506",
+        "openrouter/mistralai/mistral-small-3.2-24b-instruct",
+        "openrouter/mistralai/mistral-small-3.2-24b-instruct-2506"
       ],
       "capabilities": {
         "function_calling": true,
@@ -21302,7 +21743,9 @@
     "mistral-small-creative": {
       "aliases": [
         "mistralai/mistral-small-creative",
-        "openrouter/mistralai/mistral-small-creative"
+        "mistralai/mistral-small-creative-20251216",
+        "openrouter/mistralai/mistral-small-creative",
+        "openrouter/mistralai/mistral-small-creative-20251216"
       ],
       "capabilities": {
         "function_calling": true,
@@ -21676,8 +22119,10 @@
       "aliases": [
         "nvidia/nemotron-3-super-120b-a12b",
         "nvidia/nemotron-3-super-120b-a12b:free",
+        "nvidia/nemotron-3-super-120b-a12b-20230311",
         "openrouter/nvidia/nemotron-3-super-120b-a12b",
-        "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+        "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+        "openrouter/nvidia/nemotron-3-super-120b-a12b-20230311"
       ],
       "capabilities": {
         "function_calling": true,
@@ -21707,43 +22152,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 105,
+          "as_of": "2026-04-28",
+          "rank": 108,
           "score": 32.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 88,
+          "as_of": "2026-04-28",
+          "rank": 91,
           "score": 23.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 104,
+          "as_of": "2026-04-28",
+          "rank": 107,
           "score": 54.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 21.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 74,
+          "as_of": "2026-04-28",
+          "rank": 77,
           "score": 28.4
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 104,
+          "as_of": "2026-04-28",
+          "rank": 107,
           "score": 30.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 105,
+          "as_of": "2026-04-28",
+          "rank": 108,
           "score": 36.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 34.4
         }
       }
@@ -21994,7 +22439,8 @@
         "openai/o1-2024-12-17",
         "azure/o1-preview-2024-09-12",
         "openai/o1-preview-2024-09-12",
-        "openrouter/openai/o1"
+        "openrouter/openai/o1",
+        "openrouter/openai/o1-2024-12-17"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22348,7 +22794,8 @@
         "openai/o3",
         "azure/o3-2025-04-16",
         "openai/o3-2025-04-16",
-        "openrouter/openai/o3"
+        "openrouter/openai/o3",
+        "openrouter/openai/o3-2025-04-16"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22486,7 +22933,8 @@
         "azure/o3-deep-research",
         "openai/o3-deep-research",
         "openai/o3-deep-research-2025-06-26",
-        "openrouter/openai/o3-deep-research"
+        "openrouter/openai/o3-deep-research",
+        "openrouter/openai/o3-deep-research-2025-06-26"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22573,7 +23021,8 @@
         "openai/o3-mini-high",
         "azure/o3-mini-2025-01-31",
         "openai/o3-mini-2025-01-31",
-        "openrouter/openai/o3-mini"
+        "openrouter/openai/o3-mini",
+        "openrouter/openai/o3-mini-2025-01-31"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22658,7 +23107,9 @@
     "o3-mini-high": {
       "aliases": [
         "openai/o3-mini-high",
-        "openrouter/openai/o3-mini-high"
+        "openai/o3-mini-high-2025-01-31",
+        "openrouter/openai/o3-mini-high",
+        "openrouter/openai/o3-mini-high-2025-01-31"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22715,7 +23166,8 @@
         "azure/o3-pro",
         "openai/o3-pro",
         "openai/o3-pro-2025-06-10",
-        "openrouter/openai/o3-pro"
+        "openrouter/openai/o3-pro",
+        "openrouter/openai/o3-pro-2025-06-10"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22798,7 +23250,8 @@
         "openai/o4-mini",
         "openai/o4-mini-high",
         "openai/o4-mini-2025-04-16",
-        "openrouter/openai/o4-mini"
+        "openrouter/openai/o4-mini",
+        "openrouter/openai/o4-mini-2025-04-16"
       ],
       "capabilities": {
         "function_calling": true,
@@ -22925,7 +23378,8 @@
         "azure/o4-mini-deep-research",
         "openai/o4-mini-deep-research",
         "openai/o4-mini-deep-research-2025-06-26",
-        "openrouter/openai/o4-mini-deep-research"
+        "openrouter/openai/o4-mini-deep-research",
+        "openrouter/openai/o4-mini-deep-research-2025-06-26"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23006,7 +23460,9 @@
     "o4-mini-high": {
       "aliases": [
         "openai/o4-mini-high",
-        "openrouter/openai/o4-mini-high"
+        "openai/o4-mini-high-2025-04-16",
+        "openrouter/openai/o4-mini-high",
+        "openrouter/openai/o4-mini-high-2025-04-16"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23040,7 +23496,9 @@
     "olmo-3-32b-think": {
       "aliases": [
         "allenai/olmo-3-32b-think",
-        "openrouter/allenai/olmo-3-32b-think"
+        "allenai/olmo-3-32b-think-20251121",
+        "openrouter/allenai/olmo-3-32b-think",
+        "openrouter/allenai/olmo-3-32b-think-20251121"
       ],
       "capabilities": {
         "reasoning": true,
@@ -23087,7 +23545,9 @@
     "olmo-3.1-32b-instruct": {
       "aliases": [
         "allenai/olmo-3.1-32b-instruct",
-        "openrouter/allenai/olmo-3.1-32b-instruct"
+        "allenai/olmo-3.1-32b-instruct-20251215",
+        "openrouter/allenai/olmo-3.1-32b-instruct",
+        "openrouter/allenai/olmo-3.1-32b-instruct-20251215"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23227,7 +23687,9 @@
     "palmyra-x5": {
       "aliases": [
         "writer/palmyra-x5",
-        "openrouter/writer/palmyra-x5"
+        "writer/palmyra-x5-20250428",
+        "openrouter/writer/palmyra-x5",
+        "openrouter/writer/palmyra-x5-20250428"
       ],
       "context_window": 1040000,
       "display_name": "Writer: Palmyra X5",
@@ -23646,8 +24108,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.12,
-        "output_per_mtok": 0.39
+        "input_per_mtok": 0.36,
+        "output_per_mtok": 0.4
       }
     },
     "qwen-2.5-7b-instruct": {
@@ -23708,7 +24170,9 @@
     "qwen-max": {
       "aliases": [
         "qwen/qwen-max",
-        "openrouter/qwen/qwen-max"
+        "qwen/qwen-max-2025-01-25",
+        "openrouter/qwen/qwen-max",
+        "openrouter/qwen/qwen-max-2025-01-25"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23740,7 +24204,9 @@
     "qwen-plus": {
       "aliases": [
         "qwen/qwen-plus",
-        "openrouter/qwen/qwen-plus"
+        "qwen/qwen-plus-2025-01-25",
+        "openrouter/qwen/qwen-plus",
+        "openrouter/qwen/qwen-plus-2025-01-25"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23807,7 +24273,9 @@
     "qwen-turbo": {
       "aliases": [
         "qwen/qwen-turbo",
-        "openrouter/qwen/qwen-turbo"
+        "qwen/qwen-turbo-2024-11-01",
+        "openrouter/qwen/qwen-turbo",
+        "openrouter/qwen/qwen-turbo-2024-11-01"
       ],
       "capabilities": {
         "function_calling": true,
@@ -23839,7 +24307,9 @@
     "qwen-vl-max": {
       "aliases": [
         "qwen/qwen-vl-max",
-        "openrouter/qwen/qwen-vl-max"
+        "qwen/qwen-vl-max-2025-01-25",
+        "openrouter/qwen/qwen-vl-max",
+        "openrouter/qwen/qwen-vl-max-2025-01-25"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24081,7 +24551,9 @@
     "qwen3-14b": {
       "aliases": [
         "qwen/qwen3-14b",
-        "openrouter/qwen/qwen3-14b"
+        "qwen/qwen3-14b-04-28",
+        "openrouter/qwen/qwen3-14b",
+        "openrouter/qwen/qwen3-14b-04-28"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24114,7 +24586,9 @@
       "aliases": [
         "qwen/qwen3-235b-a22b",
         "fireworks/qwen3-235b-a22b",
+        "qwen/qwen3-235b-a22b-04-28",
         "openrouter/qwen/qwen3-235b-a22b",
+        "openrouter/qwen/qwen3-235b-a22b-04-28",
         "accounts/fireworks/models/qwen3-235b-a22b",
         "fireworks/accounts/fireworks/models/qwen3-235b-a22b"
       ],
@@ -24220,43 +24694,43 @@
           "rank": 38
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 73,
+          "as_of": "2026-04-28",
+          "rank": 76,
           "score": 53.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 98,
+          "as_of": "2026-04-28",
+          "rank": 101,
           "score": 6.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 76,
+          "as_of": "2026-04-28",
+          "rank": 79,
           "score": 69.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 55,
+          "as_of": "2026-04-28",
+          "rank": 58,
           "score": 52.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 64,
+          "as_of": "2026-04-28",
+          "rank": 67,
           "score": 40.6
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 57,
+          "as_of": "2026-04-28",
+          "rank": 60,
           "score": 69.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 61,
+          "as_of": "2026-04-28",
+          "rank": 64,
           "score": 73.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 63,
+          "as_of": "2026-04-28",
+          "rank": 66,
           "score": 59.4
         }
       }
@@ -24264,7 +24738,9 @@
     "qwen3-30b-a3b": {
       "aliases": [
         "qwen/qwen3-30b-a3b",
-        "openrouter/qwen/qwen3-30b-a3b"
+        "qwen/qwen3-30b-a3b-04-28",
+        "openrouter/qwen/qwen3-30b-a3b",
+        "openrouter/qwen/qwen3-30b-a3b-04-28"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24314,43 +24790,43 @@
           "rank": 86
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 99,
+          "as_of": "2026-04-28",
+          "rank": 102,
           "score": 39.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 1.7
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 106,
+          "as_of": "2026-04-28",
+          "rank": 109,
           "score": 48.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 87,
+          "as_of": "2026-04-28",
+          "rank": 90,
           "score": 44.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 94,
+          "as_of": "2026-04-28",
+          "rank": 97,
           "score": 21.1
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 85,
+          "as_of": "2026-04-28",
+          "rank": 88,
           "score": 54.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 65.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 93,
+          "as_of": "2026-04-28",
+          "rank": 96,
           "score": 36.7
         }
       }
@@ -24444,8 +24920,10 @@
     "qwen3-32b": {
       "aliases": [
         "qwen/qwen3-32b",
+        "qwen/qwen3-32b-04-28",
         "groq/qwen/qwen3-32b",
-        "openrouter/qwen/qwen3-32b"
+        "openrouter/qwen/qwen3-32b",
+        "openrouter/qwen/qwen3-32b-04-28"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24496,43 +24974,43 @@
           "rank": 48
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 91,
+          "as_of": "2026-04-28",
+          "rank": 94,
           "score": 43.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 103,
+          "as_of": "2026-04-28",
+          "rank": 106,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 89,
+          "as_of": "2026-04-28",
+          "rank": 92,
           "score": 66.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 78,
+          "as_of": "2026-04-28",
+          "rank": 81,
           "score": 46.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 100,
+          "as_of": "2026-04-28",
+          "rank": 103,
           "score": 17.8
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 82,
+          "as_of": "2026-04-28",
+          "rank": 85,
           "score": 55.5
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 75,
+          "as_of": "2026-04-28",
+          "rank": 78,
           "score": 67.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 74,
+          "as_of": "2026-04-28",
+          "rank": 77,
           "score": 48.3
         }
       }
@@ -24540,7 +25018,9 @@
     "qwen3-8b": {
       "aliases": [
         "qwen/qwen3-8b",
-        "openrouter/qwen/qwen3-8b"
+        "qwen/qwen3-8b-04-28",
+        "openrouter/qwen/qwen3-8b",
+        "openrouter/qwen/qwen3-8b-04-28"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24574,8 +25054,10 @@
       "aliases": [
         "qwen/qwen3-coder",
         "qwen/qwen3-coder:free",
+        "qwen/qwen3-coder-480b-a35b-07-25",
         "openrouter/qwen/qwen3-coder",
-        "openrouter/qwen/qwen3-coder:free"
+        "openrouter/qwen/qwen3-coder:free",
+        "openrouter/qwen/qwen3-coder-480b-a35b-07-25"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24670,7 +25152,9 @@
     "qwen3-coder-next": {
       "aliases": [
         "qwen/qwen3-coder-next",
-        "openrouter/qwen/qwen3-coder-next"
+        "qwen/qwen3-coder-next-2025-02-03",
+        "openrouter/qwen/qwen3-coder-next",
+        "openrouter/qwen/qwen3-coder-next-2025-02-03"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24768,7 +25252,9 @@
     "qwen3-max-thinking": {
       "aliases": [
         "qwen/qwen3-max-thinking",
-        "openrouter/qwen/qwen3-max-thinking"
+        "qwen/qwen3-max-thinking-20260123",
+        "openrouter/qwen/qwen3-max-thinking",
+        "openrouter/qwen/qwen3-max-thinking-20260123"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24800,8 +25286,10 @@
     "qwen3-next-80b-a3b-instruct": {
       "aliases": [
         "qwen/qwen3-next-80b-a3b-instruct",
+        "qwen/qwen3-next-80b-a3b-instruct-2509",
         "qwen/qwen3-next-80b-a3b-instruct:free",
         "openrouter/qwen/qwen3-next-80b-a3b-instruct",
+        "openrouter/qwen/qwen3-next-80b-a3b-instruct-2509",
         "openrouter/qwen/qwen3-next-80b-a3b-instruct:free"
       ],
       "capabilities": {
@@ -24851,43 +25339,43 @@
           "rank": 9
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 85,
+          "as_of": "2026-04-28",
+          "rank": 88,
           "score": 48.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 96,
+          "as_of": "2026-04-28",
+          "rank": 99,
           "score": 10.0
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 81,
+          "as_of": "2026-04-28",
+          "rank": 84,
           "score": 68.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 61,
+          "as_of": "2026-04-28",
+          "rank": 64,
           "score": 49.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 98,
+          "as_of": "2026-04-28",
+          "rank": 101,
           "score": 19.2
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 65,
+          "as_of": "2026-04-28",
+          "rank": 68,
           "score": 66.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 70.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 70,
+          "as_of": "2026-04-28",
+          "rank": 73,
           "score": 54.7
         }
       }
@@ -24895,7 +25383,9 @@
     "qwen3-next-80b-a3b-thinking": {
       "aliases": [
         "qwen/qwen3-next-80b-a3b-thinking",
-        "openrouter/qwen/qwen3-next-80b-a3b-thinking"
+        "qwen/qwen3-next-80b-a3b-thinking-2509",
+        "openrouter/qwen/qwen3-next-80b-a3b-thinking",
+        "openrouter/qwen/qwen3-next-80b-a3b-thinking-2509"
       ],
       "capabilities": {
         "function_calling": true,
@@ -24945,43 +25435,43 @@
           "rank": 44
         },
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 76,
+          "as_of": "2026-04-28",
+          "rank": 79,
           "score": 50.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 97,
+          "as_of": "2026-04-28",
+          "rank": 100,
           "score": 8.3
         },
         "livebench_coding": {
-          "as_of": "2026-04-23",
-          "rank": 97,
+          "as_of": "2026-04-28",
+          "rank": 100,
           "score": 60.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 49,
+          "as_of": "2026-04-28",
+          "rank": 52,
           "score": 53.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 62,
+          "as_of": "2026-04-28",
+          "rank": 65,
           "score": 41.5
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 81,
+          "as_of": "2026-04-28",
+          "rank": 84,
           "score": 56.3
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 57,
+          "as_of": "2026-04-28",
+          "rank": 60,
           "score": 74.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 67,
+          "as_of": "2026-04-28",
+          "rank": 70,
           "score": 58.2
         }
       }
@@ -25271,7 +25761,9 @@
     "qwen3.5-122b-a10b": {
       "aliases": [
         "qwen/qwen3.5-122b-a10b",
-        "openrouter/qwen/qwen3.5-122b-a10b"
+        "qwen/qwen3.5-122b-a10b-20260224",
+        "openrouter/qwen/qwen3.5-122b-a10b",
+        "openrouter/qwen/qwen3.5-122b-a10b-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25305,7 +25797,9 @@
     "qwen3.5-27b": {
       "aliases": [
         "qwen/qwen3.5-27b",
-        "openrouter/qwen/qwen3.5-27b"
+        "qwen/qwen3.5-27b-20260224",
+        "openrouter/qwen/qwen3.5-27b",
+        "openrouter/qwen/qwen3.5-27b-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25339,7 +25833,9 @@
     "qwen3.5-35b-a3b": {
       "aliases": [
         "qwen/qwen3.5-35b-a3b",
-        "openrouter/qwen/qwen3.5-35b-a3b"
+        "qwen/qwen3.5-35b-a3b-20260224",
+        "openrouter/qwen/qwen3.5-35b-a3b",
+        "openrouter/qwen/qwen3.5-35b-a3b-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25373,7 +25869,9 @@
     "qwen3.5-397b-a17b": {
       "aliases": [
         "qwen/qwen3.5-397b-a17b",
-        "openrouter/qwen/qwen3.5-397b-a17b"
+        "qwen/qwen3.5-397b-a17b-20260216",
+        "openrouter/qwen/qwen3.5-397b-a17b",
+        "openrouter/qwen/qwen3.5-397b-a17b-20260216"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25408,7 +25906,9 @@
     "qwen3.5-9b": {
       "aliases": [
         "qwen/qwen3.5-9b",
-        "openrouter/qwen/qwen3.5-9b"
+        "qwen/qwen3.5-9b-20260310",
+        "openrouter/qwen/qwen3.5-9b",
+        "openrouter/qwen/qwen3.5-9b-20260310"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25441,7 +25941,9 @@
     "qwen3.5-flash-02-23": {
       "aliases": [
         "qwen/qwen3.5-flash-02-23",
-        "openrouter/qwen/qwen3.5-flash-02-23"
+        "qwen/qwen3.5-flash-20260224",
+        "openrouter/qwen/qwen3.5-flash-02-23",
+        "openrouter/qwen/qwen3.5-flash-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25476,7 +25978,9 @@
     "qwen3.5-plus-02-15": {
       "aliases": [
         "qwen/qwen3.5-plus-02-15",
-        "openrouter/qwen/qwen3.5-plus-02-15"
+        "qwen/qwen3.5-plus-20260216",
+        "openrouter/qwen/qwen3.5-plus-02-15",
+        "openrouter/qwen/qwen3.5-plus-20260216"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25508,10 +26012,187 @@
         "output_per_mtok": 1.56
       }
     },
+    "qwen3.5-plus-20260420": {
+      "aliases": [
+        "qwen/qwen3.5-plus-20260420",
+        "openrouter/qwen/qwen3.5-plus-20260420"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen3.5 Plus 2026-04-20",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.4
+      }
+    },
+    "qwen3.6-27b": {
+      "aliases": [
+        "qwen/qwen3.6-27b",
+        "qwen/qwen3.6-27b-20260422",
+        "openrouter/qwen/qwen3.6-27b",
+        "openrouter/qwen/qwen3.6-27b-20260422"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "Qwen: Qwen3.6 27B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.325,
+        "output_per_mtok": 3.25
+      }
+    },
+    "qwen3.6-35b-a3b": {
+      "aliases": [
+        "qwen/qwen3.6-35b-a3b",
+        "qwen/qwen3.6-35b-a3b-20260415",
+        "openrouter/qwen/qwen3.6-35b-a3b",
+        "openrouter/qwen/qwen3.6-35b-a3b-20260415"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.6 35B A3B",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.1612,
+        "currency": "USD",
+        "input_per_mtok": 0.1612,
+        "output_per_mtok": 0.96525
+      }
+    },
+    "qwen3.6-flash": {
+      "aliases": [
+        "qwen/qwen3.6-flash",
+        "openrouter/qwen/qwen3.6-flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Qwen: Qwen3.6 Flash",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 0.3125,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      }
+    },
+    "qwen3.6-max-preview": {
+      "aliases": [
+        "qwen/qwen3.6-max-preview",
+        "qwen/qwen3.6-max-preview-20260420",
+        "openrouter/qwen/qwen3.6-max-preview",
+        "openrouter/qwen/qwen3.6-max-preview-20260420"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Qwen: Qwen3.6 Max Preview",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 1.3,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 6.24
+      }
+    },
     "qwen3.6-plus": {
       "aliases": [
         "qwen/qwen3.6-plus",
-        "openrouter/qwen/qwen3.6-plus"
+        "qwen/qwen3.6-plus-04-02",
+        "openrouter/qwen/qwen3.6-plus",
+        "openrouter/qwen/qwen3.6-plus-04-02"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25544,13 +26225,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 25,
+          "as_of": "2026-04-28",
+          "rank": 26,
           "score": 70.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-04-23",
-          "rank": 23,
+          "as_of": "2026-04-28",
+          "rank": 25,
           "score": 55.0
         },
         "livebench_coding": {
@@ -25559,28 +26240,28 @@
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-04-23",
-          "rank": 22,
+          "as_of": "2026-04-28",
+          "rank": 23,
           "score": 69.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-04-23",
-          "rank": 36,
+          "as_of": "2026-04-28",
+          "rank": 39,
           "score": 58.3
         },
         "livebench_language": {
-          "as_of": "2026-04-23",
-          "rank": 40,
+          "as_of": "2026-04-28",
+          "rank": 41,
           "score": 75.0
         },
         "livebench_math": {
-          "as_of": "2026-04-23",
-          "rank": 29,
+          "as_of": "2026-04-28",
+          "rank": 31,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-04-23",
-          "rank": 32,
+          "as_of": "2026-04-28",
+          "rank": 33,
           "score": 75.8
         }
       }
@@ -25640,7 +26321,9 @@
     "reka-edge": {
       "aliases": [
         "rekaai/reka-edge",
-        "openrouter/rekaai/reka-edge"
+        "rekaai/reka-edge-2603",
+        "openrouter/rekaai/reka-edge",
+        "openrouter/rekaai/reka-edge-2603"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25726,7 +26409,9 @@
     "relace-search": {
       "aliases": [
         "relace/relace-search",
-        "openrouter/relace/relace-search"
+        "relace/relace-search-20251208",
+        "openrouter/relace/relace-search",
+        "openrouter/relace/relace-search-20251208"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25952,7 +26637,9 @@
     "seed-1.6": {
       "aliases": [
         "bytedance-seed/seed-1.6",
-        "openrouter/bytedance-seed/seed-1.6"
+        "bytedance-seed/seed-1.6-20250625",
+        "openrouter/bytedance-seed/seed-1.6",
+        "openrouter/bytedance-seed/seed-1.6-20250625"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25986,7 +26673,9 @@
     "seed-1.6-flash": {
       "aliases": [
         "bytedance-seed/seed-1.6-flash",
-        "openrouter/bytedance-seed/seed-1.6-flash"
+        "bytedance-seed/seed-1.6-flash-20250625",
+        "openrouter/bytedance-seed/seed-1.6-flash",
+        "openrouter/bytedance-seed/seed-1.6-flash-20250625"
       ],
       "capabilities": {
         "function_calling": true,
@@ -26020,7 +26709,9 @@
     "seed-2.0-lite": {
       "aliases": [
         "bytedance-seed/seed-2.0-lite",
-        "openrouter/bytedance-seed/seed-2.0-lite"
+        "bytedance-seed/seed-2.0-lite-20260309",
+        "openrouter/bytedance-seed/seed-2.0-lite",
+        "openrouter/bytedance-seed/seed-2.0-lite-20260309"
       ],
       "capabilities": {
         "function_calling": true,
@@ -26054,7 +26745,9 @@
     "seed-2.0-mini": {
       "aliases": [
         "bytedance-seed/seed-2.0-mini",
-        "openrouter/bytedance-seed/seed-2.0-mini"
+        "bytedance-seed/seed-2.0-mini-20260224",
+        "openrouter/bytedance-seed/seed-2.0-mini",
+        "openrouter/bytedance-seed/seed-2.0-mini-20260224"
       ],
       "capabilities": {
         "function_calling": true,
@@ -26891,7 +27584,9 @@
     "trinity-mini": {
       "aliases": [
         "arcee-ai/trinity-mini",
-        "openrouter/arcee-ai/trinity-mini"
+        "arcee-ai/trinity-mini-20251201",
+        "openrouter/arcee-ai/trinity-mini",
+        "openrouter/arcee-ai/trinity-mini-20251201"
       ],
       "capabilities": {
         "function_calling": true,
@@ -32915,7 +33610,7 @@
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
@@ -32952,7 +33647,7 @@
       "max_output_tokens": 65536,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
@@ -32992,7 +33687,7 @@
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
@@ -33003,7 +33698,7 @@
       "enabled": true,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.03625,
+        "cached_input_per_mtok": 0.003625,
         "currency": "USD",
         "input_per_mtok": 0.435,
         "output_per_mtok": 0.87
@@ -39791,6 +40486,20 @@
         "output_per_mtok": 0.2
       }
     },
+    "openrouter/claude-haiku-latest": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "claude-haiku-latest",
+      "pricing": {
+        "cache_write_per_mtok": 1.25,
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 5.0
+      },
+      "provider_model_id": "~anthropic/claude-haiku-latest"
+    },
     "openrouter/claude-opus-4.6-fast": {
       "context_window": 1000000,
       "enabled": true,
@@ -39818,6 +40527,20 @@
         "output_per_mtok": 25.0
       },
       "provider_model_id": "~anthropic/claude-opus-latest"
+    },
+    "openrouter/claude-sonnet-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-sonnet-latest",
+      "pricing": {
+        "cache_write_per_mtok": 3.75,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0
+      },
+      "provider_model_id": "~anthropic/claude-sonnet-latest"
     },
     "openrouter/codellama-7b-instruct-solidity": {
       "context_window": 4096,
@@ -40201,7 +40924,7 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
@@ -40213,7 +40936,7 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.03625,
+        "cached_input_per_mtok": 0.003625,
         "currency": "USD",
         "input_per_mtok": 0.435,
         "output_per_mtok": 0.87
@@ -41023,6 +41746,32 @@
       },
       "provider_model_id": "openai/gpt-5.4-image-2"
     },
+    "openrouter/gpt-latest": {
+      "context_window": 1050000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      },
+      "provider_model_id": "~openai/gpt-latest"
+    },
+    "openrouter/gpt-mini-latest": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-mini-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
+      },
+      "provider_model_id": "~openai/gpt-mini-latest"
+    },
     "openrouter/gpt-oss-safeguard-20b": {
       "context_window": 131072,
       "enabled": true,
@@ -41315,6 +42064,19 @@
         "output_per_mtok": 4.655
       },
       "provider_model_id": "moonshotai/kimi-k2.6"
+    },
+    "openrouter/kimi-latest": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "kimi-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.1463,
+        "currency": "USD",
+        "input_per_mtok": 0.7448,
+        "output_per_mtok": 4.655
+      },
+      "provider_model_id": "~moonshotai/kimi-latest"
     },
     "openrouter/kwaipilot/kat-coder-pro-v2": {
       "context_window": 256000,
@@ -42339,11 +43101,12 @@
     "openrouter/mistralai/mistral-nemo": {
       "context_window": 131072,
       "enabled": true,
+      "max_output_tokens": 16384,
       "model_ref": "mistral-nemo",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.01,
-        "output_per_mtok": 0.03
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 0.04
       }
     },
     "openrouter/mistralai/mistral-saba": {
@@ -43767,8 +44530,8 @@
       "model_ref": "qwen-2.5-72b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.12,
-        "output_per_mtok": 0.39
+        "input_per_mtok": 0.36,
+        "output_per_mtok": 0.4
       },
       "provider_model_id": "qwen/qwen-2.5-72b-instruct"
     },
@@ -43879,8 +44642,8 @@
       "model_ref": "qwen-2.5-72b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.12,
-        "output_per_mtok": 0.39
+        "input_per_mtok": 0.36,
+        "output_per_mtok": 0.4
       }
     },
     "openrouter/qwen/qwen-2.5-7b-instruct": {
@@ -44372,6 +45135,64 @@
         "output_per_mtok": 1.56
       }
     },
+    "openrouter/qwen/qwen3.5-plus-20260420": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-plus-20260420",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.4
+      }
+    },
+    "openrouter/qwen/qwen3.6-27b": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-27b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.325,
+        "output_per_mtok": 3.25
+      }
+    },
+    "openrouter/qwen/qwen3.6-35b-a3b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-35b-a3b",
+      "pricing": {
+        "cached_input_per_mtok": 0.1612,
+        "currency": "USD",
+        "input_per_mtok": 0.1612,
+        "output_per_mtok": 0.96525
+      }
+    },
+    "openrouter/qwen/qwen3.6-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.3125,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      }
+    },
+    "openrouter/qwen/qwen3.6-max-preview": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-max-preview",
+      "pricing": {
+        "cache_write_per_mtok": 1.3,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 6.24
+      }
+    },
     "openrouter/qwen/qwen3.6-plus": {
       "context_window": 1000000,
       "enabled": true,
@@ -44775,6 +45596,69 @@
         "output_per_mtok": 1.56
       },
       "provider_model_id": "qwen/qwen3.5-plus-02-15"
+    },
+    "openrouter/qwen3.5-plus-20260420": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.5-plus-20260420",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.4
+      },
+      "provider_model_id": "qwen/qwen3.5-plus-20260420"
+    },
+    "openrouter/qwen3.6-27b": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-27b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.325,
+        "output_per_mtok": 3.25
+      },
+      "provider_model_id": "qwen/qwen3.6-27b"
+    },
+    "openrouter/qwen3.6-35b-a3b": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-35b-a3b",
+      "pricing": {
+        "cached_input_per_mtok": 0.1612,
+        "currency": "USD",
+        "input_per_mtok": 0.1612,
+        "output_per_mtok": 0.96525
+      },
+      "provider_model_id": "qwen/qwen3.6-35b-a3b"
+    },
+    "openrouter/qwen3.6-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.3125,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      },
+      "provider_model_id": "qwen/qwen3.6-flash"
+    },
+    "openrouter/qwen3.6-max-preview": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "qwen3.6-max-preview",
+      "pricing": {
+        "cache_write_per_mtok": 1.3,
+        "currency": "USD",
+        "input_per_mtok": 1.04,
+        "output_per_mtok": 6.24
+      },
+      "provider_model_id": "qwen/qwen3.6-max-preview"
     },
     "openrouter/qwen3.6-plus": {
       "context_window": 1000000,
@@ -45715,6 +46599,19 @@
         "output_per_mtok": 4.0
       }
     },
+    "openrouter/~anthropic/claude-haiku-latest": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "claude-haiku-latest",
+      "pricing": {
+        "cache_write_per_mtok": 1.25,
+        "cached_input_per_mtok": 0.1,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 5.0
+      }
+    },
     "openrouter/~anthropic/claude-opus-latest": {
       "context_window": 1000000,
       "enabled": true,
@@ -45726,6 +46623,81 @@
         "currency": "USD",
         "input_per_mtok": 5.0,
         "output_per_mtok": 25.0
+      }
+    },
+    "openrouter/~anthropic/claude-sonnet-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-sonnet-latest",
+      "pricing": {
+        "cache_write_per_mtok": 3.75,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0
+      }
+    },
+    "openrouter/~google/gemini-flash-latest": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-flash-latest",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0
+      }
+    },
+    "openrouter/~google/gemini-pro-latest": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-pro-latest",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      }
+    },
+    "openrouter/~moonshotai/kimi-latest": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "kimi-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.1463,
+        "currency": "USD",
+        "input_per_mtok": 0.7448,
+        "output_per_mtok": 4.655
+      }
+    },
+    "openrouter/~openai/gpt-latest": {
+      "context_window": 1050000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      }
+    },
+    "openrouter/~openai/gpt-mini-latest": {
+      "context_window": 400000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-mini-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 4.5
       }
     },
     "runway/gen4_image": {
@@ -48891,6 +49863,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-26T07:44:41Z",
+  "updated_at": "2026-04-28T08:30:06Z",
   "version": 1
 }

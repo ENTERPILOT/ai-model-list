@@ -213,6 +213,37 @@ def test_normalize_openrouter_rows_prefers_stable_raw_id_over_dated_canonical_sl
         "input": ["text", "image", "video"],
         "output": ["text"],
     }
+    assert record.fields["aliases"] == ["qwen/qwen3.5-9b-20260310"]
+
+
+def test_normalize_openrouter_rows_keeps_dated_canonical_slug_alias() -> None:
+    rows = [
+        {
+            "id": "z-ai/glm-5.1",
+            "canonical_slug": "z-ai/glm-5.1-20260406",
+            "name": "Z.ai: GLM 5.1",
+            "pricing": {
+                "prompt": "0.00000105",
+                "completion": "0.0000035",
+                "input_cache_read": "0.000000525",
+            },
+            "top_provider": {
+                "context_length": 202_752,
+                "max_completion_tokens": 65_535,
+            },
+        }
+    ]
+
+    record = normalize_openrouter_rows(rows, rejection_policy={})[0]
+
+    assert record.canonical_hint == "glm-5.1"
+    assert record.fields["aliases"] == ["z-ai/glm-5.1-20260406"]
+    assert record.fields["pricing"] == {
+        "currency": "USD",
+        "input_per_mtok": 1.05,
+        "output_per_mtok": 3.5,
+        "cached_input_per_mtok": 0.525,
+    }
 
 
 def test_normalize_openrouter_rows_strips_free_tier_suffix_from_canonical_hint() -> None:
@@ -241,6 +272,7 @@ def test_normalize_openrouter_rows_strips_free_tier_suffix_from_canonical_hint()
         "input_per_mtok": 0.0,
         "output_per_mtok": 0.0,
     }
+    assert "aliases" not in record.fields
 
 
 def test_normalize_litellm_entry_extracts_image_token_pricing_and_tiers() -> None:

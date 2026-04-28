@@ -436,12 +436,18 @@ def collect_model_aliases(canonical_key: str, records: list[SourceEvidence]) -> 
 
 
 def _alias_candidates(record: SourceEvidence) -> set[str]:
-    candidates = {record.source_model_id}
+    source_aliases = {record.source_model_id}
+    field_aliases = record.fields.get("aliases")
+    if isinstance(field_aliases, list):
+        source_aliases.update(alias for alias in field_aliases if isinstance(alias, str) and alias)
+
+    candidates = set(source_aliases)
     if record.provider_slug is not None:
-        if not record.source_model_id.startswith(f"{record.provider_slug}/"):
-            candidates.add(f"{record.provider_slug}/{record.source_model_id}")
-        stripped = _strip_provider_prefix(record.source_model_id, record.provider_slug)
-        candidates.add(stripped)
+        for alias in source_aliases:
+            if not alias.startswith(f"{record.provider_slug}/"):
+                candidates.add(f"{record.provider_slug}/{alias}")
+            stripped = _strip_provider_prefix(alias, record.provider_slug)
+            candidates.add(stripped)
     if record.canonical_hint:
         candidates.add(record.canonical_hint)
     return {candidate for candidate in candidates if candidate}
