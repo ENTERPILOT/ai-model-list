@@ -450,6 +450,50 @@ def test_resolve_admits_openrouter_record_with_stable_nested_id() -> None:
     assert not report["quarantine"]
 
 
+def test_resolve_keeps_openrouter_dated_canonical_slug_as_alias() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="openrouter",
+            source_model_id="z-ai/glm-5.1",
+            provider_slug="openrouter",
+            canonical_hint="glm-5.1",
+            fields={
+                "aliases": ["z-ai/glm-5.1-20260406"],
+                "display_name": "Z.ai: GLM 5.1",
+                "modes": ["chat"],
+                "pricing": {
+                    "currency": "USD",
+                    "input_per_mtok": 1.05,
+                    "output_per_mtok": 3.5,
+                    "cached_input_per_mtok": 0.525,
+                },
+            },
+            confidence="low",
+            evidence_ref="openrouter_models.json",
+        )
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    assert registry["models"]["glm-5.1"]["aliases"] == [
+        "z-ai/glm-5.1",
+        "z-ai/glm-5.1-20260406",
+        "openrouter/z-ai/glm-5.1",
+        "openrouter/z-ai/glm-5.1-20260406",
+    ]
+    assert registry["provider_models"]["openrouter/z-ai/glm-5.1"] == {
+        "enabled": True,
+        "model_ref": "glm-5.1",
+        "pricing": {
+            "currency": "USD",
+            "input_per_mtok": 1.05,
+            "output_per_mtok": 3.5,
+            "cached_input_per_mtok": 0.525,
+        },
+    }
+    assert not report["quarantine"]
+
+
 def test_resolve_admits_openrouter_record_with_free_tier_suffix() -> None:
     evidence = [
         SourceEvidence(

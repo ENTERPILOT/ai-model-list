@@ -577,6 +577,14 @@ def _strip_deployment_tier_suffix(model_id: str | None) -> str | None:
     return base
 
 
+def _openrouter_canonical_slug_aliases(source_model_id: str, canonical_slug: Any) -> list[str]:
+    if not isinstance(canonical_slug, str) or not canonical_slug or canonical_slug == source_model_id:
+        return []
+    if _strip_deployment_tier_suffix(source_model_id) is not None:
+        return []
+    return [canonical_slug]
+
+
 def _display_name_from_model_id(model_id: str) -> str:
     tokens = [token for token in DISPLAY_NAME_SPLIT_PATTERN.split(model_id) if token]
     display_tokens: list[str] = []
@@ -1320,13 +1328,17 @@ def normalize_openrouter_rows(
         _, canonical_slug_hint = split_provider_model_name(row.get("canonical_slug") or source_model_id)
         raw_model_id = source_model_hint or source_model_id
         canonical_hint = _choose_preferred_canonical_hint(raw_model_id, source_model_hint, canonical_slug_hint)
+        fields = extract_supported_fields(row)
+        aliases = _openrouter_canonical_slug_aliases(source_model_id, row.get("canonical_slug"))
+        if aliases:
+            fields["aliases"] = aliases
         records.append(
             SourceEvidence(
                 source_name="openrouter",
                 source_model_id=source_model_id,
                 provider_slug="openrouter",
                 canonical_hint=canonical_hint,
-                fields=extract_supported_fields(row),
+                fields=fields,
                 confidence="low",
                 evidence_ref=evidence_ref,
                 rejected=is_rejected_model_id(source_model_id, rejection_policy),
