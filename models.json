@@ -15440,6 +15440,40 @@
         "output_per_mtok": 0.11
       }
     },
+    "granite-4.1-8b": {
+      "aliases": [
+        "ibm-granite/granite-4.1-8b",
+        "ibm-granite/granite-4.1-8b-20260429",
+        "openrouter/ibm-granite/granite-4.1-8b",
+        "openrouter/ibm-granite/granite-4.1-8b-20260429"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "IBM: Granite 4.1 8B",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.1
+      }
+    },
     "grok-2": {
       "aliases": [
         "xai/grok-2"
@@ -18196,9 +18230,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 262142,
       "display_name": "MoonshotAI: Kimi K2.6",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "modalities": {
         "input": [
           "text",
@@ -18212,10 +18246,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       },
       "rankings": {
         "livebench": {
@@ -18299,9 +18333,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 262142,
       "display_name": "MoonshotAI Kimi Latest",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "modalities": {
         "input": [
           "text",
@@ -18315,10 +18349,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       }
     },
     "l3-euryale-70b": {
@@ -23747,6 +23781,35 @@
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
+      }
+    },
+    "owl-alpha": {
+      "aliases": [
+        "openrouter/owl-alpha"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 1048756,
+      "display_name": "Owl Alpha",
+      "max_output_tokens": 262144,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       }
     },
     "palmyra-x5": {
@@ -41809,6 +41872,19 @@
       },
       "provider_model_id": "ibm-granite/granite-4.0-h-micro"
     },
+    "openrouter/granite-4.1-8b": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "granite-4.1-8b",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.1
+      },
+      "provider_model_id": "ibm-granite/granite-4.1-8b"
+    },
     "openrouter/gryphe/mythomax-l2-13b": {
       "context_window": 4096,
       "enabled": true,
@@ -41909,6 +41985,18 @@
         "currency": "USD",
         "input_per_mtok": 0.017,
         "output_per_mtok": 0.11
+      }
+    },
+    "openrouter/ibm-granite/granite-4.1-8b": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "granite-4.1-8b",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.05,
+        "output_per_mtok": 0.1
       }
     },
     "openrouter/inception/mercury-2": {
@@ -42067,28 +42155,28 @@
       "provider_model_id": "moonshotai/kimi-k2.5"
     },
     "openrouter/kimi-k2.6": {
-      "context_window": 262144,
+      "context_window": 262142,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       },
       "provider_model_id": "moonshotai/kimi-k2.6"
     },
     "openrouter/kimi-latest": {
-      "context_window": 262144,
+      "context_window": 262142,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       },
       "provider_model_id": "~moonshotai/kimi-latest"
     },
@@ -43292,15 +43380,15 @@
       }
     },
     "openrouter/moonshotai/kimi-k2.6": {
-      "context_window": 262144,
+      "context_window": 262142,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       }
     },
     "openrouter/morph-v3-fast": {
@@ -44299,7 +44387,7 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.039,
-        "output_per_mtok": 0.19
+        "output_per_mtok": 0.18
       }
     },
     "openrouter/openai/gpt-oss-120b:free": {
@@ -44463,6 +44551,17 @@
         "currency": "USD",
         "input_per_mtok": 1.1,
         "output_per_mtok": 4.4
+      }
+    },
+    "openrouter/owl-alpha": {
+      "context_window": 1048756,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "owl-alpha",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       }
     },
     "openrouter/palmyra-x5": {
@@ -46702,15 +46801,15 @@
       }
     },
     "openrouter/~moonshotai/kimi-latest": {
-      "context_window": 262144,
+      "context_window": 262142,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262142,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.75,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.74,
+        "output_per_mtok": 3.49
       }
     },
     "openrouter/~openai/gpt-latest": {
@@ -49900,6 +49999,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-04-30T08:26:49Z",
+  "updated_at": "2026-04-30T19:27:32Z",
   "version": 1
 }
