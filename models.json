@@ -10684,7 +10684,7 @@
         "audio_input_per_mtok": 0.15,
         "audio_output_per_mtok": 10.0,
         "currency": "USD",
-        "input_per_mtok": 15.0,
+        "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
       },
       "source_url": "https://platform.openai.com/docs/pricing"
@@ -10952,7 +10952,7 @@
         "audio_output_per_mtok": 12.0,
         "currency": "USD",
         "input_per_mtok": 0.6,
-        "output_per_mtok": 10.0,
+        "output_per_mtok": 12.0,
         "per_second_output": 0.00025
       },
       "source_url": "https://platform.openai.com/docs/pricing"
@@ -21768,6 +21768,40 @@
       },
       "source_url": "https://mistral.ai/news/mistral-medium-3"
     },
+    "mistral-medium-3-5": {
+      "aliases": [
+        "mistralai/mistral-medium-3-5",
+        "mistralai/mistral-medium-3.5-20260430",
+        "openrouter/mistralai/mistral-medium-3-5",
+        "openrouter/mistralai/mistral-medium-3.5-20260430"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Mistral: Mistral Medium 3.5",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      }
+    },
     "mistral-medium-3.1": {
       "aliases": [
         "mistralai/mistral-medium-3.1",
@@ -26531,9 +26565,11 @@
         "openrouter/qwen/qwen3.6-35b-a3b-20260415"
       ],
       "capabilities": {
+        "function_calling": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true
+        "structured_output": true,
+        "tool_choice": true
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.6 35B A3B",
@@ -38034,7 +38070,7 @@
         "audio_output_per_mtok": 12.0,
         "currency": "USD",
         "input_per_mtok": 0.6,
-        "output_per_mtok": 10.0,
+        "output_per_mtok": 12.0,
         "per_second_output": 0.00025
       }
     },
@@ -43694,6 +43730,17 @@
       },
       "provider_model_id": "mistralai/mistral-7b-instruct-v0.1"
     },
+    "openrouter/mistral-medium-3-5": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "mistral-medium-3-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "provider_model_id": "mistralai/mistral-medium-3-5"
+    },
     "openrouter/mistral-medium-3.1": {
       "context_window": 131072,
       "enabled": true,
@@ -43881,6 +43928,16 @@
         "currency": "USD",
         "input_per_mtok": 0.4,
         "output_per_mtok": 2.0
+      }
+    },
+    "openrouter/mistralai/mistral-medium-3-5": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "mistral-medium-3-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
       }
     },
     "openrouter/mistralai/mistral-medium-3.1": {
@@ -50762,6 +50819,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-04T08:34:18Z",
+  "updated_at": "2026-05-05T08:16:04Z",
   "version": 1
 }
