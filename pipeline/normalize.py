@@ -1504,6 +1504,76 @@ def normalize_pydantic_genai_rows(
     return records
 
 
+def normalize_third_party_provider_rows(
+    rows: Iterable[Mapping[str, Any]],
+    *,
+    rejection_policy: Mapping[str, Sequence[str]] | None = None,
+    evidence_ref: str = "",
+) -> list[SourceEvidence]:
+    """Emit provider-prefixed evidence for resellers that host other vendors' models.
+
+    Unlike ``normalize_pydantic_genai_rows``, this normalizer never emits a
+    bare-canonical record. The resulting evidence only feeds the
+    ``{provider_slug}/{canonical_key}`` provider_model cluster, leaving the
+    canonical model record untouched (so e.g. an OpenCode Zen entry for
+    ``claude-opus-4-7`` cannot override Anthropic's official pricing on the
+    canonical model).
+    """
+    records: list[SourceEvidence] = []
+
+    for provider in rows:
+        provider_slug = normalize_provider_slug(provider.get("id"))
+        if provider_slug is None:
+            continue
+
+        provider_evidence_ref = next(
+            (
+                url
+                for url in provider.get("pricing_urls", [])
+                if isinstance(url, str) and url
+            ),
+            evidence_ref,
+        )
+
+        for model in provider.get("models", []):
+            raw_model_id = model.get("id")
+            if not isinstance(raw_model_id, str) or not raw_model_id:
+                continue
+
+            canonical_model_id = sanitize_provider_canonical_hint(_choose_canonical_model_id(model), provider_slug)
+            fields = extract_official_catalog_fields(
+                model,
+                provider_slug,
+                canonical_model_id=canonical_model_id,
+                owner_providers=frozenset(),
+            )
+            if isinstance(provider_evidence_ref, str) and provider_evidence_ref:
+                fields.setdefault("source_url", provider_evidence_ref)
+
+            provider_aliases = sorted({
+                alias
+                for alias in [raw_model_id, canonical_model_id, *_extract_exact_match_ids(model.get("match"))]
+                if isinstance(alias, str) and alias
+            })
+
+            for provider_alias in provider_aliases:
+                records.append(
+                    SourceEvidence(
+                        source_name="official",
+                        source_model_id=f"{provider_slug}/{provider_alias}",
+                        provider_slug=provider_slug,
+                        canonical_hint=canonical_model_id,
+                        fields=fields,
+                        confidence="official",
+                        evidence_ref=provider_evidence_ref,
+                        rejected=is_rejected_model_id(provider_alias, rejection_policy),
+                        source_url=_maybe_url(provider_evidence_ref),
+                    )
+                )
+
+    return records
+
+
 NORMALIZER_BY_SOURCE = {
     "litellm": normalize_litellm_rows,
     "xai_models_official": normalize_xai_models_official_rows,
@@ -1511,6 +1581,8 @@ NORMALIZER_BY_SOURCE = {
     "deepseek_official": normalize_pydantic_genai_rows,
     "runway_official": normalize_pydantic_genai_rows,
     "google_speech_official": normalize_pydantic_genai_rows,
+    "opencode_zen_official": normalize_third_party_provider_rows,
+    "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,
     "llm_prices": normalize_llm_prices_rows,
     "portkey": normalize_portkey_files,

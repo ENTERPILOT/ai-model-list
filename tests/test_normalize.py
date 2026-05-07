@@ -5,6 +5,7 @@ from pipeline.normalize import (
     normalize_openrouter_rows,
     normalize_portkey_files,
     normalize_pydantic_genai_rows,
+    normalize_third_party_provider_rows,
     normalize_xai_models_official_rows,
 )
 
@@ -850,8 +851,66 @@ def test_normalizer_registry_covers_current_source_set() -> None:
         "deepseek_official",
         "runway_official",
         "google_speech_official",
+        "opencode_zen_official",
+        "ollama_cloud_official",
         "pydantic_genai",
         "openrouter",
         "llm_prices",
         "portkey",
     }
+
+
+def test_normalize_third_party_provider_rows_emits_only_provider_prefixed_records() -> None:
+    rows = [
+        {
+            "id": "opencode_zen",
+            "pricing_urls": ["https://opencode.ai/docs/zen"],
+            "models": [
+                {
+                    "id": "claude-opus-4-7",
+                    "name": "Claude Opus 4.7",
+                    "mode": "chat",
+                    "prices": {
+                        "input_mtok": 5.0,
+                        "output_mtok": 25.0,
+                        "cache_read_mtok": 0.5,
+                        "cache_write_mtok": 6.25,
+                    },
+                },
+            ],
+        }
+    ]
+
+    records = normalize_third_party_provider_rows(rows, rejection_policy={})
+
+    assert len(records) == 1
+    record = records[0]
+    assert record.provider_slug == "opencode_zen"
+    assert record.source_model_id == "opencode_zen/claude-opus-4-7"
+    assert record.canonical_hint == "claude-opus-4-7"
+    assert record.source_name == "official"
+    assert record.confidence == "official"
+    assert record.source_url == "https://opencode.ai/docs/zen"
+    assert record.fields["pricing"]["input_per_mtok"] == 5.0
+    assert record.fields["pricing"]["output_per_mtok"] == 25.0
+
+
+def test_normalize_third_party_provider_rows_handles_models_without_prices() -> None:
+    rows = [
+        {
+            "id": "ollama_cloud",
+            "pricing_urls": ["https://ollama.com/pricing"],
+            "models": [
+                {"id": "kimi-k2.6", "name": "Kimi K2.6", "mode": "chat"},
+            ],
+        }
+    ]
+
+    records = normalize_third_party_provider_rows(rows, rejection_policy={})
+
+    assert len(records) == 1
+    record = records[0]
+    assert record.provider_slug == "ollama_cloud"
+    assert record.source_model_id == "ollama_cloud/kimi-k2.6"
+    assert record.canonical_hint == "kimi-k2.6"
+    assert "pricing" not in record.fields
