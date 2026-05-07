@@ -512,6 +512,17 @@
           "type": ["array", "null"],
           "items": { "type": "string" },
           "description": "Region availability, null for global"
+        },
+        "pricing_source_url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "URL of the snapshot whose pricing was selected for this provider entry"
+        },
+        "source_urls": {
+          "type": ["array", "null"],
+          "items": { "type": "string", "format": "uri" },
+          "uniqueItems": true,
+          "description": "All upstream URLs that contributed evidence to this provider entry"
         }
       }
     }

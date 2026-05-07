@@ -507,6 +507,8 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
             "input_per_mtok": 3.0,
             "output_per_mtok": 15.0,
         },
+        "pricing_source_url": "https://docs.x.ai/docs/models",
+        "source_urls": ["https://docs.x.ai/docs/models", "https://llmprices.dev/"],
     }
     assert registry["provider_models"]["xai/grok-4-0709"]["model_ref"] == "grok-4"
     assert registry["provider_models"]["xai/grok-4-latest"]["model_ref"] == "grok-4"

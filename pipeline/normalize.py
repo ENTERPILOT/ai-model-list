@@ -10,6 +10,18 @@ from typing import Any, Iterable, Mapping, Sequence
 from pipeline.types import SourceEvidence
 
 
+LITELLM_FALLBACK_SOURCE_URL = (
+    "https://raw.githubusercontent.com/BerriAI/litellm/main/"
+    "model_prices_and_context_window.json"
+)
+
+
+def _maybe_url(value: Any) -> str | None:
+    if isinstance(value, str) and value.startswith(("http://", "https://")):
+        return value
+    return None
+
+
 USD_PER_TOKEN_TO_USD_PER_MTOK = 1_000_000
 CENTS_PER_TOKEN_TO_USD_PER_MTOK = 10_000
 PROVIDER_SLUG_ALIASES = {
@@ -962,6 +974,7 @@ def _build_xai_model_records(
             confidence="official",
             evidence_ref=evidence_ref,
             rejected=is_rejected_model_id(canonical_model_id, rejection_policy),
+            source_url=_maybe_url(evidence_ref),
         )
     ]
 
@@ -989,6 +1002,7 @@ def _build_xai_model_records(
                 confidence="official",
                 evidence_ref=evidence_ref,
                 rejected=is_rejected_model_id(alias, rejection_policy),
+                source_url=_maybe_url(evidence_ref),
             )
         )
 
@@ -1282,6 +1296,7 @@ def normalize_litellm_entry(
         confidence="low",
         evidence_ref=entry.get("source") or evidence_ref,
         rejected=is_rejected_model_id(model_name, rejection_policy),
+        source_url=_maybe_url(entry.get("source")) or LITELLM_FALLBACK_SOURCE_URL,
     )
 
 
@@ -1342,6 +1357,7 @@ def normalize_openrouter_rows(
                 confidence="low",
                 evidence_ref=evidence_ref,
                 rejected=is_rejected_model_id(source_model_id, rejection_policy),
+                source_url=f"https://openrouter.ai/{source_model_id}",
             )
         )
     return records
@@ -1367,6 +1383,7 @@ def normalize_llm_prices_rows(
                 confidence="low",
                 evidence_ref=evidence_ref,
                 rejected=is_rejected_model_id(source_model_id, rejection_policy),
+                source_url="https://llmprices.dev/",
             )
         )
     return records
@@ -1400,6 +1417,7 @@ def normalize_portkey_files(
                     confidence="low",
                     evidence_ref=evidence_ref,
                     rejected=is_rejected_model_id(model_id, rejection_policy),
+                    source_url=f"https://configs.portkey.ai/pricing/{Path(filename).name}",
                 )
             )
     return records
@@ -1459,6 +1477,7 @@ def normalize_pydantic_genai_rows(
                     confidence="official",
                     evidence_ref=provider_evidence_ref,
                     rejected=is_rejected_model_id(canonical_model_id, rejection_policy),
+                    source_url=_maybe_url(provider_evidence_ref),
                 )
             )
 
@@ -1478,6 +1497,7 @@ def normalize_pydantic_genai_rows(
                         confidence="official",
                         evidence_ref=provider_evidence_ref,
                         rejected=is_rejected_model_id(provider_alias, rejection_policy),
+                        source_url=_maybe_url(provider_evidence_ref),
                     )
                 )
 

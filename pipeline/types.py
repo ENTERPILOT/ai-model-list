@@ -12,3 +12,4 @@ class SourceEvidence:
     confidence: str
     evidence_ref: str
     rejected: bool = False
+    source_url: str | None = None

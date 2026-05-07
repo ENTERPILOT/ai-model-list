@@ -243,7 +243,35 @@ def build_provider_model_record(
         value = choose_field_value(field_name, records, policy)
         if value is not None:
             provider_model[field_name] = value
+
+    if "pricing" in provider_model:
+        pricing_source_url = _choose_pricing_source_url(records, policy)
+        if pricing_source_url is not None:
+            provider_model["pricing_source_url"] = pricing_source_url
+
+    source_urls = sorted({
+        record.source_url
+        for record in records
+        if isinstance(record.source_url, str) and record.source_url
+    })
+    if source_urls:
+        provider_model["source_urls"] = source_urls
+
     return provider_model
+
+
+def _choose_pricing_source_url(
+    records: list[SourceEvidence],
+    policy: dict[str, Any],
+) -> str | None:
+    ranked = sort_candidates_by_authority("pricing", records, policy)
+    for candidate in ranked:
+        pricing = candidate.fields.get("pricing")
+        if not isinstance(pricing, dict) or not pricing:
+            continue
+        if isinstance(candidate.source_url, str) and candidate.source_url:
+            return candidate.source_url
+    return None
 
 
 def should_admit_canonical_model(canonical_key: str, records: list[SourceEvidence]) -> bool:
