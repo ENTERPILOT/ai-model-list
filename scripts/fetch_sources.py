@@ -21,6 +21,8 @@ if __package__ in {None, ""}:
 
 from pipeline.deepseek_docs import build_deepseek_models_snapshot
 from pipeline.google_speech_docs import build_google_speech_models_snapshot
+from pipeline.ollama_cloud_docs import build_ollama_cloud_models_snapshot
+from pipeline.opencode_zen_docs import build_opencode_zen_models_snapshot
 from pipeline.rankings import (
     ARENA_CATALOG_DIRNAME,
     ARENA_CATALOG_METADATA_FILENAME,
@@ -59,6 +61,11 @@ RUNWAY_MODELS_SOURCE_URL = "https://docs.dev.runwayml.com/guides/pricing/"
 RUNWAY_MODELS_SOURCE_FILENAME = "runway_models_official.json"
 GOOGLE_SPEECH_SOURCE_URL = "https://cloud.google.com/speech-to-text/pricing"
 GOOGLE_SPEECH_SOURCE_FILENAME = "google_speech_models_official.json"
+OPENCODE_ZEN_SOURCE_URL = "https://opencode.ai/docs/zen"
+OPENCODE_ZEN_SOURCE_FILENAME = "opencode_zen_models_official.json"
+OLLAMA_CLOUD_SOURCE_URL = "https://ollama.com/search?c=cloud"
+OLLAMA_CLOUD_SOURCE_PRICING_URL = "https://ollama.com/pricing"
+OLLAMA_CLOUD_SOURCE_FILENAME = "ollama_cloud_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
     ("litellm", "litellm_model_prices.json"),
@@ -269,6 +276,20 @@ def fetch_sources_to(
     google_speech_payload = build_google_speech_models_snapshot(google_speech_html, GOOGLE_SPEECH_SOURCE_URL)
     (snapshot_dir / GOOGLE_SPEECH_SOURCE_FILENAME).write_text(
         json.dumps(google_speech_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    opencode_zen_html = _fetch_bytes(OPENCODE_ZEN_SOURCE_URL).decode("utf-8")
+    opencode_zen_payload = build_opencode_zen_models_snapshot(opencode_zen_html, OPENCODE_ZEN_SOURCE_URL)
+    (snapshot_dir / OPENCODE_ZEN_SOURCE_FILENAME).write_text(
+        json.dumps(opencode_zen_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    ollama_cloud_html = _fetch_bytes(OLLAMA_CLOUD_SOURCE_URL).decode("utf-8")
+    ollama_cloud_payload = build_ollama_cloud_models_snapshot(ollama_cloud_html, OLLAMA_CLOUD_SOURCE_PRICING_URL)
+    (snapshot_dir / OLLAMA_CLOUD_SOURCE_FILENAME).write_text(
+        json.dumps(ollama_cloud_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 

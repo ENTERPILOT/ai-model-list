@@ -61,6 +61,14 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if google_speech_models_official_path.exists():
         payloads["google_speech_official"] = _read_json(google_speech_models_official_path)
 
+    opencode_zen_official_path = snapshot_dir / "opencode_zen_models_official.json"
+    if opencode_zen_official_path.exists():
+        payloads["opencode_zen_official"] = _read_json(opencode_zen_official_path)
+
+    ollama_cloud_official_path = snapshot_dir / "ollama_cloud_models_official.json"
+    if ollama_cloud_official_path.exists():
+        payloads["ollama_cloud_official"] = _read_json(ollama_cloud_official_path)
+
     openrouter_path = snapshot_dir / "openrouter_models.json"
     if openrouter_path.exists():
         openrouter_payload = _read_json(openrouter_path)

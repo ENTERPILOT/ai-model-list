@@ -307,5 +307,38 @@
       "audio_speech",
       "realtime"
     ]
+  },
+  "opencode_zen": {
+    "display_name": "OpenCode Zen",
+    "website": "https://opencode.ai",
+    "docs_url": "https://opencode.ai/docs/zen",
+    "pricing_url": "https://opencode.ai/docs/zen",
+    "api_type": "openai",
+    "default_base_url": "https://opencode.ai/zen/v1",
+    "auth": {
+      "type": "bearer",
+      "env_var": "OPENCODE_ZEN_API_KEY"
+    },
+    "base_url_env": "OPENCODE_ZEN_BASE_URL",
+    "supported_modes": [
+      "chat"
+    ]
+  },
+  "ollama_cloud": {
+    "display_name": "Ollama Cloud",
+    "website": "https://ollama.com",
+    "docs_url": "https://docs.ollama.com",
+    "pricing_url": "https://ollama.com/pricing",
+    "api_type": "openai",
+    "default_base_url": "https://ollama.com/api",
+    "auth": {
+      "type": "bearer",
+      "env_var": "OLLAMA_CLOUD_API_KEY"
+    },
+    "base_url_env": "OLLAMA_CLOUD_BASE_URL",
+    "supported_modes": [
+      "chat",
+      "embedding"
+    ]
   }
 }
