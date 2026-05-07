@@ -6570,6 +6570,45 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-3.1-flash-lite": {
+      "aliases": [
+        "google/gemini-3.1-flash-lite",
+        "google/gemini-3.1-flash-lite-20260507",
+        "openrouter/google/gemini-3.1-flash-lite",
+        "openrouter/google/gemini-3.1-flash-lite-20260507"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Google: Gemini 3.1 Flash Lite",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      }
+    },
     "gemini-3.1-flash-lite-preview": {
       "aliases": [
         "gemini/gemini-3.1-flash-lite-preview",
@@ -17417,10 +17456,12 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
       },
       "context_window": 1000000,
       "display_name": "Grok 4.3",
@@ -17498,6 +17539,45 @@
         }
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-4.3-latest": {
+      "aliases": [
+        "xai/grok-4.3-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
+      },
+      "context_window": 1000000,
+      "display_name": "Grok 4 3 Latest",
+      "max_output_tokens": 1000000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "source_url": "https://docs.x.ai/docs/models"
     },
     "grok-beta": {
       "aliases": [
@@ -19221,8 +19301,10 @@
     },
     "ling-2.6-1t": {
       "aliases": [
-        "inclusionai/ling-2.6-1t:free",
-        "openrouter/inclusionai/ling-2.6-1t:free"
+        "inclusionai/ling-2.6-1t",
+        "inclusionai/ling-2.6-1t-20260423",
+        "openrouter/inclusionai/ling-2.6-1t",
+        "openrouter/inclusionai/ling-2.6-1t-20260423"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19231,7 +19313,7 @@
         "tool_choice": true
       },
       "context_window": 262144,
-      "display_name": "inclusionAI: Ling-2.6-1T (free)",
+      "display_name": "inclusionAI: Ling-2.6-1T",
       "max_output_tokens": 32768,
       "modalities": {
         "input": [
@@ -19245,9 +19327,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
       }
     },
     "ling-2.6-flash": {
@@ -47461,6 +47544,24 @@
         "https://openrouter.ai/google/gemini-2.5-pro-preview"
       ]
     },
+    "openrouter/gemini-3.1-flash-lite": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-flash-lite",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-lite",
+      "provider_model_id": "google/gemini-3.1-flash-lite",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite"
+      ]
+    },
     "openrouter/gemma-2-27b-it": {
       "context_window": 8192,
       "enabled": true,
@@ -48003,6 +48104,23 @@
       "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-image-preview",
       "source_urls": [
         "https://openrouter.ai/google/gemini-3.1-flash-image-preview"
+      ]
+    },
+    "openrouter/google/gemini-3.1-flash-lite": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-flash-lite",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.025,
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-lite",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite"
       ]
     },
     "openrouter/google/gemini-3.1-flash-lite-preview": {
@@ -48567,19 +48685,20 @@
         "https://openrouter.ai/inception/mercury-2"
       ]
     },
-    "openrouter/inclusionai/ling-2.6-1t:free": {
+    "openrouter/inclusionai/ling-2.6-1t": {
       "context_window": 262144,
       "enabled": true,
       "max_output_tokens": 32768,
       "model_ref": "ling-2.6-1t",
       "pricing": {
+        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
       },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t:free",
+      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t",
       "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-1t:free"
+        "https://openrouter.ai/inclusionai/ling-2.6-1t"
       ]
     },
     "openrouter/inclusionai/ling-2.6-flash": {
@@ -48970,14 +49089,15 @@
       "max_output_tokens": 32768,
       "model_ref": "ling-2.6-1t",
       "pricing": {
+        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
       },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t:free",
-      "provider_model_id": "inclusionai/ling-2.6-1t:free",
+      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t",
+      "provider_model_id": "inclusionai/ling-2.6-1t",
       "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-1t:free"
+        "https://openrouter.ai/inclusionai/ling-2.6-1t"
       ]
     },
     "openrouter/ling-2.6-flash": {
@@ -58775,6 +58895,7 @@
     "xai/grok-4.3": {
       "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "grok-4.3",
       "pricing": {
         "cached_input_per_mtok": 0.2,
@@ -58796,13 +58917,15 @@
       },
       "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
+        "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-4.3-latest": {
       "context_window": 1000000,
       "enabled": true,
-      "model_ref": "grok-4.3",
+      "max_output_tokens": 1000000,
+      "model_ref": "grok-4.3-latest",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
@@ -58821,9 +58944,9 @@
           }
         ]
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-beta": {
@@ -59376,6 +59499,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-07T14:22:36Z",
+  "updated_at": "2026-05-07T19:46:07Z",
   "version": 1
 }
