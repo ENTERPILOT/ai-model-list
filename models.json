@@ -3865,39 +3865,6 @@
         "output_per_mtok": 0.29
       }
     },
-    "deepseek-r1t2-chimera": {
-      "aliases": [
-        "tngtech/deepseek-r1t2-chimera",
-        "openrouter/tngtech/deepseek-r1t2-chimera"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 163840,
-      "display_name": "TNG: DeepSeek R1T2 Chimera",
-      "max_output_tokens": 163840,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.15,
-        "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 1.1
-      }
-    },
     "deepseek-v3": {
       "aliases": [
         "azure_ai/deepseek-v3",
@@ -4079,7 +4046,6 @@
       "aliases": [
         "azure_ai/deepseek-v3.2",
         "deepseek/deepseek-v3.2",
-        "ollama_cloud/deepseek-v3.2",
         "deepseek/deepseek-v3.2-20251201",
         "azure/azure_ai/deepseek-v3.2",
         "openrouter/deepseek/deepseek-v3.2",
@@ -4092,8 +4058,7 @@
         "tool_choice": true
       },
       "context_window": 163840,
-      "description": "DeepSeek-V3.2, a model that harmonizes high computational efficiency with superior reasoning and agent performance.",
-      "display_name": "deepseek-v3.2",
+      "display_name": "Deepseek v3 2",
       "max_output_tokens": 163840,
       "modalities": {
         "input": [
@@ -4106,7 +4071,6 @@
       "modes": [
         "chat"
       ],
-      "owned_by": "deepseek",
       "pricing": {
         "cached_input_per_mtok": 0.0252,
         "currency": "USD",
@@ -4175,7 +4139,7 @@
           "score": 77.2
         }
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
     },
     "deepseek-v3.2-exp": {
       "aliases": [
@@ -20690,10 +20654,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.045,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.29
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
       }
     },
     "mimo-v2-omni": {
@@ -21048,6 +21012,7 @@
     "minimax-m2.1": {
       "aliases": [
         "minimax/minimax-m2.1",
+        "ollama_cloud/minimax-m2.1",
         "openrouter/minimax/minimax-m2.1"
       ],
       "capabilities": {
@@ -21058,7 +21023,8 @@
         "tool_choice": true
       },
       "context_window": 196608,
-      "display_name": "MiniMax: MiniMax M2.1",
+      "description": "Exceptional multilingual capabilities to elevate code engineering",
+      "display_name": "minimax-m2.1",
       "max_output_tokens": 196608,
       "modalities": {
         "input": [
@@ -21076,7 +21042,8 @@
         "currency": "USD",
         "input_per_mtok": 0.29,
         "output_per_mtok": 0.95
-      }
+      },
+      "source_url": "https://ollama.com/pricing"
     },
     "minimax-m2.5": {
       "aliases": [
@@ -25700,7 +25667,7 @@
       },
       "context_window": 40960,
       "display_name": "Qwen: Qwen3 32B",
-      "max_output_tokens": 40960,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -25713,7 +25680,6 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.04,
         "currency": "USD",
         "input_per_mtok": 0.29,
         "output_per_mtok": 0.59
@@ -27306,6 +27272,36 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 2000.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "ring-2.6-1t": {
+      "aliases": [
+        "inclusionai/ring-2.6-1t:free",
+        "openrouter/inclusionai/ring-2.6-1t:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "inclusionAI: Ring-2.6-1T (free)",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
         "output_per_mtok": 0.0
       }
     },
@@ -40445,13 +40441,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "ollama_cloud/deepseek-v3.2": {
-      "enabled": true,
-      "model_ref": "deepseek-v3.2",
-      "source_urls": [
-        "https://ollama.com/pricing"
-      ]
-    },
     "ollama_cloud/deepseek-v4-flash": {
       "enabled": true,
       "model_ref": "deepseek-v4-flash",
@@ -40518,6 +40507,13 @@
     "ollama_cloud/kimi-k2.6": {
       "enabled": true,
       "model_ref": "kimi-k2.6",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
+    "ollama_cloud/minimax-m2.1": {
+      "enabled": true,
+      "model_ref": "minimax-m2.1",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -47012,23 +47008,6 @@
         "https://openrouter.ai/deepseek/deepseek-r1-distill-qwen-32b"
       ]
     },
-    "openrouter/deepseek-r1t2-chimera": {
-      "context_window": 163840,
-      "enabled": true,
-      "max_output_tokens": 163840,
-      "model_ref": "deepseek-r1t2-chimera",
-      "pricing": {
-        "cached_input_per_mtok": 0.15,
-        "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 1.1
-      },
-      "pricing_source_url": "https://openrouter.ai/tngtech/deepseek-r1t2-chimera",
-      "provider_model_id": "tngtech/deepseek-r1t2-chimera",
-      "source_urls": [
-        "https://openrouter.ai/tngtech/deepseek-r1t2-chimera"
-      ]
-    },
     "openrouter/deepseek-v3.1-nex-n1": {
       "context_window": 131072,
       "enabled": true,
@@ -48638,6 +48617,21 @@
         "https://openrouter.ai/inclusionai/ling-2.6-flash"
       ]
     },
+    "openrouter/inclusionai/ring-2.6-1t:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "ring-2.6-1t",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/inclusionai/ring-2.6-1t:free",
+      "source_urls": [
+        "https://openrouter.ai/inclusionai/ring-2.6-1t:free"
+      ]
+    },
     "openrouter/inflection-3-pi": {
       "context_window": 8000,
       "enabled": true,
@@ -49623,10 +49617,10 @@
       "max_output_tokens": 65536,
       "model_ref": "mimo-v2-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.045,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.29
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2-flash",
       "provider_model_id": "xiaomi/mimo-v2-flash",
@@ -52636,13 +52630,12 @@
     "openrouter/qwen/qwen3-32b": {
       "context_window": 40960,
       "enabled": true,
-      "max_output_tokens": 40960,
+      "max_output_tokens": 16384,
       "model_ref": "qwen3-32b",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
         "currency": "USD",
         "input_per_mtok": 0.08,
-        "output_per_mtok": 0.24
+        "output_per_mtok": 0.28
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-32b",
       "source_urls": [
@@ -53243,13 +53236,12 @@
     "openrouter/qwen3-32b": {
       "context_window": 40960,
       "enabled": true,
-      "max_output_tokens": 40960,
+      "max_output_tokens": 16384,
       "model_ref": "qwen3-32b",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
         "currency": "USD",
         "input_per_mtok": 0.08,
-        "output_per_mtok": 0.24
+        "output_per_mtok": 0.28
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-32b",
       "provider_model_id": "qwen/qwen3-32b",
@@ -53894,6 +53886,22 @@
         "https://openrouter.ai/undi95/remm-slerp-l2-13b"
       ]
     },
+    "openrouter/ring-2.6-1t": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "ring-2.6-1t",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/inclusionai/ring-2.6-1t:free",
+      "provider_model_id": "inclusionai/ring-2.6-1t:free",
+      "source_urls": [
+        "https://openrouter.ai/inclusionai/ring-2.6-1t:free"
+      ]
+    },
     "openrouter/rnj-1-instruct": {
       "context_window": 32768,
       "enabled": true,
@@ -54341,22 +54349,6 @@
         "https://openrouter.ai/thedrummer/unslopnemo-12b"
       ]
     },
-    "openrouter/tngtech/deepseek-r1t2-chimera": {
-      "context_window": 163840,
-      "enabled": true,
-      "max_output_tokens": 163840,
-      "model_ref": "deepseek-r1t2-chimera",
-      "pricing": {
-        "cached_input_per_mtok": 0.15,
-        "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 1.1
-      },
-      "pricing_source_url": "https://openrouter.ai/tngtech/deepseek-r1t2-chimera",
-      "source_urls": [
-        "https://openrouter.ai/tngtech/deepseek-r1t2-chimera"
-      ]
-    },
     "openrouter/tongyi-deepresearch-30b-a3b": {
       "context_window": 131072,
       "enabled": true,
@@ -54723,10 +54715,10 @@
       "max_output_tokens": 65536,
       "model_ref": "mimo-v2-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.045,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.29
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2-flash",
       "source_urls": [
@@ -56499,10 +56491,11 @@
         "output_per_mtok": 0.0,
         "per_second_input": 0.00016
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/embeddings#multimodal",
-        "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/gemini-embedding-2-preview": {
@@ -59360,6 +59353,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-08T07:46:19Z",
+  "updated_at": "2026-05-08T19:24:09Z",
   "version": 1
 }
