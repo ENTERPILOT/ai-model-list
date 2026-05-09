@@ -4046,6 +4046,7 @@
       "aliases": [
         "azure_ai/deepseek-v3.2",
         "deepseek/deepseek-v3.2",
+        "ollama_cloud/deepseek-v3.2",
         "deepseek/deepseek-v3.2-20251201",
         "azure/azure_ai/deepseek-v3.2",
         "openrouter/deepseek/deepseek-v3.2",
@@ -4058,7 +4059,8 @@
         "tool_choice": true
       },
       "context_window": 163840,
-      "display_name": "Deepseek v3 2",
+      "description": "DeepSeek-V3.2, a model that harmonizes high computational efficiency with superior reasoning and agent performance.",
+      "display_name": "deepseek-v3.2",
       "max_output_tokens": 163840,
       "modalities": {
         "input": [
@@ -4071,6 +4073,7 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "deepseek",
       "pricing": {
         "cached_input_per_mtok": 0.0252,
         "currency": "USD",
@@ -4139,7 +4142,7 @@
           "score": 77.2
         }
       },
-      "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
+      "source_url": "https://ollama.com/pricing"
     },
     "deepseek-v3.2-exp": {
       "aliases": [
@@ -18046,8 +18049,10 @@
     },
     "hy3-preview": {
       "aliases": [
-        "tencent/hy3-preview:free",
-        "openrouter/tencent/hy3-preview:free"
+        "tencent/hy3-preview",
+        "tencent/hy3-preview-20260421",
+        "openrouter/tencent/hy3-preview",
+        "openrouter/tencent/hy3-preview-20260421"
       ],
       "capabilities": {
         "function_calling": true,
@@ -18055,7 +18060,7 @@
         "tool_choice": true
       },
       "context_window": 262144,
-      "display_name": "Tencent: Hy3 preview (free)",
+      "display_name": "Tencent: Hy3 preview",
       "max_output_tokens": 262144,
       "modalities": {
         "input": [
@@ -18069,9 +18074,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.029,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.066,
+        "output_per_mtok": 0.26
       }
     },
     "hy3-preview-free": {
@@ -18710,7 +18716,6 @@
       "aliases": [
         "azure_ai/kimi-k2.5",
         "moonshotai/kimi-k2.5",
-        "ollama_cloud/kimi-k2.5",
         "opencode_zen/kimi-k2.5",
         "moonshotai/kimi-k2.5-0127",
         "azure/azure_ai/kimi-k2.5",
@@ -18724,8 +18729,7 @@
         "vision": true
       },
       "context_window": 262144,
-      "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
-      "display_name": "kimi-k2.5",
+      "display_name": "Kimi K2.5",
       "max_output_tokens": 262144,
       "modalities": {
         "input": [
@@ -18787,7 +18791,7 @@
           "score": 76.0
         }
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "kimi-k2.6": {
       "aliases": [
@@ -20829,7 +20833,7 @@
       },
       "context_window": 1048576,
       "display_name": "Xiaomi: MiMo-V2.5-Pro",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -40441,6 +40445,13 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "ollama_cloud/deepseek-v3.2": {
+      "enabled": true,
+      "model_ref": "deepseek-v3.2",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
     "ollama_cloud/deepseek-v4-flash": {
       "enabled": true,
       "model_ref": "deepseek-v4-flash",
@@ -40493,13 +40504,6 @@
     "ollama_cloud/glm-5.1": {
       "enabled": true,
       "model_ref": "glm-5.1",
-      "source_urls": [
-        "https://ollama.com/pricing"
-      ]
-    },
-    "ollama_cloud/kimi-k2.5": {
-      "enabled": true,
-      "model_ref": "kimi-k2.5",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -48529,14 +48533,15 @@
       "max_output_tokens": 262144,
       "model_ref": "hy3-preview",
       "pricing": {
+        "cached_input_per_mtok": 0.029,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.066,
+        "output_per_mtok": 0.26
       },
-      "pricing_source_url": "https://openrouter.ai/tencent/hy3-preview:free",
-      "provider_model_id": "tencent/hy3-preview:free",
+      "pricing_source_url": "https://openrouter.ai/tencent/hy3-preview",
+      "provider_model_id": "tencent/hy3-preview",
       "source_urls": [
-        "https://openrouter.ai/tencent/hy3-preview:free"
+        "https://openrouter.ai/tencent/hy3-preview"
       ]
     },
     "openrouter/ibm-granite/granite-4.0-h-micro": {
@@ -49682,7 +49687,7 @@
     "openrouter/mimo-v2.5-pro": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 16384,
       "model_ref": "mimo-v2.5-pro",
       "pricing": {
         "cached_input_per_mtok": 0.2,
@@ -54272,19 +54277,20 @@
         "https://openrouter.ai/tencent/hunyuan-a13b-instruct"
       ]
     },
-    "openrouter/tencent/hy3-preview:free": {
+    "openrouter/tencent/hy3-preview": {
       "context_window": 262144,
       "enabled": true,
       "max_output_tokens": 262144,
       "model_ref": "hy3-preview",
       "pricing": {
+        "cached_input_per_mtok": 0.029,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.066,
+        "output_per_mtok": 0.26
       },
-      "pricing_source_url": "https://openrouter.ai/tencent/hy3-preview:free",
+      "pricing_source_url": "https://openrouter.ai/tencent/hy3-preview",
       "source_urls": [
-        "https://openrouter.ai/tencent/hy3-preview:free"
+        "https://openrouter.ai/tencent/hy3-preview"
       ]
     },
     "openrouter/thedrummer/cydonia-24b-v4.1": {
@@ -54776,7 +54782,7 @@
     "openrouter/xiaomi/mimo-v2.5-pro": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 16384,
       "model_ref": "mimo-v2.5-pro",
       "pricing": {
         "cached_input_per_mtok": 0.2,
@@ -59353,6 +59359,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-08T19:24:09Z",
+  "updated_at": "2026-05-09T08:00:34Z",
   "version": 1
 }
