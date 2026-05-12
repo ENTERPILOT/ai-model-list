@@ -3664,9 +3664,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.75
+        "input_per_mtok": 0.21,
+        "output_per_mtok": 0.79
       }
     },
     "deepseek-coder": {
@@ -7884,8 +7885,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
       },
       "rankings": {
         "livebench": {
@@ -8873,35 +8874,6 @@
           "rank": 75,
           "score": 56.1
         }
-      }
-    },
-    "goliath-120b": {
-      "aliases": [
-        "alpindale/goliath-120b",
-        "openrouter/alpindale/goliath-120b"
-      ],
-      "capabilities": {
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 6144,
-      "display_name": "Goliath 120B",
-      "max_output_tokens": 1024,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 3.75,
-        "output_per_mtok": 7.5
       }
     },
     "gpt-3.5-0301": {
@@ -21165,7 +21137,6 @@
       "context_window": 196608,
       "description": "MiniMax&#39;s M2-series model for coding, agentic workflows, and professional productivity.",
       "display_name": "minimax-m2.7",
-      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -26656,7 +26627,6 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.195,
         "currency": "USD",
         "input_per_mtok": 0.39,
         "output_per_mtok": 2.34
@@ -46076,21 +46046,6 @@
         "https://openrouter.ai/allenai/olmo-3-32b-think"
       ]
     },
-    "openrouter/alpindale/goliath-120b": {
-      "context_window": 6144,
-      "enabled": true,
-      "max_output_tokens": 1024,
-      "model_ref": "goliath-120b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 3.75,
-        "output_per_mtok": 7.5
-      },
-      "pricing_source_url": "https://openrouter.ai/alpindale/goliath-120b",
-      "source_urls": [
-        "https://openrouter.ai/alpindale/goliath-120b"
-      ]
-    },
     "openrouter/amazon/nova-2-lite-v1": {
       "context_window": 1000000,
       "enabled": true,
@@ -47090,9 +47045,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-chat-v3.1",
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.75
+        "input_per_mtok": 0.21,
+        "output_per_mtok": 0.79
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-chat-v3.1",
       "provider_model_id": "deepseek/deepseek-chat-v3.1",
@@ -47240,9 +47196,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-chat-v3.1",
       "pricing": {
+        "cached_input_per_mtok": 0.13,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.75
+        "input_per_mtok": 0.21,
+        "output_per_mtok": 0.79
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-chat-v3.1",
       "source_urls": [
@@ -47637,8 +47594,8 @@
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
       "source_urls": [
@@ -47827,22 +47784,6 @@
       "provider_model_id": "z-ai/glm-5v-turbo",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5v-turbo"
-      ]
-    },
-    "openrouter/goliath-120b": {
-      "context_window": 6144,
-      "enabled": true,
-      "max_output_tokens": 1024,
-      "model_ref": "goliath-120b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 3.75,
-        "output_per_mtok": 7.5
-      },
-      "pricing_source_url": "https://openrouter.ai/alpindale/goliath-120b",
-      "provider_model_id": "alpindale/goliath-120b",
-      "source_urls": [
-        "https://openrouter.ai/alpindale/goliath-120b"
       ]
     },
     "openrouter/google/gemini-2.0-flash-001": {
@@ -48298,8 +48239,8 @@
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
       "source_urls": [
@@ -49889,11 +49830,10 @@
     "openrouter/minimax-m2.7": {
       "context_window": 196608,
       "enabled": true,
-      "max_output_tokens": 131072,
       "model_ref": "minimax-m2.7",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.299,
+        "input_per_mtok": 0.2,
         "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
@@ -50013,11 +49953,10 @@
     "openrouter/minimax/minimax-m2.7": {
       "context_window": 196608,
       "enabled": true,
-      "max_output_tokens": 131072,
       "model_ref": "minimax-m2.7",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.299,
+        "input_per_mtok": 0.2,
         "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
@@ -53076,7 +53015,6 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.5-397b-a17b",
       "pricing": {
-        "cached_input_per_mtok": 0.195,
         "currency": "USD",
         "input_per_mtok": 0.39,
         "output_per_mtok": 2.34
@@ -53674,7 +53612,6 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.5-397b-a17b",
       "pricing": {
-        "cached_input_per_mtok": 0.195,
         "currency": "USD",
         "input_per_mtok": 0.39,
         "output_per_mtok": 2.34
@@ -59459,6 +59396,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-11T19:52:34Z",
+  "updated_at": "2026-05-12T08:45:02Z",
   "version": 1
 }
