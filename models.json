@@ -7878,7 +7878,7 @@
       },
       "context_window": 262144,
       "display_name": "Google: Gemma 4 26B A4B ",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text",
@@ -7894,8 +7894,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.34
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.33
       }
     },
     "gemma-4-31b-it": {
@@ -14077,7 +14077,9 @@
         "gpt-5-5-codex",
         "gpt-5.5-codex",
         "gpt-5-5-2026-04-23",
+        "gpt-5-5-2026-04-24",
         "gpt-5.5-2026-04-23",
+        "gpt-5.5-2026-04-24",
         "gpt-5-5-chat-latest",
         "gpt-5.5-chat-latest",
         "azure/gpt-5.5",
@@ -14090,7 +14092,9 @@
         "opencode_zen/gpt-5.5",
         "openai/gpt-5.5-20260423",
         "openai/gpt-5-5-2026-04-23",
+        "openai/gpt-5-5-2026-04-24",
         "openai/gpt-5.5-2026-04-23",
+        "openai/gpt-5.5-2026-04-24",
         "openai/gpt-5-5-chat-latest",
         "openai/gpt-5.5-chat-latest",
         "openrouter/openai/gpt-5.5",
@@ -15879,6 +15883,7 @@
       ],
       "context_window": 131000,
       "display_name": "IBM: Granite 4.0 Micro",
+      "max_output_tokens": 131000,
       "modalities": {
         "input": [
           "text"
@@ -19625,6 +19630,7 @@
       ],
       "context_window": 60000,
       "display_name": "Meta: Llama 3.2 1B Instruct",
+      "max_output_tokens": 60000,
       "modalities": {
         "input": [
           "text"
@@ -19688,6 +19694,7 @@
       ],
       "context_window": 80000,
       "display_name": "Meta: Llama 3.2 3B Instruct",
+      "max_output_tokens": 80000,
       "modalities": {
         "input": [
           "text"
@@ -21464,6 +21471,7 @@
       ],
       "context_window": 2824,
       "display_name": "Mistral: Mistral 7B Instruct v0.1",
+      "max_output_tokens": 2824,
       "modalities": {
         "input": [
           "text"
@@ -22352,6 +22360,7 @@
       ],
       "context_window": 128000,
       "display_name": "Mistral: Mistral Small 3.1 24B",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -22790,7 +22799,7 @@
       },
       "context_window": 262144,
       "display_name": "NVIDIA: Nemotron 3 Super",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text"
@@ -22804,8 +22813,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.45
       },
       "rankings": {
         "livebench": {
@@ -24887,6 +24896,7 @@
       ],
       "context_window": 32768,
       "display_name": "Qwen2.5 Coder 32B Instruct",
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text"
@@ -42812,6 +42822,21 @@
         "https://platform.openai.com/docs/pricing"
       ]
     },
+    "openai/gpt-5-5-2026-04-24": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "gpt-5.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
+      ]
+    },
     "openai/gpt-5-5-chat": {
       "context_window": 1000000,
       "enabled": true,
@@ -43829,6 +43854,21 @@
       "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "openai/gpt-5.5-2026-04-24": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "gpt-5.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
       ]
     },
     "openai/gpt-5.5-chat": {
@@ -47869,12 +47909,12 @@
     "openrouter/gemma-4-26b-a4b-it": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 32768,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.34
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -48502,12 +48542,11 @@
     "openrouter/google/gemma-4-26b-a4b-it": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.34
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -48713,6 +48752,7 @@
     "openrouter/granite-4.0-h-micro": {
       "context_window": 131000,
       "enabled": true,
+      "max_output_tokens": 131000,
       "model_ref": "granite-4.0-h-micro",
       "pricing": {
         "currency": "USD",
@@ -48887,6 +48927,7 @@
     "openrouter/ibm-granite/granite-4.0-h-micro": {
       "context_window": 131000,
       "enabled": true,
+      "max_output_tokens": 131000,
       "model_ref": "granite-4.0-h-micro",
       "pricing": {
         "currency": "USD",
@@ -49503,6 +49544,7 @@
     "openrouter/llama-3.2-1b-instruct": {
       "context_window": 60000,
       "enabled": true,
+      "max_output_tokens": 60000,
       "model_ref": "llama-3.2-1b-instruct",
       "pricing": {
         "currency": "USD",
@@ -49518,6 +49560,7 @@
     "openrouter/llama-3.2-3b-instruct": {
       "context_window": 80000,
       "enabled": true,
+      "max_output_tokens": 80000,
       "model_ref": "llama-3.2-3b-instruct",
       "pricing": {
         "currency": "USD",
@@ -49784,6 +49827,7 @@
     "openrouter/meta-llama/llama-3.2-1b-instruct": {
       "context_window": 60000,
       "enabled": true,
+      "max_output_tokens": 60000,
       "model_ref": "llama-3.2-1b-instruct",
       "pricing": {
         "currency": "USD",
@@ -49798,6 +49842,7 @@
     "openrouter/meta-llama/llama-3.2-3b-instruct": {
       "context_window": 80000,
       "enabled": true,
+      "max_output_tokens": 80000,
       "model_ref": "llama-3.2-3b-instruct",
       "pricing": {
         "currency": "USD",
@@ -49885,6 +49930,7 @@
     "openrouter/meta-llama/llama-guard-3-8b": {
       "context_window": 131072,
       "enabled": true,
+      "max_output_tokens": 131072,
       "model_ref": "llama-guard-3-8b",
       "pricing": {
         "currency": "USD",
@@ -50283,6 +50329,7 @@
     "openrouter/mistral-7b-instruct-v0.1": {
       "context_window": 2824,
       "enabled": true,
+      "max_output_tokens": 2824,
       "model_ref": "mistral-7b-instruct-v0.1",
       "pricing": {
         "currency": "USD",
@@ -50345,6 +50392,7 @@
     "openrouter/mistral-small-3.1-24b-instruct": {
       "context_window": 128000,
       "enabled": true,
+      "max_output_tokens": 128000,
       "model_ref": "mistral-small-3.1-24b-instruct",
       "pricing": {
         "currency": "USD",
@@ -50481,6 +50529,7 @@
     "openrouter/mistralai/mistral-7b-instruct-v0.1": {
       "context_window": 2824,
       "enabled": true,
+      "max_output_tokens": 2824,
       "model_ref": "mistral-7b-instruct-v0.1",
       "pricing": {
         "currency": "USD",
@@ -50599,12 +50648,11 @@
     "openrouter/mistralai/mistral-nemo": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
       "model_ref": "mistral-nemo",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.02,
-        "output_per_mtok": 0.04
+        "output_per_mtok": 0.03
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-nemo",
       "source_urls": [
@@ -50659,6 +50707,7 @@
     "openrouter/mistralai/mistral-small-3.1-24b-instruct": {
       "context_window": 128000,
       "enabled": true,
+      "max_output_tokens": 128000,
       "model_ref": "mistral-small-3.1-24b-instruct",
       "pricing": {
         "currency": "USD",
@@ -50920,12 +50969,12 @@
     "openrouter/nemotron-3-super-120b-a12b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262144,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.45
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -51210,12 +51259,11 @@
     "openrouter/nvidia/nemotron-3-super-120b-a12b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.45
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -52140,7 +52188,7 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.039,
-        "output_per_mtok": 0.19
+        "output_per_mtok": 0.18
       },
       "pricing_source_url": "https://openrouter.ai/openai/gpt-oss-120b",
       "source_urls": [
@@ -52629,6 +52677,7 @@
     "openrouter/qwen-2.5-coder-32b-instruct": {
       "context_window": 32768,
       "enabled": true,
+      "max_output_tokens": 32768,
       "model_ref": "qwen-2.5-coder-32b-instruct",
       "pricing": {
         "currency": "USD",
@@ -52709,6 +52758,7 @@
     "openrouter/qwen/qwen-2.5-coder-32b-instruct": {
       "context_window": 32768,
       "enabled": true,
+      "max_output_tokens": 32768,
       "model_ref": "qwen-2.5-coder-32b-instruct",
       "pricing": {
         "currency": "USD",
@@ -59624,6 +59674,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-05-17T08:25:03Z",
+  "updated_at": "2026-05-18T19:47:47Z",
   "version": 1
 }
