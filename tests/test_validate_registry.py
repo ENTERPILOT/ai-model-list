@@ -626,3 +626,110 @@ def test_build_registry_artifacts_prefers_live_xai_docs_over_stale_pydantic_subs
     assert registry["models"]["grok-imagine-video"]["modes"] == ["video_generation"]
     assert not quarantine
     assert report["summary"]["quarantine_count"] == 0
+
+
+def test_curated_xai_grok_code_fast_aliases_route_stale_aggregator_records(tmp_path: Path) -> None:
+    snapshot_dir = tmp_path / "snapshot"
+    curated_dir = tmp_path / "curated"
+    snapshot_dir.mkdir()
+    curated_dir.mkdir()
+
+    repo_curated_dir = Path(__file__).resolve().parent.parent / "registry" / "curated"
+    canonical_aliases = load_curated_config(repo_curated_dir)["canonical_aliases"]
+
+    (curated_dir / "providers.json").write_text(
+        json.dumps({"xai": {"display_name": "xAI"}}),
+        encoding="utf-8",
+    )
+    (curated_dir / "source_policies.json").write_text(
+        json.dumps(
+            {
+                "official_sources": ["xai"],
+                "aggregator_sources": ["litellm", "llm_prices", "portkey"],
+                "field_authority": {
+                    "owned_by": ["official"],
+                    "display_name": ["official"],
+                    "pricing": ["official", "portkey", "llm_prices", "litellm"],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (curated_dir / "canonical_aliases.json").write_text(json.dumps(canonical_aliases), encoding="utf-8")
+    (curated_dir / "rejections.json").write_text(json.dumps({}), encoding="utf-8")
+
+    (snapshot_dir / "fetch_metadata.json").write_text(
+        json.dumps({"fetched_at": "2026-05-25T15:15:22Z", "sources": {}}),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "xai_models_official.json").write_text(
+        json.dumps(
+            {
+                "source_url": "https://docs.x.ai/developers/models/grok-build-0.1",
+                "language_models": [
+                    {
+                        "name": "grok-build-0.1",
+                        "aliases": ["grok-code-fast-1", "grok-code-fast", "grok-code-fast-1-0825"],
+                        "maxPromptLength": 256000,
+                        "promptTextTokenPrice": "$n10000",
+                        "cachedPromptTokenPrice": "$n2000",
+                        "completionTextTokenPrice": "$n20000",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "litellm_model_prices.json").write_text(
+        json.dumps(
+            {
+                "xai/grok-code-fast": {
+                    "litellm_provider": "xai",
+                    "mode": "chat",
+                    "input_cost_per_token": 2e-7,
+                    "output_cost_per_token": 1.5e-6,
+                    "source": "https://docs.x.ai/docs/models",
+                },
+                "xai/grok-code-fast-1": {
+                    "litellm_provider": "xai",
+                    "mode": "chat",
+                    "input_cost_per_token": 2e-7,
+                    "output_cost_per_token": 1.5e-6,
+                    "source": "https://docs.x.ai/docs/models",
+                },
+                "xai/grok-code-fast-1-0825": {
+                    "litellm_provider": "xai",
+                    "mode": "chat",
+                    "input_cost_per_token": 2e-7,
+                    "output_cost_per_token": 1.5e-6,
+                    "source": "https://docs.x.ai/docs/models",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    registry, _, quarantine = build_registry_module.build_registry_artifacts(
+        snapshot_dir=snapshot_dir,
+        curated_dir=curated_dir,
+    )
+
+    assert "grok-build-0.1" in registry["models"]
+    assert "grok-code-fast" not in registry["models"]
+    assert "grok-code-fast-1" not in registry["models"]
+    assert "grok-code-fast-1-0825" not in registry["models"]
+    assert registry["models"]["grok-build-0.1"]["aliases"] == [
+        "grok-code-fast",
+        "grok-code-fast-1",
+        "grok-code-fast-1-0825",
+        "xai/grok-build-0.1",
+        "xai/grok-code-fast",
+        "xai/grok-code-fast-1",
+        "xai/grok-code-fast-1-0825",
+    ]
+    assert registry["provider_models"]["xai/grok-build-0.1"]["model_ref"] == "grok-build-0.1"
+    assert registry["provider_models"]["xai/grok-code-fast"]["model_ref"] == "grok-build-0.1"
+    assert registry["provider_models"]["xai/grok-code-fast-1"]["model_ref"] == "grok-build-0.1"
+    assert registry["provider_models"]["xai/grok-code-fast-1-0825"]["model_ref"] == "grok-build-0.1"
+    assert check_registry_quality(registry) == []
+    assert not quarantine
