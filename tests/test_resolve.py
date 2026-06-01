@@ -1,4 +1,4 @@
-from pipeline.resolve import canonicalize_model_id, resolve_registry
+from pipeline.resolve import canonicalize_model_id, merge_separator_variant_clusters, resolve_registry
 from pipeline.types import SourceEvidence
 
 
@@ -631,3 +631,49 @@ def test_resolve_does_not_merge_conflicting_modes_from_lower_authority_sources()
     registry, _ = resolve_registry(evidence, curated={})
 
     assert registry["models"]["chirp"]["modes"] == ["audio_transcription"]
+
+
+def test_resolve_collapses_separator_variant_to_authoritative_spelling() -> None:
+    evidence = [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="claude-opus-4-8",
+            provider_slug="anthropic",
+            canonical_hint="claude-opus-4-8",
+            fields={"display_name": "Claude Opus 4.8", "owned_by": "anthropic", "modes": ["chat"]},
+            confidence="official",
+            evidence_ref="https://docs.anthropic.com/models",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="claude-opus-4.8",
+            provider_slug="anthropic",
+            canonical_hint="claude-opus-4.8",
+            fields={"modes": ["chat"]},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+    registry, report = resolve_registry(evidence, curated={})
+
+    # One canonical model in the official dash spelling; the dotted aggregator
+    # spelling is folded in as an alias + provider_model, not a second model.
+    assert "claude-opus-4-8" in registry["models"]
+    assert "claude-opus-4.8" not in registry["models"]
+    assert "claude-opus-4.8" in registry["models"]["claude-opus-4-8"]["aliases"]
+    assert registry["provider_models"]["anthropic/claude-opus-4.8"]["model_ref"] == "claude-opus-4-8"
+    assert not report["quarantine"]
+
+
+def test_merge_separator_variants_declines_when_owner_is_not_inferable() -> None:
+    # Two punctuation variants of an unknown family must NOT be merged — only the
+    # duplicate-like warning should flag them, never an automatic (mis)merge.
+    clusters = {
+        "mysterynet-1-0": ["a"],
+        "mysterynet-1.0": ["b"],
+    }
+
+    merged = merge_separator_variant_clusters(clusters)
+
+    assert set(merged) == {"mysterynet-1-0", "mysterynet-1.0"}
