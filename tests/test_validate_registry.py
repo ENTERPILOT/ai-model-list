@@ -245,6 +245,26 @@ def test_write_livebench_snapshot_writes_payload_and_metadata(tmp_path: Path, mo
     assert '"categories": "https://livebench.ai/categories_2026_01_08.json"' in metadata_text
 
 
+def test_prune_orphan_models_moves_unreferenced_models_to_quarantine() -> None:
+    registry = {
+        "models": {
+            "gpt-4o": {"display_name": "GPT-4o", "modes": ["chat"]},
+            "stale-model": {"display_name": "Stale", "modes": ["chat"]},
+        },
+        "provider_models": {
+            "openai/gpt-4o": {"model_ref": "gpt-4o", "enabled": True},
+        },
+    }
+    quarantine: list[dict] = []
+
+    build_registry_module._prune_orphan_models(registry, quarantine)
+
+    assert set(registry["models"]) == {"gpt-4o"}
+    assert quarantine == [
+        {"source_model_id": "stale-model", "reason": "orphan-model-no-provider", "evidence_ref": None}
+    ]
+
+
 def test_check_registry_quality_rejects_provider_specific_model_ids() -> None:
     data = {
         "version": 1,

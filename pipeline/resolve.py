@@ -7,9 +7,11 @@ from copy import deepcopy
 import re
 from typing import Any, Iterable
 
-from pipeline.normalize import _strip_deployment_tier_suffix, split_provider_model_name
-from pipeline.rules import is_canonical_model_key, sort_candidates_by_authority
+from pipeline.normalize import _strip_deployment_tier_suffix, infer_owned_by, split_provider_model_name
+from pipeline.rules import CONFIDENCE_RANK, is_canonical_model_key, sort_candidates_by_authority
 from pipeline.types import SourceEvidence
+
+SEPARATOR_TOKEN_PATTERN = re.compile(r"[^a-z0-9]+")
 
 
 MODEL_FIELD_NAMES = {
@@ -173,6 +175,8 @@ def resolve_registry(
         canonical_key = resolve_canonical_key(record, alias_map)
         evidence_clusters[canonical_key].append(record)
 
+    evidence_clusters = merge_separator_variant_clusters(evidence_clusters)
+
     for canonical_key, records in evidence_clusters.items():
         canonical_records = select_canonical_records(canonical_key, records, alias_map)
         if not should_admit_canonical_model(canonical_key, canonical_records):
@@ -196,6 +200,66 @@ def resolve_registry(
             )
 
     return registry, report
+
+
+def _separator_token(model_id: str) -> str:
+    return SEPARATOR_TOKEN_PATTERN.sub("", model_id.lower())
+
+
+def _record_confidence_rank(record: SourceEvidence) -> int:
+    return CONFIDENCE_RANK.get(record.confidence, len(CONFIDENCE_RANK))
+
+
+def _choose_representative_key(keys: list[str], evidence_clusters: dict[str, list[SourceEvidence]]) -> str:
+    """Pick the spelling backed by the most authoritative evidence, deterministically.
+
+    Lower confidence rank wins (official < high < medium < low); ties break to the
+    spelling with more evidence, then lexically so the build stays reproducible.
+    """
+    def key_rank(key: str) -> tuple[int, int, str]:
+        records = evidence_clusters[key]
+        best_confidence = min((_record_confidence_rank(record) for record in records), default=len(CONFIDENCE_RANK))
+        return (best_confidence, -len(records), key)
+
+    return min(keys, key=key_rank)
+
+
+def merge_separator_variant_clusters(
+    evidence_clusters: dict[str, list[SourceEvidence]],
+) -> dict[str, list[SourceEvidence]]:
+    """Fold pure separator-variant canonical keys into one authoritative spelling.
+
+    When the same model surfaces under spellings that differ only by punctuation
+    (e.g. ``claude-opus-4-8`` vs ``claude-opus-4.8``), both are admitted as
+    distinct canonical models and trip the duplicate-like check. Collapse them to
+    the spelling backed by the most authoritative evidence — but only when every
+    variant is a clean canonical key for the *same* inferred owner. That guard
+    keeps genuinely distinct models apart and leaves provider/family-specific
+    spellings (xAI's ``grok-4.20``) intact; anything it can't safely merge is left
+    untouched for the non-fatal duplicate-like warning to surface.
+    """
+    keys_by_token: dict[str, list[str]] = defaultdict(list)
+    for canonical_key in evidence_clusters:
+        keys_by_token[_separator_token(canonical_key)].append(canonical_key)
+
+    merged: dict[str, list[SourceEvidence]] = defaultdict(list)
+    for keys in keys_by_token.values():
+        if len(keys) > 1 and _is_safe_separator_variant_group(keys):
+            representative = _choose_representative_key(keys, evidence_clusters)
+        else:
+            representative = None
+        for key in keys:
+            target = representative if representative is not None else key
+            merged[target].extend(evidence_clusters[key])
+
+    return merged
+
+
+def _is_safe_separator_variant_group(keys: list[str]) -> bool:
+    if not all(is_canonical_model_key(key) for key in keys):
+        return False
+    owners = {infer_owned_by(key, None) for key in keys}
+    return len(owners) == 1 and None not in owners
 
 
 def build_model_record(

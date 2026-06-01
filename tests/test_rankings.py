@@ -455,14 +455,16 @@ def test_build_registry_artifacts_preserves_existing_rankings_as_of_when_scores_
         "resolve_registry",
         lambda _evidence, _curated: (
             {
-                "providers": {},
+                "providers": {"openai": {"display_name": "OpenAI"}},
                 "models": {
                     "gpt-5": {
                         "display_name": "GPT-5",
                         "modes": ["chat"],
                     }
                 },
-                "provider_models": {},
+                "provider_models": {
+                    "openai/gpt-5": {"model_ref": "gpt-5", "enabled": True},
+                },
             },
             {"quarantine": []},
         ),
@@ -520,7 +522,7 @@ def test_build_registry_artifacts_preserves_existing_as_of_for_unchanged_seeded_
         "resolve_registry",
         lambda _evidence, _curated: (
             {
-                "providers": {},
+                "providers": {"openai": {"display_name": "OpenAI"}},
                 "models": {
                     "gpt-5": {
                         "display_name": "GPT-5",
@@ -534,7 +536,9 @@ def test_build_registry_artifacts_preserves_existing_as_of_for_unchanged_seeded_
                         },
                     }
                 },
-                "provider_models": {},
+                "provider_models": {
+                    "openai/gpt-5": {"model_ref": "gpt-5", "enabled": True},
+                },
             },
             {"quarantine": []},
         ),

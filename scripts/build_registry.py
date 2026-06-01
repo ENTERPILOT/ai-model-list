@@ -107,6 +107,31 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
     return evidence
 
 
+def _prune_orphan_models(registry: dict[str, Any], quarantine: list[dict[str, Any]]) -> None:
+    """Move canonical models that no provider_model references into quarantine.
+
+    Every consumer reads provider/model pairs, so a canonical model with zero
+    serving provider_models is dead weight — and it trips the orphan-record
+    quality check. Dropping it here keeps the emitted registry self-consistent
+    instead of relying on a hand-fix each time upstreams drop a provider.
+    """
+    referenced = {
+        provider_model.get("model_ref")
+        for provider_model in registry.get("provider_models", {}).values()
+        if provider_model.get("model_ref")
+    }
+    orphan_keys = [model_key for model_key in registry.get("models", {}) if model_key not in referenced]
+    for model_key in orphan_keys:
+        del registry["models"][model_key]
+        quarantine.append(
+            {
+                "source_model_id": model_key,
+                "reason": "orphan-model-no-provider",
+                "evidence_ref": None,
+            }
+        )
+
+
 def _duplicate_like_clusters(model_keys: Iterable[str]) -> list[list[str]]:
     clusters_by_token: dict[str, list[str]] = {}
     for model_key in model_keys:
@@ -228,6 +253,7 @@ def build_registry_artifacts(
         for provider_model_key, provider_model in resolved_registry["provider_models"].items()
         if provider_model_key.split("/", 1)[0] in allowed_providers
     }
+    _prune_orphan_models(resolved_registry, resolve_report["quarantine"])
     seed_existing_rankings(resolved_registry, existing_registry)
     apply_snapshot_rankings(resolved_registry, snapshot_payloads)
     updated_at = _resolve_updated_at(snapshot_payloads)
