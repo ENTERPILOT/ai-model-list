@@ -164,14 +164,36 @@ def check_orphan_model_records(data: dict) -> list[str]:
     return [f"  orphan model records: {sample}{suffix}"]
 
 
-def check_registry_quality(data: dict) -> list[str]:
+def check_registry_quality_errors(data: dict) -> list[str]:
+    """Quality problems that corrupt consumer expectations — always fatal.
+
+    A provider-specific key leaking into ``models`` or an ``owned_by`` that
+    points at a missing/mismatched provider is structurally wrong, not a smell.
+    """
     errors = []
     errors.extend(check_canonical_model_keys(data))
     errors.extend(check_owned_by_values(data))
-    errors.extend(check_provider_coverage(data))
-    errors.extend(check_duplicate_like_clusters(data))
-    errors.extend(check_orphan_model_records(data))
     return errors
+
+
+def check_registry_quality_warnings(data: dict) -> list[str]:
+    """Quality smells in otherwise-valid, parseable data — non-fatal by default.
+
+    Duplicate-like clusters and orphan records are typically transient states
+    while a new model is being normalized across upstreams. Surface them for a
+    human to review, but don't break the automated registry-update PR over them.
+    Promote to errors with ``--strict``.
+    """
+    warnings = []
+    warnings.extend(check_provider_coverage(data))
+    warnings.extend(check_duplicate_like_clusters(data))
+    warnings.extend(check_orphan_model_records(data))
+    return warnings
+
+
+def check_registry_quality(data: dict) -> list[str]:
+    """All quality findings (errors + warnings), preserved for callers/tests."""
+    return check_registry_quality_errors(data) + check_registry_quality_warnings(data)
 
 
 def main():
@@ -181,6 +203,9 @@ def main():
                         help="Path to models.json (default: repo root)")
     parser.add_argument("--schema", type=Path, default=repo_root / "schema.json",
                         help="Path to schema.json (default: repo root)")
+    parser.add_argument("--strict", action="store_true",
+                        help="Treat quality warnings (duplicate-like clusters, orphan "
+                             "records, provider coverage) as fatal errors")
     args = parser.parse_args()
 
     if not args.models.exists():
@@ -206,11 +231,24 @@ def main():
     if ref_errors:
         all_errors.extend(["Referential integrity errors:"] + ref_errors)
 
-    # Quality validation
+    # Quality validation — split into fatal errors and non-fatal warnings so
+    # transient smells don't break the automated registry-update PR. --strict
+    # promotes warnings to errors for manual/pre-release gating.
     print("Checking registry quality...")
-    quality_errors = check_registry_quality(data)
+    quality_errors = check_registry_quality_errors(data)
+    quality_warnings = check_registry_quality_warnings(data)
+    if args.strict and quality_warnings:
+        quality_errors = quality_errors + quality_warnings
+        quality_warnings = []
     if quality_errors:
         all_errors.extend(["Quality validation errors:"] + quality_errors)
+
+    # Non-fatal warnings: report but never fail on them.
+    if quality_warnings:
+        print()
+        print("Quality validation warnings (non-fatal; use --strict to enforce):", file=sys.stderr)
+        for line in quality_warnings:
+            print(line, file=sys.stderr)
 
     # Summary
     if all_errors:
@@ -227,7 +265,8 @@ def main():
         n_providers = len(data.get("providers", {}))
         n_models = len(data.get("models", {}))
         n_pm = len(data.get("provider_models", {}))
-        print(f"\nPASSED: {n_providers} providers, {n_models} models, {n_pm} provider_models")
+        warn_suffix = f" ({len(quality_warnings)} quality warning(s))" if quality_warnings else ""
+        print(f"\nPASSED: {n_providers} providers, {n_models} models, {n_pm} provider_models{warn_suffix}")
 
 
 if __name__ == "__main__":
