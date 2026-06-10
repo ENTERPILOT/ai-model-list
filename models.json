@@ -18688,11 +18688,9 @@
         "moonshotai/kimi-k2.6",
         "ollama_cloud/kimi-k2.6",
         "opencode_zen/kimi-k2.6",
-        "moonshotai/kimi-k2.6:free",
         "moonshotai/kimi-k2.6-20260420",
         "azure/azure_ai/kimi-k2.6",
         "openrouter/moonshotai/kimi-k2.6",
-        "openrouter/moonshotai/kimi-k2.6:free",
         "openrouter/moonshotai/kimi-k2.6-20260420"
       ],
       "capabilities": {
@@ -49595,13 +49593,15 @@
       ]
     },
     "openrouter/kimi-k2.5": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.35,
-        "output_per_mtok": 1.89
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.9
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "provider_model_id": "moonshotai/kimi-k2.5",
@@ -49621,9 +49621,9 @@
         "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
+      "provider_model_id": "moonshotai/kimi-k2.6",
       "source_urls": [
-        "https://openrouter.ai/moonshotai/kimi-k2.6",
-        "https://openrouter.ai/moonshotai/kimi-k2.6:free"
+        "https://openrouter.ai/moonshotai/kimi-k2.6"
       ]
     },
     "openrouter/kimi-latest": {
@@ -51118,13 +51118,15 @@
       ]
     },
     "openrouter/moonshotai/kimi-k2.5": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.35,
-        "output_per_mtok": 1.89
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.9
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "source_urls": [
@@ -51145,20 +51147,6 @@
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
       "source_urls": [
         "https://openrouter.ai/moonshotai/kimi-k2.6"
-      ]
-    },
-    "openrouter/moonshotai/kimi-k2.6:free": {
-      "context_window": 262144,
-      "enabled": true,
-      "model_ref": "kimi-k2.6",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6:free",
-      "source_urls": [
-        "https://openrouter.ai/moonshotai/kimi-k2.6:free"
       ]
     },
     "openrouter/morph-v3-fast": {
@@ -60253,6 +60241,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-10T10:07:50Z",
+  "updated_at": "2026-06-10T20:34:15Z",
   "version": 1
 }
