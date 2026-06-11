@@ -4073,9 +4073,7 @@
         "deepinfra/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
       ],
       "capabilities": {
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true
+        "reasoning": true
       },
       "context_window": 131072,
       "display_name": "DeepSeek R1 Distill Llama 70B",
@@ -8020,9 +8018,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 256000,
+      "context_window": 262144,
       "display_name": "Google: Gemma 4 31B",
-      "max_output_tokens": 8192,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text",
@@ -18804,9 +18802,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262142,
+      "context_window": 262144,
       "display_name": "MoonshotAI Kimi Latest",
-      "max_output_tokens": 262142,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text",
@@ -18820,10 +18818,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.34,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 3.41
+        "input_per_mtok": 0.67,
+        "output_per_mtok": 3.39
       }
     },
     "l3-lunaris-8b": {
@@ -22841,9 +22839,7 @@
     },
     "nemotron-nano-9b-v2": {
       "aliases": [
-        "nvidia/nemotron-nano-9b-v2",
         "nvidia/nemotron-nano-9b-v2:free",
-        "openrouter/nvidia/nemotron-nano-9b-v2",
         "openrouter/nvidia/nemotron-nano-9b-v2:free"
       ],
       "capabilities": {
@@ -22853,9 +22849,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 131072,
-      "display_name": "NVIDIA: Nemotron Nano 9B V2",
-      "max_output_tokens": 16384,
+      "context_window": 128000,
+      "display_name": "NVIDIA: Nemotron Nano 9B V2 (free)",
       "modalities": {
         "input": [
           "text"
@@ -22869,8 +22864,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.04,
-        "output_per_mtok": 0.16
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       }
     },
     "nex-n2-pro": {
@@ -48175,13 +48170,13 @@
       ]
     },
     "openrouter/deepseek/deepseek-r1-distill-llama-70b": {
-      "context_window": 131072,
+      "context_window": 8192,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 8192,
       "model_ref": "deepseek-r1-distill-llama-70b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.7,
+        "input_per_mtok": 0.8,
         "output_per_mtok": 0.8
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-r1-distill-llama-70b",
@@ -48423,15 +48418,15 @@
       ]
     },
     "openrouter/gemma-4-31b-it": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 8192,
+      "max_output_tokens": 262144,
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "cached_input_per_mtok": 0.09,
         "currency": "USD",
         "input_per_mtok": 0.12,
-        "output_per_mtok": 0.36
+        "output_per_mtok": 0.35
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
       "source_urls": [
@@ -49049,15 +49044,15 @@
       ]
     },
     "openrouter/google/gemma-4-31b-it": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 8192,
+      "max_output_tokens": 262144,
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "cached_input_per_mtok": 0.09,
         "currency": "USD",
         "input_per_mtok": 0.12,
-        "output_per_mtok": 0.36
+        "output_per_mtok": 0.35
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
       "source_urls": [
@@ -49594,13 +49589,15 @@
       ]
     },
     "openrouter/kimi-k2.5": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.35,
-        "output_per_mtok": 1.89
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.9
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "provider_model_id": "moonshotai/kimi-k2.5",
@@ -49609,15 +49606,15 @@
       ]
     },
     "openrouter/kimi-k2.6": {
-      "context_window": 262142,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262142,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.34,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 3.41
+        "input_per_mtok": 0.67,
+        "output_per_mtok": 3.39
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
       "provider_model_id": "moonshotai/kimi-k2.6",
@@ -49626,15 +49623,15 @@
       ]
     },
     "openrouter/kimi-latest": {
-      "context_window": 262142,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262142,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.34,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 3.41
+        "input_per_mtok": 0.67,
+        "output_per_mtok": 3.39
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "provider_model_id": "~moonshotai/kimi-latest",
@@ -51117,13 +51114,15 @@
       ]
     },
     "openrouter/moonshotai/kimi-k2.5": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.35,
-        "output_per_mtok": 1.89
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.9
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "source_urls": [
@@ -51131,15 +51130,15 @@
       ]
     },
     "openrouter/moonshotai/kimi-k2.6": {
-      "context_window": 262142,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262142,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.34,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 3.41
+        "input_per_mtok": 0.67,
+        "output_per_mtok": 3.39
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
       "source_urls": [
@@ -51322,18 +51321,17 @@
       ]
     },
     "openrouter/nemotron-nano-9b-v2": {
-      "context_window": 131072,
+      "context_window": 128000,
       "enabled": true,
-      "max_output_tokens": 16384,
       "model_ref": "nemotron-nano-9b-v2",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.04,
-        "output_per_mtok": 0.16
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-9b-v2",
+      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free",
+      "provider_model_id": "nvidia/nemotron-nano-9b-v2:free",
       "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-9b-v2",
         "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free"
       ]
     },
@@ -51668,21 +51666,6 @@
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free",
       "source_urls": [
         "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free"
-      ]
-    },
-    "openrouter/nvidia/nemotron-nano-9b-v2": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "nemotron-nano-9b-v2",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.04,
-        "output_per_mtok": 0.16
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-9b-v2",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-9b-v2"
       ]
     },
     "openrouter/nvidia/nemotron-nano-9b-v2:free": {
@@ -53765,11 +53748,11 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.7-plus",
       "pricing": {
-        "cache_write_per_mtok": 0.5,
-        "cached_input_per_mtok": 0.08,
+        "cache_write_per_mtok": 0.4,
+        "cached_input_per_mtok": 0.064,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.6
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 1.28
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.7-plus",
       "source_urls": [
@@ -54408,11 +54391,11 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.7-plus",
       "pricing": {
-        "cache_write_per_mtok": 0.5,
-        "cached_input_per_mtok": 0.08,
+        "cache_write_per_mtok": 0.4,
+        "cached_input_per_mtok": 0.064,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.6
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 1.28
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.7-plus",
       "provider_model_id": "qwen/qwen3.7-plus",
@@ -55571,15 +55554,15 @@
       ]
     },
     "openrouter/~moonshotai/kimi-latest": {
-      "context_window": 262142,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262142,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.34,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 3.41
+        "input_per_mtok": 0.67,
+        "output_per_mtok": 3.39
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "source_urls": [
@@ -60240,6 +60223,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-11T10:41:55Z",
+  "updated_at": "2026-06-11T20:25:54Z",
   "version": 1
 }
