@@ -18766,6 +18766,7 @@
     "kimi-k2.7-code": {
       "aliases": [
         "moonshotai/kimi-k2.7-code",
+        "ollama_cloud/kimi-k2.7-code",
         "moonshotai/kimi-k2.7-code-20260612",
         "openrouter/moonshotai/kimi-k2.7-code",
         "openrouter/moonshotai/kimi-k2.7-code-20260612"
@@ -18778,7 +18779,8 @@
         "tool_choice": true
       },
       "context_window": 262144,
-      "display_name": "MoonshotAI: Kimi K2.7 Code",
+      "description": "Kimi K2.7 Code is Moonshot AI&#39;s coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
+      "display_name": "kimi-k2.7-code",
       "modalities": {
         "input": [
           "text",
@@ -18797,7 +18799,8 @@
         "currency": "USD",
         "input_per_mtok": 0.95,
         "output_per_mtok": 4.0
-      }
+      },
+      "source_url": "https://ollama.com/pricing"
     },
     "kimi-k2p5": {
       "aliases": [
@@ -25590,7 +25593,6 @@
       "aliases": [
         "qwen/qwen3-coder",
         "qwen/qwen3-coder:free",
-        "ollama_cloud/qwen3-coder",
         "qwen/qwen3-coder-480b-a35b-07-25",
         "openrouter/qwen/qwen3-coder",
         "openrouter/qwen/qwen3-coder:free",
@@ -25603,8 +25605,7 @@
         "tool_choice": true
       },
       "context_window": 262144,
-      "description": "Alibaba&#39;s performant long context models for agentic and coding tasks.",
-      "display_name": "qwen3-coder",
+      "display_name": "Qwen: Qwen3 Coder 480B A35B",
       "max_output_tokens": 65536,
       "modalities": {
         "input": [
@@ -25621,8 +25622,7 @@
         "currency": "USD",
         "input_per_mtok": 0.22,
         "output_per_mtok": 1.8
-      },
-      "source_url": "https://ollama.com/pricing"
+      }
     },
     "qwen3-coder-30b-a3b-instruct": {
       "aliases": [
@@ -41505,6 +41505,13 @@
         "https://ollama.com/pricing"
       ]
     },
+    "ollama_cloud/kimi-k2.7-code": {
+      "enabled": true,
+      "model_ref": "kimi-k2.7-code",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
     "ollama_cloud/minimax-m2.1": {
       "enabled": true,
       "model_ref": "minimax-m2.1",
@@ -41550,13 +41557,6 @@
     "ollama_cloud/nemotron-3-ultra": {
       "enabled": true,
       "model_ref": "nemotron-3-ultra",
-      "source_urls": [
-        "https://ollama.com/pricing"
-      ]
-    },
-    "ollama_cloud/qwen3-coder": {
-      "enabled": true,
-      "model_ref": "qwen3-coder",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -49608,15 +49608,13 @@
       ]
     },
     "openrouter/kimi-k2.5": {
-      "context_window": 262144,
+      "context_window": 256000,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.9
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 2.025
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "provider_model_id": "moonshotai/kimi-k2.5",
@@ -51134,15 +51132,13 @@
       ]
     },
     "openrouter/moonshotai/kimi-k2.5": {
-      "context_window": 262144,
+      "context_window": 256000,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.9
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 2.025
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "source_urls": [
@@ -60262,6 +60258,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-12T20:14:23Z",
+  "updated_at": "2026-06-13T09:20:51Z",
   "version": 1
 }
