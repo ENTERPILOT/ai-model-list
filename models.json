@@ -8946,6 +8946,24 @@
       },
       "source_url": "https://fireworks.ai/models/fireworks/glm-5p1"
     },
+    "global.amazon.nova-2-lite": {
+      "aliases": [
+        "global.amazon.nova-2-lite-v1:0",
+        "bedrock/global.amazon.nova-2-lite",
+        "bedrock/global.amazon.nova-2-lite-v1:0"
+      ],
+      "display_name": "Nova 2 Lite",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "source_url": "https://aws.amazon.com/bedrock/pricing/"
+    },
     "gpt-3.5-0301": {
       "aliases": [
         "gpt-3.5-turbo-0301",
@@ -27078,6 +27096,25 @@
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
+    "regional.amazon.nova-2-lite": {
+      "aliases": [
+        "regional.amazon.nova-2-lite-v1:0",
+        "bedrock/regional.amazon.nova-2-lite",
+        "bedrock/regional.amazon.nova-2-lite-v1:0"
+      ],
+      "description": "Amazon Nova 2 Lite is an advanced multimodal reasoning model that intelligently balances performance and efficiency by dynamically adjusting reasoning depth based on task complexity. With flexible controls for developers to adjust the reasoning process, Nova 2 Lite delivers superior results for agentic workflows across software development, consumer experiences and enterprise application.",
+      "display_name": "Nova 2 Lite",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
+      },
+      "source_url": "https://aws.amazon.com/bedrock/pricing/"
+    },
     "reka-edge": {
       "aliases": [
         "rekaai/reka-edge",
@@ -35655,6 +35692,35 @@
         "https://configs.portkey.ai/pricing/bedrock.json"
       ]
     },
+    "bedrock/global.amazon.nova-2-lite": {
+      "enabled": true,
+      "model_ref": "global.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "provider_model_id": "global.amazon.nova-2-lite-v1:0",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/global.amazon.nova-2-lite-v1:0": {
+      "enabled": true,
+      "model_ref": "global.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
     "bedrock/global.anthropic.claude-fable-5-v1:0": {
       "enabled": true,
       "model_ref": "claude-fable-5",
@@ -35951,6 +36017,35 @@
         "currency": "USD",
         "input_per_mtok": 0.53,
         "output_per_mtok": 2.66
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.amazon.nova-2-lite": {
+      "enabled": true,
+      "model_ref": "regional.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "provider_model_id": "regional.amazon.nova-2-lite-v1:0",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.amazon.nova-2-lite-v1:0": {
+      "enabled": true,
+      "model_ref": "regional.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
       },
       "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
       "source_urls": [
@@ -60295,6 +60390,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-14T19:40:51Z",
+  "updated_at": "2026-06-15T12:22:34Z",
   "version": 1
 }
