@@ -2968,6 +2968,7 @@
         "response_schema": true,
         "tool_choice": true
       },
+      "description": "Mistral's cutting-edge language model for coding released end of July 2025. Codestral specializes in low-latency, high-frequency tasks such as fill-in-the-middle (FIM), code correction and test generation.",
       "display_name": "Codestral 2508",
       "modalities": {
         "input": [
@@ -2980,12 +2981,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
       },
-      "source_url": "https://mistral.ai/news/codestral-25-08"
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "codestral-embed": {
       "aliases": [
@@ -4632,7 +4635,8 @@
         "response_schema": true,
         "tool_choice": true
       },
-      "display_name": "Devstral 2512",
+      "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.",
+      "display_name": "Devstral 2 2512",
       "modalities": {
         "input": [
           "text"
@@ -4644,7 +4648,9 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
+        "cached_input_per_mtok": 0.04,
         "currency": "USD",
         "input_per_mtok": 0.4,
         "output_per_mtok": 2.0
@@ -4691,7 +4697,7 @@
           "score": 27.7
         }
       },
-      "source_url": "https://mistral.ai/news/devstral-2-vibe-cli"
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "devstral-latest": {
       "aliases": [
@@ -7647,6 +7653,7 @@
     },
     "gemma-2-27b-it": {
       "aliases": [
+        "gemini/gemma-2-27b-it",
         "google/gemma-2-27b-it",
         "openrouter/google/gemma-2-27b-it"
       ],
@@ -7654,9 +7661,8 @@
         "response_schema": true,
         "structured_output": true
       },
-      "context_window": 8192,
-      "display_name": "Google: Gemma 2 27B",
-      "max_output_tokens": 2048,
+      "description": "Gemma 2 27B by Google is an open model built from the same research and technology used to create the Gemini models. Gemma models are well-suited for a variety of text generation and instruction-following tasks.",
+      "display_name": "Gemma 2 27B",
       "modalities": {
         "input": [
           "text"
@@ -7668,6 +7674,7 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "gemini",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.65,
@@ -7694,7 +7701,8 @@
           "elo": 1216,
           "rank": 175
         }
-      }
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemma-3": {
       "aliases": [
@@ -7937,6 +7945,7 @@
     "gemma-4-26b-a4b-it": {
       "aliases": [
         "gemma-4-26B-A4B-it",
+        "gemini/gemma-4-26b-a4b-it",
         "google/gemma-4-26B-A4B-it",
         "google/gemma-4-26b-a4b-it",
         "google/gemma-4-26b-a4b-it:free",
@@ -7953,9 +7962,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
-      "display_name": "Google: Gemma 4 26B A4B ",
-      "max_output_tokens": 32768,
+      "description": "Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Despite 25.2B total parameters, only 3.8B activate per token during inference.",
+      "display_name": "Gemma 4 26B A4B",
       "modalities": {
         "input": [
           "text",
@@ -7969,11 +7977,13 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "gemini",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.06,
         "output_per_mtok": 0.33
-      }
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemma-4-26b-a4b-it-maas": {
       "aliases": [
@@ -8001,6 +8011,7 @@
     "gemma-4-31b-it": {
       "aliases": [
         "gemma-4-31B-it",
+        "gemini/gemma-4-31b-it",
         "google/gemma-4-31B-it",
         "google/gemma-4-31b-it",
         "google/gemma-4-31b-it:free",
@@ -8018,9 +8029,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
-      "display_name": "Google: Gemma 4 31B",
-      "max_output_tokens": 262144,
+      "description": "Gemma 4 31B Instruct is Google DeepMind's 30.7B dense multimodal model supporting text and image input with text output. It features a 256K token context window, configurable thinking/reasoning mode, and native function calling.",
+      "display_name": "Gemma 4 31B",
       "modalities": {
         "input": [
           "text",
@@ -8034,11 +8044,12 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "gemini",
       "pricing": {
         "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.36
       },
       "rankings": {
         "livebench": {
@@ -8081,7 +8092,8 @@
           "rank": 80,
           "score": 59.4
         }
-      }
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemma-7b-it": {
       "aliases": [
@@ -8945,6 +8957,24 @@
         "output_per_mtok": 4.4
       },
       "source_url": "https://fireworks.ai/models/fireworks/glm-5p1"
+    },
+    "global.amazon.nova-2-lite": {
+      "aliases": [
+        "global.amazon.nova-2-lite-v1:0",
+        "bedrock/global.amazon.nova-2-lite",
+        "bedrock/global.amazon.nova-2-lite-v1:0"
+      ],
+      "display_name": "Nova 2 Lite",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "source_url": "https://aws.amazon.com/bedrock/pricing/"
     },
     "gpt-3.5-0301": {
       "aliases": [
@@ -13642,28 +13672,27 @@
         "response_schema": true,
         "structured_output": true
       },
-      "context_window": 272000,
-      "display_name": "OpenAI: GPT-5.4 Image 2",
-      "max_output_tokens": 128000,
+      "description": "GPT-5.4 Image 2 combines OpenAI's GPT-5.4 model with state-of-the-art image generation capabilities from GPT Image 2. It enables rich multimodal workflows across reasoning, coding, and image generation.",
+      "display_name": "GPT-5.4 Image 2",
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
-          "text",
           "image"
         ]
       },
       "modes": [
-        "chat"
+        "image_generation"
       ],
+      "owned_by": "openai",
       "pricing": {
         "cached_input_per_mtok": 2.0,
         "currency": "USD",
         "input_per_mtok": 8.0,
         "output_per_mtok": 15.0
-      }
+      },
+      "source_url": "https://platform.openai.com/docs/pricing"
     },
     "gpt-5.4-mini": {
       "aliases": [
@@ -14372,6 +14401,7 @@
         "tool_choice": true
       },
       "context_window": 128000,
+      "description": "The gpt-audio model is OpenAI's first generally available audio model. The new snapshot features an upgraded decoder for more natural-sounding voices and maintains better voice consistency.",
       "display_name": "GPT Audio",
       "max_output_tokens": 16384,
       "modalities": {
@@ -14389,13 +14419,15 @@
         "responses",
         "realtime"
       ],
+      "owned_by": "openai",
       "pricing": {
         "audio_input_per_mtok": 32.0,
         "audio_output_per_mtok": 64.0,
         "currency": "USD",
         "input_per_mtok": 2.5,
         "output_per_mtok": 10.0
-      }
+      },
+      "source_url": "https://platform.openai.com/docs/pricing"
     },
     "gpt-audio-1.5": {
       "aliases": [
@@ -14521,6 +14553,7 @@
         "tool_choice": true
       },
       "context_window": 128000,
+      "description": "A cost-efficient version of GPT Audio. The new snapshot features an upgraded decoder for more natural sounding voices and maintains better voice consistency.",
       "display_name": "GPT Audio Mini",
       "max_output_tokens": 16384,
       "modalities": {
@@ -14538,13 +14571,15 @@
         "responses",
         "realtime"
       ],
+      "owned_by": "openai",
       "pricing": {
         "audio_input_per_mtok": 1.0,
         "audio_output_per_mtok": 2.0,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.4
-      }
+      },
+      "source_url": "https://platform.openai.com/docs/pricing"
     },
     "gpt-audio-mini-2025-10-06": {
       "aliases": [
@@ -14637,6 +14672,7 @@
         "structured_output": true,
         "tool_choice": true
       },
+      "description": "GPT Chat Latest points to OpenAI's stable API alias `chat-latest` that always resolves to the latest Instant chat model used in ChatGPT.",
       "display_name": "GPT Chat Latest",
       "modalities": {
         "input": [
@@ -14650,12 +14686,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "openai",
       "pricing": {
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 5.0,
         "output_per_mtok": 30.0
-      }
+      },
+      "source_url": "https://platform.openai.com/docs/pricing"
     },
     "gpt-image-1": {
       "aliases": [
@@ -15526,9 +15564,8 @@
         "tool_choice": true,
         "web_search": true
       },
-      "context_window": 131072,
-      "display_name": "GPT OSS Safeguard 20b",
-      "max_output_tokens": 65536,
+      "description": "gpt-oss-safeguard-20b is a safety reasoning model from OpenAI built upon gpt-oss-20b. This open-weight, 21B-parameter Mixture-of-Experts (MoE) model offers lower latency for safety tasks.",
+      "display_name": "gpt-oss-safeguard-20b",
       "modalities": {
         "input": [
           "text"
@@ -15540,12 +15577,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "openai",
       "pricing": {
         "cached_input_per_mtok": 0.037,
         "currency": "USD",
         "input_per_mtok": 0.075,
         "output_per_mtok": 0.3
-      }
+      },
+      "source_url": "https://platform.openai.com/docs/pricing"
     },
     "gpt-realtime": {
       "aliases": [
@@ -21143,7 +21182,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Ministral 14b 2512",
+      "description": "The largest model in the Ministral 3 family, Ministral 3 14B offers frontier capabilities and performance comparable to its larger Mistral Small 3.2 24B counterpart.",
+      "display_name": "Ministral 3 14B 2512",
       "modalities": {
         "input": [
           "text",
@@ -21156,11 +21196,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.2
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "ministral-3-14b-2512": {
       "aliases": [
@@ -21266,7 +21309,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Ministral 3b 2512",
+      "description": "The smallest model in the Ministral 3 family, Ministral 3 3B is a powerful, efficient tiny language model with vision capabilities.",
+      "display_name": "Ministral 3 3B 2512",
       "modalities": {
         "input": [
           "text",
@@ -21279,11 +21323,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.1
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "ministral-8b": {
       "aliases": [
@@ -21625,7 +21672,8 @@
         "tool_choice": true,
         "vision": true
       },
-      "display_name": "Mistral Large 2512",
+      "description": "Mistral Large 3 2512 is Mistral's most capable model to date, featuring a sparse mixture-of-experts architecture with 41B active parameters (675B total), and released under the Apache 2.0 license.",
+      "display_name": "Mistral Large 3 2512",
       "modalities": {
         "input": [
           "text",
@@ -21638,12 +21686,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.5,
         "output_per_mtok": 1.5
       },
-      "source_url": "https://docs.mistral.ai/models/mistral-large-3-25-12"
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "mistral-large-3": {
       "aliases": [
@@ -22179,6 +22229,7 @@
     },
     "mistral-small-2603": {
       "aliases": [
+        "mistral/mistral-small-2603",
         "mistralai/mistral-small-2603",
         "openrouter/mistralai/mistral-small-2603"
       ],
@@ -22189,8 +22240,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
-      "display_name": "Mistral: Mistral Small 4",
+      "description": "Mistral Small 4 is the next major release in the Mistral Small family, unifying the capabilities of several flagship Mistral models into a single system.",
+      "display_name": "Mistral Small 4",
       "modalities": {
         "input": [
           "text",
@@ -22203,12 +22254,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
         "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "mistral-small-3-2-2506": {
       "aliases": [
@@ -22235,14 +22288,14 @@
     },
     "mistral-small-3.1-24b-instruct": {
       "aliases": [
+        "mistral/mistral-small-3.1-24b-instruct",
         "mistralai/mistral-small-3.1-24b-instruct",
         "mistralai/mistral-small-3.1-24b-instruct-2503",
         "openrouter/mistralai/mistral-small-3.1-24b-instruct",
         "openrouter/mistralai/mistral-small-3.1-24b-instruct-2503"
       ],
-      "context_window": 128000,
-      "display_name": "Mistral: Mistral Small 3.1 24B",
-      "max_output_tokens": 128000,
+      "description": "Mistral Small 3.1 24B Instruct is an upgraded variant of Mistral Small 3 (2501), featuring 24 billion parameters with advanced multimodal capabilities.",
+      "display_name": "Mistral Small 3.1 24B",
       "modalities": {
         "input": [
           "text",
@@ -22255,14 +22308,17 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.351,
         "output_per_mtok": 0.555
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "mistral-small-3.2-24b-instruct": {
       "aliases": [
+        "mistral/mistral-small-3.2-24b-instruct",
         "mistralai/mistral-small-3.2-24b-instruct",
         "mistralai/mistral-small-3.2-24b-instruct-2506",
         "openrouter/mistralai/mistral-small-3.2-24b-instruct",
@@ -22274,9 +22330,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 128000,
-      "display_name": "Mistral: Mistral Small 3.2 24B",
-      "max_output_tokens": 16384,
+      "description": "Mistral-Small-3.2-24B-Instruct-2506 is an updated 24B parameter model from Mistral optimized for instruction following, repetition reduction, and improved function calling.",
+      "display_name": "Mistral Small 3.2 24B",
       "modalities": {
         "input": [
           "text",
@@ -22289,11 +22344,13 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "mistral",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.075,
         "output_per_mtok": 0.2
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "mistral-small-latest": {
       "aliases": [
@@ -24620,18 +24677,17 @@
     "phi-4-mini-instruct": {
       "aliases": [
         "Phi-4-mini-instruct",
+        "azure/phi-4-mini-instruct",
         "azure_ai/Phi-4-mini-instruct",
         "microsoft/phi-4-mini-instruct",
         "azure/azure_ai/Phi-4-mini-instruct",
         "openrouter/microsoft/phi-4-mini-instruct"
       ],
       "capabilities": {
-        "response_schema": true,
-        "structured_output": true
+        "function_calling": true
       },
-      "context_window": 128000,
-      "display_name": "Microsoft: Phi 4 Mini Instruct",
-      "max_output_tokens": 128000,
+      "description": "Phi-4-mini-instruct is a lightweight open model built upon synthetic data and filtered publicly available websites, with a focus on high-quality, reasoning-dense data.",
+      "display_name": "Phi 4 Mini Instruct",
       "modalities": {
         "input": [
           "text"
@@ -24649,7 +24705,7 @@
         "input_per_mtok": 0.08,
         "output_per_mtok": 0.35
       },
-      "source_url": "https://techcommunity.microsoft.com/blog/Azure-AI-Services-blog/announcing-new-phi-pricing-empowering-your-business-with-small-language-models/4395112"
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing"
     },
     "phi-4-multimodal-instruct": {
       "aliases": [
@@ -25725,7 +25781,6 @@
     "qwen3-coder-next": {
       "aliases": [
         "qwen/qwen3-coder-next",
-        "ollama_cloud/qwen3-coder-next",
         "qwen/qwen3-coder-next-2025-02-03",
         "openrouter/qwen/qwen3-coder-next",
         "openrouter/qwen/qwen3-coder-next-2025-02-03"
@@ -25737,8 +25792,7 @@
         "tool_choice": true
       },
       "context_window": 262144,
-      "description": "Qwen3-Coder-Next is a coding-focused language model from Alibaba&#39;s Qwen team, optimized for agentic coding workflows and local development.",
-      "display_name": "qwen3-coder-next",
+      "display_name": "Qwen: Qwen3 Coder Next",
       "max_output_tokens": 262144,
       "modalities": {
         "input": [
@@ -25756,8 +25810,7 @@
         "currency": "USD",
         "input_per_mtok": 0.11,
         "output_per_mtok": 0.8
-      },
-      "source_url": "https://ollama.com/pricing"
+      }
     },
     "qwen3-coder-plus": {
       "aliases": [
@@ -26051,6 +26104,17 @@
           "score": 58.2
         }
       }
+    },
+    "qwen3-vl": {
+      "aliases": [
+        "ollama_cloud/qwen3-vl"
+      ],
+      "description": "The most powerful vision-language model in the Qwen model family to date.",
+      "display_name": "qwen3-vl",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://ollama.com/pricing"
     },
     "qwen3-vl-235b-a22b-instruct": {
       "aliases": [
@@ -26433,7 +26497,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.5-35B-A3B",
-      "max_output_tokens": 262144,
+      "max_output_tokens": 81920,
       "modalities": {
         "input": [
           "text",
@@ -27077,6 +27141,25 @@
         "output_per_mtok": 1.6
       },
       "source_url": "https://opencode.ai/docs/zen"
+    },
+    "regional.amazon.nova-2-lite": {
+      "aliases": [
+        "regional.amazon.nova-2-lite-v1:0",
+        "bedrock/regional.amazon.nova-2-lite",
+        "bedrock/regional.amazon.nova-2-lite-v1:0"
+      ],
+      "description": "Amazon Nova 2 Lite is an advanced multimodal reasoning model that intelligently balances performance and efficiency by dynamically adjusting reasoning depth based on task complexity. With flexible controls for developers to adjust the reasoning process, Nova 2 Lite delivers superior results for agentic workflows across software development, consumer experiences and enterprise application.",
+      "display_name": "Nova 2 Lite",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
+      },
+      "source_url": "https://aws.amazon.com/bedrock/pricing/"
     },
     "reka-edge": {
       "aliases": [
@@ -28694,6 +28777,7 @@
     },
     "voxtral-small-24b-2507": {
       "aliases": [
+        "mistral/voxtral-small-24b-2507",
         "mistralai/voxtral-small-24b-2507",
         "openrouter/mistralai/voxtral-small-24b-2507"
       ],
@@ -28703,11 +28787,10 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 32000,
-      "display_name": "Mistral: Voxtral Small 24B 2507",
+      "description": "Voxtral Small is an enhancement of Mistral Small 3, incorporating state-of-the-art audio input capabilities while retaining best-in-class text performance. It excels at speech transcription, translation and audio understanding.",
+      "display_name": "Voxtral Small 24B 2507",
       "modalities": {
         "input": [
-          "text",
           "audio"
         ],
         "output": [
@@ -28715,14 +28798,16 @@
         ]
       },
       "modes": [
-        "chat"
+        "audio_transcription"
       ],
+      "owned_by": "mistral",
       "pricing": {
         "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
-      }
+      },
+      "source_url": "https://mistral.ai/pricing#api-pricing"
     },
     "weaver": {
       "aliases": [
@@ -35090,6 +35175,24 @@
         "https://techcommunity.microsoft.com/blog/machinelearningblog/affordable-innovation-unveiling-the-pricing-of-phi-3-slms-on-models-as-a-service/4156495"
       ]
     },
+    "azure/phi-4-mini-instruct": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 4096,
+      "model_ref": "phi-4-mini-instruct",
+      "pricing": {
+        "cached_input_per_mtok": 0.08,
+        "currency": "USD",
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.35
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing",
+      "provider_model_id": "azure_ai/Phi-4-mini-instruct",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing",
+        "https://techcommunity.microsoft.com/blog/Azure-AI-Services-blog/announcing-new-phi-pricing-empowering-your-business-with-small-language-models/4395112"
+      ]
+    },
     "azure/phi-4-multimodal-instruct": {
       "context_window": 131072,
       "enabled": true,
@@ -35655,6 +35758,35 @@
         "https://configs.portkey.ai/pricing/bedrock.json"
       ]
     },
+    "bedrock/global.amazon.nova-2-lite": {
+      "enabled": true,
+      "model_ref": "global.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "provider_model_id": "global.amazon.nova-2-lite-v1:0",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/global.amazon.nova-2-lite-v1:0": {
+      "enabled": true,
+      "model_ref": "global.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
     "bedrock/global.anthropic.claude-fable-5-v1:0": {
       "enabled": true,
       "model_ref": "claude-fable-5",
@@ -35951,6 +36083,35 @@
         "currency": "USD",
         "input_per_mtok": 0.53,
         "output_per_mtok": 2.66
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.amazon.nova-2-lite": {
+      "enabled": true,
+      "model_ref": "regional.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "provider_model_id": "regional.amazon.nova-2-lite-v1:0",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.amazon.nova-2-lite-v1:0": {
+      "enabled": true,
+      "model_ref": "regional.amazon.nova-2-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.0825,
+        "currency": "USD",
+        "input_per_mtok": 0.33,
+        "output_per_mtok": 2.75
       },
       "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
       "source_urls": [
@@ -36931,19 +37092,6 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "deepinfra/gemma-4-31b-it": {
-      "enabled": true,
-      "model_ref": "gemma-4-31b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.38
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
       ]
     },
     "deepinfra/google/gemini-1.5-flash": {
@@ -39567,6 +39715,19 @@
         "https://ai.google.dev/gemini-api/docs/models#gemini-robotics-er-1-5-preview"
       ]
     },
+    "gemini/gemma-2-27b-it": {
+      "enabled": true,
+      "model_ref": "gemma-2-27b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.65,
+        "output_per_mtok": 0.65
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
     "gemini/gemma-3": {
       "enabled": true,
       "model_ref": "gemma-3",
@@ -39607,6 +39768,33 @@
     "gemini/gemma-3n": {
       "enabled": true,
       "model_ref": "gemma-3n",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/gemma-4-26b-a4b-it": {
+      "enabled": true,
+      "model_ref": "gemma-4-26b-a4b-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.06,
+        "output_per_mtok": 0.33
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/gemma-4-31b-it": {
+      "enabled": true,
+      "model_ref": "gemma-4-31b-it",
+      "pricing": {
+        "cached_input_per_mtok": 0.09,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.36
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing"
       ]
@@ -39873,24 +40061,6 @@
       "pricing_source_url": "https://groq.com/pricing/",
       "source_urls": [
         "https://groq.com/pricing/"
-      ]
-    },
-    "groq/gpt-oss-safeguard-20b": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 65536,
-      "model_ref": "gpt-oss-safeguard-20b",
-      "pricing": {
-        "cached_input_per_mtok": 0.037,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/groq.json",
-      "provider_model_id": "openai/gpt-oss-safeguard-20b",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/groq.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
     "groq/llama-3.1-405b-reasoning": {
@@ -40380,14 +40550,16 @@
       "max_output_tokens": 256000,
       "model_ref": "codestral-2508",
       "pricing": {
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
-        "https://mistral.ai/news/codestral-25-08"
+        "https://mistral.ai/news/codestral-25-08",
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/codestral-embed": {
@@ -40459,14 +40631,16 @@
       "max_output_tokens": 256000,
       "model_ref": "devstral-2512",
       "pricing": {
+        "cached_input_per_mtok": 0.04,
         "currency": "USD",
         "input_per_mtok": 0.4,
         "output_per_mtok": 2.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
-        "https://mistral.ai/news/devstral-2-vibe-cli"
+        "https://mistral.ai/news/devstral-2-vibe-cli",
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/devstral-latest": {
@@ -40732,13 +40906,15 @@
       "enabled": true,
       "model_ref": "ministral-14b-2512",
       "pricing": {
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.2
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/mistral-ai.json"
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/ministral-3-14b-2512": {
@@ -40803,13 +40979,15 @@
       "enabled": true,
       "model_ref": "ministral-3b-2512",
       "pricing": {
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.1
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/mistral-ai.json"
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/ministral-8b": {
@@ -40960,14 +41138,16 @@
       "max_output_tokens": 262144,
       "model_ref": "mistral-large-2512",
       "pricing": {
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.5,
         "output_per_mtok": 1.5
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
-        "https://docs.mistral.ai/models/mistral-large-3-25-12"
+        "https://docs.mistral.ai/models/mistral-large-3-25-12",
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/mistral-large-3": {
@@ -41194,6 +41374,20 @@
         "https://configs.portkey.ai/pricing/mistral-ai.json"
       ]
     },
+    "mistral/mistral-small-2603": {
+      "enabled": true,
+      "model_ref": "mistral-small-2603",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
+      "source_urls": [
+        "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
     "mistral/mistral-small-3-2-2506": {
       "context_window": 131072,
       "enabled": true,
@@ -41207,6 +41401,32 @@
       "pricing_source_url": "https://mistral.ai/pricing",
       "source_urls": [
         "https://mistral.ai/pricing"
+      ]
+    },
+    "mistral/mistral-small-3.1-24b-instruct": {
+      "enabled": true,
+      "model_ref": "mistral-small-3.1-24b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.351,
+        "output_per_mtok": 0.555
+      },
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
+      "source_urls": [
+        "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
+    "mistral/mistral-small-3.2-24b-instruct": {
+      "enabled": true,
+      "model_ref": "mistral-small-3.2-24b-instruct",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
+      "source_urls": [
+        "https://mistral.ai/pricing#api-pricing"
       ]
     },
     "mistral/mistral-small-latest": {
@@ -41469,6 +41689,20 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "mistral/voxtral-small-24b-2507": {
+      "enabled": true,
+      "model_ref": "voxtral-small-24b-2507",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.3
+      },
+      "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
+      "source_urls": [
+        "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
     "ollama_cloud/deepseek-v4-flash": {
       "enabled": true,
       "model_ref": "deepseek-v4-flash",
@@ -41595,9 +41829,9 @@
         "https://ollama.com/pricing"
       ]
     },
-    "ollama_cloud/qwen3-coder-next": {
+    "ollama_cloud/qwen3-vl": {
       "enabled": true,
-      "model_ref": "qwen3-coder-next",
+      "model_ref": "qwen3-vl",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -44346,6 +44580,20 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "openai/gpt-5.4-image-2": {
+      "enabled": true,
+      "model_ref": "gpt-5.4-image-2",
+      "pricing": {
+        "cached_input_per_mtok": 2.0,
+        "currency": "USD",
+        "input_per_mtok": 8.0,
+        "output_per_mtok": 15.0
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
+      ]
+    },
     "openai/gpt-5.4-mini": {
       "context_window": 400000,
       "enabled": true,
@@ -44724,9 +44972,10 @@
         "input_per_mtok": 2.5,
         "output_per_mtok": 10.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
+        "https://platform.openai.com/docs/pricing",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
@@ -44793,9 +45042,10 @@
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.4
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
+        "https://platform.openai.com/docs/pricing",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
@@ -44845,6 +45095,20 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "openai/gpt-chat-latest": {
+      "enabled": true,
+      "model_ref": "gpt-chat-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
       ]
     },
     "openai/gpt-image-1": {
@@ -45350,6 +45614,46 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "openai/gpt-oss-120b": {
+      "enabled": true,
+      "model_ref": "gpt-oss-120b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.039,
+        "output_per_mtok": 0.18
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
+      ]
+    },
+    "openai/gpt-oss-20b": {
+      "enabled": true,
+      "model_ref": "gpt-oss-20b",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.029,
+        "output_per_mtok": 0.14
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
+      ]
+    },
+    "openai/gpt-oss-safeguard-20b": {
+      "enabled": true,
+      "model_ref": "gpt-oss-safeguard-20b",
+      "pricing": {
+        "cached_input_per_mtok": 0.037,
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
+      },
+      "pricing_source_url": "https://platform.openai.com/docs/pricing",
+      "source_urls": [
+        "https://platform.openai.com/docs/pricing"
       ]
     },
     "openai/gpt-realtime": {
@@ -48302,15 +48606,14 @@
       ]
     },
     "openrouter/deepseek/deepseek-v4-flash": {
-      "context_window": 1000000,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 65536,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.18
+        "input_per_mtok": 0.098,
+        "output_per_mtok": 0.196
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -48407,22 +48710,6 @@
         "https://openrouter.ai/google/gemini-2.5-pro-preview"
       ]
     },
-    "openrouter/gemma-2-27b-it": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 2048,
-      "model_ref": "gemma-2-27b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.65,
-        "output_per_mtok": 0.65
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemma-2-27b-it",
-      "provider_model_id": "google/gemma-2-27b-it",
-      "source_urls": [
-        "https://openrouter.ai/google/gemma-2-27b-it"
-      ]
-    },
     "openrouter/gemma-3-12b-it": {
       "context_window": 131072,
       "enabled": true,
@@ -48453,39 +48740,6 @@
       "provider_model_id": "google/gemma-3-4b-it",
       "source_urls": [
         "https://openrouter.ai/google/gemma-3-4b-it"
-      ]
-    },
-    "openrouter/gemma-4-26b-a4b-it": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "gemma-4-26b-a4b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.06,
-        "output_per_mtok": 0.33
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
-      "source_urls": [
-        "https://openrouter.ai/google/gemma-4-26b-a4b-it",
-        "https://openrouter.ai/google/gemma-4-26b-a4b-it:free"
-      ]
-    },
-    "openrouter/gemma-4-31b-it": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 262144,
-      "model_ref": "gemma-4-31b-it",
-      "pricing": {
-        "cached_input_per_mtok": 0.09,
-        "currency": "USD",
-        "input_per_mtok": 0.12,
-        "output_per_mtok": 0.35
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
-      "source_urls": [
-        "https://openrouter.ai/google/gemma-4-31b-it",
-        "https://openrouter.ai/google/gemma-4-31b-it:free"
       ]
     },
     "openrouter/glm-4.5": {
@@ -49194,23 +49448,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "openrouter/gpt-5.4-image-2": {
-      "context_window": 272000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "gpt-5.4-image-2",
-      "pricing": {
-        "cached_input_per_mtok": 2.0,
-        "currency": "USD",
-        "input_per_mtok": 8.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-5.4-image-2",
-      "provider_model_id": "openai/gpt-5.4-image-2",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-5.4-image-2"
-      ]
-    },
     "openrouter/gpt-latest": {
       "context_window": 1050000,
       "enabled": true,
@@ -49243,23 +49480,6 @@
       "provider_model_id": "~openai/gpt-mini-latest",
       "source_urls": [
         "https://openrouter.ai/~openai/gpt-mini-latest"
-      ]
-    },
-    "openrouter/gpt-oss-safeguard-20b": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 65536,
-      "model_ref": "gpt-oss-safeguard-20b",
-      "pricing": {
-        "cached_input_per_mtok": 0.037,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-oss-safeguard-20b",
-      "provider_model_id": "openai/gpt-oss-safeguard-20b",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-oss-safeguard-20b"
       ]
     },
     "openrouter/granite-4.0-h-micro": {
@@ -50789,54 +51009,6 @@
       "provider_model_id": "mistralai/mistral-medium-3.1",
       "source_urls": [
         "https://openrouter.ai/mistralai/mistral-medium-3.1"
-      ]
-    },
-    "openrouter/mistral-small-2603": {
-      "context_window": 262144,
-      "enabled": true,
-      "model_ref": "mistral-small-2603",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://openrouter.ai/mistralai/mistral-small-2603",
-      "provider_model_id": "mistralai/mistral-small-2603",
-      "source_urls": [
-        "https://openrouter.ai/mistralai/mistral-small-2603"
-      ]
-    },
-    "openrouter/mistral-small-3.1-24b-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "mistral-small-3.1-24b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.351,
-        "output_per_mtok": 0.555
-      },
-      "pricing_source_url": "https://openrouter.ai/mistralai/mistral-small-3.1-24b-instruct",
-      "provider_model_id": "mistralai/mistral-small-3.1-24b-instruct",
-      "source_urls": [
-        "https://openrouter.ai/mistralai/mistral-small-3.1-24b-instruct"
-      ]
-    },
-    "openrouter/mistral-small-3.2-24b-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "mistral-small-3.2-24b-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.2
-      },
-      "pricing_source_url": "https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct",
-      "provider_model_id": "mistralai/mistral-small-3.2-24b-instruct",
-      "source_urls": [
-        "https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct"
       ]
     },
     "openrouter/mistralai/codestral-2508": {
@@ -52940,23 +53112,6 @@
         "https://openrouter.ai/perplexity/sonar-reasoning-pro"
       ]
     },
-    "openrouter/phi-4-mini-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "phi-4-mini-instruct",
-      "pricing": {
-        "cached_input_per_mtok": 0.08,
-        "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.35
-      },
-      "pricing_source_url": "https://openrouter.ai/microsoft/phi-4-mini-instruct",
-      "provider_model_id": "microsoft/phi-4-mini-instruct",
-      "source_urls": [
-        "https://openrouter.ai/microsoft/phi-4-mini-instruct"
-      ]
-    },
     "openrouter/poolside/laguna-m.1:free": {
       "context_window": 262144,
       "enabled": true,
@@ -53627,7 +53782,7 @@
     "openrouter/qwen/qwen3.5-35b-a3b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.5-35b-a3b",
       "pricing": {
         "cached_input_per_mtok": 0.05,
@@ -54260,7 +54415,7 @@
     "openrouter/qwen3.5-35b-a3b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.5-35b-a3b",
       "pricing": {
         "cached_input_per_mtok": 0.05,
@@ -55195,22 +55350,6 @@
         "https://openrouter.ai/arcee-ai/virtuoso-large"
       ]
     },
-    "openrouter/voxtral-small-24b-2507": {
-      "context_window": 32000,
-      "enabled": true,
-      "model_ref": "voxtral-small-24b-2507",
-      "pricing": {
-        "cached_input_per_mtok": 0.01,
-        "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.3
-      },
-      "pricing_source_url": "https://openrouter.ai/mistralai/voxtral-small-24b-2507",
-      "provider_model_id": "mistralai/voxtral-small-24b-2507",
-      "source_urls": [
-        "https://openrouter.ai/mistralai/voxtral-small-24b-2507"
-      ]
-    },
     "openrouter/weaver": {
       "context_window": 8000,
       "enabled": true,
@@ -55279,8 +55418,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "pricing_source_url": "https://openrouter.ai/x-ai/grok-4.20-multi-agent",
       "source_urls": [
@@ -60295,6 +60434,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-14T19:40:51Z",
+  "updated_at": "2026-06-15T21:07:45Z",
   "version": 1
 }
