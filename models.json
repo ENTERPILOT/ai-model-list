@@ -6242,7 +6242,6 @@
         "gemini/gemini-3-flash-preview",
         "google/gemini-3-flash-preview",
         "vertex_ai/gemini-3-flash-preview",
-        "ollama_cloud/gemini-3-flash-preview",
         "google/gemini-3-flash-preview-20251217",
         "openrouter/google/gemini-3-flash-preview",
         "openrouter/google/gemini-3-flash-preview-20251217"
@@ -8245,13 +8244,11 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 131070,
+      "context_window": 131072,
       "display_name": "Z.ai: GLM 4.5 Air",
-      "max_output_tokens": 131070,
+      "max_output_tokens": 98304,
       "modalities": {
         "input": [
           "text"
@@ -8264,9 +8261,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
-        "input_per_mtok": 0.125,
+        "input_per_mtok": 0.13,
         "output_per_mtok": 0.85
       },
       "rankings": {
@@ -8902,6 +8899,44 @@
           "rank": 51,
           "score": 72.5
         }
+      },
+      "source_url": "https://ollama.com/pricing"
+    },
+    "glm-5.2": {
+      "aliases": [
+        "z-ai/glm-5.2",
+        "ollama_cloud/glm-5.2",
+        "z-ai/glm-5.2-20260616",
+        "openrouter/z-ai/glm-5.2",
+        "openrouter/z-ai/glm-5.2-20260616"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
+      "display_name": "glm-5.2",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -18790,7 +18825,7 @@
       "context_window": 262144,
       "description": "Kimi K2.7 Code is Moonshot AI&#39;s coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "display_name": "kimi-k2.7-code",
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text",
@@ -18804,9 +18839,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.16,
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.75,
+        "input_per_mtok": 0.74,
         "output_per_mtok": 3.5
       },
       "rankings": {
@@ -27924,7 +27959,8 @@
         "function_calling": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true
+        "structured_output": true,
+        "tool_choice": true
       },
       "context_window": 256000,
       "display_name": "StepFun: Step 3.7 Flash",
@@ -41659,13 +41695,6 @@
         "https://ollama.com/pricing"
       ]
     },
-    "ollama_cloud/gemini-3-flash-preview": {
-      "enabled": true,
-      "model_ref": "gemini-3-flash-preview",
-      "source_urls": [
-        "https://ollama.com/pricing"
-      ]
-    },
     "ollama_cloud/gemma4": {
       "enabled": true,
       "model_ref": "gemma4",
@@ -41690,6 +41719,13 @@
     "ollama_cloud/glm-5.1": {
       "enabled": true,
       "model_ref": "glm-5.1",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
+    "ollama_cloud/glm-5.2": {
+      "enabled": true,
+      "model_ref": "glm-5.2",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -48533,14 +48569,15 @@
       ]
     },
     "openrouter/deepseek/deepseek-v4-flash": {
-      "context_window": 1048575,
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 65536,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.098,
-        "output_per_mtok": 0.196
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.18
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -48687,14 +48724,14 @@
       ]
     },
     "openrouter/glm-4.5-air": {
-      "context_window": 131070,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 131070,
+      "max_output_tokens": 98304,
       "model_ref": "glm-4.5-air",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
-        "input_per_mtok": 0.125,
+        "input_per_mtok": 0.13,
         "output_per_mtok": 0.85
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.5-air",
@@ -48819,6 +48856,23 @@
       "provider_model_id": "z-ai/glm-5.1",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5.1"
+      ]
+    },
+    "openrouter/glm-5.2": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5.2",
+      "pricing": {
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
+      "provider_model_id": "z-ai/glm-5.2",
+      "source_urls": [
+        "https://openrouter.ai/z-ai/glm-5.2"
       ]
     },
     "openrouter/google/gemini-2.0-flash-001": {
@@ -49825,12 +49879,12 @@
     "openrouter/kimi-k2.7-code": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.16,
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.75,
+        "input_per_mtok": 0.74,
         "output_per_mtok": 3.5
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.7-code",
@@ -51300,12 +51354,12 @@
     "openrouter/moonshotai/kimi-k2.7-code": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.16,
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.75,
+        "input_per_mtok": 0.74,
         "output_per_mtok": 3.5
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.7-code",
@@ -55448,14 +55502,14 @@
       ]
     },
     "openrouter/z-ai/glm-4.5-air": {
-      "context_window": 131070,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 131070,
+      "max_output_tokens": 98304,
       "model_ref": "glm-4.5-air",
       "pricing": {
-        "cached_input_per_mtok": 0.06,
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
-        "input_per_mtok": 0.125,
+        "input_per_mtok": 0.13,
         "output_per_mtok": 0.85
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.5-air",
@@ -55587,6 +55641,22 @@
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5.1"
+      ]
+    },
+    "openrouter/z-ai/glm-5.2": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5.2",
+      "pricing": {
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
+      "source_urls": [
+        "https://openrouter.ai/z-ai/glm-5.2"
       ]
     },
     "openrouter/~anthropic/claude-fable-latest": {
@@ -60361,6 +60431,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-16T11:17:47Z",
+  "updated_at": "2026-06-16T20:55:35Z",
   "version": 1
 }
