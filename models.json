@@ -3601,6 +3601,10 @@
         "thedrummer/cydonia-24b-v4.1",
         "openrouter/thedrummer/cydonia-24b-v4.1"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 131072,
       "display_name": "TheDrummer: Cydonia 24B V4.1",
       "max_output_tokens": 131072,
@@ -6338,6 +6342,44 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-3-pro-image": {
+      "aliases": [
+        "google/gemini-3-pro-image",
+        "vertex_ai/gemini-3-pro-image",
+        "google/gemini-3-pro-image-20260528",
+        "openrouter/google/gemini-3-pro-image",
+        "openrouter/google/gemini-3-pro-image-20260528"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "display_name": "Gemini 3 Pro Image",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 6.0,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      }
+    },
     "gemini-3-pro-image-preview": {
       "aliases": [
         "gemini/gemini-3-pro-image-preview",
@@ -6477,6 +6519,41 @@
         }
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "gemini-3.1-flash-image": {
+      "aliases": [
+        "google/gemini-3.1-flash-image",
+        "vertex_ai/gemini-3.1-flash-image",
+        "google/gemini-3.1-flash-image-20260528",
+        "openrouter/google/gemini-3.1-flash-image",
+        "openrouter/google/gemini-3.1-flash-image-20260528"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "display_name": "Gemini 3 1 Flash Image",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "batch_input_per_mtok": 0.25,
+        "batch_output_per_mtok": 1.5,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0
+      }
     },
     "gemini-3.1-flash-image-preview": {
       "aliases": [
@@ -7871,6 +7948,10 @@
         "together/google/gemma-3n-E4B-it",
         "openrouter/google/gemma-3n-e4b-it"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "display_name": "Gemma 3n E4B It",
       "modalities": {
         "input": [
@@ -8842,7 +8923,6 @@
       "context_window": 202752,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "display_name": "glm-5.1",
-      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -15979,6 +16059,10 @@
         "ibm-granite/granite-4.0-h-micro",
         "openrouter/ibm-granite/granite-4.0-h-micro"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 131000,
       "display_name": "IBM: Granite 4.0 Micro",
       "max_output_tokens": 131000,
@@ -19029,6 +19113,10 @@
         "sao10k/l3.1-70b-hanami-x1",
         "openrouter/sao10k/l3.1-70b-hanami-x1"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 16000,
       "display_name": "Sao10K: Llama 3.1 70B Hanami x1",
       "modalities": {
@@ -19138,6 +19226,8 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 262144,
@@ -19168,6 +19258,8 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 262144,
@@ -19229,6 +19321,10 @@
         "openrouter/liquid/lfm-2-24b-a2b",
         "openrouter/liquid/lfm-2-24b-a2b-20260224"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 32768,
       "display_name": "LiquidAI: LFM2-24B-A2B",
       "modalities": {
@@ -19253,6 +19349,10 @@
         "liquid/lfm-2.5-1.2b-instruct:free",
         "openrouter/liquid/lfm-2.5-1.2b-instruct:free"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 32768,
       "display_name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
       "modalities": {
@@ -19278,7 +19378,11 @@
         "openrouter/liquid/lfm-2.5-1.2b-thinking:free"
       ],
       "capabilities": {
-        "reasoning": true
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
       },
       "context_window": 32768,
       "display_name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
@@ -19423,6 +19527,10 @@
         "meta-llama/llama-3-8b-instruct",
         "openrouter/meta-llama/llama-3-8b-instruct"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 8192,
       "display_name": "Meta: Llama 3 8B Instruct",
       "modalities": {
@@ -22571,6 +22679,10 @@
         "morph/morph-v3-large",
         "openrouter/morph/morph-v3-large"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 262144,
       "display_name": "Morph: Morph V3 Large",
       "max_output_tokens": 131072,
@@ -23020,6 +23132,36 @@
         "input": [
           "text",
           "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      }
+    },
+    "north-mini-code": {
+      "aliases": [
+        "cohere/north-mini-code:free",
+        "openrouter/cohere/north-mini-code:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 256000,
+      "display_name": "Cohere: North Mini Code (free)",
+      "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text"
         ],
         "output": [
           "text"
@@ -24902,6 +25044,12 @@
         "qwen/qwen-2.5-7b-instruct",
         "openrouter/qwen/qwen-2.5-7b-instruct"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
       "context_window": 32768,
       "display_name": "Qwen: Qwen2.5 7B Instruct",
       "max_output_tokens": 32768,
@@ -27262,6 +27410,8 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 256000,
@@ -27495,7 +27645,9 @@
         "openrouter/switchpoint/router"
       ],
       "capabilities": {
-        "reasoning": true
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
       },
       "context_window": 131072,
       "display_name": "Switchpoint Router",
@@ -27665,6 +27817,10 @@
         "thedrummer/skyfall-36b-v2",
         "openrouter/thedrummer/skyfall-36b-v2"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 32768,
       "display_name": "TheDrummer: Skyfall 36B V2",
       "max_output_tokens": 32768,
@@ -28542,6 +28698,10 @@
         "bytedance/ui-tars-1.5-7b",
         "openrouter/bytedance/ui-tars-1.5-7b"
       ],
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
       "context_window": 128000,
       "display_name": "ByteDance: UI-TARS 7B ",
       "max_output_tokens": 2048,
@@ -48274,6 +48434,21 @@
         "https://openrouter.ai/cohere/command-r7b-12-2024"
       ]
     },
+    "openrouter/cohere/north-mini-code:free": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "north-mini-code",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/cohere/north-mini-code:free",
+      "source_urls": [
+        "https://openrouter.ai/cohere/north-mini-code:free"
+      ]
+    },
     "openrouter/command-r-08-2024": {
       "context_window": 128000,
       "enabled": true,
@@ -48845,7 +49020,6 @@
     "openrouter/glm-5.1": {
       "context_window": 202752,
       "enabled": true,
-      "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
         "cached_input_per_mtok": 0.182,
@@ -49044,6 +49218,23 @@
         "https://openrouter.ai/google/gemini-3-flash-preview"
       ]
     },
+    "openrouter/google/gemini-3-pro-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "gemini-3-pro-image",
+      "pricing": {
+        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3-pro-image",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3-pro-image"
+      ]
+    },
     "openrouter/google/gemini-3-pro-image-preview": {
       "context_window": 65536,
       "enabled": true,
@@ -49092,6 +49283,21 @@
       "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "openrouter/google/gemini-3.1-flash-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.1-flash-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-image",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-image"
       ]
     },
     "openrouter/google/gemini-3.1-flash-image-preview": {
@@ -49352,7 +49558,7 @@
     "openrouter/google/gemma-4-31b-it:free": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 8192,
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "currency": "USD",
@@ -51572,6 +51778,22 @@
         "https://openrouter.ai/nex-agi/nex-n2-pro:free"
       ]
     },
+    "openrouter/north-mini-code": {
+      "context_window": 256000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "north-mini-code",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/cohere/north-mini-code:free",
+      "provider_model_id": "cohere/north-mini-code:free",
+      "source_urls": [
+        "https://openrouter.ai/cohere/north-mini-code:free"
+      ]
+    },
     "openrouter/nousresearch/hermes-3-llama-3.1-405b": {
       "context_window": 131072,
       "enabled": true,
@@ -52742,7 +52964,7 @@
     "openrouter/openai/gpt-oss-20b:free": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 8192,
+      "max_output_tokens": 32768,
       "model_ref": "gpt-oss-20b",
       "pricing": {
         "currency": "USD",
@@ -55599,7 +55821,6 @@
     "openrouter/z-ai/glm-5.1": {
       "context_window": 202752,
       "enabled": true,
-      "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
         "cached_input_per_mtok": 0.182,
@@ -57015,6 +57236,22 @@
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
+    "vertex_ai/gemini-3-pro-image": {
+      "enabled": true,
+      "model_ref": "gemini-3-pro-image",
+      "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 6.0,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
+      ]
+    },
     "vertex_ai/gemini-3-pro-image-preview": {
       "context_window": 65536,
       "enabled": true,
@@ -57076,6 +57313,21 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
         "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
+      ]
+    },
+    "vertex_ai/gemini-3.1-flash-image": {
+      "enabled": true,
+      "model_ref": "gemini-3.1-flash-image",
+      "pricing": {
+        "batch_input_per_mtok": 0.25,
+        "batch_output_per_mtok": 1.5,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 3.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "source_urls": [
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -60412,6 +60664,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-17T20:17:19Z",
+  "updated_at": "2026-06-18T10:24:28Z",
   "version": 1
 }
