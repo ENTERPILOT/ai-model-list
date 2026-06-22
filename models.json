@@ -1075,12 +1075,9 @@
       "aliases": [
         "claude-3.5-haiku",
         "gemini/claude-3-5-haiku",
-        "anthropic/claude-3-5-haiku",
         "anthropic/claude-3.5-haiku",
         "vertex_ai/claude-3-5-haiku",
-        "opencode_zen/claude-3-5-haiku",
-        "openrouter/anthropic/claude-3-5-haiku",
-        "openrouter/anthropic/claude-3.5-haiku"
+        "opencode_zen/claude-3-5-haiku"
       ],
       "capabilities": {
         "function_calling": true,
@@ -1089,15 +1086,6 @@
       },
       "context_window": 200000,
       "display_name": "Claude 3 5 Haiku",
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -8181,6 +8169,7 @@
     "gemma-4-26b-a4b-it-maas": {
       "aliases": [
         "google/gemma-4-26b-a4b-it-maas",
+        "vertex_ai/gemma-4-26b-a4b-it-maas",
         "vertex_ai/google/gemma-4-26b-a4b-it-maas"
       ],
       "capabilities": {
@@ -8188,13 +8177,12 @@
         "tool_choice": true,
         "vision": true
       },
-      "context_window": 256000,
       "display_name": "Gemma 4 26b a4b It Maas",
-      "max_output_tokens": 128000,
       "modes": [
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
@@ -19337,7 +19325,7 @@
       },
       "context_window": 262144,
       "display_name": "MoonshotAI Kimi Latest",
-      "max_output_tokens": 65535,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text",
@@ -19351,10 +19339,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.33,
+        "cached_input_per_mtok": 0.144,
         "currency": "USD",
         "input_per_mtok": 0.66,
-        "output_per_mtok": 3.5
+        "output_per_mtok": 3.41
       }
     },
     "l3-lunaris-8b": {
@@ -23373,18 +23361,16 @@
     },
     "nex-n2-pro": {
       "aliases": [
+        "nex-agi/nex-n2-pro",
         "nex-agi/nex-n2-pro:free",
+        "openrouter/nex-agi/nex-n2-pro",
         "openrouter/nex-agi/nex-n2-pro:free"
       ],
       "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "reasoning": true
       },
       "context_window": 262144,
-      "display_name": "Nex AGI: Nex-N2-Pro (free)",
+      "display_name": "Nex AGI: Nex-N2-Pro",
       "max_output_tokens": 262144,
       "modalities": {
         "input": [
@@ -23399,9 +23385,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.5
       }
     },
     "north-mini-code": {
@@ -48683,23 +48670,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "openrouter/anthropic/claude-3.5-haiku": {
-      "context_window": 200000,
-      "enabled": true,
-      "max_output_tokens": 8192,
-      "model_ref": "claude-3-5-haiku",
-      "pricing": {
-        "cache_write_per_mtok": 1.0,
-        "cached_input_per_mtok": 0.08,
-        "currency": "USD",
-        "input_per_mtok": 0.8,
-        "output_per_mtok": 4.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-3.5-haiku",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-3.5-haiku"
-      ]
-    },
     "openrouter/anthropic/claude-3.5-sonnet": {
       "context_window": 200000,
       "enabled": true,
@@ -51045,13 +51015,13 @@
     "openrouter/kimi-k2.6": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 65535,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.33,
+        "cached_input_per_mtok": 0.144,
         "currency": "USD",
         "input_per_mtok": 0.66,
-        "output_per_mtok": 3.5
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
       "provider_model_id": "moonshotai/kimi-k2.6",
@@ -51079,13 +51049,13 @@
     "openrouter/kimi-latest": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 65535,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.33,
+        "cached_input_per_mtok": 0.144,
         "currency": "USD",
         "input_per_mtok": 0.66,
-        "output_per_mtok": 3.5
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "provider_model_id": "~moonshotai/kimi-latest",
@@ -52458,13 +52428,13 @@
     "openrouter/moonshotai/kimi-k2.6": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 65535,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.6",
       "pricing": {
-        "cached_input_per_mtok": 0.33,
+        "cached_input_per_mtok": 0.144,
         "currency": "USD",
         "input_per_mtok": 0.66,
-        "output_per_mtok": 3.5
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.6",
       "source_urls": [
@@ -52677,10 +52647,26 @@
         "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free"
       ]
     },
-    "openrouter/nex-agi/nex-n2-pro:free": {
+    "openrouter/nex-agi/nex-n2-pro": {
       "context_window": 262144,
       "enabled": true,
       "max_output_tokens": 262144,
+      "model_ref": "nex-n2-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://openrouter.ai/nex-agi/nex-n2-pro",
+      "source_urls": [
+        "https://openrouter.ai/nex-agi/nex-n2-pro"
+      ]
+    },
+    "openrouter/nex-agi/nex-n2-pro:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 256000,
       "model_ref": "nex-n2-pro",
       "pricing": {
         "currency": "USD",
@@ -52698,13 +52684,14 @@
       "max_output_tokens": 262144,
       "model_ref": "nex-n2-pro",
       "pricing": {
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.5
       },
-      "pricing_source_url": "https://openrouter.ai/nex-agi/nex-n2-pro:free",
-      "provider_model_id": "nex-agi/nex-n2-pro:free",
+      "pricing_source_url": "https://openrouter.ai/nex-agi/nex-n2-pro",
       "source_urls": [
+        "https://openrouter.ai/nex-agi/nex-n2-pro",
         "https://openrouter.ai/nex-agi/nex-n2-pro:free"
       ]
     },
@@ -56912,13 +56899,13 @@
     "openrouter/~moonshotai/kimi-latest": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 65535,
+      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.33,
+        "cached_input_per_mtok": 0.144,
         "currency": "USD",
         "input_per_mtok": 0.66,
-        "output_per_mtok": 3.5
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "source_urls": [
@@ -58626,14 +58613,16 @@
       "max_output_tokens": 128000,
       "model_ref": "gemma-4-26b-a4b-it-maas",
       "pricing": {
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/maas/google/gemma-4-26b-a4b-it",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "provider_model_id": "google/gemma-4-26b-a4b-it-maas",
       "source_urls": [
-        "https://cloud.google.com/vertex-ai/generative-ai/docs/maas/google/gemma-4-26b-a4b-it"
+        "https://cloud.google.com/vertex-ai/generative-ai/docs/maas/google/gemma-4-26b-a4b-it",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/google/gemma-4-26b-a4b-it-maas": {
@@ -61421,6 +61410,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-21T19:47:37Z",
+  "updated_at": "2026-06-22T12:10:10Z",
   "version": 1
 }
