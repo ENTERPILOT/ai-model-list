@@ -4317,6 +4317,7 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.02288,
         "currency": "USD",
         "input_per_mtok": 0.2288,
         "output_per_mtok": 0.3432
@@ -6516,6 +6517,7 @@
     },
     "gemini-3-pro-image": {
       "aliases": [
+        "gemini/gemini-3-pro-image",
         "google/gemini-3-pro-image",
         "vertex_ai/gemini-3-pro-image",
         "google/gemini-3-pro-image-20260528",
@@ -6523,13 +6525,15 @@
         "openrouter/google/gemini-3-pro-image-20260528"
       ],
       "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
+        "prompt_caching": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "system_messages": true,
+        "vision": true,
+        "web_search": true
       },
+      "context_window": 65536,
       "display_name": "Gemini 3 Pro Image",
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text",
@@ -6541,7 +6545,7 @@
         ]
       },
       "modes": [
-        "chat"
+        "image_generation"
       ],
       "pricing": {
         "batch_input_per_mtok": 1.0,
@@ -6549,8 +6553,11 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 12.0
-      }
+        "output_image_per_mtok": 120.0,
+        "output_per_mtok": 12.0,
+        "per_image": 0.134
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image"
     },
     "gemini-3-pro-image-preview": {
       "aliases": [
@@ -6694,6 +6701,7 @@
     },
     "gemini-3.1-flash-image": {
       "aliases": [
+        "gemini/gemini-3.1-flash-image",
         "google/gemini-3.1-flash-image",
         "vertex_ai/gemini-3.1-flash-image",
         "google/gemini-3.1-flash-image-20260528",
@@ -6701,11 +6709,15 @@
         "openrouter/google/gemini-3.1-flash-image-20260528"
       ],
       "capabilities": {
-        "reasoning": true,
+        "prompt_caching": true,
         "response_schema": true,
-        "structured_output": true
+        "system_messages": true,
+        "vision": true,
+        "web_search": true
       },
+      "context_window": 65536,
       "display_name": "Gemini 3 1 Flash Image",
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text",
@@ -6717,15 +6729,18 @@
         ]
       },
       "modes": [
-        "chat"
+        "image_generation"
       ],
       "pricing": {
         "batch_input_per_mtok": 0.25,
         "batch_output_per_mtok": 1.5,
         "currency": "USD",
         "input_per_mtok": 0.5,
-        "output_per_mtok": 3.0
-      }
+        "output_image_per_mtok": 60.0,
+        "output_per_mtok": 3.0,
+        "per_image": 0.0672
+      },
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing#gemini-models"
     },
     "gemini-3.1-flash-image-preview": {
       "aliases": [
@@ -12555,7 +12570,7 @@
       },
       "context_window": 400000,
       "display_name": "GPT 5 Pro",
-      "max_output_tokens": 272000,
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -12639,9 +12654,9 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 128000,
+      "context_window": 400000,
       "display_name": "GPT 5 Pro 2025 10 06",
-      "max_output_tokens": 272000,
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -14284,7 +14299,7 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 272000,
+      "context_window": 1050000,
       "display_name": "GPT 5 4 Mini 2026 03 17",
       "max_output_tokens": 128000,
       "modalities": {
@@ -14424,7 +14439,7 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 272000,
+      "context_window": 1050000,
       "display_name": "GPT 5 4 Nano 2026 03 17",
       "max_output_tokens": 128000,
       "modalities": {
@@ -22354,6 +22369,78 @@
         }
       }
     },
+    "mistral-medium-2508": {
+      "aliases": [
+        "mistral/mistral-medium-2508"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "display_name": "Mistral Medium 2508",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      },
+      "rankings": {
+        "chatbot_arena": {
+          "as_of": "2026-06-26",
+          "elo": 1430,
+          "rank": 12
+        },
+        "chatbot_arena_coding": {
+          "as_of": "2026-06-26",
+          "elo": 1431,
+          "rank": 32
+        },
+        "chatbot_arena_creative_writing": {
+          "as_of": "2026-06-26",
+          "elo": 1394,
+          "rank": 27
+        },
+        "chatbot_arena_math": {
+          "as_of": "2026-06-26",
+          "elo": 1414,
+          "rank": 39
+        },
+        "chatbot_arena_vision": {
+          "as_of": "2026-06-26",
+          "elo": 1169,
+          "rank": 32
+        }
+      },
+      "source_url": "https://mistral.ai/news/mistral-medium-3"
+    },
+    "mistral-medium-2604": {
+      "aliases": [
+        "mistral/mistral-medium-2604"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 262144,
+      "display_name": "Mistral Medium 2604",
+      "max_output_tokens": 262144,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "source_url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04"
+    },
     "mistral-medium-3": {
       "aliases": [
         "mistral/mistral-medium-3",
@@ -22420,6 +22507,7 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "reasoning": true,
         "response_schema": true,
         "tool_choice": true,
         "vision": true
@@ -22484,6 +22572,7 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "reasoning": true,
         "response_schema": true,
         "tool_choice": true,
         "vision": true
@@ -22496,7 +22585,8 @@
         "currency": "USD",
         "input_per_mtok": 0.4,
         "output_per_mtok": 2.0
-      }
+      },
+      "source_url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04"
     },
     "mistral-nemo": {
       "aliases": [
@@ -22547,6 +22637,16 @@
         "mistral/mistral-ocr-2505-completion"
       ],
       "display_name": "Mistral OCR 2505 Completion",
+      "modes": [
+        "ocr"
+      ],
+      "source_url": "https://mistral.ai/pricing#api-pricing"
+    },
+    "mistral-ocr-4-0": {
+      "aliases": [
+        "mistral/mistral-ocr-4-0"
+      ],
+      "display_name": "Mistral OCR 4 0",
       "modes": [
         "ocr"
       ],
@@ -23218,7 +23318,7 @@
       },
       "context_window": 262144,
       "display_name": "NVIDIA: Nemotron 3 Super",
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -23232,8 +23332,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.085,
+        "output_per_mtok": 0.4
       },
       "rankings": {
         "livebench": {
@@ -27259,7 +27359,7 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.2885,
-        "output_per_mtok": 3.17
+        "output_per_mtok": 2.65
       },
       "rankings": {
         "livebench": {
@@ -40349,6 +40449,32 @@
         "https://llmprices.dev/"
       ]
     },
+    "gemini/gemini-3-pro-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ],
+      "max_output_tokens": 32768,
+      "model_ref": "gemini-3-pro-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_image_per_mtok": 120.0,
+        "output_per_mtok": 12.0,
+        "per_image": 0.134
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image",
+      "rate_limits": {
+        "rpm": 1000,
+        "tpm": 4000000
+      },
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image"
+      ]
+    },
     "gemini/gemini-3-pro-image-preview": {
       "context_window": 1000000,
       "enabled": true,
@@ -40427,6 +40553,32 @@
       "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/gemini-3.1-flash-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ],
+      "max_output_tokens": 32768,
+      "model_ref": "gemini-3.1-flash-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_image_per_mtok": 60.0,
+        "output_per_mtok": 1.5,
+        "per_image": 0.045
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image",
+      "rate_limits": {
+        "rpm": 1000,
+        "tpm": 4000000
+      },
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image"
       ]
     },
     "gemini/gemini-3.1-flash-image-preview": {
@@ -42545,6 +42697,37 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "mistral/mistral-medium-2508": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mistral-medium-2508",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://mistral.ai/news/mistral-medium-3"
+      ]
+    },
+    "mistral/mistral-medium-2604": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "mistral-medium-2604",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04",
+      "source_urls": [
+        "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04"
+      ]
+    },
     "mistral/mistral-medium-3": {
       "enabled": true,
       "model_ref": "mistral-medium-3",
@@ -42589,9 +42772,9 @@
       ]
     },
     "mistral/mistral-medium-latest": {
-      "context_window": 131072,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 262144,
       "model_ref": "mistral-medium-latest",
       "pricing": {
         "currency": "USD",
@@ -42601,7 +42784,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04"
       ]
     },
     "mistral/mistral-nemo": {
@@ -42625,6 +42808,16 @@
         "/v1/ocr"
       ],
       "model_ref": "mistral-ocr-2505-completion",
+      "source_urls": [
+        "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
+    "mistral/mistral-ocr-4-0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/ocr"
+      ],
+      "model_ref": "mistral-ocr-4-0",
       "source_urls": [
         "https://mistral.ai/pricing#api-pricing"
       ]
@@ -45394,7 +45587,7 @@
         "/v1/batch",
         "/v1/responses"
       ],
-      "max_output_tokens": 272000,
+      "max_output_tokens": 128000,
       "model_ref": "gpt-5-pro",
       "pricing": {
         "batch_input_per_mtok": 7.5,
@@ -45414,13 +45607,13 @@
       ]
     },
     "openai/gpt-5-pro-2025-10-06": {
-      "context_window": 128000,
+      "context_window": 400000,
       "enabled": true,
       "endpoints": [
         "/v1/batch",
         "/v1/responses"
       ],
-      "max_output_tokens": 272000,
+      "max_output_tokens": 128000,
       "model_ref": "gpt-5-pro-2025-10-06",
       "pricing": {
         "cached_input_per_mtok": 0.005,
@@ -45953,7 +46146,7 @@
       ]
     },
     "openai/gpt-5.4-mini-2026-03-17": {
-      "context_window": 272000,
+      "context_window": 1050000,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions",
@@ -45999,7 +46192,7 @@
       ]
     },
     "openai/gpt-5.4-nano-2026-03-17": {
-      "context_window": 272000,
+      "context_window": 1050000,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions",
@@ -49779,6 +49972,7 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
+        "cached_input_per_mtok": 0.02288,
         "currency": "USD",
         "input_per_mtok": 0.2288,
         "output_per_mtok": 0.3432
@@ -49926,6 +50120,7 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
+        "cached_input_per_mtok": 0.02288,
         "currency": "USD",
         "input_per_mtok": 0.2288,
         "output_per_mtok": 0.3432
@@ -52162,10 +52357,9 @@
       "max_output_tokens": 196608,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.9
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.48
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.5",
       "provider_model_id": "minimax/minimax-m2.5",
@@ -52180,8 +52374,8 @@
       "model_ref": "minimax-m2.7",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 0.96
+        "input_per_mtok": 0.18,
+        "output_per_mtok": 0.72
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
       "provider_model_id": "minimax/minimax-m2.7",
@@ -52273,10 +52467,9 @@
       "max_output_tokens": 196608,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.9
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.48
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.5",
       "source_urls": [
@@ -52290,8 +52483,8 @@
       "model_ref": "minimax-m2.7",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 0.96
+        "input_per_mtok": 0.18,
+        "output_per_mtok": 0.72
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
       "source_urls": [
@@ -52833,12 +53026,12 @@
     "openrouter/nemotron-3-super-120b-a12b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.085,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -53174,11 +53367,12 @@
     "openrouter/nvidia/nemotron-3-super-120b-a12b": {
       "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 16384,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.085,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -54088,8 +54282,8 @@
       "model_ref": "gpt-oss-120b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.039,
-        "output_per_mtok": 0.18
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.15
       },
       "pricing_source_url": "https://openrouter.ai/openai/gpt-oss-120b",
       "source_urls": [
@@ -55248,7 +55442,7 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.2885,
-        "output_per_mtok": 3.17
+        "output_per_mtok": 2.65
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "source_urls": [
@@ -55885,7 +56079,7 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.2885,
-        "output_per_mtok": 3.17
+        "output_per_mtok": 2.65
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "provider_model_id": "qwen/qwen3.6-27b",
@@ -58456,7 +58650,14 @@
       ]
     },
     "vertex_ai/gemini-3-pro-image": {
+      "context_window": 65536,
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ],
+      "max_output_tokens": 32768,
       "model_ref": "gemini-3-pro-image",
       "pricing": {
         "batch_input_per_mtok": 1.0,
@@ -58464,11 +58665,15 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 12.0
+        "output_image_per_mtok": 120.0,
+        "output_per_mtok": 12.0,
+        "per_image": 0.134
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/vertex-ai.json"
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image",
+        "https://configs.portkey.ai/pricing/vertex-ai.json",
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro-image"
       ]
     },
     "vertex_ai/gemini-3-pro-image-preview": {
@@ -58536,17 +58741,27 @@
       ]
     },
     "vertex_ai/gemini-3.1-flash-image": {
+      "context_window": 65536,
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/completions",
+        "/v1/batch"
+      ],
+      "max_output_tokens": 32768,
       "model_ref": "gemini-3.1-flash-image",
       "pricing": {
         "batch_input_per_mtok": 0.25,
         "batch_output_per_mtok": 1.5,
         "currency": "USD",
         "input_per_mtok": 0.5,
-        "output_per_mtok": 3.0
+        "output_image_per_mtok": 60.0,
+        "output_per_mtok": 3.0,
+        "per_image": 0.0672
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing#gemini-models",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -61657,6 +61872,6 @@
       "website": "https://x.ai"
     }
   },
-  "updated_at": "2026-06-25T09:27:46Z",
+  "updated_at": "2026-06-26T19:53:25Z",
   "version": 1
 }
