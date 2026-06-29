@@ -2473,43 +2473,6 @@
       },
       "source_url": "https://www.anthropic.com/pricing#api"
     },
-    "claude-opus-4.6-fast": {
-      "aliases": [
-        "anthropic/claude-opus-4.6-fast",
-        "anthropic/claude-4.6-opus-fast-20260407",
-        "openrouter/anthropic/claude-opus-4.6-fast",
-        "openrouter/anthropic/claude-4.6-opus-fast-20260407"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 1000000,
-      "display_name": "Anthropic: Claude Opus 4.6 (Fast)",
-      "max_output_tokens": 128000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      }
-    },
     "claude-opus-4.7-fast": {
       "aliases": [
         "anthropic/claude-opus-4.7-fast",
@@ -9063,7 +9026,6 @@
       "context_window": 1048576,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "display_name": "glm-5.2",
-      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text"
@@ -17758,7 +17720,7 @@
         "livebench_instruction_following": {
           "as_of": "2026-06-29",
           "rank": 106,
-          "score": 24.3
+          "score": 24.4
         },
         "livebench_language": {
           "as_of": "2026-06-17",
@@ -28435,13 +28397,11 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 262144,
       "display_name": "StepFun: Step 3.5 Flash",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -28454,9 +28414,8 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
       }
     },
@@ -49163,23 +49122,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "openrouter/anthropic/claude-opus-4.6-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.6-fast",
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.6-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.6-fast"
-      ]
-    },
     "openrouter/anthropic/claude-opus-4.7": {
       "context_window": 1000000,
       "enabled": true,
@@ -49551,24 +49493,6 @@
       "provider_model_id": "~anthropic/claude-haiku-latest",
       "source_urls": [
         "https://openrouter.ai/~anthropic/claude-haiku-latest"
-      ]
-    },
-    "openrouter/claude-opus-4.6-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.6-fast",
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.6-fast",
-      "provider_model_id": "anthropic/claude-opus-4.6-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.6-fast"
       ]
     },
     "openrouter/claude-opus-4.7-fast": {
@@ -50340,12 +50264,11 @@
     "openrouter/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.95,
+        "input_per_mtok": 0.94,
         "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -56494,12 +56417,11 @@
     "openrouter/step-3.5-flash": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 65536,
       "model_ref": "step-3.5-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/stepfun/step-3.5-flash",
@@ -56528,12 +56450,11 @@
     "openrouter/stepfun/step-3.5-flash": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 65536,
       "model_ref": "step-3.5-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/stepfun/step-3.5-flash",
@@ -57071,12 +56992,11 @@
     "openrouter/z-ai/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.95,
+        "input_per_mtok": 0.94,
         "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -61787,6 +61707,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-06-29T11:06:18Z",
+  "updated_at": "2026-06-29T20:02:18Z",
   "version": 1
 }
