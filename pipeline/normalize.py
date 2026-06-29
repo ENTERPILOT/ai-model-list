@@ -806,6 +806,15 @@ def extract_official_catalog_fields(
     if context_window is not None:
         fields["context_window"] = context_window
 
+    if provider_slug == "xiaomi":
+        max_output_tokens = model.get("max_output_tokens")
+        if max_output_tokens is not None:
+            fields["max_output_tokens"] = max_output_tokens
+
+        deprecation_date = model.get("deprecation_date")
+        if isinstance(deprecation_date, str) and deprecation_date:
+            fields["deprecation_date"] = deprecation_date
+
     pricing = _pricing_from_catalog_prices(model.get("prices"))
     if pricing is not None:
         fields["pricing"] = pricing
@@ -1581,6 +1590,7 @@ NORMALIZER_BY_SOURCE = {
     "deepseek_official": normalize_pydantic_genai_rows,
     "runway_official": normalize_pydantic_genai_rows,
     "google_speech_official": normalize_pydantic_genai_rows,
+    "xiaomi_official": normalize_pydantic_genai_rows,
     "opencode_zen_official": normalize_third_party_provider_rows,
     "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,

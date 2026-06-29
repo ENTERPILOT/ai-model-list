@@ -851,6 +851,7 @@ def test_normalizer_registry_covers_current_source_set() -> None:
         "deepseek_official",
         "runway_official",
         "google_speech_official",
+        "xiaomi_official",
         "opencode_zen_official",
         "ollama_cloud_official",
         "pydantic_genai",
