@@ -17756,9 +17756,9 @@
           "score": 43.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
+          "as_of": "2026-06-29",
           "rank": 106,
-          "score": 24.4
+          "score": 24.3
         },
         "livebench_language": {
           "as_of": "2026-06-17",
@@ -20971,8 +20971,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 32000,
-      "display_name": "Xiaomi: MiMo-V2.5",
+      "context_window": 1000000,
+      "display_name": "Xiaomi MiMo V2.5",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -20987,11 +20988,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "xiaomi",
       "pricing": {
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.105,
+        "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
-      }
+      },
+      "source_url": "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
     },
     "mimo-v2.5-free": {
       "aliases": [
@@ -21023,9 +21027,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
-      "display_name": "Xiaomi: MiMo-V2.5-Pro",
-      "max_output_tokens": 131072,
+      "context_window": 1000000,
+      "display_name": "Xiaomi MiMo V2.5 Pro",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -21037,12 +21041,14 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "xiaomi",
       "pricing": {
         "cached_input_per_mtok": 0.0036,
         "currency": "USD",
         "input_per_mtok": 0.435,
         "output_per_mtok": 0.87
-      }
+      },
+      "source_url": "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
     },
     "minimax-01": {
       "aliases": [
@@ -52127,38 +52133,6 @@
         "https://openrouter.ai/microsoft/wizardlm-2-8x22b"
       ]
     },
-    "openrouter/mimo-v2.5": {
-      "context_window": 32000,
-      "enabled": true,
-      "model_ref": "mimo-v2.5",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.105,
-        "output_per_mtok": 0.28
-      },
-      "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5",
-      "provider_model_id": "xiaomi/mimo-v2.5",
-      "source_urls": [
-        "https://openrouter.ai/xiaomi/mimo-v2.5"
-      ]
-    },
-    "openrouter/mimo-v2.5-pro": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "mimo-v2.5-pro",
-      "pricing": {
-        "cached_input_per_mtok": 0.0036,
-        "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
-      },
-      "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
-      "provider_model_id": "xiaomi/mimo-v2.5-pro",
-      "source_urls": [
-        "https://openrouter.ai/xiaomi/mimo-v2.5-pro"
-      ]
-    },
     "openrouter/minimax-01": {
       "context_window": 1000192,
       "enabled": true,
@@ -61417,6 +61391,38 @@
         "https://configs.portkey.ai/pricing/x-ai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
+    },
+    "xiaomi/mimo-v2.5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "mimo-v2.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.0028,
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.28
+      },
+      "pricing_source_url": "https://mimo.mi.com/static/docs/price/pay-as-you-go.md",
+      "source_urls": [
+        "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
+      ]
+    },
+    "xiaomi/mimo-v2.5-pro": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "mimo-v2.5-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.0036,
+        "currency": "USD",
+        "input_per_mtok": 0.435,
+        "output_per_mtok": 0.87
+      },
+      "pricing_source_url": "https://mimo.mi.com/static/docs/price/pay-as-you-go.md",
+      "source_urls": [
+        "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
+      ]
     }
   },
   "providers": {
@@ -61761,6 +61767,24 @@
         "video_generation"
       ],
       "website": "https://x.ai"
+    },
+    "xiaomi": {
+      "api_type": "openai",
+      "auth": {
+        "env_var": "XIAOMI_API_KEY",
+        "type": "bearer"
+      },
+      "base_url_env": "XIAOMI_BASE_URL",
+      "default_base_url": "https://api.xiaomimimo.com/v1",
+      "display_name": "Xiaomi MiMo",
+      "docs_url": "https://mimo.mi.com/docs/welcome",
+      "pricing_url": "https://mimo.mi.com/docs/price/pay-as-you-go",
+      "supported_modes": [
+        "chat",
+        "audio_transcription",
+        "audio_speech"
+      ],
+      "website": "https://mimo.mi.com"
     }
   },
   "updated_at": "2026-06-29T11:06:18Z",

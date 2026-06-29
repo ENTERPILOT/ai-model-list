@@ -69,6 +69,10 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if ollama_cloud_official_path.exists():
         payloads["ollama_cloud_official"] = _read_json(ollama_cloud_official_path)
 
+    xiaomi_official_path = snapshot_dir / "xiaomi_models_official.json"
+    if xiaomi_official_path.exists():
+        payloads["xiaomi_official"] = _read_json(xiaomi_official_path)
+
     openrouter_path = snapshot_dir / "openrouter_models.json"
     if openrouter_path.exists():
         openrouter_payload = _read_json(openrouter_path)

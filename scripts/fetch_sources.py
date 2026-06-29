@@ -42,6 +42,7 @@ from pipeline.rankings import (
 )
 from pipeline.runway_docs import build_runway_models_snapshot
 from pipeline.xai_docs import build_xai_models_snapshot
+from pipeline.xiaomi_docs import build_xiaomi_models_snapshot
 
 
 @dataclass(frozen=True)
@@ -66,6 +67,9 @@ OPENCODE_ZEN_SOURCE_FILENAME = "opencode_zen_models_official.json"
 OLLAMA_CLOUD_SOURCE_URL = "https://ollama.com/search?c=cloud"
 OLLAMA_CLOUD_SOURCE_PRICING_URL = "https://ollama.com/pricing"
 OLLAMA_CLOUD_SOURCE_FILENAME = "ollama_cloud_models_official.json"
+XIAOMI_MODELS_PRICING_SOURCE_URL = "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
+XIAOMI_MODELS_SUMMARY_SOURCE_URL = "https://mimo.mi.com/static/docs/quick-start/summary/model.md"
+XIAOMI_MODELS_SOURCE_FILENAME = "xiaomi_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
     ("litellm", "litellm_model_prices.json"),
@@ -290,6 +294,17 @@ def fetch_sources_to(
     ollama_cloud_payload = build_ollama_cloud_models_snapshot(ollama_cloud_html, OLLAMA_CLOUD_SOURCE_PRICING_URL)
     (snapshot_dir / OLLAMA_CLOUD_SOURCE_FILENAME).write_text(
         json.dumps(ollama_cloud_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    xiaomi_pricing_markdown = _fetch_bytes(XIAOMI_MODELS_PRICING_SOURCE_URL).decode("utf-8")
+    xiaomi_models_payload = build_xiaomi_models_snapshot(
+        xiaomi_pricing_markdown,
+        XIAOMI_MODELS_PRICING_SOURCE_URL,
+        model_source_url=XIAOMI_MODELS_SUMMARY_SOURCE_URL,
+    )
+    (snapshot_dir / XIAOMI_MODELS_SOURCE_FILENAME).write_text(
+        json.dumps(xiaomi_models_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
