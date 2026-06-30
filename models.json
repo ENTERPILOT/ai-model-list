@@ -2847,6 +2847,44 @@
       },
       "source_url": "https://www.anthropic.com/pricing#api"
     },
+    "claude-sonnet-5": {
+      "aliases": [
+        "anthropic/claude-sonnet-5",
+        "vertex_ai/claude-sonnet-5",
+        "anthropic/claude-sonnet-5-20260630",
+        "openrouter/anthropic/claude-sonnet-5",
+        "openrouter/anthropic/claude-sonnet-5-20260630"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "display_name": "Claude Sonnet 5",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 5.0,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      }
+    },
     "claude-sonnet-latest": {
       "aliases": [
         "~anthropic/claude-sonnet-latest",
@@ -2875,11 +2913,11 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 3.75,
-        "cached_input_per_mtok": 0.3,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
       }
     },
     "claude-v1": {
@@ -6732,6 +6770,40 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-3.1-flash-lite-image": {
+      "aliases": [
+        "google/gemini-3.1-flash-lite-image",
+        "google/gemini-3.1-flash-lite-image-20260630",
+        "openrouter/google/gemini-3.1-flash-lite-image",
+        "openrouter/google/gemini-3.1-flash-lite-image-20260630"
+      ],
+      "capabilities": {
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 65536,
+      "display_name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "max_output_tokens": 66000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      }
+    },
     "gemini-3.1-flash-lite-preview": {
       "aliases": [
         "gemini/gemini-3.1-flash-lite-preview",
@@ -9026,6 +9098,7 @@
       "context_window": 1048576,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "display_name": "glm-5.2",
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text"
@@ -9183,7 +9256,9 @@
       "aliases": [
         "fireworks/glm-5p2",
         "fireworks_ai/glm-5p2",
-        "fireworks/fireworks_ai/glm-5p2"
+        "fireworks/fireworks_ai/glm-5p2",
+        "accounts/fireworks/models/glm-5p2",
+        "fireworks/accounts/fireworks/models/glm-5p2"
       ],
       "capabilities": {
         "function_calling": true,
@@ -9191,17 +9266,61 @@
         "response_schema": true,
         "tool_choice": true
       },
-      "display_name": "Glm 5p2",
+      "context_window": 1040000,
+      "description": "GLM-5.2 introduces a robust 1M-token context and advanced, multi-effort coding capabilities to significantly enhance performance on long-horizon tasks. Features a new IndexShare architecture and improved MTP layer for greater efficiency. 743B parameter MoE model from Z.ai.",
+      "display_name": "GLM-5.2",
       "modes": [
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
       },
-      "source_url": "https://docs.fireworks.ai/serverless/pricing"
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-06-30",
+          "rank": 9,
+          "score": 76.2
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-06-30",
+          "rank": 1,
+          "score": 73.3
+        },
+        "livebench_coding": {
+          "as_of": "2026-06-30",
+          "rank": 14,
+          "score": 79.7
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-06-30",
+          "rank": 27,
+          "score": 73.7
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-06-30",
+          "rank": 37,
+          "score": 62.3
+        },
+        "livebench_language": {
+          "as_of": "2026-06-30",
+          "rank": 46,
+          "score": 76.2
+        },
+        "livebench_math": {
+          "as_of": "2026-06-30",
+          "rank": 17,
+          "score": 89.8
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-06-30",
+          "rank": 37,
+          "score": 78.6
+        }
+      },
+      "source_url": "https://fireworks.ai/pricing"
     },
     "glm-5v-turbo": {
       "aliases": [
@@ -19227,7 +19346,9 @@
       "aliases": [
         "fireworks/kimi-k2p7-code",
         "fireworks_ai/kimi-k2p7-code",
-        "fireworks/fireworks_ai/kimi-k2p7-code"
+        "fireworks/fireworks_ai/kimi-k2p7-code",
+        "accounts/fireworks/models/kimi-k2p7-code",
+        "fireworks/accounts/fireworks/models/kimi-k2p7-code"
       ],
       "capabilities": {
         "function_calling": true,
@@ -19236,7 +19357,9 @@
         "tool_choice": true,
         "vision": true
       },
-      "display_name": "Kimi k2p7 Code",
+      "context_window": 262144,
+      "description": "Kimi K2.7 Code is a coding-focused agentic model built upon Kimi K2.6, delivering substantial improvements on real-world long-horizon coding tasks while reducing thinking tokens by roughly 30% compared to its predecessor.",
+      "display_name": "Kimi K2.7 Code",
       "modes": [
         "chat"
       ],
@@ -19246,7 +19369,7 @@
         "input_per_mtok": 0.95,
         "output_per_mtok": 4.0
       },
-      "source_url": "https://docs.fireworks.ai/serverless/pricing"
+      "source_url": "https://fireworks.ai/pricing"
     },
     "kimi-k2p7-code-fast": {
       "aliases": [
@@ -23335,6 +23458,26 @@
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
+    "nemotron-3-ultra-nvfp4": {
+      "aliases": [
+        "fireworks/nemotron-3-ultra-nvfp4",
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+        "fireworks/accounts/fireworks/models/nemotron-3-ultra-nvfp4"
+      ],
+      "context_window": 262000,
+      "description": "Frontier-scale LLM from NVIDIA using a hybrid Latent Mixture-of-Experts (LatentMoE) architecture with interleaved Mamba-2 and MoE layers plus select Attention layers. Features 55B active parameters out of 550B total and Multi-Token Prediction layers for faster generation, optimized for complex multi-step agents, long-context analysis, and high-accuracy reasoning over code, math, and science.",
+      "display_name": "NVIDIA Nemotron 3 Ultra NVFP4",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.12,
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
+      },
+      "source_url": "https://fireworks.ai/pricing"
+    },
     "nemotron-3.5-content-safety": {
       "aliases": [
         "nvidia/nemotron-3.5-content-safety:free",
@@ -24893,35 +25036,6 @@
         "output_per_mtok": 6.0
       }
     },
-    "owl-alpha": {
-      "aliases": [
-        "openrouter/owl-alpha"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 1048756,
-      "display_name": "Owl Alpha",
-      "max_output_tokens": 262144,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      }
-    },
     "palmyra-x5": {
       "aliases": [
         "writer/palmyra-x5",
@@ -25148,23 +25262,13 @@
         "Phi-4-mini-instruct",
         "azure/phi-4-mini-instruct",
         "azure_ai/Phi-4-mini-instruct",
-        "microsoft/phi-4-mini-instruct",
-        "azure/azure_ai/Phi-4-mini-instruct",
-        "openrouter/microsoft/phi-4-mini-instruct"
+        "azure/azure_ai/Phi-4-mini-instruct"
       ],
       "capabilities": {
         "function_calling": true
       },
       "description": "Phi-4-mini-instruct is a lightweight open model built upon synthetic data and filtered publicly available websites, with a focus on high-quality, reasoning-dense data.",
       "display_name": "Phi 4 Mini Instruct",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -25754,9 +25858,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 131072,
       "display_name": "Qwen: Qwen3 235B A22B Thinking 2507",
-      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text"
@@ -25769,10 +25872,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.1495,
+        "output_per_mtok": 1.495
       },
       "rankings": {
         "chatbot_arena": {
@@ -27209,8 +27311,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.2596,
-        "output_per_mtok": 2.385
+        "input_per_mtok": 0.285,
+        "output_per_mtok": 2.4
       },
       "rankings": {
         "livebench": {
@@ -27626,7 +27728,9 @@
       "aliases": [
         "fireworks/qwen3p7-plus",
         "fireworks_ai/qwen3p7-plus",
-        "fireworks/fireworks_ai/qwen3p7-plus"
+        "fireworks/fireworks_ai/qwen3p7-plus",
+        "accounts/fireworks/models/qwen3p7-plus",
+        "fireworks/accounts/fireworks/models/qwen3p7-plus"
       ],
       "capabilities": {
         "function_calling": true,
@@ -27635,7 +27739,9 @@
         "tool_choice": true,
         "vision": true
       },
-      "display_name": "qwen3p7 Plus",
+      "context_window": 262144,
+      "description": "Qwen3.7 Plus is Alibaba's latest flagship closed model, available exclusively through Fireworks AI outside of Alibaba's own infrastructure.",
+      "display_name": "Qwen3.7 Plus",
       "modes": [
         "chat"
       ],
@@ -27645,7 +27751,7 @@
         "input_per_mtok": 0.4,
         "output_per_mtok": 1.6
       },
-      "source_url": "https://docs.fireworks.ai/serverless/pricing"
+      "source_url": "https://fireworks.ai/pricing"
     },
     "regional.amazon.nova-2-lite": {
       "aliases": [
@@ -30255,6 +30361,23 @@
       "pricing_source_url": "https://llmprices.dev/",
       "source_urls": [
         "https://llmprices.dev/"
+      ]
+    },
+    "anthropic/claude-sonnet-5": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 5.0,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/anthropic.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/anthropic.json"
       ]
     },
     "anthropic/claude-v1": {
@@ -38437,6 +38560,21 @@
         "https://fireworks.ai/pricing"
       ]
     },
+    "fireworks/accounts/fireworks/models/glm-5p2": {
+      "context_window": 1040000,
+      "enabled": true,
+      "model_ref": "glm-5p2",
+      "pricing": {
+        "cached_input_per_mtok": 0.14,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://fireworks.ai/pricing",
+      "source_urls": [
+        "https://fireworks.ai/pricing"
+      ]
+    },
     "fireworks/accounts/fireworks/models/gpt-oss-120b": {
       "context_window": 131072,
       "enabled": true,
@@ -38487,6 +38625,21 @@
       "model_ref": "kimi-k2p6",
       "pricing": {
         "cached_input_per_mtok": 0.16,
+        "currency": "USD",
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 4.0
+      },
+      "pricing_source_url": "https://fireworks.ai/pricing",
+      "source_urls": [
+        "https://fireworks.ai/pricing"
+      ]
+    },
+    "fireworks/accounts/fireworks/models/kimi-k2p7-code": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k2p7-code",
+      "pricing": {
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
         "input_per_mtok": 0.95,
         "output_per_mtok": 4.0
@@ -38567,6 +38720,21 @@
         "https://fireworks.ai/pricing"
       ]
     },
+    "fireworks/accounts/fireworks/models/nemotron-3-ultra-nvfp4": {
+      "context_window": 262000,
+      "enabled": true,
+      "model_ref": "nemotron-3-ultra-nvfp4",
+      "pricing": {
+        "cached_input_per_mtok": 0.12,
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
+      },
+      "pricing_source_url": "https://fireworks.ai/pricing",
+      "source_urls": [
+        "https://fireworks.ai/pricing"
+      ]
+    },
     "fireworks/accounts/fireworks/models/qwen2p5-vl-72b-instruct": {
       "context_window": 128000,
       "enabled": true,
@@ -38603,6 +38771,21 @@
         "currency": "USD",
         "input_per_mtok": 0.5,
         "output_per_mtok": 3.0
+      },
+      "pricing_source_url": "https://fireworks.ai/pricing",
+      "source_urls": [
+        "https://fireworks.ai/pricing"
+      ]
+    },
+    "fireworks/accounts/fireworks/models/qwen3p7-plus": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "qwen3p7-plus",
+      "pricing": {
+        "cached_input_per_mtok": 0.08,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.6
       },
       "pricing_source_url": "https://fireworks.ai/pricing",
       "source_urls": [
@@ -39099,21 +39282,21 @@
       ]
     },
     "fireworks/glm-5p2": {
-      "context_window": 1048576,
+      "context_window": 1040000,
       "enabled": true,
       "max_output_tokens": 131072,
       "model_ref": "glm-5p2",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/fireworks-ai.json",
-      "provider_model_id": "fireworks_ai/glm-5p2",
+      "pricing_source_url": "https://fireworks.ai/pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/fireworks-ai.json",
-        "https://docs.fireworks.ai/serverless/pricing"
+        "https://docs.fireworks.ai/serverless/pricing",
+        "https://fireworks.ai/pricing"
       ]
     },
     "fireworks/gpt-oss-120b": {
@@ -39228,11 +39411,11 @@
         "input_per_mtok": 0.95,
         "output_per_mtok": 4.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/fireworks-ai.json",
-      "provider_model_id": "fireworks_ai/kimi-k2p7-code",
+      "pricing_source_url": "https://fireworks.ai/pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/fireworks-ai.json",
-        "https://docs.fireworks.ai/serverless/pricing"
+        "https://docs.fireworks.ai/serverless/pricing",
+        "https://fireworks.ai/pricing"
       ]
     },
     "fireworks/kimi-k2p7-code-fast": {
@@ -39364,6 +39547,23 @@
         "https://configs.portkey.ai/pricing/fireworks-ai.json"
       ]
     },
+    "fireworks/nemotron-3-ultra-nvfp4": {
+      "context_window": 262000,
+      "enabled": true,
+      "model_ref": "nemotron-3-ultra-nvfp4",
+      "pricing": {
+        "cached_input_per_mtok": 0.12,
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
+      },
+      "pricing_source_url": "https://fireworks.ai/pricing",
+      "provider_model_id": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/fireworks-ai.json",
+        "https://fireworks.ai/pricing"
+      ]
+    },
     "fireworks/qwen2p5-vl-72b-instruct": {
       "context_window": 128000,
       "enabled": true,
@@ -39421,11 +39621,11 @@
         "input_per_mtok": 0.4,
         "output_per_mtok": 1.6
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/fireworks-ai.json",
-      "provider_model_id": "fireworks_ai/qwen3p7-plus",
+      "pricing_source_url": "https://fireworks.ai/pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/fireworks-ai.json",
-        "https://docs.fireworks.ai/serverless/pricing"
+        "https://docs.fireworks.ai/serverless/pricing",
+        "https://fireworks.ai/pricing"
       ]
     },
     "gemini/claude-3-5-haiku": {
@@ -49282,6 +49482,23 @@
         "https://openrouter.ai/anthropic/claude-sonnet-4.6"
       ]
     },
+    "openrouter/anthropic/claude-sonnet-5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://openrouter.ai/anthropic/claude-sonnet-5",
+      "source_urls": [
+        "https://openrouter.ai/anthropic/claude-sonnet-5"
+      ]
+    },
     "openrouter/arcee-ai/coder-large": {
       "context_window": 32768,
       "enabled": true,
@@ -49555,11 +49772,11 @@
       "max_output_tokens": 128000,
       "model_ref": "claude-sonnet-latest",
       "pricing": {
-        "cache_write_per_mtok": 3.75,
-        "cached_input_per_mtok": 0.3,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
       },
       "pricing_source_url": "https://openrouter.ai/~anthropic/claude-sonnet-latest",
       "provider_model_id": "~anthropic/claude-sonnet-latest",
@@ -49969,15 +50186,14 @@
       ]
     },
     "openrouter/deepseek/deepseek-v4-flash": {
-      "context_window": 1000000,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 65536,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.18
+        "input_per_mtok": 0.098,
+        "output_per_mtok": 0.196
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -50075,6 +50291,22 @@
       "provider_model_id": "google/gemini-2.5-pro-preview",
       "source_urls": [
         "https://openrouter.ai/google/gemini-2.5-pro-preview"
+      ]
+    },
+    "openrouter/gemini-3.1-flash-lite-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 66000,
+      "model_ref": "gemini-3.1-flash-lite-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-lite-image",
+      "provider_model_id": "google/gemini-3.1-flash-lite-image",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite-image"
       ]
     },
     "openrouter/gemma-3-12b-it": {
@@ -50263,11 +50495,12 @@
     "openrouter/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
+      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.94,
+        "input_per_mtok": 0.93,
         "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -50585,6 +50818,21 @@
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-lite",
         "https://openrouter.ai/google/gemini-3.1-flash-lite"
+      ]
+    },
+    "openrouter/google/gemini-3.1-flash-lite-image": {
+      "context_window": 65536,
+      "enabled": true,
+      "max_output_tokens": 66000,
+      "model_ref": "gemini-3.1-flash-lite-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.1-flash-lite-image",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite-image"
       ]
     },
     "openrouter/google/gemini-3.1-flash-lite-preview": {
@@ -52022,22 +52270,6 @@
       "pricing_source_url": "https://openrouter.ai/microsoft/phi-4",
       "source_urls": [
         "https://openrouter.ai/microsoft/phi-4"
-      ]
-    },
-    "openrouter/microsoft/phi-4-mini-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "phi-4-mini-instruct",
-      "pricing": {
-        "cached_input_per_mtok": 0.08,
-        "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.35
-      },
-      "pricing_source_url": "https://openrouter.ai/microsoft/phi-4-mini-instruct",
-      "source_urls": [
-        "https://openrouter.ai/microsoft/phi-4-mini-instruct"
       ]
     },
     "openrouter/microsoft/wizardlm-2-8x22b": {
@@ -54299,21 +54531,6 @@
         "https://openrouter.ai/openai/o4-mini-high"
       ]
     },
-    "openrouter/owl-alpha": {
-      "context_window": 1048756,
-      "enabled": true,
-      "max_output_tokens": 262144,
-      "model_ref": "owl-alpha",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openrouter/owl-alpha",
-      "source_urls": [
-        "https://openrouter.ai/openrouter/owl-alpha"
-      ]
-    },
     "openrouter/palmyra-x5": {
       "context_window": 1040000,
       "enabled": true,
@@ -54731,15 +54948,13 @@
       ]
     },
     "openrouter/qwen/qwen3-235b-a22b-thinking-2507": {
-      "context_window": 262144,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "qwen3-235b-a22b-thinking-2507",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.1495,
+        "output_per_mtok": 1.495
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-235b-a22b-thinking-2507",
       "source_urls": [
@@ -55228,8 +55443,8 @@
       "model_ref": "qwen3.6-27b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.2596,
-        "output_per_mtok": 2.385
+        "input_per_mtok": 0.285,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "source_urls": [
@@ -55367,15 +55582,13 @@
       ]
     },
     "openrouter/qwen3-235b-a22b-thinking-2507": {
-      "context_window": 262144,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "qwen3-235b-a22b-thinking-2507",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.1495,
+        "output_per_mtok": 1.495
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-235b-a22b-thinking-2507",
       "provider_model_id": "qwen/qwen3-235b-a22b-thinking-2507",
@@ -55865,8 +56078,8 @@
       "model_ref": "qwen3.6-27b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.2596,
-        "output_per_mtok": 2.385
+        "input_per_mtok": 0.285,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "provider_model_id": "qwen/qwen3.6-27b",
@@ -56990,11 +57203,12 @@
     "openrouter/z-ai/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
+      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.94,
+        "input_per_mtok": 0.93,
         "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -57075,11 +57289,11 @@
       "max_output_tokens": 128000,
       "model_ref": "claude-sonnet-latest",
       "pricing": {
-        "cache_write_per_mtok": 3.75,
-        "cached_input_per_mtok": 0.3,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
       },
       "pricing_source_url": "https://openrouter.ai/~anthropic/claude-sonnet-latest",
       "source_urls": [
@@ -57995,6 +58209,23 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/vertex-ai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "vertex_ai/claude-sonnet-5": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 5.0,
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/codestral-2": {
@@ -61705,6 +61936,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-06-30T09:43:33Z",
+  "updated_at": "2026-06-30T20:02:33Z",
   "version": 1
 }
