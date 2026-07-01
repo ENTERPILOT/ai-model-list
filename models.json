@@ -1076,8 +1076,7 @@
         "claude-3.5-haiku",
         "gemini/claude-3-5-haiku",
         "anthropic/claude-3.5-haiku",
-        "vertex_ai/claude-3-5-haiku",
-        "opencode_zen/claude-3-5-haiku"
+        "vertex_ai/claude-3-5-haiku"
       ],
       "capabilities": {
         "function_calling": true,
@@ -1989,43 +1988,43 @@
           "rank": 68
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 68,
+          "as_of": "2026-07-01",
+          "rank": 69,
           "score": 61.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 69,
+          "as_of": "2026-07-01",
+          "rank": 70,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 67,
+          "as_of": "2026-07-01",
+          "rank": 68,
           "score": 72.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 55,
+          "as_of": "2026-07-01",
+          "rank": 56,
           "score": 59.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 49.8
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 80,
+          "as_of": "2026-07-01",
+          "rank": 81,
           "score": 66.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 66,
+          "as_of": "2026-07-01",
+          "rank": 67,
           "score": 77.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 61.7
         }
       },
@@ -2149,7 +2148,6 @@
         "anthropic/claude-opus-4-1",
         "anthropic/claude-opus-4.1",
         "vertex_ai/claude-opus-4-1",
-        "opencode_zen/claude-opus-4-1",
         "bedrock/claude-opus-4-1-20250805",
         "anthropic/claude-4.1-opus-20250805",
         "anthropic/claude-opus-4-1-20250805",
@@ -2591,7 +2589,6 @@
         "anthropic/claude-sonnet-4",
         "vertex_ai/claude-sonnet-4",
         "anthropic/claude-sonnet-4-0",
-        "opencode_zen/claude-sonnet-4",
         "bedrock/claude-sonnet-4-20250514",
         "anthropic/claude-4-sonnet-20250522",
         "anthropic/claude-sonnet-4-20250514",
@@ -2748,13 +2745,13 @@
           "rank": 6
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 49,
+          "as_of": "2026-07-01",
+          "rank": 50,
           "score": 68.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 34,
+          "as_of": "2026-07-01",
+          "rank": 35,
           "score": 53.3
         },
         "livebench_coding": {
@@ -2763,28 +2760,28 @@
           "score": 80.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 59,
+          "as_of": "2026-07-01",
+          "rank": 60,
           "score": 57.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 53.4
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 44,
+          "as_of": "2026-07-01",
+          "rank": 45,
           "score": 76.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 79.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 77.6
         }
       },
@@ -2849,20 +2846,34 @@
     },
     "claude-sonnet-5": {
       "aliases": [
+        "global.anthropic.claude-sonnet-5-v1:0",
+        "regional.anthropic.claude-sonnet-5-v1:0",
+        "bedrock/claude-sonnet-5",
+        "azure_ai/claude-sonnet-5",
         "anthropic/claude-sonnet-5",
         "vertex_ai/claude-sonnet-5",
+        "opencode_zen/claude-sonnet-5",
         "anthropic/claude-sonnet-5-20260630",
+        "bedrock/global.anthropic.claude-sonnet-5-v1:0",
+        "bedrock/regional.anthropic.claude-sonnet-5-v1:0",
+        "azure/azure_ai/claude-sonnet-5",
         "openrouter/anthropic/claude-sonnet-5",
         "openrouter/anthropic/claude-sonnet-5-20260630"
       ],
       "capabilities": {
+        "computer_use": true,
         "function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
+      "context_window": 1000000,
+      "description": "Our most agentic Sonnet model, approaching Opus 4.8 capability at lower cost",
       "display_name": "Claude Sonnet 5",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -2875,6 +2886,7 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "anthropic",
       "pricing": {
         "batch_input_per_mtok": 1.0,
         "batch_output_per_mtok": 5.0,
@@ -2883,7 +2895,8 @@
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 10.0
-      }
+      },
+      "source_url": "https://www.anthropic.com/pricing#api"
     },
     "claude-sonnet-latest": {
       "aliases": [
@@ -4345,43 +4358,43 @@
           "rank": 13
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 62,
+          "as_of": "2026-07-01",
+          "rank": 63,
           "score": 62.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 61,
+          "as_of": "2026-07-01",
+          "rank": 62,
           "score": 46.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 75.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 79,
+          "as_of": "2026-07-01",
+          "rank": 80,
           "score": 50.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 48.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 70,
+          "as_of": "2026-07-01",
+          "rank": 71,
           "score": 70.4
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 34,
+          "as_of": "2026-07-01",
+          "rank": 35,
           "score": 85.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 42,
+          "as_of": "2026-07-01",
+          "rank": 43,
           "score": 77.2
         }
       },
@@ -4438,43 +4451,43 @@
           "rank": 20
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 58.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 85,
+          "as_of": "2026-07-01",
+          "rank": 86,
           "score": 36.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 73.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 51.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 83,
+          "as_of": "2026-07-01",
+          "rank": 84,
           "score": 41.3
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 68,
+          "as_of": "2026-07-01",
+          "rank": 69,
           "score": 71.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 49,
+          "as_of": "2026-07-01",
+          "rank": 50,
           "score": 82.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 64.4
         }
       }
@@ -4581,23 +4594,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 67.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 50,
+          "as_of": "2026-07-01",
+          "rank": 51,
           "score": 50.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 92,
+          "as_of": "2026-07-01",
+          "rank": 93,
           "score": 69.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 68.0
         },
         "livebench_instruction_following": {
@@ -4606,18 +4619,18 @@
           "score": 63.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 70.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 57,
+          "as_of": "2026-07-01",
+          "rank": 58,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 61,
+          "as_of": "2026-07-01",
+          "rank": 62,
           "score": 70.6
         }
       },
@@ -4693,18 +4706,18 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 24,
+          "as_of": "2026-07-01",
+          "rank": 25,
           "score": 73.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 24,
+          "as_of": "2026-07-01",
+          "rank": 25,
           "score": 56.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 85,
+          "as_of": "2026-07-01",
+          "rank": 86,
           "score": 70.0
         },
         "livebench_data_analysis": {
@@ -4718,8 +4731,8 @@
           "score": 62.4
         },
         "livebench_language": {
-          "as_of": "2026-06-10",
-          "rank": 29,
+          "as_of": "2026-07-01",
+          "rank": 30,
           "score": 78.1
         },
         "livebench_math": {
@@ -4728,8 +4741,8 @@
           "score": 90.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 24,
+          "as_of": "2026-07-01",
+          "rank": 25,
           "score": 82.7
         }
       },
@@ -4768,43 +4781,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 115,
+          "as_of": "2026-07-01",
+          "rank": 116,
           "score": 41.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 66,
+          "as_of": "2026-07-01",
+          "rank": 67,
           "score": 43.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 103,
+          "as_of": "2026-07-01",
+          "rank": 104,
           "score": 66.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 39.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 125,
+          "as_of": "2026-07-01",
+          "rank": 126,
           "score": 13.5
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 117,
+          "as_of": "2026-07-01",
+          "rank": 118,
           "score": 45.7
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 117,
+          "as_of": "2026-07-01",
+          "rank": 118,
           "score": 52.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 119,
+          "as_of": "2026-07-01",
+          "rank": 120,
           "score": 27.7
         }
       },
@@ -6407,18 +6420,18 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 27,
+          "as_of": "2026-07-01",
+          "rank": 28,
           "score": 72.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 59,
+          "as_of": "2026-07-01",
+          "rank": 60,
           "score": 73.9
         },
         "livebench_data_analysis": {
@@ -6437,13 +6450,13 @@
           "score": 84.6
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 40,
+          "as_of": "2026-07-01",
+          "rank": 41,
           "score": 84.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 49,
+          "as_of": "2026-07-01",
+          "rank": 50,
           "score": 74.5
         }
       },
@@ -6857,23 +6870,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 65,
+          "as_of": "2026-07-01",
+          "rank": 66,
           "score": 61.7
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 91,
+          "as_of": "2026-07-01",
+          "rank": 92,
           "score": 33.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 95,
+          "as_of": "2026-07-01",
+          "rank": 96,
           "score": 68.5
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 54.9
         },
         "livebench_instruction_following": {
@@ -6882,18 +6895,18 @@
           "score": 68.6
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 73.2
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 73.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 79,
+          "as_of": "2026-07-01",
+          "rank": 80,
           "score": 59.7
         }
       },
@@ -7031,13 +7044,13 @@
           "score": 79.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 5,
+          "as_of": "2026-07-01",
+          "rank": 6,
           "score": 65.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 40,
+          "as_of": "2026-07-01",
+          "rank": 41,
           "score": 76.5
         },
         "livebench_data_analysis": {
@@ -7061,8 +7074,8 @@
           "score": 91.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-10",
-          "rank": 17,
+          "as_of": "2026-07-01",
+          "rank": 18,
           "score": 84.0
         }
       },
@@ -7188,23 +7201,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 17,
+          "as_of": "2026-07-01",
+          "rank": 18,
           "score": 75.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 41,
+          "as_of": "2026-07-01",
+          "rank": 42,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 26,
+          "as_of": "2026-07-01",
+          "rank": 27,
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 44,
+          "as_of": "2026-07-01",
+          "rank": 45,
           "score": 64.9
         },
         "livebench_instruction_following": {
@@ -7218,13 +7231,13 @@
           "score": 84.6
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 23,
+          "as_of": "2026-07-01",
+          "rank": 24,
           "score": 88.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 26,
+          "as_of": "2026-07-01",
+          "rank": 27,
           "score": 82.0
         }
       },
@@ -8198,23 +8211,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 66,
+          "as_of": "2026-07-01",
+          "rank": 67,
           "score": 61.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 118,
+          "as_of": "2026-07-01",
+          "rank": 119,
           "score": 60.3
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 57,
+          "as_of": "2026-07-01",
+          "rank": 58,
           "score": 58.8
         },
         "livebench_instruction_following": {
@@ -8223,18 +8236,18 @@
           "score": 67.6
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 67,
+          "as_of": "2026-07-01",
+          "rank": 68,
           "score": 71.3
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 73.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 81,
+          "as_of": "2026-07-01",
+          "rank": 82,
           "score": 59.4
         }
       },
@@ -8581,43 +8594,43 @@
           "rank": 11
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 55.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 35.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 71.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 51.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 104,
+          "as_of": "2026-07-01",
+          "rank": 105,
           "score": 26.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 97,
+          "as_of": "2026-07-01",
+          "rank": 98,
           "score": 59.0
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 81.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 62.1
         }
       }
@@ -8660,43 +8673,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 116,
+          "as_of": "2026-07-01",
+          "rank": 117,
           "score": 40.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 121,
+          "as_of": "2026-07-01",
+          "rank": 122,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 114,
+          "as_of": "2026-07-01",
+          "rank": 115,
           "score": 64.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 98,
+          "as_of": "2026-07-01",
+          "rank": 99,
           "score": 46.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 17.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 112,
+          "as_of": "2026-07-01",
+          "rank": 113,
           "score": 49.7
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 108,
+          "as_of": "2026-07-01",
+          "rank": 109,
           "score": 62.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 112,
+          "as_of": "2026-07-01",
+          "rank": 113,
           "score": 37.2
         }
       }
@@ -8739,43 +8752,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 84,
+          "as_of": "2026-07-01",
+          "rank": 85,
           "score": 58.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 70,
+          "as_of": "2026-07-01",
+          "rank": 71,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 55.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 35.7
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 65.2
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 76.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 59.7
         }
       },
@@ -8843,43 +8856,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 84,
+          "as_of": "2026-07-01",
+          "rank": 85,
           "score": 58.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 70,
+          "as_of": "2026-07-01",
+          "rank": 71,
           "score": 41.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 55.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 35.7
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 65.2
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 76.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 59.7
         }
       },
@@ -8922,43 +8935,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 68.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 29,
+          "as_of": "2026-07-01",
+          "rank": 30,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 62,
+          "as_of": "2026-07-01",
+          "rank": 63,
           "score": 73.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 40,
+          "as_of": "2026-07-01",
+          "rank": 41,
           "score": 67.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 55.3
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 36,
+          "as_of": "2026-07-01",
+          "rank": 37,
           "score": 77.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 44,
+          "as_of": "2026-07-01",
+          "rank": 45,
           "score": 83.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 66,
+          "as_of": "2026-07-01",
+          "rank": 67,
           "score": 69.1
         }
       },
@@ -9037,23 +9050,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 70.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 51,
+          "as_of": "2026-07-01",
+          "rank": 52,
           "score": 75.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 47,
+          "as_of": "2026-07-01",
+          "rank": 48,
           "score": 63.2
         },
         "livebench_instruction_following": {
@@ -9062,18 +9075,18 @@
           "score": 68.5
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 71.8
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 35,
+          "as_of": "2026-07-01",
+          "rank": 36,
           "score": 84.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 72.5
         }
       },
@@ -9143,8 +9156,8 @@
           "score": 62.3
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 76.2
         },
         "livebench_math": {
@@ -9153,8 +9166,8 @@
           "score": 89.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 37,
+          "as_of": "2026-07-01",
+          "rank": 38,
           "score": 78.6
         }
       },
@@ -9186,23 +9199,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-25",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 70.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-25",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-25",
-          "rank": 51,
+          "as_of": "2026-07-01",
+          "rank": 52,
           "score": 75.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-25",
-          "rank": 47,
+          "as_of": "2026-07-01",
+          "rank": 48,
           "score": 63.2
         },
         "livebench_instruction_following": {
@@ -9211,18 +9224,18 @@
           "score": 68.5
         },
         "livebench_language": {
-          "as_of": "2026-06-25",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 71.8
         },
         "livebench_math": {
-          "as_of": "2026-06-25",
-          "rank": 35,
+          "as_of": "2026-07-01",
+          "rank": 36,
           "score": 84.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-25",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 72.5
         }
       },
@@ -9305,8 +9318,8 @@
           "score": 62.3
         },
         "livebench_language": {
-          "as_of": "2026-06-30",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 76.2
         },
         "livebench_math": {
@@ -9315,8 +9328,8 @@
           "score": 89.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-30",
-          "rank": 37,
+          "as_of": "2026-07-01",
+          "rank": 38,
           "score": 78.6
         }
       },
@@ -9360,43 +9373,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-25",
-          "rank": 98,
+          "as_of": "2026-07-01",
+          "rank": 99,
           "score": 49.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-25",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-25",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 73.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-25",
-          "rank": 67,
+          "as_of": "2026-07-01",
+          "rank": 68,
           "score": 54.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-25",
-          "rank": 100,
+          "as_of": "2026-07-01",
+          "rank": 101,
           "score": 27.2
         },
         "livebench_language": {
-          "as_of": "2026-06-25",
-          "rank": 94,
+          "as_of": "2026-07-01",
+          "rank": 95,
           "score": 62.3
         },
         "livebench_math": {
-          "as_of": "2026-06-25",
-          "rank": 83,
+          "as_of": "2026-07-01",
+          "rank": 84,
           "score": 70.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-25",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 56.1
         }
       }
@@ -11944,43 +11957,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 60.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 86,
+          "as_of": "2026-07-01",
+          "rank": 87,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 81,
+          "as_of": "2026-07-01",
+          "rank": 82,
           "score": 49.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 59.0
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 91,
+          "as_of": "2026-07-01",
+          "rank": 92,
           "score": 63.0
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 76.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 69,
+          "as_of": "2026-07-01",
+          "rank": 70,
           "score": 64.7
         }
       },
@@ -12288,23 +12301,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 70,
+          "as_of": "2026-07-01",
+          "rank": 71,
           "score": 61.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 88,
+          "as_of": "2026-07-01",
+          "rank": 89,
           "score": 35.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 76.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 83,
+          "as_of": "2026-07-01",
+          "rank": 84,
           "score": 49.6
         },
         "livebench_instruction_following": {
@@ -12313,18 +12326,18 @@
           "score": 64.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 76,
+          "as_of": "2026-07-01",
+          "rank": 77,
           "score": 69.1
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 74.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 84,
+          "as_of": "2026-07-01",
+          "rank": 85,
           "score": 58.7
         }
       },
@@ -12419,43 +12432,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 104,
+          "as_of": "2026-07-01",
+          "rank": 105,
           "score": 48.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 99,
+          "as_of": "2026-07-01",
+          "rank": 100,
           "score": 28.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 102,
+          "as_of": "2026-07-01",
+          "rank": 103,
           "score": 67.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 108,
+          "as_of": "2026-07-01",
+          "rank": 109,
           "score": 44.3
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 66,
+          "as_of": "2026-07-01",
+          "rank": 67,
           "score": 52.0
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 115,
+          "as_of": "2026-07-01",
+          "rank": 116,
           "score": 47.7
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 100,
+          "as_of": "2026-07-01",
+          "rank": 101,
           "score": 64.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 115,
+          "as_of": "2026-07-01",
+          "rank": 116,
           "score": 35.5
         }
       },
@@ -12549,23 +12562,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 37,
+          "as_of": "2026-07-01",
+          "rank": 38,
           "score": 70.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 42,
+          "as_of": "2026-07-01",
+          "rank": 43,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 72.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 57.0
         },
         "livebench_instruction_following": {
@@ -12579,13 +12592,13 @@
           "score": 80.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 86.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 28,
+          "as_of": "2026-07-01",
+          "rank": 29,
           "score": 81.7
         }
       },
@@ -12631,23 +12644,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 37,
+          "as_of": "2026-07-01",
+          "rank": 38,
           "score": 70.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 42,
+          "as_of": "2026-07-01",
+          "rank": 43,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 72.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 57.0
         },
         "livebench_instruction_following": {
@@ -12661,13 +12674,13 @@
           "score": 80.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 86.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 28,
+          "as_of": "2026-07-01",
+          "rank": 29,
           "score": 81.7
         }
       }
@@ -12827,13 +12840,13 @@
           "rank": 8
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 72.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 25,
+          "as_of": "2026-07-01",
+          "rank": 26,
           "score": 56.7
         },
         "livebench_coding": {
@@ -12842,8 +12855,8 @@
           "score": 81.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 54,
+          "as_of": "2026-07-01",
+          "rank": 55,
           "score": 60.7
         },
         "livebench_instruction_following": {
@@ -12852,18 +12865,18 @@
           "score": 67.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 51,
+          "as_of": "2026-07-01",
+          "rank": 52,
           "score": 75.4
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 43,
+          "as_of": "2026-07-01",
+          "rank": 44,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-10",
-          "rank": 14,
+          "as_of": "2026-07-01",
+          "rank": 15,
           "score": 84.6
         }
       },
@@ -13071,23 +13084,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 68.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 37,
+          "as_of": "2026-07-01",
+          "rank": 38,
           "score": 53.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 73,
+          "as_of": "2026-07-01",
+          "rank": 74,
           "score": 71.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 54,
+          "as_of": "2026-07-01",
+          "rank": 55,
           "score": 60.7
         },
         "livebench_instruction_following": {
@@ -13096,18 +13109,18 @@
           "score": 63.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 69.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 59,
+          "as_of": "2026-07-01",
+          "rank": 60,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 27,
+          "as_of": "2026-07-01",
+          "rank": 28,
           "score": 82.0
         }
       },
@@ -13193,13 +13206,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 72.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 25,
+          "as_of": "2026-07-01",
+          "rank": 26,
           "score": 56.7
         },
         "livebench_coding": {
@@ -13208,8 +13221,8 @@
           "score": 81.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 65,
+          "as_of": "2026-07-01",
+          "rank": 66,
           "score": 54.9
         },
         "livebench_instruction_following": {
@@ -13218,18 +13231,18 @@
           "score": 67.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 51,
+          "as_of": "2026-07-01",
+          "rank": 52,
           "score": 75.4
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 43,
+          "as_of": "2026-07-01",
+          "rank": 44,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-10",
-          "rank": 14,
+          "as_of": "2026-07-01",
+          "rank": 15,
           "score": 84.6
         }
       },
@@ -13279,43 +13292,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 60.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 40.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 86,
+          "as_of": "2026-07-01",
+          "rank": 87,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 81,
+          "as_of": "2026-07-01",
+          "rank": 82,
           "score": 49.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 59.0
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 91,
+          "as_of": "2026-07-01",
+          "rank": 92,
           "score": 63.0
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 71,
+          "as_of": "2026-07-01",
+          "rank": 72,
           "score": 76.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 69,
+          "as_of": "2026-07-01",
+          "rank": 70,
           "score": 64.7
         }
       },
@@ -13425,13 +13438,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 20,
+          "as_of": "2026-07-01",
+          "rank": 21,
           "score": 74.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 45,
+          "as_of": "2026-07-01",
+          "rank": 46,
           "score": 51.7
         },
         "livebench_coding": {
@@ -13450,18 +13463,18 @@
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 20,
+          "as_of": "2026-07-01",
+          "rank": 21,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 38,
+          "as_of": "2026-07-01",
+          "rank": 39,
           "score": 77.7
         }
       },
@@ -13672,13 +13685,13 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 20,
+          "as_of": "2026-07-01",
+          "rank": 21,
           "score": 74.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 45,
+          "as_of": "2026-07-01",
+          "rank": 46,
           "score": 51.7
         },
         "livebench_coding": {
@@ -13697,18 +13710,18 @@
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 20,
+          "as_of": "2026-07-01",
+          "rank": 21,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 38,
+          "as_of": "2026-07-01",
+          "rank": 39,
           "score": 77.7
         }
       },
@@ -13924,23 +13937,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 26,
+          "as_of": "2026-07-01",
+          "rank": 27,
           "score": 72.8
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 27,
+          "as_of": "2026-07-01",
+          "rank": 28,
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 50,
+          "as_of": "2026-07-01",
+          "rank": 51,
           "score": 62.7
         },
         "livebench_instruction_following": {
@@ -13954,13 +13967,13 @@
           "score": 80.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 24,
+          "as_of": "2026-07-01",
+          "rank": 25,
           "score": 87.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 80.2
         }
       },
@@ -14192,43 +14205,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 120,
+          "as_of": "2026-07-01",
+          "rank": 121,
           "score": 37.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 109,
+          "as_of": "2026-07-01",
+          "rank": 110,
           "score": 17.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 74.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 93,
+          "as_of": "2026-07-01",
+          "rank": 94,
           "score": 47.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 119,
+          "as_of": "2026-07-01",
+          "rank": 120,
           "score": 18.9
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 41.8
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 124,
+          "as_of": "2026-07-01",
+          "rank": 125,
           "score": 37.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 124,
+          "as_of": "2026-07-01",
+          "rank": 125,
           "score": 21.9
         }
       },
@@ -14332,43 +14345,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 32.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 102,
+          "as_of": "2026-07-01",
+          "rank": 103,
           "score": 27.1
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 116,
+          "as_of": "2026-07-01",
+          "rank": 117,
           "score": 61.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 121,
+          "as_of": "2026-07-01",
+          "rank": 122,
           "score": 39.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 124,
+          "as_of": "2026-07-01",
+          "rank": 125,
           "score": 16.5
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 125,
+          "as_of": "2026-07-01",
+          "rank": 126,
           "score": 28.7
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 36.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 17.4
         }
       },
@@ -15852,43 +15865,43 @@
           "rank": 66
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 108,
+          "as_of": "2026-07-01",
+          "rank": 109,
           "score": 46.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 112,
+          "as_of": "2026-07-01",
+          "rank": 113,
           "score": 16.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 119,
+          "as_of": "2026-07-01",
+          "rank": 120,
           "score": 60.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 38.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 73,
+          "as_of": "2026-07-01",
+          "rank": 74,
           "score": 50.3
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 113,
+          "as_of": "2026-07-01",
+          "rank": 114,
           "score": 48.6
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 68.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 110,
+          "as_of": "2026-07-01",
+          "rank": 111,
           "score": 39.2
         }
       },
@@ -17121,43 +17134,43 @@
           "rank": 17
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 62.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 97,
+          "as_of": "2026-07-01",
+          "rank": 98,
           "score": 30.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 65,
+          "as_of": "2026-07-01",
+          "rank": 66,
           "score": 73.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 63.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 91,
+          "as_of": "2026-07-01",
+          "rank": 92,
           "score": 29.1
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 45,
+          "as_of": "2026-07-01",
+          "rank": 46,
           "score": 76.4
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 83.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 35,
+          "as_of": "2026-07-01",
+          "rank": 36,
           "score": 79.1
         }
       },
@@ -17278,43 +17291,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 33.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 115,
+          "as_of": "2026-07-01",
+          "rank": 116,
           "score": 10.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 54.3
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 119,
+          "as_of": "2026-07-01",
+          "rank": 120,
           "score": 40.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 17.0
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 110,
+          "as_of": "2026-07-01",
+          "rank": 111,
           "score": 50.0
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 38.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 23.3
         }
       },
@@ -17393,43 +17406,43 @@
           "rank": 54
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 60.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 94,
+          "as_of": "2026-07-01",
+          "rank": 95,
           "score": 31.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 88,
+          "as_of": "2026-07-01",
+          "rank": 89,
           "score": 69.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 73,
+          "as_of": "2026-07-01",
+          "rank": 74,
           "score": 52.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 96,
+          "as_of": "2026-07-01",
+          "rank": 97,
           "score": 28.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 57,
+          "as_of": "2026-07-01",
+          "rank": 58,
           "score": 74.3
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 42,
+          "as_of": "2026-07-01",
+          "rank": 43,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 80.2
         }
       },
@@ -17635,23 +17648,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 50,
+          "as_of": "2026-07-01",
+          "rank": 51,
           "score": 68.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 68,
+          "as_of": "2026-07-01",
+          "rank": 69,
           "score": 43.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 105,
+          "as_of": "2026-07-01",
+          "rank": 106,
           "score": 66.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 49,
+          "as_of": "2026-07-01",
+          "rank": 50,
           "score": 62.9
         },
         "livebench_instruction_following": {
@@ -17660,18 +17673,18 @@
           "score": 63.4
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 33,
+          "as_of": "2026-07-01",
+          "rank": 34,
           "score": 77.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 25,
+          "as_of": "2026-07-01",
+          "rank": 26,
           "score": 87.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 75.3
         }
       },
@@ -17817,43 +17830,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 118,
+          "as_of": "2026-07-01",
+          "rank": 119,
           "score": 39.7
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 82,
+          "as_of": "2026-07-01",
+          "rank": 83,
           "score": 38.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 120,
+          "as_of": "2026-07-01",
+          "rank": 121,
           "score": 58.5
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 114,
+          "as_of": "2026-07-01",
+          "rank": 115,
           "score": 43.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-29",
-          "rank": 106,
+          "as_of": "2026-07-01",
+          "rank": 107,
           "score": 24.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 121,
+          "as_of": "2026-07-01",
+          "rank": 122,
           "score": 42.0
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 120,
+          "as_of": "2026-07-01",
+          "rank": 121,
           "score": 45.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 25.6
         }
       },
@@ -17940,23 +17953,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 53,
+          "as_of": "2026-07-01",
+          "rank": 54,
           "score": 66.7
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 50.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 87,
+          "as_of": "2026-07-01",
+          "rank": 88,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 61,
+          "as_of": "2026-07-01",
+          "rank": 62,
           "score": 55.8
         },
         "livebench_instruction_following": {
@@ -17965,18 +17978,18 @@
           "score": 62.8
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 59,
+          "as_of": "2026-07-01",
+          "rank": 60,
           "score": 73.6
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 38,
+          "as_of": "2026-07-01",
+          "rank": 39,
           "score": 84.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 70.8
         }
       },
@@ -18086,23 +18099,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 45,
+          "as_of": "2026-07-01",
+          "rank": 46,
           "score": 68.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 53.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 110,
+          "as_of": "2026-07-01",
+          "rank": 111,
           "score": 65.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 70.8
         },
         "livebench_instruction_following": {
@@ -18111,18 +18124,18 @@
           "score": 65.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 72.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 78.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 43,
+          "as_of": "2026-07-01",
+          "rank": 44,
           "score": 76.4
         }
       },
@@ -18971,23 +18984,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 67,
+          "as_of": "2026-07-01",
+          "rank": 68,
           "score": 61.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 83,
+          "as_of": "2026-07-01",
+          "rank": 84,
           "score": 38.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 101,
+          "as_of": "2026-07-01",
+          "rank": 102,
           "score": 67.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 52.3
         },
         "livebench_instruction_following": {
@@ -18996,18 +19009,18 @@
           "score": 62.0
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 81,
+          "as_of": "2026-07-01",
+          "rank": 82,
           "score": 66.5
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 53,
+          "as_of": "2026-07-01",
+          "rank": 54,
           "score": 81.1
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 63.5
         }
       }
@@ -19053,43 +19066,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 44,
+          "as_of": "2026-07-01",
+          "rank": 45,
           "score": 69.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 59,
+          "as_of": "2026-07-01",
+          "rank": 60,
           "score": 48.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 30,
+          "as_of": "2026-07-01",
+          "rank": 31,
           "score": 77.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 61.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 54,
+          "as_of": "2026-07-01",
+          "rank": 55,
           "score": 57.4
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 35,
+          "as_of": "2026-07-01",
+          "rank": 36,
           "score": 77.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 36,
+          "as_of": "2026-07-01",
+          "rank": 37,
           "score": 84.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 44,
+          "as_of": "2026-07-01",
+          "rank": 45,
           "score": 76.0
         }
       },
@@ -19136,23 +19149,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 29,
+          "as_of": "2026-07-01",
+          "rank": 30,
           "score": 72.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 21,
+          "as_of": "2026-07-01",
+          "rank": 22,
           "score": 58.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 22,
+          "as_of": "2026-07-01",
+          "rank": 23,
           "score": 78.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 43,
+          "as_of": "2026-07-01",
+          "rank": 44,
           "score": 65.1
         },
         "livebench_instruction_following": {
@@ -19161,18 +19174,18 @@
           "score": 64.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 52,
+          "as_of": "2026-07-01",
+          "rank": 53,
           "score": 75.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 39,
+          "as_of": "2026-07-01",
+          "rank": 40,
           "score": 84.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 34,
+          "as_of": "2026-07-01",
+          "rank": 35,
           "score": 79.4
         }
       },
@@ -19182,6 +19195,7 @@
       "aliases": [
         "moonshotai/kimi-k2.7-code",
         "ollama_cloud/kimi-k2.7-code",
+        "opencode_zen/kimi-k2.7-code",
         "moonshotai/kimi-k2.7-code-20260612",
         "openrouter/moonshotai/kimi-k2.7-code",
         "openrouter/moonshotai/kimi-k2.7-code-20260612"
@@ -19210,15 +19224,15 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
-        "input_per_mtok": 0.74,
-        "output_per_mtok": 3.5
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 4.0
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 32,
+          "as_of": "2026-07-01",
+          "rank": 33,
           "score": 71.9
         },
         "livebench_agentic_coding": {
@@ -19227,33 +19241,33 @@
           "score": 70.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 74.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 51,
+          "as_of": "2026-07-01",
+          "rank": 52,
           "score": 62.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 56,
+          "as_of": "2026-07-01",
+          "rank": 57,
           "score": 56.3
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 31,
+          "as_of": "2026-07-01",
+          "rank": 32,
           "score": 77.9
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 58,
+          "as_of": "2026-07-01",
+          "rank": 59,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-14",
-          "rank": 23,
+          "as_of": "2026-07-01",
+          "rank": 24,
           "score": 82.8
         }
       },
@@ -21364,7 +21378,6 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
         "input_per_mtok": 0.3,
@@ -21372,43 +21385,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 73,
+          "as_of": "2026-07-01",
+          "rank": 74,
           "score": 60.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 46,
+          "as_of": "2026-07-01",
+          "rank": 47,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 81,
+          "as_of": "2026-07-01",
+          "rank": 82,
           "score": 70.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 84,
+          "as_of": "2026-07-01",
+          "rank": 85,
           "score": 49.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 55,
+          "as_of": "2026-07-01",
+          "rank": 56,
           "score": 57.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 102,
+          "as_of": "2026-07-01",
+          "rank": 103,
           "score": 55.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 67,
+          "as_of": "2026-07-01",
+          "rank": 68,
           "score": 77.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 83,
+          "as_of": "2026-07-01",
+          "rank": 84,
           "score": 59.3
         }
       },
@@ -21446,7 +21459,6 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
         "input_per_mtok": 0.3,
@@ -21454,23 +21466,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 63.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 53,
+          "as_of": "2026-07-01",
+          "rank": 54,
           "score": 50.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 122,
+          "as_of": "2026-07-01",
+          "rank": 123,
           "score": 54.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 60,
+          "as_of": "2026-07-01",
+          "rank": 61,
           "score": 56.3
         },
         "livebench_instruction_following": {
@@ -21479,18 +21491,18 @@
           "score": 61.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 78,
+          "as_of": "2026-07-01",
+          "rank": 79,
           "score": 66.8
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 54,
+          "as_of": "2026-07-01",
+          "rank": 55,
           "score": 80.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 48,
+          "as_of": "2026-07-01",
+          "rank": 49,
           "score": 74.8
         }
       },
@@ -21554,6 +21566,7 @@
         "fireworks/minimax-m3",
         "fireworks_ai/minimax-m3",
         "ollama_cloud/minimax-m3",
+        "opencode_zen/minimax-m3",
         "minimax/minimax-m3-20260531",
         "openrouter/minimax/minimax-m3",
         "fireworks/fireworks_ai/minimax-m3",
@@ -21592,18 +21605,18 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 42,
+          "as_of": "2026-07-01",
+          "rank": 43,
           "score": 70.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 18,
+          "as_of": "2026-07-01",
+          "rank": 19,
           "score": 60.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 98,
+          "as_of": "2026-07-01",
+          "rank": 99,
           "score": 68.2
         },
         "livebench_data_analysis": {
@@ -21612,23 +21625,23 @@
           "score": 76.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 53,
+          "as_of": "2026-07-01",
+          "rank": 54,
           "score": 57.5
         },
         "livebench_language": {
-          "as_of": "2026-06-14",
-          "rank": 40,
+          "as_of": "2026-07-01",
+          "rank": 41,
           "score": 76.8
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 69,
+          "as_of": "2026-07-01",
+          "rank": 70,
           "score": 76.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 50,
+          "as_of": "2026-07-01",
+          "rank": 51,
           "score": 74.5
         }
       },
@@ -23311,43 +23324,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 125,
+          "as_of": "2026-07-01",
+          "rank": 126,
           "score": 32.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 107,
+          "as_of": "2026-07-01",
+          "rank": 108,
           "score": 23.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 124,
+          "as_of": "2026-07-01",
+          "rank": 125,
           "score": 54.1
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 21.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 94,
+          "as_of": "2026-07-01",
+          "rank": 95,
           "score": 28.4
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 124,
+          "as_of": "2026-07-01",
+          "rank": 125,
           "score": 30.0
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 125,
+          "as_of": "2026-07-01",
+          "rank": 126,
           "score": 36.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 116,
+          "as_of": "2026-07-01",
+          "rank": 117,
           "score": 34.4
         }
       }
@@ -23401,43 +23414,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 94,
+          "as_of": "2026-07-01",
+          "rank": 95,
           "score": 51.8
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 64,
+          "as_of": "2026-07-01",
+          "rank": 65,
           "score": 46.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 71.3
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 117,
+          "as_of": "2026-07-01",
+          "rank": 118,
           "score": 42.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 50,
+          "as_of": "2026-07-01",
+          "rank": 51,
           "score": 58.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 107,
+          "as_of": "2026-07-01",
+          "rank": 108,
           "score": 52.2
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 116,
+          "as_of": "2026-07-01",
+          "rank": 117,
           "score": 54.5
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 111,
+          "as_of": "2026-07-01",
+          "rank": 112,
           "score": 37.5
         }
       }
@@ -25898,43 +25911,43 @@
           "rank": 38
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 92,
+          "as_of": "2026-07-01",
+          "rank": 93,
           "score": 53.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 118,
+          "as_of": "2026-07-01",
+          "rank": 119,
           "score": 6.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 93,
+          "as_of": "2026-07-01",
+          "rank": 94,
           "score": 69.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 52.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 84,
+          "as_of": "2026-07-01",
+          "rank": 85,
           "score": 40.6
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 69.5
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 79,
+          "as_of": "2026-07-01",
+          "rank": 80,
           "score": 73.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 82,
+          "as_of": "2026-07-01",
+          "rank": 83,
           "score": 59.4
         }
       }
@@ -25994,43 +26007,43 @@
           "rank": 86
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 119,
+          "as_of": "2026-07-01",
+          "rank": 120,
           "score": 39.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 1.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 126,
+          "as_of": "2026-07-01",
+          "rank": 127,
           "score": 48.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 106,
+          "as_of": "2026-07-01",
+          "rank": 107,
           "score": 44.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 114,
+          "as_of": "2026-07-01",
+          "rank": 115,
           "score": 21.1
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 104,
+          "as_of": "2026-07-01",
+          "rank": 105,
           "score": 54.5
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 97,
+          "as_of": "2026-07-01",
+          "rank": 98,
           "score": 65.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 113,
+          "as_of": "2026-07-01",
+          "rank": 114,
           "score": 36.7
         }
       }
@@ -26177,43 +26190,43 @@
           "rank": 48
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 111,
+          "as_of": "2026-07-01",
+          "rank": 112,
           "score": 43.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 123,
+          "as_of": "2026-07-01",
+          "rank": 124,
           "score": 3.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 107,
+          "as_of": "2026-07-01",
+          "rank": 108,
           "score": 66.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 97,
+          "as_of": "2026-07-01",
+          "rank": 98,
           "score": 46.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 120,
+          "as_of": "2026-07-01",
+          "rank": 121,
           "score": 17.8
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 101,
+          "as_of": "2026-07-01",
+          "rank": 102,
           "score": 55.5
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 94,
+          "as_of": "2026-07-01",
+          "rank": 95,
           "score": 67.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 93,
+          "as_of": "2026-07-01",
+          "rank": 94,
           "score": 48.3
         }
       }
@@ -26545,43 +26558,43 @@
           "rank": 9
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 105,
+          "as_of": "2026-07-01",
+          "rank": 106,
           "score": 48.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 116,
+          "as_of": "2026-07-01",
+          "rank": 117,
           "score": 10.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 99,
+          "as_of": "2026-07-01",
+          "rank": 100,
           "score": 68.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 80,
+          "as_of": "2026-07-01",
+          "rank": 81,
           "score": 49.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 118,
+          "as_of": "2026-07-01",
+          "rank": 119,
           "score": 19.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 82,
+          "as_of": "2026-07-01",
+          "rank": 83,
           "score": 66.3
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 85,
+          "as_of": "2026-07-01",
+          "rank": 86,
           "score": 70.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 89,
+          "as_of": "2026-07-01",
+          "rank": 90,
           "score": 54.7
         }
       }
@@ -26641,43 +26654,43 @@
           "rank": 44
         },
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 96,
+          "as_of": "2026-07-01",
+          "rank": 97,
           "score": 50.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 117,
+          "as_of": "2026-07-01",
+          "rank": 118,
           "score": 8.3
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 117,
+          "as_of": "2026-07-01",
+          "rank": 118,
           "score": 60.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 68,
+          "as_of": "2026-07-01",
+          "rank": 69,
           "score": 53.6
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 82,
+          "as_of": "2026-07-01",
+          "rank": 83,
           "score": 41.5
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 100,
+          "as_of": "2026-07-01",
+          "rank": 101,
           "score": 56.3
         },
         "livebench_math": {
-          "as_of": "2026-06-17",
-          "rank": 75,
+          "as_of": "2026-07-01",
+          "rank": 76,
           "score": 74.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 86,
+          "as_of": "2026-07-01",
+          "rank": 87,
           "score": 58.2
         }
       }
@@ -27316,43 +27329,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 56,
+          "as_of": "2026-07-01",
+          "rank": 57,
           "score": 65.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 54,
+          "as_of": "2026-07-01",
+          "rank": 55,
           "score": 50.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 71.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 32,
+          "as_of": "2026-07-01",
+          "rank": 33,
           "score": 70.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 65,
+          "as_of": "2026-07-01",
+          "rank": 66,
           "score": 53.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 89,
+          "as_of": "2026-07-01",
+          "rank": 90,
           "score": 63.3
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 56,
+          "as_of": "2026-07-01",
+          "rank": 57,
           "score": 79.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 63,
+          "as_of": "2026-07-01",
+          "rank": 64,
           "score": 70.3
         }
       }
@@ -27429,43 +27442,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-17",
-          "rank": 72,
+          "as_of": "2026-07-01",
+          "rank": 73,
           "score": 60.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 65,
+          "as_of": "2026-07-01",
+          "rank": 66,
           "score": 46.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 111,
+          "as_of": "2026-07-01",
+          "rank": 112,
           "score": 64.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 56,
+          "as_of": "2026-07-01",
+          "rank": 57,
           "score": 58.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 77,
+          "as_of": "2026-07-01",
+          "rank": 78,
           "score": 47.2
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 90,
+          "as_of": "2026-07-01",
+          "rank": 91,
           "score": 63.1
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 62,
+          "as_of": "2026-07-01",
+          "rank": 63,
           "score": 78.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 74,
+          "as_of": "2026-07-01",
+          "rank": 75,
           "score": 62.9
         }
       }
@@ -27545,43 +27558,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 36,
+          "as_of": "2026-07-01",
+          "rank": 37,
           "score": 70.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 32,
+          "as_of": "2026-07-01",
+          "rank": 33,
           "score": 55.0
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 29,
+          "as_of": "2026-07-01",
+          "rank": 30,
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 35,
+          "as_of": "2026-07-01",
+          "rank": 36,
           "score": 69.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 49,
+          "as_of": "2026-07-01",
+          "rank": 50,
           "score": 58.3
         },
         "livebench_language": {
-          "as_of": "2026-06-17",
-          "rank": 53,
+          "as_of": "2026-07-01",
+          "rank": 54,
           "score": 75.0
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 41,
+          "as_of": "2026-07-01",
+          "rank": 42,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-17",
-          "rank": 45,
+          "as_of": "2026-07-01",
+          "rank": 46,
           "score": 75.8
         }
       },
@@ -27625,23 +27638,23 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 21,
+          "as_of": "2026-07-01",
+          "rank": 22,
           "score": 74.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 47,
+          "as_of": "2026-07-01",
+          "rank": 48,
           "score": 51.7
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 57,
+          "as_of": "2026-07-01",
+          "rank": 58,
           "score": 74.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 29,
+          "as_of": "2026-07-01",
+          "rank": 30,
           "score": 71.8
         },
         "livebench_instruction_following": {
@@ -27655,13 +27668,13 @@
           "score": 79.7
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 32,
+          "as_of": "2026-07-01",
+          "rank": 33,
           "score": 85.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-06-10",
-          "rank": 21,
+          "as_of": "2026-07-01",
+          "rank": 22,
           "score": 83.3
         }
       },
@@ -30364,7 +30377,9 @@
       ]
     },
     "anthropic/claude-sonnet-5": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 128000,
       "model_ref": "claude-sonnet-5",
       "pricing": {
         "batch_input_per_mtok": 1.0,
@@ -30375,9 +30390,12 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 10.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/anthropic.json",
+      "pricing_source_url": "https://www.anthropic.com/pricing#api",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/anthropic.json"
+        "https://configs.portkey.ai/pricing/anthropic.json",
+        "https://llmprices.dev/",
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+        "https://www.anthropic.com/pricing#api"
       ]
     },
     "anthropic/claude-v1": {
@@ -31405,6 +31423,23 @@
       "enabled": true,
       "max_output_tokens": 64000,
       "model_ref": "claude-sonnet-4-6",
+      "pricing": {
+        "cache_write_per_mtok": 3.75,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0
+      },
+      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+      "source_urls": [
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/azure_ai/claude-sonnet-5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-sonnet-5",
       "pricing": {
         "cache_write_per_mtok": 3.75,
         "cached_input_per_mtok": 0.3,
@@ -36599,6 +36634,21 @@
         "https://configs.portkey.ai/pricing/bedrock.json"
       ]
     },
+    "bedrock/claude-sonnet-5": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
     "bedrock/global.amazon.nova-2-lite": {
       "enabled": true,
       "model_ref": "global.amazon.nova-2-lite",
@@ -36757,6 +36807,21 @@
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/global.anthropic.claude-sonnet-5-v1:0": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
       },
       "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
       "source_urls": [
@@ -37219,6 +37284,21 @@
         "currency": "USD",
         "input_per_mtok": 3.3,
         "output_per_mtok": 16.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.anthropic.claude-sonnet-5-v1:0": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "cache_write_per_mtok": 2.75,
+        "cached_input_per_mtok": 0.22,
+        "currency": "USD",
+        "input_per_mtok": 2.2,
+        "output_per_mtok": 11.0
       },
       "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
       "source_urls": [
@@ -48221,13 +48301,6 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/claude-3-5-haiku": {
-      "enabled": true,
-      "model_ref": "claude-3-5-haiku",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/claude-fable-5": {
       "enabled": true,
       "model_ref": "claude-fable-5",
@@ -48252,21 +48325,6 @@
         "currency": "USD",
         "input_per_mtok": 1.0,
         "output_per_mtok": 5.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/claude-opus-4-1": {
-      "enabled": true,
-      "model_ref": "claude-opus-4-1",
-      "pricing": {
-        "cache_write_per_mtok": 18.75,
-        "cached_input_per_mtok": 1.5,
-        "currency": "USD",
-        "input_per_mtok": 15.0,
-        "output_per_mtok": 75.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
@@ -48333,21 +48391,6 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/claude-sonnet-4": {
-      "enabled": true,
-      "model_ref": "claude-sonnet-4",
-      "pricing": {
-        "cache_write_per_mtok": 3.75,
-        "cached_input_per_mtok": 0.3,
-        "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/claude-sonnet-4-5": {
       "enabled": true,
       "model_ref": "claude-sonnet-4-5",
@@ -48372,6 +48415,21 @@
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/claude-sonnet-5": {
+      "enabled": true,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "cache_write_per_mtok": 2.5,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
@@ -48784,6 +48842,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/kimi-k2.7-code": {
+      "enabled": true,
+      "model_ref": "kimi-k2.7-code",
+      "pricing": {
+        "cached_input_per_mtok": 0.19,
+        "currency": "USD",
+        "input_per_mtok": 0.95,
+        "output_per_mtok": 4.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/mimo-v2.5-free": {
       "enabled": true,
       "model_ref": "mimo-v2.5-free",
@@ -48802,7 +48874,6 @@
       "enabled": true,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cache_write_per_mtok": 0.375,
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
         "input_per_mtok": 0.3,
@@ -48817,7 +48888,20 @@
       "enabled": true,
       "model_ref": "minimax-m2.7",
       "pricing": {
-        "cache_write_per_mtok": 0.375,
+        "cached_input_per_mtok": 0.06,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/minimax-m3": {
+      "enabled": true,
+      "model_ref": "minimax-m3",
+      "pricing": {
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
         "input_per_mtok": 0.3,
@@ -58212,7 +58296,9 @@
       ]
     },
     "vertex_ai/claude-sonnet-5": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 128000,
       "model_ref": "claude-sonnet-5",
       "pricing": {
         "batch_input_per_mtok": 1.0,
@@ -58225,7 +58311,8 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/vertex-ai.json"
+        "https://configs.portkey.ai/pricing/vertex-ai.json",
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
     "vertex_ai/codestral-2": {
@@ -61936,6 +62023,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-06-30T20:02:33Z",
+  "updated_at": "2026-07-01T09:54:14Z",
   "version": 1
 }
