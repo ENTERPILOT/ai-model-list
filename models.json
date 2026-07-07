@@ -725,62 +725,6 @@
       },
       "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing"
     },
-    "aion-1.0": {
-      "aliases": [
-        "aion-labs/aion-1.0",
-        "openrouter/aion-labs/aion-1.0"
-      ],
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_window": 131072,
-      "display_name": "AionLabs: Aion-1.0",
-      "max_output_tokens": 32768,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 4.0,
-        "output_per_mtok": 8.0
-      }
-    },
-    "aion-1.0-mini": {
-      "aliases": [
-        "aion-labs/aion-1.0-mini",
-        "openrouter/aion-labs/aion-1.0-mini"
-      ],
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_window": 131072,
-      "display_name": "AionLabs: Aion-1.0-Mini",
-      "max_output_tokens": 32768,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.7,
-        "output_per_mtok": 1.4
-      }
-    },
     "aion-2.0": {
       "aliases": [
         "aion-labs/aion-2.0",
@@ -789,7 +733,11 @@
         "openrouter/aion-labs/aion-2.0-20260223"
       ],
       "capabilities": {
-        "reasoning": true
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
       },
       "context_window": 131072,
       "display_name": "AionLabs: Aion-2.0",
@@ -810,6 +758,76 @@
         "currency": "USD",
         "input_per_mtok": 0.8,
         "output_per_mtok": 1.6
+      }
+    },
+    "aion-3.0": {
+      "aliases": [
+        "aion-labs/aion-3.0",
+        "aion-labs/aion-3.0-20260707",
+        "openrouter/aion-labs/aion-3.0",
+        "openrouter/aion-labs/aion-3.0-20260707"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "AionLabs: Aion-3.0",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.75,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 6.0
+      }
+    },
+    "aion-3.0-mini": {
+      "aliases": [
+        "aion-labs/aion-3.0-mini",
+        "aion-labs/aion-3.0-mini-20260707",
+        "openrouter/aion-labs/aion-3.0-mini",
+        "openrouter/aion-labs/aion-3.0-mini-20260707"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "AionLabs: Aion-3.0-Mini",
+      "max_output_tokens": 32768,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.18,
+        "currency": "USD",
+        "input_per_mtok": 0.7,
+        "output_per_mtok": 1.4
       }
     },
     "aion-rp-llama-3.1-8b": {
@@ -9113,7 +9131,7 @@
       "context_window": 1048576,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "display_name": "glm-5.2",
-      "max_output_tokens": 1048576,
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text"
@@ -23726,7 +23744,9 @@
         "openrouter/nex-agi/nex-n2-pro"
       ],
       "capabilities": {
-        "reasoning": true
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
       },
       "context_window": 262144,
       "display_name": "Nex AGI: Nex-N2-Pro",
@@ -49130,38 +49150,6 @@
         "https://openrouter.ai/ai21/jamba-large-1.7"
       ]
     },
-    "openrouter/aion-1.0": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "aion-1.0",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 4.0,
-        "output_per_mtok": 8.0
-      },
-      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-1.0",
-      "provider_model_id": "aion-labs/aion-1.0",
-      "source_urls": [
-        "https://openrouter.ai/aion-labs/aion-1.0"
-      ]
-    },
-    "openrouter/aion-1.0-mini": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "aion-1.0-mini",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.7,
-        "output_per_mtok": 1.4
-      },
-      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-1.0-mini",
-      "provider_model_id": "aion-labs/aion-1.0-mini",
-      "source_urls": [
-        "https://openrouter.ai/aion-labs/aion-1.0-mini"
-      ]
-    },
     "openrouter/aion-2.0": {
       "context_window": 131072,
       "enabled": true,
@@ -49179,34 +49167,38 @@
         "https://openrouter.ai/aion-labs/aion-2.0"
       ]
     },
-    "openrouter/aion-labs/aion-1.0": {
+    "openrouter/aion-3.0": {
       "context_window": 131072,
       "enabled": true,
       "max_output_tokens": 32768,
-      "model_ref": "aion-1.0",
+      "model_ref": "aion-3.0",
       "pricing": {
+        "cached_input_per_mtok": 0.75,
         "currency": "USD",
-        "input_per_mtok": 4.0,
-        "output_per_mtok": 8.0
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-1.0",
+      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-3.0",
+      "provider_model_id": "aion-labs/aion-3.0",
       "source_urls": [
-        "https://openrouter.ai/aion-labs/aion-1.0"
+        "https://openrouter.ai/aion-labs/aion-3.0"
       ]
     },
-    "openrouter/aion-labs/aion-1.0-mini": {
+    "openrouter/aion-3.0-mini": {
       "context_window": 131072,
       "enabled": true,
       "max_output_tokens": 32768,
-      "model_ref": "aion-1.0-mini",
+      "model_ref": "aion-3.0-mini",
       "pricing": {
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
         "input_per_mtok": 0.7,
         "output_per_mtok": 1.4
       },
-      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-1.0-mini",
+      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-3.0-mini",
+      "provider_model_id": "aion-labs/aion-3.0-mini",
       "source_urls": [
-        "https://openrouter.ai/aion-labs/aion-1.0-mini"
+        "https://openrouter.ai/aion-labs/aion-3.0-mini"
       ]
     },
     "openrouter/aion-labs/aion-2.0": {
@@ -49223,6 +49215,38 @@
       "pricing_source_url": "https://openrouter.ai/aion-labs/aion-2.0",
       "source_urls": [
         "https://openrouter.ai/aion-labs/aion-2.0"
+      ]
+    },
+    "openrouter/aion-labs/aion-3.0": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "aion-3.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.75,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 6.0
+      },
+      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-3.0",
+      "source_urls": [
+        "https://openrouter.ai/aion-labs/aion-3.0"
+      ]
+    },
+    "openrouter/aion-labs/aion-3.0-mini": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "aion-3.0-mini",
+      "pricing": {
+        "cached_input_per_mtok": 0.18,
+        "currency": "USD",
+        "input_per_mtok": 0.7,
+        "output_per_mtok": 1.4
+      },
+      "pricing_source_url": "https://openrouter.ai/aion-labs/aion-3.0-mini",
+      "source_urls": [
+        "https://openrouter.ai/aion-labs/aion-3.0-mini"
       ]
     },
     "openrouter/aion-labs/aion-rp-llama-3.1-8b": {
@@ -50681,13 +50705,13 @@
     "openrouter/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 1048576,
+      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.9,
-        "output_per_mtok": 2.86
+        "input_per_mtok": 0.93,
+        "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -57520,13 +57544,13 @@
     "openrouter/z-ai/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 1048576,
+      "max_output_tokens": 32768,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.9,
-        "output_per_mtok": 2.86
+        "input_per_mtok": 0.93,
+        "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -62271,6 +62295,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-07T09:47:39Z",
+  "updated_at": "2026-07-07T19:59:43Z",
   "version": 1
 }
