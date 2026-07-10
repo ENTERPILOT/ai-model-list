@@ -73,6 +73,10 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if xiaomi_official_path.exists():
         payloads["xiaomi_official"] = _read_json(xiaomi_official_path)
 
+    meta_official_path = snapshot_dir / "meta_models_official.json"
+    if meta_official_path.exists():
+        payloads["meta_official"] = _read_json(meta_official_path)
+
     openrouter_path = snapshot_dir / "openrouter_models.json"
     if openrouter_path.exists():
         openrouter_payload = _read_json(openrouter_path)

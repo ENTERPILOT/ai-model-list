@@ -69,6 +69,7 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
         "runway_official": ["runway"],
         "google_speech_official": ["vertex_ai"],
         "xiaomi_official": ["xiaomi"],
+        "meta_official": ["meta"],
     }
     for source_name, payload in payloads.items():
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)

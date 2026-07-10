@@ -1591,6 +1591,7 @@ NORMALIZER_BY_SOURCE = {
     "runway_official": normalize_pydantic_genai_rows,
     "google_speech_official": normalize_pydantic_genai_rows,
     "xiaomi_official": normalize_pydantic_genai_rows,
+    "meta_official": normalize_pydantic_genai_rows,
     "opencode_zen_official": normalize_third_party_provider_rows,
     "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,

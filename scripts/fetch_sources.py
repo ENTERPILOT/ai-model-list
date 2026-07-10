@@ -21,6 +21,7 @@ if __package__ in {None, ""}:
 
 from pipeline.deepseek_docs import build_deepseek_models_snapshot
 from pipeline.google_speech_docs import build_google_speech_models_snapshot
+from pipeline.meta_docs import build_meta_models_snapshot
 from pipeline.ollama_cloud_docs import build_ollama_cloud_models_snapshot
 from pipeline.opencode_zen_docs import build_opencode_zen_models_snapshot
 from pipeline.rankings import (
@@ -70,6 +71,9 @@ OLLAMA_CLOUD_SOURCE_FILENAME = "ollama_cloud_models_official.json"
 XIAOMI_MODELS_PRICING_SOURCE_URL = "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
 XIAOMI_MODELS_SUMMARY_SOURCE_URL = "https://mimo.mi.com/static/docs/quick-start/summary/model.md"
 XIAOMI_MODELS_SOURCE_FILENAME = "xiaomi_models_official.json"
+META_MODELS_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/models.md"
+META_PRICING_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/pricing-rate-limits.md"
+META_MODELS_SOURCE_FILENAME = "meta_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
     ("litellm", "litellm_model_prices.json"),
@@ -305,6 +309,19 @@ def fetch_sources_to(
     )
     (snapshot_dir / XIAOMI_MODELS_SOURCE_FILENAME).write_text(
         json.dumps(xiaomi_models_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    meta_models_markdown = _fetch_bytes(META_MODELS_SOURCE_URL).decode("utf-8")
+    meta_pricing_markdown = _fetch_bytes(META_PRICING_SOURCE_URL).decode("utf-8")
+    meta_models_payload = build_meta_models_snapshot(
+        meta_models_markdown,
+        meta_pricing_markdown,
+        models_source_url=META_MODELS_SOURCE_URL,
+        pricing_source_url=META_PRICING_SOURCE_URL,
+    )
+    (snapshot_dir / META_MODELS_SOURCE_FILENAME).write_text(
+        json.dumps(meta_models_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
