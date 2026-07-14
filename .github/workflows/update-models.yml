@@ -67,7 +67,8 @@ jobs:
           git checkout -b "$BRANCH"
           git commit -m "chore: update model registry $(date -u +%Y-%m-%d)"
           git push -u origin "$BRANCH"
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "chore: update model registry $(date -u +%Y-%m-%d)" \
             --body-file tmp/build/report.md \
-            --base main
+            --base main)
+          gh pr merge "$PR_URL" --merge --delete-branch
