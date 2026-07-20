@@ -21233,6 +21233,39 @@
       },
       "source_url": "https://fireworks.ai/pricing"
     },
+    "longcat-2.0": {
+      "aliases": [
+        "meituan/longcat-2.0",
+        "meituan/longcat-2.0-20260720",
+        "openrouter/meituan/longcat-2.0",
+        "openrouter/meituan/longcat-2.0-20260720"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1048756,
+      "display_name": "Meituan: LongCat 2.0",
+      "max_output_tokens": 262144,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.006,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      }
+    },
     "lyria-3-clip-preview": {
       "aliases": [
         "gemini/lyria-3-clip-preview",
@@ -29541,6 +29574,8 @@
       "capabilities": {
         "function_calling": true,
         "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 262144,
@@ -51408,10 +51443,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17758,
+        "cached_input_per_mtok": 0.17524,
         "currency": "USD",
-        "input_per_mtok": 0.9562,
-        "output_per_mtok": 3.0052
+        "input_per_mtok": 0.9436,
+        "output_per_mtok": 2.9656
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -52596,10 +52631,10 @@
       "max_output_tokens": 262144,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.16,
         "currency": "USD",
-        "input_per_mtok": 0.85,
-        "output_per_mtok": 3.8
+        "input_per_mtok": 0.82,
+        "output_per_mtok": 3.75
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.7-code",
       "provider_model_id": "moonshotai/kimi-k2.7-code",
@@ -52932,6 +52967,23 @@
         "https://openrouter.ai/meta-llama/llama-guard-4-12b"
       ]
     },
+    "openrouter/longcat-2.0": {
+      "context_window": 1048756,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "longcat-2.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.006,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      },
+      "pricing_source_url": "https://openrouter.ai/meituan/longcat-2.0",
+      "provider_model_id": "meituan/longcat-2.0",
+      "source_urls": [
+        "https://openrouter.ai/meituan/longcat-2.0"
+      ]
+    },
     "openrouter/lyria-3-clip-preview": {
       "context_window": 1048576,
       "enabled": true,
@@ -52993,6 +53045,22 @@
       "pricing_source_url": "https://openrouter.ai/mancer/weaver",
       "source_urls": [
         "https://openrouter.ai/mancer/weaver"
+      ]
+    },
+    "openrouter/meituan/longcat-2.0": {
+      "context_window": 1048756,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "longcat-2.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.006,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
+      },
+      "pricing_source_url": "https://openrouter.ai/meituan/longcat-2.0",
+      "source_urls": [
+        "https://openrouter.ai/meituan/longcat-2.0"
       ]
     },
     "openrouter/mercury-2": {
@@ -53820,10 +53888,10 @@
       "max_output_tokens": 262144,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.16,
         "currency": "USD",
-        "input_per_mtok": 0.85,
-        "output_per_mtok": 3.8
+        "input_per_mtok": 0.82,
+        "output_per_mtok": 3.75
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.7-code",
       "source_urls": [
@@ -58190,10 +58258,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17758,
+        "cached_input_per_mtok": 0.17524,
         "currency": "USD",
-        "input_per_mtok": 0.9562,
-        "output_per_mtok": 3.0052
+        "input_per_mtok": 0.9436,
+        "output_per_mtok": 2.9656
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -63062,6 +63130,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-20T09:19:38Z",
+  "updated_at": "2026-07-20T19:46:21Z",
   "version": 1
 }
