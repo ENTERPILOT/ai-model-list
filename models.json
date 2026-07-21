@@ -7287,6 +7287,90 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-3.5-flash-lite": {
+      "aliases": [
+        "google/gemini-3.5-flash-lite",
+        "opencode_zen/gemini-3.5-flash-lite",
+        "google/gemini-3.5-flash-lite-20260721",
+        "openrouter/google/gemini-3.5-flash-lite",
+        "openrouter/google/gemini-3.5-flash-lite-20260721"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Gemini 3.5 Flash Lite",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "gemini",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
+    "gemini-3.6-flash": {
+      "aliases": [
+        "google/gemini-3.6-flash",
+        "opencode_zen/gemini-3.6-flash",
+        "google/gemini-3.6-flash-20260721",
+        "openrouter/google/gemini-3.6-flash",
+        "openrouter/google/gemini-3.6-flash-20260721"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Gemini 3.6 Flash",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "gemini",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "gemini-embedding-001": {
       "aliases": [
         "gemini/gemini-embedding-001",
@@ -20377,6 +20461,57 @@
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.4
       }
+    },
+    "laguna-s-2.1": {
+      "aliases": [
+        "poolside/laguna-s-2.1",
+        "poolside/laguna-s-2.1:free",
+        "poolside/laguna-s-2.1-20260720",
+        "openrouter/poolside/laguna-s-2.1",
+        "openrouter/poolside/laguna-s-2.1:free",
+        "openrouter/poolside/laguna-s-2.1-20260720"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Poolside: Laguna S 2.1",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      }
+    },
+    "laguna-s-2.1-free": {
+      "aliases": [
+        "opencode_zen/laguna-s-2.1-free"
+      ],
+      "display_name": "Laguna S 2.1 Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "laguna-xs-2.1": {
       "aliases": [
@@ -49361,6 +49496,34 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/gemini-3.5-flash-lite": {
+      "enabled": true,
+      "model_ref": "gemini-3.5-flash-lite",
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/gemini-3.6-flash": {
+      "enabled": true,
+      "model_ref": "gemini-3.6-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/glm-5": {
       "enabled": true,
       "model_ref": "glm-5",
@@ -49750,6 +49913,20 @@
         "currency": "USD",
         "input_per_mtok": 0.95,
         "output_per_mtok": 4.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/laguna-s-2.1-free": {
+      "enabled": true,
+      "model_ref": "laguna-s-2.1-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
@@ -51250,6 +51427,42 @@
         "https://openrouter.ai/google/gemini-2.5-pro-preview"
       ]
     },
+    "openrouter/gemini-3.5-flash-lite": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.5-flash-lite",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.5-flash-lite",
+      "provider_model_id": "google/gemini-3.5-flash-lite",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.5-flash-lite"
+      ]
+    },
+    "openrouter/gemini-3.6-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.6-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.6-flash",
+      "provider_model_id": "google/gemini-3.6-flash",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.6-flash"
+      ]
+    },
     "openrouter/gemma-3-12b-it": {
       "context_window": 131072,
       "enabled": true,
@@ -51440,10 +51653,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17472,
+        "cached_input_per_mtok": 0.14664,
         "currency": "USD",
-        "input_per_mtok": 0.9408,
-        "output_per_mtok": 2.9568
+        "input_per_mtok": 0.7896,
+        "output_per_mtok": 2.4816
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -51702,9 +51915,9 @@
       ]
     },
     "openrouter/google/gemini-3.1-flash-image-preview": {
-      "context_window": 131072,
+      "context_window": 65536,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "model_ref": "gemini-3.1-flash-image-preview",
       "pricing": {
         "currency": "USD",
@@ -51850,6 +52063,40 @@
       "pricing_source_url": "https://openrouter.ai/google/gemini-3.5-flash",
       "source_urls": [
         "https://openrouter.ai/google/gemini-3.5-flash"
+      ]
+    },
+    "openrouter/google/gemini-3.5-flash-lite": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.5-flash-lite",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.5-flash-lite",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.5-flash-lite"
+      ]
+    },
+    "openrouter/google/gemini-3.6-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.6-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.08333333333333334,
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.6-flash",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.6-flash"
       ]
     },
     "openrouter/google/gemma-2-27b-it": {
@@ -52781,6 +53028,23 @@
       "source_urls": [
         "https://openrouter.ai/poolside/laguna-m.1",
         "https://openrouter.ai/poolside/laguna-m.1:free"
+      ]
+    },
+    "openrouter/laguna-s-2.1": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "laguna-s-2.1",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://openrouter.ai/poolside/laguna-s-2.1",
+      "source_urls": [
+        "https://openrouter.ai/poolside/laguna-s-2.1",
+        "https://openrouter.ai/poolside/laguna-s-2.1:free"
       ]
     },
     "openrouter/laguna-xs-2.1": {
@@ -55762,6 +56026,37 @@
         "https://openrouter.ai/poolside/laguna-m.1:free"
       ]
     },
+    "openrouter/poolside/laguna-s-2.1": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "laguna-s-2.1",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://openrouter.ai/poolside/laguna-s-2.1",
+      "source_urls": [
+        "https://openrouter.ai/poolside/laguna-s-2.1"
+      ]
+    },
+    "openrouter/poolside/laguna-s-2.1:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "laguna-s-2.1",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/poolside/laguna-s-2.1:free",
+      "source_urls": [
+        "https://openrouter.ai/poolside/laguna-s-2.1:free"
+      ]
+    },
     "openrouter/poolside/laguna-xs-2.1": {
       "context_window": 262144,
       "enabled": true,
@@ -58236,10 +58531,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.17472,
+        "cached_input_per_mtok": 0.14664,
         "currency": "USD",
-        "input_per_mtok": 0.9408,
-        "output_per_mtok": 2.9568
+        "input_per_mtok": 0.7896,
+        "output_per_mtok": 2.4816
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -58340,7 +58635,7 @@
         "cached_input_per_mtok": 0.15,
         "currency": "USD",
         "input_per_mtok": 1.5,
-        "output_per_mtok": 9.0
+        "output_per_mtok": 7.5
       },
       "pricing_source_url": "https://openrouter.ai/~google/gemini-flash-latest",
       "source_urls": [
@@ -63108,6 +63403,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-21T08:33:31Z",
+  "updated_at": "2026-07-21T19:35:02Z",
   "version": 1
 }
