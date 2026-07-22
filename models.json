@@ -7311,8 +7311,9 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 1048576,
-      "display_name": "Gemini 3 5 Flash Lite",
+      "context_window": 1000000,
+      "description": "Google's fastest and most cost-efficient Gemini 3.5 series model, optimized for high-volume, low-latency applications while maintaining strong multimodal capabilities.",
+      "display_name": "Gemini 3.5 Flash Lite",
       "max_output_tokens": 65536,
       "modalities": {
         "input": [
@@ -7330,6 +7331,9 @@
       ],
       "owned_by": "gemini",
       "pricing": {
+        "batch_input_per_mtok": 0.15,
+        "batch_output_per_mtok": 1.25,
+        "cache_write_per_mtok": 0.3,
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.3,
@@ -7362,8 +7366,9 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 1048576,
-      "display_name": "Gemini 3 6 Flash",
+      "context_window": 1000000,
+      "description": "Google's most intelligent model built for speed, combining frontier intelligence with improved reasoning, coding, and multimodal understanding.",
+      "display_name": "Gemini 3.6 Flash",
       "max_output_tokens": 65536,
       "modalities": {
         "input": [
@@ -7387,7 +7392,7 @@
         "output_per_mtok": 7.5,
         "reasoning_output_per_mtok": 7.5
       },
-      "source_url": "https://ai.google.dev/pricing/gemini-3"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-embedding-001": {
       "aliases": [
@@ -18524,9 +18529,7 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 500000,
-      "display_name": "Grok 4.5",
-      "max_output_tokens": 500000,
+      "display_name": "Grok 4 5",
       "modalities": {
         "input": [
           "text",
@@ -18544,19 +18547,7 @@
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
-        "tiers": [
-          {
-            "input_per_mtok": 2.0,
-            "output_per_mtok": 6.0,
-            "up_to_tokens": 200000
-          },
-          {
-            "input_per_mtok": 4.0,
-            "output_per_mtok": 12.0,
-            "up_to_tokens": 500000
-          }
-        ]
+        "output_per_mtok": 6.0
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
@@ -18573,29 +18564,15 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 500000,
       "display_name": "Grok 4 5 Latest",
-      "max_output_tokens": 500000,
       "modes": [
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.5,
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
-        "tiers": [
-          {
-            "input_per_mtok": 2.0,
-            "output_per_mtok": 6.0,
-            "up_to_tokens": 200000
-          },
-          {
-            "input_per_mtok": 4.0,
-            "output_per_mtok": 12.0,
-            "up_to_tokens": 500000
-          }
-        ]
+        "output_per_mtok": 6.0
       },
       "source_url": "https://docs.x.ai/docs/models"
     },
@@ -41508,7 +41485,7 @@
       ]
     },
     "gemini/gemini-3.5-flash-lite": {
-      "context_window": 1048576,
+      "context_window": 1000000,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions",
@@ -41534,7 +41511,7 @@
       ]
     },
     "gemini/gemini-3.6-flash": {
-      "context_window": 1048576,
+      "context_window": 1000000,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions",
@@ -41550,12 +41527,13 @@
         "output_per_mtok": 7.5,
         "reasoning_output_per_mtok": 7.5
       },
-      "pricing_source_url": "https://ai.google.dev/pricing/gemini-3",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 2000,
         "tpm": 800000
       },
       "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://ai.google.dev/pricing/gemini-3"
       ]
     },
@@ -51455,10 +51433,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.1482,
+        "cached_input_per_mtok": 0.14742,
         "currency": "USD",
-        "input_per_mtok": 0.798,
-        "output_per_mtok": 2.508
+        "input_per_mtok": 0.7938,
+        "output_per_mtok": 2.4948
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -52007,12 +51985,13 @@
     "openrouter/google/gemma-4-31b-it": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 262144,
       "model_ref": "gemma-4-31b-it",
       "pricing": {
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
         "input_per_mtok": 0.12,
-        "output_per_mtok": 0.37
+        "output_per_mtok": 0.35
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-31b-it",
       "source_urls": [
@@ -52220,22 +52199,6 @@
       "provider_model_id": "ibm-granite/granite-4.1-8b",
       "source_urls": [
         "https://openrouter.ai/ibm-granite/granite-4.1-8b"
-      ]
-    },
-    "openrouter/grok-4.5": {
-      "context_window": 500000,
-      "enabled": true,
-      "model_ref": "grok-4.5",
-      "pricing": {
-        "cached_input_per_mtok": 0.3,
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
-      },
-      "pricing_source_url": "https://openrouter.ai/x-ai/grok-4.5",
-      "provider_model_id": "x-ai/grok-4.5",
-      "source_urls": [
-        "https://openrouter.ai/x-ai/grok-4.5"
       ]
     },
     "openrouter/grok-build-0.1": {
@@ -58367,10 +58330,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.1482,
+        "cached_input_per_mtok": 0.14742,
         "currency": "USD",
-        "input_per_mtok": 0.798,
-        "output_per_mtok": 2.508
+        "input_per_mtok": 0.7938,
+        "output_per_mtok": 2.4948
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -60157,16 +60120,20 @@
       "max_output_tokens": 65536,
       "model_ref": "gemini-3.5-flash-lite",
       "pricing": {
+        "batch_input_per_mtok": 0.15,
+        "batch_output_per_mtok": 1.25,
+        "cache_write_per_mtok": 0.3,
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 2.5,
         "reasoning_output_per_mtok": 2.5
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing",
-        "https://cloud.google.com/vertex-ai/generative-ai/pricing#gemini-models"
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing#gemini-models",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/gemini-3.6-flash": {
@@ -61743,7 +61710,7 @@
       "max_output_tokens": 500000,
       "model_ref": "grok-4.5",
       "pricing": {
-        "cached_input_per_mtok": 0.5,
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0,
@@ -61760,8 +61727,9 @@
           }
         ]
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/x-ai.json",
         "https://docs.x.ai/docs/models"
       ]
     },
@@ -61771,7 +61739,7 @@
       "max_output_tokens": 500000,
       "model_ref": "grok-4.5-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.5,
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0,
@@ -61788,8 +61756,9 @@
           }
         ]
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/x-ai.json",
         "https://docs.x.ai/docs/models"
       ]
     },
@@ -62289,6 +62258,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-22T08:33:09Z",
+  "updated_at": "2026-07-22T19:24:54Z",
   "version": 1
 }
