@@ -2620,11 +2620,17 @@
     },
     "claude-opus-5": {
       "aliases": [
+        "global.anthropic.claude-opus-5",
+        "regional.anthropic.claude-opus-5",
+        "gemini/claude-opus-5",
+        "bedrock/claude-opus-5",
         "azure_ai/claude-opus-5",
         "anthropic/claude-opus-5",
         "vertex_ai/claude-opus-5",
         "opencode_zen/claude-opus-5",
         "anthropic/claude-opus-5-20260723",
+        "bedrock/global.anthropic.claude-opus-5",
+        "bedrock/regional.anthropic.claude-opus-5",
         "azure/azure_ai/claude-opus-5",
         "openrouter/anthropic/claude-opus-5",
         "openrouter/anthropic/claude-opus-5-20260723"
@@ -26722,8 +26728,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 128000,
       "display_name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "max_output_tokens": 32000,
       "modalities": {
         "input": [
           "text"
@@ -26737,8 +26744,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.04815,
+        "output_per_mtok": 0.19305
       },
       "rankings": {
         "chatbot_arena": {
@@ -29604,7 +29611,7 @@
       },
       "context_window": 262144,
       "display_name": "Arcee AI: Trinity Large Thinking",
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text"
@@ -29619,8 +29626,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.8
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       }
     },
     "tts-1": {
@@ -37335,6 +37342,21 @@
         "https://aws.amazon.com/bedrock/pricing/"
       ]
     },
+    "bedrock/claude-opus-5": {
+      "enabled": true,
+      "model_ref": "claude-opus-5",
+      "pricing": {
+        "cache_write_per_mtok": 6.25,
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 25.0
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
     "bedrock/claude-sonnet-4-20250514": {
       "enabled": true,
       "model_ref": "claude-sonnet-4",
@@ -37507,6 +37529,21 @@
     "bedrock/global.anthropic.claude-opus-4-8-v1:0": {
       "enabled": true,
       "model_ref": "claude-opus-4-8",
+      "pricing": {
+        "cache_write_per_mtok": 6.25,
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 25.0
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/global.anthropic.claude-opus-5": {
+      "enabled": true,
+      "model_ref": "claude-opus-5",
       "pricing": {
         "cache_write_per_mtok": 6.25,
         "cached_input_per_mtok": 0.5,
@@ -37984,6 +38021,21 @@
     "bedrock/regional.anthropic.claude-opus-4-8-v1:0": {
       "enabled": true,
       "model_ref": "claude-opus-4-8",
+      "pricing": {
+        "cache_write_per_mtok": 6.875,
+        "cached_input_per_mtok": 0.55,
+        "currency": "USD",
+        "input_per_mtok": 5.5,
+        "output_per_mtok": 27.5
+      },
+      "pricing_source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "source_urls": [
+        "https://aws.amazon.com/bedrock/pricing/"
+      ]
+    },
+    "bedrock/regional.anthropic.claude-opus-5": {
+      "enabled": true,
+      "model_ref": "claude-opus-5",
       "pricing": {
         "cache_write_per_mtok": 6.875,
         "cached_input_per_mtok": 0.55,
@@ -40626,6 +40678,22 @@
       "context_window": 1000000,
       "enabled": true,
       "model_ref": "claude-opus-4-8",
+      "pricing": {
+        "cache_write_per_mtok": 6.25,
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 25.0
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/claude-opus-5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "claude-opus-5",
       "pricing": {
         "cache_write_per_mtok": 6.25,
         "cached_input_per_mtok": 0.5,
@@ -50721,13 +50789,13 @@
     "openrouter/arcee-ai/trinity-large-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "model_ref": "trinity-large-thinking",
       "pricing": {
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.8
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       },
       "pricing_source_url": "https://openrouter.ai/arcee-ai/trinity-large-thinking",
       "source_urls": [
@@ -51690,10 +51758,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.13936,
+        "cached_input_per_mtok": 0.14144,
         "currency": "USD",
-        "input_per_mtok": 0.7504,
-        "output_per_mtok": 2.3584
+        "input_per_mtok": 0.7616,
+        "output_per_mtok": 2.3936
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -56427,13 +56495,14 @@
       ]
     },
     "openrouter/qwen/qwen3-30b-a3b-instruct-2507": {
-      "context_window": 262144,
+      "context_window": 128000,
       "enabled": true,
+      "max_output_tokens": 32000,
       "model_ref": "qwen3-30b-a3b-instruct-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.04815,
+        "output_per_mtok": 0.19305
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-instruct-2507",
       "source_urls": [
@@ -57034,13 +57103,14 @@
       ]
     },
     "openrouter/qwen3-30b-a3b-instruct-2507": {
-      "context_window": 262144,
+      "context_window": 128000,
       "enabled": true,
+      "max_output_tokens": 32000,
       "model_ref": "qwen3-30b-a3b-instruct-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.04815,
+        "output_per_mtok": 0.19305
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-instruct-2507",
       "provider_model_id": "qwen/qwen3-30b-a3b-instruct-2507",
@@ -58208,13 +58278,13 @@
     "openrouter/trinity-large-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 80000,
+      "max_output_tokens": 262144,
       "model_ref": "trinity-large-thinking",
       "pricing": {
         "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.8
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.85
       },
       "pricing_source_url": "https://openrouter.ai/arcee-ai/trinity-large-thinking",
       "provider_model_id": "arcee-ai/trinity-large-thinking",
@@ -58620,10 +58690,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.13936,
+        "cached_input_per_mtok": 0.14144,
         "currency": "USD",
-        "input_per_mtok": 0.7504,
-        "output_per_mtok": 2.3584
+        "input_per_mtok": 0.7616,
+        "output_per_mtok": 2.3936
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -62586,6 +62656,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-25T08:09:52Z",
+  "updated_at": "2026-07-25T19:11:36Z",
   "version": 1
 }
