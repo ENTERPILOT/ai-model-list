@@ -4704,6 +4704,7 @@
         "function_calling": true,
         "parallel_function_calling": true,
         "prompt_caching": true,
+        "reasoning": true,
         "response_schema": true,
         "system_messages": true,
         "tool_choice": true
@@ -4815,6 +4816,7 @@
         "function_calling": true,
         "parallel_function_calling": true,
         "prompt_caching": true,
+        "reasoning": true,
         "response_schema": true,
         "system_messages": true,
         "tool_choice": true
@@ -20084,7 +20086,6 @@
       },
       "context_window": 1048576,
       "display_name": "MoonshotAI Kimi Latest",
-      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text",
@@ -23793,6 +23794,7 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
@@ -26699,8 +26701,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       }
     },
     "qwen3-32b": {
@@ -27012,7 +27014,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3 Max",
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -27048,7 +27050,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3 Max Thinking",
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -27192,8 +27194,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.0975,
-        "output_per_mtok": 0.78
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 1.2
       },
       "rankings": {
         "chatbot_arena": {
@@ -27347,8 +27349,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 4.0
       },
       "rankings": {
         "chatbot_arena": {
@@ -27389,9 +27391,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 131072,
       "display_name": "Qwen: Qwen3 VL 30B A3B Instruct",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text",
@@ -27406,8 +27408,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.13,
+        "output_per_mtok": 0.52
       }
     },
     "qwen3-vl-30b-a3b-thinking": {
@@ -27439,8 +27441,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       }
     },
     "qwen3-vl-32b-instruct": {
@@ -27536,8 +27538,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.117,
-        "output_per_mtok": 1.365
+        "input_per_mtok": 0.18,
+        "output_per_mtok": 2.1
       }
     },
     "qwen3.5-122b-a10b": {
@@ -28065,10 +28067,10 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 1.3,
+        "cache_write_per_mtok": 1.28375,
         "currency": "USD",
-        "input_per_mtok": 1.04,
-        "output_per_mtok": 6.24
+        "input_per_mtok": 1.027,
+        "output_per_mtok": 6.162
       }
     },
     "qwen3.6-plus": {
@@ -31887,7 +31889,7 @@
       ]
     },
     "azure/azure_ai/claude-opus-4-6": {
-      "context_window": 200000,
+      "context_window": 1000000,
       "enabled": true,
       "max_output_tokens": 128000,
       "model_ref": "claude-opus-4-6",
@@ -31904,7 +31906,7 @@
       ]
     },
     "azure/azure_ai/claude-opus-4-7": {
-      "context_window": 200000,
+      "context_window": 1000000,
       "enabled": true,
       "max_output_tokens": 128000,
       "model_ref": "claude-opus-4-7",
@@ -31921,7 +31923,7 @@
       ]
     },
     "azure/azure_ai/claude-opus-4-8": {
-      "context_window": 200000,
+      "context_window": 1000000,
       "enabled": true,
       "max_output_tokens": 128000,
       "model_ref": "claude-opus-4-8",
@@ -51708,10 +51710,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.14274,
+        "cached_input_per_mtok": 0.1391,
         "currency": "USD",
-        "input_per_mtok": 0.7686,
-        "output_per_mtok": 2.4156
+        "input_per_mtok": 0.749,
+        "output_per_mtok": 2.354
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -52280,13 +52282,12 @@
     "openrouter/google/gemma-4-26b-a4b-it": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
+      "max_output_tokens": 16384,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.34
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -52979,7 +52980,6 @@
     "openrouter/kimi-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
         "cached_input_per_mtok": 0.3,
@@ -54330,6 +54330,7 @@
       "max_output_tokens": 228000,
       "model_ref": "nemotron-3-nano-30b-a3b",
       "pricing": {
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
@@ -54663,6 +54664,7 @@
       "max_output_tokens": 228000,
       "model_ref": "nemotron-3-nano-30b-a3b",
       "pricing": {
+        "cached_input_per_mtok": 0.025,
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
@@ -55705,9 +55707,10 @@
       "max_output_tokens": 32768,
       "model_ref": "gpt-oss-20b",
       "pricing": {
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.03,
-        "output_per_mtok": 0.14
+        "output_per_mtok": 0.13
       },
       "pricing_source_url": "https://openrouter.ai/openai/gpt-oss-20b",
       "source_urls": [
@@ -56172,7 +56175,7 @@
       "max_output_tokens": 32768,
       "model_ref": "qwen-plus-2025-07-28",
       "pricing": {
-        "cache_write_per_mtok": 0.325,
+        "cache_write_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 0.26,
         "output_per_mtok": 0.78
@@ -56266,10 +56269,10 @@
       "max_output_tokens": 32768,
       "model_ref": "qwen-plus-2025-07-28",
       "pricing": {
-        "cache_write_per_mtok": 0.325,
+        "cache_write_per_mtok": 0.5,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 0.78
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen-plus-2025-07-28:thinking",
       "source_urls": [
@@ -56374,8 +56377,8 @@
       "model_ref": "qwen3-30b-a3b-thinking-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-thinking-2507",
       "source_urls": [
@@ -56496,7 +56499,7 @@
     "openrouter/qwen/qwen3-max": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3-max",
       "pricing": {
         "cache_write_per_mtok": 0.975,
@@ -56513,7 +56516,7 @@
     "openrouter/qwen/qwen3-max-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3-max-thinking",
       "pricing": {
         "currency": "USD",
@@ -56548,8 +56551,8 @@
       "model_ref": "qwen3-next-80b-a3b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.0975,
-        "output_per_mtok": 0.78
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking",
       "source_urls": [
@@ -56579,8 +56582,8 @@
       "model_ref": "qwen3-vl-235b-a22b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 4.0
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-235b-a22b-thinking",
       "source_urls": [
@@ -56588,14 +56591,14 @@
       ]
     },
     "openrouter/qwen/qwen3-vl-30b-a3b-instruct": {
-      "context_window": 262144,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 32768,
       "model_ref": "qwen3-vl-30b-a3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.13,
+        "output_per_mtok": 0.52
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-instruct",
       "source_urls": [
@@ -56609,8 +56612,8 @@
       "model_ref": "qwen3-vl-30b-a3b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-thinking",
       "source_urls": [
@@ -56654,8 +56657,8 @@
       "model_ref": "qwen3-vl-8b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.117,
-        "output_per_mtok": 1.365
+        "input_per_mtok": 0.18,
+        "output_per_mtok": 2.1
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-8b-thinking",
       "source_urls": [
@@ -56836,10 +56839,10 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.6-max-preview",
       "pricing": {
-        "cache_write_per_mtok": 1.3,
+        "cache_write_per_mtok": 1.28375,
         "currency": "USD",
-        "input_per_mtok": 1.04,
-        "output_per_mtok": 6.24
+        "input_per_mtok": 1.027,
+        "output_per_mtok": 6.162
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-max-preview",
       "source_urls": [
@@ -57001,8 +57004,8 @@
       "model_ref": "qwen3-30b-a3b-thinking-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-thinking-2507",
       "provider_model_id": "qwen/qwen3-30b-a3b-thinking-2507",
@@ -57131,7 +57134,7 @@
     "openrouter/qwen3-max": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3-max",
       "pricing": {
         "cache_write_per_mtok": 0.975,
@@ -57149,7 +57152,7 @@
     "openrouter/qwen3-max-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3-max-thinking",
       "pricing": {
         "currency": "USD",
@@ -57186,8 +57189,8 @@
       "model_ref": "qwen3-next-80b-a3b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.0975,
-        "output_per_mtok": 0.78
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking",
       "provider_model_id": "qwen/qwen3-next-80b-a3b-thinking",
@@ -57219,8 +57222,8 @@
       "model_ref": "qwen3-vl-235b-a22b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 4.0
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-235b-a22b-thinking",
       "provider_model_id": "qwen/qwen3-vl-235b-a22b-thinking",
@@ -57229,14 +57232,14 @@
       ]
     },
     "openrouter/qwen3-vl-30b-a3b-instruct": {
-      "context_window": 262144,
+      "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 32768,
       "model_ref": "qwen3-vl-30b-a3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.13,
+        "output_per_mtok": 0.52
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-instruct",
       "provider_model_id": "qwen/qwen3-vl-30b-a3b-instruct",
@@ -57251,8 +57254,8 @@
       "model_ref": "qwen3-vl-30b-a3b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 1.56
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-thinking",
       "provider_model_id": "qwen/qwen3-vl-30b-a3b-thinking",
@@ -57299,8 +57302,8 @@
       "model_ref": "qwen3-vl-8b-thinking",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.117,
-        "output_per_mtok": 1.365
+        "input_per_mtok": 0.18,
+        "output_per_mtok": 2.1
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-vl-8b-thinking",
       "provider_model_id": "qwen/qwen3-vl-8b-thinking",
@@ -57493,10 +57496,10 @@
       "max_output_tokens": 65536,
       "model_ref": "qwen3.6-max-preview",
       "pricing": {
-        "cache_write_per_mtok": 1.3,
+        "cache_write_per_mtok": 1.28375,
         "currency": "USD",
-        "input_per_mtok": 1.04,
-        "output_per_mtok": 6.24
+        "input_per_mtok": 1.027,
+        "output_per_mtok": 6.162
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-max-preview",
       "provider_model_id": "qwen/qwen3.6-max-preview",
@@ -58585,10 +58588,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.14274,
+        "cached_input_per_mtok": 0.1391,
         "currency": "USD",
-        "input_per_mtok": 0.7686,
-        "output_per_mtok": 2.4156
+        "input_per_mtok": 0.749,
+        "output_per_mtok": 2.354
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -58716,7 +58719,6 @@
     "openrouter/~moonshotai/kimi-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-latest",
       "pricing": {
         "cached_input_per_mtok": 0.3,
@@ -62559,6 +62561,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-07-28T19:36:36Z",
+  "updated_at": "2026-07-29T08:44:54Z",
   "version": 1
 }
