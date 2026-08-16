@@ -19,7 +19,7 @@ PRICE_LABEL_TO_KEY = {
 
 def build_meta_models_snapshot(
     models_markdown: str,
-    pricing_markdown: str,
+    pricing_markdown: str | None,
     *,
     models_source_url: str,
     pricing_source_url: str,
@@ -28,14 +28,19 @@ def build_meta_models_snapshot(
     if not models:
         raise ValueError("unable to locate Meta Model API available-models table")
 
-    prices = _extract_prices(pricing_markdown)
-    if "input_mtok" not in prices or "output_mtok" not in prices:
-        raise ValueError("unable to locate Meta Model API per-token pricing table")
+    # A missing pricing document (Meta's docs site intermittently stops serving
+    # the Markdown variant) leaves pricing to the aggregator sources instead of
+    # failing the whole build. A document that is present but no longer parses
+    # still raises, so a real table change is not silently dropped.
+    if pricing_markdown is not None:
+        prices = _extract_prices(pricing_markdown)
+        if "input_mtok" not in prices or "output_mtok" not in prices:
+            raise ValueError("unable to locate Meta Model API per-token pricing table")
 
-    # Pricing is catalog-wide (one pay-as-you-go table), so every model gets
-    # the same prices. Revisit if Meta introduces per-model pricing rows.
-    for model in models:
-        model["prices"] = dict(prices)
+        # Pricing is catalog-wide (one pay-as-you-go table), so every model gets
+        # the same prices. Revisit if Meta introduces per-model pricing rows.
+        for model in models:
+            model["prices"] = dict(prices)
 
     return [
         {

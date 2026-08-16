@@ -23,6 +23,11 @@ CACHE_HIT_LABEL = "1M INPUT TOKENS (CACHE HIT)"
 CACHE_MISS_LABEL = "1M INPUT TOKENS (CACHE MISS)"
 OUTPUT_LABEL = "1M OUTPUT TOKENS"
 
+# DeepSeek splits every pricing row into time-of-day tiers. The peak tier is the
+# standard list price; off-peak is a time-window discount, so we publish peak.
+PREFERRED_PRICING_TIER = "PEAK"
+PRICING_TIER_LABELS = ("PEAK", "OFF-PEAK", "OFF PEAK")
+
 DEPRECATED_EXACT_ALIASES = {
     "deepseek-v4-flash": ("deepseek-chat", "deepseek-reasoner"),
 }
@@ -140,7 +145,7 @@ def _expand_shared_values(values: list[str], expected_count: int) -> list[str]:
 
 
 def _parse_price_values(rows: list[list[str]], label: str, expected_count: int) -> list[float]:
-    for row in rows:
+    for index, row in enumerate(rows):
         if not row:
             continue
         if _cell_matches_label(row[0], label):
@@ -152,7 +157,29 @@ def _parse_price_values(rows: list[list[str]], label: str, expected_count: int) 
     else:
         raise ValueError(f"unable to locate DeepSeek pricing row '{label}'")
 
+    raw_values = _select_pricing_tier_values(raw_values, rows[index + 1 :])
     return [_parse_price(value) for value in _expand_shared_values(raw_values, expected_count)]
+
+
+def _is_pricing_tier_label(value: str) -> bool:
+    return any(_cell_matches_label(value, tier) for tier in PRICING_TIER_LABELS)
+
+
+def _select_pricing_tier_values(raw_values: list[str], following_rows: list[list[str]]) -> list[str]:
+    """Collapse a tiered pricing row (off-peak/peak) down to the preferred tier."""
+    if not raw_values or not _is_pricing_tier_label(raw_values[0]):
+        return raw_values
+
+    tiers: dict[str, list[str]] = {_normalize_label(raw_values[0]): raw_values[1:]}
+    for row in following_rows:
+        if not row or not _is_pricing_tier_label(row[0]):
+            break
+        tiers.setdefault(_normalize_label(row[0]), row[1:])
+
+    preferred = _normalize_label(PREFERRED_PRICING_TIER)
+    if preferred in tiers:
+        return tiers[preferred]
+    return next(iter(tiers.values()))
 
 
 def _parse_price(value: str) -> float:
