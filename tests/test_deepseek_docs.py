@@ -44,6 +44,26 @@ CURRENT_PRICING_HTML = """
 """
 
 
+TIERED_PRICING_HTML = """
+<html>
+  <body>
+    <table style="text-align:center">
+      <tr><td colspan="2">MODEL</td><td>deepseek-v4-flash<sup>(1)</sup></td><td>deepseek-v4-pro</td></tr>
+      <tr><td colspan="2">MODEL VERSION</td><td>DeepSeek-V4-Flash-0731</td><td>DeepSeek-V4-Pro-0813</td></tr>
+      <tr><td colspan="2">CONTEXT LENGTH</td><td colspan="2">1M</td></tr>
+      <tr><td colspan="2">MAX OUTPUT</td><td colspan="2">MAXIMUM: 384K</td></tr>
+      <tr><td rowspan="6">PRICING<sup>(1)</sup></td><td rowspan="2">1M INPUT TOKENS (CACHE HIT)</td><td>OFF-PEAK</td><td>$0.007</td><td>$0.022</td></tr>
+      <tr><td>PEAK</td><td>$0.014</td><td>$0.044</td></tr>
+      <tr><td rowspan="2">1M INPUT TOKENS (CACHE MISS)</td><td>OFF-PEAK</td><td>$0.22</td><td>$0.66</td></tr>
+      <tr><td>PEAK</td><td>$0.44</td><td>$1.32</td></tr>
+      <tr><td rowspan="2">1M OUTPUT TOKENS</td><td>OFF-PEAK</td><td>$0.66</td><td>$1.98</td></tr>
+      <tr><td>PEAK</td><td>$1.32</td><td>$3.96</td></tr>
+    </table>
+  </body>
+</html>
+"""
+
+
 def test_build_deepseek_models_snapshot_parses_legacy_pricing_table() -> None:
     payload = build_deepseek_models_snapshot(LEGACY_PRICING_HTML, SOURCE_URL)
 
@@ -117,3 +137,22 @@ def test_build_deepseek_models_snapshot_parses_current_pricing_table() -> None:
             "output_mtok": 0.87,
         },
     }
+
+
+def test_build_deepseek_models_snapshot_uses_peak_tier_pricing() -> None:
+    payload = build_deepseek_models_snapshot(TIERED_PRICING_HTML, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    assert set(models) == {"deepseek-v4-flash", "deepseek-v4-pro"}
+    assert models["deepseek-v4-flash"]["prices"] == {
+        "input_mtok": 0.44,
+        "cache_read_mtok": 0.014,
+        "output_mtok": 1.32,
+    }
+    assert models["deepseek-v4-pro"]["prices"] == {
+        "input_mtok": 1.32,
+        "cache_read_mtok": 0.044,
+        "output_mtok": 3.96,
+    }
+    assert models["deepseek-v4-flash"]["context_window"] == 1_000_000
+    assert models["deepseek-v4-flash"]["max_output_tokens"] == 384_000

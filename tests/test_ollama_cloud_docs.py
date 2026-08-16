@@ -57,3 +57,45 @@ def test_build_ollama_cloud_models_snapshot_captures_description() -> None:
     payload = build_ollama_cloud_models_snapshot(SAMPLE_HTML, SOURCE_URL)
     models = {model["id"]: model for model in payload[0]["models"]}
     assert "open-source agentic" in models["kimi-k2.6"]["description"]
+
+
+UNHOOKED_HTML = """
+<html><body>
+<ul role="list">
+<li class="flex items-baseline border-b border-neutral-200 py-6">
+  <a href="/library/deepseek-v4-flash" class="group w-full">
+    <div class="flex flex-col mb-1" title="deepseek-v4-flash">
+      <h2 class="truncate text-xl font-medium"><span >deepseek-v4-flash</span></h2>
+      <p class="max-w-lg break-words text-neutral-800 text-md">DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series.</p>
+    </div>
+    <div class="flex flex-wrap space-x-2">
+      <span  class="inline-flex my-1 items-center rounded-md bg-indigo-50 px-2 py-[2px]">tools</span>
+      <span  class="inline-flex my-1 items-center rounded-md bg-indigo-50 px-2 py-[2px]">thinking</span>
+      <span class="inline-flex my-1 items-center rounded-md bg-cyan-50 px-2 py-[2px]">cloud</span>
+    </div>
+  </a>
+</li>
+<li class="flex items-baseline border-b border-neutral-200 py-6">
+  <a href="/library/llama-local-only" class="group w-full">
+    <div class="flex flex-col mb-1" title="llama-local-only">
+      <h2 class="truncate text-xl font-medium"><span >llama-local-only</span></h2>
+      <p class="max-w-lg break-words text-neutral-800 text-md">Local-only model, not cloud-eligible.</p>
+    </div>
+    <div class="flex flex-wrap space-x-2">
+      <span  class="inline-flex my-1 items-center rounded-md bg-indigo-50 px-2 py-[2px]">tools</span>
+    </div>
+  </a>
+</li>
+</ul>
+</body></html>
+"""
+
+
+def test_build_ollama_cloud_models_snapshot_parses_markup_without_test_hooks() -> None:
+    payload = build_ollama_cloud_models_snapshot(UNHOOKED_HTML, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    assert list(models) == ["deepseek-v4-flash"]
+    assert models["deepseek-v4-flash"]["name"] == "deepseek-v4-flash"
+    assert models["deepseek-v4-flash"]["description"].startswith("DeepSeek-V4-Flash is a preview")
+    assert models["deepseek-v4-flash"]["mode"] == "chat"

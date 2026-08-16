@@ -156,6 +156,14 @@ def _fetch_bytes(
     raise RuntimeError("exhausted fetch retries without raising")
 
 
+def _fetch_optional_markdown(url: str) -> str | None:
+    """Fetch a Markdown doc, returning None when the site serves its HTML shell."""
+    text = _fetch_bytes(url).decode("utf-8")
+    if text.lstrip()[:1] == "<":
+        return None
+    return text
+
+
 def _write_optional_artificial_analysis_snapshot(snapshot_dir: Path) -> bool:
     api_key = os.getenv(ARTIFICIAL_ANALYSIS_API_KEY_ENV)
     if not api_key:
@@ -313,7 +321,7 @@ def fetch_sources_to(
     )
 
     meta_models_markdown = _fetch_bytes(META_MODELS_SOURCE_URL).decode("utf-8")
-    meta_pricing_markdown = _fetch_bytes(META_PRICING_SOURCE_URL).decode("utf-8")
+    meta_pricing_markdown = _fetch_optional_markdown(META_PRICING_SOURCE_URL)
     meta_models_payload = build_meta_models_snapshot(
         meta_models_markdown,
         meta_pricing_markdown,
