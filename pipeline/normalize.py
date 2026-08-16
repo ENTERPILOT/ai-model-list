@@ -506,6 +506,10 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
         if numeric_value is not None:
             pricing[target_field] = numeric_value
 
+    time_windows = _time_windows_from_catalog_prices(pricing_payload.get("time_windows"), field_map)
+    if time_windows:
+        pricing["time_windows"] = time_windows
+
     image_generation_prices = pricing_payload.get("image_generation_prices")
     if isinstance(image_generation_prices, Sequence) and not isinstance(image_generation_prices, (str, bytes, bytearray)):
         normalized_image_generation_prices = []
@@ -526,6 +530,66 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
             pricing["image_generation_prices"] = normalized_image_generation_prices
 
     return pricing if len(pricing) > 1 else None
+
+
+TIME_WINDOW_RATE_FIELDS = frozenset(
+    {
+        "input_per_mtok",
+        "output_per_mtok",
+        "cached_input_per_mtok",
+        "cache_write_per_mtok",
+    }
+)
+
+
+def _time_windows_from_catalog_prices(
+    value: Any, field_map: Mapping[str, str]
+) -> list[dict[str, Any]] | None:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
+        return None
+
+    windows: list[dict[str, Any]] = []
+    for entry in value:
+        if not isinstance(entry, Mapping):
+            continue
+        label = entry.get("label")
+        if not isinstance(label, str) or not label:
+            continue
+
+        utc_ranges = _time_window_utc_ranges(entry.get("utc_ranges"))
+        if not utc_ranges:
+            continue
+
+        window_prices = entry.get("prices")
+        if not isinstance(window_prices, Mapping):
+            continue
+        rates = {
+            target_field: numeric_value
+            for source_field, target_field in field_map.items()
+            if target_field in TIME_WINDOW_RATE_FIELDS
+            and (numeric_value := _to_float(window_prices.get(source_field))) is not None
+        }
+        if not rates:
+            continue
+
+        windows.append({"label": label, "utc_ranges": utc_ranges, "pricing": rates})
+
+    return windows or None
+
+
+def _time_window_utc_ranges(value: Any) -> list[dict[str, str]]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
+        return []
+
+    ranges: list[dict[str, str]] = []
+    for entry in value:
+        if not isinstance(entry, Mapping):
+            continue
+        start = entry.get("start")
+        end = entry.get("end")
+        if isinstance(start, str) and isinstance(end, str) and start and end:
+            ranges.append({"start": start, "end": end})
+    return ranges
 
 
 def _extract_exact_match_ids(match_spec: Any) -> list[str]:

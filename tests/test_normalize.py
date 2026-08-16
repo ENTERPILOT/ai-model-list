@@ -916,3 +916,93 @@ def test_normalize_third_party_provider_rows_handles_models_without_prices() -> 
     assert record.source_model_id == "ollama_cloud/kimi-k2.6"
     assert record.canonical_hint == "kimi-k2.6"
     assert "pricing" not in record.fields
+
+
+def test_normalize_official_rows_maps_pricing_time_windows() -> None:
+    rows = [
+        {
+            "id": "deepseek",
+            "pricing_urls": ["https://api-docs.deepseek.com/quick_start/pricing"],
+            "models": [
+                {
+                    "id": "deepseek-v4-flash",
+                    "name": "DeepSeek V4 Flash",
+                    "match": {"equals": "deepseek-v4-flash"},
+                    "prices": {
+                        "input_mtok": 0.44,
+                        "cache_read_mtok": 0.014,
+                        "output_mtok": 1.32,
+                        "time_windows": [
+                            {
+                                "label": "off_peak",
+                                "utc_ranges": [
+                                    {"start": "04:00", "end": "06:00"},
+                                    {"start": "10:00", "end": "01:00"},
+                                ],
+                                "prices": {
+                                    "input_mtok": 0.22,
+                                    "cache_read_mtok": 0.007,
+                                    "output_mtok": 0.66,
+                                },
+                            }
+                        ],
+                    },
+                }
+            ],
+        }
+    ]
+
+    record = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["deepseek"],
+        owner_providers=["deepseek"],
+        rejection_policy={},
+    )[0]
+
+    assert record.fields["pricing"]["input_per_mtok"] == 0.44
+    assert record.fields["pricing"]["time_windows"] == [
+        {
+            "label": "off_peak",
+            "utc_ranges": [
+                {"start": "04:00", "end": "06:00"},
+                {"start": "10:00", "end": "01:00"},
+            ],
+            "pricing": {
+                "input_per_mtok": 0.22,
+                "output_per_mtok": 0.66,
+                "cached_input_per_mtok": 0.007,
+            },
+        }
+    ]
+
+
+def test_normalize_official_rows_drops_time_window_without_usable_rates() -> None:
+    rows = [
+        {
+            "id": "deepseek",
+            "pricing_urls": ["https://api-docs.deepseek.com/quick_start/pricing"],
+            "models": [
+                {
+                    "id": "deepseek-v4-flash",
+                    "name": "DeepSeek V4 Flash",
+                    "match": {"equals": "deepseek-v4-flash"},
+                    "prices": {
+                        "input_mtok": 0.44,
+                        "output_mtok": 1.32,
+                        "time_windows": [
+                            {"label": "off_peak", "utc_ranges": [], "prices": {}},
+                        ],
+                    },
+                }
+            ],
+        }
+    ]
+
+    record = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["deepseek"],
+        owner_providers=["deepseek"],
+        rejection_policy={},
+    )[0]
+
+    assert "time_windows" not in record.fields["pricing"]

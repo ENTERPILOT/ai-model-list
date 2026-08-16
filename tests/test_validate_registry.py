@@ -753,3 +753,72 @@ def test_curated_xai_grok_code_fast_aliases_route_stale_aggregator_records(tmp_p
     assert registry["provider_models"]["xai/grok-code-fast-1-0825"]["model_ref"] == "grok-build-0.1"
     assert check_registry_quality(registry) == []
     assert not quarantine
+
+
+def _registry_with_pricing(pricing: dict) -> dict:
+    return {
+        "version": 1,
+        "updated_at": "2026-08-16T00:00:00Z",
+        "providers": {"deepseek": {"display_name": "DeepSeek"}},
+        "models": {
+            "deepseek-v4-flash": {
+                "display_name": "DeepSeek V4 Flash",
+                "modes": ["chat"],
+            }
+        },
+        "provider_models": {
+            "deepseek/deepseek-v4-flash": {
+                "model_ref": "deepseek-v4-flash",
+                "enabled": True,
+                "pricing": pricing,
+            }
+        },
+    }
+
+
+def test_validate_accepts_pricing_time_windows(tmp_path: Path) -> None:
+    data = _registry_with_pricing(
+        {
+            "currency": "USD",
+            "input_per_mtok": 0.44,
+            "output_per_mtok": 1.32,
+            "time_windows": [
+                {
+                    "label": "off_peak",
+                    "utc_ranges": [
+                        {"start": "04:00", "end": "06:00"},
+                        {"start": "10:00", "end": "01:00"},
+                    ],
+                    "pricing": {"input_per_mtok": 0.22, "output_per_mtok": 0.66},
+                }
+            ],
+        }
+    )
+    models_path = tmp_path / "models.json"
+    models_path.write_text(json.dumps(data), encoding="utf-8")
+
+    schema_path = Path(__file__).resolve().parent.parent / "schema.json"
+
+    assert validate(models_path, schema_path) == []
+
+
+def test_validate_rejects_malformed_pricing_time_windows(tmp_path: Path) -> None:
+    data = _registry_with_pricing(
+        {
+            "currency": "USD",
+            "input_per_mtok": 0.44,
+            "time_windows": [
+                {
+                    "label": "off_peak",
+                    "utc_ranges": [{"start": "25:00", "end": "01:00"}],
+                    "pricing": {"input_per_mtok": 0.22},
+                }
+            ],
+        }
+    )
+    models_path = tmp_path / "models.json"
+    models_path.write_text(json.dumps(data), encoding="utf-8")
+
+    schema_path = Path(__file__).resolve().parent.parent / "schema.json"
+
+    assert validate(models_path, schema_path) != []
