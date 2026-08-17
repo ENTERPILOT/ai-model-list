@@ -164,6 +164,42 @@ def _fetch_optional_markdown(url: str) -> str | None:
     return text
 
 
+def _write_scraped_snapshot(
+    snapshot_dir: Path,
+    filename: str,
+    build_payload,
+    *,
+    attempts: int = DEFAULT_FETCH_RETRIES,
+    retry_delay: float = DEFAULT_RETRY_DELAY_SECONDS,
+) -> bool:
+    """Fetch and parse a scraped docs source, tolerating transient page variants.
+
+    These provider docs sites intermittently serve alternate page layouts that
+    the parsers cannot read. Parse failures are retried with a fresh fetch; if
+    every attempt fails, the snapshot is skipped for this run so the registry
+    build falls back to the aggregator pricing sources for that provider.
+    """
+    last_error: ValueError | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            payload = build_payload()
+        except ValueError as error:
+            last_error = error
+            if attempt < attempts:
+                time.sleep(retry_delay)
+            continue
+        (snapshot_dir / filename).write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return True
+    print(
+        f"warning: skipping {filename} after {attempts} attempts: {last_error}",
+        file=sys.stderr,
+    )
+    return False
+
+
 def _write_optional_artificial_analysis_snapshot(snapshot_dir: Path) -> bool:
     api_key = os.getenv(ARTIFICIAL_ANALYSIS_API_KEY_ENV)
     if not api_key:
@@ -267,70 +303,79 @@ def fetch_sources_to(
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_bytes(_fetch_bytes(descriptor.url))
 
-    xai_models_html = _fetch_bytes(XAI_MODELS_SOURCE_URL).decode("utf-8")
-    xai_models_payload = build_xai_models_snapshot(xai_models_html, XAI_MODELS_SOURCE_URL)
-    (snapshot_dir / XAI_MODELS_SOURCE_FILENAME).write_text(
-        json.dumps(xai_models_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        XAI_MODELS_SOURCE_FILENAME,
+        lambda: build_xai_models_snapshot(
+            _fetch_bytes(XAI_MODELS_SOURCE_URL).decode("utf-8"),
+            XAI_MODELS_SOURCE_URL,
+        ),
     )
 
-    deepseek_models_html = _fetch_bytes(DEEPSEEK_MODELS_SOURCE_URL).decode("utf-8")
-    deepseek_models_payload = build_deepseek_models_snapshot(deepseek_models_html, DEEPSEEK_MODELS_SOURCE_URL)
-    (snapshot_dir / DEEPSEEK_MODELS_SOURCE_FILENAME).write_text(
-        json.dumps(deepseek_models_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        DEEPSEEK_MODELS_SOURCE_FILENAME,
+        lambda: build_deepseek_models_snapshot(
+            _fetch_bytes(DEEPSEEK_MODELS_SOURCE_URL).decode("utf-8"),
+            DEEPSEEK_MODELS_SOURCE_URL,
+        ),
     )
 
-    runway_models_html = _fetch_bytes(RUNWAY_MODELS_SOURCE_URL).decode("utf-8")
-    runway_models_payload = build_runway_models_snapshot(runway_models_html, RUNWAY_MODELS_SOURCE_URL)
-    (snapshot_dir / RUNWAY_MODELS_SOURCE_FILENAME).write_text(
-        json.dumps(runway_models_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        RUNWAY_MODELS_SOURCE_FILENAME,
+        lambda: build_runway_models_snapshot(
+            _fetch_bytes(RUNWAY_MODELS_SOURCE_URL).decode("utf-8"),
+            RUNWAY_MODELS_SOURCE_URL,
+        ),
     )
 
-    google_speech_html = _fetch_bytes(GOOGLE_SPEECH_SOURCE_URL).decode("utf-8")
-    google_speech_payload = build_google_speech_models_snapshot(google_speech_html, GOOGLE_SPEECH_SOURCE_URL)
-    (snapshot_dir / GOOGLE_SPEECH_SOURCE_FILENAME).write_text(
-        json.dumps(google_speech_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        GOOGLE_SPEECH_SOURCE_FILENAME,
+        lambda: build_google_speech_models_snapshot(
+            _fetch_bytes(GOOGLE_SPEECH_SOURCE_URL).decode("utf-8"),
+            GOOGLE_SPEECH_SOURCE_URL,
+        ),
     )
 
-    opencode_zen_html = _fetch_bytes(OPENCODE_ZEN_SOURCE_URL).decode("utf-8")
-    opencode_zen_payload = build_opencode_zen_models_snapshot(opencode_zen_html, OPENCODE_ZEN_SOURCE_URL)
-    (snapshot_dir / OPENCODE_ZEN_SOURCE_FILENAME).write_text(
-        json.dumps(opencode_zen_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        OPENCODE_ZEN_SOURCE_FILENAME,
+        lambda: build_opencode_zen_models_snapshot(
+            _fetch_bytes(OPENCODE_ZEN_SOURCE_URL).decode("utf-8"),
+            OPENCODE_ZEN_SOURCE_URL,
+        ),
     )
 
-    ollama_cloud_html = _fetch_bytes(OLLAMA_CLOUD_SOURCE_URL).decode("utf-8")
-    ollama_cloud_payload = build_ollama_cloud_models_snapshot(ollama_cloud_html, OLLAMA_CLOUD_SOURCE_PRICING_URL)
-    (snapshot_dir / OLLAMA_CLOUD_SOURCE_FILENAME).write_text(
-        json.dumps(ollama_cloud_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        OLLAMA_CLOUD_SOURCE_FILENAME,
+        lambda: build_ollama_cloud_models_snapshot(
+            _fetch_bytes(OLLAMA_CLOUD_SOURCE_URL).decode("utf-8"),
+            OLLAMA_CLOUD_SOURCE_PRICING_URL,
+        ),
     )
 
-    xiaomi_pricing_markdown = _fetch_bytes(XIAOMI_MODELS_PRICING_SOURCE_URL).decode("utf-8")
-    xiaomi_models_payload = build_xiaomi_models_snapshot(
-        xiaomi_pricing_markdown,
-        XIAOMI_MODELS_PRICING_SOURCE_URL,
-        model_source_url=XIAOMI_MODELS_SUMMARY_SOURCE_URL,
-    )
-    (snapshot_dir / XIAOMI_MODELS_SOURCE_FILENAME).write_text(
-        json.dumps(xiaomi_models_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        XIAOMI_MODELS_SOURCE_FILENAME,
+        lambda: build_xiaomi_models_snapshot(
+            _fetch_bytes(XIAOMI_MODELS_PRICING_SOURCE_URL).decode("utf-8"),
+            XIAOMI_MODELS_PRICING_SOURCE_URL,
+            model_source_url=XIAOMI_MODELS_SUMMARY_SOURCE_URL,
+        ),
     )
 
-    meta_models_markdown = _fetch_bytes(META_MODELS_SOURCE_URL).decode("utf-8")
-    meta_pricing_markdown = _fetch_optional_markdown(META_PRICING_SOURCE_URL)
-    meta_models_payload = build_meta_models_snapshot(
-        meta_models_markdown,
-        meta_pricing_markdown,
-        models_source_url=META_MODELS_SOURCE_URL,
-        pricing_source_url=META_PRICING_SOURCE_URL,
-    )
-    (snapshot_dir / META_MODELS_SOURCE_FILENAME).write_text(
-        json.dumps(meta_models_payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    _write_scraped_snapshot(
+        snapshot_dir,
+        META_MODELS_SOURCE_FILENAME,
+        lambda: build_meta_models_snapshot(
+            _fetch_bytes(META_MODELS_SOURCE_URL).decode("utf-8"),
+            _fetch_optional_markdown(META_PRICING_SOURCE_URL),
+            models_source_url=META_MODELS_SOURCE_URL,
+            pricing_source_url=META_PRICING_SOURCE_URL,
+        ),
     )
 
     arena_catalog_dir = snapshot_dir / ARENA_CATALOG_DIRNAME

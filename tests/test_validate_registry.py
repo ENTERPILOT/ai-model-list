@@ -190,6 +190,42 @@ def test_fetch_bytes_retries_with_timeout(monkeypatch) -> None:
     assert attempts == [12.5, 12.5, 12.5]
 
 
+def test_write_scraped_snapshot_retries_parse_failures(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setattr(fetch_sources_module.time, "sleep", lambda _delay: None)
+    attempts: list[int] = []
+
+    def build_payload() -> list[dict[str, str]]:
+        attempts.append(1)
+        if len(attempts) < 2:
+            raise ValueError("unable to locate pricing table")
+        return [{"id": "provider"}]
+
+    written = fetch_sources_module._write_scraped_snapshot(
+        tmp_path, "provider_official.json", build_payload, attempts=3
+    )
+
+    assert written is True
+    assert len(attempts) == 2
+    assert json.loads((tmp_path / "provider_official.json").read_text()) == [{"id": "provider"}]
+
+
+def test_write_scraped_snapshot_skips_on_persistent_parse_failure(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    monkeypatch.setattr(fetch_sources_module.time, "sleep", lambda _delay: None)
+
+    def build_payload() -> list[dict[str, str]]:
+        raise ValueError("unable to locate pricing table")
+
+    written = fetch_sources_module._write_scraped_snapshot(
+        tmp_path, "provider_official.json", build_payload, attempts=3
+    )
+
+    assert written is False
+    assert not (tmp_path / "provider_official.json").exists()
+    assert "skipping provider_official.json" in capsys.readouterr().err
+
+
 def test_write_optional_artificial_analysis_snapshot_skips_without_api_key(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.delenv("ARTIFICIAL_ANALYSIS_API_KEY", raising=False)
 
