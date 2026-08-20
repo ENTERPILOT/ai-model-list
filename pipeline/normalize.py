@@ -68,6 +68,24 @@ DATE_SUFFIX_PATTERN = re.compile(r"(?:[-_.])(?:\d{4}|\d{8})$")
 XAI_TOKEN_PRICE_DIVISOR = 10_000
 XAI_UNIT_PRICE_DIVISOR = 1_000_000_000
 DISPLAY_NAME_SPLIT_PATTERN = re.compile(r"[-_./:]+")
+KNOWN_MODES = frozenset({
+    "chat",
+    "completion",
+    "embedding",
+    "image_generation",
+    "image_edit",
+    "video_generation",
+    "video_edit",
+    "audio_speech",
+    "audio_transcription",
+    "rerank",
+    "moderation",
+    "ocr",
+    "search",
+    "responses",
+    "code_interpreter",
+    "realtime",
+})
 MODE_HINTS = (
     ("embedding", "embedding"),
     ("rerank", "rerank"),
@@ -635,31 +653,23 @@ def _sorted_modalities(values: Iterable[str]) -> list[str]:
     return sorted(normalized, key=lambda value: (MODALITY_ORDER.get(value, len(MODALITY_ORDER)), value))
 
 
+def _normalize_mode(value: Any) -> str | None:
+    if not isinstance(value, str) or not value:
+        return None
+    lowered = value.lower()
+    if lowered in KNOWN_MODES:
+        return lowered
+    for token, mode in MODE_HINTS:
+        if token in lowered:
+            return mode
+    return None
+
+
 def _infer_mode_from_values(*values: Any) -> str:
     for value in values:
-        if not isinstance(value, str):
-            continue
-        lowered = value.lower()
-        if lowered in {
-            "chat",
-            "responses",
-            "embedding",
-            "rerank",
-            "moderation",
-            "ocr",
-            "image_generation",
-            "image_edit",
-            "video_generation",
-            "video_edit",
-            "audio_speech",
-            "audio_transcription",
-            "code_interpreter",
-            "realtime",
-        }:
-            return lowered
-        for token, mode in MODE_HINTS:
-            if token in lowered:
-                return mode
+        mode = _normalize_mode(value)
+        if mode is not None:
+            return mode
     return "chat"
 
 
@@ -1133,9 +1143,9 @@ def extract_supported_fields(entry: Mapping[str, Any]) -> dict[str, Any]:
         fields["display_name"] = _display_name_from_model_id(entry["id"])
 
     inferred_modes: list[str] = []
-    mode = entry.get("mode")
-    if isinstance(mode, str) and mode:
-        inferred_modes.append(mode)
+    normalized_mode = _normalize_mode(entry.get("mode"))
+    if normalized_mode is not None:
+        inferred_modes.append(normalized_mode)
     elif isinstance(entry.get("architecture"), Mapping):
         architecture_modality = entry["architecture"].get("modality")
         if isinstance(architecture_modality, str) and architecture_modality:

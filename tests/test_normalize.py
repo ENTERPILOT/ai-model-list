@@ -1,4 +1,8 @@
+import json
+from pathlib import Path
+
 from pipeline.normalize import (
+    KNOWN_MODES,
     NORMALIZER_BY_SOURCE,
     normalize_litellm_entry,
     normalize_llm_prices_rows,
@@ -60,6 +64,42 @@ def test_normalize_litellm_rows_supports_dict_shaped_sources() -> None:
     assert record.provider_slug == "xai"
     assert record.canonical_hint == "grok-4"
     assert record.fields["modes"] == ["chat"]
+
+
+def test_normalize_litellm_entry_drops_unknown_source_modes() -> None:
+    entry = {
+        "model_name": "bedrock/guardrails",
+        "litellm_provider": "bedrock",
+        "mode": "guardrail",
+        "source": "https://aws.amazon.com/bedrock/pricing/",
+        "guardrail_cost_per_unit": {
+            "contentPolicyUnits": 0.00015,
+        },
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.source_model_id == "bedrock/guardrails"
+    assert "guardrail" not in record.fields.get("modes", [])
+    assert "modes" not in record.fields
+
+
+def test_normalize_litellm_entry_keeps_schema_source_modes() -> None:
+    for mode in ("completion", "search", "moderation"):
+        record = normalize_litellm_entry(
+            {
+                "model_name": f"openai/{mode}-model",
+                "litellm_provider": "openai",
+                "mode": mode,
+            },
+            rejection_policy={},
+        )
+        assert record.fields["modes"] == [mode]
+
+
+def test_known_modes_match_schema_enum() -> None:
+    schema = json.loads((Path(__file__).resolve().parents[1] / "schema.json").read_text(encoding="utf-8"))
+    assert KNOWN_MODES == set(schema["$defs"]["mode_enum"]["enum"])
 
 
 def test_normalize_litellm_entry_extracts_richer_fields_and_nested_provider_hints() -> None:
