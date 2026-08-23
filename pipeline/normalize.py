@@ -66,7 +66,11 @@ UNSTABLE_ALIAS_TOKENS = ("latest", "beta", "preview", "alpha", "experimental", "
 DEPLOYMENT_TIER_TOKENS = {"free"}
 DATE_SUFFIX_PATTERN = re.compile(r"(?:[-_.])(?:\d{4}|\d{8})$")
 XAI_TOKEN_PRICE_DIVISOR = 10_000
-XAI_UNIT_PRICE_DIVISOR = 1_000_000_000
+# xAI publishes every price in the same tick unit: 1 tick = $1e-10. Token
+# prices therefore divide by 10_000 to reach USD per million tokens, and
+# per-unit prices (per image, per second) divide by 10_000_000_000 to reach
+# USD per unit (grok-imagine-image: imagePrice 200000000 -> $0.02).
+XAI_UNIT_PRICE_DIVISOR = 10_000_000_000
 DISPLAY_NAME_SPLIT_PATTERN = re.compile(r"[-_./:]+")
 KNOWN_MODES = frozenset({
     "chat",
