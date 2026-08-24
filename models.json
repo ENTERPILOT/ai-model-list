@@ -5419,10 +5419,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.01316,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.0658,
+        "output_per_mtok": 0.1316
       },
       "source_url": "https://docs.fireworks.ai/serverless/pricing"
     },
@@ -5631,7 +5631,9 @@
     },
     "devstral-2512": {
       "aliases": [
-        "mistral/devstral-2512"
+        "mistral/devstral-2512",
+        "mistralai/devstral-2512",
+        "openrouter/mistralai/devstral-2512"
       ],
       "capabilities": {
         "function_calling": true,
@@ -5640,6 +5642,14 @@
       },
       "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.",
       "display_name": "Devstral 2 2512",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
         "chat"
       ],
@@ -21972,74 +21982,6 @@
         "output_per_mtok": 0.0
       }
     },
-    "ling-2.6-1t": {
-      "aliases": [
-        "inclusionai/ling-2.6-1t",
-        "inclusionai/ling-2.6-1t-20260423",
-        "openrouter/inclusionai/ling-2.6-1t",
-        "openrouter/inclusionai/ling-2.6-1t-20260423"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 262144,
-      "display_name": "inclusionAI: Ling-2.6-1T",
-      "max_output_tokens": 32768,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
-      }
-    },
-    "ling-2.6-flash": {
-      "aliases": [
-        "inclusionai/ling-2.6-flash",
-        "inclusionai/ling-2.6-flash-20260421",
-        "openrouter/inclusionai/ling-2.6-flash",
-        "openrouter/inclusionai/ling-2.6-flash-20260421"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 262144,
-      "display_name": "inclusionAI: Ling-2.6-flash",
-      "max_output_tokens": 32768,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.002,
-        "currency": "USD",
-        "input_per_mtok": 0.01,
-        "output_per_mtok": 0.03
-      }
-    },
     "ling-3.0-flash": {
       "aliases": [
         "inclusionai/ling-3.0-flash",
@@ -25598,9 +25540,7 @@
     "nemotron-3-nano-30b-a3b": {
       "aliases": [
         "nvidia/nemotron-3-nano-30b-a3b",
-        "nvidia/nemotron-3-nano-30b-a3b:free",
-        "openrouter/nvidia/nemotron-3-nano-30b-a3b",
-        "openrouter/nvidia/nemotron-3-nano-30b-a3b:free"
+        "openrouter/nvidia/nemotron-3-nano-30b-a3b"
       ],
       "capabilities": {
         "function_calling": true,
@@ -25992,69 +25932,6 @@
         "output_per_mtok": 0.2
       },
       "source_url": "https://docs.fireworks.ai/serverless/pricing"
-    },
-    "nemotron-nano-12b-v2-vl": {
-      "aliases": [
-        "nvidia/nemotron-nano-12b-v2-vl:free",
-        "openrouter/nvidia/nemotron-nano-12b-v2-vl:free"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
-      "max_output_tokens": 128000,
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      }
-    },
-    "nemotron-nano-9b-v2": {
-      "aliases": [
-        "nvidia/nemotron-nano-9b-v2:free",
-        "openrouter/nvidia/nemotron-nano-9b-v2:free"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "NVIDIA: Nemotron Nano 9B V2 (free)",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      }
     },
     "nex-n2-mini": {
       "aliases": [
@@ -30709,41 +30586,6 @@
         "currency": "USD",
         "input_per_mtok": 2000.0,
         "output_per_mtok": 0.0
-      }
-    },
-    "ring-2.6-1t": {
-      "aliases": [
-        "inclusionai/ring-2.6-1t",
-        "inclusionai/ring-2.6-1t-20260508",
-        "openrouter/inclusionai/ring-2.6-1t",
-        "openrouter/inclusionai/ring-2.6-1t-20260508"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 262144,
-      "display_name": "inclusionAI: Ring-2.6-1T",
-      "max_output_tokens": 65536,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
       }
     },
     "rocinante-12b": {
@@ -55104,10 +54946,10 @@
       "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.01316,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.0658,
+        "output_per_mtok": 0.1316
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "provider_model_id": "deepseek/deepseek-v4-flash-0731",
@@ -55300,10 +55142,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.01148,
+        "cached_input_per_mtok": 0.0112,
         "currency": "USD",
-        "input_per_mtok": 0.0574,
-        "output_per_mtok": 0.1148
+        "input_per_mtok": 0.056,
+        "output_per_mtok": 0.112
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -55316,10 +55158,10 @@
       "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.01316,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.0658,
+        "output_per_mtok": 0.1316
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "source_urls": [
@@ -55348,10 +55190,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.043848,
+        "cached_input_per_mtok": 0.0435,
         "currency": "USD",
-        "input_per_mtok": 0.526176,
-        "output_per_mtok": 1.052352
+        "input_per_mtok": 0.522,
+        "output_per_mtok": 1.044
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -56762,38 +56604,6 @@
         "https://openrouter.ai/inception/mercury-2"
       ]
     },
-    "openrouter/inclusionai/ling-2.6-1t": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "ling-2.6-1t",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-1t"
-      ]
-    },
-    "openrouter/inclusionai/ling-2.6-flash": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "ling-2.6-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.002,
-        "currency": "USD",
-        "input_per_mtok": 0.01,
-        "output_per_mtok": 0.03
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-flash",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-flash"
-      ]
-    },
     "openrouter/inclusionai/ling-3.0-flash": {
       "context_window": 262144,
       "enabled": true,
@@ -56808,22 +56618,6 @@
       "pricing_source_url": "https://openrouter.ai/inclusionai/ling-3.0-flash",
       "source_urls": [
         "https://openrouter.ai/inclusionai/ling-3.0-flash"
-      ]
-    },
-    "openrouter/inclusionai/ring-2.6-1t": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 65536,
-      "model_ref": "ring-2.6-1t",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ring-2.6-1t",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ring-2.6-1t"
       ]
     },
     "openrouter/inkling": {
@@ -56946,13 +56740,12 @@
     "openrouter/kimi-k2.5": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.07,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.45,
-        "output_per_mtok": 2.25
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "provider_model_id": "moonshotai/kimi-k2.5",
@@ -56982,7 +56775,7 @@
       "max_output_tokens": 262144,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
         "input_per_mtok": 0.67,
         "output_per_mtok": 3.4
@@ -57154,40 +56947,6 @@
       "provider_model_id": "liquid/lfm-2.5-2.6b:free",
       "source_urls": [
         "https://openrouter.ai/liquid/lfm-2.5-2.6b:free"
-      ]
-    },
-    "openrouter/ling-2.6-1t": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "ling-2.6-1t",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-1t",
-      "provider_model_id": "inclusionai/ling-2.6-1t",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-1t"
-      ]
-    },
-    "openrouter/ling-2.6-flash": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "ling-2.6-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.002,
-        "currency": "USD",
-        "input_per_mtok": 0.01,
-        "output_per_mtok": 0.03
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ling-2.6-flash",
-      "provider_model_id": "inclusionai/ling-2.6-flash",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ling-2.6-flash"
       ]
     },
     "openrouter/ling-3.0-flash": {
@@ -57779,10 +57538,10 @@
       "enabled": true,
       "model_ref": "minimax-m2.7",
       "pricing": {
-        "cached_input_per_mtok": 0.048,
+        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 0.96
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
       "provider_model_id": "minimax/minimax-m2.7",
@@ -57888,10 +57647,10 @@
       "enabled": true,
       "model_ref": "minimax-m2.7",
       "pricing": {
-        "cached_input_per_mtok": 0.048,
+        "cached_input_per_mtok": 0.06,
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 0.96
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.7",
       "source_urls": [
@@ -57958,6 +57717,21 @@
       "pricing_source_url": "https://openrouter.ai/mistralai/codestral-2508",
       "source_urls": [
         "https://openrouter.ai/mistralai/codestral-2508"
+      ]
+    },
+    "openrouter/mistralai/devstral-2512": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "devstral-2512",
+      "pricing": {
+        "cached_input_per_mtok": 0.044,
+        "currency": "USD",
+        "input_per_mtok": 0.44,
+        "output_per_mtok": 2.2
+      },
+      "pricing_source_url": "https://openrouter.ai/mistralai/devstral-2512",
+      "source_urls": [
+        "https://openrouter.ai/mistralai/devstral-2512"
       ]
     },
     "openrouter/mistralai/ministral-14b-2512": {
@@ -58277,13 +58051,12 @@
     "openrouter/moonshotai/kimi-k2.5": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 262144,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.07,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.45,
-        "output_per_mtok": 2.25
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 3.0
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "source_urls": [
@@ -58311,7 +58084,7 @@
       "max_output_tokens": 262144,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
         "input_per_mtok": 0.67,
         "output_per_mtok": 3.4
@@ -58475,9 +58248,9 @@
         "output_per_mtok": 0.2
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b",
+      "provider_model_id": "nvidia/nemotron-3-nano-30b-a3b",
       "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b",
-        "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b:free"
+        "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b"
       ]
     },
     "openrouter/nemotron-3-nano-omni-30b-a3b-reasoning": {
@@ -58560,37 +58333,6 @@
       "source_urls": [
         "https://openrouter.ai/nvidia/nemotron-3.5-lightning",
         "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free"
-      ]
-    },
-    "openrouter/nemotron-nano-12b-v2-vl": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "nemotron-nano-12b-v2-vl",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free",
-      "provider_model_id": "nvidia/nemotron-nano-12b-v2-vl:free",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free"
-      ]
-    },
-    "openrouter/nemotron-nano-9b-v2": {
-      "context_window": 128000,
-      "enabled": true,
-      "model_ref": "nemotron-nano-9b-v2",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free",
-      "provider_model_id": "nvidia/nemotron-nano-9b-v2:free",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free"
       ]
     },
     "openrouter/nex-agi/nex-n2-mini": {
@@ -58830,20 +58572,6 @@
         "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b"
       ]
     },
-    "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {
-      "context_window": 256000,
-      "enabled": true,
-      "model_ref": "nemotron-3-nano-30b-a3b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b:free",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b:free"
-      ]
-    },
     "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
       "context_window": 256000,
       "enabled": true,
@@ -58963,35 +58691,6 @@
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free",
       "source_urls": [
         "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free"
-      ]
-    },
-    "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "nemotron-nano-12b-v2-vl",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free"
-      ]
-    },
-    "openrouter/nvidia/nemotron-nano-9b-v2:free": {
-      "context_window": 128000,
-      "enabled": true,
-      "model_ref": "nemotron-nano-9b-v2",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free",
-      "source_urls": [
-        "https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free"
       ]
     },
     "openrouter/o3-mini-high": {
@@ -62032,23 +61731,6 @@
       "provider_model_id": "undi95/remm-slerp-l2-13b",
       "source_urls": [
         "https://openrouter.ai/undi95/remm-slerp-l2-13b"
-      ]
-    },
-    "openrouter/ring-2.6-1t": {
-      "context_window": 262144,
-      "enabled": true,
-      "max_output_tokens": 65536,
-      "model_ref": "ring-2.6-1t",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.625
-      },
-      "pricing_source_url": "https://openrouter.ai/inclusionai/ring-2.6-1t",
-      "provider_model_id": "inclusionai/ring-2.6-1t",
-      "source_urls": [
-        "https://openrouter.ai/inclusionai/ring-2.6-1t"
       ]
     },
     "openrouter/rocinante-12b": {
@@ -67443,6 +67125,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-08-24T07:03:21Z",
+  "updated_at": "2026-08-24T18:43:30Z",
   "version": 1
 }
