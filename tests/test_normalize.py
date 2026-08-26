@@ -866,10 +866,11 @@ def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities()
         "input": ["text", "image"],
         "output": ["image"],
     }
+    # xAI ticks are $1e-10: imagePrice 200000000 is the published $0.02/image.
     assert by_id["grok-imagine-image"].fields["pricing"] == {
         "currency": "USD",
-        "input_per_image": 0.02,
-        "per_image": 0.2,
+        "input_per_image": 0.002,
+        "per_image": 0.02,
     }
     assert by_id["grok-imagine-video"].fields["modes"] == ["video_generation"]
     assert by_id["grok-imagine-video"].fields["modalities"] == {
@@ -878,9 +879,9 @@ def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities()
     }
     assert by_id["grok-imagine-video"].fields["pricing"] == {
         "currency": "USD",
-        "input_per_image": 0.02,
-        "per_second_input": 0.1,
-        "per_second_output": 0.5,
+        "input_per_image": 0.002,
+        "per_second_input": 0.01,
+        "per_second_output": 0.05,
     }
 
 
