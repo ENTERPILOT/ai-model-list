@@ -10534,6 +10534,46 @@
         "output_per_mtok": 4.4
       }
     },
+    "glm-5.3-flash": {
+      "aliases": [
+        "z-ai/glm-5.3-flash",
+        "ollama_cloud/glm-5.3-flash",
+        "z-ai/glm-5.3-flash-20260826",
+        "openrouter/z-ai/glm-5.3-flash",
+        "openrouter/z-ai/glm-5.3-flash-20260826"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "description": "Z.ai&#39;s first natively multimodal model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters.",
+      "display_name": "glm-5.3-flash",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.25
+      },
+      "source_url": "https://ollama.com/pricing"
+    },
     "glm-5p1": {
       "aliases": [
         "fireworks/glm-5p1",
@@ -19583,11 +19623,39 @@
     },
     "grok-4.20": {
       "aliases": [
+        "grok-4.20-0309",
+        "grok-4.20-beta",
+        "grok-4.20-beta-0309",
+        "grok-4.20-reasoning",
+        "grok-4.20-beta-latest",
+        "grok-4.20-reasoning-gv2",
+        "grok-4.20-0309-reasoning",
+        "grok-4.20-beta-reasoning",
+        "grok-4.20-reasoning-latest",
         "grok-4.20-beta-0309-reasoning",
+        "grok-4.20-beta-latest-reasoning",
+        "grok-4.20-experimental-beta-0304",
+        "grok-4.20-experimental-beta-latest",
+        "grok-4.20-experimental-beta-0304-reasoning",
+        "grok-4.20-experimental-beta-reasoning-latest",
         "xai/grok-4.20",
         "x-ai/grok-4.20",
+        "xai/grok-4.20-0309",
+        "xai/grok-4.20-beta",
         "x-ai/grok-4.20-20260309",
+        "xai/grok-4.20-beta-0309",
+        "xai/grok-4.20-reasoning",
+        "xai/grok-4.20-beta-latest",
+        "xai/grok-4.20-reasoning-gv2",
+        "xai/grok-4.20-0309-reasoning",
+        "xai/grok-4.20-beta-reasoning",
+        "xai/grok-4.20-reasoning-latest",
         "xai/grok-4.20-beta-0309-reasoning",
+        "xai/grok-4.20-beta-latest-reasoning",
+        "xai/grok-4.20-experimental-beta-0304",
+        "xai/grok-4.20-experimental-beta-latest",
+        "xai/grok-4.20-experimental-beta-0304-reasoning",
+        "xai/grok-4.20-experimental-beta-reasoning-latest",
         "openrouter/x-ai/grok-4.20",
         "openrouter/x-ai/grok-4.20-20260309"
       ],
@@ -19600,7 +19668,8 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4 20",
+      "context_window": 1000000,
+      "display_name": "Grok 4.20",
       "modalities": {
         "input": [
           "text",
@@ -19613,11 +19682,24 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "xai",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
       },
       "rankings": {
         "livebench": {
@@ -19661,7 +19743,7 @@
           "score": 75.3
         }
       },
-      "source_url": "https://docs.x.ai/docs/models"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.20-0309-non-reasoning": {
       "aliases": [
@@ -19714,11 +19796,21 @@
     },
     "grok-4.20-multi-agent": {
       "aliases": [
+        "grok-4.20-multi-agent-0309",
+        "grok-4.20-multi-agent-latest",
         "grok-4.20-multi-agent-beta-0309",
+        "grok-4.20-multi-agent-beta-latest",
+        "grok-4.20-multi-agent-experimental-beta-0304",
+        "grok-4.20-multi-agent-experimental-beta-latest",
         "xai/grok-4.20-multi-agent",
         "x-ai/grok-4.20-multi-agent",
+        "xai/grok-4.20-multi-agent-0309",
+        "xai/grok-4.20-multi-agent-latest",
         "x-ai/grok-4.20-multi-agent-20260309",
         "xai/grok-4.20-multi-agent-beta-0309",
+        "xai/grok-4.20-multi-agent-beta-latest",
+        "xai/grok-4.20-multi-agent-experimental-beta-0304",
+        "xai/grok-4.20-multi-agent-experimental-beta-latest",
         "openrouter/x-ai/grok-4.20-multi-agent",
         "openrouter/x-ai/grok-4.20-multi-agent-20260309"
       ],
@@ -19731,7 +19823,8 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4 20 Multi Agent",
+      "context_window": 1000000,
+      "display_name": "Grok 4.20 Multi Agent",
       "modalities": {
         "input": [
           "text",
@@ -19744,13 +19837,26 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "xai",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
       },
-      "source_url": "https://docs.x.ai/docs/models"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.20-multi-agent-0309": {
       "aliases": [
@@ -19779,9 +19885,23 @@
     },
     "grok-4.20-non-reasoning": {
       "aliases": [
+        "grok-4.20-non-reasoning-gv2",
+        "grok-4.20-0309-non-reasoning",
+        "grok-4.20-beta-non-reasoning",
+        "grok-4.20-non-reasoning-latest",
         "grok-4.20-beta-0309-non-reasoning",
+        "grok-4.20-beta-latest-non-reasoning",
+        "grok-4.20-experimental-beta-0304-non-reasoning",
+        "grok-4.20-experimental-beta-non-reasoning-latest",
         "xai/grok-4.20-non-reasoning",
+        "xai/grok-4.20-non-reasoning-gv2",
+        "xai/grok-4.20-0309-non-reasoning",
+        "xai/grok-4.20-beta-non-reasoning",
+        "xai/grok-4.20-non-reasoning-latest",
         "xai/grok-4.20-beta-0309-non-reasoning",
+        "xai/grok-4.20-beta-latest-non-reasoning",
+        "xai/grok-4.20-experimental-beta-0304-non-reasoning",
+        "xai/grok-4.20-experimental-beta-non-reasoning-latest",
         "vertex_ai/xai/grok-4.20-non-reasoning"
       ],
       "capabilities": {
@@ -19791,15 +19911,29 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4 20 Non Reasoning",
+      "context_window": 1000000,
+      "display_name": "Grok 4.20 Non Reasoning",
       "modes": [
         "chat"
       ],
+      "owned_by": "xai",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
       },
       "rankings": {
         "livebench": {
@@ -19843,7 +19977,7 @@
           "score": 25.6
         }
       },
-      "source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.20-reasoning": {
       "aliases": [
@@ -19872,10 +20006,12 @@
     },
     "grok-4.3": {
       "aliases": [
+        "grok-4.3-latest",
         "xai/grok-4.3",
         "x-ai/grok-4.3",
         "azure_ai/grok-4.3",
         "vertex_ai/grok-4.3",
+        "xai/grok-4.3-latest",
         "x-ai/grok-4.3-20260430",
         "azure/azure_ai/grok-4.3",
         "openrouter/x-ai/grok-4.3",
@@ -19890,7 +20026,8 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4.3 ≤200k",
+      "context_window": 1000000,
+      "display_name": "Grok 4.3",
       "modalities": {
         "input": [
           "text",
@@ -19903,11 +20040,24 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "xai",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 1.25,
-        "output_per_mtok": 2.5
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
       },
       "rankings": {
         "livebench": {
@@ -19951,7 +20101,7 @@
           "score": 70.8
         }
       },
-      "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-grok-4-3-on-microsoft-foundry-latest-generation-agentic-capabilities/4517096"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.3-latest": {
       "aliases": [
@@ -19980,9 +20130,13 @@
     },
     "grok-4.5": {
       "aliases": [
+        "grok-4.5-latest",
+        "grok-build-latest",
         "xai/grok-4.5",
         "x-ai/grok-4.5",
+        "xai/grok-4.5-latest",
         "opencode_zen/grok-4.5",
+        "xai/grok-build-latest",
         "x-ai/grok-4.5-20260708",
         "openrouter/x-ai/grok-4.5",
         "openrouter/x-ai/grok-4.5-20260708"
@@ -19996,7 +20150,8 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4.5 ≤200k",
+      "context_window": 500000,
+      "display_name": "Grok 4.5",
       "modalities": {
         "input": [
           "text",
@@ -20014,9 +20169,21 @@
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 500000
+          }
+        ]
       },
-      "source_url": "https://opencode.ai/docs/zen"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.5-latest": {
       "aliases": [
@@ -20061,7 +20228,8 @@
         "vision": true,
         "web_search": true
       },
-      "display_name": "Grok 4.6 ≤200k",
+      "context_window": 500000,
+      "display_name": "Grok 4.6",
       "modalities": {
         "input": [
           "text",
@@ -20079,9 +20247,21 @@
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 500000
+          }
+        ]
       },
-      "source_url": "https://opencode.ai/docs/zen"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-beta": {
       "aliases": [
@@ -20127,7 +20307,8 @@
         "tool_choice": true,
         "web_search": true
       },
-      "display_name": "Grok Build 0.1 ≤200k",
+      "context_window": 256000,
+      "display_name": "Grok Build 0.1",
       "modalities": {
         "input": [
           "text",
@@ -20145,7 +20326,19 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 1.0,
-        "output_per_mtok": 2.0
+        "output_per_mtok": 2.0,
+        "tiers": [
+          {
+            "input_per_mtok": 1.0,
+            "output_per_mtok": 2.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 4.0,
+            "up_to_tokens": 256000
+          }
+        ]
       },
       "rankings": {
         "livebench": {
@@ -20189,7 +20382,146 @@
           "score": 42.3
         }
       },
-      "source_url": "https://opencode.ai/docs/zen"
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-image": {
+      "aliases": [
+        "grok-imagine-image-2026-03-02",
+        "xai/grok-imagine-image",
+        "xai/grok-imagine-image-2026-03-02"
+      ],
+      "display_name": "Grok Imagine Image",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.002,
+        "per_image": 0.02
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-image-2.0": {
+      "aliases": [
+        "xai/grok-imagine-image-2.0"
+      ],
+      "display_name": "Grok Imagine Image 2.0",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.06
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-image-pro": {
+      "aliases": [
+        "grok-imagine-image-quality",
+        "grok-imagine-image-quality-latest",
+        "grok-imagine-image-quality-20260403",
+        "xai/grok-imagine-image-pro",
+        "xai/grok-imagine-image-quality",
+        "xai/grok-imagine-image-quality-latest",
+        "xai/grok-imagine-image-quality-20260403"
+      ],
+      "display_name": "Grok Imagine Image Quality",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.05
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-video": {
+      "aliases": [
+        "xai/grok-imagine-video"
+      ],
+      "display_name": "Grok Imagine Video",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.002,
+        "per_second_input": 0.01,
+        "per_second_output": 0.05
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+    },
+    "grok-imagine-video-1.5": {
+      "aliases": [
+        "grok-imagine-video-1.5-preview",
+        "grok-imagine-video-1.5-2026-05-30",
+        "xai/grok-imagine-video-1.5",
+        "xai/grok-imagine-video-1.5-preview",
+        "xai/grok-imagine-video-1.5-2026-05-30"
+      ],
+      "display_name": "Grok Imagine Video 1.5",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "owned_by": "xai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-latest": {
       "aliases": [
@@ -20516,10 +20848,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-free": {
@@ -27421,40 +27753,6 @@
         "output_per_mtok": 6.0
       }
     },
-    "ox-alpha": {
-      "aliases": [
-        "stealth/ox-alpha",
-        "openrouter/stealth/ox-alpha"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 1048576,
-      "display_name": "Ox Alpha",
-      "max_output_tokens": 131072,
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      }
-    },
     "palmyra-x5": {
       "aliases": [
         "writer/palmyra-x5",
@@ -29707,7 +30005,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.6 27B",
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "modalities": {
         "input": [
           "text",
@@ -29722,7 +30020,6 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.12,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 3.0
@@ -32220,22 +32517,6 @@
         "output_per_mtok": 0.48
       },
       "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing"
-    },
-    "x-preview-f-free": {
-      "aliases": [
-        "opencode_zen/x-preview-f-free"
-      ],
-      "display_name": "Ox Alpha Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
     },
     "zai-glm-5-2": {
       "aliases": [
@@ -47630,6 +47911,13 @@
         "https://ollama.com/pricing"
       ]
     },
+    "ollama_cloud/glm-5.3-flash": {
+      "enabled": true,
+      "model_ref": "glm-5.3-flash",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
     "ollama_cloud/gpt-oss": {
       "enabled": true,
       "model_ref": "gpt-oss",
@@ -53819,20 +54107,6 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/x-preview-f-free": {
-      "enabled": true,
-      "model_ref": "x-preview-f-free",
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "openrouter/aion-2.0": {
       "context_window": 131072,
       "enabled": true,
@@ -55168,10 +55442,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0177212,
+        "cached_input_per_mtok": 0.015904,
         "currency": "USD",
-        "input_per_mtok": 0.088606,
-        "output_per_mtok": 0.177212
+        "input_per_mtok": 0.07952,
+        "output_per_mtok": 0.15904
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -55200,10 +55474,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash-vision-exp",
       "pricing": {
-        "cached_input_per_mtok": 0.014,
+        "cached_input_per_mtok": 0.007,
         "currency": "USD",
-        "input_per_mtok": 0.44,
-        "output_per_mtok": 1.32
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.66
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-vision-exp",
       "source_urls": [
@@ -55567,6 +55841,23 @@
       "provider_model_id": "z-ai/glm-5.3",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5.3"
+      ]
+    },
+    "openrouter/glm-5.3-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5.3-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.25
+      },
+      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
+      "provider_model_id": "z-ai/glm-5.3-flash",
+      "source_urls": [
+        "https://openrouter.ai/z-ai/glm-5.3-flash"
       ]
     },
     "openrouter/glm-5v-turbo": {
@@ -56545,10 +56836,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -56759,10 +57050,10 @@
       "max_output_tokens": 235929,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.45,
+        "output_per_mtok": 2.25
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "provider_model_id": "moonshotai/kimi-k2.5",
@@ -58130,10 +58421,10 @@
       "max_output_tokens": 235929,
       "model_ref": "kimi-k2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.45,
+        "output_per_mtok": 2.25
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k2.5",
       "source_urls": [
@@ -59891,22 +60182,6 @@
         "https://openrouter.ai/openai/o4-mini-high"
       ]
     },
-    "openrouter/ox-alpha": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "ox-alpha",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/stealth/ox-alpha",
-      "provider_model_id": "stealth/ox-alpha",
-      "source_urls": [
-        "https://openrouter.ai/stealth/ox-alpha"
-      ]
-    },
     "openrouter/palmyra-x5": {
       "context_window": 1040000,
       "enabled": true,
@@ -60773,13 +61048,12 @@
     "openrouter/qwen/qwen3.6-27b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.6-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.6
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 3.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "source_urls": [
@@ -61478,13 +61752,12 @@
     "openrouter/qwen3.6-27b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.6-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.6
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 3.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-27b",
       "provider_model_id": "qwen/qwen3.6-27b",
@@ -62144,21 +62417,6 @@
         "https://openrouter.ai/perplexity/sonar-reasoning-pro"
       ]
     },
-    "openrouter/stealth/ox-alpha": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "ox-alpha",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/stealth/ox-alpha",
-      "source_urls": [
-        "https://openrouter.ai/stealth/ox-alpha"
-      ]
-    },
     "openrouter/step-3.5-flash": {
       "context_window": 262144,
       "enabled": true,
@@ -62289,10 +62547,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -62931,6 +63189,22 @@
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5.3"
+      ]
+    },
+    "openrouter/z-ai/glm-5.3-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "glm-5.3-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.25
+      },
+      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
+      "source_urls": [
+        "https://openrouter.ai/z-ai/glm-5.3-flash"
       ]
     },
     "openrouter/z-ai/glm-5v-turbo": {
@@ -66260,8 +66534,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66275,11 +66549,38 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "provider_model_id": "grok-4.20-beta-0309-reasoning",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
+      ]
+    },
+    "xai/grok-4.20-0309": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-4.20-0309-non-reasoning": {
@@ -66342,16 +66643,15 @@
         "https://llmprices.dev/"
       ]
     },
-    "xai/grok-4.20-beta-0309-non-reasoning": {
+    "xai/grok-4.20-beta": {
       "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 1000000,
-      "model_ref": "grok-4.20-non-reasoning",
+      "model_ref": "grok-4.20",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66365,9 +66665,65 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-0309": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-0309-non-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
       ]
     },
@@ -66379,8 +66735,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66394,10 +66750,308 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
+      ]
+    },
+    "xai/grok-4.20-beta-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-latest-non-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-latest-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-non-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-beta-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-0304": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-0304-non-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-0304-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-non-reasoning-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-experimental-beta-reasoning-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-4.20-multi-agent": {
@@ -66408,8 +67062,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66423,10 +67077,10 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "provider_model_id": "grok-4.20-multi-agent-beta-0309",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
       ]
     },
@@ -66468,8 +67122,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66483,10 +67137,119 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
+      ]
+    },
+    "xai/grok-4.20-multi-agent-beta-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-multi-agent-experimental-beta-0304": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-multi-agent-experimental-beta-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-multi-agent-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-multi-agent",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-4.20-non-reasoning": {
@@ -66497,8 +67260,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -66512,25 +67275,146 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "provider_model_id": "grok-4.20-beta-0309-non-reasoning",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
       ]
     },
-    "xai/grok-4.20-reasoning": {
+    "xai/grok-4.20-non-reasoning-gv2": {
+      "context_window": 1000000,
       "enabled": true,
-      "model_ref": "grok-4.20-reasoning",
+      "model_ref": "grok-4.20-non-reasoning",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json"
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-non-reasoning-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-reasoning": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-reasoning-gv2": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-4.20-reasoning-latest": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "grok-4.20",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 1000000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-4.3": {
@@ -66556,9 +67440,11 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "provider_model_id": "grok-4.3-latest",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models",
         "https://llmprices.dev/"
       ]
@@ -66615,9 +67501,10 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models",
         "https://llmprices.dev/"
       ]
@@ -66674,10 +67561,11 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
         "https://docs.x.ai/developers/models",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://llmprices.dev/"
       ]
     },
@@ -66703,10 +67591,10 @@
       "max_output_tokens": 256000,
       "model_ref": "grok-build-0.1",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 1.5,
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 2.0,
         "tiers": [
           {
             "input_per_mtok": 1.0,
@@ -66720,11 +67608,39 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models",
         "https://llmprices.dev/"
+      ]
+    },
+    "xai/grok-build-latest": {
+      "context_window": 500000,
+      "enabled": true,
+      "model_ref": "grok-4.5",
+      "pricing": {
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 500000
+          }
+        ]
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-code-fast": {
@@ -66733,10 +67649,10 @@
       "max_output_tokens": 256000,
       "model_ref": "grok-build-0.1",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 1.5,
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 2.0,
         "tiers": [
           {
             "input_per_mtok": 1.0,
@@ -66750,9 +67666,10 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
       ]
     },
@@ -66762,10 +67679,10 @@
       "max_output_tokens": 256000,
       "model_ref": "grok-build-0.1",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 1.5,
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 2.0,
         "tiers": [
           {
             "input_per_mtok": 1.0,
@@ -66779,9 +67696,10 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models",
         "https://llmprices.dev/"
       ]
@@ -66792,10 +67710,10 @@
       "max_output_tokens": 256000,
       "model_ref": "grok-build-0.1",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 1.5,
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 2.0,
         "tiers": [
           {
             "input_per_mtok": 1.0,
@@ -66809,10 +67727,158 @@
           }
         ]
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
+      ]
+    },
+    "xai/grok-imagine-image": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.002,
+        "per_image": 0.02
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "provider_model_id": "grok-imagine-image-2026-03-02",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-2.0": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-2.0",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.06
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-2026-03-02": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.002,
+        "per_image": 0.02
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-pro": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.05
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/x-ai.json",
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-quality": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.05
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-quality-20260403": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.05
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-image-quality-latest": {
+      "enabled": true,
+      "model_ref": "grok-imagine-image-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_image": 0.05
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-video": {
+      "enabled": true,
+      "model_ref": "grok-imagine-video",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.002,
+        "per_second_input": 0.01,
+        "per_second_output": 0.05
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-video-1.5": {
+      "enabled": true,
+      "model_ref": "grok-imagine-video-1.5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-video-1.5-2026-05-30": {
+      "enabled": true,
+      "model_ref": "grok-imagine-video-1.5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
+      ]
+    },
+    "xai/grok-imagine-video-1.5-preview": {
+      "enabled": true,
+      "model_ref": "grok-imagine-video-1.5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "source_urls": [
+        "https://docs.x.ai/developers/models?cluster=us-east-1"
       ]
     },
     "xai/grok-vision-beta": {
@@ -67243,6 +68309,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-08-26T06:53:43Z",
+  "updated_at": "2026-08-26T19:48:51Z",
   "version": 1
 }
