@@ -2362,6 +2362,7 @@
         "bedrock/global.anthropic.claude-fable-5-v1:0",
         "bedrock/regional.anthropic.claude-fable-5-v1:0",
         "azure/azure_ai/claude-fable-5",
+        "deepinfra/anthropic/claude-fable-5",
         "openrouter/anthropic/claude-fable-5",
         "openrouter/anthropic/claude-5-fable-20260609"
       ],
@@ -3018,6 +3019,7 @@
         "bedrock/global.anthropic.claude-opus-4-8-v1:0",
         "bedrock/regional.anthropic.claude-opus-4-8-v1:0",
         "azure/azure_ai/claude-opus-4-8",
+        "deepinfra/anthropic/claude-opus-4-8",
         "openrouter/anthropic/claude-opus-4.8",
         "openrouter/anthropic/claude-4.8-opus-20260528"
       ],
@@ -3147,6 +3149,7 @@
         "bedrock/global.anthropic.claude-opus-5",
         "bedrock/regional.anthropic.claude-opus-5",
         "azure/azure_ai/claude-opus-5",
+        "deepinfra/anthropic/claude-opus-5",
         "openrouter/anthropic/claude-opus-5",
         "openrouter/anthropic/claude-opus-5-20260723"
       ],
@@ -3537,6 +3540,7 @@
         "bedrock/global.anthropic.claude-sonnet-5-v1:0",
         "bedrock/regional.anthropic.claude-sonnet-5-v1:0",
         "azure/azure_ai/claude-sonnet-5",
+        "deepinfra/anthropic/claude-sonnet-5",
         "openrouter/anthropic/claude-sonnet-5",
         "openrouter/anthropic/claude-sonnet-5-20260630"
       ],
@@ -5063,10 +5067,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.13,
+        "cached_input_per_mtok": 0.1345,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.269,
+        "output_per_mtok": 0.4
       },
       "rankings": {
         "chatbot_arena": {
@@ -5419,10 +5423,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.01,
+        "cached_input_per_mtok": 0.014,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.14
       },
       "source_url": "https://docs.fireworks.ai/serverless/pricing"
     },
@@ -5468,14 +5472,18 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "parallel_function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true
       },
       "context_window": 1000000,
       "description": "DeepSeek-V4-Flash-Vision-Exp",
       "display_name": "DeepSeek V4 Flash Vision Exp",
+      "max_output_tokens": 393216,
       "modalities": {
         "input": [
           "text",
@@ -5490,6 +5498,7 @@
       ],
       "owned_by": "deepseek",
       "pricing": {
+        "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.014,
         "currency": "USD",
         "input_per_mtok": 0.44,
@@ -5625,10 +5634,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0374,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.122,
-        "output_per_mtok": 3.366
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813"
     },
@@ -6729,7 +6738,7 @@
         "audio_input_per_mtok": 0.5,
         "batch_input_per_mtok": 0.05,
         "batch_output_per_mtok": 0.2,
-        "cached_input_per_mtok": 0.025,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.4,
@@ -6762,7 +6771,7 @@
           "rank": 24
         }
       },
-      "source_url": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview"
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
     },
     "gemini-2.5-flash-lite-preview-09-2025": {
       "aliases": [
@@ -6863,12 +6872,13 @@
         "realtime"
       ],
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "source_url": "https://ai.google.dev/pricing"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-2.5-flash-native-audio-preview-09-2025": {
       "aliases": [
@@ -6896,12 +6906,13 @@
         "realtime"
       ],
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "source_url": "https://ai.google.dev/pricing"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-2.5-flash-native-audio-preview-12-2025": {
       "aliases": [
@@ -6929,12 +6940,13 @@
         "realtime"
       ],
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "source_url": "https://ai.google.dev/pricing"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-2.5-flash-preview": {
       "aliases": [
@@ -7028,7 +7040,7 @@
           "rank": 3
         }
       },
-      "source_url": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/"
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
     },
     "gemini-2.5-flash-preview-tts": {
       "aliases": [
@@ -7048,10 +7060,10 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 10.0
       },
-      "source_url": "https://ai.google.dev/pricing"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-2.5-pro": {
       "aliases": [
@@ -7253,22 +7265,10 @@
         "audio_input_per_mtok": 0.7,
         "cached_input_per_mtok": 0.125,
         "currency": "USD",
-        "input_per_mtok": 1.25,
-        "output_per_mtok": 10.0,
-        "tiers": [
-          {
-            "input_per_mtok": 1.25,
-            "output_per_mtok": 10.0,
-            "up_to_tokens": 200000
-          },
-          {
-            "input_per_mtok": 2.5,
-            "output_per_mtok": 15.0,
-            "up_to_tokens": 1048576
-          }
-        ]
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 20.0
       },
-      "source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-pro-preview"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-3-flash": {
       "aliases": [
@@ -7914,7 +7914,16 @@
         "opencode_zen/gemini-3.1-pro",
         "deepinfra/google/gemini-3.1-pro"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 1000000,
       "display_name": "Gemini 3.1 Pro",
+      "max_output_tokens": 1000000,
       "modes": [
         "chat"
       ],
@@ -8108,6 +8117,7 @@
         "vertex_ai/gemini-3.5-flash",
         "opencode_zen/gemini-3.5-flash",
         "google/gemini-3.5-flash-20260519",
+        "deepinfra/google/gemini-3.5-flash",
         "openrouter/google/gemini-3.5-flash",
         "openrouter/google/gemini-3.5-flash-20260519"
       ],
@@ -8284,6 +8294,62 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-3.5-transcribe": {
+      "aliases": [
+        "gemini/gemini-3.5-transcribe"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Gemini 3 5 Transcribe",
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "audio_input_per_mtok": 2.0,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "gemini-3.5-transcribe-live": {
+      "aliases": [
+        "gemini/gemini-3.5-transcribe-live"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Gemini 3 5 Transcribe Live",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription",
+        "realtime"
+      ],
+      "pricing": {
+        "audio_input_per_mtok": 3.5,
+        "currency": "USD",
+        "input_per_mtok": 3.5,
+        "output_per_mtok": 21.0
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
     "gemini-3.6-flash": {
       "aliases": [
         "gemini/gemini-3.6-flash",
@@ -8346,6 +8412,7 @@
         "vertex_ai/gemini-3.7-flash",
         "opencode_zen/gemini-3.7-flash",
         "google/gemini-3.7-flash-20260813",
+        "deepinfra/google/gemini-3.7-flash",
         "openrouter/google/gemini-3.7-flash",
         "openrouter/google/gemini-3.7-flash-20260813"
       ],
@@ -8750,6 +8817,50 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "gemini-live-2.5-flash-native-audio": {
+      "aliases": [
+        "vertex_ai/gemini-live-2.5-flash-native-audio"
+      ],
+      "capabilities": {
+        "audio_input": true,
+        "audio_output": true,
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "response_schema": true,
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
+      },
+      "context_window": 1048576,
+      "display_name": "Gemini Live 2 5 Flash Native Audio",
+      "max_output_tokens": 65535,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "modes": [
+        "realtime"
+      ],
+      "pricing": {
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
+      },
+      "source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+    },
     "gemini-live-2.5-flash-preview-native-audio-09-2025": {
       "aliases": [
         "gemini/gemini-live-2.5-flash-preview-native-audio-09-2025",
@@ -8791,7 +8902,7 @@
         "audio_output_per_mtok": 12.0,
         "cached_input_per_mtok": 0.075,
         "currency": "USD",
-        "input_per_mtok": 0.3,
+        "input_per_mtok": 0.5,
         "output_per_mtok": 2.0
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
@@ -9235,7 +9346,8 @@
           "elo": 1313,
           "rank": 108
         }
-      }
+      },
+      "source_url": "https://deepinfra.com/pricing"
     },
     "gemma-3-27b-it": {
       "aliases": [
@@ -9348,7 +9460,8 @@
           "elo": 1244,
           "rank": 157
         }
-      }
+      },
+      "source_url": "https://deepinfra.com/pricing"
     },
     "gemma-3n": {
       "aliases": [
@@ -9421,8 +9534,8 @@
         "function_calling": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
       "description": "Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Despite 25.2B total parameters, only 3.8B activate per token during inference.",
       "display_name": "Gemma 4 26B A4B",
@@ -9470,6 +9583,57 @@
       },
       "source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/maas/google/gemma-4-26b-a4b-it"
     },
+    "gemma-4-31B-it-Ultra": {
+      "aliases": [
+        "google/gemma-4-31B-it-Ultra",
+        "deepinfra/google/gemma-4-31B-it-Ultra"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 131072,
+      "display_name": "Gemma 4 31B It Ultra",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 0.76
+      },
+      "source_url": "https://deepinfra.com/pricing"
+    },
+    "gemma-4-31B-it-turbo": {
+      "aliases": [
+        "google/gemma-4-31B-it-turbo",
+        "deepinfra/google/gemma-4-31B-it-turbo"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 262144,
+      "display_name": "Gemma 4 31B It Turbo",
+      "max_output_tokens": 262144,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
+      },
+      "source_url": "https://deepinfra.com/pricing"
+    },
     "gemma-4-31b-it": {
       "aliases": [
         "gemma-4-31B-it",
@@ -9488,7 +9652,7 @@
       ],
       "capabilities": {
         "function_calling": true,
-        "parallel_function_calling": true,
+        "reasoning": true,
         "response_schema": true,
         "tool_choice": true,
         "vision": true
@@ -9558,6 +9722,29 @@
         }
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "gemma-4-E4B-it": {
+      "aliases": [
+        "google/gemma-4-E4B-it",
+        "deepinfra/google/gemma-4-E4B-it"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Gemma 4 E4B It",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 0.1
+      },
+      "source_url": "https://deepinfra.com/pricing"
     },
     "gemma-7b-it": {
       "aliases": [
@@ -10505,6 +10692,7 @@
     "glm-5.3": {
       "aliases": [
         "z-ai/glm-5.3",
+        "ollama_cloud/glm-5.3",
         "z-ai/glm-5.3-20260816",
         "openrouter/z-ai/glm-5.3",
         "openrouter/z-ai/glm-5.3-20260816"
@@ -10517,7 +10705,8 @@
         "tool_choice": true
       },
       "context_window": 1048576,
-      "display_name": "Z.ai: GLM 5.3",
+      "description": "Z.ai&#39;s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
+      "display_name": "glm-5.3",
       "max_output_tokens": 131072,
       "modalities": {
         "input": [
@@ -10535,7 +10724,8 @@
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
-      }
+      },
+      "source_url": "https://ollama.com/pricing"
     },
     "glm-5.3-flash": {
       "aliases": [
@@ -10946,9 +11136,7 @@
         "openai/gpt-35-turbo",
         "openai/gpt-3.5-turbo",
         "openai/gpt-3.5-turbo-0125",
-        "openai/gpt-3.5-turbo:batch",
-        "openrouter/openai/gpt-3.5-turbo",
-        "openrouter/openai/gpt-3.5-turbo:batch"
+        "openrouter/openai/gpt-3.5-turbo"
       ],
       "capabilities": {
         "function_calling": true,
@@ -11562,14 +11750,12 @@
         "gpt-4-turbo-0125-preview",
         "azure/gpt-4-turbo",
         "openai/gpt-4-turbo",
-        "openai/gpt-4-turbo:batch",
         "openai/gpt-4-0125-preview",
         "openai/gpt-4-1106-preview",
         "openai/gpt-4-turbo-preview",
         "openai/gpt-4-turbo-2024-04-09",
         "openai/gpt-4-turbo-0125-preview",
-        "openrouter/openai/gpt-4-turbo",
-        "openrouter/openai/gpt-4-turbo:batch"
+        "openrouter/openai/gpt-4-turbo"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12246,12 +12432,10 @@
         "gpt-4o-2024-11-20",
         "azure/gpt-4o",
         "openai/gpt-4o",
-        "openai/gpt-4o:batch",
         "openai/gpt-4o-2024-05-13",
         "openai/gpt-4o-2024-08-06",
         "openai/gpt-4o-2024-11-20",
-        "openrouter/openai/gpt-4o",
-        "openrouter/openai/gpt-4o:batch"
+        "openrouter/openai/gpt-4o"
       ],
       "capabilities": {
         "function_calling": true,
@@ -12586,12 +12770,10 @@
         "gpt-4o-mini-search-preview-2025-03-11",
         "azure/gpt-4o-mini",
         "openai/gpt-4o-mini",
-        "openai/gpt-4o-mini:batch",
         "openai/gpt-4o-mini-2024-07-18",
         "openai/gpt-4o-mini-search-preview",
         "openai/gpt-4o-mini-search-preview-2025-03-11",
-        "openrouter/openai/gpt-4o-mini",
-        "openrouter/openai/gpt-4o-mini:batch"
+        "openrouter/openai/gpt-4o-mini"
       ],
       "capabilities": {
         "function_calling": true,
@@ -13665,10 +13847,8 @@
       "aliases": [
         "azure/gpt-5-codex",
         "openai/gpt-5-codex",
-        "openai/gpt-5-codex:batch",
         "opencode_zen/gpt-5-codex",
-        "openrouter/openai/gpt-5-codex",
-        "openrouter/openai/gpt-5-codex:batch"
+        "openrouter/openai/gpt-5-codex"
       ],
       "capabilities": {
         "function_calling": true,
@@ -17823,6 +18003,54 @@
       },
       "source_url": "https://fireworks.ai/pricing"
     },
+    "gpt-oss-120b-Turbo": {
+      "aliases": [
+        "openai/gpt-oss-120b-Turbo",
+        "deepinfra/openai/gpt-oss-120b-Turbo"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "GPT OSS 120b Turbo",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "source_url": "https://deepinfra.com/pricing"
+    },
+    "gpt-oss-120b-Ultra": {
+      "aliases": [
+        "openai/gpt-oss-120b-Ultra",
+        "deepinfra/openai/gpt-oss-120b-Ultra"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "GPT OSS 120b Ultra",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.95
+      },
+      "source_url": "https://deepinfra.com/pricing"
+    },
     "gpt-oss-120b-maas": {
       "aliases": [
         "openai/gpt-oss-120b-maas",
@@ -18536,160 +18764,6 @@
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.1
-      }
-    },
-    "grok-2": {
-      "aliases": [
-        "xai/grok-2"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1305,
-          "rank": 117
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1287,
-          "rank": 136
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1286,
-          "rank": 112
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1287,
-          "rank": 123
-        }
-      }
-    },
-    "grok-2-1212": {
-      "aliases": [
-        "xai/grok-2-1212"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2 1212",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
-    "grok-2-latest": {
-      "aliases": [
-        "xai/grok-2-latest"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2 Latest",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
-    "grok-2-vision": {
-      "aliases": [
-        "xai/grok-2-vision"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2 Vision",
-      "modalities": {
-        "input": [
-          "image"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
-    "grok-2-vision-1212": {
-      "aliases": [
-        "xai/grok-2-vision-1212"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2 Vision 1212",
-      "modalities": {
-        "input": [
-          "image"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      }
-    },
-    "grok-2-vision-latest": {
-      "aliases": [
-        "xai/grok-2-vision-latest"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true,
-        "web_search": true
-      },
-      "display_name": "Grok 2 Vision Latest",
-      "modalities": {
-        "input": [
-          "image"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
       }
     },
     "grok-3": {
@@ -19876,7 +19950,7 @@
       },
       "display_name": "Grok 4.20 Multi-Agent 0309 ≤200k",
       "modes": [
-        "chat"
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.2,
@@ -20266,26 +20340,6 @@
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
-    "grok-beta": {
-      "aliases": [
-        "xai/grok-beta"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true,
-        "web_search": true
-      },
-      "display_name": "Grok Beta",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 15.0
-      }
-    },
     "grok-build-0.1": {
       "aliases": [
         "grok-code-fast",
@@ -20560,31 +20614,6 @@
         "output_per_mtok": 6.0
       }
     },
-    "grok-vision-beta": {
-      "aliases": [
-        "xai/grok-vision-beta"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true,
-        "web_search": true
-      },
-      "display_name": "Grok Vision Beta",
-      "modalities": {
-        "input": [
-          "image"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 15.0
-      }
-    },
     "hermes-3-llama-3.1-405b": {
       "aliases": [
         "nousresearch/hermes-3-llama-3.1-405b",
@@ -20851,10 +20880,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       }
     },
     "hy3-free": {
@@ -20904,6 +20933,41 @@
         "currency": "USD",
         "input_per_mtok": 0.18,
         "output_per_mtok": 0.6
+      }
+    },
+    "hy4-preview": {
+      "aliases": [
+        "tencent/hy4-preview",
+        "tencent/hy4-preview-20260827",
+        "openrouter/tencent/hy4-preview",
+        "openrouter/tencent/hy4-preview-20260827"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Tencent: Hy4 preview",
+      "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.042,
+        "currency": "USD",
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
       }
     },
     "imagen-3.0-capability-001": {
@@ -22377,6 +22441,22 @@
         "input_per_mtok": 0.0,
         "output_per_mtok": 0.0
       }
+    },
+    "ling-3.0-flash-fin-free": {
+      "aliases": [
+        "opencode_zen/ling-3.0-flash-fin-free"
+      ],
+      "display_name": "Ling 3.0 Flash Fin Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "llama-3.1-405b-reasoning": {
       "aliases": [
@@ -24108,8 +24188,8 @@
       "capabilities": {
         "function_calling": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
       "description": "The largest model in the Ministral 3 family, Ministral 3 14B offers frontier capabilities and performance comparable to its larger Mistral Small 3.2 24B counterpart.",
       "display_name": "Ministral 3 14B 2512",
@@ -24133,6 +24213,27 @@
         "output_per_mtok": 0.2
       },
       "source_url": "https://mistral.ai/pricing#api-pricing"
+    },
+    "ministral-14b-latest": {
+      "aliases": [
+        "mistral/ministral-14b-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "display_name": "Ministral 14b Latest",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.2
+      },
+      "source_url": "https://docs.mistral.ai/models/ministral-3-14b-25-12"
     },
     "ministral-3-14b-2512": {
       "aliases": [
@@ -24235,8 +24336,8 @@
       "capabilities": {
         "function_calling": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
       "description": "The smallest model in the Ministral 3 family, Ministral 3 3B is a powerful, efficient tiny language model with vision capabilities.",
       "display_name": "Ministral 3 3B 2512",
@@ -24260,6 +24361,27 @@
         "output_per_mtok": 0.1
       },
       "source_url": "https://mistral.ai/pricing#api-pricing"
+    },
+    "ministral-3b-latest": {
+      "aliases": [
+        "mistral/ministral-3b-latest"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "display_name": "Ministral 3B 24.10",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
+      },
+      "source_url": "https://docs.mistral.ai/models/ministral-3-3b-25-12"
     },
     "ministral-8b": {
       "aliases": [
@@ -24390,6 +24512,20 @@
         "output_per_mtok": 0.1
       },
       "source_url": "https://mistral.ai/pricing#api-pricing"
+    },
+    "mistral-embed-2312": {
+      "aliases": [
+        "mistral/mistral-embed-2312"
+      ],
+      "display_name": "Mistral Embed 2312",
+      "modes": [
+        "embedding"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1
+      },
+      "source_url": "https://docs.mistral.ai/models/mistral-embed-23-12"
     },
     "mistral-large": {
       "aliases": [
@@ -24882,7 +25018,10 @@
       ],
       "capabilities": {
         "function_calling": true,
-        "tool_choice": true
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
       },
       "description": "Mistral Medium 3 is a high-performance enterprise-grade language model designed to deliver frontier-level capabilities at significantly reduced operational cost. It balances state-of-the-art reasoning and multimodal performance with 8× lower cost compared to traditional large models, making it suitable for scalable deployments across professional and industrial use cases.",
       "display_name": "Mistral Medium 3",
@@ -24969,7 +25108,9 @@
     "mistral-medium-3.1": {
       "aliases": [
         "mistralai/mistral-medium-3.1",
-        "openrouter/mistralai/mistral-medium-3.1"
+        "mistralai/mistral-medium-3.1:batch",
+        "openrouter/mistralai/mistral-medium-3.1",
+        "openrouter/mistralai/mistral-medium-3.1:batch"
       ],
       "capabilities": {
         "function_calling": true,
@@ -26074,9 +26215,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 512288,
+      "context_window": 262144,
       "display_name": "NVIDIA: Nemotron 3 Ultra",
-      "max_output_tokens": 461059,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -26089,10 +26230,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.6
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.2
       },
       "rankings": {
         "livebench": {
@@ -26228,7 +26369,7 @@
       },
       "context_window": 262144,
       "display_name": "NVIDIA: Nemotron 3.5 Lightning",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 235929,
       "modalities": {
         "input": [
           "text"
@@ -26241,10 +26382,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.25
       }
     },
     "nemotron-3.5-lightning-free": {
@@ -26832,10 +26973,8 @@
         "o1-pro-2025-03-19",
         "azure/o1-pro",
         "openai/o1-pro",
-        "openai/o1-pro:batch",
         "openai/o1-pro-2025-03-19",
-        "openrouter/openai/o1-pro",
-        "openrouter/openai/o1-pro:batch"
+        "openrouter/openai/o1-pro"
       ],
       "capabilities": {
         "function_calling": true,
@@ -30489,9 +30628,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1000000,
       "display_name": "Qwen: Qwen3.8 2.4T A95B",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text"
@@ -32374,6 +32513,31 @@
       },
       "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
     },
+    "voxtral-mini-transcribe-realtime-latest": {
+      "aliases": [
+        "mistral/voxtral-mini-transcribe-realtime-latest"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Mini Transcribe Realtime Latest",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.0001
+      },
+      "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
+    },
     "voxtral-mini-tts-2603": {
       "aliases": [
         "mistral/voxtral-mini-tts-2603"
@@ -32382,6 +32546,27 @@
         "audio_output": true
       },
       "display_name": "Voxtral Mini TTS 2603",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "modes": [
+        "audio_speech"
+      ],
+      "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03"
+    },
+    "voxtral-mini-tts-latest": {
+      "aliases": [
+        "mistral/voxtral-mini-tts-latest"
+      ],
+      "capabilities": {
+        "audio_output": true
+      },
+      "display_name": "Voxtral Mini TTS Latest",
       "modalities": {
         "input": [
           "text"
@@ -32428,6 +32613,54 @@
         "output_per_mtok": 0.3
       },
       "source_url": "https://mistral.ai/pricing#api-pricing"
+    },
+    "voxtral-small-2507": {
+      "aliases": [
+        "mistral/voxtral-small-2507"
+      ],
+      "capabilities": {
+        "audio_input": true,
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "context_window": 32768,
+      "display_name": "Voxtral Small 2507",
+      "max_output_tokens": 32768,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4,
+        "per_second_input": 6.666666666666667e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-small-25-07"
+    },
+    "voxtral-small-latest": {
+      "aliases": [
+        "mistral/voxtral-small-latest"
+      ],
+      "capabilities": {
+        "audio_input": true,
+        "function_calling": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "context_window": 32768,
+      "display_name": "Voxtral Small Latest",
+      "max_output_tokens": 32768,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4,
+        "per_second_input": 6.666666666666667e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-small-25-07"
     },
     "weaver": {
       "aliases": [
@@ -41564,8 +41797,25 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "deepinfra/anthropic/claude-haiku-4-5": {
+    "deepinfra/anthropic/claude-fable-5": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "claude-fable-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/anthropic/claude-haiku-4-5": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 200000,
       "model_ref": "claude-haiku-4-5",
       "pricing": {
         "currency": "USD",
@@ -41574,11 +41824,14 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/anthropic/claude-opus-4-7": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "claude-opus-4-7",
       "pricing": {
         "currency": "USD",
@@ -41587,11 +41840,44 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/anthropic/claude-opus-4-8": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "claude-opus-4-8",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 25.0
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/anthropic/claude-opus-5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "claude-opus-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 25.0
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/anthropic/claude-sonnet-4-6": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "claude-sonnet-4-6",
       "pricing": {
         "currency": "USD",
@@ -41600,7 +41886,23 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/anthropic/claude-sonnet-5": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "claude-sonnet-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/black-forest-labs/FLUX-1.1-pro": {
@@ -41721,7 +42023,9 @@
       ]
     },
     "deepinfra/gemini-3.1-pro": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "gemini-3.1-pro",
       "pricing": {
         "currency": "USD",
@@ -41731,7 +42035,8 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "provider_model_id": "google/gemini-3.1-pro",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/gemma-3-12b-it": {
@@ -41748,7 +42053,7 @@
       "provider_model_id": "google/gemma-3-12b-it",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/gemma-3-4b-it": {
@@ -41765,7 +42070,57 @@
       "provider_model_id": "google/gemma-3-4b-it",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/gemma-4-31B-it-Ultra": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-31B-it-Ultra",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 0.76
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "provider_model_id": "google/gemma-4-31B-it-Ultra",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/gemma-4-31B-it-turbo": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "gemma-4-31B-it-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "provider_model_id": "google/gemma-4-31B-it-turbo",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/gemma-4-E4B-it": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-E4B-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 0.1
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "provider_model_id": "google/gemma-4-E4B-it",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemini-1.5-flash": {
@@ -41830,7 +42185,9 @@
       ]
     },
     "deepinfra/google/gemini-3.1-flash-lite": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "gemini-3.1-flash-lite",
       "pricing": {
         "currency": "USD",
@@ -41839,11 +42196,14 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemini-3.1-pro": {
+      "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 1000000,
       "model_ref": "gemini-3.1-pro",
       "pricing": {
         "currency": "USD",
@@ -41852,7 +42212,38 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/google/gemini-3.5-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "gemini-3.5-flash",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 9.0
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/google/gemini-3.7-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 1000000,
+      "model_ref": "gemini-3.7-flash",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 3.75
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-3-12b-it": {
@@ -41868,7 +42259,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-3-27b-it": {
@@ -41884,7 +42275,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-3-4b-it": {
@@ -41900,11 +42291,13 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-4-26B-A4B-it": {
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
         "currency": "USD",
@@ -41913,11 +42306,14 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-4-31B-it": {
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "gemma-4-31b-it",
       "pricing": {
         "currency": "USD",
@@ -41926,7 +42322,40 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/google/gemma-4-31B-it-Ultra": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-31B-it-Ultra",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 0.76
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/google/gemma-4-31B-it-turbo": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "gemma-4-31B-it-turbo",
+      "pricing": {
+        "cached_input_per_mtok": 0.05,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.37
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/google/gemma-4-31b-it": {
@@ -41940,6 +42369,54 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json"
+      ]
+    },
+    "deepinfra/google/gemma-4-E4B-it": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gemma-4-E4B-it",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 0.1
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/gpt-oss-120b-Turbo": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gpt-oss-120b-Turbo",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "provider_model_id": "openai/gpt-oss-120b-Turbo",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/gpt-oss-120b-Ultra": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gpt-oss-120b-Ultra",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.95
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "provider_model_id": "openai/gpt-oss-120b-Ultra",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/meta-llama/Llama-3.2-90B-Vision-Instruct": {
@@ -42098,7 +42575,38 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/openai/gpt-oss-120b-Turbo": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gpt-oss-120b-Turbo",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json",
+        "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/openai/gpt-oss-120b-Ultra": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "gpt-oss-120b-Ultra",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.95
+      },
+      "pricing_source_url": "https://deepinfra.com/pricing",
+      "source_urls": [
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepinfra/openai/gpt-oss-20b": {
@@ -42114,7 +42622,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://deepinfra.com/pricing"
       ]
     },
     "deepseek/deepseek-chat": {
@@ -42246,8 +42754,13 @@
     "deepseek/deepseek-v4-flash-vision-exp": {
       "context_window": 1000000,
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions"
+      ],
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4-flash-vision-exp",
       "pricing": {
+        "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.014,
         "currency": "USD",
         "input_per_mtok": 0.44,
@@ -44346,19 +44859,19 @@
       "model_ref": "gemini-2.5-flash-lite-preview-06-17",
       "pricing": {
         "audio_input_per_mtok": 0.5,
-        "cached_input_per_mtok": 0.025,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.4,
         "reasoning_output_per_mtok": 0.4
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-lite",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 15,
         "tpm": 250000
       },
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-lite"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-2.5-flash-lite-preview-09-2025": {
@@ -44397,18 +44910,19 @@
       "max_output_tokens": 8192,
       "model_ref": "gemini-2.5-flash-native-audio-latest",
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "pricing_source_url": "https://ai.google.dev/pricing",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 10,
         "tpm": 250000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-2.5-flash-native-audio-preview-09-2025": {
@@ -44420,18 +44934,19 @@
       "max_output_tokens": 8192,
       "model_ref": "gemini-2.5-flash-native-audio-preview-09-2025",
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "pricing_source_url": "https://ai.google.dev/pricing",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 10,
         "tpm": 250000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-2.5-flash-native-audio-preview-12-2025": {
@@ -44443,18 +44958,19 @@
       "max_output_tokens": 8192,
       "model_ref": "gemini-2.5-flash-native-audio-preview-12-2025",
       "pricing": {
-        "audio_input_per_mtok": 1.0,
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
       },
-      "pricing_source_url": "https://ai.google.dev/pricing",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 10,
         "tpm": 250000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-2.5-flash-preview": {
@@ -44507,7 +45023,7 @@
         "tpm": 250000
       },
       "source_urls": [
-        "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://llmprices.dev/"
       ]
     },
@@ -44519,16 +45035,16 @@
       "model_ref": "gemini-2.5-flash-preview-tts",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 10.0
       },
-      "pricing_source_url": "https://ai.google.dev/pricing",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 10,
         "tpm": 4000000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-2.5-flash-preview:thinking": {
@@ -44591,28 +45107,16 @@
         "audio_input_per_mtok": 0.7,
         "cached_input_per_mtok": 0.125,
         "currency": "USD",
-        "input_per_mtok": 1.25,
-        "output_per_mtok": 10.0,
-        "tiers": [
-          {
-            "input_per_mtok": 1.25,
-            "output_per_mtok": 10.0,
-            "up_to_tokens": 200000
-          },
-          {
-            "input_per_mtok": 2.5,
-            "output_per_mtok": 15.0,
-            "up_to_tokens": 1048576
-          }
-        ]
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 20.0
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-pro-preview",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "rate_limits": {
         "rpm": 10000,
         "tpm": 10000000
       },
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-pro-preview"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-3-1-pro-preview": {
@@ -45100,6 +45604,48 @@
         "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
+    "gemini/gemini-3.5-transcribe": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "gemini-3.5-transcribe",
+      "pricing": {
+        "audio_input_per_mtok": 2.0,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 12.0
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "rate_limits": {
+        "rpm": 2000,
+        "tpm": 800000
+      },
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/gemini-3.5-transcribe-live": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "model_ref": "gemini-3.5-transcribe-live",
+      "pricing": {
+        "audio_input_per_mtok": 3.5,
+        "currency": "USD",
+        "input_per_mtok": 3.5,
+        "output_per_mtok": 21.0
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "rate_limits": {
+        "rpm": 10,
+        "tpm": 250000
+      },
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
     "gemini/gemini-3.6-flash": {
       "context_window": 1000000,
       "enabled": true,
@@ -45344,7 +45890,7 @@
       },
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-        "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-flash-lite-latest": {
@@ -45372,7 +45918,7 @@
       },
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-lite",
-        "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/gemini-gemma-2-27b-it": {
@@ -45439,7 +45985,7 @@
         "audio_output_per_mtok": 12.0,
         "cached_input_per_mtok": 0.075,
         "currency": "USD",
-        "input_per_mtok": 0.3,
+        "input_per_mtok": 0.5,
         "output_per_mtok": 2.0
       },
       "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
@@ -46944,7 +47490,9 @@
       ]
     },
     "mistral/ministral-14b-2512": {
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "ministral-14b-2512",
       "pricing": {
         "cached_input_per_mtok": 0.02,
@@ -46955,7 +47503,24 @@
       "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://docs.mistral.ai/models/ministral-3-14b-25-12",
         "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
+    "mistral/ministral-14b-latest": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 262144,
+      "model_ref": "ministral-14b-latest",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://docs.mistral.ai/models/ministral-3-14b-25-12"
       ]
     },
     "mistral/ministral-3-14b-2512": {
@@ -47017,7 +47582,9 @@
       ]
     },
     "mistral/ministral-3b-2512": {
+      "context_window": 131072,
       "enabled": true,
+      "max_output_tokens": 131072,
       "model_ref": "ministral-3b-2512",
       "pricing": {
         "cached_input_per_mtok": 0.01,
@@ -47028,7 +47595,25 @@
       "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://docs.mistral.ai/models/ministral-3-3b-25-12",
         "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
+    "mistral/ministral-3b-latest": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "ministral-3b-latest",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://docs.mistral.ai/models/ministral-3-3b-25-12",
+        "https://llmprices.dev/"
       ]
     },
     "mistral/ministral-8b": {
@@ -47111,6 +47696,21 @@
         "https://configs.portkey.ai/pricing/mistral-ai.json",
         "https://mistral.ai/pricing#api-pricing",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "mistral/mistral-embed-2312": {
+      "context_window": 8192,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "mistral-embed-2312",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/mistral-ai.json",
+        "https://docs.mistral.ai/models/mistral-embed-23-12"
       ]
     },
     "mistral/mistral-large": {
@@ -47299,7 +47899,9 @@
       ]
     },
     "mistral/mistral-medium-3": {
+      "context_window": 262144,
       "enabled": true,
+      "max_output_tokens": 262144,
       "model_ref": "mistral-medium-3",
       "pricing": {
         "currency": "USD",
@@ -47308,6 +47910,7 @@
       },
       "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
+        "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04",
         "https://mistral.ai/pricing#api-pricing"
       ]
     },
@@ -47865,12 +48468,37 @@
         "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
       ]
     },
+    "mistral/voxtral-mini-transcribe-realtime-latest": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-mini-transcribe-realtime-latest",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.0001
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02",
+      "source_urls": [
+        "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
+      ]
+    },
     "mistral/voxtral-mini-tts-2603": {
       "enabled": true,
       "endpoints": [
         "/v1/audio/speech"
       ],
       "model_ref": "voxtral-mini-tts-2603",
+      "source_urls": [
+        "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03"
+      ]
+    },
+    "mistral/voxtral-mini-tts-latest": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/speech"
+      ],
+      "model_ref": "voxtral-mini-tts-latest",
       "source_urls": [
         "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03"
       ]
@@ -47887,6 +48515,38 @@
       "pricing_source_url": "https://mistral.ai/pricing#api-pricing",
       "source_urls": [
         "https://mistral.ai/pricing#api-pricing"
+      ]
+    },
+    "mistral/voxtral-small-2507": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "voxtral-small-2507",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4,
+        "per_second_input": 6.666666666666667e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-small-25-07",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-small-25-07"
+      ]
+    },
+    "mistral/voxtral-small-latest": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "voxtral-small-latest",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.4,
+        "per_second_input": 6.666666666666667e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-small-25-07",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-small-25-07"
       ]
     },
     "mistral/zai-glm-5-2": {
@@ -47936,6 +48596,13 @@
     "ollama_cloud/glm-5.2": {
       "enabled": true,
       "model_ref": "glm-5.2",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
+    "ollama_cloud/glm-5.3": {
+      "enabled": true,
+      "model_ref": "glm-5.3",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -53964,6 +54631,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/ling-3.0-flash-fin-free": {
+      "enabled": true,
+      "model_ref": "ling-3.0-flash-fin-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/mimo-v2.5-free": {
       "enabled": true,
       "model_ref": "mimo-v2.5-free",
@@ -55240,10 +55921,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
-        "cached_input_per_mtok": 0.13,
+        "cached_input_per_mtok": 0.1345,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.269,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v3.2",
       "provider_model_id": "deepseek/deepseek-v3.2",
@@ -55275,10 +55956,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.01,
+        "cached_input_per_mtok": 0.014,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.14
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "provider_model_id": "deepseek/deepseek-v4-flash-0731",
@@ -55309,10 +55990,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.0374,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.122,
-        "output_per_mtok": 3.366
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "provider_model_id": "deepseek/deepseek-v4-pro-0813",
@@ -55438,10 +56119,10 @@
       "max_output_tokens": 163840,
       "model_ref": "deepseek-v3.2",
       "pricing": {
-        "cached_input_per_mtok": 0.13,
+        "cached_input_per_mtok": 0.1345,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 0.38
+        "input_per_mtok": 0.269,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v3.2",
       "source_urls": [
@@ -55471,10 +56152,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.015288,
+        "cached_input_per_mtok": 0.0177212,
         "currency": "USD",
-        "input_per_mtok": 0.07644,
-        "output_per_mtok": 0.15288
+        "input_per_mtok": 0.088606,
+        "output_per_mtok": 0.177212
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -55487,10 +56168,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.01,
+        "cached_input_per_mtok": 0.014,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.14
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "source_urls": [
@@ -55535,10 +56216,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.0374,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.122,
-        "output_per_mtok": 3.366
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "source_urls": [
@@ -56865,10 +57546,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -56891,6 +57572,23 @@
       "provider_model_id": "tencent/hy3-preview",
       "source_urls": [
         "https://openrouter.ai/tencent/hy3-preview"
+      ]
+    },
+    "openrouter/hy4-preview": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "hy4-preview",
+      "pricing": {
+        "cached_input_per_mtok": 0.042,
+        "currency": "USD",
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
+      },
+      "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
+      "provider_model_id": "tencent/hy4-preview",
+      "source_urls": [
+        "https://openrouter.ai/tencent/hy4-preview"
       ]
     },
     "openrouter/ibm-granite/granite-4.0-h-micro": {
@@ -58110,9 +58808,9 @@
         "output_per_mtok": 2.0
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-medium-3.1",
-      "provider_model_id": "mistralai/mistral-medium-3.1",
       "source_urls": [
-        "https://openrouter.ai/mistralai/mistral-medium-3.1"
+        "https://openrouter.ai/mistralai/mistral-medium-3.1",
+        "https://openrouter.ai/mistralai/mistral-medium-3.1:batch"
       ]
     },
     "openrouter/mistralai/codestral-2508": {
@@ -58288,6 +58986,22 @@
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-medium-3.1",
       "source_urls": [
         "https://openrouter.ai/mistralai/mistral-medium-3.1"
+      ]
+    },
+    "openrouter/mistralai/mistral-medium-3.1:batch": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 104857,
+      "model_ref": "mistral-medium-3.1",
+      "pricing": {
+        "cached_input_per_mtok": 0.04,
+        "currency": "USD",
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 2.0
+      },
+      "pricing_source_url": "https://openrouter.ai/mistralai/mistral-medium-3.1:batch",
+      "source_urls": [
+        "https://openrouter.ai/mistralai/mistral-medium-3.1:batch"
       ]
     },
     "openrouter/mistralai/mistral-nemo": {
@@ -58703,15 +59417,15 @@
       ]
     },
     "openrouter/nemotron-3-ultra-550b-a55b": {
-      "context_window": 512288,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 461059,
+      "max_output_tokens": 16384,
       "model_ref": "nemotron-3-ultra-550b-a55b",
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.6
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.2
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b",
       "source_urls": [
@@ -58738,13 +59452,13 @@
     "openrouter/nemotron-3.5-lightning": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 235929,
       "model_ref": "nemotron-3.5-lightning",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3.5-lightning",
       "source_urls": [
@@ -59037,15 +59751,15 @@
       ]
     },
     "openrouter/nvidia/nemotron-3-ultra-550b-a55b": {
-      "context_window": 512288,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 461059,
+      "max_output_tokens": 16384,
       "model_ref": "nemotron-3-ultra-550b-a55b",
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 3.6
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.2
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b",
       "source_urls": [
@@ -59085,13 +59799,13 @@
     "openrouter/nvidia/nemotron-3.5-lightning": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 235929,
       "model_ref": "nemotron-3.5-lightning",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3.5-lightning",
       "source_urls": [
@@ -59226,21 +59940,6 @@
         "https://openrouter.ai/openai/gpt-3.5-turbo-instruct"
       ]
     },
-    "openrouter/openai/gpt-3.5-turbo:batch": {
-      "context_window": 16385,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "gpt-3.5-turbo",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.25,
-        "output_per_mtok": 0.75
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-3.5-turbo:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-3.5-turbo:batch"
-      ]
-    },
     "openrouter/openai/gpt-4": {
       "context_window": 8191,
       "enabled": true,
@@ -59285,21 +59984,6 @@
       "pricing_source_url": "https://openrouter.ai/openai/gpt-4-turbo-preview",
       "source_urls": [
         "https://openrouter.ai/openai/gpt-4-turbo-preview"
-      ]
-    },
-    "openrouter/openai/gpt-4-turbo:batch": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "gpt-4-turbo",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-4-turbo:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-4-turbo:batch"
       ]
     },
     "openrouter/openai/gpt-4.1": {
@@ -59450,38 +60134,6 @@
         "https://openrouter.ai/openai/gpt-4o-mini-2024-07-18"
       ]
     },
-    "openrouter/openai/gpt-4o-mini:batch": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "gpt-4o-mini",
-      "pricing": {
-        "cached_input_per_mtok": 0.0375,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-4o-mini:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-4o-mini:batch"
-      ]
-    },
-    "openrouter/openai/gpt-4o:batch": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "gpt-4o",
-      "pricing": {
-        "cached_input_per_mtok": 0.625,
-        "currency": "USD",
-        "input_per_mtok": 1.25,
-        "output_per_mtok": 5.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-4o:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-4o:batch"
-      ]
-    },
     "openrouter/openai/gpt-5": {
       "context_window": 272000,
       "enabled": true,
@@ -59529,22 +60181,6 @@
       "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "openrouter/openai/gpt-5-codex:batch": {
-      "context_window": 400000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "gpt-5-codex",
-      "pricing": {
-        "cached_input_per_mtok": 0.0625,
-        "currency": "USD",
-        "input_per_mtok": 0.625,
-        "output_per_mtok": 5.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/gpt-5-codex:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/gpt-5-codex:batch"
       ]
     },
     "openrouter/openai/gpt-5-image": {
@@ -60113,21 +60749,6 @@
       "pricing_source_url": "https://openrouter.ai/openai/o1-pro",
       "source_urls": [
         "https://openrouter.ai/openai/o1-pro"
-      ]
-    },
-    "openrouter/openai/o1-pro:batch": {
-      "context_window": 200000,
-      "enabled": true,
-      "max_output_tokens": 100000,
-      "model_ref": "o1-pro",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 75.0,
-        "output_per_mtok": 300.0
-      },
-      "pricing_source_url": "https://openrouter.ai/openai/o1-pro:batch",
-      "source_urls": [
-        "https://openrouter.ai/openai/o1-pro:batch"
       ]
     },
     "openrouter/openai/o3": {
@@ -61222,9 +61843,9 @@
       ]
     },
     "openrouter/qwen/qwen3.8-2.4t-a95b": {
-      "context_window": 1048576,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 262144,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -61952,9 +62573,9 @@
       ]
     },
     "openrouter/qwen3.8-2.4t-a95b": {
-      "context_window": 1048576,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 262144,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -62613,10 +63234,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -62637,6 +63258,22 @@
       "pricing_source_url": "https://openrouter.ai/tencent/hy3-preview",
       "source_urls": [
         "https://openrouter.ai/tencent/hy3-preview"
+      ]
+    },
+    "openrouter/tencent/hy4-preview": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "hy4-preview",
+      "pricing": {
+        "cached_input_per_mtok": 0.042,
+        "currency": "USD",
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
+      },
+      "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
+      "source_urls": [
+        "https://openrouter.ai/tencent/hy4-preview"
       ]
     },
     "openrouter/thedrummer/cydonia-24b-v4.1": {
@@ -64640,7 +65277,7 @@
         "audio_input_per_mtok": 0.5,
         "batch_input_per_mtok": 0.05,
         "batch_output_per_mtok": 0.2,
-        "cached_input_per_mtok": 0.025,
+        "cached_input_per_mtok": 0.01,
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.4,
@@ -64648,7 +65285,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -64700,8 +65337,8 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/vertex-ai.json",
-        "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/"
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/gemini-2.5-pro": {
@@ -64763,24 +65400,12 @@
         "audio_input_per_mtok": 0.7,
         "cached_input_per_mtok": 0.125,
         "currency": "USD",
-        "input_per_mtok": 1.25,
-        "output_per_mtok": 10.0,
-        "tiers": [
-          {
-            "input_per_mtok": 1.25,
-            "output_per_mtok": 10.0,
-            "up_to_tokens": 200000
-          },
-          {
-            "input_per_mtok": 2.5,
-            "output_per_mtok": 15.0,
-            "up_to_tokens": 1048576
-          }
-        ]
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 20.0
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-pro-preview",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-pro-preview"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "vertex_ai/gemini-3-flash-preview": {
@@ -65288,6 +65913,26 @@
         "https://cloud.google.com/vertex-ai/generative-ai/pricing"
       ]
     },
+    "vertex_ai/gemini-live-2.5-flash-native-audio": {
+      "context_window": 1048576,
+      "enabled": true,
+      "endpoints": [
+        "/vertex_ai/live"
+      ],
+      "max_output_tokens": 65535,
+      "model_ref": "gemini-live-2.5-flash-native-audio",
+      "pricing": {
+        "audio_input_per_mtok": 3.0,
+        "audio_output_per_mtok": 12.0,
+        "currency": "USD",
+        "input_per_mtok": 0.5,
+        "output_per_mtok": 2.0
+      },
+      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "source_urls": [
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+      ]
+    },
     "vertex_ai/gemini-live-2.5-flash-preview-native-audio-09-2025": {
       "context_window": 1048576,
       "enabled": true,
@@ -65301,7 +65946,7 @@
         "audio_output_per_mtok": 12.0,
         "cached_input_per_mtok": 0.075,
         "currency": "USD",
-        "input_per_mtok": 0.3,
+        "input_per_mtok": 0.5,
         "output_per_mtok": 2.0
       },
       "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
@@ -66023,105 +66668,6 @@
       "pricing_source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)",
       "source_urls": [
         "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
-      ]
-    },
-    "xai/grok-2": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "grok-2",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "xai/grok-2-1212": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "grok-2-1212",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "xai/grok-2-latest": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "grok-2-latest",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "xai/grok-2-vision": {
-      "context_window": 32768,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "grok-2-vision",
-      "pricing": {
-        "currency": "USD",
-        "input_per_image": 2e-06,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "xai/grok-2-vision-1212": {
-      "context_window": 32768,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "grok-2-vision-1212",
-      "pricing": {
-        "currency": "USD",
-        "input_per_image": 2e-06,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "xai/grok-2-vision-latest": {
-      "context_window": 32768,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "grok-2-vision-latest",
-      "pricing": {
-        "currency": "USD",
-        "input_per_image": 2e-06,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
     "xai/grok-3": {
@@ -67122,6 +67668,9 @@
     "xai/grok-4.20-multi-agent": {
       "context_window": 1000000,
       "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ],
       "max_output_tokens": 1000000,
       "model_ref": "grok-4.20-multi-agent",
       "pricing": {
@@ -67152,6 +67701,9 @@
     "xai/grok-4.20-multi-agent-0309": {
       "context_window": 1000000,
       "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ],
       "max_output_tokens": 1000000,
       "model_ref": "grok-4.20-multi-agent-0309",
       "pricing": {
@@ -67182,6 +67734,9 @@
     "xai/grok-4.20-multi-agent-beta-0309": {
       "context_window": 1000000,
       "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ],
       "max_output_tokens": 1000000,
       "model_ref": "grok-4.20-multi-agent",
       "pricing": {
@@ -67634,22 +68189,6 @@
         "https://llmprices.dev/"
       ]
     },
-    "xai/grok-beta": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "grok-beta",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
     "xai/grok-build-0.1": {
       "context_window": 256000,
       "enabled": true,
@@ -67944,23 +68483,6 @@
       "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
         "https://docs.x.ai/developers/models?cluster=us-east-1"
-      ]
-    },
-    "xai/grok-vision-beta": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 8192,
-      "model_ref": "grok-vision-beta",
-      "pricing": {
-        "currency": "USD",
-        "input_per_image": 5e-06,
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/x-ai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
     "xiaomi/mimo-v2.5": {
@@ -68374,6 +68896,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-08-27T21:59:02Z",
+  "updated_at": "2026-08-28T10:19:37Z",
   "version": 1
 }
