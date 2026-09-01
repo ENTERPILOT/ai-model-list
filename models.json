@@ -17,7 +17,7 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
     },
     "Cohere-embed-v3-multilingual": {
       "aliases": [
@@ -36,7 +36,7 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
     },
     "DeepSeek-V3.1": {
       "aliases": [
@@ -188,7 +188,7 @@
         "currency": "USD",
         "per_image": 0.04
       },
-      "source_url": "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
     },
     "FW-DeepSeek-V3.2": {
       "aliases": [
@@ -629,7 +629,7 @@
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
+      "source_url": "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
     },
     "Llama-4-Maverick-17B-128E-Instruct-FP8": {
       "aliases": [
@@ -803,7 +803,7 @@
         "input_per_mtok": 0.09,
         "output_per_mtok": 0.09
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
     },
     "Meta-Llama-3.1-70B-Instruct": {
       "aliases": [
@@ -826,7 +826,7 @@
         "input_per_mtok": 0.4,
         "output_per_mtok": 0.4
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
     },
     "Meta-Llama-3.1-8B-Instruct": {
       "aliases": [
@@ -849,7 +849,7 @@
         "input_per_mtok": 0.02,
         "output_per_mtok": 0.05
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
+      "source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
     },
     "Phi-3-medium-4k-instruct": {
       "aliases": [
@@ -1449,7 +1449,7 @@
         "input_per_mtok": 5.0,
         "output_per_mtok": 30.0
       },
-      "source_url": "https://platform.openai.com/docs/models/chat-latest"
+      "source_url": "https://developers.openai.com/api/docs/models/chat-latest"
     },
     "chatgpt-4o-latest": {
       "aliases": [
@@ -2404,6 +2404,52 @@
       },
       "source_url": "https://www.anthropic.com/pricing#api"
     },
+    "claude-fable-5-1": {
+      "aliases": [
+        "claude-fable-5.1",
+        "azure_ai/claude-fable-5-1",
+        "anthropic/claude-fable-5-1",
+        "anthropic/claude-fable-5.1",
+        "vertex_ai/claude-fable-5-1",
+        "anthropic/claude-fable-5.1-20260831",
+        "azure/azure_ai/claude-fable-5-1",
+        "openrouter/anthropic/claude-fable-5.1",
+        "openrouter/anthropic/claude-fable-5.1-20260831"
+      ],
+      "capabilities": {
+        "computer_use": true,
+        "function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 1000000,
+      "display_name": "Claude Fable 5 1",
+      "max_output_tokens": 128000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 12.5,
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "source_url": "https://platform.claude.com/docs/en/models/fable-5-1/overview"
+    },
     "claude-fable-latest": {
       "aliases": [
         "~anthropic/claude-fable-latest",
@@ -2413,8 +2459,7 @@
         "function_calling": true,
         "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "structured_output": true
       },
       "context_window": 1000000,
       "display_name": "Anthropic: Claude Fable Latest",
@@ -2433,7 +2478,7 @@
       ],
       "pricing": {
         "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
@@ -2623,7 +2668,7 @@
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
       },
-      "source_url": "https://docs.claude.com/en/docs/about-claude/models/overview"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/models/overview"
     },
     "claude-mythos-preview": {
       "aliases": [
@@ -2652,7 +2697,7 @@
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
       },
-      "source_url": "https://docs.claude.com/en/docs/about-claude/models/overview"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/models/overview"
     },
     "claude-opus-4": {
       "aliases": [
@@ -3061,80 +3106,6 @@
       },
       "source_url": "https://www.anthropic.com/pricing#api"
     },
-    "claude-opus-4.7-fast": {
-      "aliases": [
-        "anthropic/claude-opus-4.7-fast",
-        "anthropic/claude-4.7-opus-fast-20260512",
-        "openrouter/anthropic/claude-opus-4.7-fast",
-        "openrouter/anthropic/claude-4.7-opus-fast-20260512"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 1000000,
-      "display_name": "Anthropic: Claude Opus 4.7 (Fast)",
-      "max_output_tokens": 128000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      }
-    },
-    "claude-opus-4.8-fast": {
-      "aliases": [
-        "anthropic/claude-opus-4.8-fast",
-        "anthropic/claude-4.8-opus-fast-20260528",
-        "openrouter/anthropic/claude-opus-4.8-fast",
-        "openrouter/anthropic/claude-4.8-opus-fast-20260528"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 1000000,
-      "display_name": "Anthropic: Claude Opus 4.8 (Fast)",
-      "max_output_tokens": 128000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      }
-    },
     "claude-opus-5": {
       "aliases": [
         "global.anthropic.claude-opus-5",
@@ -3190,43 +3161,6 @@
         "output_per_mtok": 25.0
       },
       "source_url": "https://www.anthropic.com/pricing#api"
-    },
-    "claude-opus-5-fast": {
-      "aliases": [
-        "anthropic/claude-opus-5-fast",
-        "anthropic/claude-opus-5-fast-20260723",
-        "openrouter/anthropic/claude-opus-5-fast",
-        "openrouter/anthropic/claude-opus-5-fast-20260723"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 1000000,
-      "display_name": "Claude Opus 5 (Fast)",
-      "max_output_tokens": 128000,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      }
     },
     "claude-opus-latest": {
       "aliases": [
@@ -4616,7 +4550,7 @@
           }
         ]
       },
-      "source_url": "https://platform.openai.com/docs/models/daybreak-blue-latest"
+      "source_url": "https://developers.openai.com/api/docs/models/daybreak-blue-latest"
     },
     "daybreak-red-latest": {
       "aliases": [
@@ -4670,7 +4604,7 @@
           }
         ]
       },
-      "source_url": "https://platform.openai.com/docs/models/daybreak-red-latest"
+      "source_url": "https://developers.openai.com/api/docs/models/daybreak-red-latest"
     },
     "deep-research-pro-preview-12-2025": {
       "aliases": [
@@ -5395,22 +5329,24 @@
     },
     "deepseek-v4-flash-0731": {
       "aliases": [
+        "azure_ai/deepseek-v4-flash-0731",
         "deepseek/deepseek-v4-flash-0731",
         "deepseek/deepseek-v4-flash-20260731",
         "fireworks_ai/deepseek-v4-flash-0731",
+        "azure/azure_ai/deepseek-v4-flash-0731",
         "openrouter/deepseek/deepseek-v4-flash-0731",
         "fireworks/fireworks_ai/deepseek-v4-flash-0731",
         "openrouter/deepseek/deepseek-v4-flash-20260731"
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1000000,
       "display_name": "Deepseek v4 Flash 0731",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -5428,7 +5364,7 @@
         "input_per_mtok": 0.065,
         "output_per_mtok": 0.18
       },
-      "source_url": "https://docs.fireworks.ai/serverless/pricing"
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/"
     },
     "deepseek-v4-flash-latest": {
       "aliases": [
@@ -5444,7 +5380,7 @@
       },
       "context_window": 1048576,
       "display_name": "DeepSeek V4 Flash Latest",
-      "max_output_tokens": 393216,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -5457,10 +5393,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.013,
+        "cached_input_per_mtok": 0.009996,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.16
+        "input_per_mtok": 0.04998,
+        "output_per_mtok": 0.09996
       }
     },
     "deepseek-v4-flash-vision-exp": {
@@ -8514,7 +8450,7 @@
         "output_per_mtok": 3.75,
         "reasoning_output_per_mtok": 3.75
       },
-      "source_url": "https://ai.google.dev/pricing/gemini-3"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-embedding-001": {
       "aliases": [
@@ -16698,7 +16634,7 @@
           }
         ]
       },
-      "source_url": "https://platform.openai.com/docs/models/gpt-5.6-cyber"
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.6-cyber"
     },
     "gpt-5.6-luna": {
       "aliases": [
@@ -17949,7 +17885,7 @@
         "currency": "USD",
         "per_second_input": 0.0002833333333333333
       },
-      "source_url": "https://platform.openai.com/docs/models/gpt-live-transcribe"
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-live-transcribe"
     },
     "gpt-mini-latest": {
       "aliases": [
@@ -18754,7 +18690,7 @@
         "currency": "USD",
         "per_second_input": 0.0005666666666666667
       },
-      "source_url": "https://platform.openai.com/docs/models/gpt-realtime-translate"
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-realtime-translate"
     },
     "gpt-realtime-whisper": {
       "aliases": [
@@ -18781,7 +18717,7 @@
         "currency": "USD",
         "per_second_input": 0.0002833333333333333
       },
-      "source_url": "https://platform.openai.com/docs/models/gpt-realtime-whisper"
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-realtime-whisper"
     },
     "gpt-transcribe": {
       "aliases": [
@@ -18807,7 +18743,7 @@
         "currency": "USD",
         "per_second_input": 7.5e-05
       },
-      "source_url": "https://platform.openai.com/docs/models/gpt-transcribe"
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-transcribe"
     },
     "granite-4.0-h-micro": {
       "aliases": [
@@ -20263,7 +20199,7 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+      "source_url": "https://docs.x.ai/developers/models"
     },
     "grok-4.20-reasoning-latest": {
       "aliases": [
@@ -20500,6 +20436,7 @@
       "aliases": [
         "xai/grok-4.6",
         "x-ai/grok-4.6",
+        "vertex_ai/grok-4.6",
         "opencode_zen/grok-4.6",
         "x-ai/grok-4.6-20260810",
         "openrouter/x-ai/grok-4.6",
@@ -21108,10 +21045,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-preview": {
@@ -21448,7 +21385,7 @@
         "input_per_mtok": 3200.0,
         "output_per_mtok": 9710.0
       },
-      "source_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/models/jais-30b-chat"
+      "source_url": "https://ai.azure.com/catalog/models/jais-30b-chat"
     },
     "jamba-1.5": {
       "aliases": [
@@ -23060,7 +22997,7 @@
           "rank": 143
         }
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview"
+      "source_url": "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview"
     },
     "llama-3.3-70b-specdec": {
       "aliases": [
@@ -23787,6 +23724,41 @@
         "currency": "USD",
         "input_per_mtok": 0.25,
         "output_per_mtok": 0.75
+      }
+    },
+    "mercury-2.5-preview": {
+      "aliases": [
+        "inception/mercury-2.5-preview",
+        "inception/mercury-2.5-preview-20260831",
+        "openrouter/inception/mercury-2.5-preview",
+        "openrouter/inception/mercury-2.5-preview-20260831"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 260000,
+      "display_name": "Inception: Mercury 2.5 Preview",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.004,
+        "currency": "USD",
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.15
       }
     },
     "mimo-v2.5": {
@@ -24765,7 +24737,7 @@
       "modes": [
         "ocr"
       ],
-      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/"
+      "source_url": "https://ai.azure.com/catalog/models/mistral-document-ai-2512"
     },
     "mistral-embed": {
       "aliases": [
@@ -24951,7 +24923,7 @@
           "rank": 147
         }
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
+      "source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
     },
     "mistral-large-2411": {
       "aliases": [
@@ -25099,7 +25071,7 @@
         "input_per_mtok": 0.5,
         "output_per_mtok": 1.5
       },
-      "source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
+      "source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
     },
     "mistral-medium": {
       "aliases": [
@@ -26351,7 +26323,7 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.2
       },
-      "source_url": "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      "source_url": "https://ai.developer.meta.com/docs/pricing-rate-limits"
     },
     "muse-spark-1.2-contributor-free": {
       "aliases": [
@@ -32716,7 +32688,7 @@
       "modes": [
         "video_generation"
       ],
-      "source_url": "https://ai.google.dev/gemini-api/docs/video"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "veo-3.1-fast-generate-preview": {
       "aliases": [
@@ -32735,7 +32707,7 @@
       "modes": [
         "video_generation"
       ],
-      "source_url": "https://ai.google.dev/gemini-api/docs/video"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "veo-3.1-generate-001": {
       "aliases": [
@@ -32754,7 +32726,7 @@
       "modes": [
         "video_generation"
       ],
-      "source_url": "https://ai.google.dev/gemini-api/docs/video"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "veo-3.1-generate-preview": {
       "aliases": [
@@ -32773,7 +32745,7 @@
       "modes": [
         "video_generation"
       ],
-      "source_url": "https://ai.google.dev/gemini-api/docs/video"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "veo-3.1-lite-generate-001": {
       "aliases": [
@@ -33416,6 +33388,7 @@
       "enabled": true,
       "model_ref": "claude-3-opus",
       "pricing": {
+        "cached_input_per_mtok": 1.5,
         "currency": "USD",
         "input_per_mtok": 15.0,
         "output_per_mtok": 75.0
@@ -33499,6 +33472,7 @@
       "enabled": true,
       "model_ref": "claude-3-5-haiku",
       "pricing": {
+        "cached_input_per_mtok": 0.08,
         "currency": "USD",
         "input_per_mtok": 0.8,
         "output_per_mtok": 4.0
@@ -33512,6 +33486,7 @@
       "enabled": true,
       "model_ref": "claude-3-5-sonnet",
       "pricing": {
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
@@ -33525,6 +33500,7 @@
       "enabled": true,
       "model_ref": "claude-3-7-sonnet",
       "pricing": {
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
@@ -33608,6 +33584,24 @@
         "https://www.anthropic.com/pricing#api"
       ]
     },
+    "anthropic/claude-fable-5-1": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-fable-5-1",
+      "pricing": {
+        "cache_write_per_mtok": 12.5,
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "pricing_source_url": "https://llmprices.dev/",
+      "source_urls": [
+        "https://llmprices.dev/",
+        "https://platform.claude.com/docs/en/models/fable-5-1/overview"
+      ]
+    },
     "anthropic/claude-haiku-4-5": {
       "context_window": 200000,
       "enabled": true,
@@ -33664,8 +33658,8 @@
       },
       "pricing_source_url": "https://llmprices.dev/",
       "source_urls": [
-        "https://docs.claude.com/en/docs/about-claude/models/overview",
-        "https://llmprices.dev/"
+        "https://llmprices.dev/",
+        "https://platform.claude.com/docs/en/about-claude/models/overview"
       ]
     },
     "anthropic/claude-mythos-preview": {
@@ -33680,9 +33674,9 @@
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
       },
-      "pricing_source_url": "https://docs.claude.com/en/docs/about-claude/models/overview",
+      "pricing_source_url": "https://platform.claude.com/docs/en/about-claude/models/overview",
       "source_urls": [
-        "https://docs.claude.com/en/docs/about-claude/models/overview"
+        "https://platform.claude.com/docs/en/about-claude/models/overview"
       ]
     },
     "anthropic/claude-opus-4": {
@@ -34125,6 +34119,7 @@
       "enabled": true,
       "model_ref": "claude-sonnet-4-5",
       "pricing": {
+        "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
@@ -34179,10 +34174,10 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/Cohere-embed-v3-english",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
       ]
     },
     "azure/Cohere-embed-v3-multilingual": {
@@ -34195,10 +34190,10 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/Cohere-embed-v3-multilingual",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
       ]
     },
     "azure/FLUX-1.1-pro": {
@@ -34227,10 +34222,10 @@
         "currency": "USD",
         "per_image": 0.04
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/FLUX.1-Kontext-pro",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
       ]
     },
     "azure/FW-DeepSeek-V3.2": {
@@ -34481,10 +34476,10 @@
         "input_per_mtok": 2.04,
         "output_per_mtok": 2.04
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview",
       "provider_model_id": "azure_ai/Llama-3.2-90B-Vision-Instruct",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
       ]
     },
     "azure/Llama-4-Maverick-17B-128E-Instruct-FP8": {
@@ -34603,10 +34598,10 @@
         "input_per_mtok": 5.33,
         "output_per_mtok": 16.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/Meta-Llama-3.1-405B-Instruct",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/Meta-Llama-3.1-70B-Instruct": {
@@ -34619,10 +34614,10 @@
         "input_per_mtok": 2.68,
         "output_per_mtok": 3.54
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/Meta-Llama-3.1-70B-Instruct",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/Meta-Llama-3.1-8B-Instruct": {
@@ -34635,10 +34630,10 @@
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.61
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice",
       "provider_model_id": "azure_ai/Meta-Llama-3.1-8B-Instruct",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/Phi-3-medium-4k-instruct": {
@@ -34812,9 +34807,9 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/Cohere-embed-v3-multilingual": {
@@ -34827,9 +34822,9 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/cohere.cohere-embed-v3-english-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/FLUX-1.1-pro": {
@@ -34857,9 +34852,9 @@
         "currency": "USD",
         "per_image": 0.04
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/FW-DeepSeek-V3.2": {
@@ -35096,9 +35091,9 @@
         "input_per_mtok": 2.04,
         "output_per_mtok": 2.04
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.meta-llama-3-2-90b-vision-instruct-offer?tab=Overview"
       ]
     },
     "azure/azure_ai/Llama-3.3-70B-Instruct": {
@@ -35111,9 +35106,9 @@
         "input_per_mtok": 0.71,
         "output_per_mtok": 0.71
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/metagenai.llama-3-3-70b-instruct-offer?tab=Overview"
       ]
     },
     "azure/azure_ai/Llama-4-Maverick-17B-128E-Instruct-FP8": {
@@ -35241,9 +35236,9 @@
         "input_per_mtok": 5.33,
         "output_per_mtok": 16.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-405b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/Meta-Llama-3.1-70B-Instruct": {
@@ -35256,9 +35251,9 @@
         "input_per_mtok": 2.68,
         "output_per_mtok": 3.54
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-70b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/Meta-Llama-3.1-8B-Instruct": {
@@ -35271,9 +35266,9 @@
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.61
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en-us/marketplace/apps/metagenai.meta-llama-3-1-8b-instruct-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/Phi-3-medium-128k-instruct": {
@@ -35495,6 +35490,23 @@
       "pricing": {
         "cache_write_per_mtok": 12.5,
         "cached_input_per_mtok": 1.0,
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+      "source_urls": [
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/azure_ai/claude-fable-5-1": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-fable-5-1",
+      "pricing": {
+        "cache_write_per_mtok": 12.5,
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
@@ -35854,6 +35866,22 @@
         "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/"
       ]
     },
+    "azure/azure_ai/deepseek-v4-flash-0731": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "deepseek-v4-flash-0731",
+      "pricing": {
+        "cached_input_per_mtok": 0.028,
+        "currency": "USD",
+        "input_per_mtok": 0.19,
+        "output_per_mtok": 0.51
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/"
+      ]
+    },
     "azure/azure_ai/deepseek-v4-pro": {
       "context_window": 1000000,
       "enabled": true,
@@ -35882,9 +35910,9 @@
         "input_per_mtok": 0.12,
         "output_per_mtok": 0.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/pt-br/marketplace/apps/cohere.cohere-embed-4-offer?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/flux.2-pro": {
@@ -36343,9 +36371,9 @@
         "input_per_mtok": 3200.0,
         "output_per_mtok": 9710.0
       },
-      "pricing_source_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/models/jais-30b-chat",
+      "pricing_source_url": "https://ai.azure.com/catalog/models/jais-30b-chat",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/models/jais-30b-chat"
+        "https://ai.azure.com/catalog/models/jais-30b-chat"
       ]
     },
     "azure/azure_ai/jamba-instruct": {
@@ -36403,9 +36431,9 @@
         "input_per_mtok": 0.04,
         "output_per_mtok": 0.04
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.ministral-3b-2410-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.ministral-3b-2410-offer?tab=Overview",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.ministral-3b-2410-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/000-000.ministral-3b-2410-offer?tab=Overview"
       ]
     },
     "azure/azure_ai/mistral-document-ai-2505": {
@@ -36425,7 +36453,7 @@
       ],
       "model_ref": "mistral-document-ai-2512",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/"
+        "https://ai.azure.com/catalog/models/mistral-document-ai-2512"
       ]
     },
     "azure/azure_ai/mistral-large": {
@@ -36453,9 +36481,9 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
       ]
     },
     "azure/azure_ai/mistral-large-3": {
@@ -36483,9 +36511,9 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
+        "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-ai-large-2407-offer?tab=Overview"
       ]
     },
     "azure/azure_ai/mistral-medium-2505": {
@@ -36513,9 +36541,9 @@
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.15
       },
-      "pricing_source_url": "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-nemo-12b-2407?tab=PlansAndPrice",
+      "pricing_source_url": "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-nemo-12b-2407?tab=PlansAndPrice",
       "source_urls": [
-        "https://azuremarketplace.microsoft.com/en/marketplace/apps/000-000.mistral-nemo-12b-2407?tab=PlansAndPrice"
+        "https://marketplace.microsoft.com/en/marketplace/apps/000-000.mistral-nemo-12b-2407?tab=PlansAndPrice"
       ]
     },
     "azure/azure_ai/mistral-small": {
@@ -36925,6 +36953,23 @@
       "provider_model_id": "azure_ai/deepseek-v3.2-speciale",
       "source_urls": [
         "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
+      ]
+    },
+    "azure/deepseek-v4-flash-0731": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "deepseek-v4-flash-0731",
+      "pricing": {
+        "cached_input_per_mtok": 0.028,
+        "currency": "USD",
+        "input_per_mtok": 0.19,
+        "output_per_mtok": 0.51
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/",
+      "provider_model_id": "azure_ai/deepseek-v4-flash-0731",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/deepseek/"
       ]
     },
     "azure/flux.2-pro": {
@@ -39761,9 +39806,9 @@
         "currency": "USD",
         "per_second_input": 0.0002833333333333333
       },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/gpt-realtime-whisper",
+      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/gpt-realtime-whisper",
       "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/gpt-realtime-whisper"
+        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/gpt-realtime-whisper"
       ]
     },
     "azure/grok-3": {
@@ -39876,10 +39921,10 @@
         "input_per_mtok": 3200.0,
         "output_per_mtok": 9710.0
       },
-      "pricing_source_url": "https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/models/jais-30b-chat",
+      "pricing_source_url": "https://ai.azure.com/catalog/models/jais-30b-chat",
       "provider_model_id": "azure_ai/jais-30b-chat",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/products/ai-services/ai-foundry/models/jais-30b-chat"
+        "https://ai.azure.com/catalog/models/jais-30b-chat"
       ]
     },
     "azure/jamba-instruct": {
@@ -39949,7 +39994,7 @@
       "model_ref": "mistral-document-ai-2512",
       "provider_model_id": "azure_ai/mistral-document-ai-2512",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/"
+        "https://ai.azure.com/catalog/models/mistral-document-ai-2512"
       ]
     },
     "azure/mistral-large-2402": {
@@ -40474,7 +40519,7 @@
       "enabled": true,
       "model_ref": "sora-2",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/products/ai-services/video-generation",
+        "https://ai.azure.com/catalog/models/sora-2",
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
@@ -40482,7 +40527,7 @@
       "enabled": true,
       "model_ref": "sora-2-pro",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/products/ai-services/video-generation",
+        "https://ai.azure.com/catalog/models/sora-2-pro",
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
@@ -40490,7 +40535,7 @@
       "enabled": true,
       "model_ref": "sora-2-pro-high-res",
       "source_urls": [
-        "https://azure.microsoft.com/en-us/products/ai-services/video-generation"
+        "https://ai.azure.com/catalog/models/sora-2-pro"
       ]
     },
     "azure/text-curie": {
@@ -43665,10 +43710,10 @@
       "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.007,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.66
       },
       "pricing_source_url": "https://docs.fireworks.ai/serverless/pricing",
       "provider_model_id": "fireworks_ai/deepseek-v4-flash-0731",
@@ -43744,10 +43789,10 @@
       "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.007,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.66
       },
       "pricing_source_url": "https://docs.fireworks.ai/serverless/pricing",
       "source_urls": [
@@ -45588,7 +45633,6 @@
       },
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing",
-        "https://ai.google.dev/pricing/gemini-3",
         "https://llmprices.dev/"
       ]
     },
@@ -45982,7 +46026,6 @@
       },
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing",
-        "https://ai.google.dev/pricing/gemini-3",
         "https://llmprices.dev/"
       ]
     },
@@ -46101,7 +46144,6 @@
       },
       "source_urls": [
         "https://ai.google.dev/gemini-api/docs/pricing",
-        "https://ai.google.dev/pricing/gemini-3",
         "https://llmprices.dev/"
       ]
     },
@@ -46128,7 +46170,7 @@
         "tpm": 800000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://llmprices.dev/"
       ]
     },
@@ -46889,11 +46931,11 @@
       "model_ref": "veo-3.1-fast-generate-001",
       "pricing": {
         "currency": "USD",
-        "per_second_output": 0.15
+        "per_second_output": 0.1
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/video",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/video"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/veo-3.1-fast-generate-preview": {
@@ -46903,11 +46945,11 @@
       "model_ref": "veo-3.1-fast-generate-preview",
       "pricing": {
         "currency": "USD",
-        "per_second_output": 0.15
+        "per_second_output": 0.1
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/video",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/video"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/veo-3.1-generate-001": {
@@ -46919,9 +46961,9 @@
         "currency": "USD",
         "per_second_output": 0.4
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/video",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/video"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/veo-3.1-generate-preview": {
@@ -46933,9 +46975,9 @@
         "currency": "USD",
         "per_second_output": 0.4
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/video",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/video"
+        "https://ai.google.dev/gemini-api/docs/pricing"
       ]
     },
     "gemini/veo-3.1-lite-generate-preview": {
@@ -47491,9 +47533,9 @@
         "input_per_mtok": 1.25,
         "output_per_mtok": 4.25
       },
-      "pricing_source_url": "https://dev.meta.ai/docs/getting-started/pricing-rate-limits",
+      "pricing_source_url": "https://ai.developer.meta.com/docs/pricing-rate-limits",
       "source_urls": [
-        "https://dev.meta.ai/docs/getting-started/pricing-rate-limits",
+        "https://ai.developer.meta.com/docs/pricing-rate-limits",
         "https://dev.meta.ai/docs/getting-started/pricing-rate-limits.md"
       ]
     },
@@ -47513,9 +47555,9 @@
         "input_per_mtok": 1.25,
         "output_per_mtok": 4.25
       },
-      "pricing_source_url": "https://dev.meta.ai/docs/getting-started/pricing-rate-limits",
+      "pricing_source_url": "https://ai.developer.meta.com/docs/pricing-rate-limits",
       "source_urls": [
-        "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+        "https://ai.developer.meta.com/docs/pricing-rate-limits"
       ]
     },
     "meta/muse-spark-1.2-contributor": {
@@ -47534,9 +47576,9 @@
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.2
       },
-      "pricing_source_url": "https://dev.meta.ai/docs/getting-started/pricing-rate-limits",
+      "pricing_source_url": "https://ai.developer.meta.com/docs/pricing-rate-limits",
       "source_urls": [
-        "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+        "https://ai.developer.meta.com/docs/pricing-rate-limits"
       ]
     },
     "mistral/codestral": {
@@ -49463,8 +49505,8 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
-        "https://llmprices.dev/",
-        "https://platform.openai.com/docs/models/chat-latest"
+        "https://developers.openai.com/api/docs/models/chat-latest",
+        "https://llmprices.dev/"
       ]
     },
     "openai/chatgpt-4o-latest": {
@@ -49775,9 +49817,9 @@
           }
         ]
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/daybreak-blue-latest",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/daybreak-blue-latest",
       "source_urls": [
-        "https://platform.openai.com/docs/models/daybreak-blue-latest"
+        "https://developers.openai.com/api/docs/models/daybreak-blue-latest"
       ]
     },
     "openai/daybreak-red-latest": {
@@ -49808,9 +49850,9 @@
           }
         ]
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/daybreak-red-latest",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/daybreak-red-latest",
       "source_urls": [
-        "https://platform.openai.com/docs/models/daybreak-red-latest"
+        "https://developers.openai.com/api/docs/models/daybreak-red-latest"
       ]
     },
     "openai/gpt-3.5-0301": {
@@ -52763,8 +52805,8 @@
       },
       "pricing_source_url": "https://llmprices.dev/",
       "source_urls": [
-        "https://llmprices.dev/",
-        "https://platform.openai.com/docs/models/gpt-5.6-cyber"
+        "https://developers.openai.com/api/docs/models/gpt-5.6-cyber",
+        "https://llmprices.dev/"
       ]
     },
     "openai/gpt-5.6-luna": {
@@ -53554,9 +53596,9 @@
         "currency": "USD",
         "per_second_input": 0.0002833333333333333
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/gpt-live-transcribe",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/gpt-live-transcribe",
       "source_urls": [
-        "https://platform.openai.com/docs/models/gpt-live-transcribe"
+        "https://developers.openai.com/api/docs/models/gpt-live-transcribe"
       ]
     },
     "openai/gpt-oss-120b": {
@@ -53685,14 +53727,17 @@
       "pricing": {
         "audio_input_per_mtok": 32.0,
         "audio_output_per_mtok": 64.0,
+        "cached_input_image_per_mtok": 0.5,
         "cached_input_per_mtok": 0.4,
         "currency": "USD",
+        "input_image_per_mtok": 5.0,
         "input_per_image": 5e-06,
         "input_per_mtok": 4.0,
         "output_per_mtok": 24.0
       },
-      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/openai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
@@ -53816,9 +53861,9 @@
         "currency": "USD",
         "per_second_input": 0.0005666666666666667
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/gpt-realtime-translate",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/gpt-realtime-translate",
       "source_urls": [
-        "https://platform.openai.com/docs/models/gpt-realtime-translate"
+        "https://developers.openai.com/api/docs/models/gpt-realtime-translate"
       ]
     },
     "openai/gpt-realtime-whisper": {
@@ -53832,9 +53877,9 @@
         "currency": "USD",
         "per_second_input": 0.0002833333333333333
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/gpt-realtime-whisper",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/gpt-realtime-whisper",
       "source_urls": [
-        "https://platform.openai.com/docs/models/gpt-realtime-whisper"
+        "https://developers.openai.com/api/docs/models/gpt-realtime-whisper"
       ]
     },
     "openai/gpt-transcribe": {
@@ -53848,9 +53893,9 @@
         "currency": "USD",
         "per_second_input": 7.5e-05
       },
-      "pricing_source_url": "https://platform.openai.com/docs/models/gpt-transcribe",
+      "pricing_source_url": "https://developers.openai.com/api/docs/models/gpt-transcribe",
       "source_urls": [
-        "https://platform.openai.com/docs/models/gpt-transcribe"
+        "https://developers.openai.com/api/docs/models/gpt-transcribe"
       ]
     },
     "openai/moderation": {
@@ -55800,6 +55845,23 @@
         "https://openrouter.ai/anthropic/claude-fable-5"
       ]
     },
+    "openrouter/anthropic/claude-fable-5.1": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-fable-5-1",
+      "pricing": {
+        "cache_write_per_mtok": 12.5,
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "pricing_source_url": "https://openrouter.ai/anthropic/claude-fable-5.1",
+      "source_urls": [
+        "https://openrouter.ai/anthropic/claude-fable-5.1"
+      ]
+    },
     "openrouter/anthropic/claude-haiku-4.5": {
       "context_window": 200000,
       "enabled": true,
@@ -55910,23 +55972,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "openrouter/anthropic/claude-opus-4.7-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.7-fast",
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.7-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.7-fast"
-      ]
-    },
     "openrouter/anthropic/claude-opus-4.8": {
       "context_window": 1000000,
       "enabled": true,
@@ -55944,23 +55989,6 @@
         "https://openrouter.ai/anthropic/claude-opus-4.8"
       ]
     },
-    "openrouter/anthropic/claude-opus-4.8-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.8-fast",
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.8-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.8-fast"
-      ]
-    },
     "openrouter/anthropic/claude-opus-5": {
       "context_window": 1000000,
       "enabled": true,
@@ -55976,23 +56004,6 @@
       "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-5",
       "source_urls": [
         "https://openrouter.ai/anthropic/claude-opus-5"
-      ]
-    },
-    "openrouter/anthropic/claude-opus-5-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-5-fast",
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-5-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-5-fast"
       ]
     },
     "openrouter/anthropic/claude-sonnet-4": {
@@ -56286,7 +56297,7 @@
       "model_ref": "claude-fable-latest",
       "pricing": {
         "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
@@ -56313,60 +56324,6 @@
       "provider_model_id": "~anthropic/claude-haiku-latest",
       "source_urls": [
         "https://openrouter.ai/~anthropic/claude-haiku-latest"
-      ]
-    },
-    "openrouter/claude-opus-4.7-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.7-fast",
-      "pricing": {
-        "cache_write_per_mtok": 37.5,
-        "cached_input_per_mtok": 3.0,
-        "currency": "USD",
-        "input_per_mtok": 30.0,
-        "output_per_mtok": 150.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.7-fast",
-      "provider_model_id": "anthropic/claude-opus-4.7-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.7-fast"
-      ]
-    },
-    "openrouter/claude-opus-4.8-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-4.8-fast",
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-4.8-fast",
-      "provider_model_id": "anthropic/claude-opus-4.8-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-4.8-fast"
-      ]
-    },
-    "openrouter/claude-opus-5-fast": {
-      "context_window": 1000000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "claude-opus-5-fast",
-      "pricing": {
-        "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
-        "currency": "USD",
-        "input_per_mtok": 10.0,
-        "output_per_mtok": 50.0
-      },
-      "pricing_source_url": "https://openrouter.ai/anthropic/claude-opus-5-fast",
-      "provider_model_id": "anthropic/claude-opus-5-fast",
-      "source_urls": [
-        "https://openrouter.ai/anthropic/claude-opus-5-fast"
       ]
     },
     "openrouter/claude-opus-latest": {
@@ -56635,13 +56592,13 @@
     "openrouter/deepseek-v4-flash-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 393216,
+      "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.013,
+        "cached_input_per_mtok": 0.009996,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.16
+        "input_per_mtok": 0.04998,
+        "output_per_mtok": 0.09996
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "provider_model_id": "~deepseek/deepseek-v4-flash-latest",
@@ -56817,10 +56774,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.016184,
+        "cached_input_per_mtok": 0.014336,
         "currency": "USD",
-        "input_per_mtok": 0.08092,
-        "output_per_mtok": 0.16184
+        "input_per_mtok": 0.07168,
+        "output_per_mtok": 0.14336
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -56865,10 +56822,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.135,
+        "cached_input_per_mtok": 0.0856225,
         "currency": "USD",
-        "input_per_mtok": 1.6,
-        "output_per_mtok": 3.2
+        "input_per_mtok": 1.02747,
+        "output_per_mtok": 2.05494
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -57464,7 +57421,7 @@
         "tpm": 800000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://openrouter.ai/google/gemini-3-flash-preview"
       ]
     },
@@ -57634,7 +57591,7 @@
         "tpm": 800000
       },
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://openrouter.ai/google/gemini-3.1-flash-lite-preview"
       ]
     },
@@ -58228,10 +58185,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -58334,6 +58291,22 @@
       "pricing_source_url": "https://openrouter.ai/inception/mercury-2",
       "source_urls": [
         "https://openrouter.ai/inception/mercury-2"
+      ]
+    },
+    "openrouter/inception/mercury-2.5-preview": {
+      "context_window": 260000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mercury-2.5-preview",
+      "pricing": {
+        "cached_input_per_mtok": 0.004,
+        "currency": "USD",
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.15
+      },
+      "pricing_source_url": "https://openrouter.ai/inception/mercury-2.5-preview",
+      "source_urls": [
+        "https://openrouter.ai/inception/mercury-2.5-preview"
       ]
     },
     "openrouter/inclusionai/ling-3.0-flash": {
@@ -58954,6 +58927,23 @@
       "provider_model_id": "inception/mercury-2",
       "source_urls": [
         "https://openrouter.ai/inception/mercury-2"
+      ]
+    },
+    "openrouter/mercury-2.5-preview": {
+      "context_window": 260000,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "mercury-2.5-preview",
+      "pricing": {
+        "cached_input_per_mtok": 0.004,
+        "currency": "USD",
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.15
+      },
+      "pricing_source_url": "https://openrouter.ai/inception/mercury-2.5-preview",
+      "provider_model_id": "inception/mercury-2.5-preview",
+      "source_urls": [
+        "https://openrouter.ai/inception/mercury-2.5-preview"
       ]
     },
     "openrouter/meta-llama/llama-3.1-70b-instruct": {
@@ -63957,10 +63947,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -64625,7 +64615,7 @@
       "model_ref": "claude-fable-latest",
       "pricing": {
         "cache_write_per_mtok": 12.5,
-        "cached_input_per_mtok": 1.0,
+        "cached_input_per_mtok": 0.25,
         "currency": "USD",
         "input_per_mtok": 10.0,
         "output_per_mtok": 50.0
@@ -64689,13 +64679,13 @@
     "openrouter/~deepseek/deepseek-v4-flash-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 393216,
+      "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.013,
+        "cached_input_per_mtok": 0.009996,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.16
+        "input_per_mtok": 0.04998,
+        "output_per_mtok": 0.09996
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "source_urls": [
@@ -65326,6 +65316,23 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/vertex-ai.json",
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "vertex_ai/claude-fable-5-1": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-fable-5-1",
+      "pricing": {
+        "cache_write_per_mtok": 12.5,
+        "cached_input_per_mtok": 0.25,
+        "currency": "USD",
+        "input_per_mtok": 10.0,
+        "output_per_mtok": 50.0
+      },
+      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+      "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
@@ -66111,7 +66118,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
@@ -66438,7 +66445,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
@@ -66526,7 +66533,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
@@ -66553,7 +66560,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/pricing/gemini-3",
+        "https://ai.google.dev/gemini-api/docs/pricing",
         "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
@@ -66795,6 +66802,20 @@
         "currency": "USD",
         "input_per_mtok": 1.25,
         "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
+      ]
+    },
+    "vertex_ai/grok-4.6": {
+      "enabled": true,
+      "model_ref": "grok-4.6",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
@@ -67261,11 +67282,11 @@
       "model_ref": "veo-3.1-fast-generate-001",
       "pricing": {
         "currency": "USD",
-        "per_second_output": 0.15
+        "per_second_output": 0.1
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "source_urls": [
-        "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -67276,11 +67297,11 @@
       "model_ref": "veo-3.1-fast-generate-preview",
       "pricing": {
         "currency": "USD",
-        "per_second_output": 0.15
+        "per_second_output": 0.1
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "source_urls": [
-        "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -67293,9 +67314,9 @@
         "currency": "USD",
         "per_second_output": 0.4
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "source_urls": [
-        "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -67308,9 +67329,9 @@
         "currency": "USD",
         "per_second_output": 0.4
       },
-      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+      "pricing_source_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "source_urls": [
-        "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/veo",
+        "https://cloud.google.com/vertex-ai/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -67346,9 +67367,9 @@
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.5
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)",
+      "pricing_source_url": "https://docs.x.ai/developers/models",
       "source_urls": [
-        "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+        "https://docs.x.ai/developers/models"
       ]
     },
     "vertex_ai/xai/grok-4.1-fast-reasoning": {
@@ -67362,9 +67383,9 @@
         "input_per_mtok": 0.2,
         "output_per_mtok": 0.5
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)",
+      "pricing_source_url": "https://docs.x.ai/developers/models",
       "source_urls": [
-        "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+        "https://docs.x.ai/developers/models"
       ]
     },
     "vertex_ai/xai/grok-4.20-non-reasoning": {
@@ -67378,9 +67399,9 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)",
+      "pricing_source_url": "https://docs.x.ai/developers/models",
       "source_urls": [
-        "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+        "https://docs.x.ai/developers/models"
       ]
     },
     "vertex_ai/xai/grok-4.20-reasoning": {
@@ -67394,9 +67415,9 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://docs.x.ai/docs/models (Vertex AI Model Garden)",
+      "pricing_source_url": "https://docs.x.ai/developers/models",
       "source_urls": [
-        "https://docs.x.ai/docs/models (Vertex AI Model Garden)"
+        "https://docs.x.ai/developers/models"
       ]
     },
     "xai/grok-3": {
@@ -69663,6 +69684,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-09-01T11:20:05Z",
+  "updated_at": "2026-09-01T20:45:47Z",
   "version": 1
 }
