@@ -5574,10 +5574,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.03718,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.1154,
-        "output_per_mtok": 3.3462
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813"
     },
@@ -8455,6 +8455,46 @@
         "reasoning_output_per_mtok": 3.75
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "gemini-3.8-flash": {
+      "aliases": [
+        "gemini/gemini-3.8-flash",
+        "google/gemini-3.8-flash",
+        "opencode_zen/gemini-3.8-flash",
+        "google/gemini-3.8-flash-20260902",
+        "openrouter/google/gemini-3.8-flash",
+        "openrouter/google/gemini-3.8-flash-20260902"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "display_name": "Gemini 3.8 Flash",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "gemini",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 3.75
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "gemini-embedding-001": {
       "aliases": [
@@ -21084,10 +21124,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-preview": {
@@ -26380,6 +26420,98 @@
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
+    "muse-spark-1.3": {
+      "aliases": [
+        "meta/muse-spark-1.3",
+        "meta/muse-spark-1.3-20260902",
+        "openrouter/meta/muse-spark-1.3",
+        "openrouter/meta/muse-spark-1.3-20260902"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Meta: Muse Spark 1.3",
+      "max_output_tokens": 943718,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 4.25
+      }
+    },
+    "muse-spark-1.3-contributor": {
+      "aliases": [
+        "meta/muse-spark-1.3-contributor",
+        "meta/muse-spark-1.3-contributor-20260902",
+        "openrouter/meta/muse-spark-1.3-contributor",
+        "openrouter/meta/muse-spark-1.3-contributor-20260902"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Meta: Muse Spark 1.3 Contributor",
+      "max_output_tokens": 943718,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.002,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      }
+    },
+    "muse-spark-1.3-contributor-free": {
+      "aliases": [
+        "opencode_zen/muse-spark-1.3-contributor-free"
+      ],
+      "display_name": "Muse Spark 1.3 Contributor Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "mythomax-l2-13b": {
       "aliases": [
         "gryphe/mythomax-l2-13b",
@@ -26638,9 +26770,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 256000,
+      "context_window": 202800,
       "display_name": "NVIDIA: Nemotron 3 Ultra",
-      "max_output_tokens": 32768,
+      "max_output_tokens": 182520,
       "modalities": {
         "input": [
           "text"
@@ -26653,10 +26785,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1875,
+        "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.625,
-        "output_per_mtok": 3.125
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
       },
       "rankings": {
         "livebench": {
@@ -46216,6 +46348,20 @@
         "https://llmprices.dev/"
       ]
     },
+    "gemini/gemini-3.8-flash": {
+      "enabled": true,
+      "model_ref": "gemini-3.8-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 3.75
+      },
+      "pricing_source_url": "https://llmprices.dev/",
+      "source_urls": [
+        "https://llmprices.dev/"
+      ]
+    },
     "gemini/gemini-embedding-001": {
       "context_window": 2048,
       "enabled": true,
@@ -55005,6 +55151,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/gemini-3.8-flash": {
+      "enabled": true,
+      "model_ref": "gemini-3.8-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/glm-5": {
       "enabled": true,
       "model_ref": "glm-5",
@@ -55515,6 +55675,20 @@
     "opencode_zen/muse-spark-1.2-contributor-free": {
       "enabled": true,
       "model_ref": "muse-spark-1.2-contributor-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/muse-spark-1.3-contributor-free": {
+      "enabled": true,
+      "model_ref": "muse-spark-1.3-contributor-free",
       "pricing": {
         "cached_input_per_mtok": 0.0,
         "currency": "USD",
@@ -56669,10 +56843,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.03718,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.1154,
-        "output_per_mtok": 3.3462
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "provider_model_id": "deepseek/deepseek-v4-pro-0813",
@@ -56831,10 +57005,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0177212,
+        "cached_input_per_mtok": 0.016492,
         "currency": "USD",
-        "input_per_mtok": 0.088606,
-        "output_per_mtok": 0.177212
+        "input_per_mtok": 0.08246,
+        "output_per_mtok": 0.16492
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -56879,10 +57053,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.086855,
+        "cached_input_per_mtok": 0.0856225,
         "currency": "USD",
-        "input_per_mtok": 1.04226,
-        "output_per_mtok": 2.08452
+        "input_per_mtok": 1.02747,
+        "output_per_mtok": 2.05494
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -56895,10 +57069,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.03718,
+        "cached_input_per_mtok": 0.022,
         "currency": "USD",
-        "input_per_mtok": 1.1154,
-        "output_per_mtok": 3.3462
+        "input_per_mtok": 0.66,
+        "output_per_mtok": 1.98
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "source_urls": [
@@ -57783,6 +57957,23 @@
         "https://openrouter.ai/google/gemini-3.7-flash"
       ]
     },
+    "openrouter/google/gemini-3.8-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "gemini-3.8-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.0416666666666667,
+        "cached_input_per_mtok": 0.075,
+        "currency": "USD",
+        "input_per_mtok": 0.75,
+        "output_per_mtok": 3.75
+      },
+      "pricing_source_url": "https://openrouter.ai/google/gemini-3.8-flash",
+      "source_urls": [
+        "https://openrouter.ai/google/gemini-3.8-flash"
+      ]
+    },
     "openrouter/google/gemma-2-27b-it": {
       "context_window": 8192,
       "enabled": true,
@@ -58259,10 +58450,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -59206,6 +59397,38 @@
         "https://openrouter.ai/meta/muse-spark-1.2-contributor"
       ]
     },
+    "openrouter/meta/muse-spark-1.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 943718,
+      "model_ref": "muse-spark-1.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 4.25
+      },
+      "pricing_source_url": "https://openrouter.ai/meta/muse-spark-1.3",
+      "source_urls": [
+        "https://openrouter.ai/meta/muse-spark-1.3"
+      ]
+    },
+    "openrouter/meta/muse-spark-1.3-contributor": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 943718,
+      "model_ref": "muse-spark-1.3-contributor",
+      "pricing": {
+        "cached_input_per_mtok": 0.002,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://openrouter.ai/meta/muse-spark-1.3-contributor",
+      "source_urls": [
+        "https://openrouter.ai/meta/muse-spark-1.3-contributor"
+      ]
+    },
     "openrouter/microsoft/phi-4": {
       "context_window": 16384,
       "enabled": true,
@@ -60062,6 +60285,40 @@
         "https://openrouter.ai/meta/muse-spark-1.2-contributor"
       ]
     },
+    "openrouter/muse-spark-1.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 943718,
+      "model_ref": "muse-spark-1.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 4.25
+      },
+      "pricing_source_url": "https://openrouter.ai/meta/muse-spark-1.3",
+      "provider_model_id": "meta/muse-spark-1.3",
+      "source_urls": [
+        "https://openrouter.ai/meta/muse-spark-1.3"
+      ]
+    },
+    "openrouter/muse-spark-1.3-contributor": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 943718,
+      "model_ref": "muse-spark-1.3-contributor",
+      "pricing": {
+        "cached_input_per_mtok": 0.002,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.2
+      },
+      "pricing_source_url": "https://openrouter.ai/meta/muse-spark-1.3-contributor",
+      "provider_model_id": "meta/muse-spark-1.3-contributor",
+      "source_urls": [
+        "https://openrouter.ai/meta/muse-spark-1.3-contributor"
+      ]
+    },
     "openrouter/mythomax-l2-13b": {
       "context_window": 4096,
       "enabled": true,
@@ -60128,15 +60385,15 @@
       ]
     },
     "openrouter/nemotron-3-ultra-550b-a55b": {
-      "context_window": 256000,
+      "context_window": 202800,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 182520,
       "model_ref": "nemotron-3-ultra-550b-a55b",
       "pricing": {
-        "cached_input_per_mtok": 0.1875,
+        "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.625,
-        "output_per_mtok": 3.125
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b",
       "source_urls": [
@@ -60462,15 +60719,15 @@
       ]
     },
     "openrouter/nvidia/nemotron-3-ultra-550b-a55b": {
-      "context_window": 256000,
+      "context_window": 202800,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 182520,
       "model_ref": "nemotron-3-ultra-550b-a55b",
       "pricing": {
-        "cached_input_per_mtok": 0.1875,
+        "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.625,
-        "output_per_mtok": 3.125
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b",
       "source_urls": [
@@ -64021,10 +64278,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -69777,6 +70034,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-09-02T10:54:28Z",
+  "updated_at": "2026-09-02T20:44:54Z",
   "version": 1
 }
