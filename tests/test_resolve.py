@@ -677,3 +677,73 @@ def test_merge_separator_variants_declines_when_owner_is_not_inferable() -> None
     merged = merge_separator_variant_clusters(clusters)
 
     assert set(merged) == {"mysterynet-1-0", "mysterynet-1.0"}
+
+
+OFF_PEAK_WINDOW = {
+    "label": "off_peak",
+    "utc_ranges": [{"start": "10:00", "end": "01:00"}],
+    "pricing": {"input_per_mtok": 0.22, "output_per_mtok": 0.66},
+}
+
+
+def _deepseek_evidence(official_pricing: dict, aggregator_pricing: dict) -> list[SourceEvidence]:
+    return [
+        SourceEvidence(
+            source_name="official",
+            source_model_id="deepseek-v4-flash",
+            provider_slug="deepseek",
+            canonical_hint="deepseek-v4-flash",
+            fields={
+                "display_name": "DeepSeek V4 Flash",
+                "owned_by": "deepseek",
+                "modes": ["chat"],
+                "pricing": official_pricing,
+            },
+            confidence="official",
+            evidence_ref="https://api-docs.deepseek.com/quick_start/pricing",
+        ),
+        SourceEvidence(
+            source_name="litellm",
+            source_model_id="deepseek/deepseek-v4-flash",
+            provider_slug="deepseek",
+            canonical_hint="deepseek-v4-flash",
+            fields={"pricing": aggregator_pricing},
+            confidence="low",
+            evidence_ref="litellm_model_prices.json",
+        ),
+    ]
+
+
+def test_resolve_keeps_time_windows_alongside_their_own_base_prices() -> None:
+    evidence = _deepseek_evidence(
+        {
+            "currency": "USD",
+            "input_per_mtok": 0.44,
+            "output_per_mtok": 1.32,
+            "time_windows": [OFF_PEAK_WINDOW],
+        },
+        {"currency": "USD", "cache_write_per_mtok": 0.0},
+    )
+
+    registry, _ = resolve_registry(evidence, curated={})
+
+    pricing = registry["provider_models"]["deepseek/deepseek-v4-flash"]["pricing"]
+    assert pricing["input_per_mtok"] == 0.44
+    assert pricing["cache_write_per_mtok"] == 0.0
+    assert pricing["time_windows"] == [OFF_PEAK_WINDOW]
+
+
+def test_resolve_drops_time_windows_when_base_prices_come_from_another_source() -> None:
+    # The official record carries the windows but no base rates, so the merged
+    # input/output prices come from the aggregator and the discount would not
+    # apply to them.
+    evidence = _deepseek_evidence(
+        {"currency": "USD", "time_windows": [OFF_PEAK_WINDOW]},
+        {"currency": "USD", "input_per_mtok": 0.14, "output_per_mtok": 0.28},
+    )
+
+    registry, _ = resolve_registry(evidence, curated={})
+
+    pricing = registry["provider_models"]["deepseek/deepseek-v4-flash"]["pricing"]
+    assert pricing["input_per_mtok"] == 0.14
+    assert "time_windows" not in pricing

@@ -406,6 +406,76 @@
             },
             { "type": "null" }
           ]
+        },
+        "time_windows": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/pricing_time_window" }
+            },
+            { "type": "null" }
+          ],
+          "description": "Recurring daily windows where per-token rates differ from the base prices above. Outside every listed window the base prices apply."
+        }
+      }
+    },
+    "pricing_time_window": {
+      "type": "object",
+      "required": ["label", "utc_ranges", "pricing"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Window name as published by the provider, e.g. \"off_peak\""
+        },
+        "utc_ranges": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/pricing_utc_range" },
+          "description": "Daily UTC ranges when this window is in effect"
+        },
+        "pricing": {
+          "$ref": "#/$defs/pricing_time_window_rates",
+          "description": "Rates that replace the base prices during this window; absent fields keep their base price"
+        }
+      }
+    },
+    "pricing_utc_range": {
+      "type": "object",
+      "required": ["start", "end"],
+      "additionalProperties": false,
+      "description": "Half-open daily UTC range [start, end). A range whose end is at or before its start wraps midnight.",
+      "properties": {
+        "start": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "end": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      }
+    },
+    "pricing_time_window_rates": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "input_per_mtok": {
+          "type": "number",
+          "description": "USD per million input tokens during this window"
+        },
+        "output_per_mtok": {
+          "type": "number",
+          "description": "USD per million output tokens during this window"
+        },
+        "cached_input_per_mtok": {
+          "type": "number",
+          "description": "USD per million cached input tokens during this window"
+        },
+        "cache_write_per_mtok": {
+          "type": "number",
+          "description": "USD per million cache creation tokens during this window"
         }
       }
     },

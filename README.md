@@ -144,6 +144,44 @@ All monetary values in USD. Token-based prices are **per million tokens**.
 | `per_request` | number/null | Flat per request |
 | `per_page` | number/null | Per page (OCR) |
 | `tiers` | array/null | Context-length pricing tiers |
+| `time_windows` | array/null | Recurring daily windows with different rates (see Pricing Time Windows) |
+
+### Pricing Time Windows
+
+Some providers charge different per-token rates depending on the time of day — DeepSeek, for example, bills off-peak hours at half its peak rates. The base prices above are the **standard (peak) rates**; each entry in `time_windows` lists the UTC ranges when different rates apply.
+
+| Field | Type | Description |
+|---|---|---|
+| `label` | string | Window name as published by the provider, e.g. `off_peak` |
+| `utc_ranges` | array | Daily UTC ranges when the window is in effect |
+| `utc_ranges[].start` | string | Inclusive `HH:MM` UTC start |
+| `utc_ranges[].end` | string | Exclusive `HH:MM` UTC end; a range whose end is at or before its start wraps midnight |
+| `pricing` | object | Rates replacing the base prices during the window: `input_per_mtok`, `output_per_mtok`, `cached_input_per_mtok`, `cache_write_per_mtok` |
+
+Fields absent from a window's `pricing` keep their base price, and outside every listed range the base prices apply. A consumer that ignores `time_windows` sees the peak rate and so never understates cost.
+
+```json
+"pricing": {
+  "currency": "USD",
+  "input_per_mtok": 0.44,
+  "output_per_mtok": 1.32,
+  "cached_input_per_mtok": 0.014,
+  "time_windows": [
+    {
+      "label": "off_peak",
+      "utc_ranges": [
+        { "start": "04:00", "end": "06:00" },
+        { "start": "10:00", "end": "01:00" }
+      ],
+      "pricing": {
+        "input_per_mtok": 0.22,
+        "output_per_mtok": 0.66,
+        "cached_input_per_mtok": 0.007
+      }
+    }
+  ]
+}
+```
 
 ### Enums
 

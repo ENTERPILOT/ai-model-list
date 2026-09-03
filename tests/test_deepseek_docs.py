@@ -59,9 +59,14 @@ TIERED_PRICING_HTML = """
       <tr><td rowspan="2">1M OUTPUT TOKENS</td><td>OFF-PEAK</td><td>$0.66</td><td>$1.98</td></tr>
       <tr><td>PEAK</td><td>$1.32</td><td>$3.96</td></tr>
     </table>
+    <p>(1) Off-peak rates are half of the peak rates. Peak hours are 01:00 - 04:00 and 06:00 - 10:00 UTC (all other hours are off-peak).</p>
   </body>
 </html>
 """
+
+TIERED_PRICING_HTML_WITHOUT_HOURS = TIERED_PRICING_HTML.replace(
+    "Peak hours are 01:00 - 04:00 and 06:00 - 10:00 UTC", "Peak hours vary by region"
+)
 
 
 def test_build_deepseek_models_snapshot_parses_legacy_pricing_table() -> None:
@@ -144,15 +149,61 @@ def test_build_deepseek_models_snapshot_uses_peak_tier_pricing() -> None:
 
     models = {model["id"]: model for model in payload[0]["models"]}
     assert set(models) == {"deepseek-v4-flash", "deepseek-v4-pro"}
-    assert models["deepseek-v4-flash"]["prices"] == {
+    flash_prices = models["deepseek-v4-flash"]["prices"]
+    pro_prices = models["deepseek-v4-pro"]["prices"]
+    assert {key: flash_prices[key] for key in ("input_mtok", "cache_read_mtok", "output_mtok")} == {
         "input_mtok": 0.44,
         "cache_read_mtok": 0.014,
         "output_mtok": 1.32,
     }
-    assert models["deepseek-v4-pro"]["prices"] == {
+    assert {key: pro_prices[key] for key in ("input_mtok", "cache_read_mtok", "output_mtok")} == {
         "input_mtok": 1.32,
         "cache_read_mtok": 0.044,
         "output_mtok": 3.96,
     }
     assert models["deepseek-v4-flash"]["context_window"] == 1_000_000
     assert models["deepseek-v4-flash"]["max_output_tokens"] == 384_000
+
+
+def test_build_deepseek_models_snapshot_emits_off_peak_time_window() -> None:
+    payload = build_deepseek_models_snapshot(TIERED_PRICING_HTML, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    # Peak hours are 01:00-04:00 and 06:00-10:00, so off-peak is the complement,
+    # with the range covering midnight expressed as a single wrapping window.
+    assert models["deepseek-v4-flash"]["prices"]["time_windows"] == [
+        {
+            "label": "off_peak",
+            "utc_ranges": [
+                {"start": "04:00", "end": "06:00"},
+                {"start": "10:00", "end": "01:00"},
+            ],
+            "prices": {
+                "input_mtok": 0.22,
+                "cache_read_mtok": 0.007,
+                "output_mtok": 0.66,
+            },
+        }
+    ]
+    assert models["deepseek-v4-pro"]["prices"]["time_windows"][0]["prices"] == {
+        "input_mtok": 0.66,
+        "cache_read_mtok": 0.022,
+        "output_mtok": 1.98,
+    }
+
+
+def test_build_deepseek_models_snapshot_omits_time_window_without_documented_hours() -> None:
+    payload = build_deepseek_models_snapshot(TIERED_PRICING_HTML_WITHOUT_HOURS, SOURCE_URL)
+
+    for model in payload[0]["models"]:
+        assert "time_windows" not in model["prices"]
+    # Peak stays the published base price even when the hours are unreadable.
+    models = {model["id"]: model for model in payload[0]["models"]}
+    assert models["deepseek-v4-flash"]["prices"]["input_mtok"] == 0.44
+
+
+def test_build_deepseek_models_snapshot_omits_time_window_for_untiered_table() -> None:
+    payload = build_deepseek_models_snapshot(CURRENT_PRICING_HTML, SOURCE_URL)
+
+    for model in payload[0]["models"]:
+        assert "time_windows" not in model["prices"]

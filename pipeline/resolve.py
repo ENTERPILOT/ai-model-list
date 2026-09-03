@@ -92,7 +92,8 @@ def choose_field_value(field_name: str, candidates: list[SourceEvidence], policy
 
 def merge_pricing_values(candidates: list[SourceEvidence]) -> dict[str, Any] | None:
     merged: dict[str, Any] = {}
-    for candidate in candidates:
+    provenance: dict[str, int] = {}
+    for rank, candidate in enumerate(candidates):
         pricing = candidate.fields.get("pricing")
         if not isinstance(pricing, dict):
             continue
@@ -100,12 +101,34 @@ def merge_pricing_values(candidates: list[SourceEvidence]) -> dict[str, Any] | N
             if value is None or key in merged:
                 continue
             merged[key] = deepcopy(value)
+            provenance[key] = rank
 
     if not merged:
         return None
 
+    _drop_orphan_time_windows(merged, provenance)
     merged.setdefault("currency", "USD")
     return merged if len(merged) > 1 else None
+
+
+def _drop_orphan_time_windows(merged: dict[str, Any], provenance: dict[str, int]) -> None:
+    """Keep time windows only alongside the base prices they were published with.
+
+    Window rates override specific base fields, so pairing them with a base
+    price merged in from a different source would misstate the discount.
+    """
+    if "time_windows" not in merged:
+        return
+
+    window_rank = provenance.get("time_windows")
+    overridden = {
+        field
+        for window in merged["time_windows"]
+        if isinstance(window, dict) and isinstance(window.get("pricing"), dict)
+        for field in window["pricing"]
+    }
+    if any(provenance.get(field) != window_rank for field in overridden):
+        del merged["time_windows"]
 
 
 def merge_mode_values(candidates: list[SourceEvidence]) -> list[str] | None:
