@@ -822,7 +822,9 @@ def test_validate_accepts_pricing_time_windows(tmp_path: Path) -> None:
                 {
                     "label": "off_peak",
                     "utc_ranges": [
-                        {"start": "04:00", "end": "06:00"},
+                        {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "04:00", "end": "06:00"},
+                        {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "10:00", "end": "24:00"},
+                        {"days": ["sat", "sun"], "start": "00:00", "end": "24:00"},
                         {"start": "10:00", "end": "01:00"},
                     ],
                     "pricing": {"input_per_mtok": 0.22, "output_per_mtok": 0.66},
@@ -836,6 +838,28 @@ def test_validate_accepts_pricing_time_windows(tmp_path: Path) -> None:
     schema_path = Path(__file__).resolve().parent.parent / "schema.json"
 
     assert validate(models_path, schema_path) == []
+
+
+def test_validate_rejects_unknown_pricing_time_window_days(tmp_path: Path) -> None:
+    data = _registry_with_pricing(
+        {
+            "currency": "USD",
+            "input_per_mtok": 0.44,
+            "time_windows": [
+                {
+                    "label": "off_peak",
+                    "utc_ranges": [{"days": ["weekend"], "start": "00:00", "end": "24:00"}],
+                    "pricing": {"input_per_mtok": 0.22},
+                }
+            ],
+        }
+    )
+    models_path = tmp_path / "models.json"
+    models_path.write_text(json.dumps(data), encoding="utf-8")
+
+    schema_path = Path(__file__).resolve().parent.parent / "schema.json"
+
+    assert validate(models_path, schema_path) != []
 
 
 def test_validate_rejects_malformed_pricing_time_windows(tmp_path: Path) -> None:

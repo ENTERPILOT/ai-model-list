@@ -976,8 +976,8 @@ def test_normalize_official_rows_maps_pricing_time_windows() -> None:
                             {
                                 "label": "off_peak",
                                 "utc_ranges": [
-                                    {"start": "04:00", "end": "06:00"},
-                                    {"start": "10:00", "end": "01:00"},
+                                    {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "04:00", "end": "06:00"},
+                                    {"start": "10:00", "end": "01:00", "days": []},
                                 ],
                                 "prices": {
                                     "input_mtok": 0.22,
@@ -1004,7 +1004,7 @@ def test_normalize_official_rows_maps_pricing_time_windows() -> None:
         {
             "label": "off_peak",
             "utc_ranges": [
-                {"start": "04:00", "end": "06:00"},
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "04:00", "end": "06:00"},
                 {"start": "10:00", "end": "01:00"},
             ],
             "pricing": {

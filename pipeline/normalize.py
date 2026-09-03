@@ -595,18 +595,27 @@ def _time_windows_from_catalog_prices(
     return windows or None
 
 
-def _time_window_utc_ranges(value: Any) -> list[dict[str, str]]:
+def _time_window_utc_ranges(value: Any) -> list[dict[str, Any]]:
     if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
         return []
 
-    ranges: list[dict[str, str]] = []
+    ranges: list[dict[str, Any]] = []
     for entry in value:
         if not isinstance(entry, Mapping):
             continue
         start = entry.get("start")
         end = entry.get("end")
-        if isinstance(start, str) and isinstance(end, str) and start and end:
-            ranges.append({"start": start, "end": end})
+        if not (isinstance(start, str) and isinstance(end, str) and start and end):
+            continue
+        utc_range: dict[str, Any] = {}
+        days = entry.get("days")
+        if isinstance(days, Sequence) and not isinstance(days, (str, bytes, bytearray)):
+            normalized_days = [day for day in days if isinstance(day, str) and day]
+            if normalized_days:
+                utc_range["days"] = normalized_days
+        utc_range["start"] = start
+        utc_range["end"] = end
+        ranges.append(utc_range)
     return ranges
 
 

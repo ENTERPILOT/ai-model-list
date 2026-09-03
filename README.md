@@ -154,11 +154,12 @@ Some providers charge different per-token rates depending on the time of day —
 |---|---|---|
 | `label` | string | Window name as published by the provider, e.g. `off_peak` |
 | `utc_ranges` | array | Daily UTC ranges when the window is in effect |
+| `utc_ranges[].days` | array | Optional UTC weekdays (`mon` … `sun`) the range starts on; absent means every day |
 | `utc_ranges[].start` | string | Inclusive `HH:MM` UTC start |
-| `utc_ranges[].end` | string | Exclusive `HH:MM` UTC end; a range whose end is at or before its start wraps midnight |
+| `utc_ranges[].end` | string | Exclusive `HH:MM` UTC end, or `24:00` for the end of the day; a range whose end is at or before its start wraps past midnight into the following day |
 | `pricing` | object | Rates replacing the base prices during the window: `input_per_mtok`, `output_per_mtok`, `cached_input_per_mtok`, `cache_write_per_mtok` |
 
-Fields absent from a window's `pricing` keep their base price, and outside every listed range the base prices apply. A consumer that ignores `time_windows` sees the peak rate and so never understates cost.
+Fields absent from a window's `pricing` keep their base price, and outside every listed range the base prices apply. When windows overlap, the first listed window wins. A consumer that ignores `time_windows` sees the peak rate and so never understates cost. Consumers should evaluate the moment a request completes in UTC, whatever their local timezone.
 
 ```json
 "pricing": {
@@ -170,8 +171,10 @@ Fields absent from a window's `pricing` keep their base price, and outside every
     {
       "label": "off_peak",
       "utc_ranges": [
-        { "start": "04:00", "end": "06:00" },
-        { "start": "10:00", "end": "01:00" }
+        { "days": ["mon", "tue", "wed", "thu", "fri"], "start": "00:00", "end": "01:00" },
+        { "days": ["mon", "tue", "wed", "thu", "fri"], "start": "04:00", "end": "06:00" },
+        { "days": ["mon", "tue", "wed", "thu", "fri"], "start": "10:00", "end": "24:00" },
+        { "days": ["sat", "sun"], "start": "00:00", "end": "24:00" }
       ],
       "pricing": {
         "input_per_mtok": 0.22,
