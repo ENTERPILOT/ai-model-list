@@ -53,6 +53,10 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if pydantic_genai_path.exists():
         payloads["pydantic_genai"] = _read_json(pydantic_genai_path)
 
+    openai_models_official_path = snapshot_dir / "openai_models_official.json"
+    if openai_models_official_path.exists():
+        payloads["openai_official"] = _read_json(openai_models_official_path)
+
     xai_models_official_path = snapshot_dir / "xai_models_official.json"
     if xai_models_official_path.exists():
         payloads["xai_models_official"] = _read_json(xai_models_official_path)

@@ -13,7 +13,7 @@
       },
       "source_url": "https://developers.openai.com/api/docs/pricing",
       "verified_on": "2026-09-05",
-      "reason": "pydantic-genai-prices publishes 1.00/6.00 for gpt-5.6-luna; OpenAI's standard table lists 0.20/1.20 (0.40/1.80 above 272K). Every other source, this model's own tiers, and its batch rate already agree with the vendor."
+      "reason": "OpenAI's pricing page lists gpt-5.6-luna, so the vendor adapter corrects that id directly. The aggregated feed also publishes a dashed spelling (gpt-5-6-luna) that the page does not list, and its stale 1.00/6.00 still reaches that provider record."
     },
     {
       "model": "gpt-5.6-terra",
@@ -28,22 +28,7 @@
       },
       "source_url": "https://developers.openai.com/api/docs/pricing",
       "verified_on": "2026-09-05",
-      "reason": "Same stale pydantic-genai-prices row as gpt-5.6-luna: 2.50/15.00 published against OpenAI's standard 2.00/12.00 (4.00/18.00 above 272K)."
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "providers": [
-        "openai"
-      ],
-      "pricing": {
-        "input_per_mtok": 4.0,
-        "cached_input_per_mtok": 0.4,
-        "cache_write_per_mtok": 5.0,
-        "output_per_mtok": 20.0
-      },
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "verified_on": "2026-09-05",
-      "reason": "Same stale pydantic-genai-prices row as gpt-5.6-luna: 5.00/30.00 published against OpenAI's standard 4.00/20.00 (8.00/30.00 above 272K)."
+      "reason": "Same residue as gpt-5.6-luna: the vendor adapter covers gpt-5.6-terra, while the feed's dashed gpt-5-6-terra spelling keeps its stale 2.50/15.00."
     },
     {
       "model": "gpt-5-6",
@@ -60,7 +45,7 @@
       },
       "source_url": "https://developers.openai.com/api/docs/pricing",
       "verified_on": "2026-09-05",
-      "reason": "Unsuffixed gpt-5.6 resolves to the same model OpenAI serves as gpt-5.6-sol, so it carries the same stale pydantic-genai-prices rate — and the batch rates derived from it (2.50/15.00) against OpenAI's published 2.00/10.00."
+      "reason": "The unsuffixed gpt-5.6 alias is not a row on OpenAI's pricing page — the feed maps it onto the model served as gpt-5.6-sol — so the vendor adapter never sees this id and the feed's stale 5.00/30.00 stands."
     }
   ]
 }

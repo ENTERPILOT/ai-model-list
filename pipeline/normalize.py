@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from decimal import Decimal
 from pathlib import Path
 import re
@@ -1591,6 +1592,39 @@ def normalize_pydantic_genai_rows(
     return records
 
 
+OPENAI_DOCS_SOURCE_NAME = "openai_official"
+
+
+def normalize_openai_docs_rows(
+    rows: Iterable[Mapping[str, Any]],
+    *,
+    evidence_ref: str = "openai_models_official.json",
+    **kwargs: Any,
+) -> list[SourceEvidence]:
+    """Emit OpenAI's own published prices as a pricing-only overlay.
+
+    The pricing page lists rates and nothing else — no context windows, no
+    modalities, no display names. Records carrying ``official`` confidence would
+    win those fields outright and replace good catalog metadata with nothing, so
+    strip everything but ``pricing`` and let the aggregated feed keep describing
+    what each model *is*.
+
+    The overlay also gets its own source name rather than the shared ``official``
+    one, so ``source_policies.json`` can rank the vendor's page above a feed that
+    merely cites it.
+    """
+    records = normalize_pydantic_genai_rows(rows, evidence_ref=evidence_ref, **kwargs)
+    overlay: list[SourceEvidence] = []
+    for record in records:
+        pricing = record.fields.get("pricing")
+        if not pricing:
+            continue
+        overlay.append(
+            replace(record, source_name=OPENAI_DOCS_SOURCE_NAME, fields={"pricing": pricing})
+        )
+    return overlay
+
+
 def normalize_third_party_provider_rows(
     rows: Iterable[Mapping[str, Any]],
     *,
@@ -1665,6 +1699,7 @@ NORMALIZER_BY_SOURCE = {
     "litellm": normalize_litellm_rows,
     "xai_models_official": normalize_xai_models_official_rows,
     "pydantic_genai": normalize_pydantic_genai_rows,
+    "openai_official": normalize_openai_docs_rows,
     "deepseek_official": normalize_pydantic_genai_rows,
     "runway_official": normalize_pydantic_genai_rows,
     "google_speech_official": normalize_pydantic_genai_rows,

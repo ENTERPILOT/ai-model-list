@@ -23,6 +23,7 @@ from pipeline.deepseek_docs import build_deepseek_models_snapshot
 from pipeline.google_speech_docs import build_google_speech_models_snapshot
 from pipeline.meta_docs import build_meta_models_snapshot
 from pipeline.ollama_cloud_docs import build_ollama_cloud_models_snapshot
+from pipeline.openai_docs import build_openai_models_snapshot
 from pipeline.opencode_zen_docs import build_opencode_zen_models_snapshot
 from pipeline.rankings import (
     ARENA_CATALOG_DIRNAME,
@@ -55,6 +56,9 @@ class SourceDescriptor:
 
 GITHUB_SNAPSHOT_BASE_URL = "https://raw.githubusercontent.com/ENTERPILOT/ai-model-price-list/main/sources"
 PORTKEY_PRICING_BASE_URL = "https://configs.portkey.ai/pricing"
+OPENAI_PRICING_SOURCE_URL = "https://developers.openai.com/api/docs/pricing.md"
+OPENAI_PRICING_PAGE_URL = "https://developers.openai.com/api/docs/pricing"
+OPENAI_MODELS_SOURCE_FILENAME = "openai_models_official.json"
 XAI_MODELS_SOURCE_URL = "https://docs.x.ai/developers/models?cluster=us-east-1"
 XAI_MODELS_SOURCE_FILENAME = "xai_models_official.json"
 DEEPSEEK_MODELS_SOURCE_URL = "https://api-docs.deepseek.com/quick_start/pricing"
@@ -302,6 +306,15 @@ def fetch_sources_to(
         output_path = snapshot_dir / descriptor.filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_bytes(_fetch_bytes(descriptor.url))
+
+    _write_scraped_snapshot(
+        snapshot_dir,
+        OPENAI_MODELS_SOURCE_FILENAME,
+        lambda: build_openai_models_snapshot(
+            _fetch_bytes(OPENAI_PRICING_SOURCE_URL).decode("utf-8"),
+            OPENAI_PRICING_PAGE_URL,
+        ),
+    )
 
     _write_scraped_snapshot(
         snapshot_dir,

@@ -304,9 +304,17 @@ export MODEL_LIST_URL=https://raw.githubusercontent.com/ENTERPILOT/ai-model-list
 
 Update the curated inputs or source adapters, run `python scripts/build_registry.py --report-md tmp/build/report.md`, then run `python scripts/validate.py --models models.json --schema schema.json`.
 
+### Where prices come from
+
+Prices are resolved from ranked sources (`registry/curated/source_policies.json`), highest-ranked first, field by field. Where a vendor publishes machine-readable prices, the registry reads them directly rather than trusting an aggregator's copy — `pipeline/openai_docs.py`, `xai_docs.py`, `deepseek_docs.py`, `meta_docs.py` and friends each scrape one vendor's own docs.
+
+OpenAI's adapter reads `https://developers.openai.com/api/docs/pricing.md` (every OpenAI docs page serves Markdown by appending `.md`) and outranks the aggregated feed, which cites that same page but can lag it. It is a **pricing overlay**: the page lists rates and nothing else, so context windows, modalities and display names keep coming from the catalog sources, and only the exact model ids the page prints are emitted.
+
+If a vendor's page changes shape and the scrape stops parsing, the snapshot is skipped for that run and the aggregator prices are used instead — a build never fails on a broken scrape, and never publishes half-read prices.
+
 ### Correcting a wrong upstream price
 
-Prices come from ranked sources (`registry/curated/source_policies.json`), and the highest-ranked one wins — so when an upstream publishes a stale or wrong rate, the registry ships it until that upstream catches up. `registry/curated/pricing_overrides.json` is the reviewed correction layer, applied after resolution:
+When no vendor adapter covers a model — or one covers the model but not an alias spelling only an aggregator publishes — a stale upstream rate still wins. `registry/curated/pricing_overrides.json` is the reviewed correction layer, applied after resolution:
 
 ```json
 {
@@ -332,4 +340,4 @@ Prices come from ranked sources (`registry/curated/source_policies.json`), and t
 | `verified_on` | When a human last checked the numbers against `source_url` |
 | `reason` | Why the entry exists — what upstream says, and what the vendor says |
 
-Add an entry only when the vendor's own published page disagrees with the built registry, and keep it narrow. Each build reports every override under **Pricing Overrides** in `tmp/build/report.md`; an override that stops changing anything is listed as no longer needed and should be deleted, because a stale pin becomes the next wrong price the moment the vendor updates.
+Add an entry only when the vendor's own published page disagrees with the built registry and no adapter can reach it, and keep it narrow. Prefer a vendor docs adapter whenever the vendor publishes prices in a parseable form — it stays correct without anyone re-checking it. Each build reports every override under **Pricing Overrides** in `tmp/build/report.md`; an override that stops changing anything is listed as no longer needed and should be deleted, because a stale pin becomes the next wrong price the moment the vendor updates.

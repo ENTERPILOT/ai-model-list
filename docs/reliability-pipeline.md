@@ -44,6 +44,7 @@ python scripts/validate.py
 - `registry/curated/providers.json` is the curated provider catalog used to keep provider slugs stable.
 - `registry/curated/canonical_aliases.json` is the reviewed alias map for canonical model promotion.
 - `registry/curated/rejections.json` blocks known garbage IDs and source artifacts before resolution.
+- OpenAI pricing is scraped from `https://developers.openai.com/api/docs/pricing.md` and ranked above the aggregated feed, which merely cites that page and can lag it. The scrape is a **pricing overlay**: the page carries no context windows, modalities or display names, so those keep coming from the catalog sources. Only the model ids the page actually prints are emitted — inventing an id spelling would invent a provider model OpenAI may not serve.
 - `registry/curated/pricing_overrides.json` corrects prices an upstream publishes wrong, after resolution. Source ranking alone cannot fix a wrong number from the top-ranked source, so these are reviewed by hand, scoped to named fields and providers, and reported on every build so they get retired once upstream agrees.
 - Source snapshots are fetched from `https://github.com/ENTERPILOT/ai-model-price-list`.
 - Portkey pricing snapshots are fetched directly from `https://configs.portkey.ai/pricing/` so provider coverage and pricing components are not limited by the mirrored bundle.

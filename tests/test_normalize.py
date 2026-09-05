@@ -888,6 +888,7 @@ def test_normalize_xai_models_official_rows_adds_new_xai_models_and_modalities()
 def test_normalizer_registry_covers_current_source_set() -> None:
     assert set(NORMALIZER_BY_SOURCE) == {
         "litellm",
+        "openai_official",
         "xai_models_official",
         "deepseek_official",
         "runway_official",

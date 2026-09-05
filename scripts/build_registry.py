@@ -65,6 +65,7 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
     official_providers = curated.get("source_policies", {}).get("official_sources", [])
     admitted_providers = list(curated.get("providers", {}))
     custom_official_sources = {
+        "openai_official": ["openai"],
         "deepseek_official": ["deepseek"],
         "runway_official": ["runway"],
         "google_speech_official": ["vertex_ai"],
