@@ -37,7 +37,7 @@ ai-model-list/
 ├── models.json              # The registry — single output file
 ├── models.min.json          # Minified registry artifact
 ├── pipeline/                # Shared normalization, resolve, render, ranking logic
-├── registry/curated/        # Curated provider policies and aliases
+├── registry/curated/        # Curated provider policies, aliases, and price corrections
 ├── schema.json              # JSON Schema for validation
 ├── scripts/
 │   ├── build_registry.py    # Fetch sources and build models.json
@@ -303,3 +303,33 @@ export MODEL_LIST_URL=https://raw.githubusercontent.com/ENTERPILOT/ai-model-list
 ### Updating registry data
 
 Update the curated inputs or source adapters, run `python scripts/build_registry.py --report-md tmp/build/report.md`, then run `python scripts/validate.py --models models.json --schema schema.json`.
+
+### Correcting a wrong upstream price
+
+Prices come from ranked sources (`registry/curated/source_policies.json`), and the highest-ranked one wins — so when an upstream publishes a stale or wrong rate, the registry ships it until that upstream catches up. `registry/curated/pricing_overrides.json` is the reviewed correction layer, applied after resolution:
+
+```json
+{
+  "overrides": [
+    {
+      "model": "gpt-5.6-luna",
+      "providers": ["openai"],
+      "pricing": { "input_per_mtok": 0.2, "output_per_mtok": 1.2 },
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "verified_on": "2026-09-05",
+      "reason": "Upstream feed publishes 1.00/6.00; the vendor's own table lists 0.20/1.20."
+    }
+  ]
+}
+```
+
+| Field | Description |
+|---|---|
+| `model` | Canonical model key to correct |
+| `providers` | Provider slugs whose `provider_models` entries share the correction. Opt-in — a vendor's published rate says nothing about what a reseller charges, so unlisted providers keep their own price |
+| `pricing` | Only the pricing fields being corrected; everything else (`tiers`, `batch_*`, …) stays sourced from upstream |
+| `source_url` | The vendor page the corrected numbers were read from; becomes the `pricing_source_url` on records it touches |
+| `verified_on` | When a human last checked the numbers against `source_url` |
+| `reason` | Why the entry exists — what upstream says, and what the vendor says |
+
+Add an entry only when the vendor's own published page disagrees with the built registry, and keep it narrow. Each build reports every override under **Pricing Overrides** in `tmp/build/report.md`; an override that stops changing anything is listed as no longer needed and should be deleted, because a stale pin becomes the next wrong price the moment the vendor updates.

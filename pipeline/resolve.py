@@ -8,6 +8,7 @@ import re
 from typing import Any, Iterable
 
 from pipeline.normalize import _strip_deployment_tier_suffix, infer_owned_by, split_provider_model_name
+from pipeline.overrides import apply_pricing_overrides
 from pipeline.rules import CONFIDENCE_RANK, is_canonical_model_key, sort_candidates_by_authority
 from pipeline.types import SourceEvidence
 
@@ -221,6 +222,8 @@ def resolve_registry(
                 provider_records,
                 policy,
             )
+
+    report["pricing_overrides"] = apply_pricing_overrides(registry, curated.get("pricing_overrides"))
 
     return registry, report
 

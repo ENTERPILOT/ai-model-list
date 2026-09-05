@@ -1,0 +1,66 @@
+{
+  "overrides": [
+    {
+      "model": "gpt-5.6-luna",
+      "providers": [
+        "openai"
+      ],
+      "pricing": {
+        "input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.02,
+        "cache_write_per_mtok": 0.25,
+        "output_per_mtok": 1.2
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "verified_on": "2026-09-05",
+      "reason": "pydantic-genai-prices publishes 1.00/6.00 for gpt-5.6-luna; OpenAI's standard table lists 0.20/1.20 (0.40/1.80 above 272K). Every other source, this model's own tiers, and its batch rate already agree with the vendor."
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "providers": [
+        "openai"
+      ],
+      "pricing": {
+        "input_per_mtok": 2.0,
+        "cached_input_per_mtok": 0.2,
+        "cache_write_per_mtok": 2.5,
+        "output_per_mtok": 12.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "verified_on": "2026-09-05",
+      "reason": "Same stale pydantic-genai-prices row as gpt-5.6-luna: 2.50/15.00 published against OpenAI's standard 2.00/12.00 (4.00/18.00 above 272K)."
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "providers": [
+        "openai"
+      ],
+      "pricing": {
+        "input_per_mtok": 4.0,
+        "cached_input_per_mtok": 0.4,
+        "cache_write_per_mtok": 5.0,
+        "output_per_mtok": 20.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "verified_on": "2026-09-05",
+      "reason": "Same stale pydantic-genai-prices row as gpt-5.6-luna: 5.00/30.00 published against OpenAI's standard 4.00/20.00 (8.00/30.00 above 272K)."
+    },
+    {
+      "model": "gpt-5-6",
+      "providers": [
+        "openai"
+      ],
+      "pricing": {
+        "input_per_mtok": 4.0,
+        "cached_input_per_mtok": 0.4,
+        "cache_write_per_mtok": 5.0,
+        "output_per_mtok": 20.0,
+        "batch_input_per_mtok": 2.0,
+        "batch_output_per_mtok": 10.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "verified_on": "2026-09-05",
+      "reason": "Unsuffixed gpt-5.6 resolves to the same model OpenAI serves as gpt-5.6-sol, so it carries the same stale pydantic-genai-prices rate — and the batch rates derived from it (2.50/15.00) against OpenAI's published 2.00/10.00."
+    }
+  ]
+}

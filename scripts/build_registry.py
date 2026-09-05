@@ -266,8 +266,34 @@ def build_registry_artifacts(
         duplicate_clusters=_duplicate_like_clusters(registry["models"]),
         quarantine=quarantine,
         source_freshness=source_freshness or None,
+        pricing_overrides=resolve_report.get("pricing_overrides", []),
     )
     return registry, report, quarantine
+
+
+def _warn_about_stale_pricing_overrides(report: dict[str, Any]) -> None:
+    """Surface curated price corrections that no longer do anything.
+
+    An override that stops changing a value is a price we are pinning by hand for
+    no reason — and the moment upstream publishes a *newer* correct price, that
+    same pin turns into the bug it was written to fix. Keep it visible in the
+    build log so it gets retired.
+    """
+    stale = [
+        entry
+        for entry in report.get("pricing_overrides", [])
+        if entry.get("status") != "applied"
+    ]
+    if not stale:
+        return
+
+    print(
+        "Stale pricing overrides in registry/curated/pricing_overrides.json "
+        "(review and retire):",
+        file=sys.stderr,
+    )
+    for entry in stale:
+        print(f"  {entry.get('model')}: {entry.get('status')}", file=sys.stderr)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -292,6 +318,8 @@ def main(argv: list[str] | None = None) -> int:
 
     _write_json(Path("models.json"), registry)
     _write_json(Path("models.min.json"), registry, compact=True)
+
+    _warn_about_stale_pricing_overrides(report)
 
     if args.report_md is not None:
         report_json_path = args.report_md.with_suffix(".json")

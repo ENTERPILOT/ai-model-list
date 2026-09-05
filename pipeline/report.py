@@ -13,11 +13,14 @@ def build_report(
     new_models: Iterable[str] = (),
     resolved_duplicates: Iterable[Iterable[str]] | None = None,
     source_freshness: dict[str, Any] | None = None,
+    pricing_overrides: Iterable[dict[str, Any]] = (),
 ) -> dict[str, Any]:
     duplicate_clusters_list = [list(cluster) for cluster in duplicate_clusters]
     resolved_duplicates_list = [list(cluster) for cluster in resolved_duplicates] if resolved_duplicates is not None else []
     quarantine_list = [dict(entry) for entry in quarantine]
     new_models_list = list(new_models)
+    pricing_overrides_list = [dict(entry) for entry in pricing_overrides]
+    stale_overrides = [entry for entry in pricing_overrides_list if entry.get("status") != "applied"]
 
     report: dict[str, Any] = {
         "summary": {
@@ -29,18 +32,29 @@ def build_report(
         "quarantine": quarantine_list,
         "new_models": new_models_list,
     }
+    # Keep the report shape unchanged for builds that carry no corrections.
+    if pricing_overrides_list:
+        report["summary"]["pricing_overrides_applied"] = len(pricing_overrides_list) - len(stale_overrides)
+        report["summary"]["pricing_overrides_stale"] = len(stale_overrides)
+        report["pricing_overrides"] = pricing_overrides_list
     if source_freshness is not None:
         report["source_freshness"] = dict(source_freshness)
     return report
 
 
 def build_markdown_report(report: dict[str, Any]) -> str:
+    summary = report["summary"]
     lines = [
         "# Registry Audit Report",
         "",
-        f"- Duplicate clusters: {report['summary']['duplicate_clusters']}",
-        f"- Quarantine count: {report['summary']['quarantine_count']}",
+        f"- Duplicate clusters: {summary['duplicate_clusters']}",
+        f"- Quarantine count: {summary['quarantine_count']}",
     ]
+    if summary.get("pricing_overrides_applied") or summary.get("pricing_overrides_stale"):
+        lines.append(f"- Pricing overrides applied: {summary.get('pricing_overrides_applied', 0)}")
+        lines.append(f"- Pricing overrides stale: {summary.get('pricing_overrides_stale', 0)}")
+
+    lines.extend(_pricing_override_lines(report.get("pricing_overrides", [])))
 
     new_models = report.get("new_models", [])
     if new_models:
@@ -80,3 +94,31 @@ def build_markdown_report(report: dict[str, Any]) -> str:
             lines.append(f"- {source_name}: {source_freshness[source_name]}")
 
     return "\n".join(lines)
+
+
+def _pricing_override_lines(pricing_overrides: list[dict[str, Any]]) -> list[str]:
+    """Render curated price corrections, flagging the ones that have gone stale.
+
+    A ``noop`` override means every source now agrees with the curated value, and
+    an ``unmatched`` one means its model key no longer resolves. Both are cues to
+    retire the entry rather than let it silently pin a price forever.
+    """
+    if not pricing_overrides:
+        return []
+
+    lines = ["", "## Pricing Overrides"]
+    for entry in pricing_overrides[:MAX_MARKDOWN_SECTION_ITEMS]:
+        model = entry.get("model", "")
+        status = entry.get("status", "")
+        if status == "applied":
+            fields = ", ".join(entry.get("changed_fields", [])) or "no fields"
+            targets = ", ".join(entry.get("changed_targets", []))
+            lines.append(f"- {model}: corrected {fields} on {targets}")
+        elif status == "noop":
+            lines.append(f"- {model}: no longer needed — sources already match the curated value")
+        else:
+            lines.append(f"- {model}: unmatched — no resolved model carries this key")
+    if len(pricing_overrides) > MAX_MARKDOWN_SECTION_ITEMS:
+        remaining = len(pricing_overrides) - MAX_MARKDOWN_SECTION_ITEMS
+        lines.append(f"- ... and {remaining} more pricing overrides")
+    return lines

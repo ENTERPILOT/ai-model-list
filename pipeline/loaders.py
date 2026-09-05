@@ -26,12 +26,20 @@ def _read_json(path: Path) -> Any:
 
 
 def load_curated_config(curated_dir: Path) -> dict[str, Any]:
-    return {
+    config = {
         "providers": _read_json(curated_dir / "providers.json"),
         "source_policies": _read_json(curated_dir / "source_policies.json"),
         "canonical_aliases": _read_json(curated_dir / "canonical_aliases.json"),
         "rejections": _read_json(curated_dir / "rejections.json"),
     }
+
+    # Optional: with no outstanding upstream price corrections there is nothing
+    # for this file to hold, so its absence is not a missing-input error.
+    pricing_overrides_path = curated_dir / "pricing_overrides.json"
+    if pricing_overrides_path.exists():
+        config["pricing_overrides"] = _read_json(pricing_overrides_path)
+
+    return config
 
 
 def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
