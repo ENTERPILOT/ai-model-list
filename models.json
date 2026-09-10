@@ -3801,7 +3801,9 @@
         "codex-mini-latest",
         "azure/codex-mini",
         "openai/codex-mini",
-        "openai/codex-mini-latest"
+        "azure_ai/codex-mini",
+        "openai/codex-mini-latest",
+        "azure/azure_ai/codex-mini"
       ],
       "capabilities": {
         "function_calling": true,
@@ -3875,6 +3877,28 @@
         "input_per_mtok": 1.5,
         "output_per_mtok": 6.0
       }
+    },
+    "cohere-command-a": {
+      "aliases": [
+        "azure_ai/cohere-command-a",
+        "azure/azure_ai/cohere-command-a"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Cohere Command A",
+      "max_output_tokens": 8182,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0
+      },
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/cohere/"
     },
     "cohere-rerank-v3-english": {
       "aliases": [
@@ -4792,6 +4816,45 @@
         "output_per_mtok": 0.28
       }
     },
+    "deepseek-flash": {
+      "aliases": [
+        "deepseek/deepseek-flash"
+      ],
+      "context_window": 1000000,
+      "description": "DeepSeek-V4.1-Flash",
+      "display_name": "DeepSeek Flash",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "deepseek",
+      "pricing": {
+        "cached_input_per_mtok": 0.006,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2,
+        "time_windows": [
+          {
+            "label": "off_peak",
+            "pricing": {
+              "cached_input_per_mtok": 0.003,
+              "input_per_mtok": 0.15,
+              "output_per_mtok": 0.6
+            },
+            "utc_ranges": [
+              {
+                "end": "06:00",
+                "start": "04:00"
+              },
+              {
+                "end": "01:00",
+                "start": "10:00"
+              }
+            ]
+          }
+        ]
+      },
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+    },
     "deepseek-r1": {
       "aliases": [
         "azure_ai/deepseek-r1",
@@ -5053,8 +5116,9 @@
         "response_schema": true,
         "tool_choice": true
       },
-      "description": "DeepSeek-V3.1 Terminus is an update to DeepSeek V3.1 that maintains the model's original capabilities while addressing issues reported by users, including language consistency and agent capabilities.",
-      "display_name": "DeepSeek V3.1 Terminus",
+      "context_window": 163840,
+      "display_name": "Deepseek v3 1 Terminus",
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text"
@@ -5066,12 +5130,11 @@
       "modes": [
         "chat"
       ],
-      "owned_by": "deepseek",
       "pricing": {
-        "cached_input_per_mtok": 0.13,
+        "cached_input_per_mtok": 0.135,
         "currency": "USD",
         "input_per_mtok": 0.27,
-        "output_per_mtok": 0.95
+        "output_per_mtok": 1.0
       },
       "rankings": {
         "chatbot_arena": {
@@ -5095,7 +5158,7 @@
           "rank": 34
         }
       },
-      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+      "source_url": "https://openrouter.ai/deepseek/deepseek-v3.1-terminus"
     },
     "deepseek-v3.2": {
       "aliases": [
@@ -5112,8 +5175,9 @@
         "reasoning": true,
         "tool_choice": true
       },
-      "description": "DeepSeek-V3.2 is a large language model designed to harmonize high computational efficiency with strong reasoning and agentic tool-use performance.",
-      "display_name": "DeepSeek V3.2",
+      "context_window": 163840,
+      "display_name": "Deepseek v3 2",
+      "max_output_tokens": 163840,
       "modalities": {
         "input": [
           "text"
@@ -5125,11 +5189,11 @@
       "modes": [
         "chat"
       ],
-      "owned_by": "deepseek",
       "pricing": {
+        "cached_input_per_mtok": 0.1345,
         "currency": "USD",
-        "input_per_mtok": 0.2288,
-        "output_per_mtok": 0.3432
+        "input_per_mtok": 0.269,
+        "output_per_mtok": 0.4
       },
       "rankings": {
         "chatbot_arena": {
@@ -5193,7 +5257,7 @@
           "score": 77.2
         }
       },
-      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+      "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
     },
     "deepseek-v3.2-exp": {
       "aliases": [
@@ -5205,8 +5269,9 @@
         "prompt_caching": true,
         "tool_choice": true
       },
-      "description": "DeepSeek-V3.2-Exp is an experimental large language model released by DeepSeek as an intermediate step between V3.1 and future architectures.",
-      "display_name": "DeepSeek V3.2 Exp",
+      "context_window": 163840,
+      "display_name": "Deepseek v3 2 Exp",
+      "max_output_tokens": 163840,
       "modalities": {
         "input": [
           "text"
@@ -5218,7 +5283,6 @@
       "modes": [
         "chat"
       ],
-      "owned_by": "deepseek",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.27,
@@ -5285,8 +5349,7 @@
           "rank": 66,
           "score": 64.4
         }
-      },
-      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+      }
     },
     "deepseek-v3.2-speciale": {
       "aliases": [
@@ -5336,18 +5399,14 @@
     "deepseek-v4-flash": {
       "aliases": [
         "deepseek-chat",
-        "deepseek-r1-0528",
         "DeepSeek-V4-Flash",
         "deepseek-reasoner",
-        "deepseek-chat-v3-0324",
         "deepseek/deepseek-chat",
-        "deepseek/deepseek-r1-0528",
         "azure_ai/deepseek-v4-flash",
         "deepseek/deepseek-reasoner",
         "deepseek/deepseek-v4-flash",
         "fireworks/deepseek-v4-flash",
         "deepseek-ai/DeepSeek-V4-Flash",
-        "deepseek/deepseek-chat-v3-0324",
         "fireworks_ai/deepseek-v4-flash",
         "ollama_cloud/deepseek-v4-flash",
         "opencode_zen/deepseek-v4-flash",
@@ -5371,8 +5430,8 @@
         "tool_choice": true
       },
       "context_window": 1000000,
-      "description": "DeepSeek-V4-Flash. Supports both non-thinking and thinking (default) modes, JSON output, tool calls, chat prefix completion, and FIM completion (non-thinking only).",
-      "display_name": "DeepSeek V4 Flash",
+      "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
+      "display_name": "DeepSeek-V4-Flash",
       "max_output_tokens": 393216,
       "modalities": {
         "input": [
@@ -5388,7 +5447,7 @@
       "owned_by": "deepseek",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.0028,
+        "cached_input_per_mtok": 0.028,
         "currency": "USD",
         "input_per_mtok": 0.14,
         "output_per_mtok": 0.28
@@ -5455,7 +5514,7 @@
           "score": 70.6
         }
       },
-      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+      "source_url": "https://fireworks.ai/pricing"
     },
     "deepseek-v4-flash-0731": {
       "aliases": [
@@ -5604,8 +5663,8 @@
         "tool_choice": true
       },
       "context_window": 1000000,
-      "description": "DeepSeek-V4-Pro. Supports both non-thinking and thinking (default) modes, JSON output, tool calls, chat prefix completion, and FIM completion (non-thinking only).",
-      "display_name": "DeepSeek V4 Pro",
+      "description": "DeepSeek-V4-Pro-0813",
+      "display_name": "DeepSeek-V4-Pro",
       "max_output_tokens": 393216,
       "modalities": {
         "input": [
@@ -5621,10 +5680,10 @@
       "owned_by": "deepseek",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.003625,
+        "cached_input_per_mtok": 0.145,
         "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
+        "input_per_mtok": 1.74,
+        "output_per_mtok": 3.48
       },
       "rankings": {
         "livebench": {
@@ -5668,7 +5727,7 @@
           "score": 82.7
         }
       },
-      "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
+      "source_url": "https://fireworks.ai/pricing"
     },
     "deepseek-v4-pro-0813": {
       "aliases": [
@@ -5702,12 +5761,48 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.018438,
+        "cached_input_per_mtok": 0.03498,
         "currency": "USD",
-        "input_per_mtok": 0.57948,
-        "output_per_mtok": 1.73844
+        "input_per_mtok": 1.0494,
+        "output_per_mtok": 3.1482
       },
       "source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813"
+    },
+    "deepseek-v4.1-flash": {
+      "aliases": [
+        "deepseek/deepseek-v4.1-flash",
+        "deepseek/deepseek-v4.1-flash-20260910",
+        "openrouter/deepseek/deepseek-v4.1-flash",
+        "openrouter/deepseek/deepseek-v4.1-flash-20260910"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "DeepSeek: DeepSeek V4.1 Flash",
+      "max_output_tokens": 384000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.003,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      }
     },
     "devstral-2512": {
       "aliases": [
@@ -8351,7 +8446,8 @@
     },
     "gemini-3.5-live-translate-preview": {
       "aliases": [
-        "gemini/gemini-3.5-live-translate-preview"
+        "gemini/gemini-3.5-live-translate-preview",
+        "vertex_ai/gemini-3.5-live-translate-preview"
       ],
       "capabilities": {
         "audio_input": true,
@@ -8486,9 +8582,9 @@
         "audio_transcription"
       ],
       "pricing": {
-        "audio_input_per_mtok": 2.5,
+        "audio_input_per_mtok": 2.0,
         "currency": "USD",
-        "input_per_mtok": 2.5,
+        "input_per_mtok": 2.0,
         "output_per_mtok": 12.0
       },
       "source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
@@ -9022,17 +9118,14 @@
         "audio_output": true,
         "function_calling": true,
         "parallel_function_calling": true,
-        "pdf_input": true,
-        "prompt_caching": true,
-        "response_schema": true,
         "system_messages": true,
         "tool_choice": true,
         "vision": true,
         "web_search": true
       },
-      "context_window": 1048576,
+      "context_window": 131072,
       "display_name": "Gemini Live 2 5 Flash Native Audio",
-      "max_output_tokens": 65535,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -10855,10 +10948,10 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1024000,
+      "context_window": 1000000,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "display_name": "glm-5.2",
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -11353,10 +11446,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.2067,
+        "cached_input_per_mtok": 0.2015,
         "currency": "USD",
-        "input_per_mtok": 1.113,
-        "output_per_mtok": 3.498
+        "input_per_mtok": 1.085,
+        "output_per_mtok": 3.41
       }
     },
     "global.amazon.nova-2-lite": {
@@ -17563,15 +17656,23 @@
       "aliases": [
         "azure/gpt-chat-latest",
         "openai/gpt-chat-latest",
+        "azure_ai/gpt-chat-latest",
         "openai/gpt-chat-latest-20260505",
+        "azure/azure_ai/gpt-chat-latest",
         "openrouter/openai/gpt-chat-latest",
         "openrouter/openai/gpt-chat-latest-20260505"
       ],
       "capabilities": {
         "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
         "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
       },
       "description": "GPT Chat Latest points to OpenAI's stable API alias `chat-latest` that always resolves to the latest Instant chat model used in ChatGPT.",
       "display_name": "GPT Chat Latest",
@@ -18270,6 +18371,130 @@
         "output_image_per_mtok": 30.0,
         "per_image": 0.211
       }
+    },
+    "gpt-image-2.5-flare": {
+      "aliases": [
+        "openai/gpt-image-2.5-flare"
+      ],
+      "capabilities": {
+        "pdf_input": true,
+        "vision": true
+      },
+      "display_name": "GPT Image 2 5 Flare",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing"
+    },
+    "gpt-image-2.5-flare-2026-09-08": {
+      "aliases": [
+        "openai/gpt-image-2.5-flare-2026-09-08"
+      ],
+      "capabilities": {
+        "pdf_input": true,
+        "vision": true
+      },
+      "display_name": "GPT Image 2 5 Flare 2026 09 08",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing"
+    },
+    "gpt-image-2.5-sunburst": {
+      "aliases": [
+        "openai/gpt-image-2.5-sunburst"
+      ],
+      "capabilities": {
+        "pdf_input": true,
+        "vision": true
+      },
+      "display_name": "GPT Image 2 5 Sunburst",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing"
+    },
+    "gpt-image-2.5-sunburst-2026-09-08": {
+      "aliases": [
+        "openai/gpt-image-2.5-sunburst-2026-09-08"
+      ],
+      "capabilities": {
+        "pdf_input": true,
+        "vision": true
+      },
+      "display_name": "GPT Image 2 5 Sunburst 2026 09 08",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "source_url": "https://developers.openai.com/api/docs/pricing"
     },
     "gpt-latest": {
       "aliases": [
@@ -20466,6 +20691,7 @@
     },
     "grok-4.20-non-reasoning": {
       "aliases": [
+        "grok-4-20-non-reasoning",
         "grok-4.20-non-reasoning-gv2",
         "grok-4.20-0309-non-reasoning",
         "grok-4.20-beta-non-reasoning",
@@ -20476,6 +20702,7 @@
         "grok-4.20-experimental-beta-non-reasoning-latest",
         "xai/grok-4.20-non-reasoning",
         "xai/grok-4.20-non-reasoning-gv2",
+        "azure_ai/grok-4-20-non-reasoning",
         "xai/grok-4.20-0309-non-reasoning",
         "xai/grok-4.20-beta-non-reasoning",
         "xai/grok-4.20-non-reasoning-latest",
@@ -20483,7 +20710,8 @@
         "xai/grok-4.20-beta-latest-non-reasoning",
         "xai/grok-4.20-experimental-beta-0304-non-reasoning",
         "xai/grok-4.20-experimental-beta-non-reasoning-latest",
-        "vertex_ai/xai/grok-4.20-non-reasoning"
+        "vertex_ai/xai/grok-4.20-non-reasoning",
+        "azure/azure_ai/grok-4-20-non-reasoning"
       ],
       "capabilities": {
         "function_calling": true,
@@ -20586,8 +20814,11 @@
     },
     "grok-4.20-reasoning": {
       "aliases": [
+        "grok-4-20-reasoning",
         "xai/grok-4.20-reasoning",
-        "vertex_ai/xai/grok-4.20-reasoning"
+        "azure_ai/grok-4-20-reasoning",
+        "vertex_ai/xai/grok-4.20-reasoning",
+        "azure/azure_ai/grok-4-20-reasoning"
       ],
       "capabilities": {
         "function_calling": true,
@@ -20607,7 +20838,7 @@
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
       },
-      "source_url": "https://docs.x.ai/developers/models"
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/grok/"
     },
     "grok-4.20-reasoning-latest": {
       "aliases": [
@@ -20643,6 +20874,7 @@
         "vertex_ai/grok-4.3",
         "xai/grok-4.3-latest",
         "x-ai/grok-4.3-20260430",
+        "vertex_ai/xai/grok-4.3",
         "azure/azure_ai/grok-4.3",
         "openrouter/x-ai/grok-4.3",
         "openrouter/x-ai/grok-4.3-20260430"
@@ -20848,6 +21080,7 @@
         "vertex_ai/grok-4.6",
         "opencode_zen/grok-4.6",
         "x-ai/grok-4.6-20260810",
+        "vertex_ai/xai/grok-4.6",
         "azure/azure_ai/grok-4.6",
         "openrouter/x-ai/grok-4.6",
         "openrouter/x-ai/grok-4.6-20260810"
@@ -21180,6 +21413,56 @@
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
+    "grok-imagine-video-1.5-2026-05-30": {
+      "aliases": [
+        "xai/grok-imagine-video-1.5-2026-05-30"
+      ],
+      "display_name": "Grok Imagine Video 1 5 2026 05 30",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "source_url": "https://docs.x.ai/docs/models/grok-imagine-video-1.5"
+    },
+    "grok-imagine-video-1.5-preview": {
+      "aliases": [
+        "xai/grok-imagine-video-1.5-preview"
+      ],
+      "display_name": "Grok Imagine Video 1 5 Preview",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.01,
+        "per_second_output": 0.08
+      },
+      "source_url": "https://docs.x.ai/docs/models/grok-imagine-video-1.5"
+    },
     "grok-latest": {
       "aliases": [
         "~x-ai/grok-latest",
@@ -21450,10 +21733,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       }
     },
     "hy3-preview": {
@@ -21714,9 +21997,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 524288,
+      "context_window": 1048576,
       "display_name": "Thinking Machines: Inkling",
-      "max_output_tokens": 471859,
+      "max_output_tokens": 32768,
       "modalities": {
         "input": [
           "text",
@@ -23888,6 +24171,36 @@
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
+    "lyria-3.5": {
+      "aliases": [
+        "gemini/lyria-3.5"
+      ],
+      "capabilities": {
+        "audio_output": true
+      },
+      "context_window": 1048576,
+      "display_name": "Lyria 3 5",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image",
+          "audio"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0,
+        "per_image": 0.08
+      },
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
     "lyria-3.5-clip-preview": {
       "aliases": [
         "gemini/lyria-3.5-clip-preview"
@@ -24599,9 +24912,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 200000,
+      "context_window": 204800,
       "display_name": "MiniMax M2.5",
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -25892,7 +26205,9 @@
     "mistral-medium-3.1": {
       "aliases": [
         "mistralai/mistral-medium-3.1",
-        "openrouter/mistralai/mistral-medium-3.1"
+        "mistralai/mistral-medium-3.1:batch",
+        "openrouter/mistralai/mistral-medium-3.1",
+        "openrouter/mistralai/mistral-medium-3.1:batch"
       ],
       "capabilities": {
         "function_calling": true,
@@ -26566,6 +26881,24 @@
         "output_per_mtok": 0.24
       },
       "source_url": "https://groq.com/pricing/"
+    },
+    "model-router": {
+      "aliases": [
+        "azure_ai/model-router",
+        "azure/azure_ai/model-router"
+      ],
+      "context_window": 200000,
+      "display_name": "Model Router",
+      "max_output_tokens": 32768,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/"
     },
     "moderation": {
       "aliases": [
@@ -29912,9 +30245,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 128000,
+      "context_window": 262144,
       "display_name": "Qwen: Qwen3 30B A3B Instruct 2507",
-      "max_output_tokens": 32000,
+      "max_output_tokens": 235929,
       "modalities": {
         "input": [
           "text"
@@ -29928,8 +30261,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.04815,
-        "output_per_mtok": 0.19305
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.3
       },
       "rankings": {
         "chatbot_arena": {
@@ -30849,7 +31182,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.5-122B-A10B",
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -30865,8 +31198,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.29,
-        "output_per_mtok": 2.4
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
       }
     },
     "qwen3.5-27b": {
@@ -32077,6 +32410,42 @@
         "input_per_mtok": 2000.0,
         "output_per_mtok": 0.0
       }
+    },
+    "rerank-v4.0-fast": {
+      "aliases": [
+        "cohere/rerank-v4.0-fast",
+        "bedrock/rerank-v4.0-fast"
+      ],
+      "context_window": 32768,
+      "display_name": "Rerank v4 0 Fast",
+      "max_output_tokens": 32768,
+      "modes": [
+        "rerank"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2000.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://cohere.com/pricing"
+    },
+    "rerank-v4.0-pro": {
+      "aliases": [
+        "cohere/rerank-v4.0-pro",
+        "bedrock/rerank-v4.0-pro"
+      ],
+      "context_window": 32768,
+      "display_name": "Rerank v4 0 Pro",
+      "max_output_tokens": 32768,
+      "modes": [
+        "rerank"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2500.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://cohere.com/pricing"
     },
     "sakana-namazu": {
       "aliases": [
@@ -33758,6 +34127,30 @@
         "input_per_mtok": 0.4,
         "output_per_mtok": 0.75
       }
+    },
+    "whisper": {
+      "aliases": [
+        "azure_ai/whisper",
+        "azure/azure_ai/whisper"
+      ],
+      "display_name": "Whisper",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.0001,
+        "per_second_output": 0.0001
+      },
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
     },
     "whisper-1": {
       "aliases": [
@@ -36496,6 +36889,40 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "azure/azure_ai/codex-mini": {
+      "context_window": 200000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ],
+      "max_output_tokens": 100000,
+      "model_ref": "codex-mini",
+      "pricing": {
+        "cached_input_per_mtok": 0.375,
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 6.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
+      ]
+    },
+    "azure/azure_ai/cohere-command-a": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 8182,
+      "model_ref": "cohere-command-a",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/cohere/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/cohere/"
+      ]
+    },
     "azure/azure_ai/cohere-rerank-v3-english": {
       "context_window": 4096,
       "enabled": true,
@@ -37039,6 +37466,26 @@
         "https://ai.azure.com/catalog/models/gpt-6-astra"
       ]
     },
+    "azure/azure_ai/gpt-chat-latest": {
+      "context_window": 272000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
+      "model_ref": "gpt-chat-latest",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
+      ]
+    },
     "azure/azure_ai/gpt-oss-120b": {
       "context_window": 131072,
       "enabled": true,
@@ -37127,6 +37574,38 @@
       "pricing_source_url": "https://techcommunity.microsoft.com/t5/Azure-AI-Foundry-Blog/Grok-4-0-Goes-GA-in-Microsoft-Foundry-and-Grok-4-1-Fast-Arrives/ba-p/4497964",
       "source_urls": [
         "https://techcommunity.microsoft.com/t5/Azure-AI-Foundry-Blog/Grok-4-0-Goes-GA-in-Microsoft-Foundry-and-Grok-4-1-Fast-Arrives/ba-p/4497964"
+      ]
+    },
+    "azure/azure_ai/grok-4-20-non-reasoning": {
+      "context_window": 262000,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "grok-4.20-non-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/grok/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/grok/"
+      ]
+    },
+    "azure/azure_ai/grok-4-20-reasoning": {
+      "context_window": 262000,
+      "enabled": true,
+      "max_output_tokens": 8192,
+      "model_ref": "grok-4.20-reasoning",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/grok/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/grok/"
       ]
     },
     "azure/azure_ai/grok-4-fast-non-reasoning": {
@@ -37449,6 +37928,34 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "azure/azure_ai/model-router": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "model-router",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/"
+      ]
+    },
+    "azure/azure_ai/whisper": {
+      "enabled": true,
+      "model_ref": "whisper",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.0001,
+        "per_second_output": 0.0001
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
+      ]
+    },
     "azure/babbage": {
       "enabled": true,
       "model_ref": "babbage",
@@ -37520,6 +38027,22 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json"
+      ]
+    },
+    "azure/cohere-command-a": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 8182,
+      "model_ref": "cohere-command-a",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/cohere/",
+      "provider_model_id": "azure_ai/cohere-command-a",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/cohere/"
       ]
     },
     "azure/cohere-rerank-v3-english": {
@@ -37794,6 +38317,22 @@
       "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing",
       "source_urls": [
         "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing"
+      ]
+    },
+    "azure/deepseek-v3.2": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 163840,
+      "model_ref": "deepseek-v3.2",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.58,
+        "output_per_mtok": 1.68
+      },
+      "pricing_source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549",
+      "provider_model_id": "azure_ai/deepseek-v3.2",
+      "source_urls": [
+        "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-deepseek-v3-2-and-deepseek-v3-2-speciale-in-microsoft-foundry/4477549"
       ]
     },
     "azure/deepseek-v3.2-speciale": {
@@ -40031,7 +40570,13 @@
       ]
     },
     "azure/gpt-chat-latest": {
+      "context_window": 272000,
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 128000,
       "model_ref": "gpt-chat-latest",
       "pricing": {
         "cached_input_per_mtok": 0.5,
@@ -40040,7 +40585,9 @@
         "output_per_mtok": 30.0
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
+      "provider_model_id": "azure_ai/gpt-chat-latest",
       "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
@@ -40952,6 +41499,22 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "azure/model-router": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "model-router",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/",
+      "provider_model_id": "azure_ai/model-router",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/"
+      ]
+    },
     "azure/o1": {
       "context_window": 200000,
       "enabled": true,
@@ -41623,6 +42186,20 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/whisper": {
+      "enabled": true,
+      "model_ref": "whisper",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.0001,
+        "per_second_output": 0.0001
+      },
+      "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "provider_model_id": "azure_ai/whisper",
+      "source_urls": [
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
       ]
     },
     "azure/whisper-1": {
@@ -42674,6 +43251,30 @@
         "https://aws.amazon.com/bedrock/pricing/"
       ]
     },
+    "bedrock/rerank-v4.0-fast": {
+      "enabled": true,
+      "model_ref": "rerank-v4.0-fast",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2000.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/bedrock.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/bedrock.json"
+      ]
+    },
+    "bedrock/rerank-v4.0-pro": {
+      "enabled": true,
+      "model_ref": "rerank-v4.0-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2500.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/bedrock.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/bedrock.json"
+      ]
+    },
     "cohere/command": {
       "context_window": 4096,
       "enabled": true,
@@ -43019,6 +43620,38 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/cohere.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "cohere/rerank-v4.0-fast": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "rerank-v4.0-fast",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2000.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/cohere.json",
+      "source_urls": [
+        "https://cohere.com/pricing",
+        "https://configs.portkey.ai/pricing/cohere.json"
+      ]
+    },
+    "cohere/rerank-v4.0-pro": {
+      "context_window": 32768,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "rerank-v4.0-pro",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2500.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/cohere.json",
+      "source_urls": [
+        "https://cohere.com/pricing",
+        "https://configs.portkey.ai/pricing/cohere.json"
       ]
     },
     "deepinfra/DeepSeek-V3.1": {
@@ -44006,7 +44639,7 @@
       ]
     },
     "deepseek/deepseek-chat": {
-      "context_window": 64000,
+      "context_window": 131072,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions"
@@ -44014,31 +44647,16 @@
       "max_output_tokens": 8192,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.035,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.135,
-        "output_per_mtok": 0.55
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.28
       },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepseek.json",
       "source_urls": [
         "https://api-docs.deepseek.com/quick_start/pricing",
         "https://configs.portkey.ai/pricing/deepseek.json",
         "https://llmprices.dev/"
-      ]
-    },
-    "deepseek/deepseek-chat-v3-0324": {
-      "context_window": 64000,
-      "enabled": true,
-      "model_ref": "deepseek-v4-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.035,
-        "currency": "USD",
-        "input_per_mtok": 0.135,
-        "output_per_mtok": 0.55
-      },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "source_urls": [
-        "https://api-docs.deepseek.com/quick_start/pricing"
       ]
     },
     "deepseek/deepseek-coder": {
@@ -44056,6 +44674,41 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "deepseek/deepseek-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "deepseek-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.006,
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2,
+        "time_windows": [
+          {
+            "label": "off_peak",
+            "pricing": {
+              "cached_input_per_mtok": 0.003,
+              "input_per_mtok": 0.15,
+              "output_per_mtok": 0.6
+            },
+            "utc_ranges": [
+              {
+                "end": "06:00",
+                "start": "04:00"
+              },
+              {
+                "end": "01:00",
+                "start": "10:00"
+              }
+            ]
+          }
+        ]
+      },
+      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "source_urls": [
+        "https://api-docs.deepseek.com/quick_start/pricing"
+      ]
+    },
     "deepseek/deepseek-r1": {
       "context_window": 65536,
       "enabled": true,
@@ -44071,23 +44724,8 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "deepseek/deepseek-r1-0528": {
-      "context_window": 64000,
-      "enabled": true,
-      "model_ref": "deepseek-v4-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.035,
-        "currency": "USD",
-        "input_per_mtok": 0.135,
-        "output_per_mtok": 0.55
-      },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "source_urls": [
-        "https://api-docs.deepseek.com/quick_start/pricing"
-      ]
-    },
     "deepseek/deepseek-reasoner": {
-      "context_window": 64000,
+      "context_window": 131072,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions"
@@ -44095,12 +44733,12 @@
       "max_output_tokens": 65536,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.035,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.135,
-        "output_per_mtok": 0.55
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.28
       },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepseek.json",
       "source_urls": [
         "https://api-docs.deepseek.com/quick_start/pricing",
         "https://configs.portkey.ai/pricing/deepseek.json",
@@ -44124,20 +44762,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "deepseek/deepseek-v3.1-terminus": {
-      "enabled": true,
-      "model_ref": "deepseek-v3.1-terminus",
-      "pricing": {
-        "cached_input_per_mtok": 0.13,
-        "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 0.95
-      },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "source_urls": [
-        "https://api-docs.deepseek.com/quick_start/pricing"
-      ]
-    },
     "deepseek/deepseek-v3.2": {
       "context_window": 163840,
       "enabled": true,
@@ -44145,30 +44769,16 @@
       "model_ref": "deepseek-v3.2",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.2288,
-        "output_per_mtok": 0.3432
+        "input_per_mtok": 0.28,
+        "output_per_mtok": 0.4
       },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
-        "https://api-docs.deepseek.com/quick_start/pricing",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "deepseek/deepseek-v3.2-exp": {
-      "enabled": true,
-      "model_ref": "deepseek-v3.2-exp",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 0.41
-      },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "source_urls": [
-        "https://api-docs.deepseek.com/quick_start/pricing"
-      ]
-    },
     "deepseek/deepseek-v4-flash": {
-      "context_window": 64000,
+      "context_window": 131072,
       "enabled": true,
       "endpoints": [
         "/v1/chat/completions"
@@ -44177,12 +44787,12 @@
       "model_ref": "deepseek-v4-flash",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.035,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.135,
-        "output_per_mtok": 0.55
+        "input_per_mtok": 0.14,
+        "output_per_mtok": 0.28
       },
-      "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepseek.json",
       "source_urls": [
         "https://api-docs.deepseek.com/quick_start/pricing",
         "https://configs.portkey.ai/pricing/deepseek.json",
@@ -44219,10 +44829,30 @@
       "model_ref": "deepseek-v4-pro",
       "pricing": {
         "cache_write_per_mtok": 0.0,
-        "cached_input_per_mtok": 0.003625,
+        "cached_input_per_mtok": 0.044,
         "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
+        "input_per_mtok": 1.32,
+        "output_per_mtok": 3.96,
+        "time_windows": [
+          {
+            "label": "off_peak",
+            "pricing": {
+              "cached_input_per_mtok": 0.022,
+              "input_per_mtok": 0.66,
+              "output_per_mtok": 1.98
+            },
+            "utc_ranges": [
+              {
+                "end": "06:00",
+                "start": "04:00"
+              },
+              {
+                "end": "01:00",
+                "start": "10:00"
+              }
+            ]
+          }
+        ]
       },
       "pricing_source_url": "https://api-docs.deepseek.com/quick_start/pricing",
       "source_urls": [
@@ -47882,6 +48512,22 @@
       "enabled": true,
       "max_output_tokens": 8192,
       "model_ref": "lyria-3-pro-preview",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0,
+        "per_image": 0.08
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
+    "gemini/lyria-3.5": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "lyria-3.5",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.0,
@@ -54783,6 +55429,82 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "openai/gpt-image-2.5-flare": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "gpt-image-2.5-flare",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ]
+    },
+    "openai/gpt-image-2.5-flare-2026-09-08": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "gpt-image-2.5-flare-2026-09-08",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ]
+    },
+    "openai/gpt-image-2.5-sunburst": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "gpt-image-2.5-sunburst",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ]
+    },
+    "openai/gpt-image-2.5-sunburst-2026-09-08": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "gpt-image-2.5-sunburst-2026-09-08",
+      "pricing": {
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 30.0
+      },
+      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ]
+    },
     "openai/gpt-live-transcribe": {
       "enabled": true,
       "endpoints": [
@@ -57842,6 +58564,58 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "openrouter/deepseek-v3.1-terminus": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 32768,
+      "model_ref": "deepseek-v3.1-terminus",
+      "pricing": {
+        "cached_input_per_mtok": 0.135,
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 1.0
+      },
+      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v3.1-terminus",
+      "provider_model_id": "deepseek/deepseek-v3.1-terminus",
+      "source_urls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.1-terminus"
+      ]
+    },
+    "openrouter/deepseek-v3.2": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 163840,
+      "model_ref": "deepseek-v3.2",
+      "pricing": {
+        "cached_input_per_mtok": 0.1345,
+        "currency": "USD",
+        "input_per_mtok": 0.269,
+        "output_per_mtok": 0.4
+      },
+      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v3.2",
+      "provider_model_id": "deepseek/deepseek-v3.2",
+      "source_urls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.2",
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "openrouter/deepseek-v3.2-exp": {
+      "context_window": 163840,
+      "enabled": true,
+      "max_output_tokens": 163840,
+      "model_ref": "deepseek-v3.2-exp",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 0.41
+      },
+      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v3.2-exp",
+      "provider_model_id": "deepseek/deepseek-v3.2-exp",
+      "source_urls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.2-exp",
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
     "openrouter/deepseek-v4-flash-latest": {
       "context_window": 1048576,
       "enabled": true,
@@ -57865,15 +58639,32 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.018438,
+        "cached_input_per_mtok": 0.03498,
         "currency": "USD",
-        "input_per_mtok": 0.57948,
-        "output_per_mtok": 1.73844
+        "input_per_mtok": 1.0494,
+        "output_per_mtok": 3.1482
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "provider_model_id": "deepseek/deepseek-v4-pro-0813",
       "source_urls": [
         "https://openrouter.ai/deepseek/deepseek-v4-pro-0813"
+      ]
+    },
+    "openrouter/deepseek-v4.1-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "deepseek-v4.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.003,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
+      "provider_model_id": "deepseek/deepseek-v4.1-flash",
+      "source_urls": [
+        "https://openrouter.ai/deepseek/deepseek-v4.1-flash"
       ]
     },
     "openrouter/deepseek/deepseek-chat": {
@@ -58028,10 +58819,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.014,
+        "cached_input_per_mtok": 0.0177212,
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.14
+        "input_per_mtok": 0.088606,
+        "output_per_mtok": 0.177212
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -58076,10 +58867,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0725,
+        "cached_input_per_mtok": 0.079605,
         "currency": "USD",
-        "input_per_mtok": 0.87,
-        "output_per_mtok": 1.74
+        "input_per_mtok": 0.95526,
+        "output_per_mtok": 1.91052
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -58092,14 +58883,30 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
-        "cached_input_per_mtok": 0.018438,
+        "cached_input_per_mtok": 0.03498,
         "currency": "USD",
-        "input_per_mtok": 0.57948,
-        "output_per_mtok": 1.73844
+        "input_per_mtok": 1.0494,
+        "output_per_mtok": 3.1482
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "source_urls": [
         "https://openrouter.ai/deepseek/deepseek-v4-pro-0813"
+      ]
+    },
+    "openrouter/deepseek/deepseek-v4.1-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "deepseek-v4.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.003,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
+      "source_urls": [
+        "https://openrouter.ai/deepseek/deepseek-v4.1-flash"
       ]
     },
     "openrouter/dots-3-note-preview": {
@@ -58408,15 +59215,15 @@
       ]
     },
     "openrouter/glm-5.2": {
-      "context_window": 1024000,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.052,
+        "cached_input_per_mtok": 0.1932,
         "currency": "USD",
-        "input_per_mtok": 0.28,
-        "output_per_mtok": 0.88
+        "input_per_mtok": 0.966,
+        "output_per_mtok": 3.036
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -58447,10 +59254,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.015,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.25
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -58498,10 +59305,10 @@
       "max_output_tokens": 128000,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.2067,
+        "cached_input_per_mtok": 0.2015,
         "currency": "USD",
-        "input_per_mtok": 1.113,
-        "output_per_mtok": 3.498
+        "input_per_mtok": 1.085,
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "provider_model_id": "~z-ai/glm-latest",
@@ -59516,10 +60323,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -59687,9 +60494,9 @@
       ]
     },
     "openrouter/inkling": {
-      "context_window": 524288,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 471859,
+      "max_output_tokens": 32768,
       "model_ref": "inkling",
       "pricing": {
         "cached_input_per_mtok": 0.17,
@@ -60638,15 +61445,15 @@
       ]
     },
     "openrouter/minimax-m2.5": {
-      "context_window": 200000,
+      "context_window": 204800,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.027,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 1.08
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.5",
       "provider_model_id": "minimax/minimax-m2.5",
@@ -60749,15 +61556,15 @@
       ]
     },
     "openrouter/minimax/minimax-m2.5": {
-      "context_window": 200000,
+      "context_window": 204800,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "minimax-m2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.027,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 1.08
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m2.5",
       "source_urls": [
@@ -60824,9 +61631,9 @@
         "output_per_mtok": 2.0
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-medium-3.1",
-      "provider_model_id": "mistralai/mistral-medium-3.1",
       "source_urls": [
-        "https://openrouter.ai/mistralai/mistral-medium-3.1"
+        "https://openrouter.ai/mistralai/mistral-medium-3.1",
+        "https://openrouter.ai/mistralai/mistral-medium-3.1:batch"
       ]
     },
     "openrouter/mistralai/codestral-2508": {
@@ -61004,6 +61811,22 @@
         "https://openrouter.ai/mistralai/mistral-medium-3.1"
       ]
     },
+    "openrouter/mistralai/mistral-medium-3.1:batch": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 104857,
+      "model_ref": "mistral-medium-3.1",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.0
+      },
+      "pricing_source_url": "https://openrouter.ai/mistralai/mistral-medium-3.1:batch",
+      "source_urls": [
+        "https://openrouter.ai/mistralai/mistral-medium-3.1:batch"
+      ]
+    },
     "openrouter/mistralai/mistral-nemo": {
       "context_window": 131072,
       "enabled": true,
@@ -61161,9 +61984,10 @@
     "openrouter/moonshotai/kimi-k2-thinking": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 235929,
+      "max_output_tokens": 100352,
       "model_ref": "kimi-k2-thinking",
       "pricing": {
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.5
@@ -63455,14 +64279,14 @@
       ]
     },
     "openrouter/qwen/qwen3-30b-a3b-instruct-2507": {
-      "context_window": 128000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32000,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3-30b-a3b-instruct-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.04815,
-        "output_per_mtok": 0.19305
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-instruct-2507",
       "source_urls": [
@@ -63766,12 +64590,12 @@
     "openrouter/qwen/qwen3.5-122b-a10b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.5-122b-a10b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.29,
-        "output_per_mtok": 2.4
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-122b-a10b",
       "source_urls": [
@@ -64149,14 +64973,14 @@
       ]
     },
     "openrouter/qwen3-30b-a3b-instruct-2507": {
-      "context_window": 128000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32000,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3-30b-a3b-instruct-2507",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.04815,
-        "output_per_mtok": 0.19305
+        "input_per_mtok": 0.09,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-30b-a3b-instruct-2507",
       "provider_model_id": "qwen/qwen3-30b-a3b-instruct-2507",
@@ -64480,12 +65304,12 @@
     "openrouter/qwen3.5-122b-a10b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.5-122b-a10b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.29,
-        "output_per_mtok": 2.4
+        "input_per_mtok": 0.26,
+        "output_per_mtok": 2.08
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-122b-a10b",
       "provider_model_id": "qwen/qwen3.5-122b-a10b",
@@ -65408,10 +66232,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -65498,9 +66322,9 @@
       ]
     },
     "openrouter/thinkingmachines/inkling": {
-      "context_window": 524288,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 471859,
+      "max_output_tokens": 32768,
       "model_ref": "inkling",
       "pricing": {
         "cached_input_per_mtok": 0.17,
@@ -65990,15 +66814,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.2": {
-      "context_window": 1024000,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.052,
+        "cached_input_per_mtok": 0.1932,
         "currency": "USD",
-        "input_per_mtok": 0.28,
-        "output_per_mtok": 0.88
+        "input_per_mtok": 0.966,
+        "output_per_mtok": 3.036
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -66027,10 +66851,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.015,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.25
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -66258,10 +67082,10 @@
       "max_output_tokens": 128000,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.2067,
+        "cached_input_per_mtok": 0.2015,
         "currency": "USD",
-        "input_per_mtok": 1.113,
-        "output_per_mtok": 3.498
+        "input_per_mtok": 1.085,
+        "output_per_mtok": 3.41
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "source_urls": [
@@ -66803,7 +67627,7 @@
     "vertex_ai/claude-haiku-4-5": {
       "context_window": 200000,
       "enabled": true,
-      "max_output_tokens": 8192,
+      "max_output_tokens": 64000,
       "model_ref": "claude-haiku-4-5",
       "pricing": {
         "batch_input_per_mtok": 0.5,
@@ -67941,6 +68765,24 @@
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
+    "vertex_ai/gemini-3.5-live-translate-preview": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "model_ref": "gemini-3.5-live-translate-preview",
+      "pricing": {
+        "audio_input_per_mtok": 3.5,
+        "audio_output_per_mtok": 21.0,
+        "currency": "USD",
+        "input_per_mtok": 3.5,
+        "output_per_mtok": 21.0
+      },
+      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "source_urls": [
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+      ]
+    },
     "vertex_ai/gemini-3.5-transcribe-live-preview": {
       "enabled": true,
       "endpoints": [
@@ -67965,9 +68807,9 @@
       ],
       "model_ref": "gemini-3.5-transcribe-preview",
       "pricing": {
-        "audio_input_per_mtok": 2.5,
+        "audio_input_per_mtok": 2.0,
         "currency": "USD",
-        "input_per_mtok": 2.5,
+        "input_per_mtok": 2.0,
         "output_per_mtok": 12.0
       },
       "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
@@ -68125,13 +68967,13 @@
       ]
     },
     "vertex_ai/gemini-live-2.5-flash-native-audio": {
-      "context_window": 1048576,
+      "context_window": 131072,
       "enabled": true,
       "endpoints": [
         "/vertex_ai/live",
         "/v1/realtime"
       ],
-      "max_output_tokens": 65535,
+      "max_output_tokens": 65536,
       "model_ref": "gemini-live-2.5-flash-native-audio",
       "pricing": {
         "audio_input_per_mtok": 3.0,
@@ -68286,30 +69128,62 @@
       ]
     },
     "vertex_ai/grok-4.3": {
+      "context_window": 200000,
       "enabled": true,
+      "max_output_tokens": 200000,
       "model_ref": "grok-4.3",
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_per_mtok": 1.25,
-        "output_per_mtok": 2.5
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 200000
+          }
+        ]
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "provider_model_id": "xai/grok-4.3",
       "source_urls": [
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/grok-4.6": {
+      "context_window": 524288,
       "enabled": true,
+      "max_output_tokens": 524288,
       "model_ref": "grok-4.6",
       "pricing": {
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 524288
+          }
+        ]
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "provider_model_id": "xai/grok-4.6",
       "source_urls": [
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
         "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
@@ -68909,9 +69783,9 @@
       ]
     },
     "vertex_ai/xai/grok-4.1-fast-non-reasoning": {
-      "context_window": 2000000,
+      "context_window": 128000,
       "enabled": true,
-      "max_output_tokens": 2000000,
+      "max_output_tokens": 128000,
       "model_ref": "grok-4-1-fast-non-reasoning",
       "pricing": {
         "cached_input_per_mtok": 0.05,
@@ -68925,9 +69799,9 @@
       ]
     },
     "vertex_ai/xai/grok-4.1-fast-reasoning": {
-      "context_window": 2000000,
+      "context_window": 128000,
       "enabled": true,
-      "max_output_tokens": 2000000,
+      "max_output_tokens": 128000,
       "model_ref": "grok-4-1-fast-reasoning",
       "pricing": {
         "cached_input_per_mtok": 0.05,
@@ -68948,12 +69822,24 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 2000000
+          }
+        ]
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models",
+      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
       "source_urls": [
-        "https://docs.x.ai/developers/models"
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
       ]
     },
     "vertex_ai/xai/grok-4.20-reasoning": {
@@ -68964,12 +69850,80 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 2000000
+          }
+        ]
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models",
+      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
       "source_urls": [
-        "https://docs.x.ai/developers/models"
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+      ]
+    },
+    "vertex_ai/xai/grok-4.3": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 200000,
+      "model_ref": "grok-4.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
+        "tiers": [
+          {
+            "input_per_mtok": 1.25,
+            "output_per_mtok": 2.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 2.5,
+            "output_per_mtok": 5.0,
+            "up_to_tokens": 200000
+          }
+        ]
+      },
+      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "source_urls": [
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+      ]
+    },
+    "vertex_ai/xai/grok-4.6": {
+      "context_window": 524288,
+      "enabled": true,
+      "max_output_tokens": 524288,
+      "model_ref": "grok-4.6",
+      "pricing": {
+        "cached_input_per_mtok": 0.5,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0,
+        "tiers": [
+          {
+            "input_per_mtok": 2.0,
+            "output_per_mtok": 6.0,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 4.0,
+            "output_per_mtok": 12.0,
+            "up_to_tokens": 524288
+          }
+        ]
+      },
+      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "source_urls": [
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
       ]
     },
     "xai/grok-3": {
@@ -70785,7 +71739,8 @@
       },
       "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
+        "https://docs.x.ai/docs/models/grok-imagine-video"
       ]
     },
     "xai/grok-imagine-video-1.5": {
@@ -70798,33 +71753,34 @@
       },
       "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/developers/models?cluster=us-east-1",
+        "https://docs.x.ai/docs/models/grok-imagine-video-1.5"
       ]
     },
     "xai/grok-imagine-video-1.5-2026-05-30": {
       "enabled": true,
-      "model_ref": "grok-imagine-video-1.5",
+      "model_ref": "grok-imagine-video-1.5-2026-05-30",
       "pricing": {
         "currency": "USD",
         "input_per_image": 0.01,
         "per_second_output": 0.08
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models/grok-imagine-video-1.5"
       ]
     },
     "xai/grok-imagine-video-1.5-preview": {
       "enabled": true,
-      "model_ref": "grok-imagine-video-1.5",
+      "model_ref": "grok-imagine-video-1.5-preview",
       "pricing": {
         "currency": "USD",
         "input_per_image": 0.01,
         "per_second_output": 0.08
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models/grok-imagine-video-1.5",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models/grok-imagine-video-1.5"
       ]
     },
     "xiaomi/mimo-v2.5": {
@@ -71238,6 +72194,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-09-09T20:40:52Z",
+  "updated_at": "2026-09-10T10:54:26Z",
   "version": 1
 }
