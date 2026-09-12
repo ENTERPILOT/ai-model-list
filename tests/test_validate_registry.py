@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from pipeline.loaders import load_curated_config
+from pipeline.normalize import PYDANTIC_GENAI_SOURCE_URL
 from scripts import build_registry as build_registry_module
 from scripts import fetch_sources as fetch_sources_module
 from scripts.build_registry import build_registry
@@ -446,7 +447,7 @@ def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
     assert config == expected
 
 
-def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_path: Path) -> None:
+def test_build_registry_artifacts_promotes_grok_from_pydantic_catalog(tmp_path: Path) -> None:
     snapshot_dir = tmp_path / "snapshot"
     curated_dir = tmp_path / "curated"
     snapshot_dir.mkdir()
@@ -460,11 +461,11 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
         json.dumps(
             {
                 "official_sources": ["xai"],
-                "aggregator_sources": ["llm_prices"],
+                "aggregator_sources": ["llm_prices", "pydantic_genai"],
                 "field_authority": {
-                    "owned_by": ["official"],
-                    "display_name": ["official"],
-                    "pricing": ["official", "llm_prices"],
+                    "owned_by": ["official", "pydantic_genai"],
+                    "display_name": ["official", "pydantic_genai"],
+                    "pricing": ["official", "pydantic_genai", "llm_prices"],
                 },
             }
         ),
@@ -563,8 +564,11 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
             "input_per_mtok": 3.0,
             "output_per_mtok": 15.0,
         },
-        "pricing_source_url": "https://docs.x.ai/docs/models",
-        "source_urls": ["https://docs.x.ai/docs/models", "https://llmprices.dev/"],
+        # The catalog payload cites docs.x.ai, but we fetched the aggregator, so
+        # the price is attributed there. The provider page stays on the
+        # canonical model's source_url (asserted above).
+        "pricing_source_url": PYDANTIC_GENAI_SOURCE_URL,
+        "source_urls": ["https://llmprices.dev/", PYDANTIC_GENAI_SOURCE_URL],
     }
     assert registry["provider_models"]["xai/grok-4-0709"]["model_ref"] == "grok-4"
     assert registry["provider_models"]["xai/grok-4-latest"]["model_ref"] == "grok-4"
@@ -858,3 +862,99 @@ def test_validate_rejects_malformed_pricing_time_windows(tmp_path: Path) -> None
     schema_path = Path(__file__).resolve().parent.parent / "schema.json"
 
     assert validate(models_path, schema_path) != []
+
+
+def test_build_registry_artifacts_prefers_provider_pricing_over_pydantic_aggregator(tmp_path: Path) -> None:
+    """Regression guard for GoModel#892.
+
+    ``pydantic_genai_prices.json`` is a third-party aggregator that shares the
+    catalog normalizer with the ``*_official`` scrapers. While it was labelled
+    ``"official"`` it took rank 0 in ``field_authority`` and a stale row
+    published an OpenAI base price 5x high, even though portkey reported the
+    real one -- and ``pricing_source_url`` still credited the OpenAI docs page
+    that nothing had read.
+    """
+    snapshot_dir = tmp_path / "snapshot"
+    curated_dir = tmp_path / "curated"
+    snapshot_dir.mkdir()
+    (snapshot_dir / "portkey").mkdir(parents=True)
+    curated_dir.mkdir()
+
+    (curated_dir / "providers.json").write_text(
+        json.dumps({"openai": {"display_name": "OpenAI"}}),
+        encoding="utf-8",
+    )
+    (curated_dir / "source_policies.json").write_text(
+        json.dumps(
+            {
+                "official_sources": ["openai"],
+                "aggregator_sources": ["portkey", "pydantic_genai"],
+                "field_authority": {
+                    "owned_by": ["official", "pydantic_genai"],
+                    "display_name": ["official", "pydantic_genai"],
+                    "pricing": ["official", "portkey", "pydantic_genai"],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (curated_dir / "canonical_aliases.json").write_text(json.dumps({}), encoding="utf-8")
+    (curated_dir / "rejections.json").write_text(json.dumps({}), encoding="utf-8")
+
+    (snapshot_dir / "fetch_metadata.json").write_text(
+        json.dumps({"fetched_at": "2026-09-12T09:00:00Z", "sources": {}}),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "openai",
+                    "pricing_urls": ["https://developers.openai.com/api/docs/pricing"],
+                    "models": [
+                        {
+                            "id": "gpt-5.6-luna",
+                            "name": "GPT-5.6 Luna",
+                            "context_window": 1_050_000,
+                            "match": {"or": [{"equals": "gpt-5.6-luna"}]},
+                            "prices": {"input_mtok": 1, "output_mtok": 6},
+                        }
+                    ],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (snapshot_dir / "portkey" / "openai.json").write_text(
+        json.dumps(
+            {
+                "gpt-5.6-luna": {
+                    "pricing_config": {
+                        "pay_as_you_go": {
+                            "request_token": {"price": 2e-05},
+                            "response_token": {"price": 0.00012},
+                        },
+                        "batch_config": {
+                            "request_token": {"price": 1e-05},
+                            "response_token": {"price": 6e-05},
+                        },
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    registry = build_registry(snapshot_dir=snapshot_dir, curated_dir=curated_dir)
+
+    pricing = registry["provider_models"]["openai/gpt-5.6-luna"]["pricing"]
+    assert pricing["input_per_mtok"] == 0.2
+    assert pricing["output_per_mtok"] == 1.2
+    # Batch stays a plausible fraction of the base price instead of the 10%
+    # that pairing portkey's batch rate with the aggregator's base produced.
+    assert pricing["batch_input_per_mtok"] == 0.1
+    assert pricing["batch_output_per_mtok"] == 0.6
+    # Provenance names the source the price actually came from.
+    assert registry["provider_models"]["openai/gpt-5.6-luna"]["pricing_source_url"] == (
+        "https://configs.portkey.ai/pricing/openai.json"
+    )
