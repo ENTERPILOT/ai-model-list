@@ -3,6 +3,7 @@ from pathlib import Path
 
 from pipeline.normalize import (
     KNOWN_MODES,
+    PYDANTIC_GENAI_SOURCE_URL,
     NORMALIZER_BY_SOURCE,
     normalize_litellm_entry,
     normalize_llm_prices_rows,
@@ -1088,3 +1089,17 @@ def test_normalize_pydantic_genai_rows_can_carry_an_aggregator_label() -> None:
     assert (aggregator_record.source_name, aggregator_record.confidence) == ("pydantic_genai", "high")
     # Still the same pricing payload -- only its authority changed.
     assert aggregator_record.fields["pricing"]["input_per_mtok"] == 1.0
+
+    # Without a provenance_url the record claims the provider page the payload
+    # cites, which is what mis-attributed prices to docs we never fetch.
+    assert aggregator_record.source_url == "https://developers.openai.com/api/docs/pricing"
+
+    attributed_record = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["openai"],
+        source_name="pydantic_genai",
+        confidence="high",
+        provenance_url=PYDANTIC_GENAI_SOURCE_URL,
+    )[0]
+    assert attributed_record.source_url == PYDANTIC_GENAI_SOURCE_URL

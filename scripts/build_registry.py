@@ -15,7 +15,7 @@ if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pipeline.loaders import load_curated_config, load_snapshot_payloads
-from pipeline.normalize import NORMALIZER_BY_SOURCE
+from pipeline.normalize import NORMALIZER_BY_SOURCE, PYDANTIC_GENAI_SOURCE_URL
 from pipeline.rankings import apply_snapshot_rankings, seed_existing_rankings
 from pipeline.render import render_registry
 from pipeline.report import build_markdown_report, build_report
@@ -86,6 +86,9 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
             # source_policies.json.
             kwargs["source_name"] = "pydantic_genai"
             kwargs["confidence"] = "high"
+            # Attribute its prices to the dataset we fetch, not to the provider
+            # pages it cites -- we never read those, and it can lag them.
+            kwargs["provenance_url"] = PYDANTIC_GENAI_SOURCE_URL
             skip_providers = ["openrouter"]
             if "xai_models_official" in payloads:
                 skip_providers.append("xai")

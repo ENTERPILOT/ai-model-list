@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from pipeline.loaders import load_curated_config
+from pipeline.normalize import PYDANTIC_GENAI_SOURCE_URL
 from scripts import build_registry as build_registry_module
 from scripts import fetch_sources as fetch_sources_module
 from scripts.build_registry import build_registry
@@ -446,7 +447,7 @@ def test_load_curated_config_reads_authority_files(tmp_path: Path) -> None:
     assert config == expected
 
 
-def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_path: Path) -> None:
+def test_build_registry_artifacts_promotes_grok_from_pydantic_catalog(tmp_path: Path) -> None:
     snapshot_dir = tmp_path / "snapshot"
     curated_dir = tmp_path / "curated"
     snapshot_dir.mkdir()
@@ -563,8 +564,11 @@ def test_build_registry_artifacts_promotes_grok_from_official_xai_catalog(tmp_pa
             "input_per_mtok": 3.0,
             "output_per_mtok": 15.0,
         },
-        "pricing_source_url": "https://docs.x.ai/docs/models",
-        "source_urls": ["https://docs.x.ai/docs/models", "https://llmprices.dev/"],
+        # The catalog payload cites docs.x.ai, but we fetched the aggregator, so
+        # the price is attributed there. The provider page stays on the
+        # canonical model's source_url (asserted above).
+        "pricing_source_url": PYDANTIC_GENAI_SOURCE_URL,
+        "source_urls": ["https://llmprices.dev/", PYDANTIC_GENAI_SOURCE_URL],
     }
     assert registry["provider_models"]["xai/grok-4-0709"]["model_ref"] == "grok-4"
     assert registry["provider_models"]["xai/grok-4-latest"]["model_ref"] == "grok-4"

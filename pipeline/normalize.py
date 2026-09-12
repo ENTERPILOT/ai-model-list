@@ -14,6 +14,7 @@ LITELLM_FALLBACK_SOURCE_URL = (
     "https://raw.githubusercontent.com/BerriAI/litellm/main/"
     "model_prices_and_context_window.json"
 )
+PYDANTIC_GENAI_SOURCE_URL = "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
 
 
 def _maybe_url(value: Any) -> str | None:
@@ -1520,6 +1521,7 @@ def normalize_pydantic_genai_rows(
     evidence_ref: str = "pydantic_genai_prices.json",
     source_name: str = "official",
     confidence: str = "official",
+    provenance_url: str | None = None,
 ) -> list[SourceEvidence]:
     """Normalize a provider-catalog payload (provider blocks holding model rows).
 
@@ -1531,6 +1533,13 @@ def normalize_pydantic_genai_rows(
     official feeds should keep the ``"official"`` default, since
     ``field_authority`` (see ``pipeline/rules.py``) ranks that label first for
     every field.
+
+    A payload's ``pricing_urls`` are the pages that payload's author claims to
+    have read, which is our provenance only when the payload *is* the provider.
+    An aggregator passes ``provenance_url`` so that both ``pricing_source_url``
+    and ``source_urls`` name the dataset we actually fetched rather than a
+    second-hand citation; the provider's own pricing page remains available as
+    ``providers.<slug>.pricing_url``.
     """
     allowed_provider_set = {normalize_provider_slug(value) for value in allowed_providers or ()}
     owner_provider_set = {normalize_provider_slug(value) for value in owner_providers or ()}
@@ -1552,6 +1561,7 @@ def normalize_pydantic_genai_rows(
             ),
             evidence_ref,
         )
+        record_source_url = _maybe_url(provenance_url) or _maybe_url(provider_evidence_ref)
 
         for model in provider.get("models", []):
             raw_model_id = model.get("id")
@@ -1577,7 +1587,7 @@ def normalize_pydantic_genai_rows(
                     confidence=confidence,
                     evidence_ref=provider_evidence_ref,
                     rejected=is_rejected_model_id(canonical_model_id, rejection_policy),
-                    source_url=_maybe_url(provider_evidence_ref),
+                    source_url=record_source_url,
                 )
             )
 
@@ -1597,7 +1607,7 @@ def normalize_pydantic_genai_rows(
                         confidence=confidence,
                         evidence_ref=provider_evidence_ref,
                         rejected=is_rejected_model_id(provider_alias, rejection_policy),
-                        source_url=_maybe_url(provider_evidence_ref),
+                        source_url=record_source_url,
                     )
                 )
 
