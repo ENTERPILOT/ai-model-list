@@ -1518,7 +1518,20 @@ def normalize_pydantic_genai_rows(
     owner_providers: Sequence[str] | None = None,
     skip_providers: Sequence[str] | None = None,
     evidence_ref: str = "pydantic_genai_prices.json",
+    source_name: str = "official",
+    confidence: str = "official",
 ) -> list[SourceEvidence]:
+    """Normalize a provider-catalog payload (provider blocks holding model rows).
+
+    Shared by the provider-published scrapers (``deepseek_official``,
+    ``runway_official``, ``google_speech_official``, ``xiaomi_official``,
+    ``meta_official``) and by the third-party ``pydantic_genai`` aggregator,
+    which supplies the same shape but is not provider-published. Callers pass
+    ``source_name``/``confidence`` to say which it is; only the genuinely
+    official feeds should keep the ``"official"`` default, since
+    ``field_authority`` (see ``pipeline/rules.py``) ranks that label first for
+    every field.
+    """
     allowed_provider_set = {normalize_provider_slug(value) for value in allowed_providers or ()}
     owner_provider_set = {normalize_provider_slug(value) for value in owner_providers or ()}
     skipped_provider_set = {normalize_provider_slug(value) for value in skip_providers or ()}
@@ -1556,12 +1569,12 @@ def normalize_pydantic_genai_rows(
                 fields.setdefault("source_url", provider_evidence_ref)
             records.append(
                 SourceEvidence(
-                    source_name="official",
+                    source_name=source_name,
                     source_model_id=canonical_model_id,
                     provider_slug=provider_slug,
                     canonical_hint=canonical_model_id,
                     fields=fields,
-                    confidence="official",
+                    confidence=confidence,
                     evidence_ref=provider_evidence_ref,
                     rejected=is_rejected_model_id(canonical_model_id, rejection_policy),
                     source_url=_maybe_url(provider_evidence_ref),
@@ -1576,12 +1589,12 @@ def normalize_pydantic_genai_rows(
             for provider_alias in sorted(provider_aliases):
                 records.append(
                     SourceEvidence(
-                        source_name="official",
+                        source_name=source_name,
                         source_model_id=f"{provider_slug}/{provider_alias}",
                         provider_slug=provider_slug,
                         canonical_hint=canonical_model_id,
                         fields=fields,
-                        confidence="official",
+                        confidence=confidence,
                         evidence_ref=provider_evidence_ref,
                         rejected=is_rejected_model_id(provider_alias, rejection_policy),
                         source_url=_maybe_url(provider_evidence_ref),

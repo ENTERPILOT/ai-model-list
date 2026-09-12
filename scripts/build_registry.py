@@ -79,6 +79,13 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
         if source_name == "pydantic_genai":
             kwargs["allowed_providers"] = admitted_providers
             kwargs["owner_providers"] = official_providers
+            # A third-party aggregator, unlike the *_official payloads that share
+            # this normalizer, so it must not claim the "official" authority
+            # label. "high" still outranks the price aggregators for canonical
+            # spelling tiebreaks; pricing precedence comes from
+            # source_policies.json.
+            kwargs["source_name"] = "pydantic_genai"
+            kwargs["confidence"] = "high"
             skip_providers = ["openrouter"]
             if "xai_models_official" in payloads:
                 skip_providers.append("xai")

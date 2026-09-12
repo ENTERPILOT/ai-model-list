@@ -1047,3 +1047,44 @@ def test_normalize_official_rows_drops_time_window_without_usable_rates() -> Non
     )[0]
 
     assert "time_windows" not in record.fields["pricing"]
+
+
+def test_normalize_pydantic_genai_rows_can_carry_an_aggregator_label() -> None:
+    """The catalog normalizer is shared, so the source label must be caller-set.
+
+    The ``*_official`` scrapers keep the default ``"official"`` authority; the
+    third-party ``pydantic_genai`` payload must be able to say it is not
+    provider-published, or a stale row in it outranks every other source.
+    """
+    rows = [
+        {
+            "id": "openai",
+            "pricing_urls": ["https://developers.openai.com/api/docs/pricing"],
+            "models": [
+                {
+                    "id": "gpt-5.6-luna",
+                    "name": "GPT-5.6 Luna",
+                    "match": {"or": [{"equals": "gpt-5.6-luna"}]},
+                    "prices": {"input_mtok": 1, "output_mtok": 6},
+                }
+            ],
+        }
+    ]
+
+    default_record = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["openai"],
+    )[0]
+    assert (default_record.source_name, default_record.confidence) == ("official", "official")
+
+    aggregator_record = normalize_pydantic_genai_rows(
+        rows,
+        rejection_policy={},
+        allowed_providers=["openai"],
+        source_name="pydantic_genai",
+        confidence="high",
+    )[0]
+    assert (aggregator_record.source_name, aggregator_record.confidence) == ("pydantic_genai", "high")
+    # Still the same pricing payload -- only its authority changed.
+    assert aggregator_record.fields["pricing"]["input_per_mtok"] == 1.0
