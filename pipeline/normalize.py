@@ -885,7 +885,7 @@ def extract_official_catalog_fields(
     if context_window is not None:
         fields["context_window"] = context_window
 
-    if provider_slug == "xiaomi":
+    if provider_slug in {"xiaomi", "zai", "minimax"}:
         max_output_tokens = model.get("max_output_tokens")
         if max_output_tokens is not None:
             fields["max_output_tokens"] = max_output_tokens
@@ -1693,6 +1693,9 @@ NORMALIZER_BY_SOURCE = {
     "google_speech_official": normalize_pydantic_genai_rows,
     "xiaomi_official": normalize_pydantic_genai_rows,
     "meta_official": normalize_pydantic_genai_rows,
+    "zai_official": normalize_pydantic_genai_rows,
+    "minimax_official": normalize_pydantic_genai_rows,
+    "kimicode_official": normalize_pydantic_genai_rows,
     "opencode_zen_official": normalize_third_party_provider_rows,
     "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,

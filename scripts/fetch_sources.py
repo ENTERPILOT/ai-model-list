@@ -21,7 +21,9 @@ if __package__ in {None, ""}:
 
 from pipeline.deepseek_docs import build_deepseek_models_snapshot
 from pipeline.google_speech_docs import build_google_speech_models_snapshot
+from pipeline.kimi_docs import build_kimi_models_snapshot
 from pipeline.meta_docs import build_meta_models_snapshot
+from pipeline.minimax_docs import build_minimax_models_snapshot
 from pipeline.ollama_cloud_docs import build_ollama_cloud_models_snapshot
 from pipeline.opencode_zen_docs import build_opencode_zen_models_snapshot
 from pipeline.rankings import (
@@ -44,6 +46,7 @@ from pipeline.rankings import (
 from pipeline.runway_docs import build_runway_models_snapshot
 from pipeline.xai_docs import build_xai_models_snapshot
 from pipeline.xiaomi_docs import build_xiaomi_models_snapshot
+from pipeline.zai_docs import build_zai_models_snapshot
 
 
 @dataclass(frozen=True)
@@ -74,6 +77,15 @@ XIAOMI_MODELS_SOURCE_FILENAME = "xiaomi_models_official.json"
 META_MODELS_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/models.md"
 META_PRICING_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/pricing-rate-limits.md"
 META_MODELS_SOURCE_FILENAME = "meta_models_official.json"
+ZAI_PRICING_SOURCE_URL = "https://docs.z.ai/guides/overview/pricing.md"
+ZAI_MODELS_SOURCE_URL = "https://docs.z.ai/guides/overview/overview.md"
+ZAI_MODELS_SOURCE_FILENAME = "zai_models_official.json"
+MINIMAX_MODELS_SOURCE_URL = "https://platform.minimax.io/docs/guides/models-intro.md"
+MINIMAX_PRICING_SOURCE_URL = "https://platform.minimax.io/docs/guides/pricing-paygo.md"
+MINIMAX_MODELS_SOURCE_FILENAME = "minimax_models_official.json"
+KIMI_PRICING_SOURCE_URL = "https://platform.moonshot.cn/docs/faq"
+KIMI_MODELS_SOURCE_URL = "https://platform.moonshot.cn/docs/api/chat"
+KIMI_MODELS_SOURCE_FILENAME = "kimicode_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
     ("litellm", "litellm_model_prices.json"),
@@ -375,6 +387,36 @@ def fetch_sources_to(
             _fetch_optional_markdown(META_PRICING_SOURCE_URL),
             models_source_url=META_MODELS_SOURCE_URL,
             pricing_source_url=META_PRICING_SOURCE_URL,
+        ),
+    )
+
+    _write_scraped_snapshot(
+        snapshot_dir,
+        ZAI_MODELS_SOURCE_FILENAME,
+        lambda: build_zai_models_snapshot(
+            _fetch_bytes(ZAI_PRICING_SOURCE_URL).decode("utf-8"),
+            ZAI_PRICING_SOURCE_URL,
+            model_source_url=ZAI_MODELS_SOURCE_URL,
+        ),
+    )
+
+    _write_scraped_snapshot(
+        snapshot_dir,
+        MINIMAX_MODELS_SOURCE_FILENAME,
+        lambda: build_minimax_models_snapshot(
+            _fetch_bytes(MINIMAX_PRICING_SOURCE_URL).decode("utf-8"),
+            MINIMAX_PRICING_SOURCE_URL,
+            model_source_url=MINIMAX_MODELS_SOURCE_URL,
+        ),
+    )
+
+    _write_scraped_snapshot(
+        snapshot_dir,
+        KIMI_MODELS_SOURCE_FILENAME,
+        lambda: build_kimi_models_snapshot(
+            _fetch_optional_markdown(KIMI_PRICING_SOURCE_URL),
+            KIMI_PRICING_SOURCE_URL,
+            model_source_url=KIMI_MODELS_SOURCE_URL,
         ),
     )
 
