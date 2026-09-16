@@ -895,6 +895,8 @@ def test_normalizer_registry_covers_current_source_set() -> None:
         "google_speech_official",
         "xiaomi_official",
         "meta_official",
+        "zai_official",
+        "kimicode_official",
         "opencode_zen_official",
         "ollama_cloud_official",
         "pydantic_genai",
