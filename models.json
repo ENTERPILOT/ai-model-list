@@ -1393,6 +1393,24 @@
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
     },
+    "bge-m3": {
+      "aliases": [
+        "bge_m3_embed",
+        "BAAI/bge-m3",
+        "kimicode/bge_m3_embed",
+        "deepinfra/BAAI/bge-m3"
+      ],
+      "display_name": "Bge m3",
+      "modes": [
+        "embedding"
+      ],
+      "owned_by": "kimicode",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "source_url": "https://platform.moonshot.cn/docs/faq"
+    },
     "big-pickle": {
       "aliases": [
         "opencode_zen/big-pickle"
@@ -3880,6 +3898,52 @@
         "input_per_mtok": 1.5,
         "output_per_mtok": 6.0
       }
+    },
+    "cogvideox-3": {
+      "aliases": [
+        "zai/cogvideox-3"
+      ],
+      "display_name": "CogVideoX-3",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "modes": [
+        "video_generation"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "per_request": 0.2
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "cogview-4": {
+      "aliases": [
+        "zai/cogview-4"
+      ],
+      "display_name": "CogView-4",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.01
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "cohere-command-a": {
       "aliases": [
@@ -10439,21 +10503,41 @@
       },
       "source_url": "https://docs.dev.runwayml.com/guides/pricing/"
     },
+    "glm-4-32b-0414-128k": {
+      "aliases": [
+        "zai/glm-4-32b-0414-128k"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "GLM-4-32B-0414-128K",
+      "max_output_tokens": 16000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
     "glm-4.5": {
       "aliases": [
+        "zai/glm-4.5",
         "z-ai/glm-4.5",
         "openrouter/z-ai/glm-4.5"
       ],
       "capabilities": {
         "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 131072,
-      "display_name": "Z.ai: GLM 4.5",
-      "max_output_tokens": 98304,
+      "context_window": 128000,
+      "display_name": "GLM-4.5",
+      "max_output_tokens": 96000,
       "modalities": {
         "input": [
           "text"
@@ -10465,8 +10549,8 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.11,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.2
@@ -10492,21 +10576,22 @@
           "elo": 1431,
           "rank": 17
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.5-air": {
       "aliases": [
+        "zai/glm-4.5-air",
         "z-ai/glm-4.5-air",
         "openrouter/z-ai/glm-4.5-air"
       ],
       "capabilities": {
         "function_calling": true,
-        "reasoning": true,
         "tool_choice": true
       },
-      "context_window": 131072,
-      "display_name": "Z.ai: GLM 4.5 Air",
-      "max_output_tokens": 98304,
+      "context_window": 128000,
+      "display_name": "GLM-4.5 Air",
+      "max_output_tokens": 96000,
       "modalities": {
         "input": [
           "text"
@@ -10518,11 +10603,11 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.025,
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.85
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.1
       },
       "rankings": {
         "chatbot_arena": {
@@ -10545,23 +10630,84 @@
           "elo": 1403,
           "rank": 50
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.5-airx": {
+      "aliases": [
+        "zai/glm-4.5-airx"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "GLM-4.5 AirX",
+      "max_output_tokens": 96000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.1,
+        "output_per_mtok": 4.5
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.5-flash": {
+      "aliases": [
+        "zai/glm-4.5-flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "display_name": "GLM-4.5 Flash",
+      "max_output_tokens": 96000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.5-x": {
+      "aliases": [
+        "zai/glm-4.5-x"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "GLM-4.5 X",
+      "max_output_tokens": 96000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.2,
+        "output_per_mtok": 8.9
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.5v": {
       "aliases": [
+        "zai/glm-4.5v",
         "z-ai/glm-4.5v",
         "openrouter/z-ai/glm-4.5v"
       ],
       "capabilities": {
         "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
-      "context_window": 65536,
-      "display_name": "Z.ai: GLM 4.5V",
-      "max_output_tokens": 16384,
+      "context_window": 64000,
+      "display_name": "GLM-4.5V",
+      "max_output_tokens": 16000,
       "modalities": {
         "input": [
           "text",
@@ -10574,8 +10720,8 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.11,
         "currency": "USD",
         "input_per_mtok": 0.6,
         "output_per_mtok": 1.8
@@ -10606,23 +10752,24 @@
           "elo": 1157,
           "rank": 38
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.6": {
       "aliases": [
+        "zai/glm-4.6",
         "z-ai/glm-4.6",
         "openrouter/z-ai/glm-4.6"
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 198000,
-      "display_name": "Z.ai: GLM 4.6",
-      "max_output_tokens": 16384,
+      "context_window": 200000,
+      "display_name": "GLM-4.6",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -10634,11 +10781,11 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.08,
         "currency": "USD",
-        "input_per_mtok": 0.43,
-        "output_per_mtok": 1.75
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.2
       },
       "rankings": {
         "chatbot_arena": {
@@ -10701,10 +10848,12 @@
           "rank": 70,
           "score": 62.1
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.6v": {
       "aliases": [
+        "zai/glm-4.6v",
         "z-ai/glm-4.6v",
         "z-ai/glm-4.6-20251208",
         "openrouter/z-ai/glm-4.6v",
@@ -10717,9 +10866,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 131072,
-      "display_name": "Z.ai: GLM 4.6V",
-      "max_output_tokens": 32768,
+      "context_window": 128000,
+      "display_name": "GLM-4.6V",
+      "max_output_tokens": 32000,
       "modalities": {
         "input": [
           "text",
@@ -10733,8 +10882,8 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.055,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
@@ -10780,10 +10929,43 @@
           "rank": 107,
           "score": 37.2
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.6v-flash": {
+      "aliases": [
+        "zai/glm-4.6v-flash"
+      ],
+      "context_window": 128000,
+      "display_name": "GLM-4.6V Flash",
+      "max_output_tokens": 32000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.6v-flashx": {
+      "aliases": [
+        "zai/glm-4.6v-flashx"
+      ],
+      "context_window": 128000,
+      "display_name": "GLM-4.6V FlashX",
+      "max_output_tokens": 32000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.4
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.7": {
       "aliases": [
+        "zai/glm-4.7",
         "z-ai/glm-4.7",
         "z-ai/glm-4.7-20251222",
         "openrouter/z-ai/glm-4.7",
@@ -10791,14 +10973,13 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 202752,
-      "display_name": "Z.ai: GLM 4.7",
-      "max_output_tokens": 131072,
+      "context_window": 200000,
+      "display_name": "GLM-4.7",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -10810,11 +10991,11 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.08,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.75
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.2
       },
       "rankings": {
         "livebench": {
@@ -10857,10 +11038,12 @@
           "rank": 73,
           "score": 59.7
         }
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4.7-flash": {
       "aliases": [
+        "zai/glm-4.7-flash",
         "z-ai/glm-4.7-flash",
         "z-ai/glm-4.7-flash-20260119",
         "openrouter/z-ai/glm-4.7-flash",
@@ -10868,14 +11051,13 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 131072,
-      "display_name": "Z.ai: GLM 4.7 Flash",
-      "max_output_tokens": 117964,
+      "context_window": 200000,
+      "display_name": "GLM-4.7 Flash",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -10887,11 +11069,26 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
+    "glm-4.7-flashx": {
+      "aliases": [
+        "zai/glm-4.7-flashx"
+      ],
+      "context_window": 200000,
+      "display_name": "GLM-4.7 FlashX",
+      "max_output_tokens": 128000,
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "zai",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.0605,
+        "input_per_mtok": 0.07,
         "output_per_mtok": 0.4
-      }
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-4p7": {
       "aliases": [
@@ -10964,6 +11161,7 @@
     },
     "glm-5": {
       "aliases": [
+        "zai/glm-5",
         "z-ai/glm-5",
         "fireworks/glm-5",
         "opencode_zen/glm-5",
@@ -10973,12 +11171,13 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "display_name": "Glm 5",
+      "context_window": 200000,
+      "display_name": "GLM-5",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -10990,6 +11189,7 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 1.0,
@@ -11037,7 +11237,7 @@
           "score": 69.1
         }
       },
-      "source_url": "https://opencode.ai/docs/zen"
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-5-2": {
       "aliases": [
@@ -11063,6 +11263,31 @@
         "output_per_mtok": 4.4
       },
       "source_url": "https://docs.mistral.ai/models/zai-glm-5-2"
+    },
+    "glm-5-code": {
+      "aliases": [
+        "zai/glm-5-code"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 200000,
+      "display_name": "Glm 5 Code",
+      "max_output_tokens": 128000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 5.0
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing"
     },
     "glm-5-turbo": {
       "aliases": [
@@ -11101,6 +11326,7 @@
     },
     "glm-5.1": {
       "aliases": [
+        "zai/glm-5.1",
         "z-ai/glm-5.1",
         "ollama_cloud/glm-5.1",
         "opencode_zen/glm-5.1",
@@ -11110,14 +11336,13 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 200000,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
-      "display_name": "glm-5.1",
+      "display_name": "GLM-5.1",
       "max_output_tokens": 128000,
       "modalities": {
         "input": [
@@ -11130,8 +11355,8 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
@@ -11178,10 +11403,11 @@
           "score": 72.5
         }
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-5.2": {
       "aliases": [
+        "zai/glm-5.2",
         "z-ai/glm-5.2",
         "z-ai/glm-5.2:free",
         "ollama_cloud/glm-5.2",
@@ -11193,14 +11419,13 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
       "context_window": 1048576,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
-      "display_name": "glm-5.2",
+      "display_name": "GLM-5.2",
       "max_output_tokens": 128000,
       "modalities": {
         "input": [
@@ -11213,8 +11438,8 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
@@ -11261,10 +11486,11 @@
           "score": 78.6
         }
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-5.3": {
       "aliases": [
+        "zai/glm-5.3",
         "z-ai/glm-5.3",
         "ollama_cloud/glm-5.3",
         "opencode_zen/glm-5.3",
@@ -11274,15 +11500,14 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048575,
+      "context_window": 1048576,
       "description": "Z.ai&#39;s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
-      "display_name": "glm-5.3",
-      "max_output_tokens": 943717,
+      "display_name": "GLM-5.3",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -11294,16 +11519,17 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
         "currency": "USD",
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-5.3-flash": {
       "aliases": [
+        "zai/glm-5.3-flash",
         "z-ai/glm-5.3-flash",
         "ollama_cloud/glm-5.3-flash",
         "opencode_zen/glm-5.3-flash",
@@ -11313,15 +11539,15 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
+        "tool_choice": true,
+        "vision": true
       },
       "context_window": 1048576,
       "description": "Z.ai&#39;s first natively multimodal model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters.",
-      "display_name": "glm-5.3-flash",
-      "max_output_tokens": 131072,
+      "display_name": "GLM-5.3 Flash",
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -11335,13 +11561,13 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "zai",
       "pricing": {
-        "cached_input_per_mtok": 0.03,
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.5
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "glm-5p1": {
       "aliases": [
@@ -11634,6 +11860,29 @@
         }
       }
     },
+    "glm-asr-2512": {
+      "aliases": [
+        "zai/glm-asr-2512"
+      ],
+      "display_name": "GLM-ASR-2512",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "audio_input_per_mtok": 0.03,
+        "currency": "USD"
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
     "glm-flash-latest": {
       "aliases": [
         "~z-ai/glm-flash-latest",
@@ -11669,6 +11918,29 @@
         "output_per_mtok": 0.25
       }
     },
+    "glm-image": {
+      "aliases": [
+        "zai/glm-image"
+      ],
+      "display_name": "GLM-Image",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.015
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
+    },
     "glm-latest": {
       "aliases": [
         "~z-ai/glm-latest",
@@ -11701,6 +11973,22 @@
         "input_per_mtok": 0.8775,
         "output_per_mtok": 2.97
       }
+    },
+    "glm-ocr": {
+      "aliases": [
+        "zai/glm-ocr"
+      ],
+      "display_name": "GLM-OCR",
+      "modes": [
+        "ocr"
+      ],
+      "owned_by": "zai",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.03
+      },
+      "source_url": "https://docs.z.ai/guides/overview/pricing.md"
     },
     "global.amazon.nova-2-lite": {
       "aliases": [
@@ -23534,7 +23822,9 @@
     },
     "kimi-k2.7-code": {
       "aliases": [
+        "kimi-for-coding",
         "azure_ai/kimi-k2.7-code",
+        "kimicode/kimi-for-coding",
         "moonshotai/kimi-k2.7-code",
         "ollama_cloud/kimi-k2.7-code",
         "opencode_zen/kimi-k2.7-code",
@@ -23566,6 +23856,7 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "kimicode",
       "pricing": {
         "cached_input_per_mtok": 0.19,
         "currency": "USD",
@@ -23615,6 +23906,20 @@
         }
       },
       "source_url": "https://ollama.com/pricing"
+    },
+    "kimi-k2.7-code-highspeed": {
+      "aliases": [
+        "kimi-for-coding-highspeed",
+        "kimicode/kimi-for-coding-highspeed"
+      ],
+      "context_window": 262144,
+      "description": "Speed tier of Kimi for Coding.",
+      "display_name": "Kimi for Coding Highspeed",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "kimicode",
+      "source_url": "https://platform.moonshot.cn/docs/faq"
     },
     "kimi-k2p5": {
       "aliases": [
@@ -23755,6 +24060,8 @@
     },
     "kimi-k3": {
       "aliases": [
+        "k3",
+        "kimicode/k3",
         "fireworks/kimi-k3",
         "moonshotai/kimi-k3",
         "fireworks_ai/kimi-k3",
@@ -23787,13 +24094,27 @@
       "modes": [
         "chat"
       ],
+      "owned_by": "kimicode",
       "pricing": {
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
       },
-      "source_url": "https://ollama.com/pricing"
+      "source_url": "https://platform.moonshot.cn/docs/faq"
+    },
+    "kimi-k3-256k": {
+      "aliases": [
+        "k3-256k",
+        "kimicode/k3-256k"
+      ],
+      "context_window": 262144,
+      "display_name": "Kimi K3 256K",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "kimicode",
+      "source_url": "https://platform.moonshot.cn/docs/faq"
     },
     "kimi-k3-fast": {
       "aliases": [
@@ -45293,6 +45614,18 @@
         "https://configs.portkey.ai/pricing/cohere.json"
       ]
     },
+    "deepinfra/BAAI/bge-m3": {
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json"
+      ]
+    },
     "deepinfra/DeepSeek-V3.1": {
       "enabled": true,
       "model_ref": "DeepSeek-V3.1",
@@ -45555,6 +45888,19 @@
       "pricing_source_url": "https://deepinfra.com/pricing",
       "source_urls": [
         "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/bge-m3": {
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "provider_model_id": "BAAI/bge-m3",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json"
       ]
     },
     "deepinfra/black-forest-labs/FLUX-1.1-pro": {
@@ -50887,6 +51233,64 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/groq.json",
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "kimicode/bge_m3_embed": {
+      "context_window": 8192,
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/k3": {
+      "context_window": 1000000,
+      "enabled": true,
+      "model_ref": "kimi-k3",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/k3-256k": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k3-256k",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/kimi-for-coding": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k2.7-code",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/kimi-for-coding-highspeed": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k2.7-code-highspeed",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/kimi-k2.7-code-highspeed": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k2.7-code-highspeed",
+      "provider_model_id": "kimi-for-coding-highspeed",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
+      ]
+    },
+    "kimicode/kimi-k3-256k": {
+      "context_window": 262144,
+      "enabled": true,
+      "model_ref": "kimi-k3-256k",
+      "provider_model_id": "k3-256k",
+      "source_urls": [
+        "https://platform.moonshot.cn/docs/faq"
       ]
     },
     "meta/muse-spark-1.1": {
@@ -61346,124 +61750,6 @@
         "https://openrouter.ai/google/gemma-3-4b-it"
       ]
     },
-    "openrouter/glm-4.5": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 98304,
-      "model_ref": "glm-4.5",
-      "pricing": {
-        "cached_input_per_mtok": 0.11,
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 2.2
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.5",
-      "provider_model_id": "z-ai/glm-4.5",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.5"
-      ]
-    },
-    "openrouter/glm-4.5-air": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 98304,
-      "model_ref": "glm-4.5-air",
-      "pricing": {
-        "cached_input_per_mtok": 0.025,
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.85
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.5-air",
-      "provider_model_id": "z-ai/glm-4.5-air",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.5-air"
-      ]
-    },
-    "openrouter/glm-4.5v": {
-      "context_window": 65536,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "glm-4.5v",
-      "pricing": {
-        "cached_input_per_mtok": 0.11,
-        "currency": "USD",
-        "input_per_mtok": 0.6,
-        "output_per_mtok": 1.8
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.5v",
-      "provider_model_id": "z-ai/glm-4.5v",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.5v"
-      ]
-    },
-    "openrouter/glm-4.6": {
-      "context_window": 198000,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "glm-4.6",
-      "pricing": {
-        "cached_input_per_mtok": 0.08,
-        "currency": "USD",
-        "input_per_mtok": 0.43,
-        "output_per_mtok": 1.75
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.6",
-      "provider_model_id": "z-ai/glm-4.6",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.6"
-      ]
-    },
-    "openrouter/glm-4.6v": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "glm-4.6v",
-      "pricing": {
-        "cached_input_per_mtok": 0.055,
-        "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 0.9
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.6v",
-      "provider_model_id": "z-ai/glm-4.6v",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.6v"
-      ]
-    },
-    "openrouter/glm-4.7": {
-      "context_window": 202752,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "glm-4.7",
-      "pricing": {
-        "cached_input_per_mtok": 0.08,
-        "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.75
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.7",
-      "provider_model_id": "z-ai/glm-4.7",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.7"
-      ]
-    },
-    "openrouter/glm-4.7-flash": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 117964,
-      "model_ref": "glm-4.7-flash",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0605,
-        "output_per_mtok": 0.4
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.7-flash",
-      "provider_model_id": "z-ai/glm-4.7-flash",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-4.7-flash"
-      ]
-    },
     "openrouter/glm-5-turbo": {
       "context_window": 202752,
       "enabled": true,
@@ -61479,74 +61765,6 @@
       "provider_model_id": "z-ai/glm-5-turbo",
       "source_urls": [
         "https://openrouter.ai/z-ai/glm-5-turbo"
-      ]
-    },
-    "openrouter/glm-5.1": {
-      "context_window": 200000,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "glm-5.1",
-      "pricing": {
-        "cached_input_per_mtok": 0.1794,
-        "currency": "USD",
-        "input_per_mtok": 0.966,
-        "output_per_mtok": 3.036
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
-      "provider_model_id": "z-ai/glm-5.1",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-5.1"
-      ]
-    },
-    "openrouter/glm-5.2": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 128000,
-      "model_ref": "glm-5.2",
-      "pricing": {
-        "cached_input_per_mtok": 0.14,
-        "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-5.2",
-        "https://openrouter.ai/z-ai/glm-5.2:free"
-      ]
-    },
-    "openrouter/glm-5.3": {
-      "context_window": 1048575,
-      "enabled": true,
-      "max_output_tokens": 943717,
-      "model_ref": "glm-5.3",
-      "pricing": {
-        "cached_input_per_mtok": 0.26,
-        "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
-      "provider_model_id": "z-ai/glm-5.3",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-5.3"
-      ]
-    },
-    "openrouter/glm-5.3-flash": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 131072,
-      "model_ref": "glm-5.3-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.25
-      },
-      "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
-      "provider_model_id": "z-ai/glm-5.3-flash",
-      "source_urls": [
-        "https://openrouter.ai/z-ai/glm-5.3-flash"
       ]
     },
     "openrouter/glm-5v-turbo": {
@@ -74643,6 +74861,394 @@
       "source_urls": [
         "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
       ]
+    },
+    "zai/cogvideox-3": {
+      "enabled": true,
+      "model_ref": "cogvideox-3",
+      "pricing": {
+        "currency": "USD",
+        "per_request": 0.2
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/cogview-4": {
+      "enabled": true,
+      "model_ref": "cogview-4",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.01
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4-32b-0414-128k": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 16000,
+      "model_ref": "glm-4-32b-0414-128k",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.1
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 96000,
+      "model_ref": "glm-4.5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.2
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5-air": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 96000,
+      "model_ref": "glm-4.5-air",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.1
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5-airx": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 96000,
+      "model_ref": "glm-4.5-airx",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.1,
+        "output_per_mtok": 4.5
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5-flash": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 96000,
+      "model_ref": "glm-4.5-flash",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5-x": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 96000,
+      "model_ref": "glm-4.5-x",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 2.2,
+        "output_per_mtok": 8.9
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.5v": {
+      "context_window": 64000,
+      "enabled": true,
+      "max_output_tokens": 16000,
+      "model_ref": "glm-4.5v",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 1.8
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.6": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-4.6",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.11,
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.2
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.6v": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 32000,
+      "model_ref": "glm-4.6v",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 0.9
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.6v-flash": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 32000,
+      "model_ref": "glm-4.6v-flash",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.6v-flashx": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 32000,
+      "model_ref": "glm-4.6v-flashx",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.4
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.7": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-4.7",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.11,
+        "currency": "USD",
+        "input_per_mtok": 0.6,
+        "output_per_mtok": 2.2
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.7-flash": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-4.7-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-4.7-flashx": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-4.7-flashx",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.07,
+        "output_per_mtok": 0.4
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-5": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 3.2
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-5-code": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5-code",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.3,
+        "currency": "USD",
+        "input_per_mtok": 1.2,
+        "output_per_mtok": 5.0
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing"
+      ]
+    },
+    "zai/glm-5.1": {
+      "context_window": 200000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5.1",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-5.2": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5.2",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-5.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5.3",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.26,
+        "currency": "USD",
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-5.3-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "glm-5.3-flash",
+      "pricing": {
+        "cache_write_per_mtok": 0.0,
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-asr-2512": {
+      "enabled": true,
+      "model_ref": "glm-asr-2512",
+      "pricing": {
+        "audio_input_per_mtok": 0.03,
+        "currency": "USD"
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-image": {
+      "enabled": true,
+      "model_ref": "glm-image",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.015
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
+    },
+    "zai/glm-ocr": {
+      "enabled": true,
+      "model_ref": "glm-ocr",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.03,
+        "output_per_mtok": 0.03
+      },
+      "pricing_source_url": "https://docs.z.ai/guides/overview/pricing.md",
+      "source_urls": [
+        "https://docs.z.ai/guides/overview/pricing.md"
+      ]
     }
   },
   "providers": {
@@ -74816,6 +75422,22 @@
         "audio_speech"
       ],
       "website": "https://groq.com"
+    },
+    "kimicode": {
+      "api_type": "openai",
+      "auth": {
+        "env_var": "KIMI_API_KEY",
+        "type": "bearer"
+      },
+      "base_url_env": "KIMICODE_BASE_URL",
+      "default_base_url": "https://api.kimi.com/coding/v1",
+      "display_name": "Kimi (for Coding)",
+      "docs_url": "https://platform.moonshot.cn/docs",
+      "supported_modes": [
+        "chat",
+        "embedding"
+      ],
+      "website": "https://www.kimi.com"
     },
     "meta": {
       "api_type": "openai",
@@ -75021,6 +75643,25 @@
         "audio_speech"
       ],
       "website": "https://mimo.mi.com"
+    },
+    "zai": {
+      "api_type": "openai",
+      "auth": {
+        "env_var": "ZAI_API_KEY",
+        "type": "bearer"
+      },
+      "base_url_env": "ZAI_BASE_URL",
+      "default_base_url": "https://api.z.ai/api/paas/v4",
+      "display_name": "Z.ai (Zhipu)",
+      "docs_url": "https://docs.z.ai",
+      "pricing_url": "https://docs.z.ai/guides/overview/pricing",
+      "supported_modes": [
+        "chat",
+        "image_generation",
+        "video_generation",
+        "audio_transcription"
+      ],
+      "website": "https://z.ai"
     }
   },
   "updated_at": "2026-09-15T20:59:59Z",

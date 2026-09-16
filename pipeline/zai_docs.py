@@ -195,6 +195,12 @@ def build_zai_models_snapshot(
             model["context_window"] = metadata["context_window"]
         if "max_output_tokens" in metadata:
             model["max_output_tokens"] = metadata["max_output_tokens"]
+        # Scraped prices win; the static catalog fills in when the page's
+        # table has no parseable price for a model (per-image, per-video,
+        # and audio rows fall outside the input/output column pattern).
+        # An empty scraped dict counts as "not priced".
+        if not price_data:
+            price_data = metadata.get("prices")
         if price_data is not None:
             model["prices"] = price_data
         models.append(model)
@@ -214,6 +220,8 @@ def build_zai_models_snapshot(
             model["context_window"] = metadata["context_window"]
         if "max_output_tokens" in metadata:
             model["max_output_tokens"] = metadata["max_output_tokens"]
+        if "prices" in metadata:
+            model["prices"] = metadata["prices"]
         models.append(model)
 
     if not models:
@@ -251,11 +259,33 @@ def _extract_pricing_rows(markdown: str) -> list[tuple[str, dict[str, float] | N
         if "<table" in stripped.lower():
             rows.extend(_parse_html_table(section))
 
-    # Deduplicate: last occurrence wins
+    # Deduplicate: normalize casing (docs mix "GLM-5.3-Flash" display names
+    # with "glm-5.3-flash" IDs), drop separator junk, and prefer the row
+    # carrying the most price fields when a model appears twice.
     seen: dict[str, dict[str, float] | None] = {}
-    for model_id, prices in rows:
-        seen[model_id] = prices
+    for raw_id, prices in rows:
+        model_id = _normalize_model_id(raw_id)
+        if model_id is None:
+            continue
+        existing = seen.get(model_id)
+        if existing is None or (prices is not None and len(prices) > len(existing)):
+            seen[model_id] = prices
     return list(seen.items())
+
+
+def _normalize_model_id(raw_id: str) -> str | None:
+    """Canonicalize a scraped model cell into a registry ID, or None for junk.
+
+    The docs mix display-name casing ("GLM-5.3-Flash") with real IDs
+    ("glm-5.3-flash") and markdown separator rows slip through as cells
+    (":------"). Both collapse here.
+    """
+    model_id = raw_id.strip().strip("`").strip()
+    if not model_id:
+        return None
+    if all(ch in ":- " for ch in model_id):
+        return None
+    return model_id.lower()
 
 
 def _parse_pipe_table(text: str) -> list[tuple[str, dict[str, float] | None]]:
@@ -488,15 +518,15 @@ def _extract_prices_from_row(
     if input_col is not None and input_col < len(row):
         price = _parse_price(row[input_col])
         if price is not None:
-            prices["input_per_mtok"] = price
+            prices["input_mtok"] = price
     if output_col is not None and output_col < len(row):
         price = _parse_price(row[output_col])
         if price is not None:
-            prices["output_per_mtok"] = price
+            prices["output_mtok"] = price
     if cache_col is not None and cache_col < len(row):
         price = _parse_price(row[cache_col])
         if price is not None:
-            prices["cached_input_per_mtok"] = price
+            prices["cache_read_mtok"] = price
 
     if len(prices) < 2:
         return None
@@ -514,7 +544,7 @@ def _extract_prices_from_col_indices(
         price = _parse_price(row[col])
         if price is None:
             continue
-        key = ["input_per_mtok", "output_per_mtok", "cached_input_per_mtok"][i] if i < 3 else f"_col_{i}"
+        key = ["input_mtok", "output_mtok", "cache_read_mtok"][i] if i < 3 else f"_col_{i}"
         if key not in prices:
             prices[key] = price
     return prices if len(prices) >= 2 else None

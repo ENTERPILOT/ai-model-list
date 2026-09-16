@@ -39,9 +39,9 @@ def test_build_zai_models_snapshot_parses_chat_pricing() -> None:
     models = {model["id"]: model for model in payload[0]["models"]}
 
     assert models["glm-5.3-flash"]["prices"] == {
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.50,
-        "cached_input_per_mtok": 0.03,
+        "input_mtok": 0.15,
+        "output_mtok": 0.50,
+        "cache_read_mtok": 0.03,
     }
 
     assert models["glm-5.3-flash"]["context_window"] == 1_048_576

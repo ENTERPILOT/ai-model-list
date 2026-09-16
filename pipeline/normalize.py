@@ -1695,7 +1695,7 @@ NORMALIZER_BY_SOURCE = {
     "xiaomi_official": normalize_pydantic_genai_rows,
     "meta_official": normalize_pydantic_genai_rows,
     "zai_official": normalize_pydantic_genai_rows,
-    "kimicode_official": normalize_third_party_provider_rows,
+    "kimicode_official": normalize_pydantic_genai_rows,
     "opencode_zen_official": normalize_third_party_provider_rows,
     "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,
