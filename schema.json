@@ -446,13 +446,24 @@
       "additionalProperties": false,
       "description": "Half-open daily UTC range [start, end). A range whose end is at or before its start wraps midnight.",
       "properties": {
+        "days": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+          },
+          "description": "UTC weekdays the range starts on; every day when omitted. A wrapping range starts on a listed day and spills into the following one."
+        },
         "start": {
           "type": "string",
           "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
         },
         "end": {
           "type": "string",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+          "pattern": "^(([01][0-9]|2[0-3]):[0-5][0-9]|24:00)$",
+          "description": "Exclusive end; \"24:00\" closes a range at the end of the day"
         }
       }
     },

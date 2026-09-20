@@ -600,19 +600,34 @@ def _time_windows_from_catalog_prices(
     return windows or None
 
 
-def _time_window_utc_ranges(value: Any) -> list[dict[str, str]]:
+def _time_window_utc_ranges(value: Any) -> list[dict[str, Any]]:
     if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
         return []
 
-    ranges: list[dict[str, str]] = []
+    ranges: list[dict[str, Any]] = []
     for entry in value:
         if not isinstance(entry, Mapping):
             continue
         start = entry.get("start")
         end = entry.get("end")
-        if isinstance(start, str) and isinstance(end, str) and start and end:
-            ranges.append({"start": start, "end": end})
+        if not (isinstance(start, str) and isinstance(end, str) and start and end):
+            continue
+        utc_range: dict[str, Any] = {}
+        if "days" in entry:
+            days = _time_window_days(entry["days"])
+            if not days:
+                # Dropping the restriction would apply the range every day.
+                continue
+            utc_range["days"] = days
+        utc_range.update({"start": start, "end": end})
+        ranges.append(utc_range)
     return ranges
+
+
+def _time_window_days(value: Any) -> list[str]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
+        return []
+    return [day for day in value if isinstance(day, str) and day]
 
 
 def _extract_exact_match_ids(match_spec: Any) -> list[str]:

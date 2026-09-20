@@ -68,6 +68,13 @@ TIERED_PRICING_HTML_WITHOUT_HOURS = TIERED_PRICING_HTML.replace(
     "Peak hours are 01:00 - 04:00 and 06:00 - 10:00 UTC", "Peak hours vary by region"
 )
 
+# The wording DeepSeek adopted when weekends became off-peak in full.
+TIERED_PRICING_HTML_WEEKDAY_PEAK = TIERED_PRICING_HTML.replace(
+    "UTC (all other hours are off-peak).",
+    "UTC, Monday through Friday, excluding Chinese public holidays. "
+    "All other hours are off-peak, including weekends and Chinese public holidays in full.",
+)
+
 
 def test_build_deepseek_models_snapshot_parses_legacy_pricing_table() -> None:
     payload = build_deepseek_models_snapshot(LEGACY_PRICING_HTML, SOURCE_URL)
@@ -190,6 +197,38 @@ def test_build_deepseek_models_snapshot_emits_off_peak_time_window() -> None:
         "cache_read_mtok": 0.022,
         "output_mtok": 1.98,
     }
+
+
+def test_build_deepseek_models_snapshot_limits_peak_hours_to_documented_weekdays() -> None:
+    payload = build_deepseek_models_snapshot(TIERED_PRICING_HTML_WEEKDAY_PEAK, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    weekdays = ["mon", "tue", "wed", "thu", "fri"]
+    # Day-limited ranges never wrap midnight: a wrapping Friday range would
+    # spill into Saturday, and Monday 00:00-01:00 would inherit nothing from
+    # Sunday. The weekend is off-peak around the clock.
+    assert models["deepseek-v4-flash"]["prices"]["time_windows"][0]["utc_ranges"] == [
+        {"days": weekdays, "start": "00:00", "end": "01:00"},
+        {"days": weekdays, "start": "04:00", "end": "06:00"},
+        {"days": weekdays, "start": "10:00", "end": "24:00"},
+        {"days": ["sat", "sun"], "start": "00:00", "end": "24:00"},
+    ]
+    assert models["deepseek-v4-pro"]["prices"]["time_windows"][0]["utc_ranges"] == (
+        models["deepseek-v4-flash"]["prices"]["time_windows"][0]["utc_ranges"]
+    )
+
+
+def test_build_deepseek_models_snapshot_prices_legacy_flash_names_as_flash() -> None:
+    # DeepSeek retired deepseek-v4-flash and its vision variant but still
+    # accepts the names, serving and billing them as deepseek-flash.
+    html_text = TIERED_PRICING_HTML.replace("<td>deepseek-v4-flash<sup>(1)</sup></td>", "<td>deepseek-flash</td>")
+    payload = build_deepseek_models_snapshot(html_text, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    assert models["deepseek-flash"]["match"] == {
+        "or": [{"equals": "deepseek-v4-flash"}, {"equals": "deepseek-v4-flash-vision-exp"}]
+    }
+    assert "match" not in models["deepseek-v4-pro"]
 
 
 def test_build_deepseek_models_snapshot_omits_time_window_without_documented_hours() -> None:

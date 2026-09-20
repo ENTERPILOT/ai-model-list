@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from urllib.error import HTTPError
 
+import pytest
+
 from pipeline.loaders import load_curated_config
 from pipeline.normalize import PYDANTIC_GENAI_SOURCE_URL
 from scripts import build_registry as build_registry_module
@@ -879,6 +881,51 @@ def test_validate_accepts_pricing_time_windows(tmp_path: Path) -> None:
     schema_path = Path(__file__).resolve().parent.parent / "schema.json"
 
     assert validate(models_path, schema_path) == []
+
+
+def _validate_utc_ranges(tmp_path: Path, utc_ranges: list[dict[str, object]]) -> list[str]:
+    data = _registry_with_pricing(
+        {
+            "currency": "USD",
+            "input_per_mtok": 0.44,
+            "time_windows": [
+                {"label": "off_peak", "utc_ranges": utc_ranges, "pricing": {"input_per_mtok": 0.22}}
+            ],
+        }
+    )
+    models_path = tmp_path / "models.json"
+    models_path.write_text(json.dumps(data), encoding="utf-8")
+    schema_path = Path(__file__).resolve().parent.parent / "schema.json"
+    return validate(models_path, schema_path)
+
+
+def test_validate_accepts_day_limited_pricing_time_window_ranges(tmp_path: Path) -> None:
+    assert (
+        _validate_utc_ranges(
+            tmp_path,
+            [
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "10:00", "end": "24:00"},
+                {"days": ["sat", "sun"], "start": "00:00", "end": "24:00"},
+            ],
+        )
+        == []
+    )
+
+
+@pytest.mark.parametrize(
+    "utc_range",
+    [
+        {"days": ["saturday"], "start": "00:00", "end": "24:00"},
+        {"days": [], "start": "00:00", "end": "24:00"},
+        {"days": ["sat", "sat"], "start": "00:00", "end": "24:00"},
+        {"start": "24:00", "end": "01:00"},
+        {"start": "00:00", "end": "24:30"},
+    ],
+)
+def test_validate_rejects_malformed_pricing_time_window_range(
+    tmp_path: Path, utc_range: dict[str, object]
+) -> None:
+    assert _validate_utc_ranges(tmp_path, [utc_range]) != []
 
 
 def test_validate_rejects_malformed_pricing_time_windows(tmp_path: Path) -> None:

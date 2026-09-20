@@ -35,10 +35,20 @@ OFF_PEAK_WINDOW_LABEL = "off_peak"
 TAG_PATTERN = re.compile(r"<[^>]+>")
 PEAK_HOURS_PATTERN = re.compile(r"peak hours are(?P<body>.*?)utc", re.IGNORECASE | re.S)
 HOUR_RANGE_PATTERN = re.compile(r"(\d{1,2}:\d{2})\s*[-–—~]\s*(\d{1,2}:\d{2})")
+# The weekday span is read from the rest of the peak-hours sentence, e.g.
+# "… UTC, Monday through Friday, excluding Chinese public holidays."
+PEAK_DAYS_PATTERN = re.compile(
+    r"^[^.]*?\b(?P<first>[a-z]+day)\s*(?:through|thru|to|[-–—~])\s*(?P<last>[a-z]+day)\b",
+    re.IGNORECASE,
+)
 MINUTES_PER_DAY = 24 * 60
+END_OF_DAY = "24:00"
+WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
+# Legacy names DeepSeek still accepts and bills at the listed model's price.
 DEPRECATED_EXACT_ALIASES = {
     "deepseek-v4-flash": ("deepseek-chat", "deepseek-reasoner"),
+    "deepseek-flash": ("deepseek-v4-flash", "deepseek-v4-flash-vision-exp"),
 }
 
 
@@ -110,7 +120,7 @@ def _build_time_windows(
     cache_tiers: dict[str, list[float]],
     input_tiers: dict[str, list[float]],
     output_tiers: dict[str, list[float]],
-    off_peak_ranges: list[dict[str, str]],
+    off_peak_ranges: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     if not off_peak_ranges:
         return []
@@ -139,14 +149,15 @@ def _build_time_windows(
     ]
 
 
-def _off_peak_utc_ranges(html_text: str) -> list[dict[str, str]]:
-    """Daily UTC ranges outside DeepSeek's documented peak hours.
+def _off_peak_utc_ranges(html_text: str) -> list[dict[str, Any]]:
+    """UTC ranges outside DeepSeek's documented peak hours.
 
     The hours live in prose below the table rather than in it, so an
     unrecognized footnote drops the window instead of failing the build; the
     peak rates are still published as the base prices.
     """
-    peak_match = PEAK_HOURS_PATTERN.search(_document_text(html_text))
+    document_text = _document_text(html_text)
+    peak_match = PEAK_HOURS_PATTERN.search(document_text)
     if peak_match is None:
         return []
 
@@ -162,10 +173,38 @@ def _off_peak_utc_ranges(html_text: str) -> list[dict[str, str]]:
     if not peak_minutes or len(peak_minutes) == MINUTES_PER_DAY:
         return []
 
-    return _minutes_to_ranges(set(range(MINUTES_PER_DAY)) - peak_minutes)
+    off_peak_minutes = set(range(MINUTES_PER_DAY)) - peak_minutes
+    peak_days = _peak_days(document_text[peak_match.end() :])
+    if not peak_days or len(peak_days) == len(WEEKDAYS):
+        return _minutes_to_ranges(off_peak_minutes, wrap_midnight=True)
+
+    # Peak hours apply on some days only: those days keep the off-peak hours,
+    # the remaining days are off-peak in full. A day-limited range must not
+    # wrap, or it would spill into a day with a different schedule.
+    ranges = [
+        {"days": peak_days, **utc_range}
+        for utc_range in _minutes_to_ranges(off_peak_minutes, wrap_midnight=False)
+    ]
+    off_peak_days = [day for day in WEEKDAYS if day not in peak_days]
+    ranges.append({"days": off_peak_days, "start": "00:00", "end": END_OF_DAY})
+    return ranges
 
 
-def _minutes_to_ranges(minutes: set[int]) -> list[dict[str, str]]:
+def _peak_days(text_after_hours: str) -> list[str]:
+    """Weekdays the peak hours apply on; empty when no span is documented."""
+    match = PEAK_DAYS_PATTERN.search(text_after_hours)
+    if match is None:
+        return []
+    first = match.group("first")[:3].lower()
+    last = match.group("last")[:3].lower()
+    if first not in WEEKDAYS or last not in WEEKDAYS:
+        return []
+    start = WEEKDAYS.index(first)
+    span = (WEEKDAYS.index(last) - start) % len(WEEKDAYS) + 1
+    return [WEEKDAYS[(start + offset) % len(WEEKDAYS)] for offset in range(span)]
+
+
+def _minutes_to_ranges(minutes: set[int], *, wrap_midnight: bool) -> list[dict[str, str]]:
     bounds: list[tuple[int, int]] = []
     for minute in sorted(minutes):
         if bounds and bounds[-1][1] == minute:
@@ -174,13 +213,16 @@ def _minutes_to_ranges(minutes: set[int]) -> list[dict[str, str]]:
             bounds.append((minute, minute + 1))
 
     # A range touching both ends of the day is one window that wraps midnight.
-    if len(bounds) > 1 and bounds[0][0] == 0 and bounds[-1][1] == MINUTES_PER_DAY:
+    if wrap_midnight and len(bounds) > 1 and bounds[0][0] == 0 and bounds[-1][1] == MINUTES_PER_DAY:
         first = bounds.pop(0)
         last = bounds.pop()
         bounds.append((last[0], first[1]))
 
     return [
-        {"start": _format_clock(start), "end": _format_clock(end % MINUTES_PER_DAY)}
+        {
+            "start": _format_clock(start),
+            "end": END_OF_DAY if end == MINUTES_PER_DAY else _format_clock(end),
+        }
         for start, end in sorted(bounds)
     ]
 
