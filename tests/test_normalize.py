@@ -1018,6 +1018,62 @@ def test_normalize_official_rows_maps_pricing_time_windows() -> None:
     ]
 
 
+def _normalized_time_window_ranges(utc_ranges: list[dict[str, object]]) -> list[dict[str, object]] | None:
+    rows = [
+        {
+            "id": "deepseek",
+            "pricing_urls": ["https://api-docs.deepseek.com/quick_start/pricing"],
+            "models": [
+                {
+                    "id": "deepseek-v4-flash",
+                    "name": "DeepSeek V4 Flash",
+                    "match": {"equals": "deepseek-v4-flash"},
+                    "prices": {
+                        "input_mtok": 0.44,
+                        "output_mtok": 1.32,
+                        "time_windows": [
+                            {
+                                "label": "off_peak",
+                                "utc_ranges": utc_ranges,
+                                "prices": {"input_mtok": 0.22, "output_mtok": 0.66},
+                            }
+                        ],
+                    },
+                }
+            ],
+        }
+    ]
+    record = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["deepseek"],
+        owner_providers=["deepseek"],
+        rejection_policy={},
+    )[0]
+    windows = record.fields["pricing"].get("time_windows")
+    return windows[0]["utc_ranges"] if windows else None
+
+
+def test_normalize_official_rows_keeps_time_window_range_days() -> None:
+    utc_ranges = [
+        {"days": ["mon", "tue", "wed", "thu", "fri"], "start": "10:00", "end": "24:00"},
+        {"days": ["sat", "sun"], "start": "00:00", "end": "24:00"},
+    ]
+
+    assert _normalized_time_window_ranges(utc_ranges) == utc_ranges
+
+
+def test_normalize_official_rows_drops_time_window_range_with_unusable_days() -> None:
+    # Publishing the range without its day restriction would apply the
+    # discount every day, so it is dropped instead.
+    assert _normalized_time_window_ranges(
+        [
+            {"days": [], "start": "00:00", "end": "24:00"},
+            {"days": "sat", "start": "00:00", "end": "24:00"},
+            {"start": "04:00", "end": "06:00"},
+        ]
+    ) == [{"start": "04:00", "end": "06:00"}]
+
+
 def test_normalize_official_rows_drops_time_window_without_usable_rates() -> None:
     rows = [
         {
