@@ -71,8 +71,8 @@ OLLAMA_CLOUD_SOURCE_FILENAME = "ollama_cloud_models_official.json"
 XIAOMI_MODELS_PRICING_SOURCE_URL = "https://mimo.mi.com/static/docs/price/pay-as-you-go.md"
 XIAOMI_MODELS_SUMMARY_SOURCE_URL = "https://mimo.mi.com/static/docs/quick-start/summary/model.md"
 XIAOMI_MODELS_SOURCE_FILENAME = "xiaomi_models_official.json"
-META_MODELS_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/models.md"
-META_PRICING_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/pricing-rate-limits.md"
+META_MODELS_SOURCE_URL = "https://dev.meta.ai/docs/models.md"
+META_PRICING_SOURCE_URL = "https://dev.meta.ai/docs/pricing-rate-limits.md"
 META_MODELS_SOURCE_FILENAME = "meta_models_official.json"
 TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("fetch-metadata", "fetch_metadata.json"),
@@ -175,15 +175,17 @@ def _write_scraped_snapshot(
     """Fetch and parse a scraped docs source, tolerating transient page variants.
 
     These provider docs sites intermittently serve alternate page layouts that
-    the parsers cannot read. Parse failures are retried with a fresh fetch; if
-    every attempt fails, the snapshot is skipped for this run so the registry
-    build falls back to the aggregator pricing sources for that provider.
+    the parsers cannot read, and occasionally move or drop a page altogether.
+    Parse and fetch failures are retried with a fresh fetch; if every attempt
+    fails, the snapshot is skipped for this run so the registry build falls
+    back to the aggregator pricing sources for that provider instead of
+    blocking every other provider's update.
     """
-    last_error: ValueError | None = None
+    last_error: ValueError | OSError | None = None
     for attempt in range(1, attempts + 1):
         try:
             payload = build_payload()
-        except ValueError as error:
+        except (ValueError, OSError) as error:
             last_error = error
             if attempt < attempts:
                 time.sleep(retry_delay)

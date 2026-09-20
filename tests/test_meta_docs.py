@@ -3,8 +3,8 @@ import pytest
 from pipeline.meta_docs import build_meta_models_snapshot
 
 
-MODELS_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/models.md"
-PRICING_SOURCE_URL = "https://dev.meta.ai/docs/getting-started/pricing-rate-limits.md"
+MODELS_SOURCE_URL = "https://dev.meta.ai/docs/models.md"
+PRICING_SOURCE_URL = "https://dev.meta.ai/docs/pricing-rate-limits.md"
 
 MODELS_MARKDOWN = """
 # Models

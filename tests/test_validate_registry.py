@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from urllib.error import HTTPError
 
 from pipeline.loaders import load_curated_config
 from pipeline.normalize import PYDANTIC_GENAI_SOURCE_URL
@@ -217,6 +218,21 @@ def test_write_scraped_snapshot_skips_on_persistent_parse_failure(
 
     def build_payload() -> list[dict[str, str]]:
         raise ValueError("unable to locate pricing table")
+
+    written = fetch_sources_module._write_scraped_snapshot(
+        tmp_path, "provider_official.json", build_payload, attempts=3
+    )
+
+    assert written is False
+    assert not (tmp_path / "provider_official.json").exists()
+    assert "skipping provider_official.json" in capsys.readouterr().err
+
+
+def test_write_scraped_snapshot_skips_when_the_page_is_gone(tmp_path: Path, monkeypatch, capsys) -> None:
+    monkeypatch.setattr(fetch_sources_module.time, "sleep", lambda _delay: None)
+
+    def build_payload() -> list[dict[str, str]]:
+        raise HTTPError("https://example.com/docs/models.md", 404, "Not Found", None, None)
 
     written = fetch_sources_module._write_scraped_snapshot(
         tmp_path, "provider_official.json", build_payload, attempts=3
