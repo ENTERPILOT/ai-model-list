@@ -14,6 +14,7 @@ import shutil
 import sys
 import time
 from typing import Iterable
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 if __package__ in {None, ""}:
@@ -126,6 +127,8 @@ SOURCE_URLS = {descriptor.slug: descriptor.url for descriptor in SOURCE_DESCRIPT
 DEFAULT_FETCH_TIMEOUT_SECONDS = 30.0
 DEFAULT_FETCH_RETRIES = 3
 DEFAULT_RETRY_DELAY_SECONDS = 2.0
+# Request Timeout and Too Many Requests are the 4xx responses worth retrying.
+RETRYABLE_CLIENT_ERROR_STATUSES = frozenset({408, 429})
 
 
 def snapshot_path_for_run(base_dir: Path, run_id: str) -> Path:
@@ -148,12 +151,21 @@ def _fetch_bytes(
         try:
             with urlopen(request, timeout=timeout) as response:
                 return response.read()
-        except (OSError, TimeoutError):
-            if attempt == retries:
+        except (OSError, TimeoutError) as error:
+            if attempt == retries or _is_permanent_http_error(error):
                 raise
             time.sleep(retry_delay)
 
     raise RuntimeError("exhausted fetch retries without raising")
+
+
+def _is_permanent_http_error(error: Exception) -> bool:
+    """A 4xx the server will keep returning, such as a 404 for a moved page."""
+    return (
+        isinstance(error, HTTPError)
+        and 400 <= error.code < 500
+        and error.code not in RETRYABLE_CLIENT_ERROR_STATUSES
+    )
 
 
 def _fetch_optional_markdown(url: str) -> str | None:
@@ -176,18 +188,23 @@ def _write_scraped_snapshot(
 
     These provider docs sites intermittently serve alternate page layouts that
     the parsers cannot read, and occasionally move or drop a page altogether.
-    Parse and fetch failures are retried with a fresh fetch; if every attempt
-    fails, the snapshot is skipped for this run so the registry build falls
-    back to the aggregator pricing sources for that provider instead of
-    blocking every other provider's update.
+    Parse failures are retried with a fresh fetch. A fetch failure has already
+    been retried by ``_fetch_bytes``, so it is not retried again. Either way
+    the snapshot is skipped for this run, so the registry build falls back to
+    the aggregator pricing sources for that provider instead of blocking every
+    other provider's update.
     """
     last_error: ValueError | OSError | None = None
-    for attempt in range(1, attempts + 1):
+    tried = 0
+    for tried in range(1, attempts + 1):
         try:
             payload = build_payload()
-        except (ValueError, OSError) as error:
+        except OSError as error:
             last_error = error
-            if attempt < attempts:
+            break
+        except ValueError as error:
+            last_error = error
+            if tried < attempts:
                 time.sleep(retry_delay)
             continue
         (snapshot_dir / filename).write_text(
@@ -196,7 +213,7 @@ def _write_scraped_snapshot(
         )
         return True
     print(
-        f"warning: skipping {filename} after {attempts} attempts: {last_error}",
+        f"warning: skipping {filename} after {tried} attempts: {last_error}",
         file=sys.stderr,
     )
     return False
