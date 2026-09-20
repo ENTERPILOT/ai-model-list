@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from urllib.error import HTTPError
 
 import pytest
 
@@ -227,6 +228,44 @@ def test_write_scraped_snapshot_skips_on_persistent_parse_failure(
     assert written is False
     assert not (tmp_path / "provider_official.json").exists()
     assert "skipping provider_official.json" in capsys.readouterr().err
+
+
+def test_write_scraped_snapshot_skips_when_the_page_is_gone(tmp_path: Path, monkeypatch, capsys) -> None:
+    delays: list[float] = []
+    monkeypatch.setattr(fetch_sources_module.time, "sleep", delays.append)
+    calls: list[int] = []
+
+    def build_payload() -> list[dict[str, str]]:
+        calls.append(1)
+        raise HTTPError("https://example.com/docs/models.md", 404, "Not Found", None, None)
+
+    written = fetch_sources_module._write_scraped_snapshot(
+        tmp_path, "provider_official.json", build_payload, attempts=3
+    )
+
+    assert written is False
+    assert not (tmp_path / "provider_official.json").exists()
+    assert "skipping provider_official.json" in capsys.readouterr().err
+    # The fetch layer already retried, so a fetch failure is not retried again.
+    assert len(calls) == 1
+    assert delays == []
+
+
+@pytest.mark.parametrize(("status", "expected_requests"), [(404, 1), (403, 1), (429, 3), (503, 3)])
+def test_fetch_bytes_retries_only_transient_http_errors(monkeypatch, status: int, expected_requests: int) -> None:
+    monkeypatch.setattr(fetch_sources_module.time, "sleep", lambda _delay: None)
+    requests: list[int] = []
+
+    def failing_urlopen(request, timeout: float):
+        requests.append(1)
+        raise HTTPError(request.full_url, status, "error", None, None)
+
+    monkeypatch.setattr(fetch_sources_module, "urlopen", failing_urlopen)
+
+    with pytest.raises(HTTPError):
+        fetch_sources_module._fetch_bytes("https://example.com/models.md", retries=3)
+
+    assert len(requests) == expected_requests
 
 
 def test_write_optional_artificial_analysis_snapshot_skips_without_api_key(tmp_path: Path, monkeypatch) -> None:
