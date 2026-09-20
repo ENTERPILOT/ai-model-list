@@ -218,6 +218,19 @@ def test_build_deepseek_models_snapshot_limits_peak_hours_to_documented_weekdays
     )
 
 
+def test_build_deepseek_models_snapshot_prices_legacy_flash_names_as_flash() -> None:
+    # DeepSeek retired deepseek-v4-flash and its vision variant but still
+    # accepts the names, serving and billing them as deepseek-flash.
+    html_text = TIERED_PRICING_HTML.replace("<td>deepseek-v4-flash<sup>(1)</sup></td>", "<td>deepseek-flash</td>")
+    payload = build_deepseek_models_snapshot(html_text, SOURCE_URL)
+
+    models = {model["id"]: model for model in payload[0]["models"]}
+    assert models["deepseek-flash"]["match"] == {
+        "or": [{"equals": "deepseek-v4-flash"}, {"equals": "deepseek-v4-flash-vision-exp"}]
+    }
+    assert "match" not in models["deepseek-v4-pro"]
+
+
 def test_build_deepseek_models_snapshot_omits_time_window_without_documented_hours() -> None:
     payload = build_deepseek_models_snapshot(TIERED_PRICING_HTML_WITHOUT_HOURS, SOURCE_URL)
 

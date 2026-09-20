@@ -45,8 +45,10 @@ MINUTES_PER_DAY = 24 * 60
 END_OF_DAY = "24:00"
 WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
+# Legacy names DeepSeek still accepts and bills at the listed model's price.
 DEPRECATED_EXACT_ALIASES = {
     "deepseek-v4-flash": ("deepseek-chat", "deepseek-reasoner"),
+    "deepseek-flash": ("deepseek-v4-flash", "deepseek-v4-flash-vision-exp"),
 }
 
 
