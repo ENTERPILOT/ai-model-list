@@ -1,5 +1,28 @@
 {
   "models": {
+    "Cohere-command-a-plus-05-2026": {
+      "aliases": [
+        "azure_ai/Cohere-command-a-plus-05-2026",
+        "azure/azure_ai/Cohere-command-a-plus-05-2026"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 128000,
+      "display_name": "Cohere Command A Plus 05 2026",
+      "max_output_tokens": 64000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 3.2
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
     "Cohere-embed-v3-english": {
       "aliases": [
         "azure_ai/Cohere-embed-v3-english",
@@ -145,6 +168,31 @@
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
+    "FW-DeepSeek-V4-Flash": {
+      "aliases": [
+        "azure_ai/FW-DeepSeek-V4-Flash",
+        "azure/azure_ai/FW-DeepSeek-V4-Flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Fw Deepseek V4 Flash",
+      "max_output_tokens": 384000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.31
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
     "FW-DeepSeek-V4-Pro": {
       "aliases": [
         "azure_ai/FW-DeepSeek-V4-Pro",
@@ -167,6 +215,31 @@
         "currency": "USD",
         "input_per_mtok": 1.925,
         "output_per_mtok": 3.828
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "FW-DeepSeek-V4.1-Flash": {
+      "aliases": [
+        "azure_ai/FW-DeepSeek-V4.1-Flash",
+        "azure/azure_ai/FW-DeepSeek-V4.1-Flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Fw Deepseek V4 1 Flash",
+      "max_output_tokens": 384000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.008,
+        "currency": "USD",
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 1.5
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
@@ -267,6 +340,83 @@
         "currency": "USD",
         "input_per_mtok": 2.31,
         "output_per_mtok": 7.26
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "FW-GLM-5.3": {
+      "aliases": [
+        "azure_ai/FW-GLM-5.3",
+        "azure/azure_ai/FW-GLM-5.3"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Fw Glm 5 3",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.325,
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 5.5
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "FW-GLM-5.3-Flash": {
+      "aliases": [
+        "azure_ai/FW-GLM-5.3-Flash",
+        "azure/azure_ai/FW-GLM-5.3-Flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Fw Glm 5 3 Flash",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.038,
+        "currency": "USD",
+        "input_per_mtok": 0.188,
+        "output_per_mtok": 0.625
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "FW-GPT-OSS-120B": {
+      "aliases": [
+        "azure_ai/FW-GPT-OSS-120B",
+        "azure/azure_ai/FW-GPT-OSS-120B"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true
+      },
+      "context_window": 131072,
+      "display_name": "Fw GPT OSS 120B",
+      "max_output_tokens": 131072,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.082,
+        "currency": "USD",
+        "input_per_mtok": 0.165,
+        "output_per_mtok": 0.66
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
@@ -699,6 +849,60 @@
         "per_image": 0.1085
       },
       "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-image-2-5-pro-and-mai-voice-2-flash-in-microsoft-foundry/4539446"
+    },
+    "MAI-Image-2.6": {
+      "aliases": [
+        "azure_ai/MAI-Image-2.6",
+        "azure/azure_ai/MAI-Image-2.6"
+      ],
+      "display_name": "Mai Image 2 6",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 38.0
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "MAI-Image-2.6-Flash": {
+      "aliases": [
+        "azure_ai/MAI-Image-2.6-Flash",
+        "azure/azure_ai/MAI-Image-2.6-Flash"
+      ],
+      "display_name": "Mai Image 2 6 Flash",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 2.5,
+        "input_per_mtok": 1.75,
+        "output_image_per_mtok": 19.0
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
     "MAI-Thinking-1": {
       "aliases": [
@@ -1566,6 +1770,29 @@
       "pricing": {
         "currency": "USD",
         "per_second_input": 5e-05
+      },
+      "source_url": "https://cloud.google.com/speech-to-text/pricing"
+    },
+    "chirp_2": {
+      "aliases": [
+        "vertex_ai/chirp_2"
+      ],
+      "display_name": "Chirp 2",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription",
+        "realtime"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.00026667
       },
       "source_url": "https://cloud.google.com/speech-to-text/pricing"
     },
@@ -4842,7 +5069,7 @@
       },
       "context_window": 1048576,
       "display_name": "DeepSeek: DeepSeek Pro Latest",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "modalities": {
         "input": [
           "text"
@@ -4855,10 +5082,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.25,
+        "cached_input_per_mtok": 0.01239,
         "currency": "USD",
-        "input_per_mtok": 0.39,
-        "output_per_mtok": 2.9
+        "input_per_mtok": 0.3894,
+        "output_per_mtok": 1.1682
       }
     },
     "deepseek-r1": {
@@ -5827,10 +6054,12 @@
     },
     "deepseek-v4.1-flash": {
       "aliases": [
+        "azure_ai/deepseek-v4.1-flash",
         "deepseek/deepseek-v4.1-flash",
         "ollama_cloud/deepseek-v4.1-flash",
         "opencode_zen/deepseek-v4.1-flash",
         "deepseek/deepseek-v4.1-flash-20260910",
+        "azure/azure_ai/deepseek-v4.1-flash",
         "openrouter/deepseek/deepseek-v4.1-flash",
         "openrouter/deepseek/deepseek-v4.1-flash-20260910"
       ],
@@ -5838,14 +6067,12 @@
         "function_calling": true,
         "prompt_caching": true,
         "reasoning": true,
-        "response_schema": true,
-        "tool_choice": true,
-        "vision": true
+        "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1000000,
       "description": "DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results.",
       "display_name": "deepseek-v4.1-flash",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 384000,
       "modalities": {
         "input": [
           "text",
@@ -7694,6 +7921,7 @@
       "pricing": {
         "batch_input_per_mtok": 0.25,
         "batch_output_per_mtok": 1.5,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.5,
         "output_image_per_mtok": 60.0,
@@ -11032,10 +11260,10 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1048575,
       "description": "Z.ai&#39;s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
       "display_name": "glm-5.3",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "modalities": {
         "input": [
           "text"
@@ -11074,7 +11302,7 @@
       "context_window": 1048576,
       "description": "Z.ai&#39;s first natively multimodal model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters.",
       "display_name": "glm-5.3-flash",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text",
@@ -11594,10 +11822,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.10426,
         "currency": "USD",
-        "input_per_mtok": 0.5625,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5614,
+        "output_per_mtok": 1.7644
       }
     },
     "global.amazon.nova-2-lite": {
@@ -17962,6 +18190,7 @@
     },
     "gpt-audio-1.5": {
       "aliases": [
+        "azure/gpt-audio-1.5",
         "openai/gpt-audio-1.5"
       ],
       "capabilities": {
@@ -19500,6 +19729,7 @@
     },
     "gpt-live-1": {
       "aliases": [
+        "azure/gpt-live-1",
         "openai/gpt-live-1"
       ],
       "capabilities": {
@@ -19529,6 +19759,7 @@
     },
     "gpt-live-transcribe": {
       "aliases": [
+        "azure/gpt-live-transcribe",
         "openai/gpt-live-transcribe"
       ],
       "capabilities": {
@@ -20359,6 +20590,7 @@
     },
     "gpt-realtime-translate": {
       "aliases": [
+        "azure/gpt-realtime-translate",
         "openai/gpt-realtime-translate"
       ],
       "capabilities": {
@@ -20501,6 +20733,7 @@
     },
     "gpt-transcribe": {
       "aliases": [
+        "azure/gpt-transcribe",
         "openai/gpt-transcribe"
       ],
       "capabilities": {
@@ -22858,10 +23091,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-preview": {
@@ -23908,8 +24141,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 10.75
+        "input_per_mtok": 1.35,
+        "output_per_mtok": 11.5
       }
     },
     "l3-lunaris-8b": {
@@ -27061,21 +27294,20 @@
         "mistral-medium-3.5",
         "mistral/mistral-medium-3-5",
         "mistral/mistral-medium-3.5",
+        "azure_ai/mistral-medium-3-5",
         "mistralai/mistral-medium-3-5",
         "mistralai/mistral-medium-3.5-20260430",
+        "azure/azure_ai/mistral-medium-3-5",
         "openrouter/mistralai/mistral-medium-3-5",
         "openrouter/mistralai/mistral-medium-3.5-20260430"
       ],
       "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
         "response_schema": true,
-        "tool_choice": true,
         "vision": true
       },
-      "context_window": 262144,
+      "context_window": 128000,
       "display_name": "Mistral Medium 3 5",
-      "max_output_tokens": 262144,
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text",
@@ -27094,7 +27326,7 @@
         "input_per_mtok": 1.5,
         "output_per_mtok": 7.5
       },
-      "source_url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04"
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
     "mistral-medium-3.1": {
       "aliases": [
@@ -28070,30 +28302,27 @@
     "muse-spark-1.3": {
       "aliases": [
         "meta/muse-spark-1.3",
+        "azure_ai/muse-spark-1.3",
         "opencode_zen/muse-spark-1.3",
         "meta/muse-spark-1.3-20260902",
+        "azure/azure_ai/muse-spark-1.3",
         "openrouter/meta/muse-spark-1.3",
         "openrouter/meta/muse-spark-1.3-20260902"
       ],
       "capabilities": {
         "function_calling": true,
-        "parallel_function_calling": true,
-        "pdf_input": true,
         "prompt_caching": true,
         "reasoning": true,
         "response_schema": true,
-        "system_messages": true,
         "tool_choice": true,
-        "vision": true,
-        "web_search": true
+        "vision": true
       },
       "context_window": 1048576,
       "display_name": "Muse Spark 1.3",
       "modalities": {
         "input": [
           "text",
-          "image",
-          "video"
+          "image"
         ],
         "output": [
           "text"
@@ -36127,6 +36356,22 @@
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
       ]
     },
+    "azure/Cohere-command-a-plus-05-2026": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "Cohere-command-a-plus-05-2026",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 3.2
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/Cohere-command-a-plus-05-2026",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/Cohere-embed-v3-english": {
       "context_window": 512,
       "enabled": true,
@@ -36233,6 +36478,23 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
+    "azure/FW-DeepSeek-V4-Flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "FW-DeepSeek-V4-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.31
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/FW-DeepSeek-V4-Flash",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/FW-DeepSeek-V4-Pro": {
       "context_window": 1000000,
       "enabled": true,
@@ -36246,6 +36508,23 @@
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "provider_model_id": "azure_ai/FW-DeepSeek-V4-Pro",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/FW-DeepSeek-V4.1-Flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "FW-DeepSeek-V4.1-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.008,
+        "currency": "USD",
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/FW-DeepSeek-V4.1-Flash",
       "source_urls": [
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
@@ -36314,6 +36593,57 @@
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "provider_model_id": "azure_ai/FW-GLM-5.2-Fast",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/FW-GLM-5.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GLM-5.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.325,
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 5.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/FW-GLM-5.3",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/FW-GLM-5.3-Flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GLM-5.3-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.038,
+        "currency": "USD",
+        "input_per_mtok": 0.188,
+        "output_per_mtok": 0.625
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/FW-GLM-5.3-Flash",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/FW-GPT-OSS-120B": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GPT-OSS-120B",
+      "pricing": {
+        "cached_input_per_mtok": 0.082,
+        "currency": "USD",
+        "input_per_mtok": 0.165,
+        "output_per_mtok": 0.66
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/FW-GPT-OSS-120B",
       "source_urls": [
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
@@ -36562,6 +36892,44 @@
         "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-image-2-5-pro-and-mai-voice-2-flash-in-microsoft-foundry/4539446"
       ]
     },
+    "azure/MAI-Image-2.6": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "MAI-Image-2.6",
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 38.0
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/MAI-Image-2.6",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/MAI-Image-2.6-Flash": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "MAI-Image-2.6-Flash",
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 2.5,
+        "input_per_mtok": 1.75,
+        "output_image_per_mtok": 19.0
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/MAI-Image-2.6-Flash",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/MAI-Thinking-1": {
       "context_window": 256000,
       "enabled": true,
@@ -36793,6 +37161,21 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
+    "azure/azure_ai/Cohere-command-a-plus-05-2026": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 64000,
+      "model_ref": "Cohere-command-a-plus-05-2026",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.8,
+        "output_per_mtok": 3.2
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/azure_ai/Cohere-embed-v3-english": {
       "context_window": 512,
       "enabled": true,
@@ -36908,6 +37291,22 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
+    "azure/azure_ai/FW-DeepSeek-V4-Flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "FW-DeepSeek-V4-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.03,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.31
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/azure_ai/FW-DeepSeek-V4-Pro": {
       "context_window": 1000000,
       "enabled": true,
@@ -36918,6 +37317,22 @@
         "currency": "USD",
         "input_per_mtok": 1.925,
         "output_per_mtok": 3.828
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/FW-DeepSeek-V4.1-Flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "FW-DeepSeek-V4.1-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.008,
+        "currency": "USD",
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 1.5
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "source_urls": [
@@ -36982,6 +37397,54 @@
         "currency": "USD",
         "input_per_mtok": 2.31,
         "output_per_mtok": 7.26
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/FW-GLM-5.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GLM-5.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.325,
+        "currency": "USD",
+        "input_per_mtok": 1.75,
+        "output_per_mtok": 5.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/FW-GLM-5.3-Flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GLM-5.3-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.038,
+        "currency": "USD",
+        "input_per_mtok": 0.188,
+        "output_per_mtok": 0.625
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/FW-GPT-OSS-120B": {
+      "context_window": 131072,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "FW-GPT-OSS-120B",
+      "pricing": {
+        "cached_input_per_mtok": 0.082,
+        "currency": "USD",
+        "input_per_mtok": 0.165,
+        "output_per_mtok": 0.66
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "source_urls": [
@@ -37246,6 +37709,42 @@
       "pricing_source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-image-2-5-pro-and-mai-voice-2-flash-in-microsoft-foundry/4539446",
       "source_urls": [
         "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-mai-image-2-5-pro-and-mai-voice-2-flash-in-microsoft-foundry/4539446"
+      ]
+    },
+    "azure/azure_ai/MAI-Image-2.6": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "MAI-Image-2.6",
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "output_image_per_mtok": 38.0
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/MAI-Image-2.6-Flash": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "model_ref": "MAI-Image-2.6-Flash",
+      "pricing": {
+        "currency": "USD",
+        "input_image_per_mtok": 2.5,
+        "input_per_mtok": 1.75,
+        "output_image_per_mtok": 19.0
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
     "azure/azure_ai/MAI-Thinking-1": {
@@ -37877,6 +38376,22 @@
         "currency": "USD",
         "input_per_mtok": 1.74,
         "output_per_mtok": 3.48
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/azure_ai/deepseek-v4.1-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "deepseek-v4.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.008,
+        "currency": "USD",
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 1.5
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "source_urls": [
@@ -38709,6 +39224,21 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "azure/azure_ai/mistral-medium-3-5": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "mistral-medium-3-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/azure_ai/mistral-nemo": {
       "context_window": 131072,
       "enabled": true,
@@ -38777,6 +39307,25 @@
       "pricing_source_url": "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/",
       "source_urls": [
         "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/aoai/"
+      ]
+    },
+    "azure/azure_ai/muse-spark-1.3": {
+      "context_window": 1048576,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions"
+      ],
+      "max_output_tokens": 131072,
+      "model_ref": "muse-spark-1.3",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 4.25
+      },
+      "pricing_source_url": "https://ai.developer.meta.com/docs/pricing-rate-limits",
+      "source_urls": [
+        "https://ai.developer.meta.com/docs/pricing-rate-limits"
       ]
     },
     "azure/azure_ai/whisper": {
@@ -39057,6 +39606,23 @@
       },
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "provider_model_id": "azure_ai/deepseek-v3.2-speciale",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/deepseek-v4.1-flash": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 384000,
+      "model_ref": "deepseek-v4.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.008,
+        "currency": "USD",
+        "input_per_mtok": 0.375,
+        "output_per_mtok": 1.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/deepseek-v4.1-flash",
       "source_urls": [
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
@@ -41353,7 +41919,12 @@
       ]
     },
     "azure/gpt-audio": {
+      "context_window": 128000,
       "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions"
+      ],
+      "max_output_tokens": 16384,
       "model_ref": "gpt-audio",
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -41364,7 +41935,28 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json"
+        "https://configs.portkey.ai/pricing/azure-openai.json",
+        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
+      ]
+    },
+    "azure/gpt-audio-1.5": {
+      "context_window": 128000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions"
+      ],
+      "max_output_tokens": 16384,
+      "model_ref": "gpt-audio-1.5",
+      "pricing": {
+        "audio_input_per_mtok": 40.0,
+        "audio_output_per_mtok": 80.0,
+        "currency": "USD",
+        "input_per_mtok": 2.5,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
       ]
     },
     "azure/gpt-audio-1.5-2026-02-23": {
@@ -42421,8 +43013,43 @@
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
-    "azure/gpt-realtime": {
+    "azure/gpt-live-1": {
       "enabled": true,
+      "model_ref": "gpt-live-1",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000833333333333
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/gpt-live-transcribe": {
+      "context_window": 32000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/realtime",
+        "/v1/realtime/transcription_sessions"
+      ],
+      "max_output_tokens": 4096,
+      "model_ref": "gpt-live-transcribe",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000283333333333
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
+    "azure/gpt-realtime": {
+      "context_window": 32000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "max_output_tokens": 4096,
       "model_ref": "gpt-realtime",
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -42430,16 +43057,23 @@
         "cache_write_per_mtok": 0.5,
         "cached_input_per_mtok": 16.0,
         "currency": "USD",
+        "input_image_per_mtok": 5.0,
         "input_per_mtok": 4.0,
         "output_per_mtok": 16.0
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json"
+        "https://configs.portkey.ai/pricing/azure-openai.json",
+        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
       ]
     },
     "azure/gpt-realtime-1.5": {
+      "context_window": 32000,
       "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "max_output_tokens": 4096,
       "model_ref": "gpt-realtime-1.5",
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -42447,12 +43081,14 @@
         "cache_write_per_mtok": 0.5,
         "cached_input_per_mtok": 16.0,
         "currency": "USD",
+        "input_image_per_mtok": 5.0,
         "input_per_mtok": 4.0,
         "output_per_mtok": 16.0
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json"
+        "https://configs.portkey.ai/pricing/azure-openai.json",
+        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
       ]
     },
     "azure/gpt-realtime-1.5-2026-02-23": {
@@ -42478,7 +43114,12 @@
       ]
     },
     "azure/gpt-realtime-2": {
+      "context_window": 32000,
       "enabled": true,
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "max_output_tokens": 4096,
       "model_ref": "gpt-realtime-2",
       "pricing": {
         "audio_input_per_mtok": 32.0,
@@ -42492,7 +43133,8 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json"
+        "https://configs.portkey.ai/pricing/azure-openai.json",
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
     "azure/gpt-realtime-2.1": {
@@ -42633,6 +43275,20 @@
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
+    "azure/gpt-realtime-translate": {
+      "context_window": 32000,
+      "enabled": true,
+      "max_output_tokens": 4096,
+      "model_ref": "gpt-realtime-translate",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000566666666667
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/gpt-realtime-whisper": {
       "enabled": true,
       "endpoints": [
@@ -42647,6 +43303,22 @@
       "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/gpt-realtime-whisper",
       "source_urls": [
         "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/gpt-realtime-whisper"
+      ]
+    },
+    "azure/gpt-transcribe": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions",
+        "/v1/realtime/transcription_sessions"
+      ],
+      "model_ref": "gpt-transcribe",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 7.5e-05
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
     "azure/grok-4": {
@@ -42817,6 +43489,22 @@
       "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/mistral-medium-3-5": {
+      "context_window": 128000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "mistral-medium-3-5",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.5,
+        "output_per_mtok": 7.5
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/mistral-medium-3-5",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
     "azure/model-router": {
@@ -55617,8 +56305,16 @@
       ]
     },
     "openai/gpt-audio-2025-08-28": {
+      "context_window": 128000,
       "enabled": true,
-      "model_ref": "gpt-audio",
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses",
+        "/v1/realtime",
+        "/v1/batch"
+      ],
+      "max_output_tokens": 16384,
+      "model_ref": "gpt-audio-2025-08-28",
       "pricing": {
         "audio_input_per_mtok": 32.0,
         "audio_output_per_mtok": 64.0,
@@ -55626,9 +56322,10 @@
         "input_per_mtok": 2.5,
         "output_per_mtok": 10.0
       },
-      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
-        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
+        "https://configs.portkey.ai/pricing/openai.json",
+        "https://developers.openai.com/api/docs/pricing"
       ]
     },
     "openai/gpt-audio-mini": {
@@ -57005,19 +57702,27 @@
       ]
     },
     "openai/gpt-realtime-2025-08-28": {
+      "context_window": 32000,
       "enabled": true,
-      "model_ref": "gpt-realtime",
+      "endpoints": [
+        "/v1/realtime"
+      ],
+      "max_output_tokens": 4096,
+      "model_ref": "gpt-realtime-2025-08-28",
       "pricing": {
         "audio_input_per_mtok": 32.0,
         "audio_output_per_mtok": 64.0,
-        "cached_input_per_mtok": 0.4,
+        "cache_write_per_mtok": 0.5,
+        "cached_input_per_mtok": 16.0,
         "currency": "USD",
+        "input_image_per_mtok": 5.0,
         "input_per_mtok": 4.0,
         "output_per_mtok": 16.0
       },
-      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
-        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
+        "https://configs.portkey.ai/pricing/openai.json",
+        "https://developers.openai.com/api/docs/pricing"
       ]
     },
     "openai/gpt-realtime-mini": {
@@ -60114,13 +60819,13 @@
     "openrouter/deepseek-pro-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-pro-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.25,
+        "cached_input_per_mtok": 0.01239,
         "currency": "USD",
-        "input_per_mtok": 0.39,
-        "output_per_mtok": 2.9
+        "input_per_mtok": 0.3894,
+        "output_per_mtok": 1.1682
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-pro-latest",
       "provider_model_id": "~deepseek/deepseek-pro-latest",
@@ -60220,13 +60925,13 @@
     "openrouter/deepseek-v4.1-flash": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0042,
+        "cached_input_per_mtok": 0.003,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.42
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "provider_model_id": "deepseek/deepseek-v4.1-flash",
@@ -60390,10 +61095,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0177212,
+        "cached_input_per_mtok": 0.013104,
         "currency": "USD",
-        "input_per_mtok": 0.088606,
-        "output_per_mtok": 0.177212
+        "input_per_mtok": 0.06552,
+        "output_per_mtok": 0.13104
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash",
       "source_urls": [
@@ -60441,10 +61146,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0783,
+        "cached_input_per_mtok": 0.0721085,
         "currency": "USD",
-        "input_per_mtok": 0.9396,
-        "output_per_mtok": 1.8792
+        "input_per_mtok": 0.865302,
+        "output_per_mtok": 1.730604
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -60472,13 +61177,13 @@
     "openrouter/deepseek/deepseek-v4.1-flash": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0042,
+        "cached_input_per_mtok": 0.003,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.42
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "source_urls": [
@@ -60847,15 +61552,15 @@
       ]
     },
     "openrouter/glm-5.3": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3",
       "pricing": {
-        "cached_input_per_mtok": 0.156,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 0.84,
-        "output_per_mtok": 2.64
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
       "provider_model_id": "z-ai/glm-5.3",
@@ -60866,13 +61571,13 @@
     "openrouter/glm-5.3-flash": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.0285,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.045,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -60954,10 +61659,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.10426,
         "currency": "USD",
-        "input_per_mtok": 0.5625,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5614,
+        "output_per_mtok": 1.7644
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "provider_model_id": "~z-ai/glm-latest",
@@ -62167,10 +62872,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -62527,8 +63232,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 10.75
+        "input_per_mtok": 1.35,
+        "output_per_mtok": 11.5
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "provider_model_id": "~moonshotai/kimi-latest",
@@ -68564,10 +69269,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -69380,15 +70085,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.3": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3",
       "pricing": {
-        "cached_input_per_mtok": 0.156,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 0.84,
-        "output_per_mtok": 2.64
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
       "source_urls": [
@@ -69398,13 +70103,13 @@
     "openrouter/z-ai/glm-5.3-flash": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.0285,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.045,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -69546,13 +70251,13 @@
     "openrouter/~deepseek/deepseek-pro-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-pro-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.25,
+        "cached_input_per_mtok": 0.01239,
         "currency": "USD",
-        "input_per_mtok": 0.39,
-        "output_per_mtok": 2.9
+        "input_per_mtok": 0.3894,
+        "output_per_mtok": 1.1682
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-pro-latest",
       "source_urls": [
@@ -69617,8 +70322,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 10.75
+        "input_per_mtok": 1.35,
+        "output_per_mtok": 11.5
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "source_urls": [
@@ -69747,10 +70452,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.10426,
         "currency": "USD",
-        "input_per_mtok": 0.5625,
-        "output_per_mtok": 2.5
+        "input_per_mtok": 0.5614,
+        "output_per_mtok": 1.7644
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "source_urls": [
@@ -70142,6 +70847,22 @@
       "pricing": {
         "currency": "USD",
         "per_second_input": 5e-05
+      },
+      "pricing_source_url": "https://cloud.google.com/speech-to-text/pricing",
+      "source_urls": [
+        "https://cloud.google.com/speech-to-text/pricing"
+      ]
+    },
+    "vertex_ai/chirp_2": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions",
+        "/v1/realtime"
+      ],
+      "model_ref": "chirp_2",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.00026667
       },
       "pricing_source_url": "https://cloud.google.com/speech-to-text/pricing",
       "source_urls": [
@@ -71154,6 +71875,7 @@
       "pricing": {
         "batch_input_per_mtok": 0.25,
         "batch_output_per_mtok": 1.5,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.5,
         "output_image_per_mtok": 60.0,
@@ -71709,7 +72431,8 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 1.5,
-        "output_per_mtok": 9.0
+        "output_per_mtok": 9.0,
+        "reasoning_output_per_mtok": 9.0
       },
       "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
       "source_urls": [
@@ -71836,6 +72559,7 @@
       "max_output_tokens": 128000,
       "model_ref": "gemma-4-26b-a4b-it-maas",
       "pricing": {
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
@@ -74575,6 +75299,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-09-24T11:21:11Z",
+  "updated_at": "2026-09-24T21:17:43Z",
   "version": 1
 }
