@@ -11451,7 +11451,7 @@
       "context_window": 1048576,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "display_name": "glm-5.2",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -12108,7 +12108,7 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0352,
+        "cached_input_per_mtok": 0.0232,
         "currency": "USD",
         "input_per_mtok": 0.0352,
         "output_per_mtok": 0.5
@@ -12141,9 +12141,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.05,
+        "input_per_mtok": 0.08,
         "output_per_mtok": 5.0
       }
     },
@@ -23763,10 +23763,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-preview": {
@@ -23831,10 +23831,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       }
     },
     "imagen-3.0-fast-generate-001": {
@@ -24847,7 +24847,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.45,
         "currency": "USD",
-        "input_per_mtok": 0.6371,
+        "input_per_mtok": 0.6416,
         "output_per_mtok": 13.0
       }
     },
@@ -28517,6 +28517,8 @@
       ],
       "capabilities": {
         "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "description": "Mistral Small 3.1 24B Instruct is an upgraded variant of Mistral Small 3 (2501), featuring 24 billion parameters with advanced multimodal capabilities.",
@@ -44361,7 +44363,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
+        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule"
       ]
     },
     "azure/gpt-realtime-2.1-mini": {
@@ -44385,7 +44387,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
+        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule"
       ]
     },
     "azure/gpt-realtime-2025-08-28": {
@@ -63134,13 +63136,13 @@
     "openrouter/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.38,
-        "output_per_mtok": 3.49
+        "input_per_mtok": 0.104,
+        "output_per_mtok": 8.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -63239,7 +63241,7 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0352,
+        "cached_input_per_mtok": 0.0232,
         "currency": "USD",
         "input_per_mtok": 0.0352,
         "output_per_mtok": 0.5
@@ -63256,9 +63258,9 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.05,
+        "input_per_mtok": 0.08,
         "output_per_mtok": 5.0
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
@@ -64500,10 +64502,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -64534,10 +64536,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "provider_model_id": "tencent/hy4-preview",
@@ -64874,7 +64876,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.45,
         "currency": "USD",
-        "input_per_mtok": 0.6371,
+        "input_per_mtok": 0.6416,
         "output_per_mtok": 13.0
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -71150,10 +71152,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -71182,10 +71184,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "source_urls": [
@@ -71967,13 +71969,13 @@
     "openrouter/z-ai/glm-5.2": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.38,
-        "output_per_mtok": 3.49
+        "input_per_mtok": 0.104,
+        "output_per_mtok": 8.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -72218,7 +72220,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.45,
         "currency": "USD",
-        "input_per_mtok": 0.6371,
+        "input_per_mtok": 0.6416,
         "output_per_mtok": 13.0
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -72332,7 +72334,7 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0352,
+        "cached_input_per_mtok": 0.0232,
         "currency": "USD",
         "input_per_mtok": 0.0352,
         "output_per_mtok": 0.5
@@ -72348,9 +72350,9 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.04,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.05,
+        "input_per_mtok": 0.08,
         "output_per_mtok": 5.0
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
@@ -77386,6 +77388,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-10-04T11:58:57Z",
+  "updated_at": "2026-10-04T21:01:40Z",
   "version": 1
 }
