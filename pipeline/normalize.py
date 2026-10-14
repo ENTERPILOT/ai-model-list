@@ -428,6 +428,7 @@ def _pricing_from_extended_fields(entry: Mapping[str, Any]) -> dict[str, Any] | 
     token_cost_fields = {
         "cache_read_input_token_cost": "cached_input_per_mtok",
         "cache_creation_input_token_cost": "cache_write_per_mtok",
+        "cache_creation_input_token_cost_above_1hr": "cache_write_1h_per_mtok",
         "output_cost_per_reasoning_token": "reasoning_output_per_mtok",
         "input_cost_per_audio_token": "audio_input_per_mtok",
         "output_cost_per_audio_token": "audio_output_per_mtok",

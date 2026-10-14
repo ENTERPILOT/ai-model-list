@@ -150,6 +150,23 @@ def test_normalize_litellm_entry_extracts_richer_fields_and_nested_provider_hint
     }
 
 
+def test_normalize_litellm_entry_extracts_cache_write_ttl_pricing() -> None:
+    entry = {
+        "model_name": "claude-opus-5-5",
+        "litellm_provider": "anthropic",
+        "mode": "chat",
+        "input_cost_per_token": 0.000004,
+        "output_cost_per_token": 0.00002,
+        "cache_creation_input_token_cost": 0.000005,
+        "cache_creation_input_token_cost_above_1hr": 0.000008,
+    }
+
+    record = normalize_litellm_entry(entry, rejection_policy={})
+
+    assert record.fields["pricing"]["cache_write_per_mtok"] == 5.0
+    assert record.fields["pricing"]["cache_write_1h_per_mtok"] == 8.0
+
+
 def test_normalize_official_partner_model_infers_real_owner_from_model_family() -> None:
     rows = [
         {
