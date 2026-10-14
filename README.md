@@ -136,6 +136,8 @@ All monetary values in USD. Token-based prices are **per million tokens**.
 | `input_per_mtok` | number/null | Per million input tokens |
 | `output_per_mtok` | number/null | Per million output tokens |
 | `cached_input_per_mtok` | number/null | Per million cached input tokens |
+| `cache_write_per_mtok` | number/null | Per million cache write tokens (default 5-minute TTL) |
+| `cache_write_1h_per_mtok` | number/null | Per million cache write tokens with a 1-hour TTL (Anthropic) |
 | `reasoning_output_per_mtok` | number/null | Per million reasoning tokens (o1, etc.) |
 | `per_image` | number/null | Per generated image |
 | `per_second_input` | number/null | Per second audio/video input |

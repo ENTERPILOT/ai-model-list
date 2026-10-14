@@ -37,6 +37,7 @@ PRICING_DISPLAY_ORDER = [
     ("output_per_mtok", "Output / 1M tokens"),
     ("cached_input_per_mtok", "Cached input / 1M tokens"),
     ("cache_write_per_mtok", "Cache write / 1M tokens"),
+    ("cache_write_1h_per_mtok", "Cache write (1h TTL) / 1M tokens"),
     ("reasoning_output_per_mtok", "Reasoning output / 1M tokens"),
     ("batch_input_per_mtok", "Batch input / 1M tokens"),
     ("batch_output_per_mtok", "Batch output / 1M tokens"),
