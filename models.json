@@ -899,6 +899,42 @@
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
+    "MAI-Code-1.1-Flash": {
+      "aliases": [
+        "azure_ai/MAI-Code-1.1-Flash",
+        "azure/azure_ai/MAI-Code-1.1-Flash"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 256000,
+      "display_name": "Mai Code 1 1 Flash",
+      "max_output_tokens": 64000,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat",
+        "responses"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.2
+      },
+      "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
     "MAI-Cyber-1-Flash": {
       "aliases": [
         "azure_ai/MAI-Cyber-1-Flash",
@@ -1803,7 +1839,7 @@
       },
       "context_window": 1048576,
       "display_name": "Reflection: Beam 1.0 501B A23B",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -1816,10 +1852,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 1.0,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.0
       }
     },
     "beam-free": {
@@ -4916,7 +4952,8 @@
       "display_name": "Container",
       "modes": [
         "chat"
-      ]
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
     },
     "curie": {
       "aliases": [
@@ -5395,44 +5432,44 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-09-20",
-          "rank": 47,
-          "score": 67.2
+          "as_of": "2026-10-24",
+          "rank": 29,
+          "score": 76.8
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-09-20",
-          "rank": 45,
-          "score": 50.0
+          "as_of": "2026-10-24",
+          "rank": 6,
+          "score": 65.1
         },
         "livebench_coding": {
-          "as_of": "2026-09-20",
-          "rank": 88,
+          "as_of": "2026-10-24",
+          "rank": 66,
           "score": 69.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-09-20",
-          "rank": 35,
-          "score": 68.0
+          "as_of": "2026-10-24",
+          "rank": 14,
+          "score": 79.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-09-20",
-          "rank": 32,
-          "score": 63.1
+          "as_of": "2026-10-24",
+          "rank": 27,
+          "score": 71.0
         },
         "livebench_language": {
-          "as_of": "2026-09-20",
-          "rank": 67,
-          "score": 70.1
+          "as_of": "2026-10-24",
+          "rank": 30,
+          "score": 80.4
         },
         "livebench_math": {
-          "as_of": "2026-09-20",
-          "rank": 53,
-          "score": 79.6
+          "as_of": "2026-10-24",
+          "rank": 47,
+          "score": 87.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-09-20",
-          "rank": 56,
-          "score": 70.6
+          "as_of": "2026-10-24",
+          "rank": 38,
+          "score": 85.4
         }
       },
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
@@ -5465,10 +5502,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.008,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 1.0
       }
     },
     "deepseek-pro-latest": {
@@ -5500,7 +5537,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.1188,
         "output_per_mtok": 8.0
       }
     },
@@ -5509,8 +5546,7 @@
         "azure_ai/deepseek-r1",
         "deepseek/deepseek-r1",
         "fireworks/deepseek-r1",
-        "azure/azure_ai/deepseek-r1",
-        "openrouter/deepseek/deepseek-r1"
+        "azure/azure_ai/deepseek-r1"
       ],
       "capabilities": {
         "function_calling": true,
@@ -5519,14 +5555,6 @@
         "tool_choice": true
       },
       "display_name": "Deepseek r1",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -6049,43 +6077,43 @@
           "rank": 47
         },
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 47,
-          "score": 67.2
+          "as_of": "2026-10-24",
+          "rank": 67,
+          "score": 65.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 45,
-          "score": 50.0
+          "as_of": "2026-10-24",
+          "rank": 69,
+          "score": 37.6
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 88,
+          "as_of": "2026-10-24",
+          "rank": 66,
           "score": 69.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 35,
+          "as_of": "2026-10-24",
+          "rank": 57,
           "score": 68.0
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 32,
+          "as_of": "2026-10-24",
+          "rank": 54,
           "score": 63.1
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 67,
+          "as_of": "2026-10-24",
+          "rank": 64,
           "score": 70.1
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 53,
+          "as_of": "2026-10-24",
+          "rank": 64,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 56,
+          "as_of": "2026-10-24",
+          "rank": 68,
           "score": 70.6
         }
       },
@@ -6128,6 +6156,48 @@
         "input_per_mtok": 0.22,
         "output_per_mtok": 0.66
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 43,
+          "score": 74.2
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 52,
+          "score": 46.8
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 53,
+          "score": 75.0
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 15,
+          "score": 79.3
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 45,
+          "score": 65.5
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 38,
+          "score": 79.2
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 51,
+          "score": 86.8
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 33,
+          "score": 86.6
+        }
+      },
       "source_url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
     },
     "deepseek-v4-flash-latest": {
@@ -6157,10 +6227,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0049,
+        "cached_input_per_mtok": 0.028,
         "currency": "USD",
-        "input_per_mtok": 0.0049,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.0422,
+        "output_per_mtok": 0.1694
       }
     },
     "deepseek-v4-flash-vision-exp": {
@@ -6203,6 +6273,48 @@
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 1.2
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 29,
+          "score": 76.8
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 6,
+          "score": 65.1
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 68,
+          "score": 68.2
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 14,
+          "score": 79.5
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 27,
+          "score": 71.0
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 30,
+          "score": 80.4
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 47,
+          "score": 87.8
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 38,
+          "score": 85.4
+        }
       },
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing"
     },
@@ -6311,43 +6423,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 21,
-          "score": 73.6
+          "as_of": "2026-10-24",
+          "rank": 56,
+          "score": 71.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 21,
-          "score": 56.7
+          "as_of": "2026-10-24",
+          "rank": 61,
+          "score": 42.6
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 81,
+          "as_of": "2026-10-24",
+          "rank": 64,
           "score": 70.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 22,
+          "as_of": "2026-10-24",
+          "rank": 39,
           "score": 74.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 35,
+          "as_of": "2026-10-24",
+          "rank": 57,
           "score": 62.4
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 27,
+          "as_of": "2026-10-24",
+          "rank": 40,
           "score": 78.1
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 9,
+          "as_of": "2026-10-24",
+          "rank": 35,
           "score": 90.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 21,
+          "as_of": "2026-10-24",
+          "rank": 48,
           "score": 82.7
         }
       },
@@ -6390,6 +6502,48 @@
         "currency": "USD",
         "input_per_mtok": 0.66,
         "output_per_mtok": 1.98
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 24,
+          "score": 77.4
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 31,
+          "score": 54.9
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 40,
+          "score": 77.2
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 19,
+          "score": 79.2
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 37,
+          "score": 67.7
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 27,
+          "score": 82.1
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 17,
+          "score": 95.1
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 35,
+          "score": 85.8
+        }
       },
       "source_url": "https://api.fireworks.ai/v1/serverless/models"
     },
@@ -6896,22 +7050,6 @@
         "output_per_mtok": 15.0
       }
     },
-    "exo-free": {
-      "aliases": [
-        "opencode_zen/exo-free"
-      ],
-      "display_name": "Exo Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
-    },
     "extract": {
       "aliases": [
         "scaledown/extract",
@@ -6937,6 +7075,53 @@
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.04,
+        "output_per_mtok": 0.0
+      }
+    },
+    "flint-40b-free": {
+      "aliases": [
+        "opencode_zen/flint-40b-free"
+      ],
+      "display_name": "Flint 40B Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
+    "flint-v1.0": {
+      "aliases": [
+        "recursive/flint-v1.0:free",
+        "openrouter/recursive/flint-v1.0:free"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 262144,
+      "display_name": "Recursive: Flint (free)",
+      "max_output_tokens": 235929,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
         "output_per_mtok": 0.0
       }
     },
@@ -7301,12 +7486,10 @@
         "gemini/gemini-2.5-flash",
         "google/gemini-2.5-flash",
         "vertex_ai/gemini-2.5-flash",
-        "google/gemini-2.5-flash:batch",
         "gemini/gemini-2.5-flash-latest",
         "gemini/gemini-2.5-flash-preview-09-2025",
         "deepinfra/google/gemini-2.5-flash",
-        "openrouter/google/gemini-2.5-flash",
-        "openrouter/google/gemini-2.5-flash:batch"
+        "openrouter/google/gemini-2.5-flash"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7433,9 +7616,7 @@
         "gemini/gemini-2.5-flash-lite",
         "google/gemini-2.5-flash-lite",
         "vertex_ai/gemini-2.5-flash-lite",
-        "google/gemini-2.5-flash-lite:batch",
-        "openrouter/google/gemini-2.5-flash-lite",
-        "openrouter/google/gemini-2.5-flash-lite:batch"
+        "openrouter/google/gemini-2.5-flash-lite"
       ],
       "capabilities": {
         "function_calling": true,
@@ -7826,10 +8007,8 @@
         "gemini/gemini-2.5-pro",
         "google/gemini-2.5-pro",
         "vertex_ai/gemini-2.5-pro",
-        "google/gemini-2.5-pro:batch",
         "deepinfra/google/gemini-2.5-pro",
-        "openrouter/google/gemini-2.5-pro",
-        "openrouter/google/gemini-2.5-pro:batch"
+        "openrouter/google/gemini-2.5-pro"
       ],
       "capabilities": {
         "audio_input": true,
@@ -8740,43 +8919,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-04-23",
-          "rank": 3,
-          "score": 79.9
+          "as_of": "2026-10-24",
+          "rank": 27,
+          "score": 77.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 3,
-          "score": 65.0
+          "as_of": "2026-10-24",
+          "rank": 57,
+          "score": 44.1
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 38,
+          "as_of": "2026-10-24",
+          "rank": 46,
           "score": 76.5
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 4,
+          "as_of": "2026-10-24",
+          "rank": 24,
           "score": 78.5
         },
         "livebench_instruction_following": {
-          "as_of": "2026-03-28",
-          "rank": 1,
+          "as_of": "2026-10-24",
+          "rank": 3,
           "score": 79.1
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 4,
+          "as_of": "2026-10-24",
+          "rank": 14,
           "score": 85.4
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 8,
+          "as_of": "2026-10-24",
+          "rank": 32,
           "score": 91.0
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 15,
+          "as_of": "2026-10-24",
+          "rank": 42,
           "score": 84.0
         }
       },
@@ -8903,43 +9082,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 13,
-          "score": 75.0
+          "as_of": "2026-10-24",
+          "rank": 40,
+          "score": 74.6
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 36,
-          "score": 51.7
+          "as_of": "2026-10-24",
+          "rank": 49,
+          "score": 49.0
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 24,
+          "as_of": "2026-10-24",
+          "rank": 34,
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 40,
+          "as_of": "2026-10-24",
+          "rank": 62,
           "score": 64.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-05-25",
-          "rank": 2,
+          "as_of": "2026-10-24",
+          "rank": 7,
           "score": 75.6
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 6,
+          "as_of": "2026-10-24",
+          "rank": 16,
           "score": 84.6
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 16,
+          "as_of": "2026-10-24",
+          "rank": 45,
           "score": 88.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 23,
+          "as_of": "2026-10-24",
+          "rank": 50,
           "score": 82.0
         }
       },
@@ -8997,6 +9176,48 @@
         "input_per_mtok": 0.3,
         "output_per_mtok": 2.5,
         "reasoning_output_per_mtok": 2.5
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 69,
+          "score": 63.9
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 56,
+          "score": 45.3
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 48,
+          "score": 76.1
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 69,
+          "score": 53.2
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 38,
+          "score": 67.2
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 61,
+          "score": 71.8
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 70,
+          "score": 73.7
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 70,
+          "score": 60.2
+        }
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
@@ -9207,6 +9428,48 @@
         "output_per_mtok": 3.75,
         "reasoning_output_per_mtok": 3.75
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 45,
+          "score": 73.6
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 59,
+          "score": 43.4
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 37,
+          "score": 77.9
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 63,
+          "score": 63.0
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 9,
+          "score": 75.4
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 18,
+          "score": 83.9
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 53,
+          "score": 86.4
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 39,
+          "score": 85.1
+        }
+      },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
     },
     "gemini-3.7-flash": {
@@ -9262,6 +9525,48 @@
         "output_per_mtok": 3.75,
         "reasoning_output_per_mtok": 3.75
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 17,
+          "score": 78.8
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 20,
+          "score": 58.3
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 30,
+          "score": 78.9
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 58,
+          "score": 68.0
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 2,
+          "score": 79.9
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 13,
+          "score": 85.5
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 22,
+          "score": 93.5
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 26,
+          "score": 87.8
+        }
+      },
       "source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
     },
     "gemini-3.8-flash": {
@@ -9314,6 +9619,48 @@
         "input_per_mtok": 0.75,
         "output_per_mtok": 3.75,
         "reasoning_output_per_mtok": 3.75
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 35,
+          "score": 75.8
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 34,
+          "score": 54.2
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 58,
+          "score": 72.5
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 68,
+          "score": 54.0
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 1,
+          "score": 81.4
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 7,
+          "score": 87.8
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 29,
+          "score": 91.6
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 19,
+          "score": 89.3
+        }
       },
       "source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
     },
@@ -10402,6 +10749,8 @@
       ],
       "pricing": {
         "audio_input_per_mtok": 1.0,
+        "batch_input_per_mtok": 0.5,
+        "batch_output_per_mtok": 2.5,
         "cached_input_per_mtok": 0.1,
         "currency": "USD",
         "input_per_mtok": 1.0,
@@ -10412,7 +10761,8 @@
     },
     "gemini-robotics-er-2-streaming-preview": {
       "aliases": [
-        "gemini/gemini-robotics-er-2-streaming-preview"
+        "gemini/gemini-robotics-er-2-streaming-preview",
+        "vertex_ai/gemini-robotics-er-2-streaming-preview"
       ],
       "capabilities": {
         "audio_input": true,
@@ -10422,9 +10772,7 @@
         "vision": true,
         "web_search": true
       },
-      "context_window": 131072,
       "display_name": "Gemini Robotics Er 2 Streaming Preview",
-      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -10441,7 +10789,6 @@
         "realtime"
       ],
       "pricing": {
-        "audio_input_per_mtok": 1.0,
         "currency": "USD",
         "input_per_mtok": 1.0,
         "output_per_mtok": 5.0
@@ -11245,7 +11592,7 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 202752,
+      "context_window": 204800,
       "display_name": "Z.ai: GLM 4.6",
       "max_output_tokens": 131072,
       "modalities": {
@@ -11260,10 +11607,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.11,
         "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 2.0
+        "input_per_mtok": 0.55,
+        "output_per_mtok": 2.2
       },
       "rankings": {
         "chatbot_arena": {
@@ -11359,7 +11706,7 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.055,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
@@ -11739,9 +12086,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 200000,
+      "context_window": 202752,
       "display_name": "GLM 5.1",
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -11841,28 +12188,28 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-19",
-          "rank": 9,
-          "score": 76.2
+          "as_of": "2026-10-24",
+          "rank": 47,
+          "score": 73.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 1,
-          "score": 73.3
+          "as_of": "2026-10-24",
+          "rank": 40,
+          "score": 51.8
         },
         "livebench_coding": {
-          "as_of": "2026-06-17",
-          "rank": 14,
+          "as_of": "2026-10-24",
+          "rank": 25,
           "score": 79.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-17",
-          "rank": 27,
+          "as_of": "2026-10-24",
+          "rank": 43,
           "score": 73.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-17",
-          "rank": 37,
+          "as_of": "2026-10-24",
+          "rank": 58,
           "score": 62.3
         },
         "livebench_language": {
@@ -11871,13 +12218,13 @@
           "score": 76.2
         },
         "livebench_math": {
-          "as_of": "2026-06-19",
-          "rank": 17,
+          "as_of": "2026-10-24",
+          "rank": 38,
           "score": 89.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-01",
-          "rank": 38,
+          "as_of": "2026-10-24",
+          "rank": 57,
           "score": 78.6
         }
       },
@@ -11919,6 +12266,48 @@
         "input_per_mtok": 1.4,
         "output_per_mtok": 4.4
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 33,
+          "score": 76.1
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 16,
+          "score": 60.9
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 27,
+          "score": 79.0
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 54,
+          "score": 70.2
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 34,
+          "score": 69.3
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 32,
+          "score": 79.9
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 46,
+          "score": 87.9
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 36,
+          "score": 85.8
+        }
+      },
       "source_url": "https://ollama.com/pricing"
     },
     "glm-5.3-flash": {
@@ -11937,9 +12326,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1048575,
       "display_name": "glm-5.3-flash",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 943717,
       "modalities": {
         "input": [
           "text",
@@ -11958,6 +12347,48 @@
         "currency": "USD",
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.5
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 55,
+          "score": 71.6
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 26,
+          "score": 56.8
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 28,
+          "score": 79.0
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 35,
+          "score": 76.4
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 71,
+          "score": 52.8
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 44,
+          "score": 77.3
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 62,
+          "score": 81.2
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 60,
+          "score": 77.6
+        }
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -12169,28 +12600,28 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-06-30",
-          "rank": 9,
-          "score": 76.2
+          "as_of": "2026-10-24",
+          "rank": 47,
+          "score": 73.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-30",
-          "rank": 1,
-          "score": 73.3
+          "as_of": "2026-10-24",
+          "rank": 40,
+          "score": 51.8
         },
         "livebench_coding": {
-          "as_of": "2026-06-30",
-          "rank": 14,
+          "as_of": "2026-10-24",
+          "rank": 25,
           "score": 79.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-06-30",
-          "rank": 27,
+          "as_of": "2026-10-24",
+          "rank": 43,
           "score": 73.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-30",
-          "rank": 37,
+          "as_of": "2026-10-24",
+          "rank": 58,
           "score": 62.3
         },
         "livebench_language": {
@@ -12199,13 +12630,13 @@
           "score": 76.2
         },
         "livebench_math": {
-          "as_of": "2026-06-30",
-          "rank": 17,
+          "as_of": "2026-10-24",
+          "rank": 38,
           "score": 89.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-01",
-          "rank": 38,
+          "as_of": "2026-10-24",
+          "rank": 57,
           "score": 78.6
         }
       },
@@ -12477,7 +12908,7 @@
       },
       "context_window": 1048576,
       "display_name": "Z.ai: GLM Flash Latest",
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text",
@@ -12492,10 +12923,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.048,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.0304,
+        "output_per_mtok": 0.0852
       }
     },
     "glm-latest": {
@@ -12512,7 +12943,7 @@
       },
       "context_window": 1048576,
       "display_name": "Z.ai: GLM Latest",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943718,
       "modalities": {
         "input": [
           "text"
@@ -12525,10 +12956,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0588,
+        "cached_input_per_mtok": 0.078,
         "currency": "USD",
-        "input_per_mtok": 0.0632,
-        "output_per_mtok": 4.4
+        "input_per_mtok": 0.079,
+        "output_per_mtok": 1.4
       }
     },
     "global.amazon.nova-2-lite": {
@@ -16420,43 +16851,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 16,
-          "score": 74.3
+          "as_of": "2026-10-24",
+          "rank": 44,
+          "score": 74.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 40,
-          "score": 51.7
+          "as_of": "2026-10-24",
+          "rank": 46,
+          "score": 49.4
         },
         "livebench_coding": {
-          "as_of": "2026-03-28",
-          "rank": 1,
+          "as_of": "2026-10-24",
+          "rank": 8,
           "score": 83.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 7,
+          "as_of": "2026-10-24",
+          "rank": 27,
           "score": 78.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-01",
-          "rank": 16,
+          "as_of": "2026-10-24",
+          "rank": 43,
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 54,
+          "as_of": "2026-10-24",
+          "rank": 56,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 14,
+          "as_of": "2026-10-24",
+          "rank": 42,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 34,
+          "as_of": "2026-10-24",
+          "rank": 59,
           "score": 77.7
         }
       },
@@ -16625,43 +17056,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 16,
-          "score": 74.3
+          "as_of": "2026-10-24",
+          "rank": 44,
+          "score": 74.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 40,
-          "score": 51.7
+          "as_of": "2026-10-24",
+          "rank": 46,
+          "score": 49.4
         },
         "livebench_coding": {
-          "as_of": "2026-03-28",
-          "rank": 1,
+          "as_of": "2026-10-24",
+          "rank": 8,
           "score": 83.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 7,
+          "as_of": "2026-10-24",
+          "rank": 27,
           "score": 78.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-06-01",
-          "rank": 16,
+          "as_of": "2026-10-24",
+          "rank": 43,
           "score": 66.4
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 54,
+          "as_of": "2026-10-24",
+          "rank": 56,
           "score": 73.7
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 14,
+          "as_of": "2026-10-24",
+          "rank": 42,
           "score": 88.8
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 34,
+          "as_of": "2026-10-24",
+          "rank": 59,
           "score": 77.7
         }
       },
@@ -20710,17 +21141,6 @@
         "output_per_mtok": 4.5
       }
     },
-    "gpt-oss": {
-      "aliases": [
-        "ollama_cloud/gpt-oss"
-      ],
-      "display_name": "gpt-oss",
-      "modes": [
-        "chat"
-      ],
-      "owned_by": "openai",
-      "source_url": "https://ollama.com/pricing"
-    },
     "gpt-oss-120b": {
       "aliases": [
         "openai/gpt-oss-120b",
@@ -23171,43 +23591,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 48,
-          "score": 66.7
+          "as_of": "2026-10-24",
+          "rank": 70,
+          "score": 62.2
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 47,
-          "score": 50.0
+          "as_of": "2026-10-24",
+          "rank": 71,
+          "score": 18.5
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 83,
+          "as_of": "2026-10-24",
+          "rank": 65,
           "score": 69.9
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 56,
+          "as_of": "2026-10-24",
+          "rank": 66,
           "score": 55.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 33,
+          "as_of": "2026-10-24",
+          "rank": 55,
           "score": 62.8
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 55,
+          "as_of": "2026-10-24",
+          "rank": 57,
           "score": 73.6
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 31,
+          "as_of": "2026-10-24",
+          "rank": 58,
           "score": 84.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 53,
+          "as_of": "2026-10-24",
+          "rank": 67,
           "score": 70.8
         }
       },
@@ -23294,6 +23714,48 @@
           }
         ]
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 36,
+          "score": 75.8
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 28,
+          "score": 56.5
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 67,
+          "score": 68.6
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 45,
+          "score": 73.0
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 23,
+          "score": 71.5
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 24,
+          "score": 82.8
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 34,
+          "score": 90.8
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 30,
+          "score": 87.2
+        }
+      },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
     "grok-4.5-latest": {
@@ -23376,6 +23838,48 @@
             "up_to_tokens": 500000
           }
         ]
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 19,
+          "score": 78.0
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 25,
+          "score": 57.0
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 45,
+          "score": 76.8
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 42,
+          "score": 73.9
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 21,
+          "score": 71.9
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 19,
+          "score": 83.7
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 28,
+          "score": 92.6
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 13,
+          "score": 90.5
+        }
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
     },
@@ -23486,44 +23990,44 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 105,
-          "score": 45.1
+          "as_of": "2026-10-24",
+          "rank": 63,
+          "score": 67.8
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 87,
-          "score": 33.3
+          "as_of": "2026-10-24",
+          "rank": 54,
+          "score": 45.8
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 108,
-          "score": 64.4
+          "as_of": "2026-10-24",
+          "rank": 70,
+          "score": 65.4
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 81,
-          "score": 49.0
+          "as_of": "2026-10-24",
+          "rank": 51,
+          "score": 70.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 107,
-          "score": 22.3
+          "as_of": "2026-10-24",
+          "rank": 46,
+          "score": 65.2
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 109,
-          "score": 48.6
+          "as_of": "2026-10-24",
+          "rank": 60,
+          "score": 72.5
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 110,
-          "score": 56.0
+          "as_of": "2026-10-24",
+          "rank": 67,
+          "score": 78.4
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 96,
-          "score": 42.3
+          "as_of": "2026-10-24",
+          "rank": 62,
+          "score": 76.4
         }
       },
       "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
@@ -24575,6 +25079,7 @@
         "tool_choice": true
       },
       "display_name": "TypeSafe: Jev Router",
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -24856,43 +25361,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 26,
-          "score": 72.2
+          "as_of": "2026-10-24",
+          "rank": 57,
+          "score": 70.5
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 18,
-          "score": 58.3
+          "as_of": "2026-10-24",
+          "rank": 51,
+          "score": 46.9
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 20,
+          "as_of": "2026-10-24",
+          "rank": 31,
           "score": 78.6
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 39,
+          "as_of": "2026-10-24",
+          "rank": 61,
           "score": 65.1
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 22,
+          "as_of": "2026-10-24",
+          "rank": 49,
           "score": 64.4
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 48,
+          "as_of": "2026-10-24",
+          "rank": 49,
           "score": 75.1
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 33,
+          "as_of": "2026-10-24",
+          "rank": 59,
           "score": 84.3
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 31,
+          "as_of": "2026-10-24",
+          "rank": 56,
           "score": 79.4
         }
       },
@@ -24939,43 +25444,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-01",
-          "rank": 33,
-          "score": 71.9
+          "as_of": "2026-10-24",
+          "rank": 61,
+          "score": 68.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-06-17",
-          "rank": 3,
-          "score": 70.0
+          "as_of": "2026-10-24",
+          "rank": 55,
+          "score": 45.7
         },
         "livebench_coding": {
-          "as_of": "2026-07-01",
-          "rank": 59,
+          "as_of": "2026-10-24",
+          "rank": 55,
           "score": 74.0
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-01",
-          "rank": 52,
+          "as_of": "2026-10-24",
+          "rank": 64,
           "score": 62.7
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-01",
-          "rank": 57,
+          "as_of": "2026-10-24",
+          "rank": 66,
           "score": 56.3
         },
         "livebench_language": {
-          "as_of": "2026-07-01",
-          "rank": 32,
+          "as_of": "2026-10-24",
+          "rank": 43,
           "score": 77.9
         },
         "livebench_math": {
-          "as_of": "2026-07-01",
-          "rank": 59,
+          "as_of": "2026-10-24",
+          "rank": 65,
           "score": 79.6
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-01",
-          "rank": 24,
+          "as_of": "2026-10-24",
+          "rank": 46,
           "score": 82.8
         }
       },
@@ -25157,6 +25662,48 @@
         "input_per_mtok": 3.0,
         "output_per_mtok": 15.0
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 16,
+          "score": 79.2
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 12,
+          "score": 62.2
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 16,
+          "score": 81.4
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 22,
+          "score": 78.7
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 24,
+          "score": 71.4
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 11,
+          "score": 85.5
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 57,
+          "score": 84.4
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 9,
+          "score": 90.7
+        }
+      },
       "source_url": "https://ollama.com/pricing"
     },
     "kimi-k3-fast": {
@@ -25211,6 +25758,43 @@
       },
       "source_url": "https://docs.fireworks.ai/serverless/pricing"
     },
+    "kimi-k3.1-pro": {
+      "aliases": [
+        "moonshotai/kimi-k3.1-pro",
+        "moonshotai/kimi-k3.1-pro-20261023",
+        "openrouter/moonshotai/kimi-k3.1-pro",
+        "openrouter/moonshotai/kimi-k3.1-pro-20261023"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "MoonshotAI: Kimi K3.1 Pro",
+      "max_output_tokens": 943718,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      }
+    },
     "kimi-latest": {
       "aliases": [
         "~moonshotai/kimi-latest",
@@ -25240,10 +25824,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.27,
+        "cached_input_per_mtok": 0.228,
         "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 14.0
+        "input_per_mtok": 0.238,
+        "output_per_mtok": 16.0
       }
     },
     "l3-lunaris-8b": {
@@ -25302,37 +25886,6 @@
         "currency": "USD",
         "input_per_mtok": 0.85,
         "output_per_mtok": 0.85
-      }
-    },
-    "l3.3-euryale-70b": {
-      "aliases": [
-        "sao10k/l3.3-euryale-70b",
-        "sao10k/l3.3-euryale-70b-v2.3",
-        "openrouter/sao10k/l3.3-euryale-70b",
-        "openrouter/sao10k/l3.3-euryale-70b-v2.3"
-      ],
-      "capabilities": {
-        "response_schema": true,
-        "structured_output": true
-      },
-      "context_window": 131072,
-      "display_name": "Sao10K: Llama 3.3 Euryale 70B",
-      "max_output_tokens": 16384,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.65,
-        "output_per_mtok": 0.75
       }
     },
     "labs-leanstral-1-5": {
@@ -25655,22 +26208,6 @@
         "output_per_mtok": 0.225
       }
     },
-    "ll-alpha-free": {
-      "aliases": [
-        "opencode_zen/ll-alpha-free"
-      ],
-      "display_name": "LL Alpha Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
-    },
     "llama-3.1-405b-reasoning": {
       "aliases": [
         "groq/llama-3.1-405b-reasoning"
@@ -25924,9 +26461,9 @@
         "response_schema": true,
         "structured_output": true
       },
-      "context_window": 131072,
+      "context_window": 80000,
       "display_name": "Meta: Llama 3.2 3B Instruct",
-      "max_output_tokens": 117964,
+      "max_output_tokens": 72000,
       "modalities": {
         "input": [
           "text"
@@ -25940,8 +26477,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.0509,
+        "output_per_mtok": 0.335
       },
       "rankings": {
         "chatbot_arena": {
@@ -26858,6 +27395,41 @@
         "output_per_mtok": 0.15
       }
     },
+    "mercury-3": {
+      "aliases": [
+        "inception/mercury-3",
+        "inception/mercury-3-20261019",
+        "openrouter/inception/mercury-3",
+        "openrouter/inception/mercury-3-20261019"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1000000,
+      "display_name": "Inception: Mercury 3",
+      "max_output_tokens": 131072,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.35
+      }
+    },
     "mimo-v2.5": {
       "aliases": [
         "xiaomi/mimo-v2.5",
@@ -26872,9 +27444,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1050000,
       "display_name": "Xiaomi: MiMo-V2.5",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "modalities": {
         "input": [
           "text",
@@ -26890,27 +27462,11 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0028,
+        "cached_input_per_mtok": 0.00255,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.119,
+        "output_per_mtok": 0.238
       }
-    },
-    "mimo-v2.5-free": {
-      "aliases": [
-        "opencode_zen/mimo-v2.5-free"
-      ],
-      "display_name": "MiMo-V2.5 Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
     },
     "mimo-v2.5-pro": {
       "aliases": [
@@ -26926,9 +27482,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1050000,
       "display_name": "Xiaomi: MiMo-V2.5-Pro",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "modalities": {
         "input": [
           "text"
@@ -26941,10 +27497,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0036,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
+        "input_per_mtok": 0.3045,
+        "output_per_mtok": 0.609
       }
     },
     "mimo-v2.6-flash": {
@@ -27517,47 +28073,86 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 37,
-          "score": 70.0
+          "as_of": "2026-10-24",
+          "rank": 65,
+          "score": 67.3
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 15,
-          "score": 60.0
+          "as_of": "2026-10-24",
+          "rank": 64,
+          "score": 40.7
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 94,
+          "as_of": "2026-10-24",
+          "rank": 69,
           "score": 68.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 16,
+          "as_of": "2026-10-24",
+          "rank": 36,
           "score": 76.2
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 50,
+          "as_of": "2026-10-24",
+          "rank": 64,
           "score": 57.5
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 37,
+          "as_of": "2026-10-24",
+          "rank": 46,
           "score": 76.8
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 63,
+          "as_of": "2026-10-24",
+          "rank": 69,
           "score": 76.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 45,
+          "as_of": "2026-10-24",
+          "rank": 65,
           "score": 74.5
         }
       },
       "source_url": "https://fireworks.ai/pricing"
+    },
+    "minimax-m3.1-flash": {
+      "aliases": [
+        "minimax/minimax-m3.1-flash",
+        "ollama_cloud/minimax-m3.1-flash",
+        "minimax/minimax-m3.1-flash-20261019",
+        "openrouter/minimax/minimax-m3.1-flash",
+        "openrouter/minimax/minimax-m3.1-flash-20261019"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "minimax-m3.1-flash",
+      "max_output_tokens": 524288,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "source_url": "https://ollama.com/pricing"
     },
     "ministral-14b-2512": {
       "aliases": [
@@ -28271,6 +28866,48 @@
         "input_per_mtok": 0.68,
         "output_per_mtok": 2.09
       },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 54,
+          "score": 71.8
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 24,
+          "score": 57.2
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 42,
+          "score": 77.2
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 33,
+          "score": 76.5
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 47,
+          "score": 64.8
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 70,
+          "score": 49.6
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 21,
+          "score": 93.6
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 43,
+          "score": 83.9
+        }
+      },
       "source_url": "https://ollama.com/pricing"
     },
     "mistral-large-4-0": {
@@ -28305,10 +28942,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.07,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 2.09
+        "input_per_mtok": 1.36,
+        "output_per_mtok": 4.18
       },
       "source_url": "https://docs.mistral.ai/models/mistral-large-4"
     },
@@ -29324,9 +29961,13 @@
         "morph/morph-v3-fast",
         "openrouter/morph/morph-v3-fast"
       ],
-      "context_window": 81920,
+      "capabilities": {
+        "response_schema": true,
+        "structured_output": true
+      },
+      "context_window": 262144,
       "display_name": "Morph: Morph V3 Fast",
-      "max_output_tokens": 38000,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text"
@@ -29438,6 +30079,31 @@
         "output_per_mtok": 1.2
       },
       "source_url": "https://api.fireworks.ai/v1/serverless/models"
+    },
+    "muse-image-1.0": {
+      "aliases": [
+        "meta/muse-image-1.0"
+      ],
+      "display_name": "Muse Image 1 0",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation",
+        "image_edit",
+        "responses"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.01
+      },
+      "source_url": "https://dev.meta.ai/docs/pricing-rate-limits"
     },
     "muse-spark-1.1": {
       "aliases": [
@@ -29767,7 +30433,8 @@
     },
     "muse-wonder-1.0": {
       "aliases": [
-        "meta/muse-wonder-1.0"
+        "meta/muse-wonder-1.0",
+        "opencode_zen/muse-wonder-1.0"
       ],
       "capabilities": {
         "function_calling": true,
@@ -29782,7 +30449,7 @@
         "web_search": true
       },
       "context_window": 1048576,
-      "display_name": "Muse Wonder 1 0",
+      "display_name": "Muse Wonder 1.0",
       "max_output_tokens": 131072,
       "modalities": {
         "input": [
@@ -29804,7 +30471,7 @@
         "input_per_mtok": 4.0,
         "output_per_mtok": 20.0
       },
-      "source_url": "https://dev.meta.ai/docs/pricing-rate-limits"
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "mythomax-l2-13b": {
       "aliases": [
@@ -29988,9 +30655,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.4
       },
       "rankings": {
         "livebench": {
@@ -30083,44 +30751,44 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 89,
-          "score": 51.8
+          "as_of": "2026-10-24",
+          "rank": 64,
+          "score": 67.4
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 59,
-          "score": 46.7
+          "as_of": "2026-10-24",
+          "rank": 68,
+          "score": 38.7
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 73,
-          "score": 71.3
+          "as_of": "2026-10-24",
+          "rank": 63,
+          "score": 70.7
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 112,
-          "score": 42.0
-        },
-        "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 47,
-          "score": 58.2
-        },
-        "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 102,
-          "score": 52.2
-        },
-        "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 111,
+          "as_of": "2026-10-24",
+          "rank": 67,
           "score": 54.5
         },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 16,
+          "score": 73.4
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 63,
+          "score": 70.8
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 43,
+          "score": 88.7
+        },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 106,
-          "score": 37.5
+          "as_of": "2026-10-24",
+          "rank": 64,
+          "score": 74.7
         }
       }
     },
@@ -30287,10 +30955,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.08,
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       }
     },
     "nemotron-3.5-super-vl-free": {
@@ -30332,7 +31000,7 @@
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
       },
-      "source_url": "https://docs.fireworks.ai/serverless/pricing"
+      "source_url": "https://api.fireworks.ai/v1/serverless/models?format=nested"
     },
     "nex-n2.5-mini": {
       "aliases": [
@@ -33352,8 +34020,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.08
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 3.2
       }
     },
     "qwen3.5-27b": {
@@ -33372,7 +34040,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.5-27B",
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -33387,9 +34055,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.27,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 2.16
       }
     },
     "qwen3.5-35b-a3b": {
@@ -33408,7 +34077,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3.5-35B-A3B",
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "modalities": {
         "input": [
           "text",
@@ -33425,7 +34094,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
+        "input_per_mtok": 0.14,
         "output_per_mtok": 1.0
       }
     },
@@ -33480,9 +34149,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 256000,
+      "context_window": 262144,
       "display_name": "Qwen: Qwen3.5-9B",
-      "max_output_tokens": 32768,
+      "max_output_tokens": 235929,
       "modalities": {
         "input": [
           "text",
@@ -33498,8 +34167,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.15
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       }
     },
     "qwen3.5-flash-02-23": {
@@ -33665,43 +34334,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 51,
-          "score": 65.6
+          "as_of": "2026-10-24",
+          "rank": 68,
+          "score": 64.0
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 49,
-          "score": 50.0
+          "as_of": "2026-10-24",
+          "rank": 67,
+          "score": 39.3
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 70,
+          "as_of": "2026-10-24",
+          "rank": 59,
           "score": 71.8
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 28,
+          "as_of": "2026-10-24",
+          "rank": 53,
           "score": 70.4
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 60,
+          "as_of": "2026-10-24",
+          "rank": 70,
           "score": 53.2
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 84,
+          "as_of": "2026-10-24",
+          "rank": 67,
           "score": 63.3
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 52,
+          "as_of": "2026-10-24",
+          "rank": 63,
           "score": 79.9
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 58,
+          "as_of": "2026-10-24",
+          "rank": 69,
           "score": 70.3
         }
       }
@@ -33739,8 +34408,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 1.0
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.95
       }
     },
     "qwen3.6-flash": {
@@ -33860,43 +34529,43 @@
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 31,
-          "score": 70.9
+          "as_of": "2026-10-24",
+          "rank": 60,
+          "score": 68.9
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 29,
-          "score": 55.0
+          "as_of": "2026-10-24",
+          "rank": 63,
+          "score": 41.4
         },
         "livebench_coding": {
-          "as_of": "2026-07-10",
-          "rank": 27,
+          "as_of": "2026-10-24",
+          "rank": 35,
           "score": 78.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 31,
+          "as_of": "2026-10-24",
+          "rank": 55,
           "score": 69.9
         },
         "livebench_instruction_following": {
-          "as_of": "2026-07-10",
-          "rank": 46,
+          "as_of": "2026-10-24",
+          "rank": 63,
           "score": 58.3
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 49,
+          "as_of": "2026-10-24",
+          "rank": 50,
           "score": 75.0
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 35,
+          "as_of": "2026-10-24",
+          "rank": 61,
           "score": 83.7
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 40,
+          "as_of": "2026-10-24",
+          "rank": 63,
           "score": 75.8
         }
       },
@@ -33943,7 +34612,6 @@
     "qwen3.7-max": {
       "aliases": [
         "qwen/qwen3.7-max",
-        "opencode_zen/qwen3.7-max",
         "qwen/qwen3.7-max-20260520",
         "openrouter/qwen/qwen3.7-max",
         "openrouter/qwen/qwen3.7-max-20260520"
@@ -33956,7 +34624,7 @@
         "tool_choice": true
       },
       "context_window": 1000000,
-      "display_name": "Qwen3.7 Max",
+      "display_name": "Qwen: Qwen3.7 Max",
       "max_output_tokens": 131072,
       "modalities": {
         "input": [
@@ -33970,22 +34638,22 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 3.125,
-        "cached_input_per_mtok": 0.5,
+        "cache_write_per_mtok": 1.84375,
+        "cached_input_per_mtok": 0.295,
         "currency": "USD",
-        "input_per_mtok": 2.5,
-        "output_per_mtok": 7.5
+        "input_per_mtok": 1.475,
+        "output_per_mtok": 4.425
       },
       "rankings": {
         "livebench": {
-          "as_of": "2026-07-10",
-          "rank": 17,
-          "score": 74.3
+          "as_of": "2026-10-24",
+          "rank": 48,
+          "score": 73.1
         },
         "livebench_agentic_coding": {
-          "as_of": "2026-07-10",
-          "rank": 42,
-          "score": 51.7
+          "as_of": "2026-10-24",
+          "rank": 58,
+          "score": 43.6
         },
         "livebench_coding": {
           "as_of": "2026-07-10",
@@ -33993,37 +34661,35 @@
           "score": 74.2
         },
         "livebench_data_analysis": {
-          "as_of": "2026-07-10",
-          "rank": 26,
+          "as_of": "2026-10-24",
+          "rank": 49,
           "score": 71.8
         },
         "livebench_instruction_following": {
-          "as_of": "2026-05-25",
-          "rank": 4,
+          "as_of": "2026-10-24",
+          "rank": 14,
           "score": 74.0
         },
         "livebench_language": {
-          "as_of": "2026-07-10",
-          "rank": 20,
+          "as_of": "2026-10-24",
+          "rank": 34,
           "score": 79.7
         },
         "livebench_math": {
-          "as_of": "2026-07-10",
-          "rank": 25,
+          "as_of": "2026-10-24",
+          "rank": 56,
           "score": 85.2
         },
         "livebench_reasoning": {
-          "as_of": "2026-07-10",
-          "rank": 19,
+          "as_of": "2026-10-24",
+          "rank": 44,
           "score": 83.3
         }
-      },
-      "source_url": "https://opencode.ai/docs/zen"
+      }
     },
     "qwen3.7-plus": {
       "aliases": [
         "qwen/qwen3.7-plus",
-        "opencode_zen/qwen3.7-plus",
         "qwen/qwen3.7-plus-20260602",
         "openrouter/qwen/qwen3.7-plus",
         "openrouter/qwen/qwen3.7-plus-20260602"
@@ -34036,7 +34702,7 @@
         "tool_choice": true
       },
       "context_window": 1000000,
-      "display_name": "Qwen3.7 Plus",
+      "display_name": "Qwen: Qwen3.7 Plus",
       "max_output_tokens": 131072,
       "modalities": {
         "input": [
@@ -34051,13 +34717,12 @@
         "chat"
       ],
       "pricing": {
-        "cache_write_per_mtok": 0.5,
-        "cached_input_per_mtok": 0.04,
+        "cache_write_per_mtok": 0.4,
+        "cached_input_per_mtok": 0.064,
         "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.6
-      },
-      "source_url": "https://opencode.ai/docs/zen"
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 1.28
+      }
     },
     "qwen3.8-2.4t-a95b": {
       "aliases": [
@@ -34073,9 +34738,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1000000,
+      "context_window": 1010000,
       "display_name": "Qwen: Qwen3.8 2.4T A95B",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 909000,
       "modalities": {
         "input": [
           "text"
@@ -34125,10 +34790,52 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 2.2
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 39,
+          "score": 75.3
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 14,
+          "score": 61.4
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 51,
+          "score": 75.7
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 32,
+          "score": 76.6
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 19,
+          "score": 72.7
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 53,
+          "score": 74.3
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 54,
+          "score": 86.2
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 55,
+          "score": 80.0
+        }
       }
     },
     "qwen3.8-flash": {
@@ -34185,6 +34892,48 @@
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
+      },
+      "rankings": {
+        "livebench": {
+          "as_of": "2026-10-24",
+          "rank": 18,
+          "score": 78.5
+        },
+        "livebench_agentic_coding": {
+          "as_of": "2026-10-24",
+          "rank": 7,
+          "score": 64.6
+        },
+        "livebench_coding": {
+          "as_of": "2026-10-24",
+          "rank": 56,
+          "score": 72.9
+        },
+        "livebench_data_analysis": {
+          "as_of": "2026-10-24",
+          "rank": 25,
+          "score": 78.4
+        },
+        "livebench_instruction_following": {
+          "as_of": "2026-10-24",
+          "rank": 13,
+          "score": 74.1
+        },
+        "livebench_language": {
+          "as_of": "2026-10-24",
+          "rank": 35,
+          "score": 79.7
+        },
+        "livebench_math": {
+          "as_of": "2026-10-24",
+          "rank": 30,
+          "score": 91.3
+        },
+        "livebench_reasoning": {
+          "as_of": "2026-10-24",
+          "rank": 24,
+          "score": 88.2
+        }
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
@@ -34663,6 +35412,30 @@
         "output_per_mtok": 4.0
       }
     },
+    "sam-3.1": {
+      "aliases": [
+        "meta/sam-3.1"
+      ],
+      "display_name": "Sam 3 1",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "responses"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.0025
+      },
+      "source_url": "https://dev.meta.ai/docs/pricing-rate-limits.md"
+    },
     "schematron-v2-small": {
       "aliases": [
         "inference-net/schematron-v2-small",
@@ -34726,6 +35499,15 @@
         "input_per_mtok": 0.03,
         "output_per_mtok": 0.15
       }
+    },
+    "search": {
+      "aliases": [
+        "deepseek/search"
+      ],
+      "display_name": "Search",
+      "modes": [
+        "search"
+      ]
     },
     "seed-1.6": {
       "aliases": [
@@ -35155,10 +35937,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.018,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.36
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       }
     },
     "sonar": {
@@ -35360,22 +36142,6 @@
         "video_generation"
       ],
       "source_url": "https://developers.openai.com/api/docs/pricing"
-    },
-    "space-bunny-free": {
-      "aliases": [
-        "opencode_zen/space-bunny-free"
-      ],
-      "display_name": "Space Bunny Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
     },
     "step-3.5-flash": {
       "aliases": [
@@ -36234,9 +37000,7 @@
       "aliases": [
         "vertex_ai/veo-3.1-lite-generate-001"
       ],
-      "context_window": 1024,
       "display_name": "Veo 3 1 Lite Generate 001",
-      "max_output_tokens": 1024,
       "modalities": {
         "input": [
           "text",
@@ -36249,10 +37013,6 @@
       "modes": [
         "video_generation"
       ],
-      "pricing": {
-        "currency": "USD",
-        "per_second_output": 0.05
-      },
       "source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing#veo"
     },
     "veo-3.1-lite-generate-preview": {
@@ -36397,6 +37157,56 @@
       },
       "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
     },
+    "voxtral-mini-transcribe-3": {
+      "aliases": [
+        "mistral/voxtral-mini-transcribe-3"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Mini Transcribe 3",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 5.83333e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0"
+    },
+    "voxtral-mini-transcribe-3-0": {
+      "aliases": [
+        "mistral/voxtral-mini-transcribe-3-0"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Mini Transcribe 3 0",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 5.83333e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0"
+    },
     "voxtral-mini-transcribe-realtime-2602": {
       "aliases": [
         "mistral/voxtral-mini-transcribe-realtime-2602"
@@ -36421,6 +37231,56 @@
         "per_second_input": 0.0001
       },
       "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
+    },
+    "voxtral-mini-transcribe-realtime-3": {
+      "aliases": [
+        "mistral/voxtral-mini-transcribe-realtime-3"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Mini Transcribe Realtime 3",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000133333
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0"
+    },
+    "voxtral-mini-transcribe-realtime-3-0": {
+      "aliases": [
+        "mistral/voxtral-mini-transcribe-realtime-3-0"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Mini Transcribe Realtime 3 0",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000133333
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0"
     },
     "voxtral-mini-transcribe-realtime-latest": {
       "aliases": [
@@ -36471,6 +37331,56 @@
         "per_character_input": 1.6e-05
       },
       "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03"
+    },
+    "voxtral-mini-tts-3": {
+      "aliases": [
+        "mistral/voxtral-mini-tts-3"
+      ],
+      "capabilities": {
+        "audio_output": true
+      },
+      "display_name": "Voxtral Mini TTS 3",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "modes": [
+        "audio_speech"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_character_input": 1.3e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-tts-3-0"
+    },
+    "voxtral-mini-tts-3-0": {
+      "aliases": [
+        "mistral/voxtral-mini-tts-3-0"
+      ],
+      "capabilities": {
+        "audio_output": true
+      },
+      "display_name": "Voxtral Mini TTS 3 0",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "modes": [
+        "audio_speech"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_character_input": 1.3e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-mini-tts-3-0"
     },
     "voxtral-mini-tts-latest": {
       "aliases": [
@@ -36578,6 +37488,56 @@
         "output_per_mtok": 0.4
       },
       "source_url": "https://docs.mistral.ai/models/voxtral-small-25-07"
+    },
+    "voxtral-small-transcribe-3": {
+      "aliases": [
+        "mistral/voxtral-small-transcribe-3"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Small Transcribe 3",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 6.66667e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0"
+    },
+    "voxtral-small-transcribe-3-0": {
+      "aliases": [
+        "mistral/voxtral-small-transcribe-3-0"
+      ],
+      "capabilities": {
+        "audio_input": true
+      },
+      "display_name": "Voxtral Small Transcribe 3 0",
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "audio_transcription"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 6.66667e-05
+      },
+      "source_url": "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0"
     },
     "weaver": {
       "aliases": [
@@ -36695,24 +37655,10 @@
     },
     "wizardlm-2-8x22b": {
       "aliases": [
-        "azure/wizardlm-2-8x22b",
-        "microsoft/wizardlm-2-8x22b",
-        "openrouter/microsoft/wizardlm-2-8x22b"
+        "azure/wizardlm-2-8x22b"
       ],
-      "capabilities": {
-        "response_schema": true,
-        "structured_output": true
-      },
       "description": "WizardLM-2 8x22B is Microsoft AI's most advanced Wizard model. It demonstrates highly competitive performance compared to leading proprietary models, and it consistently outperforms all existing state-of-the-art opensource models.",
       "display_name": "WizardLM-2 8x22B",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "modes": [
         "chat"
       ],
@@ -38363,6 +39309,27 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
+    "azure/MAI-Code-1.1-Flash": {
+      "context_window": 256000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 64000,
+      "model_ref": "MAI-Code-1.1-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.2
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "provider_model_id": "azure_ai/MAI-Code-1.1-Flash",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+      ]
+    },
     "azure/MAI-Cyber-1-Flash": {
       "context_window": 256000,
       "enabled": true,
@@ -39248,6 +40215,26 @@
       "pricing_source_url": "https://azure.microsoft.com/en-us/blog/introducing-the-llama-4-herd-in-azure-ai-foundry-and-azure-databricks/",
       "source_urls": [
         "https://azure.microsoft.com/en-us/blog/introducing-the-llama-4-herd-in-azure-ai-foundry-and-azure-databricks/"
+      ]
+    },
+    "azure/azure_ai/MAI-Code-1.1-Flash": {
+      "context_window": 256000,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses"
+      ],
+      "max_output_tokens": 64000,
+      "model_ref": "MAI-Code-1.1-Flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.02,
+        "currency": "USD",
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 1.2
+      },
+      "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
     "azure/azure_ai/MAI-Cyber-1-Flash": {
@@ -41431,7 +42418,7 @@
       "enabled": true,
       "model_ref": "container",
       "source_urls": [
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"
       ]
     },
     "azure/curie": {
@@ -48852,6 +49839,13 @@
         "https://llmprices.dev/"
       ]
     },
+    "deepseek/search": {
+      "enabled": true,
+      "model_ref": "search",
+      "source_urls": [
+        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
     "fireworks/accounts/fireworks/models/deepseek-r1-0528": {
       "context_window": 160000,
       "enabled": true,
@@ -49683,9 +50677,9 @@
         "input_per_mtok": 0.15,
         "output_per_mtok": 0.6
       },
-      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models",
+      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models?format=nested",
       "source_urls": [
-        "https://api.fireworks.ai/v1/serverless/models"
+        "https://api.fireworks.ai/v1/serverless/models?format=nested"
       ]
     },
     "fireworks/fireworks_ai/gpt-oss-20b": {
@@ -49891,9 +50885,9 @@
         "input_per_mtok": 0.6,
         "output_per_mtok": 2.4
       },
-      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models",
+      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models?format=nested",
       "source_urls": [
-        "https://api.fireworks.ai/v1/serverless/models"
+        "https://api.fireworks.ai/v1/serverless/models?format=nested"
       ]
     },
     "fireworks/fireworks_ai/nemotron-lightning-3p5-30b-a3b": {
@@ -49907,9 +50901,9 @@
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
       },
-      "pricing_source_url": "https://docs.fireworks.ai/serverless/pricing",
+      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models?format=nested",
       "source_urls": [
-        "https://docs.fireworks.ai/serverless/pricing"
+        "https://api.fireworks.ai/v1/serverless/models?format=nested"
       ]
     },
     "fireworks/fireworks_ai/qwen3p7-plus": {
@@ -50176,7 +51170,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/fireworks-ai.json",
       "source_urls": [
-        "https://api.fireworks.ai/v1/serverless/models",
+        "https://api.fireworks.ai/v1/serverless/models?format=nested",
         "https://configs.portkey.ai/pricing/fireworks-ai.json",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
       ]
@@ -50492,7 +51486,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/fireworks-ai.json",
       "source_urls": [
-        "https://api.fireworks.ai/v1/serverless/models",
+        "https://api.fireworks.ai/v1/serverless/models?format=nested",
         "https://configs.portkey.ai/pricing/fireworks-ai.json",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
       ]
@@ -50508,10 +51502,10 @@
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
       },
-      "pricing_source_url": "https://docs.fireworks.ai/serverless/pricing",
+      "pricing_source_url": "https://api.fireworks.ai/v1/serverless/models?format=nested",
       "provider_model_id": "fireworks_ai/nemotron-lightning-3p5-30b-a3b",
       "source_urls": [
-        "https://docs.fireworks.ai/serverless/pricing"
+        "https://api.fireworks.ai/v1/serverless/models?format=nested"
       ]
     },
     "fireworks/qwen2p5-vl-72b-instruct": {
@@ -53355,6 +54349,23 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
+    "meta/muse-image-1.0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits",
+        "/v1/responses"
+      ],
+      "model_ref": "muse-image-1.0",
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.01
+      },
+      "pricing_source_url": "https://dev.meta.ai/docs/pricing-rate-limits",
+      "source_urls": [
+        "https://dev.meta.ai/docs/pricing-rate-limits"
+      ]
+    },
     "meta/muse-spark-1.1": {
       "context_window": 1048576,
       "enabled": true,
@@ -53494,6 +54505,21 @@
       "pricing_source_url": "https://dev.meta.ai/docs/pricing-rate-limits",
       "source_urls": [
         "https://dev.meta.ai/docs/pricing-rate-limits"
+      ]
+    },
+    "meta/sam-3.1": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/responses"
+      ],
+      "model_ref": "sam-3.1",
+      "pricing": {
+        "currency": "USD",
+        "input_per_image": 0.0025
+      },
+      "pricing_source_url": "https://dev.meta.ai/docs/pricing-rate-limits.md",
+      "source_urls": [
+        "https://dev.meta.ai/docs/pricing-rate-limits.md"
       ]
     },
     "mistral/codestral": {
@@ -54846,6 +55872,36 @@
         "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
       ]
     },
+    "mistral/voxtral-mini-transcribe-3": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-mini-transcribe-3",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 5.83333e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0"
+      ]
+    },
+    "mistral/voxtral-mini-transcribe-3-0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-mini-transcribe-3-0",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 5.83333e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-transcribe-3-0"
+      ]
+    },
     "mistral/voxtral-mini-transcribe-realtime-2602": {
       "enabled": true,
       "endpoints": [
@@ -54859,6 +55915,36 @@
       "pricing_source_url": "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02",
       "source_urls": [
         "https://docs.mistral.ai/models/model-cards/voxtral-mini-transcribe-realtime-26-02"
+      ]
+    },
+    "mistral/voxtral-mini-transcribe-realtime-3": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-mini-transcribe-realtime-3",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000133333
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0"
+      ]
+    },
+    "mistral/voxtral-mini-transcribe-realtime-3-0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-mini-transcribe-realtime-3-0",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 0.000133333
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-transcribe-realtime-3-0"
       ]
     },
     "mistral/voxtral-mini-transcribe-realtime-latest": {
@@ -54889,6 +55975,36 @@
       "pricing_source_url": "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03",
       "source_urls": [
         "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03"
+      ]
+    },
+    "mistral/voxtral-mini-tts-3": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/speech"
+      ],
+      "model_ref": "voxtral-mini-tts-3",
+      "pricing": {
+        "currency": "USD",
+        "per_character_input": 1.3e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-tts-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-tts-3-0"
+      ]
+    },
+    "mistral/voxtral-mini-tts-3-0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/speech"
+      ],
+      "model_ref": "voxtral-mini-tts-3-0",
+      "pricing": {
+        "currency": "USD",
+        "per_character_input": 1.3e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-mini-tts-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-mini-tts-3-0"
       ]
     },
     "mistral/voxtral-mini-tts-latest": {
@@ -54950,6 +56066,36 @@
       "pricing_source_url": "https://docs.mistral.ai/models/voxtral-small-25-07",
       "source_urls": [
         "https://docs.mistral.ai/models/voxtral-small-25-07"
+      ]
+    },
+    "mistral/voxtral-small-transcribe-3": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-small-transcribe-3",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 6.66667e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0"
+      ]
+    },
+    "mistral/voxtral-small-transcribe-3-0": {
+      "enabled": true,
+      "endpoints": [
+        "/v1/audio/transcriptions"
+      ],
+      "model_ref": "voxtral-small-transcribe-3-0",
+      "pricing": {
+        "currency": "USD",
+        "per_second_input": 6.66667e-05
+      },
+      "pricing_source_url": "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0",
+      "source_urls": [
+        "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0"
       ]
     },
     "mistral/zai-glm-5": {
@@ -55072,13 +56218,6 @@
         "https://ollama.com/pricing"
       ]
     },
-    "ollama_cloud/gpt-oss": {
-      "enabled": true,
-      "model_ref": "gpt-oss",
-      "source_urls": [
-        "https://ollama.com/pricing"
-      ]
-    },
     "ollama_cloud/kimi-k2.6": {
       "enabled": true,
       "model_ref": "kimi-k2.6",
@@ -55110,6 +56249,13 @@
     "ollama_cloud/minimax-m3": {
       "enabled": true,
       "model_ref": "minimax-m3",
+      "source_urls": [
+        "https://ollama.com/pricing"
+      ]
+    },
+    "ollama_cloud/minimax-m3.1-flash": {
+      "enabled": true,
+      "model_ref": "minimax-m3.1-flash",
       "source_urls": [
         "https://ollama.com/pricing"
       ]
@@ -60005,6 +61151,7 @@
       },
       "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/openai.json",
         "https://developers.openai.com/api/docs/pricing"
       ]
     },
@@ -61374,9 +62521,9 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/exo-free": {
+    "opencode_zen/flint-40b-free": {
       "enabled": true,
-      "model_ref": "exo-free",
+      "model_ref": "flint-40b-free",
       "pricing": {
         "cached_input_per_mtok": 0.0,
         "currency": "USD",
@@ -61910,7 +63057,7 @@
       "model_ref": "gpt-6.1-sol",
       "pricing": {
         "cache_write_per_mtok": 2.5,
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 10.0
@@ -62048,6 +63195,7 @@
       "enabled": true,
       "model_ref": "kimi-k3",
       "pricing": {
+        "cache_write_per_mtok": 3.0,
         "cached_input_per_mtok": 0.3,
         "currency": "USD",
         "input_per_mtok": 3.0,
@@ -62058,37 +63206,9 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/ll-alpha-free": {
-      "enabled": true,
-      "model_ref": "ll-alpha-free",
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/longcat-2.5-preview-free": {
       "enabled": true,
       "model_ref": "longcat-2.5-preview-free",
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/mimo-v2.5-free": {
-      "enabled": true,
-      "model_ref": "mimo-v2.5-free",
       "pricing": {
         "cached_input_per_mtok": 0.0,
         "currency": "USD",
@@ -62191,6 +63311,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/muse-wonder-1.0": {
+      "enabled": true,
+      "model_ref": "muse-wonder-1.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 4.0,
+        "output_per_mtok": 20.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/nemotron-3-ultra-free": {
       "enabled": true,
       "model_ref": "nemotron-3-ultra-free",
@@ -62263,36 +63397,6 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/qwen3.7-max": {
-      "enabled": true,
-      "model_ref": "qwen3.7-max",
-      "pricing": {
-        "cache_write_per_mtok": 3.125,
-        "cached_input_per_mtok": 0.5,
-        "currency": "USD",
-        "input_per_mtok": 2.5,
-        "output_per_mtok": 7.5
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/qwen3.7-plus": {
-      "enabled": true,
-      "model_ref": "qwen3.7-plus",
-      "pricing": {
-        "cache_write_per_mtok": 0.5,
-        "cached_input_per_mtok": 0.04,
-        "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 1.6
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/qwen3.8-flash": {
       "enabled": true,
       "model_ref": "qwen3.8-flash",
@@ -62317,20 +63421,6 @@
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 6.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/space-bunny-free": {
-      "enabled": true,
-      "model_ref": "space-bunny-free",
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
@@ -62924,13 +64014,13 @@
     "openrouter/beam-1.0-501b-a23b": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "beam-1.0-501b-a23b",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 1.0,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/reflection/beam-1.0-501b-a23b",
       "provider_model_id": "reflection/beam-1.0-501b-a23b",
@@ -63342,10 +64432,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.008,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "provider_model_id": "~deepseek/deepseek-flash-latest",
@@ -63361,7 +64451,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.1188,
         "output_per_mtok": 8.0
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-pro-latest",
@@ -63409,10 +64499,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0049,
+        "cached_input_per_mtok": 0.028,
         "currency": "USD",
-        "input_per_mtok": 0.0049,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.0422,
+        "output_per_mtok": 0.1694
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "provider_model_id": "~deepseek/deepseek-v4-flash-latest",
@@ -63421,9 +64511,9 @@
       ]
     },
     "openrouter/deepseek-v4-pro-0813": {
-      "context_window": 1024000,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 384000,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
         "cached_input_per_mtok": 0.022,
@@ -63443,10 +64533,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0016,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.0648,
-        "output_per_mtok": 0.144
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "provider_model_id": "deepseek/deepseek-v4.1-flash",
@@ -63501,21 +64591,6 @@
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-chat-v3.1",
       "source_urls": [
         "https://openrouter.ai/deepseek/deepseek-chat-v3.1"
-      ]
-    },
-    "openrouter/deepseek/deepseek-r1": {
-      "context_window": 64000,
-      "enabled": true,
-      "max_output_tokens": 16000,
-      "model_ref": "deepseek-r1",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.7,
-        "output_per_mtok": 2.5
-      },
-      "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-r1",
-      "source_urls": [
-        "https://openrouter.ai/deepseek/deepseek-r1"
       ]
     },
     "openrouter/deepseek/deepseek-r1-0528": {
@@ -63599,13 +64674,13 @@
     "openrouter/deepseek/deepseek-v4-flash-0731": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.0049,
+        "cached_input_per_mtok": 0.001414,
         "currency": "USD",
-        "input_per_mtok": 0.0049,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.04444,
+        "output_per_mtok": 0.13332
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "source_urls": [
@@ -63634,10 +64709,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0174,
+        "cached_input_per_mtok": 0.0509675,
         "currency": "USD",
-        "input_per_mtok": 0.2088,
-        "output_per_mtok": 0.4176
+        "input_per_mtok": 0.61161,
+        "output_per_mtok": 1.22322
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -63645,9 +64720,9 @@
       ]
     },
     "openrouter/deepseek/deepseek-v4-pro-0813": {
-      "context_window": 1024000,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 384000,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4-pro-0813",
       "pricing": {
         "cached_input_per_mtok": 0.022,
@@ -63666,10 +64741,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0016,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.0648,
-        "output_per_mtok": 0.144
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "source_urls": [
@@ -63786,6 +64861,22 @@
       "pricing_source_url": "https://openrouter.ai/fireworks/ember-1",
       "source_urls": [
         "https://openrouter.ai/fireworks/ember-1"
+      ]
+    },
+    "openrouter/flint-v1.0": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 235929,
+      "model_ref": "flint-v1.0",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/recursive/flint-v1.0:free",
+      "provider_model_id": "recursive/flint-v1.0:free",
+      "source_urls": [
+        "https://openrouter.ai/recursive/flint-v1.0:free"
       ]
     },
     "openrouter/free": {
@@ -63952,15 +65043,15 @@
       ]
     },
     "openrouter/glm-4.6": {
-      "context_window": 202752,
+      "context_window": 204800,
       "enabled": true,
       "max_output_tokens": 131072,
       "model_ref": "glm-4.6",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.11,
         "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 2.0
+        "input_per_mtok": 0.55,
+        "output_per_mtok": 2.2
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.6",
       "provider_model_id": "z-ai/glm-4.6",
@@ -63974,7 +65065,7 @@
       "max_output_tokens": 32768,
       "model_ref": "glm-4.6v",
       "pricing": {
-        "cached_input_per_mtok": 0.055,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
@@ -64036,15 +65127,15 @@
       ]
     },
     "openrouter/glm-5.1": {
-      "context_window": 200000,
+      "context_window": 202752,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
-        "cached_input_per_mtok": 0.1794,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 0.966,
-        "output_per_mtok": 3.036
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
       "provider_model_id": "z-ai/glm-5.1",
@@ -64058,10 +65149,10 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.14,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.62,
-        "output_per_mtok": 2.42
+        "input_per_mtok": 0.0341,
+        "output_per_mtok": 7.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "provider_model_id": "z-ai/glm-5.2",
@@ -64078,7 +65169,7 @@
         "cached_input_per_mtok": 0.078,
         "currency": "USD",
         "input_per_mtok": 0.079,
-        "output_per_mtok": 2.5
+        "output_per_mtok": 1.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
       "provider_model_id": "z-ai/glm-5.3",
@@ -64087,15 +65178,15 @@
       ]
     },
     "openrouter/glm-5.3-flash": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.048,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -64157,13 +65248,13 @@
     "openrouter/glm-flash-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.048,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.0304,
+        "output_per_mtok": 0.0852
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "provider_model_id": "~z-ai/glm-flash-latest",
@@ -64174,13 +65265,13 @@
     "openrouter/glm-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943718,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0588,
+        "cached_input_per_mtok": 0.078,
         "currency": "USD",
-        "input_per_mtok": 0.0632,
-        "output_per_mtok": 4.4
+        "input_per_mtok": 0.079,
+        "output_per_mtok": 1.4
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "provider_model_id": "~z-ai/glm-latest",
@@ -64239,38 +65330,6 @@
         "https://openrouter.ai/google/gemini-2.5-flash-lite"
       ]
     },
-    "openrouter/google/gemini-2.5-flash-lite:batch": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 65535,
-      "model_ref": "gemini-2.5-flash-lite",
-      "pricing": {
-        "cached_input_per_mtok": 0.01,
-        "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.2
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemini-2.5-flash-lite:batch",
-      "source_urls": [
-        "https://openrouter.ai/google/gemini-2.5-flash-lite:batch"
-      ]
-    },
-    "openrouter/google/gemini-2.5-flash:batch": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 65535,
-      "model_ref": "gemini-2.5-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.03,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 1.25
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemini-2.5-flash:batch",
-      "source_urls": [
-        "https://openrouter.ai/google/gemini-2.5-flash:batch"
-      ]
-    },
     "openrouter/google/gemini-2.5-pro": {
       "context_window": 1048576,
       "enabled": true,
@@ -64303,22 +65362,6 @@
       "pricing_source_url": "https://openrouter.ai/google/gemini-2.5-pro-preview",
       "source_urls": [
         "https://openrouter.ai/google/gemini-2.5-pro-preview"
-      ]
-    },
-    "openrouter/google/gemini-2.5-pro:batch": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 65536,
-      "model_ref": "gemini-2.5-pro",
-      "pricing": {
-        "cached_input_per_mtok": 0.125,
-        "currency": "USD",
-        "input_per_mtok": 0.625,
-        "output_per_mtok": 5.0
-      },
-      "pricing_source_url": "https://openrouter.ai/google/gemini-2.5-pro:batch",
-      "source_urls": [
-        "https://openrouter.ai/google/gemini-2.5-pro:batch"
       ]
     },
     "openrouter/google/gemini-3-flash-preview": {
@@ -64573,7 +65616,7 @@
     "openrouter/google/gemini-4-argon": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 943718,
       "model_ref": "gemini-4-argon",
       "pricing": {
         "cache_write_per_mtok": 0.1875,
@@ -64651,12 +65694,13 @@
     "openrouter/google/gemma-3-4b-it": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 117964,
       "model_ref": "gemma-3-4b-it",
       "pricing": {
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.1
+        "input_per_mtok": 0.04,
+        "output_per_mtok": 0.05
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-3-4b-it",
       "source_urls": [
@@ -65277,6 +66321,22 @@
         "https://openrouter.ai/inception/mercury-2.5"
       ]
     },
+    "openrouter/inception/mercury-3": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mercury-3",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.35
+      },
+      "pricing_source_url": "https://openrouter.ai/inception/mercury-3",
+      "source_urls": [
+        "https://openrouter.ai/inception/mercury-3"
+      ]
+    },
     "openrouter/inclusionai/ling-3.0-flash": {
       "context_window": 262144,
       "enabled": true,
@@ -65393,6 +66453,7 @@
     },
     "openrouter/jev-router": {
       "enabled": true,
+      "max_output_tokens": 65536,
       "model_ref": "jev-router",
       "pricing": {
         "currency": "USD",
@@ -65477,7 +66538,7 @@
       "max_output_tokens": 235929,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.18,
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
         "input_per_mtok": 0.6712,
         "output_per_mtok": 3.35
@@ -65488,16 +66549,33 @@
         "https://openrouter.ai/moonshotai/kimi-k2.7-code"
       ]
     },
+    "openrouter/kimi-k3.1-pro": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 943718,
+      "model_ref": "kimi-k3.1-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro",
+      "provider_model_id": "moonshotai/kimi-k3.1-pro",
+      "source_urls": [
+        "https://openrouter.ai/moonshotai/kimi-k3.1-pro"
+      ]
+    },
     "openrouter/kimi-latest": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.27,
+        "cached_input_per_mtok": 0.228,
         "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 14.0
+        "input_per_mtok": 0.238,
+        "output_per_mtok": 16.0
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "provider_model_id": "~moonshotai/kimi-latest",
@@ -65535,22 +66613,6 @@
       "provider_model_id": "sao10k/l3.1-euryale-70b",
       "source_urls": [
         "https://openrouter.ai/sao10k/l3.1-euryale-70b"
-      ]
-    },
-    "openrouter/l3.3-euryale-70b": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "l3.3-euryale-70b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.65,
-        "output_per_mtok": 0.75
-      },
-      "pricing_source_url": "https://openrouter.ai/sao10k/l3.3-euryale-70b",
-      "provider_model_id": "sao10k/l3.3-euryale-70b",
-      "source_urls": [
-        "https://openrouter.ai/sao10k/l3.3-euryale-70b"
       ]
     },
     "openrouter/laguna-s-2.1": {
@@ -65752,14 +66814,14 @@
       ]
     },
     "openrouter/llama-3.2-3b-instruct": {
-      "context_window": 131072,
+      "context_window": 80000,
       "enabled": true,
-      "max_output_tokens": 117964,
+      "max_output_tokens": 72000,
       "model_ref": "llama-3.2-3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.0509,
+        "output_per_mtok": 0.335
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.2-3b-instruct",
       "provider_model_id": "meta-llama/llama-3.2-3b-instruct",
@@ -65962,6 +67024,23 @@
         "https://openrouter.ai/inception/mercury-2.5"
       ]
     },
+    "openrouter/mercury-3": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 131072,
+      "model_ref": "mercury-3",
+      "pricing": {
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.35
+      },
+      "pricing_source_url": "https://openrouter.ai/inception/mercury-3",
+      "provider_model_id": "inception/mercury-3",
+      "source_urls": [
+        "https://openrouter.ai/inception/mercury-3"
+      ]
+    },
     "openrouter/meta-llama/llama-3.1-70b-instruct": {
       "context_window": 131072,
       "enabled": true,
@@ -66009,14 +67088,14 @@
       ]
     },
     "openrouter/meta-llama/llama-3.2-3b-instruct": {
-      "context_window": 131072,
+      "context_window": 80000,
       "enabled": true,
-      "max_output_tokens": 117964,
+      "max_output_tokens": 72000,
       "model_ref": "llama-3.2-3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.0509,
+        "output_per_mtok": 0.335
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.2-3b-instruct",
       "source_urls": [
@@ -66227,31 +67306,16 @@
         "https://openrouter.ai/microsoft/phi-4"
       ]
     },
-    "openrouter/microsoft/wizardlm-2-8x22b": {
-      "context_window": 65535,
-      "enabled": true,
-      "max_output_tokens": 8000,
-      "model_ref": "wizardlm-2-8x22b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.62,
-        "output_per_mtok": 0.62
-      },
-      "pricing_source_url": "https://openrouter.ai/microsoft/wizardlm-2-8x22b",
-      "source_urls": [
-        "https://openrouter.ai/microsoft/wizardlm-2-8x22b"
-      ]
-    },
     "openrouter/mimo-v2.5": {
-      "context_window": 1048576,
+      "context_window": 1050000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "model_ref": "mimo-v2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.0028,
+        "cached_input_per_mtok": 0.00255,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.119,
+        "output_per_mtok": 0.238
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5",
       "provider_model_id": "xiaomi/mimo-v2.5",
@@ -66260,15 +67324,15 @@
       ]
     },
     "openrouter/mimo-v2.5-pro": {
-      "context_window": 1048576,
+      "context_window": 1050000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "model_ref": "mimo-v2.5-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0036,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
+        "input_per_mtok": 0.3045,
+        "output_per_mtok": 0.609
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
       "provider_model_id": "xiaomi/mimo-v2.5-pro",
@@ -66409,6 +67473,23 @@
         "https://openrouter.ai/minimax/minimax-m2.7"
       ]
     },
+    "openrouter/minimax-m3.1-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 524288,
+      "model_ref": "minimax-m3.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
+      "provider_model_id": "minimax/minimax-m3.1-flash",
+      "source_urls": [
+        "https://openrouter.ai/minimax/minimax-m3.1-flash"
+      ]
+    },
     "openrouter/minimax/minimax-01": {
       "context_window": 1000192,
       "enabled": true,
@@ -66534,16 +67615,32 @@
         "https://openrouter.ai/minimax/minimax-m3"
       ]
     },
+    "openrouter/minimax/minimax-m3.1-flash": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 524288,
+      "model_ref": "minimax-m3.1-flash",
+      "pricing": {
+        "cached_input_per_mtok": 0.015,
+        "currency": "USD",
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
+      },
+      "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
+      "source_urls": [
+        "https://openrouter.ai/minimax/minimax-m3.1-flash"
+      ]
+    },
     "openrouter/mistral-large-4-0": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 262144,
       "model_ref": "mistral-large-4-0",
       "pricing": {
-        "cached_input_per_mtok": 0.07,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 2.09
+        "input_per_mtok": 1.36,
+        "output_per_mtok": 4.18
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-large-4-0",
       "provider_model_id": "mistralai/mistral-large-4-0",
@@ -66718,10 +67815,10 @@
       "max_output_tokens": 262144,
       "model_ref": "mistral-large-4-0",
       "pricing": {
-        "cached_input_per_mtok": 0.07,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 0.68,
-        "output_per_mtok": 2.09
+        "input_per_mtok": 1.36,
+        "output_per_mtok": 4.18
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-large-4-0",
       "source_urls": [
@@ -66869,14 +67966,14 @@
       ]
     },
     "openrouter/mistralai/mistral-small-3.2-24b-instruct": {
-      "context_window": 256000,
+      "context_window": 128000,
       "enabled": true,
       "max_output_tokens": 16384,
       "model_ref": "mistral-small-3.2-24b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.09375,
-        "output_per_mtok": 0.25
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.2
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct",
       "source_urls": [
@@ -67061,7 +68158,7 @@
       "max_output_tokens": 235929,
       "model_ref": "kimi-k2.7-code",
       "pricing": {
-        "cached_input_per_mtok": 0.18,
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
         "input_per_mtok": 0.6712,
         "output_per_mtok": 3.35
@@ -67079,18 +68176,34 @@
       "pricing": {
         "cached_input_per_mtok": 0.21,
         "currency": "USD",
-        "input_per_mtok": 0.304,
-        "output_per_mtok": 11.936
+        "input_per_mtok": 0.239,
+        "output_per_mtok": 10.8
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k3",
       "source_urls": [
         "https://openrouter.ai/moonshotai/kimi-k3"
       ]
     },
-    "openrouter/morph-v3-fast": {
-      "context_window": 81920,
+    "openrouter/moonshotai/kimi-k3.1-pro": {
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 38000,
+      "max_output_tokens": 943718,
+      "model_ref": "kimi-k3.1-pro",
+      "pricing": {
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 10.0
+      },
+      "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro",
+      "source_urls": [
+        "https://openrouter.ai/moonshotai/kimi-k3.1-pro"
+      ]
+    },
+    "openrouter/morph-v3-fast": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 131072,
       "model_ref": "morph-v3-fast",
       "pricing": {
         "currency": "USD",
@@ -67120,9 +68233,9 @@
       ]
     },
     "openrouter/morph/morph-v3-fast": {
-      "context_window": 81920,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 38000,
+      "max_output_tokens": 131072,
       "model_ref": "morph-v3-fast",
       "pricing": {
         "currency": "USD",
@@ -67339,9 +68452,10 @@
       "max_output_tokens": 235929,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -67405,10 +68519,10 @@
       "max_output_tokens": 235929,
       "model_ref": "nemotron-3.5-super-vl",
       "pricing": {
-        "cached_input_per_mtok": 0.08,
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl",
       "source_urls": [
@@ -67660,9 +68774,10 @@
       "max_output_tokens": 235929,
       "model_ref": "nemotron-3-super-120b-a12b",
       "pricing": {
+        "cached_input_per_mtok": 0.15,
         "currency": "USD",
-        "input_per_mtok": 0.08,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 2.4
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b",
       "source_urls": [
@@ -67782,10 +68897,10 @@
       "max_output_tokens": 235929,
       "model_ref": "nemotron-3.5-super-vl",
       "pricing": {
-        "cached_input_per_mtok": 0.08,
+        "cached_input_per_mtok": 0.02,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl",
       "source_urls": [
@@ -69662,8 +70777,8 @@
       "model_ref": "qwen3.5-122b-a10b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.08
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 3.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-122b-a10b",
       "source_urls": [
@@ -69673,12 +70788,13 @@
     "openrouter/qwen/qwen3.5-27b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.5-27b",
       "pricing": {
+        "cached_input_per_mtok": 0.27,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 2.16
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-27b",
       "source_urls": [
@@ -69688,12 +70804,12 @@
     "openrouter/qwen/qwen3.5-35b-a3b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.5-35b-a3b",
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
+        "input_per_mtok": 0.14,
         "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-35b-a3b",
@@ -69718,14 +70834,14 @@
       ]
     },
     "openrouter/qwen/qwen3.5-9b": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3.5-9b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.15
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-9b",
       "source_urls": [
@@ -69802,8 +70918,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 1.0
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.95
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-35b-a3b",
       "source_urls": [
@@ -69894,9 +71010,9 @@
       ]
     },
     "openrouter/qwen/qwen3.8-2.4t-a95b": {
-      "context_window": 1000000,
+      "context_window": 1010000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 909000,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -69915,10 +71031,10 @@
       "max_output_tokens": 235929,
       "model_ref": "qwen3.8-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 2.2
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.8-27b",
       "source_urls": [
@@ -70259,8 +71375,8 @@
       "model_ref": "qwen3.5-122b-a10b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.08
+        "input_per_mtok": 0.4,
+        "output_per_mtok": 3.2
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-122b-a10b",
       "provider_model_id": "qwen/qwen3.5-122b-a10b",
@@ -70271,12 +71387,13 @@
     "openrouter/qwen3.5-27b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 81920,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.5-27b",
       "pricing": {
+        "cached_input_per_mtok": 0.27,
         "currency": "USD",
-        "input_per_mtok": 0.26,
-        "output_per_mtok": 2.6
+        "input_per_mtok": 0.27,
+        "output_per_mtok": 2.16
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-27b",
       "provider_model_id": "qwen/qwen3.5-27b",
@@ -70287,12 +71404,12 @@
     "openrouter/qwen3.5-35b-a3b": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 235929,
+      "max_output_tokens": 81920,
       "model_ref": "qwen3.5-35b-a3b",
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
+        "input_per_mtok": 0.14,
         "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-35b-a3b",
@@ -70319,14 +71436,14 @@
       ]
     },
     "openrouter/qwen3.5-9b": {
-      "context_window": 256000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 32768,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3.5-9b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.15
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-9b",
       "provider_model_id": "qwen/qwen3.5-9b",
@@ -70408,8 +71525,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 1.0
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.95
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.6-35b-a3b",
       "provider_model_id": "qwen/qwen3.6-35b-a3b",
@@ -70506,9 +71623,9 @@
       ]
     },
     "openrouter/qwen3.8-2.4t-a95b": {
-      "context_window": 1000000,
+      "context_window": 1010000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 909000,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -70528,10 +71645,10 @@
       "max_output_tokens": 235929,
       "model_ref": "qwen3.8-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.09,
         "currency": "USD",
-        "input_per_mtok": 0.24,
-        "output_per_mtok": 2.2
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.8-27b",
       "provider_model_id": "qwen/qwen3.8-27b",
@@ -70607,16 +71724,31 @@
         "https://openrouter.ai/qwen/qwen3.8-omni-flash"
       ]
     },
+    "openrouter/recursive/flint-v1.0:free": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 235929,
+      "model_ref": "flint-v1.0",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://openrouter.ai/recursive/flint-v1.0:free",
+      "source_urls": [
+        "https://openrouter.ai/recursive/flint-v1.0:free"
+      ]
+    },
     "openrouter/reflection/beam-1.0-501b-a23b": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "beam-1.0-501b-a23b",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 1.0,
-        "output_per_mtok": 3.0
+        "input_per_mtok": 0.25,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/reflection/beam-1.0-501b-a23b",
       "source_urls": [
@@ -70874,21 +72006,6 @@
         "https://openrouter.ai/sao10k/l3.1-euryale-70b"
       ]
     },
-    "openrouter/sao10k/l3.3-euryale-70b": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "l3.3-euryale-70b",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.65,
-        "output_per_mtok": 0.75
-      },
-      "pricing_source_url": "https://openrouter.ai/sao10k/l3.3-euryale-70b",
-      "source_urls": [
-        "https://openrouter.ai/sao10k/l3.3-euryale-70b"
-      ]
-    },
     "openrouter/scaledown/extract": {
       "context_window": 1000000,
       "enabled": true,
@@ -71106,10 +72223,10 @@
       "max_output_tokens": 131072,
       "model_ref": "solar-pro4",
       "pricing": {
-        "cached_input_per_mtok": 0.018,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.36
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/upstage/solar-pro4",
       "provider_model_id": "upstage/solar-pro4",
@@ -71577,6 +72694,7 @@
     },
     "openrouter/typesafe/jev-router": {
       "enabled": true,
+      "max_output_tokens": 65536,
       "model_ref": "jev-router",
       "pricing": {
         "currency": "USD",
@@ -71706,10 +72824,10 @@
       "max_output_tokens": 131072,
       "model_ref": "solar-pro4",
       "pricing": {
-        "cached_input_per_mtok": 0.018,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.36
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/upstage/solar-pro4",
       "source_urls": [
@@ -71860,15 +72978,15 @@
       ]
     },
     "openrouter/xiaomi/mimo-v2.5": {
-      "context_window": 1048576,
+      "context_window": 1050000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "model_ref": "mimo-v2.5",
       "pricing": {
-        "cached_input_per_mtok": 0.0028,
+        "cached_input_per_mtok": 0.00255,
         "currency": "USD",
-        "input_per_mtok": 0.14,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.119,
+        "output_per_mtok": 0.238
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5",
       "source_urls": [
@@ -71876,15 +72994,15 @@
       ]
     },
     "openrouter/xiaomi/mimo-v2.5-pro": {
-      "context_window": 1048576,
+      "context_window": 1050000,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 945000,
       "model_ref": "mimo-v2.5-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0036,
+        "cached_input_per_mtok": 0.0028,
         "currency": "USD",
-        "input_per_mtok": 0.435,
-        "output_per_mtok": 0.87
+        "input_per_mtok": 0.3045,
+        "output_per_mtok": 0.609
       },
       "pricing_source_url": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
       "source_urls": [
@@ -72019,15 +73137,15 @@
       ]
     },
     "openrouter/z-ai/glm-4.6": {
-      "context_window": 202752,
+      "context_window": 204800,
       "enabled": true,
       "max_output_tokens": 131072,
       "model_ref": "glm-4.6",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
+        "cached_input_per_mtok": 0.11,
         "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 2.0
+        "input_per_mtok": 0.55,
+        "output_per_mtok": 2.2
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-4.6",
       "source_urls": [
@@ -72040,7 +73158,7 @@
       "max_output_tokens": 32768,
       "model_ref": "glm-4.6v",
       "pricing": {
-        "cached_input_per_mtok": 0.055,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
         "input_per_mtok": 0.3,
         "output_per_mtok": 0.9
@@ -72114,15 +73232,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.1": {
-      "context_window": 200000,
+      "context_window": 202752,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
-        "cached_input_per_mtok": 0.1794,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 0.966,
-        "output_per_mtok": 3.036
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
       "source_urls": [
@@ -72135,10 +73253,10 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.14,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.62,
-        "output_per_mtok": 2.42
+        "input_per_mtok": 0.0341,
+        "output_per_mtok": 7.0
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
       "source_urls": [
@@ -72154,7 +73272,7 @@
         "cached_input_per_mtok": 0.078,
         "currency": "USD",
         "input_per_mtok": 0.079,
-        "output_per_mtok": 2.5
+        "output_per_mtok": 1.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3",
       "source_urls": [
@@ -72162,15 +73280,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.3-flash": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.048,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -72299,10 +73417,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.008,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.05,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.02,
+        "output_per_mtok": 1.0
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "source_urls": [
@@ -72317,7 +73435,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.12,
         "currency": "USD",
-        "input_per_mtok": 0.12,
+        "input_per_mtok": 0.1188,
         "output_per_mtok": 8.0
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-pro-latest",
@@ -72331,10 +73449,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0049,
+        "cached_input_per_mtok": 0.028,
         "currency": "USD",
-        "input_per_mtok": 0.0049,
-        "output_per_mtok": 0.45
+        "input_per_mtok": 0.0422,
+        "output_per_mtok": 0.1694
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "source_urls": [
@@ -72361,7 +73479,7 @@
     "openrouter/~google/gemini-pro-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 943718,
       "model_ref": "gemini-pro-latest",
       "pricing": {
         "cache_write_per_mtok": 0.1875,
@@ -72381,10 +73499,10 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.27,
+        "cached_input_per_mtok": 0.228,
         "currency": "USD",
-        "input_per_mtok": 0.27,
-        "output_per_mtok": 14.0
+        "input_per_mtok": 0.238,
+        "output_per_mtok": 16.0
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
       "source_urls": [
@@ -72510,13 +73628,13 @@
     "openrouter/~z-ai/glm-flash-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.048,
-        "output_per_mtok": 0.2
+        "input_per_mtok": 0.0304,
+        "output_per_mtok": 0.0852
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "source_urls": [
@@ -72526,13 +73644,13 @@
     "openrouter/~z-ai/glm-latest": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943718,
       "model_ref": "glm-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0588,
+        "cached_input_per_mtok": 0.078,
         "currency": "USD",
-        "input_per_mtok": 0.0632,
-        "output_per_mtok": 4.4
+        "input_per_mtok": 0.079,
+        "output_per_mtok": 1.4
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-latest",
       "source_urls": [
@@ -74789,15 +75907,31 @@
       "model_ref": "gemini-robotics-er-2-preview",
       "pricing": {
         "audio_input_per_mtok": 1.0,
+        "batch_input_per_mtok": 0.5,
+        "batch_output_per_mtok": 2.5,
         "cached_input_per_mtok": 0.1,
         "currency": "USD",
         "input_per_mtok": 1.0,
         "output_per_mtok": 5.0,
         "reasoning_output_per_mtok": 5.0
       },
-      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://ai.google.dev/gemini-api/docs/pricing"
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
+      ]
+    },
+    "vertex_ai/gemini-robotics-er-2-streaming-preview": {
+      "enabled": true,
+      "model_ref": "gemini-robotics-er-2-streaming-preview",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.0,
+        "output_per_mtok": 5.0
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/gemma-3-12b-it": {
@@ -75542,7 +76676,8 @@
       },
       "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing#veo",
       "source_urls": [
-        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing#veo"
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing#veo",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/veo-3.1-lite-generate-preview": {
@@ -77832,6 +78967,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-10-18T10:36:59Z",
+  "updated_at": "2026-10-24T03:51:38Z",
   "version": 1
 }
