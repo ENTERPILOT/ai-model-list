@@ -38,7 +38,7 @@ LEADERBOARD_MODEL_OVERRIDES = {
 }
 
 LIVEBENCH_DIRNAME = "livebench"
-LIVEBENCH_BASE_URL = "https://livebench.ai"
+LIVEBENCH_BASE_URL = "https://livebench.ai/v1"
 LIVEBENCH_TABLE_FILENAME = "table.json"
 LIVEBENCH_CATEGORIES_FILENAME = "categories.json"
 LIVEBENCH_METADATA_FILENAME = "fetch_metadata.json"
@@ -53,6 +53,7 @@ LIVEBENCH_RELEASES = (
     "2025-11-25",
     "2025-12-23",
     "2026-01-08",
+    "2026-06-25",
 )
 LIVEBENCH_RANKING_KEYS = {
     "global_average": "livebench",
