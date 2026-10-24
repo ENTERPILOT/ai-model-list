@@ -301,9 +301,9 @@ def test_write_optional_artificial_analysis_snapshot_writes_payload_and_metadata
 
 def test_write_livebench_snapshot_writes_payload_and_metadata(tmp_path: Path, monkeypatch) -> None:
     def fake_fetch_bytes(url: str, **kwargs) -> bytes:
-        if url.endswith("table_2026_01_08.csv"):
+        if url.endswith("table_2026_06_25.csv"):
             return b"model,code_generation\no3-pro,84.0\n"
-        if url.endswith("categories_2026_01_08.json"):
+        if url.endswith("categories_2026_06_25.json"):
             return b'{"Coding": ["code_generation"]}'
         raise AssertionError(f"unexpected url: {url}")
 
@@ -318,9 +318,9 @@ def test_write_livebench_snapshot_writes_payload_and_metadata(tmp_path: Path, mo
     categories = json.loads((tmp_path / "livebench" / "categories.json").read_text(encoding="utf-8"))
     assert categories["Coding"] == ["code_generation"]
     metadata_text = (tmp_path / "livebench" / "fetch_metadata.json").read_text(encoding="utf-8")
-    assert '"release": "2026-01-08"' in metadata_text
-    assert '"table": "https://livebench.ai/table_2026_01_08.csv"' in metadata_text
-    assert '"categories": "https://livebench.ai/categories_2026_01_08.json"' in metadata_text
+    assert '"release": "2026-06-25"' in metadata_text
+    assert '"table": "https://livebench.ai/v1/table_2026_06_25.csv"' in metadata_text
+    assert '"categories": "https://livebench.ai/v1/categories_2026_06_25.json"' in metadata_text
 
 
 def test_prune_orphan_models_moves_unreferenced_models_to_quarantine() -> None:
