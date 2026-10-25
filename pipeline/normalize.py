@@ -14,7 +14,9 @@ LITELLM_FALLBACK_SOURCE_URL = (
     "https://raw.githubusercontent.com/BerriAI/litellm/main/"
     "model_prices_and_context_window.json"
 )
-PYDANTIC_GENAI_SOURCE_URL = "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/data.json"
+PYDANTIC_GENAI_SOURCE_URL = (
+    "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
+)
 
 
 def _maybe_url(value: Any) -> str | None:
@@ -25,6 +27,7 @@ def _maybe_url(value: Any) -> str | None:
 
 USD_PER_TOKEN_TO_USD_PER_MTOK = 1_000_000
 CENTS_PER_TOKEN_TO_USD_PER_MTOK = 10_000
+SECONDS_PER_HOUR = 3600
 PROVIDER_SLUG_ALIASES = {
     "x-ai": "xai",
     "aws": "bedrock",
@@ -511,10 +514,15 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
         "output_mtok": "output_per_mtok",
         "cache_read_mtok": "cached_input_per_mtok",
         "cache_write_mtok": "cache_write_per_mtok",
+        "cache_write_1h_mtok": "cache_write_1h_per_mtok",
         "batch_input_mtok": "batch_input_per_mtok",
         "batch_output_mtok": "batch_output_per_mtok",
         "input_audio_mtok": "audio_input_per_mtok",
         "output_audio_mtok": "audio_output_per_mtok",
+        "input_image_mtok": "input_image_per_mtok",
+        "output_image_mtok": "output_image_per_mtok",
+        "cache_image_read_mtok": "cached_input_image_per_mtok",
+        "output_reasoning_mtok": "reasoning_output_per_mtok",
         "per_second_input": "per_second_input",
         "per_second_output": "per_second_output",
         "per_character_input": "per_character_input",
@@ -529,6 +537,11 @@ def _pricing_from_catalog_prices(value: Any) -> dict[str, float | str] | None:
             numeric_value = _to_float(raw_value.get("base"))
         if numeric_value is not None:
             pricing[target_field] = numeric_value
+
+    # genai-prices v2 bills transcription per audio hour; the registry stores per second.
+    per_hour_input = _to_float(pricing_payload.get("input_audio_hours"))
+    if per_hour_input is not None:
+        pricing.setdefault("per_second_input", float(Decimal(str(per_hour_input)) / SECONDS_PER_HOUR))
 
     time_windows = _time_windows_from_catalog_prices(pricing_payload.get("time_windows"), field_map)
     if time_windows:
@@ -1534,7 +1547,7 @@ def normalize_pydantic_genai_rows(
     allowed_providers: Sequence[str] | None = None,
     owner_providers: Sequence[str] | None = None,
     skip_providers: Sequence[str] | None = None,
-    evidence_ref: str = "pydantic_genai_prices.json",
+    evidence_ref: str = "pydantic_genai_prices_v2.json",
     source_name: str = "official",
     confidence: str = "official",
     provenance_url: str | None = None,

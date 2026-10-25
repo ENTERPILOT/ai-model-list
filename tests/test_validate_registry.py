@@ -536,7 +536,7 @@ def test_build_registry_artifacts_promotes_grok_from_pydantic_catalog(tmp_path: 
         ),
         encoding="utf-8",
     )
-    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+    (snapshot_dir / "pydantic_genai_prices_v2.json").write_text(
         json.dumps(
             [
                 {
@@ -648,7 +648,7 @@ def test_build_registry_artifacts_prefers_live_xai_docs_over_stale_pydantic_subs
         json.dumps({"fetched_at": "2026-03-24T09:00:00Z", "sources": {}}),
         encoding="utf-8",
     )
-    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+    (snapshot_dir / "pydantic_genai_prices_v2.json").write_text(
         json.dumps(
             [
                 {
@@ -953,7 +953,7 @@ def test_validate_rejects_malformed_pricing_time_windows(tmp_path: Path) -> None
 def test_build_registry_artifacts_prefers_provider_pricing_over_pydantic_aggregator(tmp_path: Path) -> None:
     """Regression guard for GoModel#892.
 
-    ``pydantic_genai_prices.json`` is a third-party aggregator that shares the
+    ``pydantic_genai_prices_v2.json`` is a third-party aggregator that shares the
     catalog normalizer with the ``*_official`` scrapers. While it was labelled
     ``"official"`` it took rank 0 in ``field_authority`` and a stale row
     published an OpenAI base price 5x high, even though portkey reported the
@@ -991,7 +991,7 @@ def test_build_registry_artifacts_prefers_provider_pricing_over_pydantic_aggrega
         json.dumps({"fetched_at": "2026-09-12T09:00:00Z", "sources": {}}),
         encoding="utf-8",
     )
-    (snapshot_dir / "pydantic_genai_prices.json").write_text(
+    (snapshot_dir / "pydantic_genai_prices_v2.json").write_text(
         json.dumps(
             [
                 {

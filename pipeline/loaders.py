@@ -41,7 +41,7 @@ def load_snapshot_payloads(snapshot_dir: Path) -> dict[str, Any]:
     if litellm_path.exists():
         payloads["litellm"] = _read_json(litellm_path)
 
-    pydantic_genai_path = snapshot_dir / "pydantic_genai_prices.json"
+    pydantic_genai_path = snapshot_dir / "pydantic_genai_prices_v2.json"
     if pydantic_genai_path.exists():
         payloads["pydantic_genai"] = _read_json(pydantic_genai_path)
 
