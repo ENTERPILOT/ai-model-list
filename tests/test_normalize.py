@@ -407,6 +407,61 @@ def test_normalize_pydantic_rows_support_custom_pricing_shapes() -> None:
     }
 
 
+def test_normalize_pydantic_rows_map_genai_prices_v2_units() -> None:
+    rows = [
+        {
+            "id": "openai",
+            "pricing_urls": ["https://platform.openai.com/docs/pricing"],
+            "models": [
+                {
+                    "id": "gpt-image-1",
+                    "match": {"equals": "gpt-image-1"},
+                    "prices": {
+                        "input_mtok": 5,
+                        "output_mtok": 40,
+                        "cache_write_1h_mtok": 10,
+                        "input_image_mtok": 10,
+                        "output_image_mtok": 40,
+                        "cache_image_read_mtok": 2.5,
+                        "output_reasoning_mtok": 12,
+                    },
+                }
+            ],
+        },
+        {
+            "id": "mistral",
+            "pricing_urls": ["https://mistral.ai/pricing"],
+            "models": [
+                {
+                    "id": "voxtral-mini-2602",
+                    "match": {"equals": "voxtral-mini-2602"},
+                    "prices": {"audio_hours": 0.18, "input_audio_hours": 0.18},
+                }
+            ],
+        },
+    ]
+
+    records = normalize_pydantic_genai_rows(
+        rows,
+        allowed_providers=["openai", "mistral"],
+        owner_providers=["openai", "mistral"],
+        rejection_policy={},
+    )
+    pricing_by_model = {record.source_model_id: record.fields["pricing"] for record in records}
+
+    assert pricing_by_model["gpt-image-1"] == {
+        "currency": "USD",
+        "input_per_mtok": 5.0,
+        "output_per_mtok": 40.0,
+        "cache_write_1h_per_mtok": 10.0,
+        "input_image_per_mtok": 10.0,
+        "output_image_per_mtok": 40.0,
+        "cached_input_image_per_mtok": 2.5,
+        "reasoning_output_per_mtok": 12.0,
+    }
+    assert pricing_by_model["voxtral-mini-2602"] == {"currency": "USD", "per_second_input": 0.00005}
+
+
 def test_normalize_portkey_files_extracts_rich_image_pricing() -> None:
     files = {
         "openai.json": {

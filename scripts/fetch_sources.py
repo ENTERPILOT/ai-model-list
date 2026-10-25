@@ -80,7 +80,7 @@ TOP_LEVEL_SOURCE_FILES: tuple[tuple[str, str], ...] = (
     ("litellm", "litellm_model_prices.json"),
     ("llm_prices", "llm_prices_current.json"),
     ("openrouter", "openrouter_models.json"),
-    ("pydantic-genai-prices", "pydantic_genai_prices.json"),
+    ("pydantic-genai-prices", "pydantic_genai_prices_v2.json"),
 )
 PORTKEY_SOURCE_FILES: tuple[str, ...] = (
     "anthropic.json",
