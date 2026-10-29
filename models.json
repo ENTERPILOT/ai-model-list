@@ -1693,6 +1693,7 @@
         "tool_choice": true
       },
       "display_name": "Auto Router (Beta)",
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -5653,10 +5654,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0231,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.0233,
-        "output_per_mtok": 1.8
+        "input_per_mtok": 0.044,
+        "output_per_mtok": 0.383
       }
     },
     "deepseek-pro-latest": {
@@ -6486,10 +6487,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0298,
         "currency": "USD",
-        "input_per_mtok": 0.057,
-        "output_per_mtok": 0.1341
+        "input_per_mtok": 0.0308,
+        "output_per_mtok": 0.3
       }
     },
     "deepseek-v4-flash-vision-exp": {
@@ -12525,9 +12526,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048576,
+      "context_window": 1048575,
       "display_name": "glm-5.3-flash",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "modalities": {
         "input": [
           "text",
@@ -13137,8 +13138,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0457,
-        "output_per_mtok": 0.0742
+        "input_per_mtok": 0.0503,
+        "output_per_mtok": 0.0701
       }
     },
     "glm-latest": {
@@ -25107,10 +25108,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy3-preview": {
@@ -25175,10 +25176,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       }
     },
     "imagen-3.0-fast-generate-001": {
@@ -25492,7 +25493,7 @@
         "tool_choice": true
       },
       "display_name": "TypeSafe: Jev Router",
-      "max_output_tokens": 64000,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text",
@@ -29380,10 +29381,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.14,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 1.36,
-        "output_per_mtok": 4.18
+        "input_per_mtok": 0.7,
+        "output_per_mtok": 2.1
       },
       "source_url": "https://docs.mistral.ai/models/mistral-large-4"
     },
@@ -35207,9 +35208,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 262144,
+      "context_window": 1000000,
       "display_name": "Qwen: Qwen3.8 27B",
-      "max_output_tokens": 65536,
+      "max_output_tokens": 262144,
       "modalities": {
         "input": [
           "text",
@@ -35224,10 +35225,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0039,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.039,
-        "output_per_mtok": 1.25
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
       },
       "rankings": {
         "livebench": {
@@ -36443,39 +36444,6 @@
         "currency": "USD",
         "input_per_mtok": 0.05,
         "output_per_mtok": 0.2
-      }
-    },
-    "solar-pro-3": {
-      "aliases": [
-        "upstage/solar-pro-3",
-        "openrouter/upstage/solar-pro-3"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "reasoning": true,
-        "response_schema": true,
-        "structured_output": true,
-        "tool_choice": true
-      },
-      "context_window": 131072,
-      "display_name": "Upstage: Solar Pro 3",
-      "max_output_tokens": 117964,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
       }
     },
     "solar-pro4": {
@@ -66740,6 +66708,7 @@
     },
     "openrouter/auto-beta": {
       "enabled": true,
+      "max_output_tokens": 65536,
       "model_ref": "auto-beta",
       "pricing": {
         "currency": "USD",
@@ -67172,10 +67141,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0231,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.0233,
-        "output_per_mtok": 1.8
+        "input_per_mtok": 0.044,
+        "output_per_mtok": 0.383
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "provider_model_id": "~deepseek/deepseek-flash-latest",
@@ -67206,10 +67175,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0298,
         "currency": "USD",
-        "input_per_mtok": 0.057,
-        "output_per_mtok": 0.1341
+        "input_per_mtok": 0.0308,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "provider_model_id": "~deepseek/deepseek-v4-flash-latest",
@@ -67394,15 +67363,15 @@
       ]
     },
     "openrouter/deepseek/deepseek-v4-pro": {
-      "context_window": 1024000,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 384000,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.0747765,
+        "cached_input_per_mtok": 0.135,
         "currency": "USD",
-        "input_per_mtok": 0.897318,
-        "output_per_mtok": 1.794636
+        "input_per_mtok": 1.6,
+        "output_per_mtok": 3.2
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -67851,15 +67820,15 @@
       ]
     },
     "openrouter/glm-5.3-flash": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3-flash",
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0457,
-        "output_per_mtok": 0.0742
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -67926,8 +67895,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0457,
-        "output_per_mtok": 0.0742
+        "input_per_mtok": 0.0503,
+        "output_per_mtok": 0.0701
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "provider_model_id": "~z-ai/glm-flash-latest",
@@ -68385,10 +68354,10 @@
       "max_output_tokens": 235929,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
-        "cached_input_per_mtok": 0.05,
+        "cached_input_per_mtok": 0.0425,
         "currency": "USD",
-        "input_per_mtok": 0.09,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.0765,
+        "output_per_mtok": 0.255
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -68888,10 +68857,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -68922,10 +68891,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "provider_model_id": "tencent/hy4-preview",
@@ -69096,7 +69065,7 @@
     },
     "openrouter/jev-router": {
       "enabled": true,
-      "max_output_tokens": 64000,
+      "max_output_tokens": 65536,
       "model_ref": "jev-router",
       "pricing": {
         "currency": "USD",
@@ -70297,10 +70266,10 @@
       "max_output_tokens": 262144,
       "model_ref": "mistral-large-4-0",
       "pricing": {
-        "cached_input_per_mtok": 0.14,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 1.36,
-        "output_per_mtok": 4.18
+        "input_per_mtok": 0.7,
+        "output_per_mtok": 2.1
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-large-4-0",
       "provider_model_id": "mistralai/mistral-large-4-0",
@@ -70475,10 +70444,10 @@
       "max_output_tokens": 262144,
       "model_ref": "mistral-large-4-0",
       "pricing": {
-        "cached_input_per_mtok": 0.14,
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 1.36,
-        "output_per_mtok": 4.18
+        "input_per_mtok": 0.7,
+        "output_per_mtok": 2.1
       },
       "pricing_source_url": "https://openrouter.ai/mistralai/mistral-large-4-0",
       "source_urls": [
@@ -73434,15 +73403,15 @@
       ]
     },
     "openrouter/qwen/qwen3.8-27b": {
-      "context_window": 262144,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 262144,
       "model_ref": "qwen3.8-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.0039,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.039,
-        "output_per_mtok": 1.25
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.8-27b",
       "source_urls": [
@@ -74031,15 +74000,15 @@
       ]
     },
     "openrouter/qwen3.8-27b": {
-      "context_window": 262144,
+      "context_window": 1000000,
       "enabled": true,
-      "max_output_tokens": 65536,
+      "max_output_tokens": 262144,
       "model_ref": "qwen3.8-27b",
       "pricing": {
-        "cached_input_per_mtok": 0.0039,
+        "cached_input_per_mtok": 0.05,
         "currency": "USD",
-        "input_per_mtok": 0.039,
-        "output_per_mtok": 1.25
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 2.5
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.8-27b",
       "provider_model_id": "qwen/qwen3.8-27b",
@@ -74591,23 +74560,6 @@
         "https://openrouter.ai/upstage/solar-mini4"
       ]
     },
-    "openrouter/solar-pro-3": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 117964,
-      "model_ref": "solar-pro-3",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://openrouter.ai/upstage/solar-pro-3",
-      "provider_model_id": "upstage/solar-pro-3",
-      "source_urls": [
-        "https://openrouter.ai/upstage/solar-pro-3"
-      ]
-    },
     "openrouter/solar-pro4": {
       "context_window": 524288,
       "enabled": true,
@@ -74898,10 +74850,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -74930,10 +74882,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "source_urls": [
@@ -75085,7 +75037,7 @@
     },
     "openrouter/typesafe/jev-router": {
       "enabled": true,
-      "max_output_tokens": 64000,
+      "max_output_tokens": 65536,
       "model_ref": "jev-router",
       "pricing": {
         "currency": "USD",
@@ -75191,22 +75143,6 @@
       "pricing_source_url": "https://openrouter.ai/upstage/solar-mini4",
       "source_urls": [
         "https://openrouter.ai/upstage/solar-mini4"
-      ]
-    },
-    "openrouter/upstage/solar-pro-3": {
-      "context_window": 131072,
-      "enabled": true,
-      "max_output_tokens": 117964,
-      "model_ref": "solar-pro-3",
-      "pricing": {
-        "cached_input_per_mtok": 0.015,
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://openrouter.ai/upstage/solar-pro-3",
-      "source_urls": [
-        "https://openrouter.ai/upstage/solar-pro-3"
       ]
     },
     "openrouter/upstage/solar-pro4": {
@@ -75688,15 +75624,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.3-flash": {
-      "context_window": 1048576,
+      "context_window": 1048575,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 943717,
       "model_ref": "glm-5.3-flash",
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0457,
-        "output_per_mtok": 0.0742
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -75825,10 +75761,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.0231,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.0233,
-        "output_per_mtok": 1.8
+        "input_per_mtok": 0.044,
+        "output_per_mtok": 0.383
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "source_urls": [
@@ -75857,10 +75793,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.028,
+        "cached_input_per_mtok": 0.0298,
         "currency": "USD",
-        "input_per_mtok": 0.057,
-        "output_per_mtok": 0.1341
+        "input_per_mtok": 0.0308,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-v4-flash-latest",
       "source_urls": [
@@ -76041,8 +75977,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0457,
-        "output_per_mtok": 0.0742
+        "input_per_mtok": 0.0503,
+        "output_per_mtok": 0.0701
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "source_urls": [
@@ -81372,6 +81308,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-10-29T12:31:56Z",
+  "updated_at": "2026-10-29T22:33:52Z",
   "version": 1
 }
