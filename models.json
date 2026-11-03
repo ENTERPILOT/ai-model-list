@@ -24774,13 +24774,26 @@
     },
     "grok-imagine-image-pro": {
       "aliases": [
-        "grok-imagine-image-quality",
-        "grok-imagine-image-quality-latest",
-        "grok-imagine-image-quality-20260403",
-        "xai/grok-imagine-image-pro",
-        "xai/grok-imagine-image-quality",
-        "xai/grok-imagine-image-quality-latest",
-        "xai/grok-imagine-image-quality-20260403"
+        "xai/grok-imagine-image-pro"
+      ],
+      "display_name": "Grok Imagine Image Pro",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "source_url": "https://docs.x.ai/docs/models"
+    },
+    "grok-imagine-image-quality": {
+      "aliases": [
+        "xai/grok-imagine-image-quality"
       ],
       "display_name": "Grok Imagine Image Quality",
       "modalities": {
@@ -24795,13 +24808,57 @@
       "modes": [
         "image_generation"
       ],
-      "owned_by": "xai",
       "pricing": {
         "currency": "USD",
-        "input_per_image": 0.01,
         "per_image": 0.05
       },
-      "source_url": "https://docs.x.ai/developers/models?cluster=us-east-1"
+      "source_url": "https://docs.x.ai/docs/models"
+    },
+    "grok-imagine-image-quality-20260403": {
+      "aliases": [
+        "xai/grok-imagine-image-quality-20260403"
+      ],
+      "display_name": "Grok Imagine Image Quality 20260403",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.05
+      },
+      "source_url": "https://docs.x.ai/docs/models"
+    },
+    "grok-imagine-image-quality-latest": {
+      "aliases": [
+        "xai/grok-imagine-image-quality-latest"
+      ],
+      "display_name": "Grok Imagine Image Quality Latest",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "modes": [
+        "image_generation"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "per_image": 0.05
+      },
+      "source_url": "https://docs.x.ai/docs/models"
     },
     "grok-imagine-video": {
       "aliases": [
@@ -24962,6 +25019,7 @@
         "chat"
       ],
       "pricing": {
+        "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -27100,7 +27158,7 @@
       },
       "context_window": 131072,
       "display_name": "Meta: Llama 3.3 70B Instruct",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 128000,
       "modalities": {
         "input": [
           "text"
@@ -27113,9 +27171,10 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.32
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.52
       },
       "rankings": {
         "chatbot_arena": {
@@ -33424,6 +33483,22 @@
       },
       "source_url": "https://mistral.ai/pricing/api"
     },
+    "pulse-alpha-free": {
+      "aliases": [
+        "opencode_zen/pulse-alpha-free"
+      ],
+      "display_name": "Pulse Alpha Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "qwen-2.5-72b-instruct": {
       "aliases": [
         "qwen/qwen-2.5-72b-instruct",
@@ -34203,8 +34278,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       }
     },
     "qwen3-coder-flash": {
@@ -34289,7 +34364,7 @@
       },
       "context_window": 262144,
       "display_name": "Qwen: Qwen3 Next 80B A3B Instruct",
-      "max_output_tokens": 16384,
+      "max_output_tokens": 235929,
       "modalities": {
         "input": [
           "text"
@@ -34302,8 +34377,9 @@
         "chat"
       ],
       "pricing": {
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 1.1
       },
       "rankings": {
@@ -66474,6 +66550,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/pulse-alpha-free": {
+      "enabled": true,
+      "model_ref": "pulse-alpha-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/qwen3.5-plus": {
       "enabled": true,
       "model_ref": "qwen3.5-plus",
@@ -67752,10 +67842,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4-flash-0731",
       "pricing": {
-        "cached_input_per_mtok": 0.0238,
+        "cached_input_per_mtok": 0.035,
         "currency": "USD",
-        "input_per_mtok": 0.119,
-        "output_per_mtok": 0.238
+        "input_per_mtok": 0.059,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
       "source_urls": [
@@ -68787,10 +68877,10 @@
       "max_output_tokens": 32768,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
-        "cached_input_per_mtok": 0.034,
+        "cached_input_per_mtok": 0.04,
         "currency": "USD",
-        "input_per_mtok": 0.068,
-        "output_per_mtok": 0.204
+        "input_per_mtok": 0.08,
+        "output_per_mtok": 0.241
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -69145,6 +69235,7 @@
       "max_output_tokens": 450000,
       "model_ref": "grok-latest",
       "pricing": {
+        "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -69828,12 +69919,13 @@
     "openrouter/llama-3.3-70b-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 128000,
       "model_ref": "llama-3.3-70b-instruct",
       "pricing": {
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.32
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.52
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
       "provider_model_id": "meta-llama/llama-3.3-70b-instruct",
@@ -70101,12 +70193,13 @@
     "openrouter/meta-llama/llama-3.3-70b-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 128000,
       "model_ref": "llama-3.3-70b-instruct",
       "pricing": {
+        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.32
+        "input_per_mtok": 0.2,
+        "output_per_mtok": 0.52
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
       "source_urls": [
@@ -73306,8 +73399,8 @@
       "model_ref": "qwen3-coder-30b-a3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct",
       "source_urls": [
@@ -73350,11 +73443,12 @@
     "openrouter/qwen/qwen3-next-80b-a3b-instruct": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3-next-80b-a3b-instruct",
       "pricing": {
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 1.1
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct",
@@ -73879,8 +73973,8 @@
       "model_ref": "qwen3-coder-30b-a3b-instruct",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.07,
-        "output_per_mtok": 0.28
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct",
       "provider_model_id": "qwen/qwen3-coder-30b-a3b-instruct",
@@ -73926,11 +74020,12 @@
     "openrouter/qwen3-next-80b-a3b-instruct": {
       "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 16384,
+      "max_output_tokens": 235929,
       "model_ref": "qwen3-next-80b-a3b-instruct",
       "pricing": {
+        "cached_input_per_mtok": 0.07,
         "currency": "USD",
-        "input_per_mtok": 0.09,
+        "input_per_mtok": 0.1,
         "output_per_mtok": 1.1
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct",
@@ -76250,6 +76345,7 @@
       "max_output_tokens": 450000,
       "model_ref": "grok-latest",
       "pricing": {
+        "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.5,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -80997,53 +81093,57 @@
       "model_ref": "grok-imagine-image-pro",
       "pricing": {
         "currency": "USD",
-        "input_per_image": 0.01,
         "per_image": 0.05
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models",
       "source_urls": [
         "https://configs.portkey.ai/pricing/x-ai.json",
-        "https://docs.x.ai/developers/models?cluster=us-east-1",
         "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-imagine-image-quality": {
       "enabled": true,
-      "model_ref": "grok-imagine-image-pro",
+      "endpoints": [
+        "/v1/images/generations"
+      ],
+      "model_ref": "grok-imagine-image-quality",
       "pricing": {
         "currency": "USD",
-        "input_per_image": 0.01,
         "per_image": 0.05
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-imagine-image-quality-20260403": {
       "enabled": true,
-      "model_ref": "grok-imagine-image-pro",
+      "endpoints": [
+        "/v1/images/generations"
+      ],
+      "model_ref": "grok-imagine-image-quality-20260403",
       "pricing": {
         "currency": "USD",
-        "input_per_image": 0.01,
         "per_image": 0.05
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-imagine-image-quality-latest": {
       "enabled": true,
-      "model_ref": "grok-imagine-image-pro",
+      "endpoints": [
+        "/v1/images/generations"
+      ],
+      "model_ref": "grok-imagine-image-quality-latest",
       "pricing": {
         "currency": "USD",
-        "input_per_image": 0.01,
         "per_image": 0.05
       },
-      "pricing_source_url": "https://docs.x.ai/developers/models?cluster=us-east-1",
+      "pricing_source_url": "https://docs.x.ai/docs/models",
       "source_urls": [
-        "https://docs.x.ai/developers/models?cluster=us-east-1"
+        "https://docs.x.ai/docs/models"
       ]
     },
     "xai/grok-imagine-video": {
@@ -81599,6 +81699,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-11-02T15:05:42Z",
+  "updated_at": "2026-11-03T00:43:44Z",
   "version": 1
 }
