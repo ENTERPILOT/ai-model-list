@@ -120,6 +120,52 @@
       ],
       "source_url": "https://cohere.com/blog/parse"
     },
+    "DeepSeek-V3": {
+      "aliases": [
+        "deepseek-v3",
+        "deepseek/deepseek-v3",
+        "fireworks/deepseek-v3",
+        "deepseek-ai/DeepSeek-V3",
+        "together/deepseek-ai/DeepSeek-V3",
+        "deepinfra/deepseek-ai/DeepSeek-V3"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "prompt_caching": true,
+        "tool_choice": true
+      },
+      "display_name": "Deepseek V3",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 0.89
+      },
+      "rankings": {
+        "chatbot_arena": {
+          "as_of": "2026-11-04",
+          "elo": 1333,
+          "rank": 97
+        },
+        "chatbot_arena_coding": {
+          "as_of": "2026-11-04",
+          "elo": 1325,
+          "rank": 107
+        },
+        "chatbot_arena_creative_writing": {
+          "as_of": "2026-11-04",
+          "elo": 1330,
+          "rank": 77
+        },
+        "chatbot_arena_math": {
+          "as_of": "2026-11-04",
+          "elo": 1314,
+          "rank": 106
+        }
+      }
+    },
     "DeepSeek-V3.1": {
       "aliases": [
         "deepseek-v3.1",
@@ -1150,273 +1196,6 @@
         "output_per_mtok": 8.0
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
-    },
-    "Meta-Llama-3-70B-Instruct": {
-      "aliases": [
-        "azure_ai/Meta-Llama-3-70B-Instruct",
-        "meta-llama/Meta-Llama-3-70B-Instruct",
-        "azure/azure_ai/Meta-Llama-3-70B-Instruct",
-        "deepinfra/meta-llama/Meta-Llama-3-70B-Instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 8192,
-      "display_name": "Meta Llama 3 70B Instruct",
-      "max_output_tokens": 2048,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.23,
-        "output_per_mtok": 0.4
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Meta-Llama-3.1-70B-Instruct": {
-      "aliases": [
-        "azure_ai/Meta-Llama-3.1-70B-Instruct",
-        "meta-llama/Meta-Llama-3.1-70B-Instruct",
-        "azure/azure_ai/Meta-Llama-3.1-70B-Instruct",
-        "deepinfra/meta-llama/Meta-Llama-3.1-70B-Instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Meta Llama 3 1 70B Instruct",
-      "max_output_tokens": 2048,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 0.4
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3-medium-4k-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3-medium-4k-instruct",
-        "azure/azure_ai/Phi-3-medium-4k-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 4096,
-      "display_name": "Phi 3 Medium 4k Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.17,
-        "output_per_mtok": 0.68
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1139,
-          "rank": 213
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1130,
-          "rank": 214
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1108,
-          "rank": 218
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1177,
-          "rank": 193
-        }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3-mini-4k-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3-mini-4k-instruct",
-        "azure/azure_ai/Phi-3-mini-4k-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 4096,
-      "display_name": "Phi 3 Mini 4k Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1075,
-          "rank": 247
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1092,
-          "rank": 232
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1037,
-          "rank": 251
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1116,
-          "rank": 224
-        }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3-small-128k-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3-small-128k-instruct",
-        "azure/azure_ai/Phi-3-small-128k-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Phi 3 Small 128k Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3-small-8k-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3-small-8k-instruct",
-        "azure/azure_ai/Phi-3-small-8k-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 8192,
-      "display_name": "Phi 3 Small 8k Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1111,
-          "rank": 226
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1101,
-          "rank": 227
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1085,
-          "rank": 237
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1154,
-          "rank": 207
-        }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3.5-MoE-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3.5-MoE-instruct",
-        "azure/azure_ai/Phi-3.5-MoE-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Phi 3 5 Moe Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.16,
-        "output_per_mtok": 0.64
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3.5-mini-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3.5-mini-instruct",
-        "azure/azure_ai/Phi-3.5-mini-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 128000,
-      "display_name": "Phi 3 5 Mini Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "Phi-3.5-vision-instruct": {
-      "aliases": [
-        "azure_ai/Phi-3.5-vision-instruct",
-        "azure/azure_ai/Phi-3.5-vision-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true,
-        "vision": true
-      },
-      "context_window": 128000,
-      "display_name": "Phi 3 5 Vision Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "rankings": {
-        "chatbot_arena_vision": {
-          "as_of": "2026-03-28",
-          "elo": 851,
-          "rank": 86
-        }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
     },
     "Phi-4-mini-reasoning": {
       "aliases": [
@@ -2611,14 +2390,8 @@
     "claude-3-opus": {
       "aliases": [
         "gemini/claude-3-opus",
-        "anthropic/claude-3-opus",
-        "vertex_ai/claude-3-opus"
+        "anthropic/claude-3-opus"
       ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true,
-        "vision": true
-      },
       "context_window": 200000,
       "display_name": "Claude 3 Opus",
       "modes": [
@@ -4665,42 +4438,6 @@
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
-    "cohere-rerank-v3-english": {
-      "aliases": [
-        "azure_ai/cohere-rerank-v3-english",
-        "azure/azure_ai/cohere-rerank-v3-english"
-      ],
-      "context_window": 4096,
-      "display_name": "Cohere Rerank v3 English",
-      "max_output_tokens": 4096,
-      "modes": [
-        "rerank"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
-    "cohere-rerank-v3-multilingual": {
-      "aliases": [
-        "azure_ai/cohere-rerank-v3-multilingual",
-        "azure/azure_ai/cohere-rerank-v3-multilingual"
-      ],
-      "context_window": 4096,
-      "display_name": "Cohere Rerank v3 Multilingual",
-      "max_output_tokens": 4096,
-      "modes": [
-        "rerank"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-    },
     "cohere-rerank-v4.0-fast": {
       "aliases": [
         "azure_ai/cohere-rerank-v4.0-fast",
@@ -4975,13 +4712,9 @@
     "command-r-plus": {
       "aliases": [
         "command-r-plus-08-2024",
-        "azure/command-r-plus",
         "cohere/command-r-plus",
         "cohere/command-r-plus-08-2024"
       ],
-      "capabilities": {
-        "function_calling": true
-      },
       "description": "Command R+ is a new, 104B-parameter LLM from Cohere. It's useful for roleplay, general consumer usecases, and Retrieval Augmented Generation (RAG).",
       "display_name": "Command R+",
       "modes": [
@@ -5804,10 +5537,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.005,
         "currency": "USD",
-        "input_per_mtok": 0.035,
-        "output_per_mtok": 0.315
+        "input_per_mtok": 0.032,
+        "output_per_mtok": 0.5
       }
     },
     "deepseek-pro-latest": {
@@ -5971,53 +5704,6 @@
         "output_per_mtok": 0.99
       },
       "source_url": "https://console.groq.com/docs/models"
-    },
-    "deepseek-v3": {
-      "aliases": [
-        "DeepSeek-V3",
-        "azure_ai/deepseek-v3",
-        "deepseek/deepseek-v3",
-        "fireworks/deepseek-v3",
-        "deepseek-ai/DeepSeek-V3",
-        "azure/azure_ai/deepseek-v3",
-        "together/deepseek-ai/DeepSeek-V3",
-        "deepinfra/deepseek-ai/DeepSeek-V3"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "display_name": "Deepseek v3",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.56,
-        "output_per_mtok": 1.68
-      },
-      "rankings": {
-        "chatbot_arena": {
-          "as_of": "2026-03-28",
-          "elo": 1333,
-          "rank": 97
-        },
-        "chatbot_arena_coding": {
-          "as_of": "2026-03-28",
-          "elo": 1325,
-          "rank": 107
-        },
-        "chatbot_arena_creative_writing": {
-          "as_of": "2026-03-28",
-          "elo": 1330,
-          "rank": 77
-        },
-        "chatbot_arena_math": {
-          "as_of": "2026-03-28",
-          "elo": 1314,
-          "rank": 106
-        }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
     },
     "deepseek-v3-0324": {
       "aliases": [
@@ -6844,7 +6530,7 @@
         "cached_input_per_mtok": 0.11,
         "currency": "USD",
         "input_per_mtok": 0.115,
-        "output_per_mtok": 4.0
+        "output_per_mtok": 4.6
       },
       "rankings": {
         "livebench": {
@@ -7745,37 +7431,6 @@
         "output_per_mtok": 0.6
       },
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
-    },
-    "gemini-2.0-flash-exp-image-generation": {
-      "aliases": [
-        "gemini/gemini-2.0-flash-exp-image-generation"
-      ],
-      "capabilities": {
-        "vision": true
-      },
-      "context_window": 32768,
-      "display_name": "Gemini 2 0 Flash Exp Image Generation",
-      "max_output_tokens": 32768,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text",
-          "image"
-        ]
-      },
-      "modes": [
-        "image_generation"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0,
-        "per_image": 0.039
-      },
-      "source_url": "https://ai.google.dev/pricing"
     },
     "gemini-2.0-flash-lite": {
       "aliases": [
@@ -11167,9 +10822,7 @@
       "aliases": [
         "gemini/gemma-2-27b-it",
         "google/gemma-2-27b-it",
-        "openrouter/google/gemma-2-27b-it",
-        "together_ai/google/gemma-2-27b-it",
-        "together/together_ai/google/gemma-2-27b-it"
+        "openrouter/google/gemma-2-27b-it"
       ],
       "capabilities": {
         "response_schema": true,
@@ -13336,10 +12989,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.03,
+        "cached_input_per_mtok": 0.0269,
         "currency": "USD",
-        "input_per_mtok": 0.0313,
-        "output_per_mtok": 0.0846
+        "input_per_mtok": 0.0269,
+        "output_per_mtok": 0.0996
       }
     },
     "glm-latest": {
@@ -13774,29 +13427,6 @@
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
     },
-    "gpt-3.5-turbo-16k-0613": {
-      "aliases": [
-        "gpt-35-turbo-16k-0613",
-        "azure/gpt-35-turbo-16k-0613",
-        "openai/gpt-3.5-turbo-16k-0613"
-      ],
-      "capabilities": {
-        "function_calling": true,
-        "tool_choice": true
-      },
-      "display_name": "GPT 3 5 Turbo 16k 0613",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "batch_input_per_mtok": 1.5,
-        "batch_output_per_mtok": 2.0,
-        "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 4.0
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
-    },
     "gpt-3.5-turbo-instruct": {
       "aliases": [
         "gpt-35-turbo-instruct",
@@ -14051,9 +13681,6 @@
         "openai/gpt-4-32k-0314",
         "openai/gpt-4-32k-0613"
       ],
-      "capabilities": {
-        "tool_choice": true
-      },
       "context_window": 32000,
       "description": "GPT-4 is the latest and most advanced model in the GPT series, demonstrating sophisticated capabilities in complex reasoning, theory of mind, and narrative understanding.",
       "display_name": "gpt 4",
@@ -14070,25 +13697,6 @@
         "output_per_mtok": 120.0
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
-    },
-    "gpt-4-32k-0613": {
-      "aliases": [
-        "azure/gpt-4-32k-0613",
-        "openai/gpt-4-32k-0613"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "display_name": "GPT 4 32k 0613",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 60.0,
-        "output_per_mtok": 120.0
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
     },
     "gpt-4-turbo": {
       "aliases": [
@@ -14694,18 +14302,8 @@
     },
     "gpt-4.5-preview": {
       "aliases": [
-        "azure/gpt-4.5-preview",
         "openai/gpt-4.5-preview"
       ],
-      "capabilities": {
-        "function_calling": true,
-        "parallel_function_calling": true,
-        "prompt_caching": true,
-        "response_schema": true,
-        "system_messages": true,
-        "tool_choice": true,
-        "vision": true
-      },
       "description": "GPT-4.5 (Preview) is a research preview of OpenAI's latest language model, designed to advance capabilities in reasoning, creativity, and multi-turn conversation. It builds on previous iterations with improvements in world knowledge, contextual coherence, and the ability to follow user intent more effectively.",
       "display_name": "GPT-4.5 (Preview)",
       "modes": [
@@ -15597,33 +15195,6 @@
         "output_per_mtok": 20.0
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
-    },
-    "gpt-4o-realtime-preview-2024-10-01": {
-      "aliases": [
-        "azure/gpt-4o-realtime-preview-2024-10-01",
-        "openai/gpt-4o-realtime-preview-2024-10-01"
-      ],
-      "capabilities": {
-        "audio_input": true,
-        "audio_output": true,
-        "function_calling": true,
-        "parallel_function_calling": true,
-        "system_messages": true,
-        "tool_choice": true
-      },
-      "display_name": "GPT 4o Realtime Preview 2024 10 01",
-      "modes": [
-        "realtime"
-      ],
-      "pricing": {
-        "audio_input_per_mtok": 100.0,
-        "audio_output_per_mtok": 200.0,
-        "cached_input_per_mtok": 2.5,
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 20.0
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
     },
     "gpt-4o-realtime-preview-2024-12-17": {
       "aliases": [
@@ -23012,7 +22583,7 @@
         "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.06,
-        "output_per_mtok": 0.15
+        "output_per_mtok": 0.25
       }
     },
     "grok-3": {
@@ -25598,10 +25169,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       }
     },
     "hy3-preview": {
@@ -25637,6 +25208,42 @@
         "output_per_mtok": 0.6
       }
     },
+    "hy4": {
+      "aliases": [
+        "tencent/hy4",
+        "tencent/hy4-20261104",
+        "openrouter/tencent/hy4",
+        "openrouter/tencent/hy4-20261104"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 1048576,
+      "display_name": "Tencent: Hy4",
+      "max_output_tokens": 65536,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.021,
+        "currency": "USD",
+        "input_per_mtok": 0.417,
+        "output_per_mtok": 1.2505
+      }
+    },
     "hy4-preview": {
       "aliases": [
         "tencent/hy4-preview",
@@ -25666,10 +25273,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0378,
+        "cached_input_per_mtok": 0.042,
         "currency": "USD",
-        "input_per_mtok": 0.7506,
-        "output_per_mtok": 2.2509
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
       }
     },
     "imagen-3.0-fast-generate-001": {
@@ -25726,10 +25333,8 @@
       "aliases": [
         "fireworks/inkling",
         "thinkingmachines/inkling",
-        "thinkingmachines/inkling:free",
         "thinkingmachines/inkling-20260715",
         "openrouter/thinkingmachines/inkling",
-        "openrouter/thinkingmachines/inkling:free",
         "openrouter/thinkingmachines/inkling-20260715",
         "accounts/fireworks/models/inkling",
         "fireworks/accounts/fireworks/models/inkling"
@@ -25766,10 +25371,8 @@
     "inkling-small": {
       "aliases": [
         "thinkingmachines/inkling-small",
-        "thinkingmachines/inkling-small:free",
         "thinkingmachines/inkling-small-20260730",
         "openrouter/thinkingmachines/inkling-small",
-        "openrouter/thinkingmachines/inkling-small:free",
         "openrouter/thinkingmachines/inkling-small-20260730"
       ],
       "capabilities": {
@@ -25918,27 +25521,6 @@
           "rank": 199
         }
       }
-    },
-    "jamba-instruct": {
-      "aliases": [
-        "azure_ai/jamba-instruct",
-        "azure/azure_ai/jamba-instruct"
-      ],
-      "capabilities": {
-        "tool_choice": true
-      },
-      "context_window": 70000,
-      "display_name": "Jamba Instruct",
-      "max_output_tokens": 4096,
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 0.7
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
     },
     "jev-1.13": {
       "aliases": [
@@ -26741,9 +26323,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1529,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 10.1551
       }
     },
@@ -27412,7 +26994,7 @@
       },
       "context_window": 131072,
       "display_name": "Meta: Llama 3.3 70B Instruct",
-      "max_output_tokens": 128000,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -27425,10 +27007,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.52
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.32
       },
       "rankings": {
         "chatbot_arena": {
@@ -28980,10 +28561,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -29419,16 +29000,16 @@
         "mistral-large-2411",
         "mistral-large-latest",
         "mistral/mistral-large",
-        "azure_ai/mistral-large",
         "mistralai/mistral-large",
         "mistral/mistral-large-2407",
         "mistral/mistral-large-2411",
         "mistral/mistral-large-latest",
-        "azure/azure_ai/mistral-large",
         "openrouter/mistralai/mistral-large"
       ],
       "capabilities": {
         "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "description": "This is Mistral AI's flagship model, Mistral Large 2 (version `mistral-large-2407`). It's a proprietary weights-available model and excels at reasoning, code, JSON, chat, and more. Read the launch announcement here.",
@@ -29518,13 +29099,13 @@
     "mistral-large-2407": {
       "aliases": [
         "mistral/mistral-large-2407",
-        "azure_ai/mistral-large-2407",
         "mistralai/mistral-large-2407",
-        "azure/azure_ai/mistral-large-2407",
         "openrouter/mistralai/mistral-large-2407"
       ],
       "capabilities": {
         "function_calling": true,
+        "response_schema": true,
+        "structured_output": true,
         "tool_choice": true
       },
       "display_name": "Mistral Large 2407",
@@ -29565,8 +29146,7 @@
           "elo": 1265,
           "rank": 147
         }
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
+      }
     },
     "mistral-large-2411": {
       "aliases": [
@@ -30363,12 +29943,12 @@
     },
     "mistral-small": {
       "aliases": [
-        "mistral/mistral-small",
-        "azure_ai/mistral-small",
-        "azure/azure_ai/mistral-small"
+        "mistral/mistral-small"
       ],
       "capabilities": {
         "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
         "tool_choice": true
       },
       "display_name": "Mistral Small",
@@ -30379,8 +29959,7 @@
         "currency": "USD",
         "input_per_mtok": 0.7,
         "output_per_mtok": 0.7
-      },
-      "source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
+      }
     },
     "mistral-small-24b-instruct-2501": {
       "aliases": [
@@ -33478,14 +33057,8 @@
     },
     "phi-3-medium-128k-instruct": {
       "aliases": [
-        "Phi-3-medium-128k-instruct",
-        "azure/phi-3-medium-128k-instruct",
-        "azure_ai/Phi-3-medium-128k-instruct",
-        "azure/azure_ai/Phi-3-medium-128k-instruct"
+        "azure/phi-3-medium-128k-instruct"
       ],
-      "capabilities": {
-        "tool_choice": true
-      },
       "context_window": 131072,
       "description": "Phi-3 128K Medium is a powerful 14-billion parameter model designed for advanced language understanding, reasoning, and instruction following. Optimized through supervised fine-tuning and preference adjustments, it excels in tasks involving common sense, mathematics, logical reasoning, and code processing.",
       "display_name": "Phi-3 Medium 128K Instruct",
@@ -33501,14 +33074,8 @@
     },
     "phi-3-mini-128k-instruct": {
       "aliases": [
-        "Phi-3-mini-128k-instruct",
-        "azure/phi-3-mini-128k-instruct",
-        "azure_ai/Phi-3-mini-128k-instruct",
-        "azure/azure_ai/Phi-3-mini-128k-instruct"
+        "azure/phi-3-mini-128k-instruct"
       ],
-      "capabilities": {
-        "tool_choice": true
-      },
       "context_window": 131072,
       "description": "Phi-3 Mini is a powerful 3.8B parameter model designed for advanced language understanding, reasoning, and instruction following. Optimized through supervised fine-tuning and preference adjustments, it excels in tasks involving common sense, mathematics, logical reasoning, and code processing.",
       "display_name": "Phi-3 Mini 128K Instruct",
@@ -40591,150 +40158,6 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
-    "azure/Meta-Llama-3-70B-Instruct": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 2048,
-      "model_ref": "Meta-Llama-3-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 1.1,
-        "output_per_mtok": 0.37
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Meta-Llama-3-70B-Instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Meta-Llama-3.1-70B-Instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 2048,
-      "model_ref": "Meta-Llama-3.1-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.68,
-        "output_per_mtok": 3.54
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Meta-Llama-3.1-70B-Instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3-medium-4k-instruct": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-medium-4k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.17,
-        "output_per_mtok": 0.68
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3-medium-4k-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3-mini-4k-instruct": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-mini-4k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3-mini-4k-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3-small-128k-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-small-128k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3-small-128k-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3-small-8k-instruct": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-small-8k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3-small-8k-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3.5-MoE-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-MoE-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.16,
-        "output_per_mtok": 0.64
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3.5-MoE-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3.5-mini-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-mini-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3.5-mini-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/Phi-3.5-vision-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-vision-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/Phi-3.5-vision-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/Phi-4-mini-reasoning": {
       "context_window": 131072,
       "enabled": true,
@@ -41482,171 +40905,6 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
-    "azure/azure_ai/Meta-Llama-3-70B-Instruct": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 2048,
-      "model_ref": "Meta-Llama-3-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 1.1,
-        "output_per_mtok": 0.37
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Meta-Llama-3.1-70B-Instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 2048,
-      "model_ref": "Meta-Llama-3.1-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.68,
-        "output_per_mtok": 3.54
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-medium-128k-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "phi-3-medium-128k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.17,
-        "output_per_mtok": 0.68
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-medium-4k-instruct": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-medium-4k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.17,
-        "output_per_mtok": 0.68
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-mini-128k-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "phi-3-mini-128k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-mini-4k-instruct": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-mini-4k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-small-128k-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-small-128k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3-small-8k-instruct": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3-small-8k-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3.5-MoE-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-MoE-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.16,
-        "output_per_mtok": 0.64
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3.5-mini-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-mini-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/Phi-3.5-vision-instruct": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "Phi-3.5-vision-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.52
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/azure_ai/Phi-4": {
       "context_window": 16384,
       "enabled": true,
@@ -42057,36 +41315,6 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
-    "azure/azure_ai/cohere-rerank-v3-english": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "cohere-rerank-v3-english",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/cohere-rerank-v3-multilingual": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "cohere-rerank-v3-multilingual",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/azure_ai/cohere-rerank-v4.0-fast": {
       "context_window": 32768,
       "enabled": true,
@@ -42128,21 +41356,6 @@
       "pricing_source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'",
       "source_urls": [
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
-      ]
-    },
-    "azure/azure_ai/deepseek-v3": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 8192,
-      "model_ref": "deepseek-v3",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 1.14,
-        "output_per_mtok": 4.56
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
     "azure/azure_ai/deepseek-v3-0324": {
@@ -43059,21 +42272,6 @@
         "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
-    "azure/azure_ai/jamba-instruct": {
-      "context_window": 70000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "jamba-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 0.7
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/azure_ai/kimi-k2-thinking": {
       "context_window": 262144,
       "enabled": true,
@@ -43160,36 +42358,6 @@
       "model_ref": "mistral-document-ai-2512",
       "source_urls": [
         "https://ai.azure.com/catalog/models/mistral-document-ai-2512"
-      ]
-    },
-    "azure/azure_ai/mistral-large": {
-      "context_window": 32000,
-      "enabled": true,
-      "max_output_tokens": 8191,
-      "model_ref": "mistral-large",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 4.0,
-        "output_per_mtok": 12.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/azure_ai/mistral-large-2407": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "mistral-large-2407",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
     "azure/azure_ai/mistral-large-3": {
@@ -43289,21 +42457,6 @@
       "model_ref": "mistral-ocr-4-0",
       "source_urls": [
         "https://azure.microsoft.com/en-us/pricing/details/ai-foundry-models/mistral/"
-      ]
-    },
-    "azure/azure_ai/mistral-small": {
-      "context_window": 32000,
-      "enabled": true,
-      "max_output_tokens": 8191,
-      "model_ref": "mistral-small",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 1.0,
-        "output_per_mtok": 3.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
     "azure/azure_ai/mistral-small-2503": {
@@ -43462,38 +42615,6 @@
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
       ]
     },
-    "azure/cohere-rerank-v3-english": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "cohere-rerank-v3-english",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/cohere-rerank-v3-english",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
-    "azure/cohere-rerank-v3-multilingual": {
-      "context_window": 4096,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "cohere-rerank-v3-multilingual",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/cohere-rerank-v3-multilingual",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/cohere-rerank-v4.0-fast": {
       "context_window": 32768,
       "enabled": true,
@@ -43524,21 +42645,6 @@
       "provider_model_id": "azure_ai/cohere-rerank-v4.0-pro",
       "source_urls": [
         "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-cohere-rerank-4-0-in-microsoft-foundry/4477076"
-      ]
-    },
-    "azure/command-r-plus": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "command-r-plus",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 15.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
     "azure/computer-use-preview": {
@@ -43716,9 +42822,7 @@
       ]
     },
     "azure/gpt-3.5-turbo-16k": {
-      "context_window": 16385,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "gpt-3.5-turbo-16k",
       "pricing": {
         "currency": "USD",
@@ -43728,8 +42832,7 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "provider_model_id": "gpt-35-turbo-16k",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
+        "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
     "azure/gpt-3.5-turbo-instruct-0914": {
@@ -43777,9 +42880,7 @@
       ]
     },
     "azure/gpt-35-turbo-16k": {
-      "context_window": 16385,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "gpt-3.5-turbo-16k",
       "pricing": {
         "currency": "USD",
@@ -43788,23 +42889,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
-      ]
-    },
-    "azure/gpt-35-turbo-16k-0613": {
-      "context_window": 16385,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "gpt-3.5-turbo-16k-0613",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 3.0,
-        "output_per_mtok": 4.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
+        "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
     "azure/gpt-35-turbo-instruct": {
@@ -43838,9 +42923,7 @@
       ]
     },
     "azure/gpt-4": {
-      "context_window": 8192,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "gpt-4",
       "pricing": {
         "currency": "USD",
@@ -43849,8 +42932,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
+        "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
     "azure/gpt-4-0125-preview": {
@@ -43870,9 +42952,7 @@
       ]
     },
     "azure/gpt-4-0613": {
-      "context_window": 8192,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "gpt-4-0613",
       "pricing": {
         "currency": "USD",
@@ -43881,8 +42961,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
+        "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
     "azure/gpt-4-1106-preview": {
@@ -43902,9 +42981,7 @@
       ]
     },
     "azure/gpt-4-32k": {
-      "context_window": 32768,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "gpt-4-32k",
       "pricing": {
         "currency": "USD",
@@ -43913,24 +42990,7 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
-      ]
-    },
-    "azure/gpt-4-32k-0613": {
-      "context_window": 32768,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "gpt-4-32k-0613",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 60.0,
-        "output_per_mtok": 120.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
+        "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
     "azure/gpt-4-turbo": {
@@ -44123,22 +43183,6 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json",
         "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
-      ]
-    },
-    "azure/gpt-4.5-preview": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 16384,
-      "model_ref": "gpt-4.5-preview",
-      "pricing": {
-        "cached_input_per_mtok": 37.5,
-        "currency": "USD",
-        "input_per_mtok": 75.0,
-        "output_per_mtok": 150.0
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/legacy-models"
       ]
     },
     "azure/gpt-4o": {
@@ -44410,25 +43454,6 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/azure-openai.json"
-      ]
-    },
-    "azure/gpt-4o-realtime-preview-2024-10-01": {
-      "context_window": 128000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "gpt-4o-realtime-preview-2024-10-01",
-      "pricing": {
-        "audio_input_per_mtok": 100.0,
-        "audio_output_per_mtok": 200.0,
-        "cached_input_per_mtok": 2.5,
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 20.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/azure-openai.json",
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
     "azure/gpt-4o-realtime-preview-2024-12-17": {
@@ -47702,22 +46727,6 @@
         "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
       ]
     },
-    "azure/jamba-instruct": {
-      "context_window": 70000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "jamba-instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 0.7
-      },
-      "pricing_source_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
-      "provider_model_id": "azure_ai/jamba-instruct",
-      "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models"
-      ]
-    },
     "azure/kimi-k2.5": {
       "context_window": 262144,
       "enabled": true,
@@ -48225,7 +47234,6 @@
     "azure/phi-3-medium-128k-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "phi-3-medium-128k-instruct",
       "pricing": {
         "currency": "USD",
@@ -48233,16 +47241,13 @@
         "output_per_mtok": 0.68
       },
       "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
-      "provider_model_id": "azure_ai/Phi-3-medium-128k-instruct",
       "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "azure/phi-3-mini-128k-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 4096,
       "model_ref": "phi-3-mini-128k-instruct",
       "pricing": {
         "currency": "USD",
@@ -48250,9 +47255,7 @@
         "output_per_mtok": 0.52
       },
       "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
-      "provider_model_id": "azure_ai/Phi-3-mini-128k-instruct",
       "source_urls": [
-        "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
@@ -51208,6 +50211,20 @@
         "https://cohere.com/blog/rerank-5"
       ]
     },
+    "deepinfra/DeepSeek-V3": {
+      "enabled": true,
+      "model_ref": "DeepSeek-V3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.32,
+        "output_per_mtok": 0.89
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "provider_model_id": "deepseek-ai/DeepSeek-V3",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json"
+      ]
+    },
     "deepinfra/DeepSeek-V3.1": {
       "enabled": true,
       "model_ref": "DeepSeek-V3.1",
@@ -51256,34 +50273,6 @@
       },
       "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
       "provider_model_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
-      ]
-    },
-    "deepinfra/Meta-Llama-3-70B-Instruct": {
-      "enabled": true,
-      "model_ref": "Meta-Llama-3-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.23,
-        "output_per_mtok": 0.4
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
-      "provider_model_id": "meta-llama/Meta-Llama-3-70B-Instruct",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
-      ]
-    },
-    "deepinfra/Meta-Llama-3.1-70B-Instruct": {
-      "enabled": true,
-      "model_ref": "Meta-Llama-3.1-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 0.4
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
-      "provider_model_id": "meta-llama/Meta-Llama-3.1-70B-Instruct",
       "source_urls": [
         "https://configs.portkey.ai/pricing/deepinfra.json"
       ]
@@ -51481,7 +50470,7 @@
     },
     "deepinfra/deepseek-ai/DeepSeek-V3": {
       "enabled": true,
-      "model_ref": "deepseek-v3",
+      "model_ref": "DeepSeek-V3",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.32,
@@ -51948,32 +50937,6 @@
         "https://configs.portkey.ai/pricing/deepinfra.json"
       ]
     },
-    "deepinfra/meta-llama/Meta-Llama-3-70B-Instruct": {
-      "enabled": true,
-      "model_ref": "Meta-Llama-3-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.23,
-        "output_per_mtok": 0.4
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
-      ]
-    },
-    "deepinfra/meta-llama/Meta-Llama-3.1-70B-Instruct": {
-      "enabled": true,
-      "model_ref": "Meta-Llama-3.1-70B-Instruct",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.4,
-        "output_per_mtok": 0.4
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/deepinfra.json"
-      ]
-    },
     "deepinfra/microsoft/phi-4": {
       "enabled": true,
       "model_ref": "phi-4",
@@ -52214,7 +51177,7 @@
       "context_window": 65536,
       "enabled": true,
       "max_output_tokens": 8192,
-      "model_ref": "deepseek-v3",
+      "model_ref": "DeepSeek-V3",
       "pricing": {
         "cache_write_per_mtok": 0.0,
         "cached_input_per_mtok": 0.07,
@@ -53149,7 +52112,7 @@
     },
     "fireworks/deepseek-v3": {
       "enabled": true,
-      "model_ref": "deepseek-v3",
+      "model_ref": "DeepSeek-V3",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 0.56,
@@ -55152,26 +54115,6 @@
       "source_urls": [
         "https://llmprices.dev/",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
-      ]
-    },
-    "gemini/gemini-2.0-flash-exp-image-generation": {
-      "context_window": 32768,
-      "enabled": true,
-      "max_output_tokens": 32768,
-      "model_ref": "gemini-2.0-flash-exp-image-generation",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0,
-        "per_image": 0.039
-      },
-      "pricing_source_url": "https://ai.google.dev/pricing",
-      "rate_limits": {
-        "rpm": 10,
-        "tpm": 250000
-      },
-      "source_urls": [
-        "https://ai.google.dev/pricing"
       ]
     },
     "gemini/gemini-2.0-flash-lite": {
@@ -57294,9 +56237,7 @@
       ]
     },
     "groq/llama-guard-3-8b": {
-      "context_window": 8192,
       "enabled": true,
-      "max_output_tokens": 8192,
       "model_ref": "llama-guard-3-8b",
       "pricing": {
         "currency": "USD",
@@ -57306,7 +56247,6 @@
       "pricing_source_url": "https://configs.portkey.ai/pricing/groq.json",
       "source_urls": [
         "https://configs.portkey.ai/pricing/groq.json",
-        "https://console.groq.com/docs/model/llama-guard-3-8b",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
@@ -58424,28 +57364,28 @@
     },
     "mistral/mistral-large-2407": {
       "enabled": true,
-      "model_ref": "mistral-large-2407",
+      "model_ref": "mistral-large",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 1.5
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/mistral-ai.json"
+        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "mistral/mistral-large-2411": {
       "enabled": true,
-      "model_ref": "mistral-large-2411",
+      "model_ref": "mistral-large",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.5,
-        "output_per_mtok": 1.5
+        "input_per_mtok": 2.0,
+        "output_per_mtok": 6.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/mistral-ai.json",
+      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/mistral-ai.json"
+        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "mistral/mistral-large-2512": {
@@ -60215,18 +59155,17 @@
       ]
     },
     "openai/gpt-3.5-turbo-16k-0613": {
+      "context_window": 16385,
       "enabled": true,
-      "model_ref": "gpt-3.5-turbo-16k-0613",
+      "model_ref": "gpt-3.5-turbo-16k",
       "pricing": {
-        "batch_input_per_mtok": 1.5,
-        "batch_output_per_mtok": 2.0,
         "currency": "USD",
         "input_per_mtok": 3.0,
         "output_per_mtok": 4.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
+      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/openai.json"
+        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "openai/gpt-3.5-turbo-instruct": {
@@ -60426,16 +59365,17 @@
       ]
     },
     "openai/gpt-4-32k-0613": {
+      "context_window": 32000,
       "enabled": true,
-      "model_ref": "gpt-4-32k-0613",
+      "model_ref": "gpt-4-32k",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 60.0,
         "output_per_mtok": 120.0
       },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
+      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
       "source_urls": [
-        "https://configs.portkey.ai/pricing/openai.json"
+        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "openai/gpt-4-turbo": {
@@ -61100,22 +60040,6 @@
       "source_urls": [
         "https://configs.portkey.ai/pricing/openai.json",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
-      ]
-    },
-    "openai/gpt-4o-realtime-preview-2024-10-01": {
-      "enabled": true,
-      "model_ref": "gpt-4o-realtime-preview-2024-10-01",
-      "pricing": {
-        "audio_input_per_mtok": 100.0,
-        "audio_output_per_mtok": 200.0,
-        "cached_input_per_mtok": 2.5,
-        "currency": "USD",
-        "input_per_mtok": 5.0,
-        "output_per_mtok": 20.0
-      },
-      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
-      "source_urls": [
-        "https://configs.portkey.ai/pricing/openai.json"
       ]
     },
     "openai/gpt-4o-realtime-preview-2024-12-17": {
@@ -68042,10 +66966,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.005,
         "currency": "USD",
-        "input_per_mtok": 0.035,
-        "output_per_mtok": 0.315
+        "input_per_mtok": 0.032,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "provider_model_id": "~deepseek/deepseek-flash-latest",
@@ -68129,7 +67053,7 @@
         "cached_input_per_mtok": 0.11,
         "currency": "USD",
         "input_per_mtok": 0.115,
-        "output_per_mtok": 4.0
+        "output_per_mtok": 4.6
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "provider_model_id": "deepseek/deepseek-v4-pro-0813",
@@ -68143,7 +67067,7 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.012,
+        "cached_input_per_mtok": 0.018,
         "currency": "USD",
         "input_per_mtok": 0.045,
         "output_per_mtok": 0.5
@@ -68321,7 +67245,7 @@
         "cached_input_per_mtok": 0.11,
         "currency": "USD",
         "input_per_mtok": 0.115,
-        "output_per_mtok": 4.0
+        "output_per_mtok": 4.6
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
       "source_urls": [
@@ -68334,7 +67258,7 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.012,
+        "cached_input_per_mtok": 0.018,
         "currency": "USD",
         "input_per_mtok": 0.045,
         "output_per_mtok": 0.5
@@ -68759,10 +67683,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.03,
+        "cached_input_per_mtok": 0.0269,
         "currency": "USD",
-        "input_per_mtok": 0.0313,
-        "output_per_mtok": 0.0846
+        "input_per_mtok": 0.0269,
+        "output_per_mtok": 0.0996
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -68844,10 +67768,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.03,
+        "cached_input_per_mtok": 0.0269,
         "currency": "USD",
-        "input_per_mtok": 0.0313,
-        "output_per_mtok": 0.0846
+        "input_per_mtok": 0.0269,
+        "output_per_mtok": 0.0996
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "provider_model_id": "~z-ai/glm-flash-latest",
@@ -69305,10 +68229,10 @@
       "max_output_tokens": 32768,
       "model_ref": "gemma-4-26b-a4b-it",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.041,
         "currency": "USD",
-        "input_per_mtok": 0.066,
-        "output_per_mtok": 0.199
+        "input_per_mtok": 0.083,
+        "output_per_mtok": 0.249
       },
       "pricing_source_url": "https://openrouter.ai/google/gemma-4-26b-a4b-it",
       "source_urls": [
@@ -69649,7 +68573,7 @@
         "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.06,
-        "output_per_mtok": 0.15
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/ibm-granite/granite-4.2-8b",
       "provider_model_id": "ibm-granite/granite-4.2-8b",
@@ -69777,10 +68701,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -69805,16 +68729,33 @@
         "https://openrouter.ai/tencent/hy3-preview"
       ]
     },
+    "openrouter/hy4": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "hy4",
+      "pricing": {
+        "cached_input_per_mtok": 0.021,
+        "currency": "USD",
+        "input_per_mtok": 0.417,
+        "output_per_mtok": 1.2505
+      },
+      "pricing_source_url": "https://openrouter.ai/tencent/hy4",
+      "provider_model_id": "tencent/hy4",
+      "source_urls": [
+        "https://openrouter.ai/tencent/hy4"
+      ]
+    },
     "openrouter/hy4-preview": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.0378,
+        "cached_input_per_mtok": 0.042,
         "currency": "USD",
-        "input_per_mtok": 0.7506,
-        "output_per_mtok": 2.2509
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "provider_model_id": "tencent/hy4-preview",
@@ -69831,7 +68772,7 @@
         "cached_input_per_mtok": 0.015,
         "currency": "USD",
         "input_per_mtok": 0.06,
-        "output_per_mtok": 0.15
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/ibm-granite/granite-4.2-8b",
       "source_urls": [
@@ -69978,9 +68919,9 @@
         "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling-small",
+      "provider_model_id": "thinkingmachines/inkling-small",
       "source_urls": [
-        "https://openrouter.ai/thinkingmachines/inkling-small",
-        "https://openrouter.ai/thinkingmachines/inkling-small:free"
+        "https://openrouter.ai/thinkingmachines/inkling-small"
       ]
     },
     "openrouter/jev-router": {
@@ -70104,9 +69045,9 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1529,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 10.1551
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -70347,13 +69288,12 @@
     "openrouter/llama-3.3-70b-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 16384,
       "model_ref": "llama-3.3-70b-instruct",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.52
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.32
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
       "provider_model_id": "meta-llama/llama-3.3-70b-instruct",
@@ -70621,13 +69561,12 @@
     "openrouter/meta-llama/llama-3.3-70b-instruct": {
       "context_window": 131072,
       "enabled": true,
-      "max_output_tokens": 128000,
+      "max_output_tokens": 16384,
       "model_ref": "llama-3.3-70b-instruct",
       "pricing": {
-        "cached_input_per_mtok": 0.1,
         "currency": "USD",
-        "input_per_mtok": 0.2,
-        "output_per_mtok": 0.52
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.32
       },
       "pricing_source_url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
       "source_urls": [
@@ -70996,10 +69935,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "provider_model_id": "minimax/minimax-m3.1-flash",
@@ -71138,10 +70077,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "source_urls": [
@@ -73199,10 +72138,10 @@
       "max_output_tokens": 65536,
       "model_ref": "gpt-oss-120b",
       "pricing": {
-        "cached_input_per_mtok": 0.022,
+        "cached_input_per_mtok": 0.075,
         "currency": "USD",
-        "input_per_mtok": 0.025,
-        "output_per_mtok": 0.092
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/openai/gpt-oss-120b",
       "source_urls": [
@@ -75663,10 +74602,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.020625,
+        "cached_input_per_mtok": 0.033,
         "currency": "USD",
-        "input_per_mtok": 0.0825,
-        "output_per_mtok": 0.33
+        "input_per_mtok": 0.132,
+        "output_per_mtok": 0.528
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -75689,16 +74628,32 @@
         "https://openrouter.ai/tencent/hy3-preview"
       ]
     },
+    "openrouter/tencent/hy4": {
+      "context_window": 1048576,
+      "enabled": true,
+      "max_output_tokens": 65536,
+      "model_ref": "hy4",
+      "pricing": {
+        "cached_input_per_mtok": 0.021,
+        "currency": "USD",
+        "input_per_mtok": 0.417,
+        "output_per_mtok": 1.2505
+      },
+      "pricing_source_url": "https://openrouter.ai/tencent/hy4",
+      "source_urls": [
+        "https://openrouter.ai/tencent/hy4"
+      ]
+    },
     "openrouter/tencent/hy4-preview": {
       "context_window": 1048576,
       "enabled": true,
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.0378,
+        "cached_input_per_mtok": 0.042,
         "currency": "USD",
-        "input_per_mtok": 0.7506,
-        "output_per_mtok": 2.2509
+        "input_per_mtok": 0.834,
+        "output_per_mtok": 2.501
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "source_urls": [
@@ -75816,36 +74771,6 @@
       "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling-small",
       "source_urls": [
         "https://openrouter.ai/thinkingmachines/inkling-small"
-      ]
-    },
-    "openrouter/thinkingmachines/inkling-small:free": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 262144,
-      "model_ref": "inkling-small",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling-small:free",
-      "source_urls": [
-        "https://openrouter.ai/thinkingmachines/inkling-small:free"
-      ]
-    },
-    "openrouter/thinkingmachines/inkling:free": {
-      "context_window": 1048576,
-      "enabled": true,
-      "max_output_tokens": 262144,
-      "model_ref": "inkling",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling:free",
-      "source_urls": [
-        "https://openrouter.ai/thinkingmachines/inkling:free"
       ]
     },
     "openrouter/typesafe/jev-router": {
@@ -76442,10 +75367,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.03,
+        "cached_input_per_mtok": 0.0269,
         "currency": "USD",
-        "input_per_mtok": 0.0313,
-        "output_per_mtok": 0.0846
+        "input_per_mtok": 0.0269,
+        "output_per_mtok": 0.0996
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -76590,10 +75515,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.005,
         "currency": "USD",
-        "input_per_mtok": 0.035,
-        "output_per_mtok": 0.315
+        "input_per_mtok": 0.032,
+        "output_per_mtok": 0.5
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "source_urls": [
@@ -76672,9 +75597,9 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.15,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1529,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 10.1551
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -76805,10 +75730,10 @@
       "max_output_tokens": 131072,
       "model_ref": "glm-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.03,
+        "cached_input_per_mtok": 0.0269,
         "currency": "USD",
-        "input_per_mtok": 0.0313,
-        "output_per_mtok": 0.0846
+        "input_per_mtok": 0.0269,
+        "output_per_mtok": 0.0996
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "source_urls": [
@@ -76853,6 +75778,20 @@
       "pricing_source_url": "https://docs.dev.runwayml.com/guides/pricing/",
       "source_urls": [
         "https://docs.dev.runwayml.com/guides/pricing/"
+      ]
+    },
+    "together/DeepSeek-V3": {
+      "enabled": true,
+      "model_ref": "DeepSeek-V3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 1.25
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/together-ai.json",
+      "provider_model_id": "deepseek-ai/DeepSeek-V3",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/together-ai.json"
       ]
     },
     "together/DeepSeek-V3.1": {
@@ -76913,7 +75852,7 @@
     },
     "together/deepseek-ai/DeepSeek-V3": {
       "enabled": true,
-      "model_ref": "deepseek-v3",
+      "model_ref": "DeepSeek-V3",
       "pricing": {
         "currency": "USD",
         "input_per_mtok": 1.25,
@@ -77162,21 +76101,6 @@
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       ]
     },
-    "together/together_ai/google/gemma-2-27b-it": {
-      "context_window": 8192,
-      "enabled": true,
-      "max_output_tokens": 8192,
-      "model_ref": "gemma-2-27b-it",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 0.8,
-        "output_per_mtok": 0.8
-      },
-      "pricing_source_url": "https://api.together.ai/v1/models",
-      "source_urls": [
-        "https://api.together.ai/v1/models"
-      ]
-    },
     "together/together_ai/google/gemma-4-31B-it": {
       "context_window": 262144,
       "enabled": true,
@@ -77319,21 +76243,6 @@
         "currency": "USD",
         "input_per_mtok": 0.25,
         "output_per_mtok": 1.25
-      },
-      "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-      "source_urls": [
-        "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-      ]
-    },
-    "vertex_ai/claude-3-opus": {
-      "context_window": 200000,
-      "enabled": true,
-      "max_output_tokens": 4096,
-      "model_ref": "claude-3-opus",
-      "pricing": {
-        "currency": "USD",
-        "input_per_mtok": 15.0,
-        "output_per_mtok": 75.0
       },
       "pricing_source_url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
       "source_urls": [
@@ -82141,6 +81050,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-11-03T23:00:00Z",
+  "updated_at": "2026-11-04T13:57:54Z",
   "version": 1
 }
