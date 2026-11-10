@@ -2870,6 +2870,8 @@
       ],
       "owned_by": "anthropic",
       "pricing": {
+        "batch_input_per_mtok": 4.0,
+        "batch_output_per_mtok": 20.0,
         "cache_write_1h_per_mtok": 16.0,
         "cache_write_per_mtok": 10.0,
         "cached_input_per_mtok": 0.2,
@@ -3267,16 +3269,29 @@
         "global.anthropic.claude-mythos-5-2",
         "regional.anthropic.claude-mythos-5-2",
         "bedrock/claude-mythos-5-2",
+        "azure_ai/claude-mythos-5-2",
         "anthropic/claude-mythos-5-2",
         "bedrock/anthropic.claude-mythos-5-2",
         "bedrock/eu.anthropic.claude-mythos-5-2",
         "bedrock/us.anthropic.claude-mythos-5-2",
         "bedrock/global.anthropic.claude-mythos-5-2",
-        "bedrock/regional.anthropic.claude-mythos-5-2"
+        "bedrock/regional.anthropic.claude-mythos-5-2",
+        "azure/azure_ai/claude-mythos-5-2"
       ],
+      "capabilities": {
+        "computer_use": true,
+        "function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
       "context_window": 1000000,
       "description": "Same model as Claude Fable 5.2, for organizations verified through Anthropic's verification programs",
       "display_name": "Claude Mythos 5.2",
+      "max_output_tokens": 128000,
       "modes": [
         "chat"
       ],
@@ -3290,6 +3305,37 @@
         "output_per_mtok": 40.0
       },
       "source_url": "https://www.anthropic.com/pricing#api"
+    },
+    "claude-mythos-5-2-fast": {
+      "aliases": [
+        "azure_ai/claude-mythos-5-2-fast",
+        "azure/azure_ai/claude-mythos-5-2-fast"
+      ],
+      "capabilities": {
+        "computer_use": true,
+        "function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "tool_choice": true,
+        "vision": true
+      },
+      "context_window": 1000000,
+      "display_name": "Claude Mythos 5 2 Fast",
+      "max_output_tokens": 128000,
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cache_write_1h_per_mtok": 32.0,
+        "cache_write_per_mtok": 20.0,
+        "cached_input_per_mtok": 0.4,
+        "currency": "USD",
+        "input_per_mtok": 16.0,
+        "output_per_mtok": 80.0
+      },
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing"
     },
     "claude-mythos-preview": {
       "aliases": [
@@ -12577,9 +12623,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1048575,
+      "context_window": 1048576,
       "display_name": "glm-5.3-flash",
-      "max_output_tokens": 943717,
+      "max_output_tokens": 131072,
       "modalities": {
         "input": [
           "text",
@@ -13230,8 +13276,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0335,
-        "output_per_mtok": 0.083
+        "input_per_mtok": 0.0399,
+        "output_per_mtok": 0.0784
       }
     },
     "glm-latest": {
@@ -23556,8 +23602,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -23585,8 +23631,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -23615,8 +23661,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -24087,8 +24133,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -24199,8 +24245,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -24362,8 +24408,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -24396,8 +24442,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
@@ -24456,8 +24502,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5
       },
       "source_url": "https://api.x.ai/v1/language-models"
     },
@@ -26872,9 +26918,9 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1719,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 9.3388
       }
     },
@@ -28908,6 +28954,22 @@
         "output_per_mtok": 0.6
       },
       "source_url": "https://ollama.com/pricing"
+    },
+    "minimax-m3.1-flash-free": {
+      "aliases": [
+        "opencode_zen/minimax-m3.1-flash-free"
+      ],
+      "display_name": "MiniMax M3.1 Flash Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "ministral-14b-2512": {
       "aliases": [
@@ -30993,17 +31055,56 @@
     },
     "muse-ember-1.0": {
       "aliases": [
+        "meta/muse-ember-1.0",
         "opencode_zen/muse-ember-1.0"
       ],
+      "capabilities": {
+        "function_calling": true,
+        "parallel_function_calling": true,
+        "pdf_input": true,
+        "prompt_caching": true,
+        "reasoning": true,
+        "response_schema": true,
+        "system_messages": true,
+        "tool_choice": true,
+        "vision": true,
+        "web_search": true
+      },
+      "context_window": 1048576,
       "display_name": "Muse Ember 1.0",
+      "max_output_tokens": 524288,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "modes": [
-        "chat"
+        "chat",
+        "responses"
       ],
       "pricing": {
         "cached_input_per_mtok": 0.004,
         "currency": "USD",
         "input_per_mtok": 0.1,
-        "output_per_mtok": 0.5
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.1,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 0.3,
+            "output_per_mtok": 1.5,
+            "up_to_tokens": 1048576
+          }
+        ]
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
@@ -32018,6 +32119,42 @@
         "currency": "USD",
         "input_per_mtok": 0.075,
         "output_per_mtok": 0.25
+      }
+    },
+    "nex-n2.6": {
+      "aliases": [
+        "nex-agi/nex-n2.6",
+        "nex-agi/nex-n2.6-20261110",
+        "openrouter/nex-agi/nex-n2.6",
+        "openrouter/nex-agi/nex-n2.6-20261110"
+      ],
+      "capabilities": {
+        "function_calling": true,
+        "reasoning": true,
+        "response_schema": true,
+        "structured_output": true,
+        "tool_choice": true
+      },
+      "context_window": 262144,
+      "display_name": "Nex AGI: Nex-N2.6",
+      "max_output_tokens": 235929,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.024,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.4
       }
     },
     "north-mini-code": {
@@ -39285,6 +39422,8 @@
       "max_output_tokens": 128000,
       "model_ref": "claude-fable-5-2",
       "pricing": {
+        "batch_input_per_mtok": 4.0,
+        "batch_output_per_mtok": 20.0,
         "cache_write_1h_per_mtok": 16.0,
         "cache_write_per_mtok": 10.0,
         "cached_input_per_mtok": 0.2,
@@ -39292,8 +39431,9 @@
         "input_per_mtok": 8.0,
         "output_per_mtok": 40.0
       },
-      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/anthropic.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/anthropic.json",
         "https://llmprices.dev/",
         "https://platform.claude.com/docs/en/about-claude/pricing",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
@@ -39435,6 +39575,7 @@
     "anthropic/claude-mythos-5-2": {
       "context_window": 1000000,
       "enabled": true,
+      "max_output_tokens": 128000,
       "model_ref": "claude-mythos-5-2",
       "pricing": {
         "cache_write_1h_per_mtok": 16.0,
@@ -39447,6 +39588,7 @@
       "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
       "source_urls": [
         "https://llmprices.dev/",
+        "https://platform.claude.com/docs/en/about-claude/pricing",
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
@@ -41659,6 +41801,42 @@
         "https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement"
       ]
     },
+    "azure/azure_ai/claude-mythos-5-2": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-mythos-5-2",
+      "pricing": {
+        "cache_write_1h_per_mtok": 16.0,
+        "cache_write_per_mtok": 10.0,
+        "cached_input_per_mtok": 0.2,
+        "currency": "USD",
+        "input_per_mtok": 8.0,
+        "output_per_mtok": 40.0
+      },
+      "pricing_source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ]
+    },
+    "azure/azure_ai/claude-mythos-5-2-fast": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-mythos-5-2-fast",
+      "pricing": {
+        "cache_write_1h_per_mtok": 32.0,
+        "cache_write_per_mtok": 20.0,
+        "cached_input_per_mtok": 0.4,
+        "currency": "USD",
+        "input_per_mtok": 16.0,
+        "output_per_mtok": 80.0
+      },
+      "pricing_source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ]
+    },
     "azure/azure_ai/claude-opus-4-5": {
       "context_window": 200000,
       "enabled": true,
@@ -43291,6 +43469,25 @@
       "provider_model_id": "azure_ai/claude-haiku-latest",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/claude-mythos-5-2-fast": {
+      "context_window": 1000000,
+      "enabled": true,
+      "max_output_tokens": 128000,
+      "model_ref": "claude-mythos-5-2-fast",
+      "pricing": {
+        "cache_write_1h_per_mtok": 32.0,
+        "cache_write_per_mtok": 20.0,
+        "cached_input_per_mtok": 0.4,
+        "currency": "USD",
+        "input_per_mtok": 16.0,
+        "output_per_mtok": 80.0
+      },
+      "pricing_source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "provider_model_id": "azure_ai/claude-mythos-5-2-fast",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/pricing"
       ]
     },
     "azure/claude-opus-5-5-fast": {
@@ -57969,6 +58166,39 @@
         "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
+    "meta/muse-ember-1.0": {
+      "context_window": 1048576,
+      "enabled": true,
+      "endpoints": [
+        "/v1/chat/completions",
+        "/v1/responses",
+        "/v1/messages"
+      ],
+      "max_output_tokens": 524288,
+      "model_ref": "muse-ember-1.0",
+      "pricing": {
+        "cached_input_per_mtok": 0.004,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.5,
+        "tiers": [
+          {
+            "input_per_mtok": 0.1,
+            "output_per_mtok": 0.5,
+            "up_to_tokens": 200000
+          },
+          {
+            "input_per_mtok": 0.3,
+            "output_per_mtok": 1.5,
+            "up_to_tokens": 1048576
+          }
+        ]
+      },
+      "pricing_source_url": "https://dev.meta.ai/docs/pricing-rate-limits",
+      "source_urls": [
+        "https://dev.meta.ai/docs/pricing-rate-limits"
+      ]
+    },
     "meta/muse-image-1.0": {
       "enabled": true,
       "endpoints": [
@@ -67353,6 +67583,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/minimax-m3.1-flash-free": {
+      "enabled": true,
+      "model_ref": "minimax-m3.1-flash-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/mistral-large-4": {
       "enabled": true,
       "model_ref": "mistral-large-4",
@@ -68641,10 +68885,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.018,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.051,
-        "output_per_mtok": 0.567
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "provider_model_id": "deepseek/deepseek-v4.1-flash",
@@ -68832,10 +69076,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.018,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.051,
-        "output_per_mtok": 0.567
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "source_urls": [
@@ -69239,9 +69483,9 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.006,
+        "input_per_mtok": 0.007,
         "output_per_mtok": 6.8
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -69268,15 +69512,15 @@
       ]
     },
     "openrouter/glm-5.3-flash": {
-      "context_window": 1048575,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943717,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.0399,
+        "output_per_mtok": 0.0784
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "provider_model_id": "z-ai/glm-5.3-flash",
@@ -69360,8 +69604,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0335,
-        "output_per_mtok": 0.083
+        "input_per_mtok": 0.0399,
+        "output_per_mtok": 0.0784
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "provider_model_id": "~z-ai/glm-flash-latest",
@@ -70649,9 +70893,9 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1719,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 9.3388
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -72427,6 +72671,22 @@
         "https://openrouter.ai/nex-agi/nex-n2.5-pro"
       ]
     },
+    "openrouter/nex-agi/nex-n2.6": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 235929,
+      "model_ref": "nex-n2.6",
+      "pricing": {
+        "cached_input_per_mtok": 0.024,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.4
+      },
+      "pricing_source_url": "https://openrouter.ai/nex-agi/nex-n2.6",
+      "source_urls": [
+        "https://openrouter.ai/nex-agi/nex-n2.6"
+      ]
+    },
     "openrouter/nex-n2.5-mini": {
       "context_window": 262144,
       "enabled": true,
@@ -72459,6 +72719,23 @@
       "provider_model_id": "nex-agi/nex-n2.5-pro",
       "source_urls": [
         "https://openrouter.ai/nex-agi/nex-n2.5-pro"
+      ]
+    },
+    "openrouter/nex-n2.6": {
+      "context_window": 262144,
+      "enabled": true,
+      "max_output_tokens": 235929,
+      "model_ref": "nex-n2.6",
+      "pricing": {
+        "cached_input_per_mtok": 0.024,
+        "currency": "USD",
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.4
+      },
+      "pricing_source_url": "https://openrouter.ai/nex-agi/nex-n2.6",
+      "provider_model_id": "nex-agi/nex-n2.6",
+      "source_urls": [
+        "https://openrouter.ai/nex-agi/nex-n2.6"
       ]
     },
     "openrouter/north-mini-code": {
@@ -76879,9 +77156,9 @@
       "max_output_tokens": 943718,
       "model_ref": "glm-5.2",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.006,
+        "input_per_mtok": 0.007,
         "output_per_mtok": 6.8
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.2",
@@ -76906,15 +77183,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.3-flash": {
-      "context_window": 1048575,
+      "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943717,
+      "max_output_tokens": 131072,
       "model_ref": "glm-5.3-flash",
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.0399,
+        "output_per_mtok": 0.0784
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
       "source_urls": [
@@ -77141,9 +77418,9 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.17,
+        "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1719,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 9.3388
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -77276,8 +77553,8 @@
       "pricing": {
         "cached_input_per_mtok": 0.03,
         "currency": "USD",
-        "input_per_mtok": 0.0335,
-        "output_per_mtok": 0.083
+        "input_per_mtok": 0.0399,
+        "output_per_mtok": 0.0784
       },
       "pricing_source_url": "https://openrouter.ai/~z-ai/glm-flash-latest",
       "source_urls": [
@@ -77919,6 +78196,8 @@
       "max_output_tokens": 128000,
       "model_ref": "claude-fable-5-2",
       "pricing": {
+        "batch_input_per_mtok": 4.0,
+        "batch_output_per_mtok": 20.0,
         "cache_write_1h_per_mtok": 16.0,
         "cache_write_per_mtok": 10.0,
         "cached_input_per_mtok": 0.2,
@@ -77926,9 +78205,10 @@
         "input_per_mtok": 8.0,
         "output_per_mtok": 40.0
       },
-      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/claude-fable-latest": {
@@ -80771,8 +81051,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -80801,8 +81081,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -80832,8 +81112,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -81352,8 +81632,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -81519,8 +81799,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -81610,8 +81890,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -81697,8 +81977,8 @@
         "cached_input_per_mtok": 0.2,
         "currency": "USD",
         "input_image_per_mtok": 1.25,
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 6.0,
+        "input_per_mtok": 1.25,
+        "output_per_mtok": 2.5,
         "tiers": [
           {
             "input_per_mtok": 1.25,
@@ -82736,6 +83016,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-11-10T01:17:48Z",
+  "updated_at": "2026-11-10T14:32:47Z",
   "version": 1
 }
