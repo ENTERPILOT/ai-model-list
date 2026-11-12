@@ -5770,10 +5770,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.022,
+        "output_per_mtok": 0.4
       }
     },
     "deepseek-pro-latest": {
@@ -10301,6 +10301,8 @@
       ],
       "owned_by": "gemini",
       "pricing": {
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 5.0,
         "cached_input_per_mtok": 0.1,
         "currency": "USD",
         "input_per_mtok": 2.0,
@@ -10352,6 +10354,38 @@
         "reasoning_output_per_mtok": 20.0
       },
       "source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+    },
+    "gemini-decision-1": {
+      "aliases": [
+        "gemini/gemini-decision-1",
+        "opencode_zen/gemini-decision-1"
+      ],
+      "capabilities": {
+        "audio_input": true,
+        "pdf_input": true,
+        "video_input": true,
+        "vision": true
+      },
+      "context_window": 262144,
+      "display_name": "Gemini Decision 1",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ]
+      },
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "gemini",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "gemini-embedding-001": {
       "aliases": [
@@ -19763,6 +19797,24 @@
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
     },
+    "gpt-6-luna-decision": {
+      "aliases": [
+        "opencode_zen/gpt-6-luna-decision"
+      ],
+      "display_name": "GPT 6 Luna Decision",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "openai",
+      "pricing": {
+        "cache_write_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "gpt-6-luna-pro": {
       "aliases": [
         "openai/gpt-6-luna-pro",
@@ -21903,6 +21955,7 @@
     },
     "gpt-image-2.6-flare": {
       "aliases": [
+        "azure/gpt-image-2.6-flare",
         "openai/gpt-image-2.6-flare"
       ],
       "capabilities": {
@@ -21927,14 +21980,244 @@
         "cached_input_image_per_mtok": 2.0,
         "cached_input_per_mtok": 1.25,
         "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
         "input_image_per_mtok": 8.0,
         "input_per_mtok": 5.0,
-        "output_image_per_mtok": 30.0
+        "output_image_per_mtok": 30.0,
+        "per_image": 0.05268
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
     },
     "gpt-image-2.6-sunburst": {
       "aliases": [
+        "azure/gpt-image-2.6-sunburst",
         "openai/gpt-image-2.6-sunburst"
       ],
       "capabilities": {
@@ -21959,9 +22242,238 @@
         "cached_input_image_per_mtok": 2.0,
         "cached_input_per_mtok": 1.25,
         "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
         "input_image_per_mtok": 8.0,
         "input_per_mtok": 5.0,
-        "output_image_per_mtok": 30.0
+        "output_image_per_mtok": 30.0,
+        "per_image": 0.05268
       },
       "source_url": "https://developers.openai.com/api/docs/pricing"
     },
@@ -27022,10 +27534,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
+        "input_per_mtok": 0.2375,
+        "output_per_mtok": 8.7856
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -28588,6 +29100,22 @@
       },
       "source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models#foundation_models"
     },
+    "microsoft-decision-1": {
+      "aliases": [
+        "azure/microsoft-decision-1"
+      ],
+      "context_window": 32768,
+      "description": "Microsoft-Decision-1 is a post-trained Qwen3.5-9B model for fast, low-cost decision tasks, sold on Microsoft Foundry.",
+      "display_name": "Microsoft Decision 1",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.042
+      },
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing"
+    },
     "midm-k-3.0-pro": {
       "aliases": [
         "kt/midm-k-3.0-pro",
@@ -29146,10 +29674,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -34430,7 +34958,7 @@
       },
       "context_window": 40960,
       "display_name": "Qwen: Qwen3 14B",
-      "max_output_tokens": 36864,
+      "max_output_tokens": 16384,
       "modalities": {
         "input": [
           "text"
@@ -34444,8 +34972,8 @@
       ],
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.22
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.24
       }
     },
     "qwen3-235b-a22b": {
@@ -35390,10 +35918,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.117,
+        "cached_input_per_mtok": 0.153,
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.191
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       }
     },
     "qwen3.5-flash-02-23": {
@@ -47350,6 +47878,494 @@
         "https://configs.portkey.ai/pricing/azure-openai.json"
       ]
     },
+    "azure/gpt-image-2.6-flare": {
+      "enabled": true,
+      "model_ref": "gpt-image-2.6-flare",
+      "pricing": {
+        "cached_input_image_per_mtok": 2.0,
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "per_image": 0.05268
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/azure-openai.json"
+      ]
+    },
+    "azure/gpt-image-2.6-sunburst": {
+      "enabled": true,
+      "model_ref": "gpt-image-2.6-sunburst",
+      "pricing": {
+        "cached_input_image_per_mtok": 2.0,
+        "cached_input_per_mtok": 1.25,
+        "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
+        "input_image_per_mtok": 8.0,
+        "input_per_mtok": 5.0,
+        "per_image": 0.05268
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/azure-openai.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/azure-openai.json"
+      ]
+    },
     "azure/gpt-live-1": {
       "enabled": true,
       "model_ref": "gpt-live-1",
@@ -47980,6 +48996,19 @@
       "provider_model_id": "azure_ai/kimi-latest",
       "source_urls": [
         "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+      ]
+    },
+    "azure/microsoft-decision-1": {
+      "context_window": 32768,
+      "enabled": true,
+      "model_ref": "microsoft-decision-1",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.042
+      },
+      "pricing_source_url": "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json",
+      "source_urls": [
+        "https://raw.githubusercontent.com/pydantic/genai-prices/main/prices/new_data/v2/data.json"
       ]
     },
     "azure/mistral-document-ai-2512": {
@@ -57006,6 +58035,27 @@
         "https://llmprices.dev/"
       ]
     },
+    "gemini/gemini-decision-1": {
+      "context_window": 262144,
+      "enabled": true,
+      "endpoints": [
+        "/v1/decisions"
+      ],
+      "model_ref": "gemini-decision-1",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "rate_limits": {
+        "rpm": 1500,
+        "tpm": 1000000
+      },
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ]
+    },
     "gemini/gemini-embedding-001": {
       "context_window": 2048,
       "enabled": true,
@@ -65568,12 +66618,242 @@
         "cached_input_image_per_mtok": 2.0,
         "cached_input_per_mtok": 1.25,
         "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
         "input_image_per_mtok": 8.0,
         "input_per_mtok": 5.0,
-        "output_image_per_mtok": 30.0
+        "output_image_per_mtok": 30.0,
+        "per_image": 0.05268
       },
-      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/openai.json",
         "https://developers.openai.com/api/docs/pricing"
       ]
     },
@@ -65588,12 +66868,242 @@
         "cached_input_image_per_mtok": 2.0,
         "cached_input_per_mtok": 1.25,
         "currency": "USD",
+        "image_generation_prices": [
+          {
+            "price": 0.05268
+          },
+          {
+            "price": 0.05268,
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high"
+          },
+          {
+            "price": 0.05268,
+            "quality": "high",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.04116,
+            "quality": "high",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.10704,
+            "quality": "high",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.04239,
+            "quality": "high",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.10008,
+            "quality": "high",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium"
+          },
+          {
+            "price": 0.04347,
+            "quality": "medium",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.03396,
+            "quality": "medium",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.08832,
+            "quality": "medium",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.03633,
+            "quality": "medium",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.08565,
+            "quality": "medium",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low"
+          },
+          {
+            "price": 0.02469,
+            "quality": "low",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.01992,
+            "quality": "low",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.05001,
+            "quality": "low",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.01977,
+            "quality": "low",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.04674,
+            "quality": "low",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh"
+          },
+          {
+            "price": 0.09366,
+            "quality": "xhigh",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.07377,
+            "quality": "xhigh",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.19029,
+            "quality": "xhigh",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.07533,
+            "quality": "xhigh",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.1779,
+            "quality": "xhigh",
+            "size": "2160x3840"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max"
+          },
+          {
+            "price": 0.21072,
+            "quality": "max",
+            "size": "1024x1024"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1024x1536"
+          },
+          {
+            "price": 0.16464,
+            "quality": "max",
+            "size": "1536x1024"
+          },
+          {
+            "price": 0.42816,
+            "quality": "max",
+            "size": "2048x2048"
+          },
+          {
+            "price": 0.1695,
+            "quality": "max",
+            "size": "2048x1152"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "3840x2160"
+          },
+          {
+            "price": 0.40026,
+            "quality": "max",
+            "size": "2160x3840"
+          }
+        ],
         "input_image_per_mtok": 8.0,
         "input_per_mtok": 5.0,
-        "output_image_per_mtok": 30.0
+        "output_image_per_mtok": 30.0,
+        "per_image": 0.05268
       },
-      "pricing_source_url": "https://developers.openai.com/api/docs/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/openai.json",
       "source_urls": [
+        "https://configs.portkey.ai/pricing/openai.json",
         "https://developers.openai.com/api/docs/pricing"
       ]
     },
@@ -67102,6 +68612,19 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/gemini-decision-1": {
+      "enabled": true,
+      "model_ref": "gemini-decision-1",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/glm-5": {
       "enabled": true,
       "model_ref": "glm-5",
@@ -67493,6 +69016,21 @@
         "currency": "USD",
         "input_per_mtok": 0.1,
         "output_per_mtok": 0.5
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/gpt-6-luna-decision": {
+      "enabled": true,
+      "model_ref": "gpt-6-luna-decision",
+      "pricing": {
+        "cache_write_per_mtok": 0.125,
+        "cached_input_per_mtok": 0.01,
+        "currency": "USD",
+        "input_per_mtok": 0.1,
+        "output_per_mtok": 0.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
@@ -68953,10 +70491,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.022,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "provider_model_id": "~deepseek/deepseek-flash-latest",
@@ -69054,10 +70592,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "provider_model_id": "deepseek/deepseek-v4.1-flash",
@@ -69213,10 +70751,10 @@
       "max_output_tokens": 384000,
       "model_ref": "deepseek-v4-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.079605,
+        "cached_input_per_mtok": 0.074356,
         "currency": "USD",
-        "input_per_mtok": 0.95526,
-        "output_per_mtok": 1.91052
+        "input_per_mtok": 0.892272,
+        "output_per_mtok": 1.784544
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4-pro",
       "source_urls": [
@@ -69245,10 +70783,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-v4.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.006,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.3,
+        "output_per_mtok": 1.2
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash",
       "source_urls": [
@@ -69258,13 +70796,13 @@
     "openrouter/deepseek/deepseek-v4.1-flash-1017": {
       "context_window": 1048576,
       "enabled": true,
-      "max_output_tokens": 943718,
+      "max_output_tokens": 393216,
       "model_ref": "deepseek-v4-1-flash-1017",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.003,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017",
       "source_urls": [
@@ -71095,10 +72633,10 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-k3.1-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
+        "input_per_mtok": 0.2375,
+        "output_per_mtok": 8.7856
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro",
       "provider_model_id": "moonshotai/kimi-k3.1-pro",
@@ -71986,10 +73524,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "provider_model_id": "minimax/minimax-m3.1-flash",
@@ -72051,10 +73589,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.0075,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.075,
-        "output_per_mtok": 0.3
+        "input_per_mtok": 0.15,
+        "output_per_mtok": 0.6
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "source_urls": [
@@ -72605,10 +74143,10 @@
       "max_output_tokens": 943718,
       "model_ref": "kimi-k3.1-pro",
       "pricing": {
-        "cached_input_per_mtok": 0.2,
+        "cached_input_per_mtok": 0.19,
         "currency": "USD",
-        "input_per_mtok": 2.0,
-        "output_per_mtok": 10.0
+        "input_per_mtok": 0.2375,
+        "output_per_mtok": 8.7856
       },
       "pricing_source_url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro",
       "source_urls": [
@@ -74728,12 +76266,12 @@
     "openrouter/qwen/qwen3-14b": {
       "context_window": 40960,
       "enabled": true,
-      "max_output_tokens": 36864,
+      "max_output_tokens": 16384,
       "model_ref": "qwen3-14b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.22
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.24
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-14b",
       "source_urls": [
@@ -75010,10 +76548,10 @@
       "max_output_tokens": 40960,
       "model_ref": "qwen3.5-9b",
       "pricing": {
-        "cached_input_per_mtok": 0.117,
+        "cached_input_per_mtok": 0.153,
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.191
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-9b",
       "source_urls": [
@@ -75296,12 +76834,12 @@
     "openrouter/qwen3-14b": {
       "context_window": 40960,
       "enabled": true,
-      "max_output_tokens": 36864,
+      "max_output_tokens": 16384,
       "model_ref": "qwen3-14b",
       "pricing": {
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.22
+        "input_per_mtok": 0.12,
+        "output_per_mtok": 0.24
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3-14b",
       "provider_model_id": "qwen/qwen3-14b",
@@ -75596,10 +77134,10 @@
       "max_output_tokens": 40960,
       "model_ref": "qwen3.5-9b",
       "pricing": {
-        "cached_input_per_mtok": 0.117,
+        "cached_input_per_mtok": 0.153,
         "currency": "USD",
-        "input_per_mtok": 0.13,
-        "output_per_mtok": 0.191
+        "input_per_mtok": 0.17,
+        "output_per_mtok": 0.25
       },
       "pricing_source_url": "https://openrouter.ai/qwen/qwen3.5-9b",
       "provider_model_id": "qwen/qwen3.5-9b",
@@ -77546,10 +79084,10 @@
       "max_output_tokens": 943718,
       "model_ref": "deepseek-flash-latest",
       "pricing": {
-        "cached_input_per_mtok": 0.005,
+        "cached_input_per_mtok": 0.004,
         "currency": "USD",
-        "input_per_mtok": 0.006,
-        "output_per_mtok": 0.5
+        "input_per_mtok": 0.022,
+        "output_per_mtok": 0.4
       },
       "pricing_source_url": "https://openrouter.ai/~deepseek/deepseek-flash-latest",
       "source_urls": [
@@ -79950,15 +81488,18 @@
       "model_ref": "gemini-4-carbon",
       "pricing": {
         "audio_input_per_mtok": 2.0,
+        "batch_input_per_mtok": 1.0,
+        "batch_output_per_mtok": 5.0,
         "cached_input_per_mtok": 0.1,
         "currency": "USD",
         "input_per_mtok": 2.0,
         "output_per_mtok": 10.0,
         "reasoning_output_per_mtok": 10.0
       },
-      "pricing_source_url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "pricing_source_url": "https://configs.portkey.ai/pricing/vertex-ai.json",
       "source_urls": [
-        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing"
+        "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+        "https://configs.portkey.ai/pricing/vertex-ai.json"
       ]
     },
     "vertex_ai/gemini-4-carbon-cyber-permissive": {
@@ -83290,6 +84831,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-11-12T00:14:36Z",
+  "updated_at": "2026-11-12T14:51:26Z",
   "version": 1
 }
