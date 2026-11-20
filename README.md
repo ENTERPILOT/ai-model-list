@@ -33,7 +33,7 @@ python scripts/validate.py --models models.json --schema schema.json
 ```
 ai-model-list/
 ├── .github/workflows/
-│   └── update-models.yml    # CI/CD entry point
+│   └── update-models.yml    # [DEPRECATED] CI/CD workflow (automatic updates disabled)
 ├── models.json              # The registry — single output file
 ├── models.min.json          # Minified registry artifact
 ├── pipeline/                # Shared normalization, resolve, render, ranking logic
@@ -45,6 +45,8 @@ ai-model-list/
 │   └── validate.py          # Validate models.json against schema.json
 └── README.md
 ```
+
+**Note:** Automatic scheduled updates via GitHub Actions have been disabled. The registry can still be updated manually by running the workflow via `workflow_dispatch` or by running the build script locally.
 
 ## Schema Reference
 

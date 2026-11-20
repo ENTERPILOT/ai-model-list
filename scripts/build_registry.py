@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Build the registry artifacts."""
+"""Build the registry artifacts.
+
+DEPRECATION NOTICE: Automatic scheduled updates via GitHub Actions have been disabled.
+This script can still be run manually for building the registry on demand.
+"""
 
 from __future__ import annotations
 
