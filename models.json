@@ -1682,6 +1682,22 @@
       },
       "source_url": "https://opencode.ai/docs/zen"
     },
+    "bge-m3": {
+      "aliases": [
+        "BAAI/bge-m3",
+        "opencode_zen/bge-m3",
+        "deepinfra/BAAI/bge-m3"
+      ],
+      "display_name": "BGE M3",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "big-pickle": {
       "aliases": [
         "opencode_zen/big-pickle"
@@ -4546,7 +4562,8 @@
       "aliases": [
         "codestral-embed-2505",
         "mistral/codestral-embed",
-        "mistral/codestral-embed-2505"
+        "mistral/codestral-embed-2505",
+        "opencode_zen/codestral-embed"
       ],
       "context_window": 8000,
       "description": "Mistral's code-specialized embedding model for code retrieval and semantic search.",
@@ -4661,6 +4678,28 @@
         "output_per_mtok": 10.0
       },
       "source_url": "https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'"
+    },
+    "cohere-embed-v5-fast": {
+      "aliases": [
+        "opencode_zen/cohere-embed-v5-fast"
+      ],
+      "display_name": "Embed 5 Fast",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "cohere",
+      "source_url": "https://opencode.ai/docs/zen"
+    },
+    "cohere-embed-v5-pro": {
+      "aliases": [
+        "opencode_zen/cohere-embed-v5-pro"
+      ],
+      "display_name": "Embed 5 Pro",
+      "modes": [
+        "chat"
+      ],
+      "owned_by": "cohere",
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "cohere-rerank-v4.0-fast": {
       "aliases": [
@@ -6898,10 +6937,10 @@
       ],
       "owned_by": "deepseek",
       "pricing": {
-        "cached_input_per_mtok": 0.006,
+        "cached_input_per_mtok": 0.000996,
         "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 1.2
+        "input_per_mtok": 0.0498,
+        "output_per_mtok": 0.1992
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -10501,6 +10540,7 @@
         "gemini/gemini-4-neon",
         "google/gemini-4-neon",
         "vertex_ai/gemini-4-neon",
+        "opencode_zen/gemini-4-neon",
         "google/gemini-4-neon-20261118",
         "openrouter/google/gemini-4-neon",
         "openrouter/google/gemini-4-neon-20261118"
@@ -10581,7 +10621,8 @@
     "gemini-embedding-001": {
       "aliases": [
         "gemini/gemini-embedding-001",
-        "vertex_ai/gemini-embedding-001"
+        "vertex_ai/gemini-embedding-001",
+        "opencode_zen/gemini-embedding-001"
       ],
       "context_window": 2048,
       "display_name": "Gemini Embedding 001",
@@ -10603,6 +10644,7 @@
         "gemini-embedding-2-preview",
         "gemini/gemini-embedding-2",
         "vertex_ai/gemini-embedding-2",
+        "opencode_zen/gemini-embedding-2",
         "gemini/gemini-embedding-2-preview"
       ],
       "capabilities": {
@@ -12612,7 +12654,6 @@
       "aliases": [
         "z-ai/glm-5",
         "fireworks/glm-5",
-        "opencode_zen/glm-5",
         "z-ai/glm-5-20260211",
         "openrouter/z-ai/glm-5",
         "openrouter/z-ai/glm-5-20260211"
@@ -12682,8 +12723,7 @@
           "rank": 61,
           "score": 69.1
         }
-      },
-      "source_url": "https://opencode.ai/docs/zen"
+      }
     },
     "glm-5-2": {
       "aliases": [
@@ -12748,7 +12788,6 @@
     "glm-5.1": {
       "aliases": [
         "z-ai/glm-5.1",
-        "opencode_zen/glm-5.1",
         "z-ai/glm-5.1-20260406",
         "openrouter/z-ai/glm-5.1",
         "openrouter/z-ai/glm-5.1-20260406"
@@ -12760,8 +12799,8 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 204800,
-      "display_name": "GLM 5.1",
+      "context_window": 202752,
+      "display_name": "Z.ai: GLM 5.1",
       "max_output_tokens": 131072,
       "modalities": {
         "input": [
@@ -12821,14 +12860,12 @@
           "rank": 47,
           "score": 72.5
         }
-      },
-      "source_url": "https://opencode.ai/docs/zen"
+      }
     },
     "glm-5.2": {
       "aliases": [
         "z-ai/glm-5.2",
         "ollama_cloud/glm-5.2",
-        "opencode_zen/glm-5.2",
         "z-ai/glm-5.2-20260616",
         "openrouter/z-ai/glm-5.2",
         "openrouter/z-ai/glm-5.2-20260616"
@@ -12855,10 +12892,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.14,
         "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
+        "input_per_mtok": 0.62,
+        "output_per_mtok": 2.42
       },
       "rankings": {
         "livebench": {
@@ -12935,10 +12972,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.26,
+        "cached_input_per_mtok": 0.0689,
         "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
+        "input_per_mtok": 0.0699,
+        "output_per_mtok": 1.4
       },
       "rankings": {
         "livebench": {
@@ -26836,10 +26873,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       }
     },
     "hy4": {
@@ -26959,10 +26996,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       }
     },
     "iceman-free": {
@@ -27198,10 +27235,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       }
     },
     "inkling-2-small": {
@@ -27241,22 +27278,6 @@
         "output_per_mtok": 1.0
       },
       "source_url": "https://ollama.com/pricing"
-    },
-    "inkling-2-small-free": {
-      "aliases": [
-        "opencode_zen/inkling-2-small-free"
-      ],
-      "display_name": "Inkling 2 Small Free",
-      "modes": [
-        "chat"
-      ],
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "source_url": "https://opencode.ai/docs/zen"
     },
     "inkling-small": {
       "aliases": [
@@ -28243,7 +28264,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1805,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 11.0055
       }
     },
@@ -30240,10 +30261,10 @@
         "chat"
       ],
       "pricing": {
-        "cached_input_per_mtok": 0.015,
+        "cached_input_per_mtok": 0.0075,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       },
       "source_url": "https://ollama.com/pricing"
     },
@@ -30658,7 +30679,8 @@
       "aliases": [
         "mistral-embed-2312",
         "mistral/mistral-embed",
-        "mistral/mistral-embed-2312"
+        "mistral/mistral-embed-2312",
+        "opencode_zen/mistral-embed"
       ],
       "context_window": 8192,
       "display_name": "Mistral Embed",
@@ -36055,6 +36077,16 @@
         "output_per_mtok": 0.8
       }
     },
+    "qwen3-embedding-8b": {
+      "aliases": [
+        "opencode_zen/qwen3-embedding-8b"
+      ],
+      "display_name": "Qwen3 Embedding 8B",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://opencode.ai/docs/zen"
+    },
     "qwen3-next-80b-a3b-instruct": {
       "aliases": [
         "qwen/qwen3-next-80b-a3b-instruct",
@@ -37024,9 +37056,9 @@
         "structured_output": true,
         "tool_choice": true
       },
-      "context_window": 1000000,
+      "context_window": 262144,
       "display_name": "Qwen: Qwen3.8 2.4T A95B",
-      "max_output_tokens": 131072,
+      "max_output_tokens": 65536,
       "modalities": {
         "input": [
           "text"
@@ -38841,7 +38873,8 @@
     "text-embedding-3-large": {
       "aliases": [
         "azure/text-embedding-3-large",
-        "openai/text-embedding-3-large"
+        "openai/text-embedding-3-large",
+        "opencode_zen/text-embedding-3-large"
       ],
       "context_window": 8192,
       "description": "Text Embedding 3 is a model that offers a balance between cost and performance.",
@@ -38862,7 +38895,8 @@
     "text-embedding-3-small": {
       "aliases": [
         "azure/text-embedding-3-small",
-        "openai/text-embedding-3-small"
+        "openai/text-embedding-3-small",
+        "opencode_zen/text-embedding-3-small"
       ],
       "context_window": 8192,
       "description": "Text Embedding 3 is a model that offers a balance between cost and performance.",
@@ -38990,6 +39024,22 @@
         "output_per_mtok": 28.0
       },
       "source_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models#foundation_models"
+    },
+    "tidepool-alpha-free": {
+      "aliases": [
+        "opencode_zen/tidepool-alpha-free"
+      ],
+      "display_name": "Tidepool Alpha Free",
+      "modes": [
+        "chat"
+      ],
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "together-ai-21.1b-41b": {
       "aliases": [
@@ -40043,6 +40093,26 @@
         "per_second_input": 6.66667e-05
       },
       "source_url": "https://docs.mistral.ai/models/voxtral-small-transcribe-3-0"
+    },
+    "voyage-4": {
+      "aliases": [
+        "opencode_zen/voyage-4"
+      ],
+      "display_name": "voyage-4",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://opencode.ai/docs/zen"
+    },
+    "voyage-code-4": {
+      "aliases": [
+        "opencode_zen/voyage-code-4"
+      ],
+      "display_name": "voyage-code-4",
+      "modes": [
+        "chat"
+      ],
+      "source_url": "https://opencode.ai/docs/zen"
     },
     "weaver": {
       "aliases": [
@@ -53928,6 +53998,18 @@
         "https://cohere.com/blog/rerank-5"
       ]
     },
+    "deepinfra/BAAI/bge-m3": {
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json"
+      ]
+    },
     "deepinfra/DeepSeek-V3": {
       "enabled": true,
       "model_ref": "DeepSeek-V3",
@@ -54149,6 +54231,19 @@
       "pricing_source_url": "https://deepinfra.com/pricing",
       "source_urls": [
         "https://deepinfra.com/pricing"
+      ]
+    },
+    "deepinfra/bge-m3": {
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "pricing": {
+        "currency": "USD",
+        "input_per_mtok": 0.01
+      },
+      "pricing_source_url": "https://configs.portkey.ai/pricing/deepinfra.json",
+      "provider_model_id": "BAAI/bge-m3",
+      "source_urls": [
+        "https://configs.portkey.ai/pricing/deepinfra.json"
       ]
     },
     "deepinfra/black-forest-labs/FLUX-1.1-pro": {
@@ -69448,6 +69543,13 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/bge-m3": {
+      "enabled": true,
+      "model_ref": "bge-m3",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/big-pickle": {
       "enabled": true,
       "model_ref": "big-pickle",
@@ -69687,6 +69789,27 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/codestral-embed": {
+      "enabled": true,
+      "model_ref": "codestral-embed",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/cohere-embed-v5-fast": {
+      "enabled": true,
+      "model_ref": "cohere-embed-v5-fast",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/cohere-embed-v5-pro": {
+      "enabled": true,
+      "model_ref": "cohere-embed-v5-pro",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/deepseek-v4-pro": {
       "enabled": true,
       "model_ref": "deepseek-v4-pro",
@@ -69704,13 +69827,6 @@
     "opencode_zen/deepseek-v4.1-flash": {
       "enabled": true,
       "model_ref": "deepseek-v4.1-flash",
-      "pricing": {
-        "cached_input_per_mtok": 0.006,
-        "currency": "USD",
-        "input_per_mtok": 0.3,
-        "output_per_mtok": 1.2
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
         "https://opencode.ai/docs/zen"
       ]
@@ -69820,6 +69936,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/gemini-4-neon": {
+      "enabled": true,
+      "model_ref": "gemini-4-neon",
+      "pricing": {
+        "cached_input_per_mtok": 0.15,
+        "currency": "USD",
+        "input_per_mtok": 3.0,
+        "output_per_mtok": 15.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/gemini-decision-1": {
       "enabled": true,
       "model_ref": "gemini-decision-1",
@@ -69833,6 +69963,20 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/gemini-embedding-001": {
+      "enabled": true,
+      "model_ref": "gemini-embedding-001",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/gemini-embedding-2": {
+      "enabled": true,
+      "model_ref": "gemini-embedding-2",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/gemini-nano-banana-2.1": {
       "enabled": true,
       "model_ref": "gemini-nano-banana-2.1",
@@ -69840,58 +69984,9 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/glm-5": {
-      "enabled": true,
-      "model_ref": "glm-5",
-      "pricing": {
-        "cached_input_per_mtok": 0.2,
-        "currency": "USD",
-        "input_per_mtok": 1.0,
-        "output_per_mtok": 3.2
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/glm-5.1": {
-      "enabled": true,
-      "model_ref": "glm-5.1",
-      "pricing": {
-        "cached_input_per_mtok": 0.26,
-        "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
-    "opencode_zen/glm-5.2": {
-      "enabled": true,
-      "model_ref": "glm-5.2",
-      "pricing": {
-        "cached_input_per_mtok": 0.26,
-        "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/glm-5.3": {
       "enabled": true,
       "model_ref": "glm-5.3",
-      "pricing": {
-        "cached_input_per_mtok": 0.26,
-        "currency": "USD",
-        "input_per_mtok": 1.4,
-        "output_per_mtok": 4.4
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
       "source_urls": [
         "https://opencode.ai/docs/zen"
       ]
@@ -70396,20 +70491,6 @@
         "https://opencode.ai/docs/zen"
       ]
     },
-    "opencode_zen/inkling-2-small-free": {
-      "enabled": true,
-      "model_ref": "inkling-2-small-free",
-      "pricing": {
-        "cached_input_per_mtok": 0.0,
-        "currency": "USD",
-        "input_per_mtok": 0.0,
-        "output_per_mtok": 0.0
-      },
-      "pricing_source_url": "https://opencode.ai/docs/zen",
-      "source_urls": [
-        "https://opencode.ai/docs/zen"
-      ]
-    },
     "opencode_zen/jev-1.13": {
       "enabled": true,
       "model_ref": "jev-1.13",
@@ -70563,6 +70644,13 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/mistral-embed": {
+      "enabled": true,
+      "model_ref": "mistral-embed",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/mistral-large-4": {
       "enabled": true,
       "model_ref": "mistral-large-4",
@@ -70654,6 +70742,13 @@
         "https://opencode.ai/docs/zen"
       ]
     },
+    "opencode_zen/qwen3-embedding-8b": {
+      "enabled": true,
+      "model_ref": "qwen3-embedding-8b",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
     "opencode_zen/qwen3.5-plus": {
       "enabled": true,
       "model_ref": "qwen3.5-plus",
@@ -70710,6 +70805,48 @@
         "output_per_mtok": 6.0
       },
       "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/text-embedding-3-large": {
+      "enabled": true,
+      "model_ref": "text-embedding-3-large",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/text-embedding-3-small": {
+      "enabled": true,
+      "model_ref": "text-embedding-3-small",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/tidepool-alpha-free": {
+      "enabled": true,
+      "model_ref": "tidepool-alpha-free",
+      "pricing": {
+        "cached_input_per_mtok": 0.0,
+        "currency": "USD",
+        "input_per_mtok": 0.0,
+        "output_per_mtok": 0.0
+      },
+      "pricing_source_url": "https://opencode.ai/docs/zen",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/voyage-4": {
+      "enabled": true,
+      "model_ref": "voyage-4",
+      "source_urls": [
+        "https://opencode.ai/docs/zen"
+      ]
+    },
+    "opencode_zen/voyage-code-4": {
+      "enabled": true,
+      "model_ref": "voyage-code-4",
       "source_urls": [
         "https://opencode.ai/docs/zen"
       ]
@@ -72404,15 +72541,15 @@
       ]
     },
     "openrouter/glm-5.1": {
-      "context_window": 204800,
+      "context_window": 202752,
       "enabled": true,
       "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
-        "cached_input_per_mtok": 0.6,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 1.19,
-        "output_per_mtok": 3.74
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
       "provider_model_id": "z-ai/glm-5.1",
@@ -73582,10 +73719,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "provider_model_id": "tencent/hy3",
@@ -73633,10 +73770,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "provider_model_id": "tencent/hy4-preview",
@@ -73777,10 +73914,10 @@
       "max_output_tokens": 65536,
       "model_ref": "inkling-2-mini",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling-2-mini",
       "provider_model_id": "thinkingmachines/inkling-2-mini",
@@ -73945,7 +74082,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1805,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 11.0055
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -74720,10 +74857,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.015,
+        "cached_input_per_mtok": 0.0075,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "provider_model_id": "minimax/minimax-m3.1-flash",
@@ -74784,10 +74921,10 @@
       "max_output_tokens": 524288,
       "model_ref": "minimax-m3.1-flash",
       "pricing": {
-        "cached_input_per_mtok": 0.015,
+        "cached_input_per_mtok": 0.0075,
         "currency": "USD",
-        "input_per_mtok": 0.15,
-        "output_per_mtok": 0.6
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/minimax/minimax-m3.1-flash",
       "source_urls": [
@@ -78021,9 +78158,9 @@
       ]
     },
     "openrouter/qwen/qwen3.8-2.4t-a95b": {
-      "context_window": 1000000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -78619,9 +78756,9 @@
       ]
     },
     "openrouter/qwen3.8-2.4t-a95b": {
-      "context_window": 1000000,
+      "context_window": 262144,
       "enabled": true,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 65536,
       "model_ref": "qwen3.8-2.4t-a95b",
       "pricing": {
         "cached_input_per_mtok": 0.25,
@@ -79460,10 +79597,10 @@
       "max_output_tokens": 128000,
       "model_ref": "hy3",
       "pricing": {
-        "cached_input_per_mtok": 0.033,
+        "cached_input_per_mtok": 0.020625,
         "currency": "USD",
-        "input_per_mtok": 0.132,
-        "output_per_mtok": 0.528
+        "input_per_mtok": 0.0825,
+        "output_per_mtok": 0.33
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy3",
       "source_urls": [
@@ -79508,10 +79645,10 @@
       "max_output_tokens": 64000,
       "model_ref": "hy4-preview",
       "pricing": {
-        "cached_input_per_mtok": 0.042,
+        "cached_input_per_mtok": 0.0378,
         "currency": "USD",
-        "input_per_mtok": 0.834,
-        "output_per_mtok": 2.501
+        "input_per_mtok": 0.7506,
+        "output_per_mtok": 2.2509
       },
       "pricing_source_url": "https://openrouter.ai/tencent/hy4-preview",
       "source_urls": [
@@ -79621,10 +79758,10 @@
       "max_output_tokens": 65536,
       "model_ref": "inkling-2-mini",
       "pricing": {
-        "cached_input_per_mtok": 0.02,
+        "cached_input_per_mtok": 0.015,
         "currency": "USD",
-        "input_per_mtok": 0.1,
-        "output_per_mtok": 0.4
+        "input_per_mtok": 0.075,
+        "output_per_mtok": 0.3
       },
       "pricing_source_url": "https://openrouter.ai/thinkingmachines/inkling-2-mini",
       "source_urls": [
@@ -80175,15 +80312,15 @@
       ]
     },
     "openrouter/z-ai/glm-5.1": {
-      "context_window": 204800,
+      "context_window": 202752,
       "enabled": true,
       "max_output_tokens": 131072,
       "model_ref": "glm-5.1",
       "pricing": {
-        "cached_input_per_mtok": 0.6,
+        "cached_input_per_mtok": 0.26,
         "currency": "USD",
-        "input_per_mtok": 1.19,
-        "output_per_mtok": 3.74
+        "input_per_mtok": 1.4,
+        "output_per_mtok": 4.4
       },
       "pricing_source_url": "https://openrouter.ai/z-ai/glm-5.1",
       "source_urls": [
@@ -80460,7 +80597,7 @@
       "pricing": {
         "cached_input_per_mtok": 0.18,
         "currency": "USD",
-        "input_per_mtok": 0.1805,
+        "input_per_mtok": 0.1824,
         "output_per_mtok": 11.0055
       },
       "pricing_source_url": "https://openrouter.ai/~moonshotai/kimi-latest",
@@ -86305,6 +86442,6 @@
       "website": "https://mimo.mi.com"
     }
   },
-  "updated_at": "2026-11-21T06:13:38Z",
+  "updated_at": "2026-11-21T18:51:45Z",
   "version": 1
 }
