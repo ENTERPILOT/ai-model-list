@@ -70,6 +70,7 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
         "google_speech_official": ["vertex_ai"],
         "xiaomi_official": ["xiaomi"],
         "meta_official": ["meta"],
+        "zai_official": ["zai"],
     }
     for source_name, payload in payloads.items():
         normalizer = NORMALIZER_BY_SOURCE.get(source_name)
@@ -100,6 +101,17 @@ def _normalize_snapshot_payloads(payloads: dict[str, Any], curated: dict[str, An
             kwargs["allowed_providers"] = admitted_providers
             kwargs["owner_providers"] = [*official_providers, *provider_slugs]
         evidence.extend(normalizer(payload, **kwargs))
+
+    if "zai_official" in payloads:
+        # Z.ai is tracked from its own docs source. Aggregator rows for the same
+        # provider spell the ids in a different casing ("GLM-5.3"), which would
+        # promote duplicate canonicals next to the reseller spellings, so keep
+        # only the official records for this provider.
+        evidence = [
+            record
+            for record in evidence
+            if not (record.provider_slug == "zai" and record.confidence != "official")
+        ]
 
     if "google_speech_official" in payloads:
         evidence = [
