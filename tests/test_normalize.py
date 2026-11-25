@@ -967,6 +967,7 @@ def test_normalizer_registry_covers_current_source_set() -> None:
         "google_speech_official",
         "xiaomi_official",
         "meta_official",
+        "zai_official",
         "opencode_zen_official",
         "ollama_cloud_official",
         "pydantic_genai",
@@ -974,6 +975,35 @@ def test_normalizer_registry_covers_current_source_set() -> None:
         "llm_prices",
         "portkey",
     }
+
+
+def test_normalize_pydantic_genai_rows_keeps_catalog_modalities_and_capabilities() -> None:
+    rows = [
+        {
+            "id": "zai",
+            "pricing_urls": ["https://docs.z.ai/guides/overview/pricing"],
+            "models": [
+                {
+                    "id": "glm-5.4",
+                    "name": "GLM 5.4",
+                    "mode": "chat",
+                    "context_window": 1_048_576,
+                    "max_output_tokens": 131_072,
+                    "modalities": {"input": ["text", "image", "video"], "output": ["text"]},
+                    "capabilities": {"vision": True, "reasoning": True},
+                },
+            ],
+        }
+    ]
+
+    records = normalize_pydantic_genai_rows(rows, rejection_policy={})
+    record = next(record for record in records if record.source_model_id == "glm-5.4")
+
+    assert record.provider_slug == "zai"
+    assert record.fields["owned_by"] == "zai"
+    assert record.fields["modalities"] == {"input": ["text", "image", "video"], "output": ["text"]}
+    assert record.fields["capabilities"] == {"reasoning": True, "vision": True}
+    assert record.fields["max_output_tokens"] == 131_072
 
 
 def test_normalize_third_party_provider_rows_emits_only_provider_prefixed_records() -> None:

@@ -65,6 +65,7 @@ KNOWN_PROVIDER_SLUGS = {
     "vertex_ai",
     "x-ai",
     "xai",
+    "zai",
 }
 UNSTABLE_ALIAS_TOKENS = ("latest", "beta", "preview", "alpha", "experimental", "free")
 DEPLOYMENT_TIER_TOKENS = {"free"}
@@ -914,14 +915,29 @@ def extract_official_catalog_fields(
     if context_window is not None:
         fields["context_window"] = context_window
 
-    if provider_slug == "xiaomi":
-        max_output_tokens = model.get("max_output_tokens")
-        if max_output_tokens is not None:
-            fields["max_output_tokens"] = max_output_tokens
+    max_output_tokens = model.get("max_output_tokens")
+    if max_output_tokens is not None:
+        fields["max_output_tokens"] = max_output_tokens
 
-        deprecation_date = model.get("deprecation_date")
-        if isinstance(deprecation_date, str) and deprecation_date:
-            fields["deprecation_date"] = deprecation_date
+    deprecation_date = model.get("deprecation_date")
+    if isinstance(deprecation_date, str) and deprecation_date:
+        fields["deprecation_date"] = deprecation_date
+
+    catalog_modalities = model.get("modalities")
+    if isinstance(catalog_modalities, Mapping):
+        fields["modalities"] = {
+            str(direction): list(values)
+            for direction, values in catalog_modalities.items()
+            if isinstance(values, Sequence) and not isinstance(values, (str, bytes, bytearray))
+        }
+
+    catalog_capabilities = model.get("capabilities")
+    if isinstance(catalog_capabilities, Mapping):
+        capabilities = {
+            str(name): True for name, enabled in catalog_capabilities.items() if enabled is True
+        }
+        if capabilities:
+            fields["capabilities"] = capabilities
 
     pricing = _pricing_from_catalog_prices(model.get("prices"))
     if pricing is not None:
@@ -1722,6 +1738,7 @@ NORMALIZER_BY_SOURCE = {
     "google_speech_official": normalize_pydantic_genai_rows,
     "xiaomi_official": normalize_pydantic_genai_rows,
     "meta_official": normalize_pydantic_genai_rows,
+    "zai_official": normalize_pydantic_genai_rows,
     "opencode_zen_official": normalize_third_party_provider_rows,
     "ollama_cloud_official": normalize_third_party_provider_rows,
     "openrouter": normalize_openrouter_rows,
