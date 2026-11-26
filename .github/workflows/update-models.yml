@@ -1,9 +1,13 @@
-name: Update Model Registry
+# [DEPRECATED] Automatic model registry updates are now disabled.
+# This workflow is kept for reference and can still be triggered manually via workflow_dispatch.
+# The scheduled cron triggers have been commented out to prevent automatic execution.
+
+name: "[DEPRECATED] Update Model Registry"
 
 on:
-  schedule:
-    - cron: "15 6 * * *"
-    - cron: "15 18 * * *"
+  # schedule:
+  #   - cron: "15 6 * * *"
+  #   - cron: "15 18 * * *"
   workflow_dispatch:
 
 permissions:
